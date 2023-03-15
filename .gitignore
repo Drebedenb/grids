@@ -3,6 +3,14 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+### Django ###
+*.log
+*.pot
+*.pyc
+local_settings.py
+db.sqlite3
+media
+
 # C extensions
 *.so
 
@@ -53,12 +61,8 @@ coverage.xml
 
 # Translations
 *.mo
-*.pot
 
 # Django stuff:
-*.log
-local_settings.py
-db.sqlite3
 db.sqlite3-journal
 
 # Flask stuff:
@@ -127,3 +131,16 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# PyCharm
+#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
+#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
+#  and can be added to the global gitignore or merged into this file.  For a more nuclear
+#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
+.idea/
