@@ -7,8 +7,57 @@
 
 </head>
 <body>
-
-HELLO
+    <header class="position-sticky top-0 bg-black text-muted" style="z-index: 4;">
+      <div class="container">
+        <div class="py-6">
+          <div class="row align-items-center">
+            <div class="col-auto">
+              <div class="d-flex"><a class="navbar-brand" href="index.html"><img class="img-fluid" src="img/logo_light.svg" alt="Оконные решетки"></a><small class="d-lg-flex d-none align-items-center fs-7 border-start border-white ms-10 ps-10">Металлические решетки<br>на окна в Московской обл.</small></div>
+            </div>
+            <div class="col-auto text-end ms-auto">
+              <div class="d-lg-block d-none"><a class="fs-13 text-white text-hover-light ls-sm text-decoration-none" href="tel:84951270443">8 (495) 127-04-43</a><small class="d-block fs-7 ls-sm">
+                  <div class="indicator bg-success me-3"></div>Сейчас работаем</small></div>
+            </div>
+            <div class="col-auto text-end d-lg-block d-none">
+              <div class="d-lg-block d-none"><small class="fs-7 ls-sm ms-auto">Режим работы:</small><span class="d-block fs-10 ls-sm text-uppercase mt-2">с 9.00 до 21.00</span></div>
+            </div>
+            <div class="col-auto ms-lg-0 ms-auto">
+              <div class="hstack d-lg-none d-flex gap-5"><a class="btn btn-outline-secondary d-inline-flex justify-content-center align-items-center p-0" href="tel:84951270443" style="width: 1.5rem; height: 1.5rem;">
+                  <svg class="svg-icon" style="width: .5rem; height: .5rem;">
+                    <use href="img/sprite_icons.svg#phone-call">                       </use>
+                  </svg></a>
+                <button class="fs-6 btn btn-primary text-uppercase d-lg-none d-inline-flex justify-content-center align-items-center px-5 py-0" data-bs-toggle="offcanvas" data-bs-target="#mobile-menu" type="button" style="height: 1.5rem;">Меню</button>
+              </div>
+              <div class="d-lg-block">
+                <div class="hstack gap-10 d-lg-flex d-none">
+                  <button class="btn btn-primary btn-sm btn-wide-sm" data-bs-toggle="modal" data-bs-target="#modal-consultation" type="button">Консультация</button>
+                  <button class="btn btn-secondary btn-sm btn-wide-sm" data-bs-toggle="modal" data-bs-target="#modal-measurement" type="button">Вызвать на замер</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="d-lg-block d-none w-100 my-0">
+        <div class="navbar navbar-expand-lg navbar-dark d-lg-flex d-none py-6">
+          <ul class="navbar-nav fs-7-5 text-uppercase">
+            <li class="nav-item me-20"><a class="nav-link ls-sm p-0" href="index.html">Главная</a></li>
+            <li class="nav-item me-20"><a class="nav-link ls-sm p-0" href="catalog.html">Каталог</a></li>
+            <li class="nav-item me-20"><a class="nav-link ls-sm p-0" href="reviews.html">Отзывы</a></li>
+            <li class="nav-item me-20"><a class="nav-link ls-sm p-0" href="projects.html">Проекты</a></li>
+            <li class="nav-item me-20"><a class="nav-link ls-sm p-0" href="contacts.html">Контакты</a></li>
+          </ul>
+          <div class="hstack gap-15 ms-auto"><a class="position-relative text-white text-hover-secondary" href="#">
+              <svg class="svg-icon">
+                <use href="img/sprite_icons.svg#chart"></use>
+              </svg><span class="badge d-flex justify-content-center align-items-center position-absolute top-0 end-50 p-2 fs-4 text-white bg-primary rounded-pill ls-sm" style="min-width: .8rem; height: .8rem;">4</span></a><a class="position-relative text-white text-hover-secondary" href="#">
+              <svg class="svg-icon">
+                <use href="img/sprite_icons.svg#heart"></use>
+              </svg><span class="badge d-flex justify-content-center align-items-center position-absolute top-0 end-50 p-2 fs-4 text-white bg-primary rounded-pill ls-sm" style="min-width: .8rem; height: .8rem;">4</span></a></div>
+        </div>
+      </div>
+    </header>
+{% block content %}
+{% endblock %}
 
 </body>
 </html>
