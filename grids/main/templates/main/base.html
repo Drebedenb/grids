@@ -4,60 +4,281 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/main.css' %}">
 </head>
 <body>
-    <header class="position-sticky top-0 bg-black text-muted" style="z-index: 4;">
-      <div class="container">
+<header class="position-sticky top-0 bg-black text-muted" style="z-index: 4;">
+    <div class="container">
         <div class="py-6">
-          <div class="row align-items-center">
-            <div class="col-auto">
-              <div class="d-flex"><a class="navbar-brand" href="index.html"><img class="img-fluid" src="img/logo_light.svg" alt="Оконные решетки"></a><small class="d-lg-flex d-none align-items-center fs-7 border-start border-white ms-10 ps-10">Металлические решетки<br>на окна в Московской обл.</small></div>
-            </div>
-            <div class="col-auto text-end ms-auto">
-              <div class="d-lg-block d-none"><a class="fs-13 text-white text-hover-light ls-sm text-decoration-none" href="tel:84951270443">8 (495) 127-04-43</a><small class="d-block fs-7 ls-sm">
-                  <div class="indicator bg-success me-3"></div>Сейчас работаем</small></div>
-            </div>
-            <div class="col-auto text-end d-lg-block d-none">
-              <div class="d-lg-block d-none"><small class="fs-7 ls-sm ms-auto">Режим работы:</small><span class="d-block fs-10 ls-sm text-uppercase mt-2">с 9.00 до 21.00</span></div>
-            </div>
-            <div class="col-auto ms-lg-0 ms-auto">
-              <div class="hstack d-lg-none d-flex gap-5"><a class="btn btn-outline-secondary d-inline-flex justify-content-center align-items-center p-0" href="tel:84951270443" style="width: 1.5rem; height: 1.5rem;">
-                  <svg class="svg-icon" style="width: .5rem; height: .5rem;">
-                    <use href="img/sprite_icons.svg#phone-call">                       </use>
-                  </svg></a>
-                <button class="fs-6 btn btn-primary text-uppercase d-lg-none d-inline-flex justify-content-center align-items-center px-5 py-0" data-bs-toggle="offcanvas" data-bs-target="#mobile-menu" type="button" style="height: 1.5rem;">Меню</button>
-              </div>
-              <div class="d-lg-block">
-                <div class="hstack gap-10 d-lg-flex d-none">
-                  <button class="btn btn-primary btn-sm btn-wide-sm" data-bs-toggle="modal" data-bs-target="#modal-consultation" type="button">Консультация</button>
-                  <button class="btn btn-secondary btn-sm btn-wide-sm" data-bs-toggle="modal" data-bs-target="#modal-measurement" type="button">Вызвать на замер</button>
+            <div class="row align-items-center">
+                <div class="col-auto">
+                    <div class="d-flex"><a class="navbar-brand" href="{%url 'index'%}"><img class="img-fluid"
+                                                                                            src="{% static 'main/img/logo_light.svg' %}"
+                                                                                            alt="Оконные решетки"></a><small
+                            class="d-lg-flex d-none align-items-center fs-7 border-start border-white ms-10 ps-10">Металлические
+                        решетки<br>на окна в Московской обл.</small></div>
                 </div>
-              </div>
+                <div class="col-auto text-end ms-auto">
+                    <div class="d-lg-block d-none"><a
+                            class="fs-13 text-white text-hover-light ls-sm text-decoration-none" href="tel:84951270443">8
+                        (495) 127-04-43</a><small class="d-block fs-7 ls-sm">
+                        <div class="indicator bg-success me-3"></div>
+                        Сейчас работаем</small></div>
+                </div>
+                <div class="col-auto text-end d-lg-block d-none">
+                    <div class="d-lg-block d-none"><small class="fs-7 ls-sm ms-auto">Режим работы:</small><span
+                            class="d-block fs-10 ls-sm text-uppercase mt-2">с 9.00 до 21.00</span></div>
+                </div>
+                <div class="col-auto ms-lg-0 ms-auto">
+                    <div class="hstack d-lg-none d-flex gap-5"><a
+                            class="btn btn-outline-secondary d-inline-flex justify-content-center align-items-center p-0"
+                            href="tel:84951270443" style="width: 1.5rem; height: 1.5rem;">
+                        <svg class="svg-icon" style="width: .5rem; height: .5rem;">
+                            <use href="{% static 'main/img/logo_light.svg' %}"></use>
+                        </svg>
+                    </a>
+                        <button class="fs-6 btn btn-primary text-uppercase d-lg-none d-inline-flex justify-content-center align-items-center px-5 py-0"
+                                data-bs-toggle="offcanvas" data-bs-target="#mobile-menu" type="button"
+                                style="height: 1.5rem;">Меню
+                        </button>
+                    </div>
+                    <div class="d-lg-block">
+                        <div class="hstack gap-10 d-lg-flex d-none">
+                            <button class="btn btn-primary btn-sm btn-wide-sm" data-bs-toggle="modal"
+                                    data-bs-target="#modal-consultation" type="button">Консультация
+                            </button>
+                            <button class="btn btn-secondary btn-sm btn-wide-sm" data-bs-toggle="modal"
+                                    data-bs-target="#modal-measurement" type="button">Вызвать на замер
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
         <hr class="d-lg-block d-none w-100 my-0">
         <div class="navbar navbar-expand-lg navbar-dark d-lg-flex d-none py-6">
-          <ul class="navbar-nav fs-7-5 text-uppercase">
-            <li class="nav-item me-20"><a class="nav-link ls-sm p-0" href="index.html">Главная</a></li>
-            <li class="nav-item me-20"><a class="nav-link ls-sm p-0" href="catalog.html">Каталог</a></li>
-            <li class="nav-item me-20"><a class="nav-link ls-sm p-0" href="reviews.html">Отзывы</a></li>
-            <li class="nav-item me-20"><a class="nav-link ls-sm p-0" href="projects.html">Проекты</a></li>
-            <li class="nav-item me-20"><a class="nav-link ls-sm p-0" href="contacts.html">Контакты</a></li>
-          </ul>
-          <div class="hstack gap-15 ms-auto"><a class="position-relative text-white text-hover-secondary" href="#">
-              <svg class="svg-icon">
-                <use href="img/sprite_icons.svg#chart"></use>
-              </svg><span class="badge d-flex justify-content-center align-items-center position-absolute top-0 end-50 p-2 fs-4 text-white bg-primary rounded-pill ls-sm" style="min-width: .8rem; height: .8rem;">4</span></a><a class="position-relative text-white text-hover-secondary" href="#">
-              <svg class="svg-icon">
-                <use href="img/sprite_icons.svg#heart"></use>
-              </svg><span class="badge d-flex justify-content-center align-items-center position-absolute top-0 end-50 p-2 fs-4 text-white bg-primary rounded-pill ls-sm" style="min-width: .8rem; height: .8rem;">4</span></a></div>
+            <ul class="navbar-nav fs-7-5 text-uppercase">
+                <li class="nav-item me-20"><a class="nav-link ls-sm p-0" href="{%url 'index'%}">Главная</a></li>
+                <li class="nav-item me-20"><a class="nav-link ls-sm p-0" href="{%url 'catalog'%}">Каталог</a></li>
+                <li class="nav-item me-20"><a class="nav-link ls-sm p-0" href="{%url 'reviews'%}">Отзывы</a></li>
+                <li class="nav-item me-20"><a class="nav-link ls-sm p-0" href="{%url 'projects'%}">Проекты</a></li>
+                <li class="nav-item me-20"><a class="nav-link ls-sm p-0" href="{%url 'contacts'%}">Контакты</a></li>
+            </ul>
+            <div class="hstack gap-15 ms-auto"><a class="position-relative text-white text-hover-secondary" href="#">
+<!--                <svg class="svg-icon">-->
+<!--                    <use href="{% static 'main/img/icon-chart.svg' %}"></use>-->
+<!--                </svg>-->
+
+
+                <img class="svg-icon"
+                     src="{% static 'main/img/icon-chart.svg' %}">
+
+
+                <span class="badge d-flex justify-content-center align-items-center position-absolute top-0 end-50 p-2 fs-4 text-white bg-primary rounded-pill ls-sm"
+                      style="min-width: .8rem; height: .8rem;">4</span></a><a
+                    class="position-relative text-white text-hover-secondary" href="#">
+                <svg class="svg-icon">
+                    <use xlink:href="{% static 'main/img/sprite_icons.svg#heart' %} "></use>
+                </svg>
+                <span class="badge d-flex justify-content-center align-items-center position-absolute top-0 end-50 p-2 fs-4 text-white bg-primary rounded-pill ls-sm"
+                      style="min-width: .8rem; height: .8rem;">4</span></a></div>
         </div>
-      </div>
-    </header>
+    </div>
+</header>
+
+<!--Mobile menu-->
+<div class="offcanvas offcanvas-end d-lg-none d-block bg-black text-white" id="mobile-menu">
+    <div class="offcanvas-header">
+        <button class="btn-close ms-auto" data-bs-dismiss="offcanvas" type="button"></button>
+    </div>
+    <div class="offcanvas-body px-5 py-19">
+        <ul class="nav flex-lg-column fs-lg-10 fs-8 fw-medium ls-sm text-uppercase row-gap-lg-0 row-gap-5"
+            style="--bs-nav-link-color: var(--bs-white); --bs-nav-link-hover-color: var(--bs-primary);">
+            <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0" href="{%url 'index'%}">Главная</a>
+            </li>
+            <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0"
+                                                                href="{%url 'catalog'%}">Каталог</a>
+            </li>
+            <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0" href="{%url 'reviews'%}">Отзывы</a>
+            </li>
+            <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0"
+                                                                href="{%url 'projects'%}">Проекты</a>
+            </li>
+            <li class="nav-item w-lg-auto w-50 m-0"><a class="nav-link p-0" href="{%url 'contacts'%}">Контакты </a></li>
+        </ul>
+        <div class="row row-cols-lg-3 row-cols-2 gy-lg-20 gy-10 mt-18">
+            <div class="col"><a
+                    class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
+                    href="#">
+                <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Эконом решетки</h5><span
+                    class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
+                    style="min-width: 3rem;">201</span></a></div>
+            <div class="col"><a
+                    class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
+                    href="#">
+                <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Ажурные решетки</h5><span
+                    class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
+                    style="min-width: 3rem;">178</span></a></div>
+            <div class="col d-lg-block d-none"><a class="btn btn-primary btn-xxl w-100" href="#">Консультация</a></div>
+            <div class="col"><a
+                    class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
+                    href="#">
+                <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Кованые решетки</h5><span
+                    class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
+                    style="min-width: 3rem;">69</span></a></div>
+            <div class="col"><a
+                    class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
+                    href="#">
+                <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Дутые решетки</h5><span
+                    class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
+                    style="min-width: 3rem;">69  </span></a></div>
+            <div class="col"><a class="btn btn-outline-secondary rounded-3 w-100 py-4">
+                <svg class="svg-icon">
+                    <use xlink:href="img/sprite_icons.svg#chart"></use>
+                </svg>
+            </a></div>
+            <div class="col"><a class="btn btn-outline-secondary rounded-3 w-100 py-4">
+                <svg class="svg-icon">
+                    <use href="img/sprite_icons.svg#heart"></use>
+                </svg>
+            </a></div>
+        </div>
+        <div class="vstack gap-10 mt-10">
+            <btn class="btn btn-primary btn-xxl btn-wide-xxl" data-bs-toggle="modal"
+                 data-bs-target="#modal-consultation" type="button">Консультация
+            </btn>
+            <btn class="btn btn-outline-secondary btn-xxl btn-wide-xxl" data-bs-toggle="modal"
+                 data-bs-target="#modal-measurement" type="button">Вызвать на замер
+            </btn>
+        </div>
+        <div class="mt-15 text-center"><a class="fs-13 text-muted text-hover-white ls-sm text-decoration-none"
+                                          href="tel:84951270443">8 (495) 127-04-43 </a></div>
+    </div>
+</div>
 {% block content %}
 {% endblock %}
 
+
+<footer class="bg-black text-muted">
+    <div class="container">
+        <div class="py-11 pt-lg-30 pb-lg-20">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-auto">
+                    <div class="d-flex"><a class="navbar-brand" href="{%url 'index'%}"><img class="img-fluid"
+                                                                                            src="{% static 'main/img/logo_light.svg' %}"
+                                                                                            alt="Оконные решетки"></a><small
+                            class="d-flex align-items-center fs-lg-7 fs-5 border-start border-lg-white border-dark ms-lg-10 ms-8 ps-lg-10 ps-8">Металлические
+                        решетки<br>на окна в Московской обл.</small></div>
+                </div>
+                <div class="col-auto d-lg-block d-none">
+                    <div class="d-inline-flex align-items-center">
+                        <svg class="svg-icon me-11">
+                            <use href="{% static 'main/img/sprite_icons.svg#phone-call' %}"></use>
+                        </svg>
+                        <a class="fs-13 text-muted text-hover-white ls-sm text-decoration-none" href="tel:84951270443">8
+                            (495) 127-04-43</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="w-100 my-0">
+        <div class="pt-lg-20 pt-8 pb-lg-18 pb-10">
+            <div class="row gy-lg-0 gy-16">
+                <div class="col-lg-3">
+                    <h6 class="fs-lg-10 fs-6 fw-medium ls-sm text-uppercase mb-lg-16 mb-8">Меню</h6>
+                    <ul class="nav flex-lg-column fs-lg-10 fs-8 fw-medium ls-sm text-uppercase row-gap-lg-0 row-gap-5"
+                        style="--bs-nav-link-color: var(--bs-white); --bs-nav-link-hover-color: var(--bs-primary);">
+                        <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0" href="{%url 'index'%}">Главная</a>
+                        </li>
+                        <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0"
+                                                                            href="{%url 'catalog'%}">Каталог</a>
+                        </li>
+                        <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0"
+                                                                            href="{%url 'reviews'%}">Отзывы</a>
+                        </li>
+                        <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0"
+                                                                            href="{%url 'projects'%}">Проекты</a>
+                        </li>
+                        <li class="nav-item w-lg-auto w-50 m-0"><a class="nav-link p-0"
+                                                                   href="{%url 'contacts'%}">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-9">
+                    <h6 class="fs-lg-10 fs-6 fw-medium ls-sm text-uppercase mb-lg-17-5 mb-10">Каталог</h6>
+                    <div class="row row-cols-lg-3 row-cols-2 gy-lg-20 gy-10">
+                        <div class="col"><a
+                                class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
+                                href="#">
+                            <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Эконом решетки</h5><span
+                                class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
+                                style="min-width: 3rem;">201</span></a></div>
+                        <div class="col"><a
+                                class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
+                                href="#">
+                            <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Ажурные решетки</h5><span
+                                class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
+                                style="min-width: 3rem;">178</span></a></div>
+                        <div class="col d-lg-block d-none">
+                            <btn class="btn btn-primary btn-xxl w-100" data-bs-toggle="modal"
+                                 data-bs-target="#modal-consultation" type="button">Консультация
+                            </btn>
+                        </div>
+                        <div class="col"><a
+                                class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
+                                href="#">
+                            <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Кованые решетки</h5><span
+                                class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
+                                style="min-width: 3rem;">69</span></a></div>
+                        <div class="col"><a
+                                class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
+                                href="#">
+                            <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Дутые решетки</h5><span
+                                class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
+                                style="min-width: 3rem;">69</span></a></div>
+                        <div class="col d-lg-block d-none">
+                            <btn class="btn btn-white btn-xxl w-100" data-bs-toggle="modal"
+                                 data-bs-target="#modal-measurement" type="button">Вызвать на замер
+                            </btn>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="w-100 my-0">
+        <div class="fs-6 d-lg-block d-none ls-sm py-19">
+            <div class="row text-uppercase">
+                <div class="col-3"><a class="text-muted text-decoration-none" href="#">Политика конфиденциальности</a>
+                </div>
+                <div class="col-3"><span>ООО Оконные решетки</span></div>
+                <div class="col-3"><span>ИНН: 2313131232313</span></div>
+                <div class="col-3"><span>ОГРН: 2313131232313</span></div>
+            </div>
+        </div>
+        <div class="d-lg-none d-block text-center p-7-5"><a
+                class="fs-13 text-muted text-hover-white ls-sm text-decoration-none" href="tel:84951270443">8 (495)
+            127-04-43</a></div>
+        <hr class="d-lg-none d-block w-100 my-0">
+        <div class="py-10 d-lg-none d-block">
+            <div class="row row-cols-2">
+                <div class="col">
+                    <btn class="btn btn-primary btn-sm w-100 fs-6 rounded-3 py-8" data-bs-toggle="modal"
+                         data-bs-target="#modal-consultation" type="button">Консультация
+                    </btn>
+                </div>
+                <div class="col">
+                    <btn class="btn btn-white btn-sm w-100 fs-6 rounded-3 py-8" data-bs-toggle="modal"
+                         data-bs-target="#modal-measurement" type="button">Вызвать на замер
+                    </btn>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="{% static 'main/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'main/vendors/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'main/vendors/fslightbox/index.js' %} "></script>
+<script src="{% static 'main/vendors/wNumb/wNumb.min.js' %} "></script>
+<script src="{% static 'main/vendors/nouislider/nouislider.min.js' %} "></script>
+<script src="{% static 'main/js/main.js' %}"></script>
 </body>
 </html>

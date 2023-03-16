@@ -1,10 +1,443 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{%extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+<div class="pt-lg-30 pt-16 pb-lg-50 pb-32">
+    <div class="container">
+        <header class="page-header mb-lg-50 mb-28">
+            <div>
+                <div class="badge border border-secondary d-lg-inline-block d-none fs-6 text-secondary ls-sm text-uppercase mb-10 py-6"
+                     style="min-width: 12.5rem;">Собственное производство
+                </div>
+                <div class="row gy-lg-0  gy-12">
+                    <div class="col-lg-6">
+                        <h1 class="display-1 fs-3xl-38 fs-xl-36 fs-lg-30 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">
+                            Более 1000+ довольных клиентов</h1>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="pt-xl-7 pt-lg-4">
+                            <p class="lead fs-lg-12 fs-9 mb-0" style="max-width: 28rem;">В нашем каталоге представлено
+                                200+ эскизов дутых решеток на окна. Возможно изготовление решеток по вашему эскизу.</p>
+                            <div class="mt-3xl-31 mt-lg-24 d-lg-block d-none">
+                                <div class="hstack flex-wrap gap-20">
+                                    <btn class="btn btn-primary btn-xxl btn-wide-xxl" data-bs-toggle="modal"
+                                         data-bs-target="#modal-consultation" type="button">Консультация
+                                    </btn>
+                                    <btn class="btn btn-outline-black btn-xxl btn-wide-xxl" data-bs-toggle="modal"
+                                         data-bs-target="#modal-measurement" type="button">Вызвать на замер
+                                    </btn>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-20 d-lg-none d-block">
+                    <div class="vstack flex-wrap gap-10">
+                        <btn class="btn btn-primary btn-xxl w-100" data-bs-toggle="modal"
+                             data-bs-target="#modal-consultation" type="button">Консультация
+                        </btn>
+                        <btn class="btn btn-outline-black btn-xxl w-100" data-bs-toggle="modal"
+                             data-bs-target="#modal-measurement" type="button">Вызвать на замер
+                        </btn>
+                    </div>
+                </div>
+                <hr class="opacity-100 mt-lg-40 mt-30 mb-0"/>
+            </div>
+        </header>
+        <main>
+            <section>
+                <section class="mb-lg-50 mb-30">
+                    <div class="row mb-lg-22 mb-17-5">
+                        <div class="col-xl-5 col-lg-6">
+                            <h2 class="h1 fs-3xl-28 fs-lg-26 fs-13 ls-sm text-uppercase mb-0">Отзывы довольных
+                                клиентов</h2>
+                        </div>
+                    </div>
+                    <div class="row row-cols-lg-2 row-cols-1 gy-lg-20 gy-10">
+                        <div class="col">
+                            <div class="card h-100 rounded-lg-4 rounded-3">
+                                <div class="card-body p-lg-15 pt-10 pb-lg-28">
+                                    <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
+                                        <div class="avatar"><img class="rounded-3" src="img/avatar.png"
+                                                                 alt="Олег Матросов"/></div>
+                                        <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
+                                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
+                                        </div>
+                                        <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
+                                           href="#">Смотреть фото</a>
+                                    </div>
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Сказочно талантливые люди, заслуживающие
+                                        доверия и профессиональные, которых хорошо рекомендуют. Мы точно знали, чего
+                                        хотим, и придерживались бюджета. Не могу их достаточно похвалить!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 rounded-lg-4 rounded-3">
+                                <div class="card-body p-lg-15 pt-10 pb-lg-28">
+                                    <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
+                                        <div class="avatar"><img class="rounded-3" src="img/avatar.png"
+                                                                 alt="Олег Матросов"/></div>
+                                        <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
+                                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
+                                        </div>
+                                        <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
+                                           href="#">Смотреть фото</a>
+                                    </div>
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Сказочно талантливые люди, заслуживающие
+                                        доверия и профессиональные, которых хорошо рекомендуют. Мы точно знали, чего
+                                        хотим, и придерживались бюджета. Не могу их достаточно похвалить!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 rounded-lg-4 rounded-3">
+                                <div class="card-body p-lg-15 pt-10 pb-lg-28">
+                                    <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
+                                        <div class="avatar"><img class="rounded-3" src="img/avatar.png"
+                                                                 alt="Олег Матросов"/></div>
+                                        <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
+                                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
+                                        </div>
+                                        <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
+                                           href="#">Смотреть фото</a>
+                                    </div>
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Сказочно талантливые люди, заслуживающие
+                                        доверия и профессиональные, которых хорошо рекомендуют. Мы точно знали, чего
+                                        хотим, и придерживались бюджета. Не могу их достаточно похвалить!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 rounded-lg-4 rounded-3">
+                                <div class="card-body p-lg-15 pt-10 pb-lg-28">
+                                    <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
+                                        <div class="avatar"><img class="rounded-3" src="img/avatar.png"
+                                                                 alt="Олег Матросов"/></div>
+                                        <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
+                                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
+                                        </div>
+                                        <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
+                                           href="#">Смотреть фото</a>
+                                    </div>
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Сказочно талантливые люди, заслуживающие
+                                        доверия и профессиональные, которых хорошо рекомендуют. Мы точно знали, чего
+                                        хотим, и придерживались бюджета. Не могу их достаточно похвалить!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 rounded-lg-4 rounded-3">
+                                <div class="card-body p-lg-15 pt-10 pb-lg-28">
+                                    <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
+                                        <div class="avatar"><img class="rounded-3" src="img/avatar.png"
+                                                                 alt="Олег Матросов"/></div>
+                                        <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
+                                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
+                                        </div>
+                                        <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
+                                           href="#">Смотреть фото</a>
+                                    </div>
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Сказочно талантливые люди, заслуживающие
+                                        доверия и профессиональные, которых хорошо рекомендуют. Мы точно знали, чего
+                                        хотим, и придерживались бюджета. Не могу их достаточно похвалить!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 rounded-lg-4 rounded-3">
+                                <div class="card-body p-lg-15 pt-10 pb-lg-28">
+                                    <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
+                                        <div class="avatar"><img class="rounded-3" src="img/avatar.png"
+                                                                 alt="Олег Матросов"/></div>
+                                        <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
+                                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
+                                        </div>
+                                        <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
+                                           href="#">Смотреть фото</a>
+                                    </div>
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Сказочно талантливые люди, заслуживающие
+                                        доверия и профессиональные, которых хорошо рекомендуют. Мы точно знали, чего
+                                        хотим, и придерживались бюджета. Не могу их достаточно похвалить!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 rounded-lg-4 rounded-3">
+                                <div class="card-body p-lg-15 pt-10 pb-lg-28">
+                                    <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
+                                        <div class="avatar"><img class="rounded-3" src="img/avatar.png"
+                                                                 alt="Олег Матросов"/></div>
+                                        <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
+                                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
+                                        </div>
+                                        <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
+                                           href="#">Смотреть фото</a>
+                                    </div>
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Сказочно талантливые люди, заслуживающие
+                                        доверия и профессиональные, которых хорошо рекомендуют. Мы точно знали, чего
+                                        хотим, и придерживались бюджета. Не могу их достаточно похвалить!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 rounded-lg-4 rounded-3">
+                                <div class="card-body p-lg-15 pt-10 pb-lg-28">
+                                    <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
+                                        <div class="avatar"><img class="rounded-3" src="img/avatar.png"
+                                                                 alt="Олег Матросов"/></div>
+                                        <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
+                                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
+                                        </div>
+                                        <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
+                                           href="#">Смотреть фото</a>
+                                    </div>
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Сказочно талантливые люди, заслуживающие
+                                        доверия и профессиональные, которых хорошо рекомендуют. Мы точно знали, чего
+                                        хотим, и придерживались бюджета. Не могу их достаточно похвалить!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-lg-20 mt-10"><a class="btn btn-outline-light btn-xxl btn-wide-xxl"
+                                                               href="#">Показать еще </a></div>
+                </section>
+            </section>
+            <section class="cta  mb-lg-45 mb-28">
+                <div class="card rounded-lg-4 rounded-3">
+                    <div class="card-body pt-lg-34 pt-17-5 px-lg-40 pb-lg-35 pb-20">
+                        <h3 class="card-title fs-lg-20 fs-12 fw-normal ls-sm text-uppercase mb-lg-20 mb-14"
+                            style="max-width: 680px;">Не тратьте время на подбор, все сделаем за вас</h3>
+                        <p class="card-text lead fs-lg-12 fs-8 mb-lg-30 mb-17-5" style="max-width: 860px;">Оставьте
+                            заявку на бесплатную консультацию специалиста. Подберем несколько вариантов решеток,
+                            рассчитаем примерную стоимость</p>
+                        <form>
+                            <div class="row row-cols-lg-3 row-cols-1 gy-lg-20 gy-10">
+                                <div class="col">
+                                    <input class="form-control form-control-xxl text-center w-100"
+                                           placeholder="Введите ваше имя" type="text"/>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control form-control-xxl text-center"
+                                           placeholder="Введите номер телефона" type="text"/>
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-primary btn-xxl w-100" type="submit">Получить консультацию
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="row mb-lg-32 mb-17">
+                    <div class="col-lg-5">
+                        <h2 class="h1 fs-3xl-28 fs-lg-26 fs-13 ls-sm text-uppercase mb-0">Почему именно наша
+                            компания</h2>
+                    </div>
+                    <div class="col-auto ms-auto d-lg-block d-none">
+                        <div class="d-flex">
+                            <div class="d-flex gap-10 mt-auto" id="features-swiper-control">
+                                <button class="btn btn-outline-secondary btn-swiper-prev rounded-circle d-flex justify-content-center align-items-center p-0"
+                                        type="button" style="width: 3rem; height: 3rem;"><-
+                                </button>
+                                <button class="btn btn-outline-secondary btn-swiper-next rounded-circle d-flex justify-content-center align-items-center p-0"
+                                        type="button" style="width: 3rem; height: 3rem;">->
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper" id="features-swiper" data-control="#features-swiper-control">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="card h-100 rounded-lg-5 rounded-3">
+                                <div class="card-body pt-20 pb-lg-28 pb-22">
+                                    <svg class="svg-icon w-auto mb-17-5" viewBox="0 0 16 10.434782"
+                                         style="height: 3rem;">
+                                        <use href="img/sprite_icons.svg#tape-measure"></use>
+                                    </svg>
+                                    <h5 class="card-title fs-lg-12 fs-10 fw-normal text-uppercase mb-0">Изготовление по
+                                        вашим размерам!</h5>
+                                    <p class="card-text fs-lg-8 fs-7 text-muted mt-12">Все решетки на окна
+                                        изготавливаются по размерам оконного проема с учетом ваших пожеланий</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card h-100 rounded-lg-5 rounded-3">
+                                <div class="card-body pt-20 pb-lg-28 pb-22">
+                                    <svg class="svg-icon w-auto mb-17-5" viewBox="0 0 15.797429 16"
+                                         style="height: 3rem;">
+                                        <use href="img/sprite_icons.svg#album"></use>
+                                    </svg>
+                                    <h5 class="card-title fs-lg-12 fs-10 fw-normal text-uppercase mb-0">Огромный каталог
+                                        эскизов</h5>
+                                    <p class="card-text fs-lg-8 fs-7 text-muted mt-12">В нашем каталоге представлено
+                                        более 600 эскизов решеток на окна. Возможно изготовление решеток по вашему
+                                        эскизу</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card h-100 rounded-lg-5 rounded-3">
+                                <div class="card-body pt-20 pb-lg-28 pb-22">
+                                    <svg class="svg-icon w-auto mb-17-5" viewBox="0 0 16 10.434782"
+                                         style="height: 3rem;">
+                                        <use href="img/sprite_icons.svg#tape-measure"></use>
+                                    </svg>
+                                    <h5 class="card-title fs-lg-12 fs-10 fw-normal text-uppercase mb-0">Большой выбор
+                                        вариантов покраса</h5>
+                                    <p class="card-text fs-lg-8 fs-7 text-muted mt-12">Окрашиваем оконные решетки:
+                                        Эмалями НЦ-132, ХВ-0278, NOVAX, Hammerite, порошковое напыление</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card h-100 rounded-lg-5 rounded-3">
+                                <div class="card-body pt-20 pb-lg-28 pb-22">
+                                    <svg class="svg-icon w-auto mb-17-5" viewBox="0 0 15.797429 16"
+                                         style="height: 3rem;">
+                                        <use href="img/sprite_icons.svg#album"></use>
+                                    </svg>
+                                    <h5 class="card-title fs-lg-12 fs-10 fw-normal text-uppercase mb-0">Профессионализм
+                                        сотрудников</h5>
+                                    <p class="card-text fs-lg-8 fs-7 text-muted mt-12">Все наши сотрудники имеют опыт
+                                        работы более 5 лет в сфере производства и установки металлоконструкций</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card h-100 rounded-lg-5 rounded-3">
+                                <div class="card-body pt-20 pb-lg-28 pb-22">
+                                    <svg class="svg-icon w-auto mb-17-5" viewBox="0 0 15.797429 16"
+                                         style="height: 3rem;">
+                                        <use href="img/sprite_icons.svg#album"></use>
+                                    </svg>
+                                    <h5 class="card-title fs-lg-12 fs-10 fw-normal text-uppercase mb-0">Профессионализм
+                                        сотрудников</h5>
+                                    <p class="card-text fs-lg-8 fs-7 text-muted mt-12">Все наши сотрудники имеют опыт
+                                        работы более 5 лет в сфере производства и установки металлоконструкций</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card h-100 rounded-lg-5 rounded-3">
+                                <div class="card-body pt-20 pb-lg-28 pb-22">
+                                    <svg class="svg-icon w-auto mb-17-5" viewBox="0 0 15.797429 16"
+                                         style="height: 3rem;">
+                                        <use href="img/sprite_icons.svg#album"></use>
+                                    </svg>
+                                    <h5 class="card-title fs-lg-12 fs-10 fw-normal text-uppercase mb-0">Профессионализм
+                                        сотрудников</h5>
+                                    <p class="card-text fs-lg-8 fs-7 text-muted mt-12">Все наши сотрудники имеют опыт
+                                        работы более 5 лет в сфере производства и установки металлоконструкций </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-lg-none d-flex mt-10">
+                    <div class="d-flex gap-10 mt-auto" id="features-swiper-control">
+                        <button class="btn btn-outline-secondary btn-swiper-prev rounded-circle d-flex justify-content-center align-items-center p-0"
+                                type="button" style="width: 3rem; height: 3rem;"><-
+                        </button>
+                        <button class="btn btn-outline-secondary btn-swiper-next rounded-circle d-flex justify-content-center align-items-center p-0"
+                                type="button" style="width: 3rem; height: 3rem;">->
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <div class="cta modal modal-xl border border-black rounded-4 fade" id="modal-consultation">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body p-lg-20 py-10">
+                            <button class="btn-close ms-auto mb-5 d-lg-none d-block" data-bs-dismiss="modal"
+                                    type="button"
+                                    style="width: .5rem; height: .5rem; background: none; color: #959595; padding: 0;">
+                                <svg class="svg-icon" style="width: 100%; height: 100%; vertical-align: top;">
+                                    <use href="img/sprite_icons.svg#cross"></use>
+                                </svg>
+                            </button>
+                            <h3 class="card-title fs-lg-20 fs-12 fw-normal ls-sm text-uppercase mb-lg-20 mb-14"
+                                style="max-width: 680px;">Не тратьте время на подбор, все сделаем за вас</h3>
+                            <p class="card-text lead fs-lg-12 fs-8 mb-lg-30 mb-17-5" style="max-width: 860px;">Оставьте
+                                заявку на бесплатную консультацию специалиста. Подберем несколько вариантов решеток,
+                                рассчитаем примерную стоимость</p>
+                            <form>
+                                <div class="row row-cols-lg-3 row-cols-1 gy-lg-20 gy-10">
+                                    <div class="col">
+                                        <input class="form-control form-control-xxl text-center w-100"
+                                               placeholder="Введите ваше имя" type="text"/>
+                                    </div>
+                                    <div class="col">
+                                        <input class="form-control form-control-xxl text-center"
+                                               placeholder="Введите номер телефона" type="text"/>
+                                    </div>
+                                    <div class="col order-lg-3 order-4">
+                                        <button class="btn btn-primary btn-xxl w-100" type="submit">Получить
+                                            консультацию
+                                        </button>
+                                    </div>
+                                    <div class="col-lg-12 order-lg-4 order-3">
+                                        <div class="form-check fs-lg-8 fs-7 mb-0">
+                                            <input class="form-check-input" id="consultation-personal" name="personal"
+                                                   autocomplete="off" type="checkbox" checked="checked"/>
+                                            <label class="form-check-label" for="consultation-personal">Даю согласие на
+                                                обработку персональных данных</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cta modal modal-xl border border-black rounded-4 fade" id="modal-measurement">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body p-lg-20 py-10">
+                            <button class="btn-close ms-auto mb-5 d-lg-none d-block" data-bs-dismiss="modal"
+                                    type="button"
+                                    style="width: .5rem; height: .5rem; background: none; color: #959595; padding: 0;">
+                                <svg class="svg-icon" style="width: 100%; height: 100%; vertical-align: top;">
+                                    <use href="img/sprite_icons.svg#cross"></use>
+                                </svg>
+                            </button>
+                            <h3 class="card-title fs-lg-20 fs-12 fw-normal ls-sm text-uppercase mb-lg-20 mb-14"
+                                style="max-width: 680px;">Закажите бесплатный выезд специалиста на объект</h3>
+                            <p class="card-text lead fs-lg-12 fs-8 mb-lg-30 mb-17-5" style="max-width: 860px;">
+                                Специалист приедет в удобное для вас время, проконсультирует, поможет с подбором
+                                решеток, замерит и рассчитает стоимость</p>
+                            <form>
+                                <div class="row row-cols-lg-3 row-cols-1 gy-lg-20 gy-10">
+                                    <div class="col">
+                                        <input class="form-control form-control-xxl text-center w-100"
+                                               placeholder="Введите ваше имя" type="text"/>
+                                    </div>
+                                    <div class="col">
+                                        <input class="form-control form-control-xxl text-center"
+                                               placeholder="Введите номер телефона" type="text"/>
+                                    </div>
+                                    <div class="col order-lg-3 order-4">
+                                        <button class="btn btn-primary btn-xxl w-100" type="submit">Заказать выезд
+                                        </button>
+                                    </div>
+                                    <div class="col-lg-12 order-lg-4 order-3">
+                                        <div class="form-check fs-lg-8 fs-7 mb-0">
+                                            <input class="form-check-input" id="measurement-personal" name="personal"
+                                                   autocomplete="off" type="checkbox" checked="checked"/>
+                                            <label class="form-check-label" for="measurement-personal">Даю согласие на
+                                                обработку персональных данных</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}

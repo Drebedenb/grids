@@ -6,8 +6,28 @@ def index(request):
     return render(request, 'main/index.html')
 
 
-def render_page(request, page_name):
-    return render(request, 'main/' + page_name + '.html')
+def catalog(request):
+    return render(request,'main/catalog.html')
+
+
+def catalog_category(request):
+    return render(request,'main/catalog-category.html')
+
+
+def contacts(request):
+    return render(request,'main/contacts.html')
+
+
+def product(request):
+    return render(request,'main/product.html')
+
+
+def projects(request):
+    return render(request,'main/projects.html')
+
+
+def reviews(request):
+    return render(request,'main/reviews.html')
 
 
 def page_not_found(request, exception):

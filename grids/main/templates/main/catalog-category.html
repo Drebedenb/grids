@@ -1,10 +1,1016 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{%extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+<div class="pt-lg-30 pt-16 pb-lg-50 pb-32">
+    <div class="container">
+        <header class="page-header mb-lg-20 mb-28">
+            <div>
+                <div class="badge border border-secondary d-lg-inline-block d-none fs-6 text-secondary ls-sm text-uppercase mb-10 py-6"
+                     style="min-width: 12.5rem;">Собственное производство
+                </div>
+                <div class="row gy-lg-0  gy-12">
+                    <div class="col-lg-6">
+                        <h1 class="display-1 fs-3xl-38 fs-xl-36 fs-lg-30 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">
+                            Дутые металлические решетки на окна</h1>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="pt-xl-7 pt-lg-4">
+                            <p class="lead fs-lg-12 fs-9 mb-0" style="max-width: 28rem;">В нашем каталоге представлено
+                                200+ эскизов дутых решеток на окна. Возможно изготовление решеток по вашему эскизу.</p>
+                            <div class="mt-3xl-31 mt-lg-24 d-lg-block d-none">
+                                <div class="hstack flex-wrap gap-20">
+                                    <btn class="btn btn-primary btn-xxl btn-wide-xxl" data-bs-toggle="modal"
+                                         data-bs-target="#modal-consultation" type="button">Консультация
+                                    </btn>
+                                    <btn class="btn btn-outline-black btn-xxl btn-wide-xxl" data-bs-toggle="modal"
+                                         data-bs-target="#modal-measurement" type="button">Вызвать на замер
+                                    </btn>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-20 d-lg-none d-block">
+                    <div class="vstack flex-wrap gap-10">
+                        <btn class="btn btn-primary btn-xxl w-100" data-bs-toggle="modal"
+                             data-bs-target="#modal-consultation" type="button">Консультация
+                        </btn>
+                        <btn class="btn btn-outline-black btn-xxl w-100" data-bs-toggle="modal"
+                             data-bs-target="#modal-measurement" type="button">Вызвать на замер
+                        </btn>
+                    </div>
+                </div>
+                <nav class="d-lg-block d-none fs-9 mt-12">
+                    <ul class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="{%url 'index'%}">Главная </a></li>
+                        <li class="breadcrumb-item"><a href="{%url 'catalog'%}">Каталог</a></li>
+                        <li class="breadcrumb-item active">Дутые решетки на окна</li>
+                    </ul>
+                </nav>
+                <hr class="opacity-100 mt-lg-18 mt-30 mb-0"/>
+            </div>
+            <div class="d-lg-none d-block">
+                <nav class="border-top border-bottom border-light mb-17 py-5">
+                    <ul class="breadcrumb fs-6 mb-0">
+                        <li class="breadcrumb-item"><a href="{%url 'index'%}">Главная </a></li>
+                        <li class="breadcrumb-item"><a href="{%url 'catalog'%}">Каталог</a></li>
+                        <li class="breadcrumb-item active">Эскиз № 1-1</li>
+                    </ul>
+                </nav>
+                <h1 class="fs-13 ls-sm text-uppercase mb-0">Решетка на окно Эскиз № 1-1 </h1><span
+                    class="d-block fs-8 fw-medium text-muted ls-sm text-uppercase mt-6">Цена: от 2900 руб     </span>
+            </div>
+        </header>
+        <main>
+            <section class="mb-lg-50 mb-30">
+                <h2 class="d-lg-none d-block fs-13 ls-sm text-uppercase mb-17-5">Каталог:</h2>
+                <div class="row row-cols-lg-4 row-cols-2 gy-lg-20 gy-10 mb-lg-30 mb-10">
+                    <div class="col"><a
+                            class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20 py-lg-16 px-10 py-4"
+                            href="#">
+                        <h3 class="w-50 h5 fs-lg-13 fs-7 fw-medium ls-sm text-uppercase mb-0">Дутые решетки</h3><span
+                            class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2"
+                            style="min-width: 3rem;">201</span></a></div>
+                    <div class="col"><a
+                            class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20 py-lg-16 px-10 py-4"
+                            href="#">
+                        <h3 class="w-50 h5 fs-lg-13 fs-7 fw-medium ls-sm text-uppercase mb-0">Дутые решетки</h3><span
+                            class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2"
+                            style="min-width: 3rem;">201</span></a></div>
+                    <div class="col"><a
+                            class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20 py-lg-16 px-10 py-4"
+                            href="#">
+                        <h3 class="w-50 h5 fs-lg-13 fs-7 fw-medium ls-sm text-uppercase mb-0">Дутые решетки</h3><span
+                            class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2"
+                            style="min-width: 3rem;">201</span></a></div>
+                    <div class="col"><a
+                            class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20 py-lg-16 px-10 py-4"
+                            href="#">
+                        <h3 class="w-50 h5 fs-lg-13 fs-7 fw-medium ls-sm text-uppercase mb-0">Дутые решетки</h3><span
+                            class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2"
+                            style="min-width: 3rem;">201</span></a></div>
+                </div>
+                <div class="row gy-lg-0 gy-20">
+                    <div class="col-lg-3">
+                        <div class="accordion d-block">
+                            <div class="accordion-item border-0">
+                                <div class="accordion-header d-lg-none d-block">
+                                    <button class="accordion-button justify-content-center fs-9 bg-transparent text-muted border border-light rounded-2 shadow-none px-10 py-8 collapsed"
+                                            data-bs-toggle="collapse" data-bs-target="#catalog-filter" type="button">
+                                        Фильтр по параметрам
+                                    </button>
+                                </div>
+                                <div class="accordion-collapse collapse d-lg-block mt-lg-0 mt-5" id="catalog-filter">
+                                    <div class="accordion-body p-0">
+                                        <div class="border-top-lg border-lg-0 border border-light rounded-lg-0 rounded-2 p-lg-0 p-10 pt-lg-18">
+                                            <h5 class="d-lg-block d-none fs-12 fw-medium ls-sm text-uppercase mb-12-5">
+                                                Фильтр</h5>
+                                            <div class="mb-18">
+                                                <div class="row gy-10 mb-20">
+                                                    <div class="col-6">
+                                                        <input class="form-control text-center text-uppercase"
+                                                               id="price-min" placeholder="2 900 руб" type="text"/>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <input class="form-control text-center text-uppercase"
+                                                               id="price-max" placeholder="122 900 руб" type="text"/>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div id="price-range"></div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-lg-28 mb-18">
+                                                <h6 class="fw-medium ls-sm text-uppercase mb-10">Сортировать</h6>
+                                                <select class="form-select form-select-lg rounded-2">
+                                                    <option selected="selected">Популярные</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-28">
+                                                <h6 class="fw-medium ls-sm text-uppercase mb-10">Тип решеток</h6>
+                                                <div>
+                                                    <div class="form-check fs-9 ls-sm mb-10">
+                                                        <input class="form-check-input" id="filter-type-1"
+                                                               name="filter-type" autocomplete="off" type="radio"
+                                                               checked="checked"/>
+                                                        <label class="form-check-label" for="filter-type-1">Дутые
+                                                            решетки</label>
+                                                    </div>
+                                                    <div class="form-check fs-9 ls-sm mb-10">
+                                                        <input class="form-check-input" id="filter-type-2"
+                                                               name="filter-type" autocomplete="off" type="radio"
+                                                               checked="checked"/>
+                                                        <label class="form-check-label" for="filter-type-2">Сварные
+                                                            решетки </label>
+                                                    </div>
+                                                    <div class="form-check fs-9 ls-sm">
+                                                        <input class="form-check-input" id="filter-type-3"
+                                                               name="filter-type" autocomplete="off" type="radio"
+                                                               checked="checked"/>
+                                                        <label class="form-check-label" for="filter-type-3">Кованые
+                                                            решетки</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-28">
+                                                <h6 class="fw-medium ls-sm text-uppercase mb-10">Категория решеток</h6>
+                                                <div>
+                                                    <div class="form-check fs-9 ls-sm mb-10">
+                                                        <input class="form-check-input" id="filter-category-1"
+                                                               name="filter-category" autocomplete="off" type="radio"/>
+                                                        <label class="form-check-label" for="filter-category-1">Дутые
+                                                            решетки</label>
+                                                    </div>
+                                                    <div class="form-check fs-9 ls-sm mb-10">
+                                                        <input class="form-check-input" id="filter-category-2"
+                                                               name="filter-category" autocomplete="off" type="radio"/>
+                                                        <label class="form-check-label" for="filter-category-2">Дутые
+                                                            решетки</label>
+                                                    </div>
+                                                    <div class="form-check fs-9 ls-sm mb-10">
+                                                        <input class="form-check-input" id="filter-category-3"
+                                                               name="filter-category" autocomplete="off" type="radio"/>
+                                                        <label class="form-check-label" for="filter-category-3">Дутые
+                                                            решетки</label>
+                                                    </div>
+                                                    <div class="form-check fs-9 ls-sm mb-10">
+                                                        <input class="form-check-input" id="filter-category-4"
+                                                               name="filter-category" autocomplete="off" type="radio"/>
+                                                        <label class="form-check-label" for="filter-category-4">Дутые
+                                                            решетки</label>
+                                                    </div>
+                                                    <div class="form-check fs-9 ls-sm mb-10">
+                                                        <input class="form-check-input" id="filter-category-5"
+                                                               name="filter-category" autocomplete="off" type="radio"/>
+                                                        <label class="form-check-label" for="filter-category-5">Дутые
+                                                            решетки</label>
+                                                    </div>
+                                                    <div class="form-check fs-9 ls-sm">
+                                                        <input class="form-check-input" id="filter-category-6"
+                                                               name="filter-category" autocomplete="off" type="radio"/>
+                                                        <label class="form-check-label" for="filter-category-6">Дутые
+                                                            решетки</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-28">
+                                                <h6 class="fw-medium ls-sm text-uppercase mb-10">Класс решеток</h6>
+                                                <div>
+                                                    <div class="form-check fs-9 ls-sm mb-10">
+                                                        <input class="form-check-input" id="filter-class-1"
+                                                               name="filter-class" autocomplete="off" type="radio"/>
+                                                        <label class="form-check-label" for="filter-class-1">Эконом
+                                                            класс</label>
+                                                    </div>
+                                                    <div class="form-check fs-9 ls-sm mb-10">
+                                                        <input class="form-check-input" id="filter-class-2"
+                                                               name="filter-class" autocomplete="off" type="radio"/>
+                                                        <label class="form-check-label" for="filter-class-2">Эксклюзивные</label>
+                                                    </div>
+                                                    <div class="form-check fs-9 ls-sm">
+                                                        <input class="form-check-input" id="filter-class-3"
+                                                               name="filter-class" autocomplete="off" type="radio"
+                                                               checked="checked"/>
+                                                        <label class="form-check-label" for="filter-class-3">VIP
+                                                            класс</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h6 class="fw-medium ls-sm text-uppercase mb-10">Тип открывания</h6>
+                                                <div>
+                                                    <div class="form-check fs-9 ls-sm mb-10">
+                                                        <input class="form-check-input" id="filter-opening-type-1"
+                                                               name="filter-opening-type" autocomplete="off"
+                                                               type="radio" checked="checked"/>
+                                                        <label class="form-check-label" for="filter-opening-type-1">Без
+                                                            открывания</label>
+                                                    </div>
+                                                    <div class="form-check fs-9 ls-sm mb-10">
+                                                        <input class="form-check-input" id="filter-opening-type-2"
+                                                               name="filter-opening-type" autocomplete="off"
+                                                               type="radio"/>
+                                                        <label class="form-check-label" for="filter-opening-type-2">С
+                                                            одной створкой</label>
+                                                    </div>
+                                                    <div class="form-check fs-9 ls-sm">
+                                                        <input class="form-check-input" id="filter-opening-type-3"
+                                                               name="filter-opening-type" autocomplete="off"
+                                                               type="radio"/>
+                                                        <label class="form-check-label" for="filter-opening-type-3">С
+                                                            двумя створками</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="border-top border-light mt-lg-28 mt-20 pt-lg-18 pt-9">
+                                                <div class="hstack flex-row-lg flex-column align-items-start flex-wrap row-gap-lg-8 row-gap-6 column-gap-lg-12 fs-lg-10 fs-7 ls-sm">
+                                                    <a class="text-muted text-hover-black text-decoration-none"
+                                                       href="#"> <span class="d-inline-flex align-items-center">Дутые решетки
+                                  <svg class="svg-icon ms-8" style="width: .5rem; height: .5rem;">
+                                    <use href="img/sprite_icons.svg#cross">                       </use>
+                                  </svg></span></a><a class="text-muted text-hover-black text-decoration-none" href="#"><span
+                                                        class="d-inline-flex align-items-center">Без открывания
+                                  <svg class="svg-icon ms-8" style="width: .5rem; height: .5rem;">
+                                    <use href="img/sprite_icons.svg#cross">                  </use>
+                                  </svg></span></a><a class="text-muted text-hover-black text-decoration-none" href="#"><span
+                                                        class="d-inline-flex align-items-center">VIP класс
+                                  <svg class="svg-icon ms-8" style="width: .5rem; height: .5rem;">
+                                    <use href="img/sprite_icons.svg#cross">                  </use>
+                                  </svg></span></a></div>
+                                                <div class="mt-15">
+                                                    <div class="vstack gap-5">
+                                                        <button class="btn btn-outline-black btn-lg btn-wide-xl d-lg-none d-block w-lg-auto w-100"
+                                                                type="button">Применить фильтр
+                                                        </button>
+                                                        <button class="btn btn-outline-light btn-lg btn-wide-xl w-lg-auto w-100"
+                                                                type="button">Очистить фильтр
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="row row-cols-lg-3 row-cols-1 gy-20">
+                            <div class="col">
+                                <div class="card card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">
+                                    <div class="card-body p-lg-20 py-10">
+                                        <div class="position-relative text-center mb-20">
+                                            <div class="position-absolute top-0 start-0 z-1"><a
+                                                    class="text-muted text-hover-black" href="#">
+                                                <svg class="svg-icon">
+                                                    <use href="img/sprite_icons.svg#chart"></use>
+                                                </svg>
+                                            </a></div>
+                                            <div class="position-absolute top-0 end-0 z-1"><a
+                                                    class="text-muted text-hover-black" href="#">
+                                                <svg class="svg-icon">
+                                                    <use href="img/sprite_icons.svg#heart"></use>
+                                                </svg>
+                                            </a></div>
+                                            <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
+                                                <button class="btn btn-light btn-lg btn-wide-xl" data-bs-toggle="modal"
+                                                        data-bs-target="#product-quick-view" type="button">Быстрый
+                                                    просмотр
+                                                </button>
+                                            </div>
+                                            <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
+                                                    class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}"
+                                                    alt="Решетки на окна эконом класса"></div>
+                                        </div>
+                                        <h3 class="card-title h5 fs-lg-13 fs-10 fw-medium ls-sm text-uppercase mb-lg-14 mb-6">
+                                            Решетки на окна эконом класса</h3><span
+                                            class="d-block fs-8 fw-medium text-muted ls-sm text-uppercase mb-17-5">Цена: от 2900 руб</span><a
+                                            class="btn btn-outline-black btn-xl w-100">Подробнее</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">
+                                    <div class="card-body p-lg-20 py-10">
+                                        <div class="position-relative text-center mb-20">
+                                            <div class="position-absolute top-0 start-0 z-1"><a
+                                                    class="text-muted text-hover-black" href="#">
+                                                <svg class="svg-icon">
+                                                    <use href="img/sprite_icons.svg#chart"></use>
+                                                </svg>
+                                            </a></div>
+                                            <div class="position-absolute top-0 end-0 z-1"><a
+                                                    class="text-muted text-hover-black" href="#">
+                                                <svg class="svg-icon">
+                                                    <use href="img/sprite_icons.svg#heart"></use>
+                                                </svg>
+                                            </a></div>
+                                            <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
+                                                <button class="btn btn-light btn-lg btn-wide-xl" data-bs-toggle="modal"
+                                                        data-bs-target="#product-quick-view" type="button">Быстрый
+                                                    просмотр
+                                                </button>
+                                            </div>
+                                            <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
+                                                    class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}"
+                                                    alt="Решетки на окна эконом класса"></div>
+                                        </div>
+                                        <h3 class="card-title h5 fs-lg-13 fs-10 fw-medium ls-sm text-uppercase mb-lg-14 mb-6">
+                                            Решетки на окна эконом класса</h3><span
+                                            class="d-block fs-8 fw-medium text-muted ls-sm text-uppercase mb-17-5">Цена: от 2900 руб</span><a
+                                            class="btn btn-outline-black btn-xl w-100">Подробнее</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">
+                                    <div class="card-body p-lg-20 py-10">
+                                        <div class="position-relative text-center mb-20">
+                                            <div class="position-absolute top-0 start-0 z-1"><a
+                                                    class="text-muted text-hover-black" href="#">
+                                                <svg class="svg-icon">
+                                                    <use href="img/sprite_icons.svg#chart"></use>
+                                                </svg>
+                                            </a></div>
+                                            <div class="position-absolute top-0 end-0 z-1"><a
+                                                    class="text-muted text-hover-black" href="#">
+                                                <svg class="svg-icon">
+                                                    <use href="img/sprite_icons.svg#heart"></use>
+                                                </svg>
+                                            </a></div>
+                                            <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
+                                                <button class="btn btn-light btn-lg btn-wide-xl" data-bs-toggle="modal"
+                                                        data-bs-target="#product-quick-view" type="button">Быстрый
+                                                    просмотр
+                                                </button>
+                                            </div>
+                                            <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
+                                                    class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}"
+                                                    alt="Решетки на окна эконом класса"></div>
+                                        </div>
+                                        <h3 class="card-title h5 fs-lg-13 fs-10 fw-medium ls-sm text-uppercase mb-lg-14 mb-6">
+                                            Решетки на окна эконом класса</h3><span
+                                            class="d-block fs-8 fw-medium text-muted ls-sm text-uppercase mb-17-5">Цена: от 2900 руб</span><a
+                                            class="btn btn-outline-black btn-xl w-100">Подробнее</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">
+                                    <div class="card-body p-lg-20 py-10">
+                                        <div class="position-relative text-center mb-20">
+                                            <div class="position-absolute top-0 start-0 z-1"><a
+                                                    class="text-muted text-hover-black" href="#">
+                                                <svg class="svg-icon">
+                                                    <use href="img/sprite_icons.svg#chart"></use>
+                                                </svg>
+                                            </a></div>
+                                            <div class="position-absolute top-0 end-0 z-1"><a
+                                                    class="text-muted text-hover-black" href="#">
+                                                <svg class="svg-icon">
+                                                    <use href="img/sprite_icons.svg#heart"></use>
+                                                </svg>
+                                            </a></div>
+                                            <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
+                                                <button class="btn btn-light btn-lg btn-wide-xl" data-bs-toggle="modal"
+                                                        data-bs-target="#product-quick-view" type="button">Быстрый
+                                                    просмотр
+                                                </button>
+                                            </div>
+                                            <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
+                                                    class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}"
+                                                    alt="Решетки на окна эконом класса"></div>
+                                        </div>
+                                        <h3 class="card-title h5 fs-lg-13 fs-10 fw-medium ls-sm text-uppercase mb-lg-14 mb-6">
+                                            Решетки на окна эконом класса</h3><span
+                                            class="d-block fs-8 fw-medium text-muted ls-sm text-uppercase mb-17-5">Цена: от 2900 руб</span><a
+                                            class="btn btn-outline-black btn-xl w-100">Подробнее</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">
+                                    <div class="card-body p-lg-20 py-10">
+                                        <div class="position-relative text-center mb-20">
+                                            <div class="position-absolute top-0 start-0 z-1"><a
+                                                    class="text-muted text-hover-black" href="#">
+                                                <svg class="svg-icon">
+                                                    <use href="img/sprite_icons.svg#chart"></use>
+                                                </svg>
+                                            </a></div>
+                                            <div class="position-absolute top-0 end-0 z-1"><a
+                                                    class="text-muted text-hover-black" href="#">
+                                                <svg class="svg-icon">
+                                                    <use href="img/sprite_icons.svg#heart"></use>
+                                                </svg>
+                                            </a></div>
+                                            <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
+                                                <button class="btn btn-light btn-lg btn-wide-xl" data-bs-toggle="modal"
+                                                        data-bs-target="#product-quick-view" type="button">Быстрый
+                                                    просмотр
+                                                </button>
+                                            </div>
+                                            <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
+                                                    class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}"
+                                                    alt="Решетки на окна эконом класса"></div>
+                                        </div>
+                                        <h3 class="card-title h5 fs-lg-13 fs-10 fw-medium ls-sm text-uppercase mb-lg-14 mb-6">
+                                            Решетки на окна эконом класса</h3><span
+                                            class="d-block fs-8 fw-medium text-muted ls-sm text-uppercase mb-17-5">Цена: от 2900 руб</span><a
+                                            class="btn btn-outline-black btn-xl w-100">Подробнее</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">
+                                    <div class="card-body p-lg-20 py-10">
+                                        <div class="position-relative text-center mb-20">
+                                            <div class="position-absolute top-0 start-0 z-1"><a
+                                                    class="text-muted text-hover-black" href="#">
+                                                <svg class="svg-icon">
+                                                    <use href="img/sprite_icons.svg#chart"></use>
+                                                </svg>
+                                            </a></div>
+                                            <div class="position-absolute top-0 end-0 z-1"><a
+                                                    class="text-muted text-hover-black" href="#">
+                                                <svg class="svg-icon">
+                                                    <use href="img/sprite_icons.svg#heart"></use>
+                                                </svg>
+                                            </a></div>
+                                            <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
+                                                <button class="btn btn-light btn-lg btn-wide-xl" data-bs-toggle="modal"
+                                                        data-bs-target="#product-quick-view" type="button">Быстрый
+                                                    просмотр
+                                                </button>
+                                            </div>
+                                            <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
+                                                    class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}"
+                                                    alt="Решетки на окна эконом класса"></div>
+                                        </div>
+                                        <h3 class="card-title h5 fs-lg-13 fs-10 fw-medium ls-sm text-uppercase mb-lg-14 mb-6">
+                                            Решетки на окна эконом класса</h3><span
+                                            class="d-block fs-8 fw-medium text-muted ls-sm text-uppercase mb-17-5">Цена: от 2900 руб</span><a
+                                            class="btn btn-outline-black btn-xl w-100">Подробнее</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">
+                                    <div class="card-body p-lg-20 py-10">
+                                        <div class="position-relative text-center mb-20">
+                                            <div class="position-absolute top-0 start-0 z-1"><a
+                                                    class="text-muted text-hover-black" href="#">
+                                                <svg class="svg-icon">
+                                                    <use href="img/sprite_icons.svg#chart"></use>
+                                                </svg>
+                                            </a></div>
+                                            <div class="position-absolute top-0 end-0 z-1"><a
+                                                    class="text-muted text-hover-black" href="#">
+                                                <svg class="svg-icon">
+                                                    <use href="img/sprite_icons.svg#heart"></use>
+                                                </svg>
+                                            </a></div>
+                                            <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
+                                                <button class="btn btn-light btn-lg btn-wide-xl" data-bs-toggle="modal"
+                                                        data-bs-target="#product-quick-view" type="button">Быстрый
+                                                    просмотр
+                                                </button>
+                                            </div>
+                                            <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
+                                                    class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}"
+                                                    alt="Решетки на окна эконом класса"></div>
+                                        </div>
+                                        <h3 class="card-title h5 fs-lg-13 fs-10 fw-medium ls-sm text-uppercase mb-lg-14 mb-6">
+                                            Решетки на окна эконом класса</h3><span
+                                            class="d-block fs-8 fw-medium text-muted ls-sm text-uppercase mb-17-5">Цена: от 2900 руб</span><a
+                                            class="btn btn-outline-black btn-xl w-100">Подробнее</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">
+                                    <div class="card-body p-lg-20 py-10">
+                                        <div class="position-relative text-center mb-20">
+                                            <div class="position-absolute top-0 start-0 z-1"><a
+                                                    class="text-muted text-hover-black" href="#">
+                                                <svg class="svg-icon">
+                                                    <use href="img/sprite_icons.svg#chart"></use>
+                                                </svg>
+                                            </a></div>
+                                            <div class="position-absolute top-0 end-0 z-1"><a
+                                                    class="text-muted text-hover-black" href="#">
+                                                <svg class="svg-icon">
+                                                    <use href="img/sprite_icons.svg#heart"></use>
+                                                </svg>
+                                            </a></div>
+                                            <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
+                                                <button class="btn btn-light btn-lg btn-wide-xl" data-bs-toggle="modal"
+                                                        data-bs-target="#product-quick-view" type="button">Быстрый
+                                                    просмотр
+                                                </button>
+                                            </div>
+                                            <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
+                                                    class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}"
+                                                    alt="Решетки на окна эконом класса"></div>
+                                        </div>
+                                        <h3 class="card-title h5 fs-lg-13 fs-10 fw-medium ls-sm text-uppercase mb-lg-14 mb-6">
+                                            Решетки на окна эконом класса</h3><span
+                                            class="d-block fs-8 fw-medium text-muted ls-sm text-uppercase mb-17-5">Цена: от 2900 руб</span><a
+                                            class="btn btn-outline-black btn-xl w-100">Подробнее</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">
+                                    <div class="card-body p-lg-20 py-10">
+                                        <div class="position-relative text-center mb-20">
+                                            <div class="position-absolute top-0 start-0 z-1"><a
+                                                    class="text-muted text-hover-black" href="#">
+                                                <svg class="svg-icon">
+                                                    <use href="img/sprite_icons.svg#chart"></use>
+                                                </svg>
+                                            </a></div>
+                                            <div class="position-absolute top-0 end-0 z-1"><a
+                                                    class="text-muted text-hover-black" href="#">
+                                                <svg class="svg-icon">
+                                                    <use href="img/sprite_icons.svg#heart"></use>
+                                                </svg>
+                                            </a></div>
+                                            <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
+                                                <button class="btn btn-light btn-lg btn-wide-xl" data-bs-toggle="modal"
+                                                        data-bs-target="#product-quick-view" type="button">Быстрый
+                                                    просмотр
+                                                </button>
+                                            </div>
+                                            <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
+                                                    class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}"
+                                                    alt="Решетки на окна эконом класса"></div>
+                                        </div>
+                                        <h3 class="card-title h5 fs-lg-13 fs-10 fw-medium ls-sm text-uppercase mb-lg-14 mb-6">
+                                            Решетки на окна эконом класса</h3><span
+                                            class="d-block fs-8 fw-medium text-muted ls-sm text-uppercase mb-17-5">Цена: от 2900 руб</span><a
+                                            class="btn btn-outline-black btn-xl w-100">Подробнее</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <nav class="mt-lg-30 mt-20">
+                            <ol class="pagination justify-content-lg-center overflow-x-auto mb-0">
+                                <li class="page-item previous"><a class="page-link" href="#">Назад</a></li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                <li class="page-item"><a class="page-link" href="#">6</a></li>
+                                <li class="page-item"><a class="page-link" href="#">7</a></li>
+                                <li class="page-item"><a class="page-link" href="#">8</a></li>
+                                <li class="page-item"><a class="page-link" href="#">9 </a></li>
+                                <li class="page-item next"><a class="page-link" href="#">Вперед </a></li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </section>
+            <section class="cta  mb-lg-45 mb-28">
+                <div class="card rounded-lg-4 rounded-3">
+                    <div class="card-body pt-lg-34 pt-17-5 px-lg-40 pb-lg-35 pb-20">
+                        <h3 class="card-title fs-lg-20 fs-12 fw-normal ls-sm text-uppercase mb-lg-20 mb-14"
+                            style="max-width: 680px;">Не тратьте время на подбор, все сделаем за вас</h3>
+                        <p class="card-text lead fs-lg-12 fs-8 mb-lg-30 mb-17-5" style="max-width: 860px;">Оставьте
+                            заявку на бесплатную консультацию специалиста. Подберем несколько вариантов решеток,
+                            рассчитаем примерную стоимость</p>
+                        <form>
+                            <div class="row row-cols-lg-3 row-cols-1 gy-lg-20 gy-10">
+                                <div class="col">
+                                    <input class="form-control form-control-xxl text-center w-100"
+                                           placeholder="Введите ваше имя" type="text"/>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control form-control-xxl text-center"
+                                           placeholder="Введите номер телефона" type="text"/>
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-primary btn-xxl w-100" type="submit">Получить консультацию
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="row mb-lg-32 mb-17">
+                    <div class="col-lg-5">
+                        <h2 class="h1 fs-3xl-28 fs-lg-26 fs-13 ls-sm text-uppercase mb-0">Почему именно наша
+                            компания</h2>
+                    </div>
+                    <div class="col-auto ms-auto d-lg-block d-none">
+                        <div class="d-flex">
+                            <div class="d-flex gap-10 mt-auto" id="features-swiper-control">
+                                <button class="btn btn-outline-secondary btn-swiper-prev rounded-circle d-flex justify-content-center align-items-center p-0"
+                                        type="button" style="width: 3rem; height: 3rem;"><-
+                                </button>
+                                <button class="btn btn-outline-secondary btn-swiper-next rounded-circle d-flex justify-content-center align-items-center p-0"
+                                        type="button" style="width: 3rem; height: 3rem;">->
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper" id="features-swiper" data-control="#features-swiper-control">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="card h-100 rounded-lg-5 rounded-3">
+                                <div class="card-body pt-20 pb-lg-28 pb-22">
+                                    <svg class="svg-icon w-auto mb-17-5" viewBox="0 0 16 10.434782"
+                                         style="height: 3rem;">
+                                        <use href="img/sprite_icons.svg#tape-measure"></use>
+                                    </svg>
+                                    <h5 class="card-title fs-lg-12 fs-10 fw-normal text-uppercase mb-0">Изготовление по
+                                        вашим размерам!</h5>
+                                    <p class="card-text fs-lg-8 fs-7 text-muted mt-12">Все решетки на окна
+                                        изготавливаются по размерам оконного проема с учетом ваших пожеланий</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card h-100 rounded-lg-5 rounded-3">
+                                <div class="card-body pt-20 pb-lg-28 pb-22">
+                                    <svg class="svg-icon w-auto mb-17-5" viewBox="0 0 15.797429 16"
+                                         style="height: 3rem;">
+                                        <use href="img/sprite_icons.svg#album"></use>
+                                    </svg>
+                                    <h5 class="card-title fs-lg-12 fs-10 fw-normal text-uppercase mb-0">Огромный каталог
+                                        эскизов</h5>
+                                    <p class="card-text fs-lg-8 fs-7 text-muted mt-12">В нашем каталоге представлено
+                                        более 600 эскизов решеток на окна. Возможно изготовление решеток по вашему
+                                        эскизу</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card h-100 rounded-lg-5 rounded-3">
+                                <div class="card-body pt-20 pb-lg-28 pb-22">
+                                    <svg class="svg-icon w-auto mb-17-5" viewBox="0 0 16 10.434782"
+                                         style="height: 3rem;">
+                                        <use href="img/sprite_icons.svg#tape-measure"></use>
+                                    </svg>
+                                    <h5 class="card-title fs-lg-12 fs-10 fw-normal text-uppercase mb-0">Большой выбор
+                                        вариантов покраса</h5>
+                                    <p class="card-text fs-lg-8 fs-7 text-muted mt-12">Окрашиваем оконные решетки:
+                                        Эмалями НЦ-132, ХВ-0278, NOVAX, Hammerite, порошковое напыление</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card h-100 rounded-lg-5 rounded-3">
+                                <div class="card-body pt-20 pb-lg-28 pb-22">
+                                    <svg class="svg-icon w-auto mb-17-5" viewBox="0 0 15.797429 16"
+                                         style="height: 3rem;">
+                                        <use href="img/sprite_icons.svg#album"></use>
+                                    </svg>
+                                    <h5 class="card-title fs-lg-12 fs-10 fw-normal text-uppercase mb-0">Профессионализм
+                                        сотрудников</h5>
+                                    <p class="card-text fs-lg-8 fs-7 text-muted mt-12">Все наши сотрудники имеют опыт
+                                        работы более 5 лет в сфере производства и установки металлоконструкций</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card h-100 rounded-lg-5 rounded-3">
+                                <div class="card-body pt-20 pb-lg-28 pb-22">
+                                    <svg class="svg-icon w-auto mb-17-5" viewBox="0 0 15.797429 16"
+                                         style="height: 3rem;">
+                                        <use href="img/sprite_icons.svg#album"></use>
+                                    </svg>
+                                    <h5 class="card-title fs-lg-12 fs-10 fw-normal text-uppercase mb-0">Профессионализм
+                                        сотрудников</h5>
+                                    <p class="card-text fs-lg-8 fs-7 text-muted mt-12">Все наши сотрудники имеют опыт
+                                        работы более 5 лет в сфере производства и установки металлоконструкций</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card h-100 rounded-lg-5 rounded-3">
+                                <div class="card-body pt-20 pb-lg-28 pb-22">
+                                    <svg class="svg-icon w-auto mb-17-5" viewBox="0 0 15.797429 16"
+                                         style="height: 3rem;">
+                                        <use href="img/sprite_icons.svg#album"></use>
+                                    </svg>
+                                    <h5 class="card-title fs-lg-12 fs-10 fw-normal text-uppercase mb-0">Профессионализм
+                                        сотрудников</h5>
+                                    <p class="card-text fs-lg-8 fs-7 text-muted mt-12">Все наши сотрудники имеют опыт
+                                        работы более 5 лет в сфере производства и установки металлоконструкций </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-lg-none d-flex mt-10">
+                    <div class="d-flex gap-10 mt-auto" id="features-swiper-control">
+                        <button class="btn btn-outline-secondary btn-swiper-prev rounded-circle d-flex justify-content-center align-items-center p-0"
+                                type="button" style="width: 3rem; height: 3rem;"><-
+                        </button>
+                        <button class="btn btn-outline-secondary btn-swiper-next rounded-circle d-flex justify-content-center align-items-center p-0"
+                                type="button" style="width: 3rem; height: 3rem;">->
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <div class="cta modal modal-xl border border-black rounded-4 fade" id="modal-consultation">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body p-lg-20 py-10">
+                            <button class="btn-close ms-auto mb-5 d-lg-none d-block" data-bs-dismiss="modal"
+                                    type="button"
+                                    style="width: .5rem; height: .5rem; background: none; color: #959595; padding: 0;">
+                                <svg class="svg-icon" style="width: 100%; height: 100%; vertical-align: top;">
+                                    <use href="img/sprite_icons.svg#cross"></use>
+                                </svg>
+                            </button>
+                            <h3 class="card-title fs-lg-20 fs-12 fw-normal ls-sm text-uppercase mb-lg-20 mb-14"
+                                style="max-width: 680px;">Не тратьте время на подбор, все сделаем за вас</h3>
+                            <p class="card-text lead fs-lg-12 fs-8 mb-lg-30 mb-17-5" style="max-width: 860px;">Оставьте
+                                заявку на бесплатную консультацию специалиста. Подберем несколько вариантов решеток,
+                                рассчитаем примерную стоимость</p>
+                            <form>
+                                <div class="row row-cols-lg-3 row-cols-1 gy-lg-20 gy-10">
+                                    <div class="col">
+                                        <input class="form-control form-control-xxl text-center w-100"
+                                               placeholder="Введите ваше имя" type="text"/>
+                                    </div>
+                                    <div class="col">
+                                        <input class="form-control form-control-xxl text-center"
+                                               placeholder="Введите номер телефона" type="text"/>
+                                    </div>
+                                    <div class="col order-lg-3 order-4">
+                                        <button class="btn btn-primary btn-xxl w-100" type="submit">Получить
+                                            консультацию
+                                        </button>
+                                    </div>
+                                    <div class="col-lg-12 order-lg-4 order-3">
+                                        <div class="form-check fs-lg-8 fs-7 mb-0">
+                                            <input class="form-check-input" id="consultation-personal" name="personal"
+                                                   autocomplete="off" type="checkbox" checked="checked"/>
+                                            <label class="form-check-label" for="consultation-personal">Даю согласие на
+                                                обработку персональных данных</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cta modal modal-xl border border-black rounded-4 fade" id="modal-measurement">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body p-lg-20 py-10">
+                            <button class="btn-close ms-auto mb-5 d-lg-none d-block" data-bs-dismiss="modal"
+                                    type="button"
+                                    style="width: .5rem; height: .5rem; background: none; color: #959595; padding: 0;">
+                                <svg class="svg-icon" style="width: 100%; height: 100%; vertical-align: top;">
+                                    <use href="img/sprite_icons.svg#cross"></use>
+                                </svg>
+                            </button>
+                            <h3 class="card-title fs-lg-20 fs-12 fw-normal ls-sm text-uppercase mb-lg-20 mb-14"
+                                style="max-width: 680px;">Закажите бесплатный выезд специалиста на объект</h3>
+                            <p class="card-text lead fs-lg-12 fs-8 mb-lg-30 mb-17-5" style="max-width: 860px;">
+                                Специалист приедет в удобное для вас время, проконсультирует, поможет с подбором
+                                решеток, замерит и рассчитает стоимость</p>
+                            <form>
+                                <div class="row row-cols-lg-3 row-cols-1 gy-lg-20 gy-10">
+                                    <div class="col">
+                                        <input class="form-control form-control-xxl text-center w-100"
+                                               placeholder="Введите ваше имя" type="text"/>
+                                    </div>
+                                    <div class="col">
+                                        <input class="form-control form-control-xxl text-center"
+                                               placeholder="Введите номер телефона" type="text"/>
+                                    </div>
+                                    <div class="col order-lg-3 order-4">
+                                        <button class="btn btn-primary btn-xxl w-100" type="submit">Заказать выезд
+                                        </button>
+                                    </div>
+                                    <div class="col-lg-12 order-lg-4 order-3">
+                                        <div class="form-check fs-lg-8 fs-7 mb-0">
+                                            <input class="form-check-input" id="measurement-personal" name="personal"
+                                                   autocomplete="off" type="checkbox" checked="checked"/>
+                                            <label class="form-check-label" for="measurement-personal">Даю согласие на
+                                                обработку персональных данных</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal modal-xl border border-black rounded-4 fade" id="product-quick-view">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="product modal-body p-lg-20 py-10">
+                            <div class="row gy-lg-0 gy-20">
+                                <div class="col-lg-4">
+                                    <div class="position-relative text-center">
+                                        <div class="d-lg-none d-block position-absolute top-0 start-0 z-1"><a
+                                                class="text-muted text-hover-black" href="#">
+                                            <svg class="svg-icon">
+                                                <use href="img/sprite_icons.svg#chart"></use>
+                                            </svg>
+                                        </a></div>
+                                        <div class="d-lg-none d-block position-absolute top-0 end-0 z-1"><a
+                                                class="text-muted text-hover-black" href="#">
+                                            <svg class="svg-icon">
+                                                <use href="img/sprite_icons.svg#heart"></use>
+                                            </svg>
+                                        </a></div>
+                                        <div class="border-lg border-lg-light rounded-lg-3 px-lg-40 py-lg-35">
+                                            <div class="swiper" id="product-swiper2"
+                                                 data-control="#product-swiper-control2">
+                                                <div class="swiper-wrapper">
+                                                    <div class="swiper-slide">
+                                                        <div class="ratio overflow-hidden"
+                                                             style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 265px;">
+                                                            <img class="object-fit-contain"
+                                                                 src="{% static 'main/img/product-card-img.png' %}"
+                                                                 alt="Решетка на окно Эскиз № 1-1"/></div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div class="ratio overflow-hidden"
+                                                             style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 265px;">
+                                                            <img class="object-fit-contain"
+                                                                 src="{% static 'main/img/product-card-img.png' %}"
+                                                                 alt="Решетка на окно Эскиз № 1-1"/></div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div class="ratio overflow-hidden"
+                                                             style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 265px;">
+                                                            <img class="object-fit-contain"
+                                                                 src="{% static 'main/img/product-card-img.png' %}"
+                                                                 alt="Решетка на окно Эскиз № 1-1"/></div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div class="ratio overflow-hidden"
+                                                             style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 265px;">
+                                                            <img class="object-fit-contain"
+                                                                 src="img/product-card-img.png"
+                                                                 alt="Решетка на окно Эскиз № 1-1"/></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center mt-lg-10 mt-20"
+                                             id="product-swiper-control2">
+                                            <button class="btn btn-outline-secondary btn-swiper-prev rounded-circle d-flex justify-content-center align-items-center p-0"
+                                                    type="button" style="width: 3rem; height: 3rem;"><-
+                                            </button>
+                                            <div class="swiper-pagination"></div>
+                                            <button class="btn btn-outline-secondary btn-swiper-next rounded-circle d-flex justify-content-center align-items-center p-0"
+                                                    type="button" style="width: 3rem; height: 3rem;">->
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <a class="btn btn-outline-secondary btn-xl d-lg-block d-none w-100 mt-20" href="#">Выбрать
+                                        другой рисунок</a>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="d-lg-flex d-none align-items-center border-bottom border-black pb-12 mb-16">
+                                        <h2 class="h5 fw-medium ls-sm text-uppercase mb-0">Решетка на окно Эскиз №
+                                            1-1</h2>
+                                        <div class="ms-auto">
+                                            <div class="hstack gap-10"><a class="text-secondary text-hover-black"
+                                                                          href="#">
+                                                <svg class="svg-icon">
+                                                    <use href="img/sprite_icons.svg#chart"></use>
+                                                </svg>
+                                            </a><a class="text-secondary text-hover-black" href="#">
+                                                <svg class="svg-icon">
+                                                    <use href="img/sprite_icons.svg#heart"></use>
+                                                </svg>
+                                            </a></div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-15 d-lg-block d-none">
+                                        <div class="row row-cols-4 gy-20">
+                                            <div class="col">
+                                                <input class="btn-check" id="product-type-1" name="product-type"
+                                                       value="Без открывания" type="radio" checked="checked"/>
+                                                <label class="btn btn-outline-black w-100 h-100 rounded-2 p-10"
+                                                       for="product-type-1">
+                                                    <div class="ratio"
+                                                         style="--bs-aspect-ratio: 100%; max-height: 80px;"><img
+                                                            class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}"
+                                                            alt="Без открывания"/></div>
+                                                    <span class="d-block fs-6 fw-medium text-uppercase mt-8">Без открывания</span>
+                                                </label>
+                                            </div>
+                                            <div class="col">
+                                                <input class="btn-check" id="product-type-2" name="product-type"
+                                                       value="С 1 створкой" type="radio"/>
+                                                <label class="btn btn-outline-black w-100 h-100 rounded-2 p-10"
+                                                       for="product-type-2">
+                                                    <div class="ratio"
+                                                         style="--bs-aspect-ratio: 100%; max-height: 80px;"><img
+                                                            class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}"
+                                                            alt="С 1 створкой"/></div>
+                                                    <span class="d-block fs-6 fw-medium text-uppercase mt-8">С 1 створкой</span>
+                                                </label>
+                                            </div>
+                                            <div class="col">
+                                                <input class="btn-check" id="product-type-3" name="product-type"
+                                                       value="С 2 створками" type="radio"/>
+                                                <label class="btn btn-outline-black w-100 h-100 rounded-2 p-10"
+                                                       for="product-type-3">
+                                                    <div class="ratio"
+                                                         style="--bs-aspect-ratio: 100%; max-height: 80px;"><img
+                                                            class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}g"
+                                                            alt="С 2 створками"/></div>
+                                                    <span class="d-block fs-6 fw-medium text-uppercase mt-8">С 2 створками                                       </span>
+                                                </label>
+                                            </div>
+                                            <div class="col">
+                                                <input class="btn-check" id="product-type-4" name="product-type"
+                                                       value="Распашная" type="radio"/>
+                                                <label class="btn btn-outline-black w-100 h-100 rounded-2 p-10"
+                                                       for="product-type-4">
+                                                    <div class="ratio"
+                                                         style="--bs-aspect-ratio: 100%; max-height: 80px;"><img
+                                                            class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}"
+                                                            alt="Распашная"/></div>
+                                                    <span class="d-block fs-6 fw-medium text-uppercase mt-8">Распашная</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <form>
+                                        <div class="row row-cols-lg-2 row-cols-1 gy-lg-10 gy-5">
+                                            <div class="col">
+                                                <select class="form-select form-select-lg rounded-2">
+                                                    <option selected="selected">Варианты исполнения</option>
+                                                </select>
+                                            </div>
+                                            <div class="col">
+                                                <select class="form-select form-select-lg rounded-2">
+                                                    <option selected="selected">Вариант покраса решетки</option>
+                                                </select>
+                                            </div>
+                                            <div class="col">
+                                                <input class="form-control form-control-lg rounded-2"
+                                                       placeholder="Ширина, см." type="text"/>
+                                            </div>
+                                            <div class="col">
+                                                <input class="form-control form-control-lg rounded-2"
+                                                       placeholder="Высота, см." type="text"/>
+                                            </div>
+                                            <div class="col">
+                                                <input class="form-control form-control-lg rounded-2"
+                                                       placeholder="Количество" type="text"/>
+                                            </div>
+                                            <div class="col">
+                                                <select class="form-select form-select-lg rounded-2">
+                                                    <option selected="selected">Установка</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div class="mt-17-5">
+                                        <div class="row row-cols-lg-2 row-cols-1 align-items-center gy-lg-0 gy-15">
+                                            <div class="col"><span class="fs-lg-13 fs-11 fw-semibold text-uppercase">Итого: 31 320 руб</span><span
+                                                    class="d-block fs-lg-8 fs-7 text-muted text-uppercase mt-lg-1 mt-7-5">Для точного расчета <br/>закажите   <span
+                                                    class="text-primary">бесплатный замер</span></span></div>
+                                            <div class="col"><a class="btn btn-primary btn-xl w-100" href="#">Заказать в
+                                                1 клик</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}
