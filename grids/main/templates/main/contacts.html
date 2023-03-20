@@ -1,121 +1,76 @@
 {%extends 'main/base.html' %}
 {% load static %}
 {% block content %}
-    <div class="pt-lg-30 pt-16 pb-lg-50 pb-32">
-      <div class="container">
+<div class="pt-lg-30 pt-16 pb-lg-50 pb-32">
+    <div class="container">
         <header class="page-header mb-lg-30 mb-28">
-          <div>
-            <div class="row gy-lg-0 gy-19 justify-content-between">
-              <div class="col-lg-4">
-                <h1 class="display-1 fs-3xl-38 fs-xl-36 fs-lg-30 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Наши контакты</h1>
-              </div>
-              <div class="col-lg-3 align-self-end">
-                <div class="pt-xl-7 pt-lg-4">
-                  <div class="hstack d-lg-none d-flex flex-wrap gap-10">
-                    <btn class="btn btn-primary btn-xxl btn-wide-xxl" data-bs-toggle="modal" data-bs-target="#modal-consultation" type="button">Консультация</btn>
-                    <btn class="btn btn-outline-black btn-xxl btn-wide-xxl" data-bs-toggle="modal" data-bs-target="#modal-measurement" type="button">Вызвать на замер                    </btn>
-                  </div>
-                  <div class="text-end d-lg-block d-none"><a class="fs-12 text-decoration-none text-uppercase" href="#">Записаться на экскурсию по производству ↘︎</a></div>
+            <div>
+                <div class="row gy-lg-0 gy-19 justify-content-between">
+                    <div class="col-lg-4">
+                        <h1 class="display-1 fs-3xl-38 fs-xl-36 fs-lg-30 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">
+                            Наши контакты</h1>
+                    </div>
+                    <div class="col-lg-3 align-self-end">
+                        <div class="pt-xl-7 pt-lg-4">
+                            <div class="hstack d-lg-none d-flex flex-wrap gap-10">
+                                <btn class="btn btn-primary btn-xxl btn-wide-xxl" data-bs-toggle="modal"
+                                     data-bs-target="#modal-consultation" type="button">Консультация
+                                </btn>
+                                <btn class="btn btn-outline-black btn-xxl btn-wide-xxl" data-bs-toggle="modal"
+                                     data-bs-target="#modal-measurement" type="button">Вызвать на замер
+                                </btn>
+                            </div>
+                            <div class="text-end d-lg-block d-none"><a class="fs-12 text-decoration-none text-uppercase"
+                                                                       href="#">Записаться на экскурсию по производству
+                                ↘︎</a></div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+                <hr class="opacity-100 mt-lg-40 mt-30 mb-0"/>
             </div>
-            <hr class="opacity-100 mt-lg-40 mt-30 mb-0"/>
-          </div>
         </header>
         <main>
-          <section>
-            <div class="row gy-0 gy-18">
-              <div class="col-lg-3">
-                <div>
-                  <div class="mb-lg-26 mb-15">
-                    <h6 class="h5 fw-medium ls-sm text-uppercase mb-lg-5 mb-3">Адрес производства:</h6><span class="fs-9 fw-medium text-muted ls-sm text-uppercase">141640, Московская обл., Клинский р-он, д. Ясенево, д. 74, стр. 7</span>
-                  </div>
-                  <div class="mb-lg-26 mb-15">
-                    <h6 class="h5 fw-medium ls-sm text-uppercase mb-lg-5 mb-3">Телефон:</h6><a class="fs-9 fw-medium text-muted text-hover-primary ls-sm text-uppercase text-decoration-none" href="tel:+74951270443">+7 495 127-04-43</a>
-                  </div>
-                  <div>
-                    <h6 class="h5 fw-medium ls-sm text-uppercase mb-lg-5 mb-3">Почта:</h6><a class="fs-9 fw-medium text-muted text-hover-primary ls-sm text-uppercase text-decoration-none" href="mailto:info@smarmatix.ru">info@smarmatix.ru</a>
-                  </div>
-                </div>
-                <div class="d-lg-block d-none mt-28"><a class="btn btn-primary btn-xxl btn-wide-xxl" href="#">Консультация</a></div>
-              </div>
-              <div class="col-lg-9">
-                <div class="ratio ratio-1x1 h-100">
-                  <iframe class="w-100 h-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2209.8932558547253!2d36.78143381608835!3d56.36617465198467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b5aef14d48318b%3A0x58cec88e773f034!2z0K_RgdC10L3QtdCy0L4sIDc0INGB0YLRgNC-0LXQvdC40LUgNywg0K_RgdC10L3QtdCy0L4sIE1vc2NvdyBPYmxhc3QsIDE0MTY0MA!5e0!3m2!1sru!2sru!4v1677423626008!5m2!1sru!2sru" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-              </div>
-            </div>
-            <div class="d-lg-none d-block text-center mt-17-5"> <a class="fs-9 text-decoration-none text-uppercase" href="#">Записаться на экскурсию по производству ↘︎    </a></div>
-          </section>
-          <div class="cta modal modal-xl border border-black rounded-4 fade" id="modal-consultation">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-body p-lg-20 py-10">
-                  <button class="btn-close ms-auto mb-5 d-lg-none d-block" data-bs-dismiss="modal" type="button" style="width: .5rem; height: .5rem; background: none; color: #959595; padding: 0;">
-                    <svg class="svg-icon" style="width: 100%; height: 100%; vertical-align: top;">
-                      <use href="img/sprite_icons.svg#cross">                             </use>
-                    </svg>
-                  </button>
-                  <h3 class="card-title fs-lg-20 fs-12 fw-normal ls-sm text-uppercase mb-lg-20 mb-14" style="max-width: 680px;">Не тратьте время на подбор, все сделаем за вас</h3>
-                  <p class="card-text lead fs-lg-12 fs-8 mb-lg-30 mb-17-5" style="max-width: 860px;">Оставьте заявку на бесплатную консультацию специалиста. Подберем несколько вариантов решеток, рассчитаем примерную стоимость</p>
-                  <form>
-                    <div class="row row-cols-lg-3 row-cols-1 gy-lg-20 gy-10">
-                      <div class="col">
-                        <input class="form-control form-control-xxl text-center w-100" placeholder="Введите ваше имя" type="text"/>
-                      </div>
-                      <div class="col">
-                        <input class="form-control form-control-xxl text-center" placeholder="Введите номер телефона" type="text"/>
-                      </div>
-                      <div class="col order-lg-3 order-4">
-                        <button class="btn btn-primary btn-xxl w-100" type="submit">Получить консультацию</button>
-                      </div>
-                      <div class="col-lg-12 order-lg-4 order-3">
-                        <div class="form-check fs-lg-8 fs-7 mb-0">
-                          <input class="form-check-input" id="consultation-personal" name="personal" autocomplete="off" type="checkbox" checked="checked"/>
-                          <label class="form-check-label" for="consultation-personal">Даю согласие на обработку персональных данных</label>
+            <section>
+                <div class="row gy-0 gy-18">
+                    <div class="col-lg-3">
+                        <div>
+                            <div class="mb-lg-26 mb-15">
+                                <h6 class="h5 fw-medium ls-sm text-uppercase mb-lg-5 mb-3">Адрес производства:</h6><span
+                                    class="fs-9 fw-medium text-muted ls-sm text-uppercase">141640, Московская обл., Клинский р-он, д. Ясенево, д. 74, стр. 7</span>
+                            </div>
+                            <div class="mb-lg-26 mb-15">
+                                <h6 class="h5 fw-medium ls-sm text-uppercase mb-lg-5 mb-3">Телефон:</h6><a
+                                    class="fs-9 fw-medium text-muted text-hover-primary ls-sm text-uppercase text-decoration-none"
+                                    href="tel:+74951270443">+7 495 127-04-43</a>
+                            </div>
+                            <div>
+                                <h6 class="h5 fw-medium ls-sm text-uppercase mb-lg-5 mb-3">Почта:</h6><a
+                                    class="fs-9 fw-medium text-muted text-hover-primary ls-sm text-uppercase text-decoration-none"
+                                    href="mailto:info@smarmatix.ru">info@smarmatix.ru</a>
+                            </div>
                         </div>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="cta modal modal-xl border border-black rounded-4 fade" id="modal-measurement">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-body p-lg-20 py-10">
-                  <button class="btn-close ms-auto mb-5 d-lg-none d-block" data-bs-dismiss="modal" type="button" style="width: .5rem; height: .5rem; background: none; color: #959595; padding: 0;">
-                    <svg class="svg-icon" style="width: 100%; height: 100%; vertical-align: top;">
-                      <use href="img/sprite_icons.svg#cross">                           </use>
-                    </svg>
-                  </button>
-                  <h3 class="card-title fs-lg-20 fs-12 fw-normal ls-sm text-uppercase mb-lg-20 mb-14" style="max-width: 680px;">Закажите бесплатный выезд специалиста на объект</h3>
-                  <p class="card-text lead fs-lg-12 fs-8 mb-lg-30 mb-17-5" style="max-width: 860px;">Специалист приедет в удобное для вас время, проконсультирует, поможет с подбором решеток, замерит и рассчитает стоимость</p>
-                  <form>
-                    <div class="row row-cols-lg-3 row-cols-1 gy-lg-20 gy-10">
-                      <div class="col">
-                        <input class="form-control form-control-xxl text-center w-100" placeholder="Введите ваше имя" type="text"/>
-                      </div>
-                      <div class="col">
-                        <input class="form-control form-control-xxl text-center" placeholder="Введите номер телефона" type="text"/>
-                      </div>
-                      <div class="col order-lg-3 order-4">
-                        <button class="btn btn-primary btn-xxl w-100" type="submit">Заказать выезд</button>
-                      </div>
-                      <div class="col-lg-12 order-lg-4 order-3">
-                        <div class="form-check fs-lg-8 fs-7 mb-0">
-                          <input class="form-check-input" id="measurement-personal" name="personal" autocomplete="off" type="checkbox" checked="checked"/>
-                          <label class="form-check-label" for="measurement-personal">Даю согласие на обработку персональных данных</label>
+                        <div class="d-lg-block d-none mt-28"><a class="btn btn-primary btn-xxl btn-wide-xxl" href="#">Консультация</a>
                         </div>
-                      </div>
                     </div>
-                  </form>
+                    <div class="col-lg-9">
+                        <div class="ratio ratio-1x1 h-100">
+                            <iframe class="w-100 h-100"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2209.8932558547253!2d36.78143381608835!3d56.36617465198467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b5aef14d48318b%3A0x58cec88e773f034!2z0K_RgdC10L3QtdCy0L4sIDc0INGB0YLRgNC-0LXQvdC40LUgNywg0K_RgdC10L3QtdCy0L4sIE1vc2NvdyBPYmxhc3QsIDE0MTY0MA!5e0!3m2!1sru!2sru!4v1677423626008!5m2!1sru!2sru"
+                                    style="border:0;" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
+                <div class="d-lg-none d-block text-center mt-17-5"><a class="fs-9 text-decoration-none text-uppercase"
+                                                                      href="#">Записаться на экскурсию по производству
+                    ↘︎ </a></div>
+            </section>
+
+            {% include 'main/components/consultation_modal.html' %}
+
+            {% include 'main/components/measure_modal.html' %}
+
         </main>
-      </div>
     </div>
+</div>
 {% endblock %}
