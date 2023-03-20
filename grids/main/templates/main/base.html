@@ -5,8 +5,9 @@
     <title>Оконные решетки - Главная</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<!--    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">-->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <link rel="shortcut icon" href="{% static 'main/favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'main/vendors/swiper/swiper-bundle.min.css' %} ">
     <link rel="stylesheet" href="{% static 'main/vendors/nouislider/nouislider.min.css' %} ">
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
@@ -38,9 +39,10 @@
                     <div class="hstack d-lg-none d-flex gap-5"><a
                             class="btn btn-outline-secondary d-inline-flex justify-content-center align-items-center p-0"
                             href="tel:84951270443" style="width: 1.5rem; height: 1.5rem;">
-                        <svg class="svg-icon" style="width: .5rem; height: .5rem;">
-                            <use href="{% static 'main/img/logo_light.svg' %}"></use>
-                        </svg>
+
+                        {% include 'main/icons/phone-call.html' with classes="svg-icon"%}
+
+
                     </a>
                         <button class="fs-6 btn btn-primary text-uppercase d-lg-none d-inline-flex justify-content-center align-items-center px-5 py-0"
                                 data-bs-toggle="offcanvas" data-bs-target="#mobile-menu" type="button"
@@ -70,21 +72,11 @@
                 <li class="nav-item me-20"><a class="nav-link ls-sm p-0" href="{%url 'contacts'%}">Контакты</a></li>
             </ul>
             <div class="hstack gap-15 ms-auto"><a class="position-relative text-white text-hover-secondary" href="#">
-<!--                <svg class="svg-icon">-->
-<!--                    <use href="{% static 'main/img/icon-chart.svg' %}"></use>-->
-<!--                </svg>-->
-
-
-                <img class="svg-icon"
-                     src="{% static 'main/img/icon-chart.svg' %}">
-
-
+                {% include 'main/icons/chart.html' with classes='svg-icon' %}
                 <span class="badge d-flex justify-content-center align-items-center position-absolute top-0 end-50 p-2 fs-4 text-white bg-primary rounded-pill ls-sm"
                       style="min-width: .8rem; height: .8rem;">4</span></a><a
                     class="position-relative text-white text-hover-secondary" href="#">
-                <svg class="svg-icon">
-                    <use xlink:href="{% static 'main/img/sprite_icons.svg#heart' %} "></use>
-                </svg>
+                {% include 'main/icons/heart.html' with classes='svg-icon' %}
                 <span class="badge d-flex justify-content-center align-items-center position-absolute top-0 end-50 p-2 fs-4 text-white bg-primary rounded-pill ls-sm"
                       style="min-width: .8rem; height: .8rem;">4</span></a></div>
         </div>
@@ -138,15 +130,12 @@
                     class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
                     style="min-width: 3rem;">69  </span></a></div>
             <div class="col"><a class="btn btn-outline-secondary rounded-3 w-100 py-4">
-                <svg class="svg-icon">
-                    <use xlink:href="img/sprite_icons.svg#chart"></use>
-                </svg>
+                {% include 'main/icons/chart.html' with classes='svg-icon' %}
             </a></div>
             <div class="col"><a class="btn btn-outline-secondary rounded-3 w-100 py-4">
-                <svg class="svg-icon">
-                    <use href="img/sprite_icons.svg#heart"></use>
-                </svg>
+                {% include 'main/icons/heart.html' with classes='svg-icon' %}
             </a></div>
+
         </div>
         <div class="vstack gap-10 mt-10">
             <btn class="btn btn-primary btn-xxl btn-wide-xxl" data-bs-toggle="modal"
@@ -177,9 +166,7 @@
                 </div>
                 <div class="col-auto d-lg-block d-none">
                     <div class="d-inline-flex align-items-center">
-                        <svg class="svg-icon me-11">
-                            <use href="{% static 'main/img/sprite_icons.svg#phone-call' %}"></use>
-                        </svg>
+                    {% include 'main/icons/phone-call.html' with classes="svg-icon me-11" %}
                         <a class="fs-13 text-muted text-hover-white ls-sm text-decoration-none" href="tel:84951270443">8
                             (495) 127-04-43</a>
                     </div>
