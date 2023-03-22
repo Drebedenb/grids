@@ -38,24 +38,28 @@
                         <div class="swiper-slide">
                             <div class="ratio ratio-1x1 overflow-hidden mt-18"
                                  style="--bs-aspect-ratio: 50%; min-height: 200px; max-height: 600px;"><img
-                                    class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/home-intro-img1.png' %}"
+                                    class="rounded-lg-4 rounded-3 object-fit-cover"
+                                    src="{% static 'main/img/home-intro-img1.png' %}"
                                     alt=""/></div>
                         </div>
                         <div class="swiper-slide">
                             <div class="ratio ratio-1x1 overflow-hidden mt-18"
                                  style="--bs-aspect-ratio: 50%; min-height: 200px; max-height: 600px;"><img
-                                    class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/home-intro-img2.png' %}"
+                                    class="rounded-lg-4 rounded-3 object-fit-cover"
+                                    src="{% static 'main/img/home-intro-img2.png' %}"
                                     alt=""/></div>
                         </div>
                         <div class="swiper-slide">
                             <div class="ratio ratio-1x1 overflow-hidden mt-18"
                                  style="--bs-aspect-ratio: 50%; min-height: 200px; max-height: 600px;"><img
-                                    class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/home-intro-img3.png' %}"
+                                    class="rounded-lg-4 rounded-3 object-fit-cover"
+                                    src="{% static 'main/img/home-intro-img3.png' %}"
                                     alt=""/></div>
                         </div>
                     </div>
                 </div>
-                <div class="mt-20 d-lg-none d-block"><a class="btn btn-outline-black btn-xxl w-100" href="{%url 'catalog'%}">Перейти
+                <div class="mt-20 d-lg-none d-block"><a class="btn btn-outline-black btn-xxl w-100"
+                                                        href="{%url 'catalog'%}">Перейти
                     в каталог</a>
                 </div>
                 <hr class="opacity-100 mt-lg-50 mt-30 mb-0"/>
@@ -79,7 +83,8 @@
                                     style="min-width: 3rem;">201</span>
                                 <div class="ratio overflow-hidden"
                                      style="--bs-aspect-ratio: 110%; min-height: 260px; max-height: 345px;"><img
-                                        class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}" alt="Эконом решетки">
+                                        class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}"
+                                        alt="Эконом решетки">
                                 </div>
                             </div>
                             <div class="d-flex">
@@ -97,7 +102,8 @@
                                     style="min-width: 3rem;">201</span>
                                 <div class="ratio overflow-hidden"
                                      style="--bs-aspect-ratio: 110%; min-height: 260px; max-height: 345px;"><img
-                                        class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}" alt="Эконом решетки">
+                                        class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}"
+                                        alt="Эконом решетки">
                                 </div>
                             </div>
                             <div class="d-flex">
@@ -115,7 +121,8 @@
                                     style="min-width: 3rem;">201</span>
                                 <div class="ratio overflow-hidden"
                                      style="--bs-aspect-ratio: 110%; min-height: 260px; max-height: 345px;"><img
-                                        class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}" alt="Эконом решетки">
+                                        class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}"
+                                        alt="Эконом решетки">
                                 </div>
                             </div>
                             <div class="d-flex">
@@ -133,7 +140,8 @@
                                     style="min-width: 3rem;">201</span>
                                 <div class="ratio overflow-hidden"
                                      style="--bs-aspect-ratio: 110%; min-height: 260px; max-height: 345px;"><img
-                                        class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}" alt="Эконом решетки">
+                                        class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}"
+                                        alt="Эконом решетки">
                                 </div>
                             </div>
                             <div class="d-flex">
@@ -153,23 +161,85 @@
             <section class="mb-lg-50 mb-28">
                 <div class="row mb-lg-22 mb-17">
                     <div class="col-lg-4 col-10">
-                        <h2 class="h1 fs-3xl-28 fs-lg-26 fs-13 ls-sm text-uppercase mb-0">Назначение решеток</h2>
+                        <h2 class="h1  fs-3xl-22 fs-lg-26 fs-13 ls-sm text-uppercase mb-0">Назначение решеток</h2>
                     </div>
                 </div>
                 <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-1 gy-lg-15 gy-5">
 
-                    <div class="col"><a class="card border-0 rounded-4 text-hover-primary shadow-lg" href="#">
-                        <div class="card-body d-flex align-items-center px-lg-15 px-10 py-lg-12 py-7">
-                            <div class="ratio ratio-1x1 overflow-hidden me-lg-8 me-10"
-                                 style="max-width: 64px; max-height: 64px;"><img class="object-fit-contain"
-                                                                                 src="{% static 'main/img/product-card-img.png' %}"
-                                                                                 alt="Сварные"></div>
-                            <h3 class="card-title h5 fs-lg-13 fs-9 fw-medium ls-sm text-uppercase mb-0">Сварные</h3>
-                        </div>
-                    </a></div>
+                    {% for item in list_of_grids_types %}
+                    <div class="col">
+                        <a class="card border-0 rounded-4 text-hover-primary shadow-lg" href="#">
+                            <div class="card-body d-flex align-items-center px-lg-15 px-10 py-lg-12 py-7">
+                                <div class="ratio ratio-1x1 overflow-hidden me-lg-8 me-10"
+                                     style="max-width: 64px; max-height: 64px;"><img class="object-fit-contain"
+                                                                                     src="{% static item.img_path %}"
+                                                                                     alt="{{item.title}}"></div>
+                                <h3 class="card-title h5 fs-lg-10 fs-9 fw-medium ls-sm text-uppercase mb-0">
+                                    {{item.title}}</h3>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+
 
                 </div>
             </section>
+
+            <section class="mb-lg-50 mb-28">
+
+                <h2 class="h1  fs-3xl-22 fs-lg-26 fs-13 ls-sm text-uppercase mb-0">Лидеры продаж</h2>
+                <div class="row mt-10 row-cols-lg-4 row-cols-1 gy-20">
+
+                    {% for item in leaders_of_selling %}
+
+                    <div class="col">
+                        <div class="card card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">
+                            <div class="card-body p-lg-20 py-10">
+                                <div class="position-relative text-center mb-20">
+                                    <div class="position-absolute top-0 start-0 z-1">
+                                        <a class="text-muted text-hover-black" href="#">
+                                            {% include 'main/icons/chart.html' with classes='svg-icon' %}
+                                        </a>
+                                    </div>
+                                    <div class="position-absolute top-0 end-0 z-1">
+                                        <a class="text-muted text-hover-black" href="#">
+                                            {% include 'main/icons/heart.html' with classes='svg-icon' %}
+                                        </a>
+                                    </div>
+                                    <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
+                                        <button class="btn btn-light btn-lg btn-wide-xl" data-bs-toggle="modal"
+                                                data-bs-target="#product-quick-view" type="button">Быстрый просмотр
+                                        </button>
+                                    </div>
+                                    <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
+                                            class="object-fit-contain"
+                                            src="{% static 'main/img/product-card-img.png' %}"
+                                            alt="Решетки на окна эконом класса"></div>
+                                </div>
+                                <h3 class="card-title h5 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-lg-14 mb-6">
+                                    Решетки на окна эконом класса</h3><span
+                                    class="d-block fs-12 text-danger fw-medium  ls-sm text-uppercase mb-17-5">
+                                        <span class="text-dark fs-9">Цена:</span> <span class=" fs-xl-10">от</span> 2900 руб</span>
+                                <a class="btn btn-outline-secondary  btn-lg w-100">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+
+                </div>
+
+                {% include 'main/components/product_quick_view.html' %}
+
+
+                <div class="text-center mt-lg-20 mt-10"><a class="btn btn-outline-secondary btn-xxl btn-wide-xxl"
+                                                           href="#">Показать еще </a></div>
+
+
+            </section>
+
+
             <hr class="d-lg-block d-none opacity-100 mt-0 mb-50">
             <section class="mb-lg-50 mb-28">
                 <div class="mb-lg-35 mb-8">
@@ -280,7 +350,7 @@
                                             <div class="ratio h-100"
                                                  style="--bs-aspect-ratio: 60%; min-height: 200px; max-height: 460px;">
                                                 <img class="object-fit-cover rounded-lg-4 rounded-3"
-                                                     src="{% static 'main/img/about-card-img1.png' %}">
+                                                     src="{% static 'main/img/workers/1_img.jpg' %}">
                                                 <div class="card-body d-flex flex-column justify-content-lg-end p-lg-20 px-9 py-10">
                                                     <div class="w-lg-50 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
                                                         <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">
@@ -294,7 +364,7 @@
                                             <div class="ratio h-100"
                                                  style="--bs-aspect-ratio: 60%; min-height: 200px; max-height: 460px;">
                                                 <img class="object-fit-cover rounded-lg-4 rounded-3"
-                                                     src="{% static 'main/img/about-card-img1.png' %}">
+                                                     src="{% static 'main/img/workers/2_img.jpg' %}">
                                                 <div class="card-body d-flex flex-column justify-content-lg-end p-lg-20 px-9 py-10">
                                                     <div class="w-lg-50 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
                                                         <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">
@@ -308,7 +378,7 @@
                                             <div class="ratio h-100"
                                                  style="--bs-aspect-ratio: 60%; min-height: 200px; max-height: 460px;">
                                                 <img class="object-fit-cover rounded-lg-4 rounded-3"
-                                                     src="{% static 'main/img/about-card-img1.png' %}">
+                                                     src="{% static 'main/img/workers/3_img.jpg' %}">
                                                 <div class="card-body d-flex flex-column justify-content-lg-end p-lg-20 px-9 py-10">
                                                     <div class="w-lg-50 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
                                                         <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">
@@ -326,7 +396,8 @@
                             <div class="card h-100 border-0 text-white">
                                 <div class="ratio h-100"
                                      style="--bs-aspect-ratio: 120%; min-height: 200px; max-height: 460px;"><img
-                                        class="object-fit-cover rounded-lg-4 rounded-3" src="{% static 'main/img/about-card-img2.png' %}">
+                                        class="object-fit-cover rounded-lg-4 rounded-3"
+                                        src="{% static 'main/img/workers/ingener_1.jpg' %}">
                                     <div class="card-body d-flex flex-column justify-content-lg-end p-lg-20 px-9 py-10">
                                         <div class="w-75 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
                                             <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">
@@ -341,7 +412,8 @@
                             <div class="card h-100 border-0 text-white">
                                 <div class="ratio h-100"
                                      style="--bs-aspect-ratio: 120%; min-height: 200px; max-height: 460px;"><img
-                                        class="object-fit-cover rounded-lg-4 rounded-3" src="{% static 'main/img/about-card-img3.png' %}">
+                                        class="object-fit-cover rounded-lg-4 rounded-3"
+                                        src="{% static 'main/img/workers/ingener_2.jpg' %}">
                                     <div class="card-body d-flex flex-column justify-content-lg-end p-lg-20 px-9 py-10">
                                         <div class="w-75 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
                                             <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">
@@ -356,7 +428,8 @@
                             <div class="card h-100 border-0 text-white">
                                 <div class="ratio h-100"
                                      style="--bs-aspect-ratio: 120%; min-height: 200px; max-height: 460px;"><img
-                                        class="object-fit-cover rounded-lg-4 rounded-3" src="{% static 'main/img/about-card-img2.png' %}">
+                                        class="object-fit-cover rounded-lg-4 rounded-3"
+                                        src="{% static 'main/img/workers/manager_1.jpg' %}">
                                     <div class="card-body d-flex flex-column justify-content-lg-end p-lg-20 px-9 py-10">
                                         <div class="w-75 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
                                             <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">
@@ -371,7 +444,8 @@
                             <div class="card h-100 border-0 text-white">
                                 <div class="ratio h-100"
                                      style="--bs-aspect-ratio: 120%; min-height: 200px; max-height: 460px;"><img
-                                        class="object-fit-cover rounded-lg-4 rounded-3" src="{% static 'main/img/about-card-img2.png' %}">
+                                        class="object-fit-cover rounded-lg-4 rounded-3"
+                                        src="{% static 'main/img/workers/manager_2.jpg' %}">
                                     <div class="card-body d-flex flex-column justify-content-lg-end p-lg-20 px-9 py-10">
                                         <div class="w-75 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
                                             <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0"
@@ -386,7 +460,8 @@
                             <div class="card h-100 border-0 text-white">
                                 <div class="ratio h-100"
                                      style="--bs-aspect-ratio: 120%; min-height: 200px; max-height: 460px;"><img
-                                        class="object-fit-cover rounded-lg-4 rounded-3" src="{% static 'main/img/about-card-img2.png' %}">
+                                        class="object-fit-cover rounded-lg-4 rounded-3"
+                                        src="{% static 'main/img/workers/manager_3.jpg' %}">
                                     <div class="card-body d-flex flex-column justify-content-lg-end p-lg-20 px-9 py-10">
                                         <div class="w-75 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
                                             <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">
@@ -401,7 +476,8 @@
                             <div class="card h-100 border-0 text-white">
                                 <div class="ratio h-100"
                                      style="--bs-aspect-ratio: 120%; min-height: 200px; max-height: 460px;"><img
-                                        class="object-fit-cover rounded-lg-4 rounded-3" src="{% static 'main/img/about-card-img2.png' %}">
+                                        class="object-fit-cover rounded-lg-4 rounded-3"
+                                        src="{% static 'main/img/workers/manager_4.jpg' %}">
                                     <div class="card-body d-flex flex-column justify-content-lg-end p-lg-20 px-9 py-10">
                                         <div class="w-75 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
                                             <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">
@@ -455,51 +531,63 @@
                 </div>
                 <div class="row row-cols-lg-4 row-cols-2 gy-lg-20 gy-10  d-lg-flex d-none">
 
-                    <div class="col"><a class="d-block" data-fslightbox="projects" href="{% static 'main/img/project-img.png' %}">
+                    <div class="col"><a class="d-block" data-fslightbox="projects"
+                                        href="{% static 'main/img/project-img.png' %}">
                         <div class="ratio ratio-4x3" style="min-height: 100px; max-height: 260px;"><img
                                 class="rounded-4 object-fit-cover" src="{% static 'main/img/project-img.png' %}"/></div>
                     </a></div>
-                    <div class="col"><a class="d-block" data-fslightbox="projects" href="{% static 'main/img/project-img.png' %}">
+                    <div class="col"><a class="d-block" data-fslightbox="projects"
+                                        href="{% static 'main/img/project-img.png' %}">
                         <div class="ratio ratio-4x3" style="min-height: 100px; max-height: 260px;"><img
                                 class="rounded-4 object-fit-cover" src="{% static 'main/img/project-img.png' %}"/></div>
                     </a></div>
-                    <div class="col"><a class="d-block" data-fslightbox="projects" href="{% static 'main/img/project-img.png' %}">
+                    <div class="col"><a class="d-block" data-fslightbox="projects"
+                                        href="{% static 'main/img/project-img.png' %}">
                         <div class="ratio ratio-4x3" style="min-height: 100px; max-height: 260px;"><img
                                 class="rounded-4 object-fit-cover" src="{% static 'main/img/project-img.png' %}"/></div>
                     </a></div>
-                    <div class="col"><a class="d-block" data-fslightbox="projects" href="{% static 'main/img/project-img.png' %}">
+                    <div class="col"><a class="d-block" data-fslightbox="projects"
+                                        href="{% static 'main/img/project-img.png' %}">
                         <div class="ratio ratio-4x3" style="min-height: 100px; max-height: 260px;"><img
                                 class="rounded-4 object-fit-cover" src="{% static 'main/img/project-img.png' %}"/></div>
                     </a></div>
-                    <div class="col"><a class="d-block" data-fslightbox="projects" href="{% static 'main/img/project-img.png' %}">
+                    <div class="col"><a class="d-block" data-fslightbox="projects"
+                                        href="{% static 'main/img/project-img.png' %}">
                         <div class="ratio ratio-4x3" style="min-height: 100px; max-height: 260px;"><img
                                 class="rounded-4 object-fit-cover" src="{% static 'main/img/project-img.png' %}"/></div>
                     </a></div>
-                    <div class="col"><a class="d-block" data-fslightbox="projects" href="{% static 'main/img/project-img.png' %}">
+                    <div class="col"><a class="d-block" data-fslightbox="projects"
+                                        href="{% static 'main/img/project-img.png' %}">
                         <div class="ratio ratio-4x3" style="min-height: 100px; max-height: 260px;"><img
                                 class="rounded-4 object-fit-cover" src="{% static 'main/img/project-img.png' %}"/></div>
                     </a></div>
-                    <div class="col"><a class="d-block" data-fslightbox="projects" href="{% static 'main/img/project-img.png' %}">
+                    <div class="col"><a class="d-block" data-fslightbox="projects"
+                                        href="{% static 'main/img/project-img.png' %}">
                         <div class="ratio ratio-4x3" style="min-height: 100px; max-height: 260px;"><img
                                 class="rounded-4 object-fit-cover" src="{% static 'main/img/project-img.png' %}"/></div>
                     </a></div>
-                    <div class="col"><a class="d-block" data-fslightbox="projects" href="{% static 'main/img/project-img.png' %}">
+                    <div class="col"><a class="d-block" data-fslightbox="projects"
+                                        href="{% static 'main/img/project-img.png' %}">
                         <div class="ratio ratio-4x3" style="min-height: 100px; max-height: 260px;"><img
                                 class="rounded-4 object-fit-cover" src="{% static 'main/img/project-img.png' %}"/></div>
                     </a></div>
-                    <div class="col"><a class="d-block" data-fslightbox="projects" href="{% static 'main/img/project-img.png' %}">
+                    <div class="col"><a class="d-block" data-fslightbox="projects"
+                                        href="{% static 'main/img/project-img.png' %}">
                         <div class="ratio ratio-4x3" style="min-height: 100px; max-height: 260px;"><img
                                 class="rounded-4 object-fit-cover" src="{% static 'main/img/project-img.png' %}"/></div>
                     </a></div>
-                    <div class="col"><a class="d-block" data-fslightbox="projects" href="{% static 'main/img/project-img.png' %}">
+                    <div class="col"><a class="d-block" data-fslightbox="projects"
+                                        href="{% static 'main/img/project-img.png' %}">
                         <div class="ratio ratio-4x3" style="min-height: 100px; max-height: 260px;"><img
                                 class="rounded-4 object-fit-cover" src="{% static 'main/img/project-img.png' %}"/></div>
                     </a></div>
-                    <div class="col"><a class="d-block" data-fslightbox="projects" href="{% static 'main/img/project-img.png' %}">
+                    <div class="col"><a class="d-block" data-fslightbox="projects"
+                                        href="{% static 'main/img/project-img.png' %}">
                         <div class="ratio ratio-4x3" style="min-height: 100px; max-height: 260px;"><img
                                 class="rounded-4 object-fit-cover" src="{% static 'main/img/project-img.png' %}"/></div>
                     </a></div>
-                    <div class="col"><a class="d-block" data-fslightbox="projects" href="{% static 'main/img/project-img.png' %}">
+                    <div class="col"><a class="d-block" data-fslightbox="projects"
+                                        href="{% static 'main/img/project-img.png' %}">
                         <div class="ratio ratio-4x3" style="min-height: 100px; max-height: 260px;"><img
                                 class="rounded-4 object-fit-cover" src="{% static 'main/img/project-img.png' %}"/></div>
                     </a></div>
@@ -511,33 +599,39 @@
                         <div class="swiper-slide"><a class="d-block" data-fslightbox="projects"
                                                      href="{% static 'main/img/project-img.png' %}">
                             <div class="ratio ratio-4x3" style="min-height: 100px; max-height: 260px;"><img
-                                    class="rounded-4 object-fit-cover" src="{% static 'main/img/project-img.png' %}"/></div>
+                                    class="rounded-4 object-fit-cover" src="{% static 'main/img/project-img.png' %}"/>
+                            </div>
                         </a></div>
 
                         <div class="swiper-slide"><a class="d-block" data-fslightbox="projects"
                                                      href="{% static 'main/img/project-img.png' %}">
                             <div class="ratio ratio-4x3" style="min-height: 100px; max-height: 260px;"><img
-                                    class="rounded-4 object-fit-cover" src="{% static 'main/img/project-img.png' %}"/></div>
+                                    class="rounded-4 object-fit-cover" src="{% static 'main/img/project-img.png' %}"/>
+                            </div>
                         </a></div>
                         <div class="swiper-slide"><a class="d-block" data-fslightbox="projects"
                                                      href="{% static 'main/img/project-img.png' %}">
                             <div class="ratio ratio-4x3" style="min-height: 100px; max-height: 260px;"><img
-                                    class="rounded-4 object-fit-cover" src="{% static 'main/img/project-img.png' %}"/></div>
+                                    class="rounded-4 object-fit-cover" src="{% static 'main/img/project-img.png' %}"/>
+                            </div>
                         </a></div>
                         <div class="swiper-slide"><a class="d-block" data-fslightbox="projects"
                                                      href="{% static 'main/img/project-img.png' %}">
                             <div class="ratio ratio-4x3" style="min-height: 100px; max-height: 260px;"><img
-                                    class="rounded-4 object-fit-cover" src="{% static 'main/img/project-img.png' %}"/></div>
+                                    class="rounded-4 object-fit-cover" src="{% static 'main/img/project-img.png' %}"/>
+                            </div>
                         </a></div>
                         <div class="swiper-slide"><a class="d-block" data-fslightbox="projects"
                                                      href="{% static 'main/img/project-img.png' %}">
                             <div class="ratio ratio-4x3" style="min-height: 100px; max-height: 260px;"><img
-                                    class="rounded-4 object-fit-cover" src="{% static 'main/img/project-img.png' %}"/></div>
+                                    class="rounded-4 object-fit-cover" src="{% static 'main/img/project-img.png' %}"/>
+                            </div>
                         </a></div>
                         <div class="swiper-slide"><a class="d-block" data-fslightbox="projects"
                                                      href="{% static 'main/img/project-img.png' %}">
                             <div class="ratio ratio-4x3" style="min-height: 100px; max-height: 260px;"><img
-                                    class="rounded-4 object-fit-cover" src="{% static 'main/img/project-img.png' %}"/></div>
+                                    class="rounded-4 object-fit-cover" src="{% static 'main/img/project-img.png' %}"/>
+                            </div>
                         </a></div>
                     </div>
                     <div class="d-flex gap-10 position-absolute z-2" id="projects-swiper-control">

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{% static 'main/vendors/swiper/swiper-bundle.min.css' %} ">
     <link rel="stylesheet" href="{% static 'main/vendors/nouislider/nouislider.min.css' %} ">
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/custom.css' %}">
 </head>
 <body>
 <header class="position-sticky top-0 bg-black text-muted" style="z-index: 4;">
@@ -21,8 +22,8 @@
                     <div class="d-flex"><a class="navbar-brand" href="{%url 'index'%}"><img class="img-fluid"
                                                                                             src="{% static 'main/img/logo_light.svg' %}"
                                                                                             alt="Оконные решетки"></a><small
-                            class="d-lg-flex d-none align-items-center fs-7 border-start border-white ms-10 ps-10">Металлические
-                        решетки<br>на окна в Московской обл.</small></div>
+                            class="d-lg-flex d-none align-items-center fs-7 border-start border-white ms-10 ps-10">Производство
+                        металлических <br>решеток в Московской области </small></div>
                 </div>
                 <div class="col-auto text-end ms-auto">
                     <div class="d-lg-block d-none"><a
@@ -51,10 +52,10 @@
                     </div>
                     <div class="d-lg-block">
                         <div class="hstack gap-10 d-lg-flex d-none">
-                            <button class="btn btn-primary btn-sm btn-wide-sm" data-bs-toggle="modal"
+                            <button class="btn btn-secondary btn-sm btn-wide-sm" data-bs-toggle="modal"
                                     data-bs-target="#modal-consultation" type="button">Консультация
                             </button>
-                            <button class="btn btn-secondary btn-sm btn-wide-sm" data-bs-toggle="modal"
+                            <button class="btn btn-primary btn-sm btn-wide-sm" data-bs-toggle="modal"
                                     data-bs-target="#modal-measurement" type="button">Вызвать на замер
                             </button>
                         </div>
@@ -166,7 +167,7 @@
                 </div>
                 <div class="col-auto d-lg-block d-none">
                     <div class="d-inline-flex align-items-center">
-                    {% include 'main/icons/phone-call.html' with classes="svg-icon me-11" %}
+                        {% include 'main/icons/phone-call.html' with classes="svg-icon me-11" %}
                         <a class="fs-13 text-muted text-hover-white ls-sm text-decoration-none" href="tel:84951270443">8
                             (495) 127-04-43</a>
                     </div>
@@ -253,12 +254,12 @@
         <div class="py-10 d-lg-none d-block">
             <div class="row row-cols-2">
                 <div class="col">
-                    <btn class="btn btn-primary btn-sm w-100 fs-6 rounded-3 py-8" data-bs-toggle="modal"
+                    <btn class="btn btn-secondary btn-sm w-100 fs-6 rounded-3 py-8" data-bs-toggle="modal"
                          data-bs-target="#modal-consultation" type="button"><b>Консультация</b>
                     </btn>
                 </div>
                 <div class="col">
-                    <btn class="btn btn-white btn-sm w-100 fs-6 rounded-3 py-8" data-bs-toggle="modal"
+                    <btn class="btn btn-primary btn-white btn-sm w-100 fs-6 rounded-3 py-8" data-bs-toggle="modal"
                          data-bs-target="#modal-measurement" type="button">Вызвать на замер
                     </btn>
                 </div>
