@@ -3,58 +3,46 @@
 {% block content %}
     <div class="pt-lg-30 pt-16 pb-lg-50 pb-32">
         <div class="container">
-            <header class="page-header mb-lg-45 mb-28">
+            <header class="page-header mb-lg-0 mb-28">
                 <div>
-                    <div class="badge border border-secondary d-lg-inline-block d-none fs-6 text-secondary ls-sm text-uppercase mb-10 py-6"
-                         style="min-width: 12.5rem;">Собственное производство
-                    </div>
-                    <div class="row gy-lg-0  gy-12">
-                        <div class="col-lg-6">
-                            <h1 class="display-1 fs-3xl-38 fs-xl-36 fs-lg-30 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">
-                                <b>Каталог</b> металлических решеток на окна </h1>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="pt-xl-7 pt-lg-4">
-                                <p class="lead fs-lg-12 fs-9 mb-0" style="max-width: 28rem;">В нашем каталоге
-                                    представлено
-                                    600+ эскизов решеток на окна. Возможно изготовление решеток по вашему эскизу.</p>
-                                <div class="mt-3xl-31 mt-lg-24 d-lg-block d-none">
-                                    <div class="hstack flex-wrap gap-20">
-                                        <btn class="btn btn-primary btn-xxl btn-wide-xxl" data-bs-toggle="modal"
-                                             data-bs-target="#modal-consultation" type="button">Консультация
-                                        </btn>
-                                        <btn class="btn btn-outline-black btn-xxl btn-wide-xxl" data-bs-toggle="modal"
-                                             data-bs-target="#modal-measurement" type="button">Вызвать на замер
-                                        </btn>
-                                    </div>
+                    <div class=" d-lg-none">
+                        <div class="pt-xl-7 pt-lg-4">
+                            <p class="lead fs-lg-12 fs-9 mb-0" style="max-width: 28rem;">В нашем каталоге представлено 600+ эскизов решеток на окна. Возможно изготовление решеток по вашему эскизу.</p>
+                            <div class="mt-3xl-31 mt-lg-24 d-lg-block d-none">
+                                <div class="hstack flex-wrap gap-20">
+                                    <btn class="btn btn-secondary btn-xxl btn-wide-xxl" data-bs-toggle="modal" data-bs-target="#modal-consultation" type="button">Консультация</btn>
+                                    <btn class="btn btn-primary btn-xxl btn-wide-xxl" data-bs-toggle="modal" data-bs-target="#modal-measurement" type="button">Вызвать на замер </btn>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="mt-20 d-lg-none d-block">
-                        <div class="vstack flex-wrap gap-10">
-                            <btn class="btn btn-primary btn-xxl w-100" data-bs-toggle="modal"
-                                 data-bs-target="#modal-consultation" type="button">Консультация
-                            </btn>
-                            <btn class="btn btn-outline-black btn-xxl w-100" data-bs-toggle="modal"
-                                 data-bs-target="#modal-measurement" type="button">Вызвать на замер
-                            </btn>
-                        </div>
+                </div>
+                <div class="mt-20 d-lg-none d-block">
+                    <div class="vstack flex-wrap gap-10">
+                        <btn class="btn btn-secondary  btn-xxl w-100" data-bs-toggle="modal" data-bs-target="#modal-consultation" type="button">Консультация</btn>
+                        <btn class="btn btn-primary btn-xxl w-100" data-bs-toggle="modal" data-bs-target="#modal-measurement" type="button">Вызвать на замер </btn>
                     </div>
-                    <hr class="opacity-100 mt-lg-40 mt-30 mb-0"/>
+                </div>
+
+
+
+                <div class="row gy-lg-0  gy-12">
+                    <div class="col-lg-5">
+                        <h1 class="display-1 mt-20 fs-3xl-25 fs-xl-30 fs-lg-27 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Каталог металлических решеток на окна </h1>
+                    </div>
+                    <div class="col-lg-7">
+                        <a href=""><img class="w-100" src="{% static 'main/img/sale.png' %}" alt="Акция 3 по цене 2"></a>
+
+                    </div>
+
                 </div>
             </header>
             <main>
-                <section class="mb-lg-45 mb-25">
+                <section class="mb-lg-0 mb-25">
                     <div class="row align-items-end mb-lg-26 mb-17">
                         <div class="col-xl-4 col-lg-5">
-                            <h2 class="h1 fs-3xl-28 fs-lg-26 fs-13 fw-normal ls-sm text-uppercase mb-0">Сварные оконные
-                                решетки</h2>
                         </div>
-                        <div class="col-auto ms-auto d-lg-block d-none"><a
-                                class="fs-12 ls-sm text-uppercase text-decoration-none"
-                                href="{% url 'catalog-category' %}">Смотреть
-                            все ↘︎</a></div>
+
                     </div>
                     <div class="row row-cols-xl-4 row-cols-lg-2 row-cols-1 gy-20">
                         <div class="col"><a class="card h-100 border-0 rounded-4 text-hover-primary shadow-lg" href="#">
@@ -64,7 +52,7 @@
                                         class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}"
                                         alt="Решетки на окна эконом класса"></div>
                                 <div class="d-flex">
-                                    <h5 class="card-title h6 fs-10 fw-medium ls-sm text-uppercase mb-0"
+                                    <h5 class="card-title h6 fs-8 fw-medium ls-sm text-uppercase mb-0"
                                         style="max-width: 12.5rem;">Решетки на окна эконом класса</h5><span
                                         class="fs-13 fw-medium text-primary text-uppercase mt-auto ms-auto">+</span>
                                 </div>
@@ -77,7 +65,7 @@
                                         class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}"
                                         alt="Дутые оконные решетки эконом класса"></div>
                                 <div class="d-flex">
-                                    <h5 class="card-title h6 fs-10 fw-medium ls-sm text-uppercase mb-0">Дутые оконные
+                                    <h5 class="card-title h6 fs-8 fw-medium ls-sm text-uppercase mb-0">Дутые оконные
                                         решетки эконом класса</h5><span
                                         class="fs-13 fw-medium text-primary text-uppercase mt-auto ms-auto">+</span>
                                 </div>
@@ -90,7 +78,7 @@
                                         class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}"
                                         alt="Ажурные решетки на окна"></div>
                                 <div class="d-flex">
-                                    <h5 class="card-title h6 fs-10 fw-medium ls-sm text-uppercase mb-0"
+                                    <h5 class="card-title h6 fs-8 fw-medium ls-sm text-uppercase mb-0"
                                         style="max-width: 10rem;">Ажурные решетки на окна</h5><span
                                         class="fs-13 fw-medium text-primary text-uppercase mt-auto ms-auto">+</span>
                                 </div>
@@ -103,7 +91,7 @@
                                         class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}"
                                         alt="Дутые ажурные решетки"></div>
                                 <div class="d-flex">
-                                    <h5 class="card-title h6 fs-10 fw-medium ls-sm text-uppercase mb-0"
+                                    <h5 class="card-title h6 fs-8 fw-medium ls-sm text-uppercase mb-0"
                                         style="max-width: 10rem;">Дутые ажурные решетки</h5><span
                                         class="fs-13 fw-medium text-primary text-uppercase mt-auto ms-auto">+</span>
                                 </div>
@@ -116,16 +104,11 @@
                         ↘︎ </a>
                     </div>
                 </section>
-                <section class="mb-lg-45 mb-25">
-                    <div class="row align-items-end mb-lg-26 mb-17">
+                <section class="mb-lg-0 mb-25">
+                    <<div class="row align-items-end mb-lg-26 mb-17">
                         <div class="col-xl-4 col-lg-5">
-                            <h2 class="h1 fs-3xl-28 fs-lg-26 fs-13 fw-normal ls-sm text-uppercase mb-0">Кованые оконные
-                                решетки</h2>
                         </div>
-                        <div class="col-auto ms-auto d-lg-block d-none"><a
-                                class="fs-12 ls-sm text-uppercase text-decoration-none"
-                                href="{% url 'catalog-category' %}">Смотреть
-                            все ↘︎</a></div>
+
                     </div>
                     <div class="row row-cols-xl-4 row-cols-lg-2 row-cols-1 gy-20">
                         <div class="col"><a class="card h-100 border-0 rounded-4 text-hover-primary shadow-lg" href="#">

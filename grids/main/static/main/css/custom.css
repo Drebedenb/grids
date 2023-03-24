@@ -1,3 +1,15 @@
-.container {
+@media (min-width: 1800px) {
+    .container-3xl,
+    .container-xxl,
+    .container-xl,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container {
         max-width: 1470px;
     }
+}
+
+.active{
+    color: red;
+}
