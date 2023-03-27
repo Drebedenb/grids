@@ -66,7 +66,8 @@
             <section class="mb-lg-50 mb-28">
                 <div class="row align-items-end mb-lg-32-5 mb-16">
                     <div class="col-lg-4">
-                        <h2 class="h1 fs-3xl-25  fs-lg-22 fs-13 ls-sm text-uppercase mb-0">Выберите свой тип решеток</h2>
+                        <h2 class="h1 fs-3xl-25  fs-lg-22 fs-13 ls-sm text-uppercase mb-0">Выберите свой тип
+                            решеток</h2>
                     </div>
                     <div class="col-auto d-lg-block d-none ms-auto"><a class="fs-12 text-decoration-none text-uppercase"
                                                                        href="#">Смотреть все ↘︎</a></div>
@@ -187,6 +188,9 @@
 
                     {% for item in leaders_of_selling %}
 
+<!--                    {% for price in prices %}-->
+<!--                        <p>{{ price.name }}: {{ price.salary }}</p>-->
+<!--                    {% endfor %}-->
                     <div class="col">
                         <div class="card card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">
                             <div class="card-body p-lg-20 py-10">
@@ -196,6 +200,9 @@
                                             {% include 'main/icons/chart.html' with classes='svg-icon' %}
                                         </a>
                                     </div>
+                                     <p>{{ item.name }}: {{ item.salary }} {{ item.path }}</p>
+                                    <p>{{result}}</p>
+                                    <img src="{{ item.path }}" alt="Image">
                                     <div class="position-absolute top-0 end-0 z-1">
                                         <a class="text-muted text-hover-black" href="#">
                                             {% include 'main/icons/heart.html' with classes='svg-icon' %}
@@ -643,7 +650,8 @@
             <section class="mb-lg-50 mb-30">
                 <div class="row mb-lg-22 mb-17-5">
                     <div class="col-xl-5 col-lg-6">
-                        <h2 class="h1  fs-3xl-22 fs-lg-26 fs-13 ls-sm text-uppercase mb-0">Отзывы довольных клиентов</h2>
+                        <h2 class="h1  fs-3xl-22 fs-lg-26 fs-13 ls-sm text-uppercase mb-0">Отзывы довольных
+                            клиентов</h2>
                     </div>
                 </div>
                 <div class="row row-cols-lg-2 row-cols-1 gy-lg-20 gy-10">

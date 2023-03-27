@@ -1,5 +1,14 @@
+import os
+import urllib.request
+from ftplib import FTP
+import json
+from django.core.exceptions import ImproperlyConfigured
+
 from django.http import HttpResponseNotFound
 from django.shortcuts import render
+
+from grids.settings import BASE_DIR
+from .models import PriceWinguardMain, PriceWinguardFiles
 
 list_of_grids_types = [
     {'title': 'Сварные', 'img_path': 'main/img/grids_types/icons1.png'},
@@ -22,23 +31,34 @@ list_of_grids_types = [
     {'title': 'В подъезд', 'img_path': 'main/img/grids_types/icons25.png'},
 ]
 
-leaders_of_selling = [
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {}
-]
+with open(os.path.join(BASE_DIR, 'secrets.json')) as secrets_file:
+    secrets = json.load(secrets_file)
+
+
+def get_secret(setting, secrets=secrets):
+    """Get secret setting or fail with ImproperlyConfigured"""
+    try:
+        return secrets[setting]
+    except KeyError:
+        raise ImproperlyConfigured("Set the {} setting".format(setting))
+
+
+ftp = FTP()
+ftp.set_debuglevel(2)
+ftp.connect(get_secret("FTP_URL"))
+ftp.login(get_secret("DB_USERNAME"), get_secret("DB_PASSWORD"))
+ftp.dir()
+
 
 
 def index(request):
-    return render(request, 'main/index.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Главная страница', 'leaders_of_selling': leaders_of_selling})
+    products = PriceWinguardMain.objects.all()[:50]
+    for product in products:
+        file = PriceWinguardFiles.objects.get(price_winguard_sketch_id=product.price_winguard_sketch_id)
+        product.path = file.path
+        data = urllib.request.urlretrieve("ftp://92.63.107.238/winguard/sketch/1/3/catalog.jpg")
+    return render(request, 'main/index.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Главная страница',
+                                               'leaders_of_selling': products, "result": data})
 
 
 def catalog(request):
@@ -67,3 +87,5 @@ def reviews(request):
 
 def page_not_found(request, exception):
     return HttpResponseNotFound("Page NOT found")
+
+ftp.close()
