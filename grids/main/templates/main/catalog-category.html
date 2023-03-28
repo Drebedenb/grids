@@ -8,7 +8,7 @@
                 <div class="row gy-lg-0  gy-12">
                     <div class="col-lg-6">
                         <h1 class="display-1 fs-3xl-38 fs-xl-36 fs-lg-30 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">
-                            Дутые металлические решетки на окна</h1>
+                            {{category.title}} Металлические решетки на окна</h1>
                     </div>
                     <div class="col-lg-6">
                         <div class="pt-xl-7 pt-lg-4">
@@ -64,26 +64,26 @@
                 <div class="row row-cols-lg-4 row-cols-2 gy-lg-20 gy-10 mb-lg-30 mb-10">
                     <div class="col"><a
                             class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20 py-lg-16 px-10 py-4"
-                            href="#">
-                        <h3 class="w-50 h5 fs-lg-13 fs-7 fw-medium ls-sm text-uppercase mb-0">Дутые решетки</h3><span
+                            href="{% url 'catalog-category' 'svarka' %}">
+                        <h3 class="w-50 h5 fs-lg-13 fs-7 fw-medium ls-sm text-uppercase mb-0">Сварные решетки</h3><span
+                            class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2"
+                            style="min-width: 3rem;">201</span></a></div>
+                    <div class="col"><a
+                            class="d-flex bg-hover-light 'text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20 py-lg-16 px-10 py-4"
+                            href="{% url 'catalog-category' 'ajur' %}">
+                        <h3 class="w-50 h5 fs-lg-13 fs-7 fw-medium ls-sm text-uppercase mb-0">Ажурные решетки</h3><span
                             class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2"
                             style="min-width: 3rem;">201</span></a></div>
                     <div class="col"><a
                             class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20 py-lg-16 px-10 py-4"
-                            href="#">
-                        <h3 class="w-50 h5 fs-lg-13 fs-7 fw-medium ls-sm text-uppercase mb-0">Дутые решетки</h3><span
+                            href="{% url 'catalog-category' 'kovka' %}">
+                        <h3 class="w-50 h5 fs-lg-13 fs-7 fw-medium ls-sm text-uppercase mb-0">Кованные решетки</h3><span
                             class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2"
                             style="min-width: 3rem;">201</span></a></div>
                     <div class="col"><a
                             class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20 py-lg-16 px-10 py-4"
-                            href="#">
-                        <h3 class="w-50 h5 fs-lg-13 fs-7 fw-medium ls-sm text-uppercase mb-0">Дутые решетки</h3><span
-                            class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2"
-                            style="min-width: 3rem;">201</span></a></div>
-                    <div class="col"><a
-                            class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20 py-lg-16 px-10 py-4"
-                            href="#">
-                        <h3 class="w-50 h5 fs-lg-13 fs-7 fw-medium ls-sm text-uppercase mb-0">Дутые решетки</h3><span
+                            href="{% url 'catalog-category' 'vip' %}">
+                        <h3 class="w-50 h5 fs-lg-13 fs-7 fw-medium ls-sm text-uppercase mb-0">VIP решетки</h3><span
                             class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2"
                             style="min-width: 3rem;">201</span></a></div>
                 </div>
@@ -271,23 +271,22 @@
                             </div>
                         </div>
                     </div>
+
+
+
+
+
+
                     <div class="col-lg-9">
+
                         <div class="row row-cols-lg-3 row-cols-1 gy-20">
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
+                        {% for item in products %}
+                            {% include 'main/components/catalog_category_item.html' with name=item.name price=item.price_b2c %}
+                        {% endfor %}
 
 
                         </div>
+
                         <nav class="mt-lg-30 mt-20">
                             <ol class="pagination justify-content-lg-center overflow-x-auto mb-0">
                                 <li class="page-item previous"><a class="page-link" href="#">Назад</a></li>

@@ -19,3 +19,18 @@ class PriceWinguardFiles(models.Model):
 
     class Meta:
         db_table = 'price_winguard_files'
+
+
+
+class PriceWinguardSketch(models.Model):
+    category = models.IntegerField()
+    number = models.IntegerField()
+    popularity = models.IntegerField()
+    orders = models.IntegerField()
+    date = models.DateField()
+    variants = models.IntegerField()
+    active = models.IntegerField()
+    min_price_for_sort = models.IntegerField()
+
+    class Meta:
+        db_table = 'price_winguard_sketch'

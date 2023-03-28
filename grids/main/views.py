@@ -8,7 +8,7 @@ from django.http import HttpResponseNotFound
 from django.shortcuts import render
 
 from grids.settings import BASE_DIR
-from .models import PriceWinguardMain, PriceWinguardFiles
+from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
 list_of_grids_types = [
     {'title': 'Сварные', 'img_path': 'main/img/grids_types/icons1.png'},
@@ -43,30 +43,47 @@ def get_secret(setting, secrets=secrets):
         raise ImproperlyConfigured("Set the {} setting".format(setting))
 
 
-ftp = FTP()
-ftp.set_debuglevel(2)
-ftp.connect(get_secret("FTP_URL"))
-ftp.login(get_secret("DB_USERNAME"), get_secret("DB_PASSWORD"))
-ftp.dir()
-
+# ftp = FTP()
+# ftp.set_debuglevel(2)
+# ftp.connect(get_secret("FTP_URL"))
+# ftp.login(get_secret("DB_USERNAME"), get_secret("DB_PASSWORD"))
+# ftp.dir()
+# ftp.close()
 
 
 def index(request):
     products = PriceWinguardMain.objects.all()[:50]
-    for product in products:
-        file = PriceWinguardFiles.objects.get(price_winguard_sketch_id=product.price_winguard_sketch_id)
-        product.path = file.path
-        data = urllib.request.urlretrieve("ftp://92.63.107.238/winguard/sketch/1/3/catalog.jpg")
+    # for product in products:
+    #     file = PriceWinguardFiles.objects.get(price_winguard_sketch_id=product.price_winguard_sketch_id)
+    #     product.path = file.path
+    #     data = urllib.request.urlretrieve("ftp://92.63.107.238/winguard/sketch/1/3/catalog.jpg")
     return render(request, 'main/index.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Главная страница',
-                                               'leaders_of_selling': products, "result": data})
+                                               'leaders_of_selling': products})
 
 
 def catalog(request):
     return render(request, 'main/catalog.html')
 
 
-def catalog_category(request):
-    return render(request, 'main/catalog-category.html')
+categories = {  # there are categories and their number in database. It depends on database structure what number is
+    "svarka": {"title": "Сварные", "number_of_category": 1},
+    "svarka-dutaya": {"title": "Дутые сварные", "number_of_category": 2},
+    "ajur": {"title": "Ажурные", "number_of_category": 3},
+    "ajur-dutaya": {"title": "Дутые ажурные", "number_of_category": 4},
+    "kovka": {"title": "Кованные", "number_of_category": 5},
+    "kovka-dutaya": {"title": "Дутые кованные", "number_of_category": 6},
+    "vip": {"title": "VIP", "number_of_category": 7},
+    "vip-dutaya": {"title": "Дутые VIP", "number_of_category": 8},
+}
+
+
+def catalog_category(request, category_name):
+    if category_name not in categories:
+        return HttpResponseNotFound("Page NOT found")
+    category = categories[category_name]
+    products = PriceWinguardSketch.objects.filter(category=category["number_of_category"]).values('category','id')
+    return render(request, 'main/catalog-category.html', {'title': 'Каталог',
+                                                          'products': products, 'category': category})
 
 
 def contacts(request):
@@ -87,5 +104,3 @@ def reviews(request):
 
 def page_not_found(request, exception):
     return HttpResponseNotFound("Page NOT found")
-
-ftp.close()
