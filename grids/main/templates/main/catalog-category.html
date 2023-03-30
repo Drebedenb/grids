@@ -281,10 +281,8 @@
 
                         <div class="row row-cols-lg-3 row-cols-1 gy-20">
                         {% for item in products %}
-                            {% include 'main/components/catalog_category_item.html' with name=item.name price=item.price_b2c %}
+                            {% include 'main/components/catalog_category_item.html' with name=item.width price=item.price path=item.path %}
                         {% endfor %}
-
-
                         </div>
 
                         <nav class="mt-lg-30 mt-20">

@@ -2,7 +2,7 @@ from django.db import models
 
 
 class PriceWinguardMain(models.Model):
-    price_winguard_sketch_id = models.IntegerField()
+    price_winguard_sketch = models.ForeignKey('PriceWinguardSketch', on_delete=models.PROTECT)
     salary = models.IntegerField()
     price_b2c = models.IntegerField()
     price_b2b = models.IntegerField()
@@ -14,7 +14,7 @@ class PriceWinguardMain(models.Model):
 
 class PriceWinguardFiles(models.Model):
     price_winguard_FilesType_id = models.IntegerField()
-    price_winguard_sketch_id = models.IntegerField()
+    price_winguard_sketch = models.ForeignKey('PriceWinguardSketch', on_delete=models.PROTECT)
     path = models.CharField(max_length=255)
 
     class Meta:

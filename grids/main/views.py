@@ -1,6 +1,5 @@
 import os
-import urllib.request
-from ftplib import FTP
+import re
 import json
 from django.core.exceptions import ImproperlyConfigured
 
@@ -43,20 +42,8 @@ def get_secret(setting, secrets=secrets):
         raise ImproperlyConfigured("Set the {} setting".format(setting))
 
 
-# ftp = FTP()
-# ftp.set_debuglevel(2)
-# ftp.connect(get_secret("FTP_URL"))
-# ftp.login(get_secret("DB_USERNAME"), get_secret("DB_PASSWORD"))
-# ftp.dir()
-# ftp.close()
-
-
 def index(request):
-    products = PriceWinguardMain.objects.all()[:50]
-    # for product in products:
-    #     file = PriceWinguardFiles.objects.get(price_winguard_sketch_id=product.price_winguard_sketch_id)
-    #     product.path = file.path
-    #     data = urllib.request.urlretrieve("ftp://92.63.107.238/winguard/sketch/1/3/catalog.jpg")
+    products = PriceWinguardMain.objects.all()[:20]
     return render(request, 'main/index.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Главная страница',
                                                'leaders_of_selling': products})
 
@@ -67,13 +54,13 @@ def catalog(request):
 
 categories = {  # there are categories and their number in database. It depends on database structure what number is
     "svarka": {"title": "Сварные", "number_of_category": 1},
-    "svarka-dutaya": {"title": "Дутые сварные", "number_of_category": 2},
+    "svarka_dut": {"title": "Дутые сварные", "number_of_category": 2},
     "ajur": {"title": "Ажурные", "number_of_category": 3},
-    "ajur-dutaya": {"title": "Дутые ажурные", "number_of_category": 4},
+    "ajur_dut": {"title": "Дутые ажурные", "number_of_category": 4},
     "kovka": {"title": "Кованные", "number_of_category": 5},
-    "kovka-dutaya": {"title": "Дутые кованные", "number_of_category": 6},
+    "kovka_dut": {"title": "Дутые кованные", "number_of_category": 6},
     "vip": {"title": "VIP", "number_of_category": 7},
-    "vip-dutaya": {"title": "Дутые VIP", "number_of_category": 8},
+    "vip_dut": {"title": "Дутые VIP", "number_of_category": 8},
 }
 
 
@@ -81,7 +68,19 @@ def catalog_category(request, category_name):
     if category_name not in categories:
         return HttpResponseNotFound("Page NOT found")
     category = categories[category_name]
-    products = PriceWinguardSketch.objects.filter(category=category["number_of_category"]).values('category','id')
+
+    products = PriceWinguardSketch.objects.filter(category=category["number_of_category"])\
+        .values('active', 'category', 'date', 'id', 'number', 'orders', 'popularity', 'pricewinguardfiles', 'pricewinguardmain', 'variants')[:20]
+    for product in products:
+        path = "".join(re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(id=product["pricewinguardfiles"]).path))
+        product["path"] = path
+        # arr_path = re.findall("\d+", path)
+        # product["path_folder"] = arr_path[0]
+        # product["path_file"] = arr_path[1]
+        additional_info = PriceWinguardMain.objects.filter(id=product["pricewinguardmain"]) # TODO: change filter to get when realize what is the errror
+        product["price"] = additional_info[0].price_b2c if hasattr(additional_info[0], "price_b2c") else "Error"
+        product["width"] = additional_info[0].name if hasattr(additional_info[0], "name") else "Error"
+        print(product)
     return render(request, 'main/catalog-category.html', {'title': 'Каталог',
                                                           'products': products, 'category': category})
 
