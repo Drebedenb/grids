@@ -3,10 +3,42 @@ let introSwiper = new Swiper("#intro-swiper", {
     effect: "fade",
     fadeEffect: {
         crossFade: true
-    },    
+    },
     navigation: {
         prevEl: "#intro-swiper-control .btn-swiper-prev",
         nextEl: "#intro-swiper-control .btn-swiper-next"
+    }
+});
+
+let reasonsSwiper = new Swiper("#reasons-swiper", {
+    slidesPerView: 1,
+    slidesPerGroup: 1,
+    spaceBetween: 20,
+    navigation: {
+        prevEl: "#reasons-swiper-control .btn-swiper-prev",
+        nextEl: "#reasons-swiper-control .btn-swiper-next"
+    },
+    breakpoints: {
+        576: {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            spaceBetween: 20
+        },
+        992: {
+            slidesPerView: 2,
+            slidesPerGroup: 2,
+            spaceBetween: 20
+        },
+        1200: {
+            slidesPerView: 3,
+            slidesPerGroup: 3,
+            spaceBetween: 30
+        },
+        1400: {
+            slidesPerView: 5,
+            slidesPerGroup: 5,
+            spaceBetween: 25
+        }
     }
 });
 
@@ -21,45 +53,52 @@ let featuresSwiper = new Swiper("#features-swiper", {
     breakpoints: {
         576: {
             slidesPerView: 1,
-            slidesPerGroup: 1,						
+            slidesPerGroup: 1,
             spaceBetween: 20
-        },	
+        },
         992: {
             slidesPerView: 2,
             slidesPerGroup: 2,
             spaceBetween: 20
-        },            
+        },
         1200: {
             slidesPerView: 3,
             slidesPerGroup: 3,
             spaceBetween: 30
-        },       					
+        },
         1400: {
             slidesPerView: 4,
             slidesPerGroup: 4,
-            spaceBetween: 40
+            spaceBetween: 25
         }
     }
 });
+
+
+
+
 
 let teamSwiper = new Swiper("#team-swiper", {
     loop: true,
     effect: "fade",
     fadeEffect: {
         crossFade: true
-    },    
+    },
     navigation: {
         prevEl: "#team-swiper-control .btn-swiper-prev",
         nextEl: "#team-swiper-control .btn-swiper-next"
     }
 });
 
+
+
+
 let projectsSwiper = new Swiper("#projects-swiper", {
     loop: true,
     effect: "fade",
     fadeEffect: {
         crossFade: true
-    },    
+    },
     navigation: {
         prevEl: "#projects-swiper-control .btn-swiper-prev",
         nextEl: "#projects-swiper-control .btn-swiper-next"
@@ -115,8 +154,7 @@ if (priceSlider != null) {
 
         if (!handle) {
             priceMin.value = value;
-        } 
-        else {
+        } else {
             priceMax.value = value;
         }
     });
@@ -129,3 +167,22 @@ if (priceSlider != null) {
         priceSlider.noUiSlider.set([null, this.value]);
     });
 }
+
+
+/* DROPDOWN */
+
+const dropdowns = document.querySelectorAll('.dropdown-wrapper');
+const span = document.querySelector('span');
+
+dropdowns.forEach((dd) => {
+    const links = dd.querySelectorAll('.dropdown-list a');
+    dd.addEventListener('click', function() {
+        this.classList.toggle('is-active');
+    });
+
+    links.forEach((element) => {
+        element.addEventListener('click', function(evt) {
+            span.innerHTML = evt.currentTarget.textContent;
+        });
+    });
+});

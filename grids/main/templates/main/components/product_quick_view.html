@@ -3,20 +3,17 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="product modal-body p-lg-20 py-10">
+                <button type="button" class="btn-close button-close  float-end btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
                 <div class="row gy-lg-0 gy-20">
                     <div class="col-lg-4">
                         <div class="position-relative text-center">
-                            <div class="d-lg-none d-block position-absolute top-0 start-0 z-1"><a
+                            <div class="d-block position-absolute top-0  svg_heart z-1"><a
                                     class="text-muted text-hover-black" href="#">
-                                <svg class="svg-icon">
-                                    <use href="img/sprite_icons.svg#chart"></use>
-                                </svg>
+                                    {% include 'main/icons/heart.html' with classes='svg-icon' %}
                             </a></div>
-                            <div class="d-lg-none d-block position-absolute top-0 end-0 z-1"><a
+                            <div class="d-block position-absolute svg_chart top-0 end-0 z-1"><a
                                     class="text-muted text-hover-black" href="#">
-                                <svg class="svg-icon">
-                                    <use href="img/sprite_icons.svg#heart"></use>
-                                </svg>
+                                    {% include 'main/icons/chart.html' with classes='svg-icon' %}
                             </a></div>
                             <div class="border-lg border-lg-light rounded-lg-3 px-lg-40 py-lg-35">
                                 <div class="swiper" id="product-swiper2"

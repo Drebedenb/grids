@@ -42,11 +42,11 @@ def index(request):
 
 
 def catalog(request):
-    return render(request, 'main/catalog.html')
+    return render(request, 'main/catalog.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Каталог'})
 
 
 def catalog_category(request):
-    return render(request, 'main/catalog-category.html')
+    return render(request, 'main/catalog-category.html',{'list_of_grids_types': list_of_grids_types, 'title': 'Каталог'})
 
 
 def contacts(request):
@@ -58,7 +58,7 @@ def product(request):
 
 
 def projects(request):
-    return render(request, 'main/projects.html')
+    return render(request, 'main/projects.html',{'list_of_grids_types': list_of_grids_types, 'title': 'Каталог'})
 
 
 def reviews(request):

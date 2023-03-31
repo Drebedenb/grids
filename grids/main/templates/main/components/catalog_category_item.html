@@ -1,7 +1,7 @@
 {% load static %}
 <div class="col">
-    <div class="card card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">
-        <div class="card-body p-lg-20 py-10">
+    <div class="card card-hover card_hover_shadow border-0 rounded-lg-4 rounded-3 shadow-lg">
+        <div class="card-body p-lg-14 py-10">
             <div class="position-relative text-center mb-20">
                 <div class="position-absolute top-0 start-0 z-1"><a
                         class="text-muted text-hover-black" href="#">
@@ -22,14 +22,17 @@
                         просмотр
                     </button>
                 </div>
+                <a href="{%url 'catalog-category'%}">
                 <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
-                        class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}"
+                        class="mt-15 object-fit-contain" src="{% static 'main/img/product-card-img.png' %}"
                         alt="Решетки на окна эконом класса"></div>
-            </div>
-            <h3 class="card-title h5 fs-lg-13 fs-10 fw-medium ls-sm text-uppercase mb-lg-14 mb-6">
-                Решетки на окна эконом класса</h3><span
-                class="d-block fs-8 fw-medium text-muted ls-sm text-uppercase mb-17-5">Цена: от 2900 руб</span><a
-                class="btn btn-outline-black btn-xl w-100">Подробнее</a>
+            </div></a>
+            <h3 class="card-title h5 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0  pt-5"><a class="text-decoration-none text-dark">
+                Решетки на окна эконом класса</a></h3>
+                <div class="d-flex align-items-center justify-content-between mt-10">
+                    <span class="d-block fs-12 text-danger fw-medium  text-uppercase ls-sm  ">от 2900 руб</span>
+                    <a class="btn btn-outline-primary  rounded-pill py-3 px-10 fs-10   ">Купить</a>
+                </div>
         </div>
     </div>
 </div>

@@ -1,0 +1,27 @@
+{% load static %}
+<section class="mb-lg-50 mb-28">
+    <div class="row mb-lg-22 mb-17">
+        <div class="col-lg-4 col-10">
+            <h2 class="h1  fs-3xl-22 fs-lg-26 fs-13 ls-sm text-uppercase mb-0">Назначение решеток</h2>
+        </div>
+    </div>
+    <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-1 gy-lg-15 gy-5">
+
+        {% for item in list_of_grids_types %}
+        <div class="col">
+            <a class="card border-0 rounded-4 text-hover-primary shadow-lg" href="#">
+                <div class="card-body d-flex align-items-center px-lg-15 px-10 py-lg-12 py-7">
+                    <div class="ratio ratio-1x1 overflow-hidden me-lg-8 me-10"
+                         style="max-width: 64px; max-height: 64px;"><img class="object-fit-contain"
+                                                                         src="{% static item.img_path %}"
+                                                                         alt="{{item.title}}"></div>
+                    <h3 class="card-title h5 fs-lg-10 fs-9 fw-medium ls-sm text-uppercase mb-0">
+                        {{item.title}}</h3>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+
+
+    </div>
+</section>

@@ -3,52 +3,44 @@
 {% block content %}
 <div class="pt-lg-30 pt-16 pb-lg-50 pb-32">
     <div class="container">
-        <header class="page-header mb-lg-50 mb-28">
+        <header class="page-header mb-lg-30 mb-28">
             <div>
-                <div class="row gy-lg-0  gy-12">
-                    <div class="col-lg-6">
-                        <h1 class="display-1 fs-3xl-38 fs-xl-36 fs-lg-30 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">
-                            Более 1000+ довольных клиентов</h1>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="pt-xl-7 pt-lg-4">
-                            <p class="lead fs-lg-12 fs-9 mb-0" style="max-width: 28rem;">В нашем каталоге представлено
-                                200+ эскизов дутых решеток на окна. Возможно изготовление решеток по вашему эскизу.</p>
-                            <div class="mt-3xl-31 mt-lg-24 d-lg-block d-none">
-                                <div class="hstack flex-wrap gap-20">
-                                    <btn class="btn btn-primary btn-xxl btn-wide-xxl" data-bs-toggle="modal"
-                                         data-bs-target="#modal-consultation" type="button">Консультация
-                                    </btn>
-                                    <btn class="btn btn-outline-black btn-xxl btn-wide-xxl" data-bs-toggle="modal"
-                                         data-bs-target="#modal-measurement" type="button">Вызвать на замер
-                                    </btn>
-                                </div>
+                <div class=" d-lg-none">
+                    <div class="pt-xl-7 pt-lg-4">
+                        <p class="lead fs-lg-12 fs-9 mb-0" style="max-width: 28rem;">В нашем каталоге представлено 600+ эскизов решеток на окна. Возможно изготовление решеток по вашему эскизу.</p>
+                        <div class="mt-3xl-31 mt-lg-24 d-lg-block d-none">
+                            <div class="hstack flex-wrap gap-20">
+                                <btn class="btn btn-secondary btn-xxl btn-wide-xxl" data-bs-toggle="modal" data-bs-target="#modal-consultation" type="button">Консультация</btn>
+                                <btn class="btn btn-primary btn-xxl btn-wide-xxl" data-bs-toggle="modal" data-bs-target="#modal-measurement" type="button">Вызвать на замер </btn>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="mt-20 d-lg-none d-block">
-                    <div class="vstack flex-wrap gap-10">
-                        <btn class="btn btn-primary btn-xxl w-100" data-bs-toggle="modal"
-                             data-bs-target="#modal-consultation" type="button">Консультация
-                        </btn>
-                        <btn class="btn btn-outline-black btn-xxl w-100" data-bs-toggle="modal"
-                             data-bs-target="#modal-measurement" type="button">Вызвать на замер
-                        </btn>
-                    </div>
+            </div>
+            <div class="mt-20 d-lg-none d-block">
+                <div class="vstack flex-wrap gap-10">
+                    <btn class="btn btn-secondary  btn-xxl w-100" data-bs-toggle="modal" data-bs-target="#modal-consultation" type="button">Консультация</btn>
+                    <btn class="btn btn-primary btn-xxl w-100" data-bs-toggle="modal" data-bs-target="#modal-measurement" type="button">Вызвать на замер </btn>
                 </div>
-                <hr class="opacity-100 mt-lg-40 mt-30 mb-0"/>
+            </div>
+
+
+
+            <div class="row gy-lg-0  gy-12">
+                <div class="col-lg-6">
+                    <h1 class="display-1 mt-20 fs-3xl-25 fs-xl-30 fs-lg-27 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Более 1000+ <br> довольных <br> клиентов </h1>
+                </div>
+                <div class="col-lg-6 rounded-3">
+                    <img class="rounded-3 w-100" src="{% static 'main/img/sale_to_reviews.jpg' %}" alt="sale_to_reviews">
+
+                </div>
+
             </div>
         </header>
         <main>
             <section>
                 <section class="mb-lg-50 mb-30">
-                    <div class="row mb-lg-22 mb-17-5">
-                        <div class="col-xl-5 col-lg-6">
-                            <h2 class="h1 fs-3xl-28 fs-lg-26 fs-13 ls-sm text-uppercase mb-0">Отзывы довольных
-                                клиентов</h2>
-                        </div>
-                    </div>
+                
                     <div class="row row-cols-lg-2 row-cols-1 gy-lg-20 gy-10">
                         <div class="col">
                             <div class="card h-100 rounded-lg-4 rounded-3">
@@ -62,9 +54,8 @@
                                         <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
                                            href="#">Смотреть фото</a>
                                     </div>
-                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Сказочно талантливые люди, заслуживающие
-                                        доверия и профессиональные, которых хорошо рекомендуют. Мы точно знали, чего
-                                        хотим, и придерживались бюджета. Не могу их достаточно похвалить!</p>
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Заказ №36378 Решетка на лоджию 3м2. Ответственные люди, я бы так назвал процесс взаимодействия с компанией. Все по плану, без заминок. Главное, что результат хороший и я им доволен.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -80,9 +71,7 @@
                                         <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
                                            href="#">Смотреть фото</a>
                                     </div>
-                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Сказочно талантливые люди, заслуживающие
-                                        доверия и профессиональные, которых хорошо рекомендуют. Мы точно знали, чего
-                                        хотим, и придерживались бюджета. Не могу их достаточно похвалить!</p>
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Всем довольна, тамбурную решетчатую дверь мне варили и цветочницу. Прекрасно смотрятся в доме.. мастер позвонил перед выездом на замер. Цена устроила, состояние спустя год очень хорошее</p>
                                 </div>
                             </div>
                         </div>
@@ -98,9 +87,8 @@
                                         <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
                                            href="#">Смотреть фото</a>
                                     </div>
-                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Сказочно талантливые люди, заслуживающие
-                                        доверия и профессиональные, которых хорошо рекомендуют. Мы точно знали, чего
-                                        хотим, и придерживались бюджета. Не могу их достаточно похвалить!</p>
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Обратились с запросом решетчатой двери на балкон. У нас частный салон красоты, искали решетки для бизнеса. поставили в срок
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -116,9 +104,8 @@
                                         <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
                                            href="#">Смотреть фото</a>
                                     </div>
-                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Сказочно талантливые люди, заслуживающие
-                                        доверия и профессиональные, которых хорошо рекомендуют. Мы точно знали, чего
-                                        хотим, и придерживались бюджета. Не могу их достаточно похвалить!</p>
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Заказал решетки ажурные на дачу в стиле кованых ворот. Можно было этого не делать, чуть скинув цену взять прямые. но мне так хотелось. по этому за саму работу мастеров и установщиков ставлю 5, а остальное уже история =В
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -134,9 +121,8 @@
                                         <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
                                            href="#">Смотреть фото</a>
                                     </div>
-                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Сказочно талантливые люди, заслуживающие
-                                        доверия и профессиональные, которых хорошо рекомендуют. Мы точно знали, чего
-                                        хотим, и придерживались бюджета. Не могу их достаточно похвалить!</p>
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">У меня все хорошо, ребята отлично работают. Знаю их завод под Клином, довольно дешево вышли металлические решетки на подвал и цоколь с установкой. Благодарю!
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -152,9 +138,7 @@
                                         <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
                                            href="#">Смотреть фото</a>
                                     </div>
-                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Сказочно талантливые люди, заслуживающие
-                                        доверия и профессиональные, которых хорошо рекомендуют. Мы точно знали, чего
-                                        хотим, и придерживались бюджета. Не могу их достаточно похвалить!</p>
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Удобно и быстро! Нужны были решетки антикошка и защита от выпадения ребенка, я очень беспокойная мама)) Все супер, особенно общение по телефону и в мессенджерах с мастерами. Так держать, обращусь к вам еще, как куплю дачу</p>
                                 </div>
                             </div>
                         </div>
@@ -170,9 +154,8 @@
                                         <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
                                            href="#">Смотреть фото</a>
                                     </div>
-                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Сказочно талантливые люди, заслуживающие
-                                        доверия и профессиональные, которых хорошо рекомендуют. Мы точно знали, чего
-                                        хотим, и придерживались бюджета. Не могу их достаточно похвалить!</p>
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Выражаем свою благодарность слаженной работе мастеров ООО «Оконные решётки» за высокое качество изготовления решеток для организации и их установку. Компания обладает профессионализмом и рекомендует себя как надежного подрядчика в вопросе металлических решеток. С уважением, коллектив “ХозМастер - Первый”.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -188,9 +171,82 @@
                                         <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
                                            href="#">Смотреть фото</a>
                                     </div>
-                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Сказочно талантливые люди, заслуживающие
-                                        доверия и профессиональные, которых хорошо рекомендуют. Мы точно знали, чего
-                                        хотим, и придерживались бюджета. Не могу их достаточно похвалить!</p>
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Решетки с защитой от детей, от их выпадания мне сделали за 2 дня и привезли домой</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 rounded-lg-4 rounded-3">
+                                <div class="card-body p-lg-15 pt-10 pb-lg-28">
+                                    <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
+                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatar.png' %}"
+                                                                 alt="Олег Матросов"/></div>
+                                        <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
+                                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
+                                        </div>
+                                        <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
+                                           href="#">Смотреть фото</a>
+                                    </div>
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Как хочется чтобы все в жизни было так же быстро и четко. я НЕ участвовал ни в одном вопросе в моменте производства решеток на окна в дом, ни на моменте их установки. Действительно компания-молодец! Выбрал, заказал, оплатил - привезли
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 rounded-lg-4 rounded-3">
+                                <div class="card-body p-lg-15 pt-10 pb-lg-28">
+                                    <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
+                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatar.png' %}"
+                                                                 alt="Олег Матросов"/></div>
+                                        <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
+                                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
+                                        </div>
+                                        <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
+                                           href="#">Смотреть фото</a>
+                                    </div>
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Раньше сталкивалась с частниками в вопросе стройки- ремонта и боялась столкнуться с ними в выборе оконной решетки на дачу. Совершенно мне этого не хотелось, поэтому сразу искала компанию с опытом, гарантией, договором, точной ценой и без обмана. Также не хотелось долго объяснять все на пальцах по телефону, как обычно с частниками без сайтов происходит.
+                                        По итогу ни разу не пожалела, что обратилась в вашу компанию. Вы меня прямо спасли от нечестных цен и буквально руководства людьми на объекте. Всем советую, получила идеальную цену/качество
+                                        </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 rounded-lg-4 rounded-3">
+                                <div class="card-body p-lg-15 pt-10 pb-lg-28">
+                                    <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
+                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatar.png' %}"
+                                                                 alt="Олег Матросов"/></div>
+                                        <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
+                                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
+                                        </div>
+                                        <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
+                                           href="#">Смотреть фото</a>
+                                    </div>
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Я далека от строительства, поэтому долго расспрашивала знакомых и искала в интернете информацию про решетки на окна в квартиру. По итогу больше всего мне впечатлили отзывы о фирме “Оконные решетки”, сразу было видно, что они давно на рынке и имеют опыт работы. Я не ошиблась) Привлекло также собственное производство, потому что у меня в апартаментах нестандартного размера окна, а хотелось не тянуть с процессом и поскорее сделать на заказ. Общением с компанией довольна, все рассказали детально, ответили на все мои вопросы, и самое главное, что со мной общались на моем языке без погружения в терминологию</p>
+                                        <p> Хочу сказать спасибо, сделали все очень качественно, мне не к чему придраться. Нужно было установить решетки на окна 40 на 23 и решетку для кондиционера, все сделали за 3 дня с учетом изготовления.</p>
+                                       
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 rounded-lg-4 rounded-3">
+                                <div class="card-body p-lg-15 pt-10 pb-lg-28">
+                                    <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
+                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatar.png' %}"
+                                                                 alt="Олег Матросов"/></div>
+                                        <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
+                                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
+                                        </div>
+                                        <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
+                                           href="#">Смотреть фото</a>
+                                    </div>
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Компанию посоветовал коллега для установки решеток на приямки и решетки для бизнеса в целом. У нас офисное здание и искали надежного подрядчика в этой сфере. С уверенностью могу сказать, что компания себя зарекомендовала с отличной стороны. Из перечня работ было изготовление: сварные решетки на окна 30 штук, решетчатые двери внутренние 4 штуки, решетки на кондиционер 5 штук, решетки на приямки 17 штук. </p>
+
+                                       <p> Выбрали варианты из готовых эскизов в каталоге, произвели расчет. Хочется отметить, что практически все металлические изделия изготавливались индивидуально под наши размеры окон и проемов. Были и свои нюансы с цоколем, без полностью компетентной организации в этом вопросе мы бы не обошлись.</p>
+                                        
+                                       <p>  Все наши пожелания и вопросы находили отклик. Спасибо специалисту Александру Олегову и мастеру монтажа Сергею Иванову, с ними больше всех происходила коммуникация.</p>
+                                        
+                                       <p>  Нас полностью устроил результат. Отдельная благодарность за сроки и информирование в процессе работ. Такой объем нужно было изготовить за 30 рабочих дней и установить на объекте. В общей сложности, с учетом согласований у арендодателя, конечно же, мы уложились в договор. Огромное спасибо! Будем сотрудничать.</p>
                                 </div>
                             </div>
                         </div>
