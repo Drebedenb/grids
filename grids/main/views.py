@@ -51,11 +51,6 @@ def index(request):
 def catalog(request):
     return render(request, 'main/catalog.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Каталог'})
 
-
-<<<<<<< HEAD
-def catalog_category(request):
-    return render(request, 'main/catalog-category.html',{'list_of_grids_types': list_of_grids_types, 'title': 'Каталог'})
-=======
 categories = {  # there are categories and their number in database. It depends on database structure what number is
     "svarka": {"title": "Сварные", "number_of_category": 1},
     "svarka_dut": {"title": "Дутые сварные", "number_of_category": 2},
@@ -86,7 +81,6 @@ def catalog_category(request, category_name):
         product["width"] = additional_info[0].name if hasattr(additional_info[0], "name") else "Error"
     return render(request, 'main/catalog-category.html', {'title': 'Каталог',
                                                           'products': products, 'category': category})
->>>>>>> 9610172f83aba08fe91af120ae6015d66a2405c7
 
 
 def contacts(request):
