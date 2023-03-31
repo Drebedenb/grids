@@ -1,5 +1,13 @@
+import os
+import re
+import json
+from django.core.exceptions import ImproperlyConfigured
+
 from django.http import HttpResponseNotFound
 from django.shortcuts import render
+
+from grids.settings import BASE_DIR
+from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
 list_of_grids_types = [
     {'title': 'Сварные', 'img_path': 'main/img/grids_types/icons1.png'},
@@ -22,31 +30,63 @@ list_of_grids_types = [
     {'title': 'В подъезд', 'img_path': 'main/img/grids_types/icons25.png'},
 ]
 
-leaders_of_selling = [
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {}
-]
+with open(os.path.join(BASE_DIR, 'secrets.json')) as secrets_file:
+    secrets = json.load(secrets_file)
+
+
+def get_secret(setting, secrets=secrets):
+    """Get secret setting or fail with ImproperlyConfigured"""
+    try:
+        return secrets[setting]
+    except KeyError:
+        raise ImproperlyConfigured("Set the {} setting".format(setting))
 
 
 def index(request):
-    return render(request, 'main/index.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Главная страница', 'leaders_of_selling': leaders_of_selling})
+    products = PriceWinguardMain.objects.all()[:20]
+    return render(request, 'main/index.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Главная страница',
+                                               'leaders_of_selling': products})
 
 
 def catalog(request):
     return render(request, 'main/catalog.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Каталог'})
 
 
+<<<<<<< HEAD
 def catalog_category(request):
     return render(request, 'main/catalog-category.html',{'list_of_grids_types': list_of_grids_types, 'title': 'Каталог'})
+=======
+categories = {  # there are categories and their number in database. It depends on database structure what number is
+    "svarka": {"title": "Сварные", "number_of_category": 1},
+    "svarka_dut": {"title": "Дутые сварные", "number_of_category": 2},
+    "ajur": {"title": "Ажурные", "number_of_category": 3},
+    "ajur_dut": {"title": "Дутые ажурные", "number_of_category": 4},
+    "kovka": {"title": "Кованные", "number_of_category": 5},
+    "kovka_dut": {"title": "Дутые кованные", "number_of_category": 6},
+    "vip": {"title": "VIP", "number_of_category": 7},
+    "vip_dut": {"title": "Дутые VIP", "number_of_category": 8},
+}
+
+
+def catalog_category(request, category_name):
+    if category_name not in categories:
+        return HttpResponseNotFound("Page NOT found")
+    category = categories[category_name]
+
+    products = PriceWinguardSketch.objects.filter(category=category["number_of_category"])\
+        .values('active', 'category', 'date', 'id', 'number', 'orders', 'popularity', 'pricewinguardfiles', 'pricewinguardmain', 'variants')[:20]
+    for product in products:
+        path = "".join(re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(id=product["pricewinguardfiles"]).path))
+        product["path"] = path
+        # arr_path = re.findall("\d+", path)
+        # product["path_folder"] = arr_path[0]
+        # product["path_file"] = arr_path[1]
+        additional_info = PriceWinguardMain.objects.filter(id=product["pricewinguardmain"]) # TODO: change filter to get when realize what is the errror
+        product["price"] = additional_info[0].price_b2c if hasattr(additional_info[0], "price_b2c") else "Error"
+        product["width"] = additional_info[0].name if hasattr(additional_info[0], "name") else "Error"
+    return render(request, 'main/catalog-category.html', {'title': 'Каталог',
+                                                          'products': products, 'category': category})
+>>>>>>> 9610172f83aba08fe91af120ae6015d66a2405c7
 
 
 def contacts(request):
