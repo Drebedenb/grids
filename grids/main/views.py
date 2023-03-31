@@ -80,7 +80,6 @@ def catalog_category(request, category_name):
         additional_info = PriceWinguardMain.objects.filter(id=product["pricewinguardmain"]) # TODO: change filter to get when realize what is the errror
         product["price"] = additional_info[0].price_b2c if hasattr(additional_info[0], "price_b2c") else "Error"
         product["width"] = additional_info[0].name if hasattr(additional_info[0], "name") else "Error"
-        print(product)
     return render(request, 'main/catalog-category.html', {'title': 'Каталог',
                                                           'products': products, 'category': category})
 
