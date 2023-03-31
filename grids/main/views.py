@@ -30,6 +30,37 @@ list_of_grids_types = [
     {'title': 'В подъезд', 'img_path': 'main/img/grids_types/icons25.png'},
 ]
 
+categories = {  # there are categories and their number in database. It depends on database structure what number is
+    "all": {"title": "Все", "number_of_category": 1},
+    "svarka": {"title": "Сварные", "number_of_category": 1},
+    "svarka_dut": {"title": "Дутые сварные", "number_of_category": 2},
+    "ajur": {"title": "Ажурные", "number_of_category": 3},
+    "ajur_dut": {"title": "Дутые ажурные", "number_of_category": 4},
+    "kovka": {"title": "Кованные", "number_of_category": 5},
+    "kovka_dut": {"title": "Дутые кованные", "number_of_category": 6},
+    "vip": {"title": "VIP", "number_of_category": 7},
+    "vip_dut": {"title": "Дутые VIP", "number_of_category": 8},
+}
+
+
+def get_products_by_category(category_number):
+    products = PriceWinguardSketch.objects.filter(category=category_number) \
+                   .values('category', 'date', 'id', 'pricewinguardfiles', 'pricewinguardmain')[:20]
+    for product in products:
+        path = "".join(re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(id=product["pricewinguardfiles"]).path))
+        path_arr = path.split("/")
+        product["path_folder"] = path_arr[1]
+        product["path_file"] = path_arr[2]
+        try:
+            additional_info = PriceWinguardMain.objects.get(id=product["pricewinguardmain"])
+            product["price"] = additional_info.price_b2c
+            product["width"] = additional_info.name
+        except:
+            product["price"] = "Нет данных в БД"
+            product["width"] = "Нет данных в БД"
+    return products
+
+
 with open(os.path.join(BASE_DIR, 'secrets.json')) as secrets_file:
     secrets = json.load(secrets_file)
 
@@ -43,7 +74,7 @@ def get_secret(setting, secrets=secrets):
 
 
 def index(request):
-    products = PriceWinguardMain.objects.all()[:20]
+    products = get_products_by_category(1)
     return render(request, 'main/index.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Главная страница',
                                                'leaders_of_selling': products})
 
@@ -51,36 +82,16 @@ def index(request):
 def catalog(request):
     return render(request, 'main/catalog.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Каталог'})
 
-categories = {  # there are categories and their number in database. It depends on database structure what number is
-    "svarka": {"title": "Сварные", "number_of_category": 1},
-    "svarka_dut": {"title": "Дутые сварные", "number_of_category": 2},
-    "ajur": {"title": "Ажурные", "number_of_category": 3},
-    "ajur_dut": {"title": "Дутые ажурные", "number_of_category": 4},
-    "kovka": {"title": "Кованные", "number_of_category": 5},
-    "kovka_dut": {"title": "Дутые кованные", "number_of_category": 6},
-    "vip": {"title": "VIP", "number_of_category": 7},
-    "vip_dut": {"title": "Дутые VIP", "number_of_category": 8},
-}
-
 
 def catalog_category(request, category_name):
     if category_name not in categories:
         return HttpResponseNotFound("Page NOT found")
     category = categories[category_name]
-
-    products = PriceWinguardSketch.objects.filter(category=category["number_of_category"])\
-        .values('active', 'category', 'date', 'id', 'number', 'orders', 'popularity', 'pricewinguardfiles', 'pricewinguardmain', 'variants')[:20]
-    for product in products:
-        path = "".join(re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(id=product["pricewinguardfiles"]).path))
-        product["path"] = path
-        # arr_path = re.findall("\d+", path)
-        # product["path_folder"] = arr_path[0]
-        # product["path_file"] = arr_path[1]
-        additional_info = PriceWinguardMain.objects.filter(id=product["pricewinguardmain"]) # TODO: change filter to get when realize what is the errror
-        product["price"] = additional_info[0].price_b2c if hasattr(additional_info[0], "price_b2c") else "Error"
-        product["width"] = additional_info[0].name if hasattr(additional_info[0], "name") else "Error"
+    products = get_products_by_category(category["number_of_category"])
+    leaders_of_selling = get_products_by_category(5)
+    print(leaders_of_selling)
     return render(request, 'main/catalog-category.html', {'title': 'Каталог',
-                                                          'products': products, 'category': category})
+                                                          'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling})
 
 
 def contacts(request):
@@ -92,7 +103,7 @@ def product(request):
 
 
 def projects(request):
-    return render(request, 'main/projects.html',{'list_of_grids_types': list_of_grids_types, 'title': 'Каталог'})
+    return render(request, 'main/projects.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Каталог'})
 
 
 def reviews(request):
