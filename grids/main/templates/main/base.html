@@ -283,16 +283,6 @@
 <script src="{% static 'main/vendors/wNumb/wNumb.min.js' %} "></script>
 <script src="{% static 'main/vendors/nouislider/nouislider.min.js' %} "></script>
 <script src="{% static 'main/js/main.js' %}"></script>
-<script>
-    let img = document.getElementsByTagName('img');
-    for (let i in img) {
-        img[i].oncontextmenu = function () {
-            return false;
-        }
-        img[i].ondragstart = function () {
-            return false;
-        }
-    }
-</script>
+<script src="{% static 'main/js/custom.js' %}"></script>
 </body>
 </html>

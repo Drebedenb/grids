@@ -2,7 +2,7 @@ import os
 import re
 import json
 from django.core.exceptions import ImproperlyConfigured
-
+from django.db.models import Min
 from django.http import HttpResponseNotFound
 from django.shortcuts import render
 
@@ -31,28 +31,29 @@ list_of_grids_types = [
 ]
 
 categories = {  # there are categories and their number in database. It depends on database structure what number is
-    "all": {"title": "Все", "number_of_category": 1},
-    "svarka": {"title": "Сварные", "number_of_category": 1},
-    "svarka_dut": {"title": "Дутые сварные", "number_of_category": 2},
-    "ajur": {"title": "Ажурные", "number_of_category": 3},
-    "ajur_dut": {"title": "Дутые ажурные", "number_of_category": 4},
-    "kovka": {"title": "Кованные", "number_of_category": 5},
-    "kovka_dut": {"title": "Дутые кованные", "number_of_category": 6},
-    "vip": {"title": "VIP", "number_of_category": 7},
-    "vip_dut": {"title": "Дутые VIP", "number_of_category": 8},
+    "all": {"title": "Все", 'url_title': "all" , "number_of_category": 1},
+    "svarka": {"title": "Сварные",'url_title': "svarka" , "number_of_category": 1},
+    "svarka_dut": {"title": "Дутые сварные",'url_title': "svarka_dut" , "number_of_category": 2},
+    "ajur": {"title": "Ажурные",'url_title': "ajur" , "number_of_category": 3},
+    "ajur_dut": {"title": "Дутые ажурные",'url_title': "ajur_dut" , "number_of_category": 4},
+    "kovka": {"title": "Кованые",'url_title': "kovka" , "number_of_category": 5},
+    "kovka_dut": {"title": "Дутые кованые",'url_title': "kovka_dut" , "number_of_category": 6},
+    "vip": {"title": "VIP",'url_title': "vip" , "number_of_category": 7},
+    "vip_dut": {"title": "Дутые VIP",'url_title': "vip_dut" , "number_of_category": 8},
 }
 
 
 def get_products_by_category(category_number):
     products = PriceWinguardSketch.objects.filter(category=category_number) \
-                   .values('category', 'date', 'id', 'pricewinguardfiles', 'pricewinguardmain')[:20]
+                   .values('id').annotate(min_pricewinguardmain=Min('pricewinguardmain')).values('min_pricewinguardmain', 'id')[:20]
+                   # .values('id', 'pricewinguardfiles').annotate(min_pricewinguardmain=Min('pricewinguardmain')).order_by('category', 'id', 'pricewinguardfiles')[:20]
     for product in products:
-        path = "".join(re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(id=product["pricewinguardfiles"]).path))
+        path = "".join(re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(price_winguard_sketch_id=product["id"]).path))
         path_arr = path.split("/")
         product["path_folder"] = path_arr[1]
         product["path_file"] = path_arr[2]
         try:
-            additional_info = PriceWinguardMain.objects.get(id=product["pricewinguardmain"])
+            additional_info = PriceWinguardMain.objects.get(id=product["min_pricewinguardmain"])
             product["price"] = additional_info.price_b2c
             product["width"] = additional_info.name
         except:
@@ -97,8 +98,17 @@ def contacts(request):
     return render(request, 'main/contacts.html')
 
 
-def product(request):
-    return render(request, 'main/product.html')
+def product(request, product_name):
+    sketch_id = re.findall("\d+", product_name)[2]
+    product = {}
+    path = "".join(
+        re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(price_winguard_sketch_id=sketch_id).path))
+    path_arr = path.split("/")
+    product["path_folder"] = path_arr[1]
+    product["path_file"] = path_arr[2]
+    product['additional_info'] = list(PriceWinguardMain.objects.filter(price_winguard_sketch_id=sketch_id).values('price_b2c', 'name'))
+    print(product)
+    return render(request, 'main/product.html', product)
 
 
 def projects(request):

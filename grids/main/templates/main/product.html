@@ -254,28 +254,16 @@
                                                     <div class="swiper-wrapper">
                                                         <div class="swiper-slide">
                                                             <div class="ratio overflow-hidden" style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 265px;"><img class="object-fit-contain"
-                                                                src="{% static 'main/img/product-card-img.png' %}" alt="Решетка на окно Эскиз № 1-1"></div>
+                                                                src="{% static 'main/img/grids_pictures' %}/{{path_folder}}/solid/{{path_file}}.png">
+
+                                                            </div>
                                                         </div>
                                                         <div class="swiper-slide">
                                                             <div class="ratio overflow-hidden"
                                                                  style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 265px;">
                                                                 <img class="object-fit-contain"
-                                                                     src="{% static 'main/img/product-card-img.png' %}"
-                                                                     alt="Решетка на окно Эскиз № 1-1"></div>
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <div class="ratio overflow-hidden"
-                                                                 style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 265px;">
-                                                                <img class="object-fit-contain"
-                                                                     src="{% static 'main/img/product-card-img.png' %}"
-                                                                     alt="Решетка на окно Эскиз № 1-1"></div>
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <div class="ratio overflow-hidden"
-                                                                 style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 265px;">
-                                                                <img class="object-fit-contain"
-                                                                     src="{% static 'main/img/product-card-img.png' %}"
-                                                                     alt="Решетка на окно Эскиз № 1-1"></div>
+                                                                     src="{% static 'main/img/grids_pictures' %}/{{path_folder}}/solid/{{path_file}} F.png">
+                                                                     alt="Решетка на окно Эскиз № {{path_folder}}-{{path_file}}"></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -297,7 +285,7 @@
                                     <div class="col-lg-8">
                                         <div class="d-lg-flex d-none align-items-center border-bottom border-black pb-12 mb-16">
                                             <h2 class="h5 fw-medium ls-sm text-uppercase mb-0">Решетка на окно Эскиз №
-                                                1-1</h2>
+                                                {{path_folder}}-{{path_file}}</h2>
                                             <div class="ms-auto">
                                                 <div class="hstack gap-10"><a class="text-secondary text-hover-black"
                                                                               href="#">
@@ -399,7 +387,7 @@
                                         <div class="mt-17-5">
                                             <div class="row row-cols-lg-2 row-cols-1 align-items-center gy-lg-0 gy-15">
                                                 <div class="col"><span
-                                                        class="fs-lg-13 fs-11 fw-semibold text-uppercase">Итого: 31 320 руб</span><span
+                                                        class="fs-lg-13 fs-11 fw-semibold text-uppercase">Итого: {{additional_info}} руб</span><span
                                                         class="d-block fs-lg-8 fs-7 text-muted text-uppercase mt-lg-1 mt-7-5">Для точного расчета <br>закажите   <span
                                                         class="text-primary">бесплатный замер</span></span></div>
                                                 <div class="col"><a class="btn btn-primary btn-xl w-100" href="#">Заказать
@@ -538,7 +526,6 @@
                                                          alt="Решетки на окна эконом класса"></div>
                                             </div>
                                             <h3 class="card-title h5 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0  pt-5">
-                                                <a class="text-decoration-none text-dark" href="{%url 'product'%}"> Решетка на окно сварная 1-1 </a></h3>
 
                                             <div class="d-flex align-items-center justify-content-between mt-10">
                                                 <span class="d-block fs-11 text-danger fw-medium  text-uppercase ls-sm  ">от 2900 руб</span>
@@ -570,7 +557,6 @@
                                                      alt="Решетки на окна эконом класса"></div>
                                         </div>
                                         <h3 class="card-title h5 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0  pt-5">
-                                            <a class="text-decoration-none text-dark" href="{%url 'product'%}"> Решетка на окно сварная 1-1 </a></h3>
 
                                         <div class="d-flex align-items-center justify-content-between mt-10">
                                             <span class="d-block fs-11 text-danger fw-medium  text-uppercase ls-sm  ">от 2900 руб</span>
@@ -602,7 +588,6 @@
                                                  alt="Решетки на окна эконом класса"></div>
                                     </div>
                                     <h3 class="card-title h5 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0  pt-5">
-                                        <a class="text-decoration-none text-dark" href="{%url 'product'%}"> Решетка на окно сварная 1-1 </a></h3>
 
                                     <div class="d-flex align-items-center justify-content-between mt-10">
                                         <span class="d-block fs-11 text-danger fw-medium  text-uppercase ls-sm  ">от 2900 руб</span>
@@ -634,7 +619,6 @@
                                              alt="Решетки на окна эконом класса"></div>
                                 </div>
                                 <h3 class="card-title h5 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0  pt-5">
-                                    <a class="text-decoration-none text-dark" href="{%url 'product'%}"> Решетка на окно сварная 1-1 </a></h3>
 
                                 <div class="d-flex align-items-center justify-content-between mt-10">
                                     <span class="d-block fs-11 text-danger fw-medium  text-uppercase ls-sm  ">от 2900 руб</span>
@@ -666,7 +650,6 @@
                                          alt="Решетки на окна эконом класса"></div>
                             </div>
                             <h3 class="card-title h5 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0  pt-5">
-                                <a class="text-decoration-none text-dark" href="{%url 'product'%}"> Решетка на окно сварная 1-1 </a></h3>
 
                             <div class="d-flex align-items-center justify-content-between mt-10">
                                 <span class="d-block fs-11 text-danger fw-medium  text-uppercase ls-sm  ">от 2900 руб</span>
@@ -698,7 +681,6 @@
                                      alt="Решетки на окна эконом класса"></div>
                         </div>
                         <h3 class="card-title h5 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0  pt-5">
-                            <a class="text-decoration-none text-dark" href="{%url 'product'%}"> Решетка на окно сварная 1-1 </a></h3>
 
                         <div class="d-flex align-items-center justify-content-between mt-10">
                             <span class="d-block fs-11 text-danger fw-medium  text-uppercase ls-sm  ">от 2900 руб</span>
