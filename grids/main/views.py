@@ -89,7 +89,6 @@ def catalog_category(request, category_name):
     category = categories[category_name]
     products = get_products_by_category(category["number_of_category"])
     leaders_of_selling = get_products_by_category(5)
-    print(leaders_of_selling)
     return render(request, 'main/catalog-category.html', {'title': 'Каталог',
                                                           'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling})
 
