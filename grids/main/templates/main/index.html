@@ -7,38 +7,96 @@
 
 
             <div class="card bg-dark text-white">
-                <img src="{% static 'main/img/baner.jpg' %}" class="card-img" alt="baner"/>
-                <div class="card-img-overlay">
+                <img    src="{% static 'main/img/baner.jpg' %}" class="card-img" alt="baner"/>
+                <div class="card-img-overlay" >
                     <div class="row mb-50">
                         <div class="col-7">
                             <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
                                 <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <h1 class="display-1  fs-3xl-25 fs-xl-23 fs-lg-22 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">
-                                            Металлические решетки <br> на окна по честным <br> ценам</h1>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <h1 class="display-1  fs-3xl-25 fs-xl-23 fs-lg-22 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">
-                                            Металлические решетки <br> на окна по честным <br> ценам</h1>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <h1 class="display-1  fs-3xl-25 fs-xl-23 fs-lg-22 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">
-                                            Металлические решетки <br> на окна по честным <br> ценам</h1>
-                                    </div>
+                                  <div class="carousel-item active">
+                                    <h1 class="display-1  fs-3xl-25 fs-xl-23 fs-lg-22 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Металлические решетки <br> на окна по честным <br> ценам</h1>
+                                  </div>
+                                  <div class="carousel-item">
+                                    <h1 class="display-1  fs-3xl-25 fs-xl-23 fs-lg-22 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Металлические решетки <br> на окна по честным <br> ценам</h1>
+                                  </div>
+                                  <div class="carousel-item">
+                                    <h1 class="display-1  fs-3xl-25 fs-xl-23 fs-lg-22 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Металлические решетки <br> на окна по честным <br> ценам</h1>
+                                  </div>
                                 </div>
-                            </div>
+                              <!--   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                  <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                  <span class="visually-hidden">Next</span>
+                                </button> -->
+                              </div>
                         </div>
                         <div class="col-5">
 
                         </div>
                     </div>
+                 
+                 
+                 <a class="btn mt-30  btn-outline-light btn-xxl "
+                        href="{%url 'catalog'%}">Перейти в каталог</a>
+                    
+              
+              
+              </div>
+           <!--  <div>
 
-
-                    <a class="btn mt-30  btn-outline-light btn-xxl "
-                       href="{% url 'catalog-category' 'all' %}">Перейти в каталог</a>
-
-
+                <div class="row gy-lg-0  gy-12">
+                    <div class="col-lg-6">
+                        <h1 class="display-1  fs-3xl-25 fs-xl-23 fs-lg-22 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Металлические решетки на окна по честным ценам</h1>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="pt-xl-7 pt-lg-4">
+                            <p class="lead fs-lg-12 fs-9 mb-0" style="max-width: 28rem;">В нашем каталоге представлено 600+ эскизов решеток на окна. Возможно изготовление решеток по вашему эскизу.</p>
+                            <div class="mt-3xl-31 mt-lg-24 d-lg-block d-none">
+                                <div class="d-flex"><a class="btn btn-outline-black btn-xl btn-wide-xxl fs-9" 
+                                                       href="{%url 'catalog'%}">Перейти в каталог</a>
+                                                       <div class="d-flex gap-10 mt-auto ms-auto" id="intro-swiper-control">
+                                                           <button class="btn btn-outline-secondary btn-swiper-prev rounded-circle d-flex justify-content-center align-items-center p-0" type="button" style="width: 3rem; height: 3rem;"><-</button>
+                                                           <button class="btn btn-outline-secondary btn-swiper-next rounded-circle d-flex justify-content-center align-items-center p-0" type="button" style="width: 3rem; height: 3rem;">->                                    </button>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <div class="swiper" id="intro-swiper" data-control="#intro-swiper-control">
+                                       <div class="swiper-wrapper">
+                                           <div class="swiper-slide">
+                                               <div class="ratio ratio-1x1 overflow-hidden mt-18" style="--bs-aspect-ratio: 50%; min-height: 200px; max-height: 600px;">
+                                                <img
+                                    class="rounded-lg-4 rounded-3 object-fit-cover"
+                                    src="{% static 'main/img/home-intro-img1.png' %}"
+                                    alt=""/></div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="ratio ratio-1x1 overflow-hidden mt-18"
+                                 style="--bs-aspect-ratio: 50%; min-height: 200px; max-height: 600px;"><img
+                                    class="rounded-lg-4 rounded-3 object-fit-cover"
+                                    src="{% static 'main/img/home-intro-img2.png' %}"
+                                    alt=""/></div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="ratio ratio-1x1 overflow-hidden mt-18"
+                                 style="--bs-aspect-ratio: 50%; min-height: 200px; max-height: 600px;"><img
+                                    class="rounded-lg-4 rounded-3 object-fit-cover"
+                                    src="{% static 'main/img/home-intro-img3.png' %}"
+                                    alt=""/></div>
+                        </div>
+                    </div>
                 </div>
+                <div class="mt-20 d-lg-none d-block"><a class="btn btn-outline-black btn-xxl w-100"
+                                                        href="{%url 'catalog'%}">Перейти
+                    в каталог</a>
+                </div>
+                <hr class="opacity-100 mt-lg-50 mt-30 mb-0"/>
+            </div> -->
         </header>
         <main>
             <section class="mb-lg-50 mb-28">
@@ -48,83 +106,82 @@
                             решеток</h2>
                     </div>
                     <div class="col-auto d-lg-block d-none ms-auto"><a class="fs-12 text-decoration-none text-uppercase"
-                                                                       href="{% url 'catalog-category' 'all' %}">Смотреть все ↘︎</a></div>
+                                                                       href="#">Смотреть все ↘︎</a></div>
                 </div>
                 <div class="row row-cols-xl-4 row-cols-lg-2 row-cols-1 gy-20">
                     <div class="col"><a class="card border-0 rounded-lg-4 rounded-3 text-hover-primary shadow-lg"
-                                        href="{% url 'catalog-category' 'svarka' %}">
+                                        href="#">
                         <div class="card-body pb-16">
                             <div class="position-relative mb-9"><span
                                     class="badge fs-5 rounded-pill border border-light position-absolute top-0 start-0 py-2 z-1"
-                                    style="min-width: 3rem;">149</span>
+                                    style="min-width: 3rem;">201</span>
                                 <div class="ratio overflow-hidden"
                                      style="--bs-aspect-ratio: 110%; min-height: 260px; max-height: 345px;">
-                                    <img class="object-fit-contain" src="{% static 'main/img/grids_types/svarka.png' %}"
-                                         alt="Эконом решетки">
+                                     <img class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}"
+                                        alt="Эконом решетки">
                                 </div>
                             </div>
                             <div class="d-flex">
-                                <h3 class="card-title w-50 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0">Сварные
-                                    решетки</h3>
+                                <h3 class="card-title w-50 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0">Эконом решетки </h3>
                                 <span class="text-primary fs-10 fw-medium ls-sm text-uppercase text-nowrap mt-auto ms-auto">
                                     <span class="fs-8">от</span><span class="fs-13"> 990 р</span></span>
                             </div>
                         </div>
                     </a></div>
                     <div class="col"><a class="card border-0 rounded-lg-4 rounded-3 text-hover-primary shadow-lg"
-                                        href="{% url 'catalog-category' 'ajur' %}">
+                                        href="#">
                         <div class="card-body pb-16">
                             <div class="position-relative mb-9"><span
                                     class="badge fs-5 rounded-pill border border-light position-absolute top-0 start-0 py-2 z-1"
-                                    style="min-width: 3rem;">111</span>
+                                    style="min-width: 3rem;">201</span>
                                 <div class="ratio overflow-hidden"
                                      style="--bs-aspect-ratio: 110%; min-height: 260px; max-height: 345px;"><img
-                                        class="object-fit-contain" src="{% static 'main/img/grids_types/ajur.png' %}"
+                                        class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}"
                                         alt="Эконом решетки">
                                 </div>
                             </div>
                             <div class="d-flex">
-                                <h3 class="card-title w-50 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0">Ажурные решетки </h3>
+                                <h3 class="card-title w-50 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0">Эконом решетки </h3>
                                 <span class="text-primary fs-10 fw-medium ls-sm text-uppercase text-nowrap mt-auto ms-auto">
-                                    <span class="fs-8">от</span><span class="fs-13"> 1610 р</span></span>
+                                    <span class="fs-8">от</span><span class="fs-13"> 990 р</span></span>
                             </div>
                         </div>
                     </a></div>
                     <div class="col"><a class="card border-0 rounded-lg-4 rounded-3 text-hover-primary shadow-lg"
-                                        href="{% url 'catalog-category' 'kovka' %}">
+                                        href="#">
                         <div class="card-body pb-16">
                             <div class="position-relative mb-9"><span
                                     class="badge fs-5 rounded-pill border border-light position-absolute top-0 start-0 py-2 z-1"
-                                    style="min-width: 3rem;">75</span>
+                                    style="min-width: 3rem;">201</span>
                                 <div class="ratio overflow-hidden"
                                      style="--bs-aspect-ratio: 110%; min-height: 260px; max-height: 345px;"><img
-                                        class="object-fit-contain" src="{% static 'main/img/grids_types/kovka.png' %}"
+                                        class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}"
                                         alt="Эконом решетки">
                                 </div>
                             </div>
                             <div class="d-flex">
-                                <h3 class="card-title w-50 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0">Кованные решетки</h3>
+                                <h3 class="card-title w-50 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0">Эконом решетки </h3>
                                 <span class="text-primary fs-10 fw-medium ls-sm text-uppercase text-nowrap mt-auto ms-auto">
-                                    <span class="fs-8">от</span><span class="fs-13"> 2099 р</span></span>
+                                    <span class="fs-8">от</span><span class="fs-13"> 990 р</span></span>
                             </div>
                         </div>
                     </a></div>
                     <div class="col"><a class="card border-0 rounded-lg-4 rounded-3 text-hover-primary shadow-lg"
-                                        href="{% url 'catalog-category' 'vip' %}">
+                                        href="#">
                         <div class="card-body pb-16">
                             <div class="position-relative mb-9"><span
                                     class="badge fs-5 rounded-pill border border-light position-absolute top-0 start-0 py-2 z-1"
-                                    style="min-width: 3rem;">50</span>
+                                    style="min-width: 3rem;">201</span>
                                 <div class="ratio overflow-hidden"
                                      style="--bs-aspect-ratio: 110%; min-height: 260px; max-height: 345px;"><img
-                                        class="object-fit-contain" src="{% static 'main/img/grids_types/vip.png' %}"
+                                        class="object-fit-contain" src="{% static 'main/img/product-card-img.png' %}"
                                         alt="Эконом решетки">
                                 </div>
                             </div>
                             <div class="d-flex">
-                                <h3 class="card-title w-50 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0">VIP решетки</h3>
+                                <h3 class="card-title w-50 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0">Эконом решетки </h3>
                                 <span class="text-primary fs-10 fw-medium ls-sm text-uppercase text-nowrap mt-auto ms-auto">
-                                    <span class="fs-8">от</span><span class="fs-13"> 2599 р</span></span>
+                                    <span class="fs-8">от</span><span class="fs-13"> 990 р</span></span>
                             </div>
                         </div>
                     </a></div>
@@ -134,9 +191,10 @@
             </section>
 
 
+
             <!--NAZNACHENIE RESHETOK-->
 
-            {% include 'main/components/lattice_tags.html' with list_of_grids_types=list_of_grids_types %}
+            {% include 'main/components/lattice_tags.html' with list_of_grids_types=list_of_grids_types  %}
 
             <!--HITI PRODAZH-->
             <section class="mb-lg-50 mb-28">
@@ -145,6 +203,10 @@
                 <div class="row mt-10 row-cols-lg-4 row-cols-1 gy-20">
 
                     {% for item in leaders_of_selling %}
+
+<!--                    {% for price in prices %}-->
+<!--                        <p>{{ price.name }}: {{ price.salary }}</p>-->
+<!--                    {% endfor %}-->
                     <div class="col">
                         <div class="card card_hover_shadow card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">
                             <div class="card-body p-lg-13 py-10">
@@ -154,6 +216,9 @@
                                             {% include 'main/icons/chart.html' with classes='svg-icon' %}
                                         </a>
                                     </div>
+                                     <p>{{ item.name }}: {{ item.salary }} {{ item.path }}</p>
+                                    <p>{{result}}</p>
+                                    <img src="{{ item.path }}" alt="Image">
                                     <div class="position-absolute top-0 end-0 z-1">
                                         <a class="text-muted text-hover-black" href="#">
                                             {% include 'main/icons/heart.html' with classes='svg-icon' %}
@@ -166,15 +231,15 @@
                                     </div>
                                     <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
                                             class="mt-15 object-fit-contain"
-                                            src="{% static 'main/img/grids_pictures' %}/{{item.path_folder}}/solid/{{item.path_file}}.png"
+                                            src="{% static 'main/img/product-card-img.png' %}"
                                             alt="Решетки на окна эконом класса"></div>
                                 </div>
                                 <h3 class="card-title h5 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0  pt-5">
                                     Решетки на окна эконом класса</h3>
-                                <div class="d-flex align-items-center justify-content-between mt-10">
-                                    <span class="d-block fs-12 text-danger fw-medium  text-uppercase ls-sm  ">от {{item.price}} руб</span>
-                                    <a class="btn btn-outline-primary  rounded-pill py-3 px-10 fs-10   ">Купить</a>
-                                </div>
+                                    <div class="d-flex align-items-center justify-content-between mt-10">
+                                        <span class="d-block fs-12 text-danger fw-medium  text-uppercase ls-sm  ">от 2900 руб</span>
+                                        <a class="btn btn-outline-primary  rounded-pill py-3 px-10 fs-10   ">Купить</a>
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -199,47 +264,35 @@
             {% include 'main/components/consultation_modal.html' %}
 
 
+           
             <section class="mb-lg-50 mb-28">
                 <div class="mb-lg-35 mb-8 mt-lg-50">
-                    <div class="badge border border-secondary d-lg-inline-block d-none fs-6 text-secondary ls-sm text-uppercase mb-10 py-6"
-                         style="min-width: 12.5rem;">О компании
-                    </div>
+                    <div class="badge border border-secondary d-lg-inline-block d-none fs-6 text-secondary ls-sm text-uppercase mb-10 py-6" style="min-width: 12.5rem;">О компании</div>
                     <div class="row mb-16">
                         <div class="col-lg-5">
-                            <h2 class="h1  fs-3xl-22 fs-lg-26 fs-13 ls-sm text-uppercase mb-0">Непрерывно работаем для
-                                вас с 2010 года</h2>
+                            <h2 class="h1  fs-3xl-22 fs-lg-26 fs-13 ls-sm text-uppercase mb-0">Непрерывно работаем для вас с 2010 года</h2>
                         </div>
                     </div>
                     <div class="row row-cols-lg-2 row-cols-1 fs-lg-11 fs-9 fw-light">
                         <div class="col">
-                            <p>«Оконные решётки» изготавливает сварные и кованые решетки любой сложности уже 13 лет в
-                                Московской области. Выбирайте готовые модели из 615 эскизов для окна, балкона,
-                                кондиционера и решетки под цветы.
-                                Заказать решетки можно для дома на первый этаж, доступны решетки гармошка, внутренние,
-                                внешние, глухие и декоративные решетки художественной ковки.
-                            </p>
+                            <p>«Оконные решётки» изготавливает сварные и кованые решетки любой сложности уже 13 лет в Московской области. Выбирайте готовые модели из 615 эскизов для окна, балкона, кондиционера и решетки под цветы.
+                                Заказать решетки можно для дома на первый этаж, доступны решетки гармошка, внутренние, внешние, глухие и декоративные решетки художественной ковки. 
+                                </p>
                             <p>
-                                Мы специализируемся на всех видах решеток для квартиры и дачи, изготовим и установим за
-                                12 часов.</p>
-                            <p>Цены на металлические решетки доступные, всего от ххх рублей за кв. метр с бесплатным
-                                выездом специалиста для замеров. Получите быстрый расчет изделий по телефону
-                                +7-495-99-99 или заполните форму заявки на сайте. </p>
+                                Мы специализируемся на всех видах решеток для квартиры и дачи, изготовим и установим за 12 часов.</p>
+                            <p>Цены на металлические решетки доступные, всего от ххх рублей за кв. метр с бесплатным выездом специалиста для замеров. Получите быстрый расчет изделий по телефону +7-495-99-99 или заполните форму заявки на сайте.                                 </p>
                         </div>
                         <div class="col">
                             <p>Изготовим решетки по вашим размерам с гарантией 5 лет:</p>
                             <ul>
-                                <li>Металлические изделия из высокопрочной стали в виде прутков, квадратов, полос и
-                                    труб;
+                                <li>Металлические изделия из высокопрочной стали в виде прутков, квадратов, полос и труб;
                                 </li>
                                 <li>Надежные кованые изделия из квадрата 12x12</li>
                                 <li>Сварные решетки из прутков 10-12мм;</li>
-                                <li>Дутые, ажурные, арочные и распашные решетки проходят 3 ступени контроля качества;
-                                </li>
+                                <li>Дутые, ажурные, арочные и распашные решетки проходят 3 ступени контроля качества;</li>
                                 <li>Производство решеток антикошка, от выпадения детей, в подъезд и на приямки.</li>
                             </ul>
-                            <p>Установка сварных решеток выполняется мастерами с опытом работы от 7 лет и техническим
-                                образованием. Готовые изделия обладают прочной конструкцией, высоким качеством краски
-                                для металла и конкурентной ценой, за счет своего производства.</p>
+                            <p>Установка сварных решеток выполняется мастерами с опытом работы от 7 лет и техническим образованием. Готовые изделия обладают прочной конструкцией, высоким качеством краски для металла и конкурентной ценой, за счет своего производства.</p>
                         </div>
                     </div>
                 </div>
@@ -290,170 +343,150 @@
                     </div>
                 </div>
                 <div>
-                    <section>
+                    <section >
                         <div class="row row-cols-xl-4 row-cols-2 g-lg-20 gy-10">
                             <div class="col-xl-6 col-12">
                                 <div class="card h-100 border-0 text-white">
                                     <div class="d-flex gap-10 position-absolute z-2" id="team-swiper-control">
-                                        <button class="btn btn-outline-white btn-swiper-prev rounded-circle d-flex justify-content-center align-items-center p-0"
-                                                type="button" style="width: 3rem; height: 3rem;"><-
-                                        </button>
-                                        <button class="btn btn-outline-white btn-swiper-next rounded-circle d-flex justify-content-center align-items-center p-0"
-                                                type="button" style="width: 3rem; height: 3rem;">->
-                                        </button>
+                                        <button class="btn btn-outline-white btn-swiper-prev rounded-circle d-flex justify-content-center align-items-center p-0" type="button" style="width: 3rem; height: 3rem;"><-</button>
+                                        <button class="btn btn-outline-white btn-swiper-next rounded-circle d-flex justify-content-center align-items-center p-0" type="button" style="width: 3rem; height: 3rem;">->                           </button>
                                     </div>
-                                    <div class="swiper  w-100 h-100" id="team-swiper"
-                                         data-control="#team-swiper-control">
-                                        <div class="swiper-wrapper">
-                                            <div class="swiper-slide">
-                                                <div class="ratio h-100"
-                                                     style="--bs-aspect-ratio: 60%; min-height: 200px; max-height: 460px;">
-                                                    <img class="object-fit-cover rounded-lg-4 rounded-3"
-                                                         src="{% static 'main/img/workers/1_img.jpg' %}">
-                                                    <div class="card-body d-flex flex-column justify-content-lg-end p-lg-10 px-9 py-10">
-                                                        <div class="w-lg-50 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
-                                                            <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">
-                                                                Производственный цех</h4><span
-                                                                class="d-lg-block d-none fs-lg-8 fs-4 fw-medium ls-sm text-uppercase">Мо, Клинский р-он, д. Ясенево, д. 74, стр. 7</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <div class="ratio h-100"
-                                                     style="--bs-aspect-ratio: 60%; min-height: 200px; max-height: 460px;">
-                                                    <img class="object-fit-cover rounded-lg-4 rounded-3"
-                                                         src="{% static 'main/img/workers/2_img.jpg' %}">
-                                                    <div class="card-body d-flex flex-column justify-content-lg-end p-lg-10 px-9 py-10">
-                                                        <div class="w-lg-50 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
-                                                            <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">
-                                                                Производственный цех</h4><span
-                                                                class="d-lg-block d-none fs-lg-8 fs-4 fw-medium ls-sm text-uppercase">Мо, Клинский р-он, д. Ясенево, д. 74, стр. 7</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <div class="ratio h-100"
-                                                     style="--bs-aspect-ratio: 60%; min-height: 200px; max-height: 460px;">
-                                                    <img class="object-fit-cover rounded-lg-4 rounded-3"
-                                                         src="{% static 'main/img/workers/3_img.jpg' %}">
-                                                    <div class="card-body d-flex flex-column justify-content-lg-end p-lg-10 px-9 py-10">
-                                                        <div class="w-lg-50 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
-                                                            <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">
-                                                                Производственный цех</h4><span
-                                                                class="d-lg-block d-none fs-lg-8 fs-4 fw-medium ls-sm text-uppercase">Мо, Клинский р-он, д. Ясенево, д. 74, стр. 7                                                    </span>
-                                                        </div>
+                                <div class="swiper  w-100 h-100" id="team-swiper" data-control="#team-swiper-control">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <div class="ratio h-100" style="--bs-aspect-ratio: 60%; min-height: 200px; max-height: 460px;"><img class="object-fit-cover rounded-lg-4 rounded-3" src="{% static 'main/img/workers/1_img.jpg' %}">
+                                                <div class="card-body d-flex flex-column justify-content-lg-end p-lg-10 px-9 py-10">
+                                                    <div class="w-lg-50 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
+                                                        <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">Производственный цех</h4><span class="d-lg-block d-none fs-lg-8 fs-4 fw-medium ls-sm text-uppercase">Мо, Клинский р-он, д. Ясенево, д. 74, стр. 7</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card h-100 border-0 text-white">
-                                    <div class="ratio h-100"
-                                         style="--bs-aspect-ratio: 120%; min-height: 200px; max-height: 460px;"><img
-                                            class="object-fit-cover rounded-lg-4 rounded-3"
-                                            src="{% static 'main/img/workers/ingener_1.jpg' %}">
-                                        <div class="card-body d-flex flex-column justify-content-lg-end p-lg-20 px-9 py-10">
-                                            <div class="w-75 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
-                                                <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">
-                                                    Дмитрий Капустин</h4><span
-                                                    class="d-block fs-lg-8 fs-4 fw-medium ls-sm text-uppercase">Главный инженер</span>
+                                        <div class="swiper-slide">
+                                            <div class="ratio h-100" style="--bs-aspect-ratio: 60%; min-height: 200px; max-height: 460px;"><img class="object-fit-cover rounded-lg-4 rounded-3" src="{% static 'main/img/workers/2_img.jpg' %}">
+                                                <div class="card-body d-flex flex-column justify-content-lg-end p-lg-10 px-9 py-10">
+                                                    <div class="w-lg-50 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
+                                                        <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">Производственный цех</h4><span class="d-lg-block d-none fs-lg-8 fs-4 fw-medium ls-sm text-uppercase">Мо, Клинский р-он, д. Ясенево, д. 74, стр. 7</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card h-100 border-0 text-white">
-                                    <div class="ratio h-100"
-                                         style="--bs-aspect-ratio: 120%; min-height: 200px; max-height: 460px;"><img
-                                            class="object-fit-cover rounded-lg-4 rounded-3"
-                                            src="{% static 'main/img/workers/ingener_2.jpg' %}">
-                                        <div class="card-body d-flex flex-column justify-content-lg-end p-lg-20 px-9 py-10">
-                                            <div class="w-75 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
-                                                <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">
-                                                    Дмитрий Капустин</h4><span
-                                                    class="d-block fs-lg-8 fs-4 fw-medium ls-sm text-uppercase">Менеджер</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card h-100 border-0 text-white">
-                                    <div class="ratio h-100"
-                                         style="--bs-aspect-ratio: 120%; min-height: 200px; max-height: 460px;"><img
-                                            class="object-fit-cover rounded-lg-4 rounded-3"
-                                            src="{% static 'main/img/workers/manager_1.jpg' %}">
-                                        <div class="card-body d-flex flex-column justify-content-lg-end p-lg-20 px-9 py-10">
-                                            <div class="w-75 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
-                                                <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">
-                                                    Дмитрий Капустин</h4><span
-                                                    class="d-block fs-lg-8 fs-4 fw-medium ls-sm text-uppercase">Менеджер                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card h-100 border-0 text-white">
-                                    <div class="ratio h-100"
-                                         style="--bs-aspect-ratio: 120%; min-height: 200px; max-height: 460px;"><img
-                                            class="object-fit-cover rounded-lg-4 rounded-3"
-                                            src="{% static 'main/img/workers/manager_2.jpg' %}">
-                                        <div class="card-body d-flex flex-column justify-content-lg-end p-lg-20 px-9 py-10">
-                                            <div class="w-75 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
-                                                <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0"
-                                                    style="max-width: 300px;">Дмитрий Капустин</h4><span
-                                                    class="d-block fs-lg-8 fs-4 fw-medium ls-sm text-uppercase">Менеджер                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card h-100 border-0 text-white">
-                                    <div class="ratio h-100"
-                                         style="--bs-aspect-ratio: 120%; min-height: 200px; max-height: 460px;"><img
-                                            class="object-fit-cover rounded-lg-4 rounded-3"
-                                            src="{% static 'main/img/workers/manager_3.jpg' %}">
-                                        <div class="card-body d-flex flex-column justify-content-lg-end p-lg-20 px-9 py-10">
-                                            <div class="w-75 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
-                                                <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">
-                                                    Дмитрий Капустин</h4><span
-                                                    class="d-block fs-lg-8 fs-4 fw-medium ls-sm text-uppercase">Менеджер                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card h-100 border-0 text-white">
-                                    <div class="ratio h-100"
-                                         style="--bs-aspect-ratio: 120%; min-height: 200px; max-height: 460px;"><img
-                                            class="object-fit-cover rounded-lg-4 rounded-3"
-                                            src="{% static 'main/img/workers/manager_4.jpg' %}">
-                                        <div class="card-body d-flex flex-column justify-content-lg-end p-lg-20 px-9 py-10">
-                                            <div class="w-75 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
-                                                <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">
-                                                    Дмитрий Капустин</h4><span
-                                                    class="d-block fs-lg-8 fs-4 fw-medium ls-sm text-uppercase">Менеджер                                                       </span>
+                                        <div class="swiper-slide">
+                                            <div class="ratio h-100" style="--bs-aspect-ratio: 60%; min-height: 200px; max-height: 460px;"><img class="object-fit-cover rounded-lg-4 rounded-3" src="{% static 'main/img/workers/3_img.jpg' %}">
+                                                <div class="card-body d-flex flex-column justify-content-lg-end p-lg-10 px-9 py-10">
+                                                    <div class="w-lg-50 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
+                                                        <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">Производственный цех</h4><span class="d-lg-block d-none fs-lg-8 fs-4 fw-medium ls-sm text-uppercase">Мо, Клинский р-он, д. Ясенево, д. 74, стр. 7                                                    </span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col">
+                            <div class="card h-100 border-0 text-white">
+                                <div class="ratio h-100"
+                                     style="--bs-aspect-ratio: 120%; min-height: 200px; max-height: 460px;"><img
+                                        class="object-fit-cover rounded-lg-4 rounded-3"
+                                        src="{% static 'main/img/workers/ingener_1.jpg' %}">
+                                    <div class="card-body d-flex flex-column justify-content-lg-end p-lg-20 px-9 py-10">
+                                        <div class="w-75 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
+                                            <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">
+                                                Дмитрий Капустин</h4><span
+                                                class="d-block fs-lg-8 fs-4 fw-medium ls-sm text-uppercase">Главный инженер</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 border-0 text-white">
+                                <div class="ratio h-100"
+                                     style="--bs-aspect-ratio: 120%; min-height: 200px; max-height: 460px;"><img
+                                        class="object-fit-cover rounded-lg-4 rounded-3"
+                                        src="{% static 'main/img/workers/ingener_2.jpg' %}">
+                                    <div class="card-body d-flex flex-column justify-content-lg-end p-lg-20 px-9 py-10">
+                                        <div class="w-75 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
+                                            <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">
+                                                Дмитрий Капустин</h4><span
+                                                class="d-block fs-lg-8 fs-4 fw-medium ls-sm text-uppercase">Менеджер</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 border-0 text-white">
+                                <div class="ratio h-100"
+                                     style="--bs-aspect-ratio: 120%; min-height: 200px; max-height: 460px;"><img
+                                        class="object-fit-cover rounded-lg-4 rounded-3"
+                                        src="{% static 'main/img/workers/manager_1.jpg' %}">
+                                    <div class="card-body d-flex flex-column justify-content-lg-end p-lg-20 px-9 py-10">
+                                        <div class="w-75 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
+                                            <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">
+                                                Дмитрий Капустин</h4><span
+                                                class="d-block fs-lg-8 fs-4 fw-medium ls-sm text-uppercase">Менеджер                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 border-0 text-white">
+                                <div class="ratio h-100"
+                                     style="--bs-aspect-ratio: 120%; min-height: 200px; max-height: 460px;"><img
+                                        class="object-fit-cover rounded-lg-4 rounded-3"
+                                        src="{% static 'main/img/workers/manager_2.jpg' %}">
+                                    <div class="card-body d-flex flex-column justify-content-lg-end p-lg-20 px-9 py-10">
+                                        <div class="w-75 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
+                                            <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0"
+                                                style="max-width: 300px;">Дмитрий Капустин</h4><span
+                                                class="d-block fs-lg-8 fs-4 fw-medium ls-sm text-uppercase">Менеджер                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 border-0 text-white">
+                                <div class="ratio h-100"
+                                     style="--bs-aspect-ratio: 120%; min-height: 200px; max-height: 460px;"><img
+                                        class="object-fit-cover rounded-lg-4 rounded-3"
+                                        src="{% static 'main/img/workers/manager_3.jpg' %}">
+                                    <div class="card-body d-flex flex-column justify-content-lg-end p-lg-20 px-9 py-10">
+                                        <div class="w-75 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
+                                            <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">
+                                                Дмитрий Капустин</h4><span
+                                                class="d-block fs-lg-8 fs-4 fw-medium ls-sm text-uppercase">Менеджер                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 border-0 text-white">
+                                <div class="ratio h-100"
+                                     style="--bs-aspect-ratio: 120%; min-height: 200px; max-height: 460px;"><img
+                                        class="object-fit-cover rounded-lg-4 rounded-3"
+                                        src="{% static 'main/img/workers/manager_4.jpg' %}">
+                                    <div class="card-body d-flex flex-column justify-content-lg-end p-lg-20 px-9 py-10">
+                                        <div class="w-75 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
+                                            <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">
+                                                Дмитрий Капустин</h4><span
+                                                class="d-block fs-lg-8 fs-4 fw-medium ls-sm text-uppercase">Менеджер                                                       </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             {% include 'main/components/reasons.html' with classes='mb-lg-50 mb-30' %}
 
-
+        
             <section class="cta  mb-lg-45 mb-28">
                 <div class="card rounded-lg-4 rounded-3">
                     <div class="card-body pt-lg-34 pt-17-5 px-lg-40 pb-lg-35 pb-20">
@@ -491,9 +524,9 @@
                 <div class="row row-cols-lg-4 row-cols-2 gy-lg-20 gy-10  d-lg-flex d-none">
 
                     {% for item in list_of_grids_types %}
-
+        
                     {% include 'main/components/photo.html' %}
-
+            
                     {% endfor %}
 
                 </div>
