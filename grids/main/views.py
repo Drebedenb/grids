@@ -1,12 +1,8 @@
-import os
 import re
-import json
-from django.core.exceptions import ImproperlyConfigured
 from django.db.models import Min
 from django.http import HttpResponseNotFound
 from django.shortcuts import render
 
-from grids.settings import BASE_DIR
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
 list_of_grids_types = [
@@ -45,7 +41,7 @@ categories = {  # there are categories and their number in database. It depends 
 
 def get_products_by_category(category_number):
     products = PriceWinguardSketch.objects.filter(category=category_number) \
-                   .values('id').annotate(min_pricewinguardmain=Min('pricewinguardmain')).values('min_pricewinguardmain', 'id')[:20]
+                   .values('id').annotate(min_pricewinguardmain=Min('pricewinguardmain')).values('min_pricewinguardmain', 'id')[:12]
                    # .values('id', 'pricewinguardfiles').annotate(min_pricewinguardmain=Min('pricewinguardmain')).order_by('category', 'id', 'pricewinguardfiles')[:20]
     for product in products:
         path = "".join(re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(price_winguard_sketch_id=product["id"]).path))
@@ -62,26 +58,10 @@ def get_products_by_category(category_number):
     return products
 
 
-with open(os.path.join(BASE_DIR, 'secrets.json')) as secrets_file:
-    secrets = json.load(secrets_file)
-
-
-def get_secret(setting, secrets=secrets):
-    """Get secret setting or fail with ImproperlyConfigured"""
-    try:
-        return secrets[setting]
-    except KeyError:
-        raise ImproperlyConfigured("Set the {} setting".format(setting))
-
-
 def index(request):
     products = get_products_by_category(1)
     return render(request, 'main/index.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Главная страница',
                                                'leaders_of_selling': products})
-
-
-def catalog(request):
-    return render(request, 'main/catalog.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Каталог'})
 
 
 def catalog_category(request, category_name):
@@ -89,7 +69,8 @@ def catalog_category(request, category_name):
         return HttpResponseNotFound("Page NOT found")
     category = categories[category_name]
     products = get_products_by_category(category["number_of_category"])
-    leaders_of_selling = get_products_by_category(5)
+    # leaders_of_selling = get_products_by_category(5)
+    leaders_of_selling = [];
     return render(request, 'main/catalog-category.html', {'title': 'Каталог',
                                                           'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling})
 
