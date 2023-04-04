@@ -88,7 +88,6 @@ def product(request, product_name):
     product["path_folder"] = path_arr[1]
     product["path_file"] = path_arr[2]
     product['additional_info'] = list(PriceWinguardMain.objects.filter(price_winguard_sketch_id=sketch_id).values('price_b2c', 'name'))
-    print(product)
     return render(request, 'main/product.html', product)
 
 
