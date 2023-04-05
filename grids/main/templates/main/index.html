@@ -40,7 +40,7 @@
                 <div class="row gy-lg-0  gy-12">
            
                 <div class="mt-20 d-lg-none d-block"><a class="btn btn-outline-black btn-xxl w-100"
-                                                        href="{%url 'catalog'%}">Перейти
+                                                        href="{%url 'catalog-category' 'all'%}">Перейти
                     в каталог</a>
                 </div>
                 
@@ -172,7 +172,7 @@
                                                 data-bs-target="#product-quick-view" type="button">Быстрый просмотр
                                         </button>
                                     </div>
-                                   <a href="{%url 'product'%}"><div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
+                                   <a href="#"><div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
                                             class="mt-15 object-fit-contain"
                                             src="{% static 'main/img/grids_pictures' %}/{{item.path_folder}}/solid/{{item.path_file}}.png"
                                             alt="Решетки на окна эконом класса"></div>

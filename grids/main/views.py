@@ -86,7 +86,7 @@ def catalog_category(request, category_name):
     products = get_products_by_category(category["number_of_category"])
     # leaders_of_selling = get_products_by_category(5)
     leaders_of_selling = [];
-    return render(request, 'main/catalog-category.html', {'title': 'Каталог','list_of_grids_types': list_of_grids_types
+    return render(request, 'main/catalog-category.html', {'title': 'Каталог','list_of_grids_types': list_of_grids_types,
                                                           'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling})
 
 
