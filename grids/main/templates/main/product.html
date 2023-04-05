@@ -104,22 +104,6 @@
                                                         <input class="form-check-input" id="filter-category-2" name="filter-category" autocomplete="off" type="radio" />
                                                         <label class="form-check-label" for="filter-category-2">Дутые решетки</label>
                                                     </div>
-                                                    <div class="form-check fs-9 ls-sm mb-10">
-                                                        <input class="form-check-input" id="filter-category-3" name="filter-category" autocomplete="off" type="radio" />
-                                                        <label class="form-check-label" for="filter-category-3">Дутые решетки</label>
-                                                    </div>
-                                                    <div class="form-check fs-9 ls-sm mb-10">
-                                                        <input class="form-check-input" id="filter-category-4" name="filter-category" autocomplete="off" type="radio" />
-                                                        <label class="form-check-label" for="filter-category-4">Дутые решетки</label>
-                                                    </div>
-                                                    <div class="form-check fs-9 ls-sm mb-10">
-                                                        <input class="form-check-input" id="filter-category-5" name="filter-category" autocomplete="off" type="radio" />
-                                                        <label class="form-check-label" for="filter-category-5">Дутые решетки</label>
-                                                    </div>
-                                                    <div class="form-check fs-9 ls-sm">
-                                                        <input class="form-check-input" id="filter-category-6" name="filter-category" autocomplete="off" type="radio" />
-                                                        <label class="form-check-label" for="filter-category-6">Дутые решетки</label>
-                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="mb-28">
@@ -254,28 +238,16 @@
                                                     <div class="swiper-wrapper">
                                                         <div class="swiper-slide">
                                                             <div class="ratio overflow-hidden" style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 265px;"><img class="object-fit-contain"
-                                                                src="{% static 'main/img/product-card-img.png' %}" alt="Решетка на окно Эскиз № 1-1"></div>
+                                                                src="{% static 'main/img/grids_pictures' %}/{{path_folder}}/solid/{{path_file}}.png">
+
+                                                            </div>
                                                         </div>
                                                         <div class="swiper-slide">
                                                             <div class="ratio overflow-hidden"
                                                                  style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 265px;">
                                                                 <img class="object-fit-contain"
-                                                                     src="{% static 'main/img/product-card-img.png' %}"
-                                                                     alt="Решетка на окно Эскиз № 1-1"></div>
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <div class="ratio overflow-hidden"
-                                                                 style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 265px;">
-                                                                <img class="object-fit-contain"
-                                                                     src="{% static 'main/img/product-card-img.png' %}"
-                                                                     alt="Решетка на окно Эскиз № 1-1"></div>
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <div class="ratio overflow-hidden"
-                                                                 style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 265px;">
-                                                                <img class="object-fit-contain"
-                                                                     src="{% static 'main/img/product-card-img.png' %}"
-                                                                     alt="Решетка на окно Эскиз № 1-1"></div>
+                                                                     src="{% static 'main/img/grids_pictures' %}/{{path_folder}}/solid/{{path_file}} F.png">
+                                                                     alt="Решетка на окно Эскиз № {{path_folder}}-{{path_file}}"></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -291,13 +263,11 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        <a class="btn btn-outline-secondary btn-xl d-lg-block d-none w-100 mt-20"
-                                           href="#">Выбрать другой рисунок</a>
                                     </div>
                                     <div class="col-lg-8">
                                         <div class="d-lg-flex d-none align-items-center border-bottom border-black pb-12 mb-16">
                                             <h2 class="h5 fw-medium ls-sm text-uppercase mb-0">Решетка на окно Эскиз №
-                                                1-1</h2>
+                                                {{path_folder}}-{{path_file}}</h2>
                                             <div class="ms-auto">
                                                 <div class="hstack gap-10"><a class="text-secondary text-hover-black"
                                                                               href="#">
@@ -368,8 +338,11 @@
                                         <form>
                                             <div class="row row-cols-lg-2 row-cols-1 gy-lg-10 gy-5">
                                                 <div class="col">
-                                                    <select class="form-select form-select-lg rounded-2">
-                                                        <option selected>Варианты исполнения</option>
+                                                    <select class="form-select form-select-lg rounded-2" id="width_of_rod" onchange="changeForm()">
+                                                        <option selected>Выберите ширину прутка</option>
+                                                        {% for item in additional_info %}
+                                                            <option>{{ item.name }} - {{ item.price_b2c }} руб.</option>
+                                                        {% endfor %}
                                                     </select>
                                                 </div>
                                                 <div class="col">
@@ -378,28 +351,29 @@
                                                     </select>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-control form-control-lg rounded-2"
-                                                           placeholder="Ширина, см." type="text">
+                                                    <input class="form-control form-control-lg rounded-2" id="width"
+                                                           placeholder="Ширина, см." type="text" oninput="changeForm()">
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-control form-control-lg rounded-2"
+                                                    <input class="form-control form-control-lg rounded-2" id="height" oninput="changeForm()"
                                                            placeholder="Высота, см." type="text">
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-control form-control-lg rounded-2"
+                                                    <input class="form-control form-control-lg rounded-2" id="amount" oninput="changeForm()"
                                                            placeholder="Количество" type="text">
                                                 </div>
                                                 <div class="col">
-                                                    <select class="form-select form-select-lg rounded-2">
-                                                        <option selected>Установка</option>
+                                                    <select class="form-select form-select-lg rounded-2" id="installing" onchange="changeForm()">
+                                                        <option selected>Без установки</option>
+                                                        <option>Установка - 500 руб</option>
                                                     </select>
                                                 </div>
                                             </div>
                                         </form>
                                         <div class="mt-17-5">
                                             <div class="row row-cols-lg-2 row-cols-1 align-items-center gy-lg-0 gy-15">
-                                                <div class="col"><span
-                                                        class="fs-lg-13 fs-11 fw-semibold text-uppercase">Итого: 31 320 руб</span><span
+                                                <div class="col"><span id="total"
+                                                        class="fs-lg-13 fs-11 fw-semibold text-uppercase">0</span><span
                                                         class="d-block fs-lg-8 fs-7 text-muted text-uppercase mt-lg-1 mt-7-5">Для точного расчета <br>закажите   <span
                                                         class="text-primary">бесплатный замер</span></span></div>
                                                 <div class="col"><a class="btn btn-primary btn-xl w-100" href="#">Заказать
@@ -538,7 +512,6 @@
                                                          alt="Решетки на окна эконом класса"></div>
                                             </div>
                                             <h3 class="card-title h5 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0  pt-5">
-                                                <a class="text-decoration-none text-dark" href="{%url 'product'%}"> Решетка на окно сварная 1-1 </a></h3>
 
                                             <div class="d-flex align-items-center justify-content-between mt-10">
                                                 <span class="d-block fs-11 text-danger fw-medium  text-uppercase ls-sm  ">от 2900 руб</span>
@@ -570,7 +543,6 @@
                                                      alt="Решетки на окна эконом класса"></div>
                                         </div>
                                         <h3 class="card-title h5 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0  pt-5">
-                                            <a class="text-decoration-none text-dark" href="{%url 'product'%}"> Решетка на окно сварная 1-1 </a></h3>
 
                                         <div class="d-flex align-items-center justify-content-between mt-10">
                                             <span class="d-block fs-11 text-danger fw-medium  text-uppercase ls-sm  ">от 2900 руб</span>
@@ -602,7 +574,6 @@
                                                  alt="Решетки на окна эконом класса"></div>
                                     </div>
                                     <h3 class="card-title h5 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0  pt-5">
-                                        <a class="text-decoration-none text-dark" href="{%url 'product'%}"> Решетка на окно сварная 1-1 </a></h3>
 
                                     <div class="d-flex align-items-center justify-content-between mt-10">
                                         <span class="d-block fs-11 text-danger fw-medium  text-uppercase ls-sm  ">от 2900 руб</span>
@@ -634,7 +605,6 @@
                                              alt="Решетки на окна эконом класса"></div>
                                 </div>
                                 <h3 class="card-title h5 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0  pt-5">
-                                    <a class="text-decoration-none text-dark" href="{%url 'product'%}"> Решетка на окно сварная 1-1 </a></h3>
 
                                 <div class="d-flex align-items-center justify-content-between mt-10">
                                     <span class="d-block fs-11 text-danger fw-medium  text-uppercase ls-sm  ">от 2900 руб</span>
@@ -666,7 +636,6 @@
                                          alt="Решетки на окна эконом класса"></div>
                             </div>
                             <h3 class="card-title h5 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0  pt-5">
-                                <a class="text-decoration-none text-dark" href="{%url 'product'%}"> Решетка на окно сварная 1-1 </a></h3>
 
                             <div class="d-flex align-items-center justify-content-between mt-10">
                                 <span class="d-block fs-11 text-danger fw-medium  text-uppercase ls-sm  ">от 2900 руб</span>
@@ -698,7 +667,6 @@
                                      alt="Решетки на окна эконом класса"></div>
                         </div>
                         <h3 class="card-title h5 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0  pt-5">
-                            <a class="text-decoration-none text-dark" href="{%url 'product'%}"> Решетка на окно сварная 1-1 </a></h3>
 
                         <div class="d-flex align-items-center justify-content-between mt-10">
                             <span class="d-block fs-11 text-danger fw-medium  text-uppercase ls-sm  ">от 2900 руб</span>
@@ -721,8 +689,42 @@
 
             {% include 'main/components/measure_modal.html' %}
 
-            {% include 'main/components/product_quick_view.html' %}
+{#            {% include 'main/components/product_quick_view.html' %}#}
         </main>
     </div>
 </div>
+    <script>
+    function getValueById(id){
+        return document.getElementById(id).value
+    }
+    function changeForm() {
+        let width_of_rod = getValueById("width_of_rod")
+        if (width_of_rod !== "Выберите ширину прутка") {
+            width_of_rod = +width_of_rod.match(/\d{3,}/)[0]
+        }
+
+        let width = +getValueById("width")
+        if (!width) {
+            width = 100;
+        }
+
+        let height = +getValueById("height")
+        if (!height) {
+            height = 100;
+        }
+
+        let amount = +getValueById("amount")
+        if (!amount) {
+            amount = 1;
+        }
+        let installing = getValueById("installing")
+        if (installing !== "Без установки") {
+            installing = +installing.match(/\d{3,}/)[0]
+        } else {
+            installing = 0;
+        }
+        total = amount * (width_of_rod * width * height / 10000) + installing;
+        document.getElementById("total").textContent = total;
+    }
+    </script>
 {% endblock %}

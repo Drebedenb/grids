@@ -1,12 +1,8 @@
-import os
 import re
-import json
-from django.core.exceptions import ImproperlyConfigured
-
+from django.db.models import Min
 from django.http import HttpResponseNotFound
 from django.shortcuts import render
 
-from grids.settings import BASE_DIR
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
 list_of_grids_types = [
@@ -45,65 +41,69 @@ list_of_photos_done = [
     {"name": "photo85.png"}
 ]
 
-with open(os.path.join(BASE_DIR, 'secrets.json')) as secrets_file:
-    secrets = json.load(secrets_file)
+categories = {  # there are categories and their number in database. It depends on database structure what number is
+    "all": {"title": "Все", 'url_title': "all" , "number_of_category": 1},
+    "svarka": {"title": "Сварные",'url_title': "svarka" , "number_of_category": 1},
+    "svarka_dut": {"title": "Дутые сварные",'url_title': "svarka_dut" , "number_of_category": 2},
+    "ajur": {"title": "Ажурные",'url_title': "ajur" , "number_of_category": 3},
+    "ajur_dut": {"title": "Дутые ажурные",'url_title': "ajur_dut" , "number_of_category": 4},
+    "kovka": {"title": "Кованые",'url_title': "kovka" , "number_of_category": 5},
+    "kovka_dut": {"title": "Дутые кованые",'url_title': "kovka_dut" , "number_of_category": 6},
+    "vip": {"title": "VIP",'url_title': "vip" , "number_of_category": 7},
+    "vip_dut": {"title": "Дутые VIP",'url_title': "vip_dut" , "number_of_category": 8},
+}
 
 
-def get_secret(setting, secrets=secrets):
-    """Get secret setting or fail with ImproperlyConfigured"""
-    try:
-        return secrets[setting]
-    except KeyError:
-        raise ImproperlyConfigured("Set the {} setting".format(setting))
+def get_products_by_category(category_number):
+    products = PriceWinguardSketch.objects.filter(category=category_number) \
+                   .values('id').annotate(min_pricewinguardmain=Min('pricewinguardmain')).values('min_pricewinguardmain', 'id')[:12]
+                   # .values('id', 'pricewinguardfiles').annotate(min_pricewinguardmain=Min('pricewinguardmain')).order_by('category', 'id', 'pricewinguardfiles')[:20]
+    for product in products:
+        path = "".join(re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(price_winguard_sketch_id=product["id"]).path))
+        path_arr = path.split("/")
+        product["path_folder"] = path_arr[1]
+        product["path_file"] = path_arr[2]
+        try:
+            additional_info = PriceWinguardMain.objects.get(id=product["min_pricewinguardmain"])
+            product["price"] = additional_info.price_b2c
+            product["width"] = additional_info.name
+        except:
+            product["price"] = "Нет данных в БД"
+            product["width"] = "Нет данных в БД"
+    return products
 
 
 def index(request):
-    products = PriceWinguardMain.objects.all()[:20]
+    products = get_products_by_category(1)
     return render(request, 'main/index.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Главная страница',
-                                               'leaders_of_selling': products,'list_of_photos_done': list_of_photos_done})
-
-
-def catalog(request):
-    return render(request, 'main/catalog.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Каталог'})
-
-categories = {  # there are categories and their number in database. It depends on database structure what number is
-    "svarka": {"title": "Сварные", "number_of_category": 1},
-    "svarka_dut": {"title": "Дутые сварные", "number_of_category": 2},
-    "ajur": {"title": "Ажурные", "number_of_category": 3},
-    "ajur_dut": {"title": "Дутые ажурные", "number_of_category": 4},
-    "kovka": {"title": "Кованные", "number_of_category": 5},
-    "kovka_dut": {"title": "Дутые кованные", "number_of_category": 6},
-    "vip": {"title": "VIP", "number_of_category": 7},
-    "vip_dut": {"title": "Дутые VIP", "number_of_category": 8},
-}
+                                               'leaders_of_selling': products})
 
 
 def catalog_category(request, category_name):
     if category_name not in categories:
         return HttpResponseNotFound("Page NOT found")
     category = categories[category_name]
-
-    products = PriceWinguardSketch.objects.filter(category=category["number_of_category"])\
-        .values('active', 'category', 'date', 'id', 'number', 'orders', 'popularity', 'pricewinguardfiles', 'pricewinguardmain', 'variants')[:20]
-    for product in products:
-        path = "".join(re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(id=product["pricewinguardfiles"]).path))
-        product["path"] = path
-        # arr_path = re.findall("\d+", path)
-        # product["path_folder"] = arr_path[0]
-        # product["path_file"] = arr_path[1]
-        additional_info = PriceWinguardMain.objects.filter(id=product["pricewinguardmain"]) # TODO: change filter to get when realize what is the errror
-        product["price"] = additional_info[0].price_b2c if hasattr(additional_info[0], "price_b2c") else "Error"
-        product["width"] = additional_info[0].name if hasattr(additional_info[0], "name") else "Error"
-    return render(request, 'main/catalog-category.html', {'list_of_grids_types': list_of_grids_types,'title': 'Каталог',
-                                                          'products': products, 'category': category,'list_of_photos_done': list_of_photos_done})
+    products = get_products_by_category(category["number_of_category"])
+    # leaders_of_selling = get_products_by_category(5)
+    leaders_of_selling = [];
+    return render(request, 'main/catalog-category.html', {'title': 'Каталог','list_of_grids_types': list_of_grids_types
+                                                          'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling})
 
 
 def contacts(request):
     return render(request, 'main/contacts.html')
 
 
-def product(request):
-    return render(request, 'main/product.html')
+def product(request, product_name):
+    sketch_id = re.findall("\d+", product_name)[2]
+    product = {}
+    path = "".join(
+        re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(price_winguard_sketch_id=sketch_id).path))
+    path_arr = path.split("/")
+    product["path_folder"] = path_arr[1]
+    product["path_file"] = path_arr[2]
+    product['additional_info'] = list(PriceWinguardMain.objects.filter(price_winguard_sketch_id=sketch_id).values('price_b2c', 'name'))
+    return render(request, 'main/product.html', product)
 
 
 def projects(request):

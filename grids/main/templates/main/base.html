@@ -70,7 +70,7 @@
                                               href="{%url 'index'%}">Главная</a></li>
                 <li class="nav-item me-20"><a
                         class="nav-link ls-sm p-0 {% if request.path == '/catalog/' %}active{% endif %}"
-                        href="{%url 'catalog'%}">Каталог</a></li>
+                        href="{%url 'catalog-category' 'all'%}">Каталог</a></li>
                 <li class="nav-item me-20"><a
                         class="nav-link ls-sm p-0 {% if request.path == '/reviews/' %}active{% endif %}"
                         href="{%url 'reviews'%}">Отзывы</a></li>
@@ -104,7 +104,7 @@
             <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0" href="{%url 'index'%}">Главная</a>
             </li>
             <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0"
-                                                                href="{%url 'catalog'%}">Каталог</a>
+                                                                href="{%url 'catalog-category' 'all'%}">Каталог</a>
             </li>
             <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0" href="{%url 'reviews'%}">Отзывы</a>
             </li>
@@ -194,7 +194,7 @@
                         <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0" href="{%url 'index'%}">Главная</a>
                         </li>
                         <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0"
-                                                                            href="{%url 'catalog'%}">Каталог</a>
+                                                                            href="{%url 'catalog-category' 'all'%}">Каталог</a>
                         </li>
                         <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0"
                                                                             href="{%url 'reviews'%}">Отзывы</a>
@@ -283,16 +283,6 @@
 <script src="{% static 'main/vendors/wNumb/wNumb.min.js' %} "></script>
 <script src="{% static 'main/vendors/nouislider/nouislider.min.js' %} "></script>
 <script src="{% static 'main/js/main.js' %}"></script>
-<script>
-    let img = document.getElementsByTagName('img');
-    for (let i in img) {
-        img[i].oncontextmenu = function () {
-            return false;
-        }
-        img[i].ondragstart = function () {
-            return false;
-        }
-    }
-</script>
+<script src="{% static 'main/js/custom.js' %}"></script>
 </body>
 </html>
