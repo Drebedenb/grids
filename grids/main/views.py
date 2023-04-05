@@ -10,24 +10,39 @@ from grids.settings import BASE_DIR
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
 list_of_grids_types = [
-    {'title': 'Сварные', 'img_path': 'main/img/grids_types/icons1.png'},
-    {'title': 'Кованые', 'img_path': 'main/img/grids_types/icons10.png'},
-    {'title': 'Дутые', 'img_path': 'main/img/grids_types/icons11.png'},
-    {'title': 'Ажурные', 'img_path': 'main/img/grids_types/icons12.png'},
-    {'title': 'Арочные', 'img_path': 'main/img/grids_types/icons13.png'},
-    {'title': 'Распашные', 'img_path': 'main/img/grids_types/icons14.png'},
-    {'title': 'На балкон', 'img_path': 'main/img/grids_types/icons15.png'},
-    {'title': 'На приямки', 'img_path': 'main/img/grids_types/icons16.png'},
-    {'title': 'На лоджию', 'img_path': 'main/img/grids_types/icons17.png'},
-    {'title': 'Для квартиры', 'img_path': 'main/img/grids_types/icons18.png'},
-    {'title': 'На первый этаж', 'img_path': 'main/img/grids_types/icons19.png'},
-    {'title': 'Цоколь/Подвал', 'img_path': 'main/img/grids_types/icons20.png'},
-    {'title': 'Для дома', 'img_path': 'main/img/grids_types/icons21.png'},
-    {'title': 'Антикошка', 'img_path': 'main/img/grids_types/icons22.png'},
-    {'title': 'От выпадания детей', 'img_path': 'main/img/grids_types/icons23.png'},
-    {'title': 'На кондиционер', 'img_path': 'main/img/grids_types/icons24.png'},
-    {'title': 'Под цветы', 'img_path': 'main/img/grids_types/icons25.png'},
-    {'title': 'В подъезд', 'img_path': 'main/img/grids_types/icons25.png'},
+    {'title': 'Сварные', 'img_path': 'main/img/grids_types/1_svarnie.png'},
+    {'title': 'Кованые', 'img_path': 'main/img/grids_types/2_kovanie.png'},
+    {'title': 'Дутые', 'img_path': 'main/img/grids_types/3_dutie.png'},
+    {'title': 'Ажурные', 'img_path': 'main/img/grids_types/4_azhurnie.png'},
+    {'title': 'Арочные', 'img_path': 'main/img/grids_types/5_arochnie.png'},
+    {'title': 'Распашные', 'img_path': 'main/img/grids_types/6_raspashnie.png'},
+    {'title': 'На балкон', 'img_path': 'main/img/grids_types/7_na_balkon.png'},
+    {'title': 'На приямки', 'img_path': 'main/img/grids_types/18_na_pryamki.png'},
+    {'title': 'На лоджию', 'img_path': 'main/img/grids_types/8_na_lodjiu.png'},
+    {'title': 'Для квартиры', 'img_path': 'main/img/grids_types/9_dlya_kvartiri.png'},
+    {'title': 'На первый этаж', 'img_path': 'main/img/grids_types/10_na_perviy.png'},
+    {'title': 'Цоколь/Подвал', 'img_path': 'main/img/grids_types/11_cokol.png'},
+    {'title': 'Для дома', 'img_path': 'main/img/grids_types/12_dlya_doma.png'},
+    {'title': 'Антикошка', 'img_path': 'main/img/grids_types/13_antikoshka.png'},
+    {'title': 'От выпадения детей', 'img_path': 'main/img/grids_types/14_ot_vipadenia.png'},
+    {'title': 'На кондиционер', 'img_path': 'main/img/grids_types/15_na_condicioner.png'},
+    {'title': 'Под цветы', 'img_path': 'main/img/grids_types/16_pod_cveti.png'},
+    {'title': 'В подъезд', 'img_path': 'main/img/grids_types/17_v_podezd.png'},
+]
+
+list_of_photos_done = [
+    {"name": "photo74.png"},
+    {"name": "photo75.png"},
+    {"name": "photo76.png"},
+    {"name": "photo77.png"},
+    {"name": "photo78.png"},
+    {"name": "photo79.png"},
+    {"name": "photo80.png"},
+    {"name": "photo81.png"},
+    {"name": "photo82.png"},
+    {"name": "photo83.png"},
+    {"name": "photo84.png"},
+    {"name": "photo85.png"}
 ]
 
 with open(os.path.join(BASE_DIR, 'secrets.json')) as secrets_file:
@@ -45,7 +60,7 @@ def get_secret(setting, secrets=secrets):
 def index(request):
     products = PriceWinguardMain.objects.all()[:20]
     return render(request, 'main/index.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Главная страница',
-                                               'leaders_of_selling': products})
+                                               'leaders_of_selling': products,'list_of_photos_done': list_of_photos_done})
 
 
 def catalog(request):
@@ -79,8 +94,8 @@ def catalog_category(request, category_name):
         additional_info = PriceWinguardMain.objects.filter(id=product["pricewinguardmain"]) # TODO: change filter to get when realize what is the errror
         product["price"] = additional_info[0].price_b2c if hasattr(additional_info[0], "price_b2c") else "Error"
         product["width"] = additional_info[0].name if hasattr(additional_info[0], "name") else "Error"
-    return render(request, 'main/catalog-category.html', {'title': 'Каталог',
-                                                          'products': products, 'category': category})
+    return render(request, 'main/catalog-category.html', {'list_of_grids_types': list_of_grids_types,'title': 'Каталог',
+                                                          'products': products, 'category': category,'list_of_photos_done': list_of_photos_done})
 
 
 def contacts(request):
@@ -92,7 +107,7 @@ def product(request):
 
 
 def projects(request):
-    return render(request, 'main/projects.html',{'list_of_grids_types': list_of_grids_types, 'title': 'Каталог'})
+    return render(request, 'main/projects.html',{'list_of_grids_types': list_of_grids_types, 'title': 'Каталог', 'list_of_photos_done': list_of_photos_done})
 
 
 def reviews(request):

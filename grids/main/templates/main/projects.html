@@ -1,7 +1,7 @@
 {%extends 'main/base.html' %}
 {% load static %}
 {% block content %}
-<div class="pt-lg-30 pt-16 pb-lg-50 pb-32">
+<div class="pt-lg-0 pt-16 pb-32">
     <div class="container">
         <header class="page-header mb-lg-0 mb-28">
             <div>
@@ -38,12 +38,12 @@
             </div>
         </header>
         <main>
-            <section class="mb-lg-50 mb-28">
-                <div class="row align-items-end mb-lg-30 mb-20">
-                <div class="row row-cols-lg-4 row-cols-2 gy-lg-20 gy-10">
-                    {% for item in list_of_grids_types %}
+            <section class="mb-20">
+                <div class="row align-items-end  mb-20">
+                <div class="row row-cols-lg-4 row-cols-2 gy-10">
+                    {% for item in list_of_photos_done %}
         
-                    {% include 'main/components/photo.html' %}
+                    {% include 'main/components/photo.html' with name=item.name %}
             
                     {% endfor %}
                 </div>

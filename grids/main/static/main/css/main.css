@@ -6721,7 +6721,9 @@ fieldset:disabled .btn {
 }
 
 .btn-outline-secondary {
-    --bs-btn-color: #959595;
+   
+    
+
     --bs-btn-border-color: #959595;
     --bs-btn-hover-color: #000;
     --bs-btn-hover-bg: #959595;
@@ -51799,7 +51801,7 @@ textarea.form-control-xxl {
 }
 
 .btn-outline-secondary {
-    --bs-btn-color: #000;
+    --bs-btn-color: #959595;
     --bs-btn-border-color: #959595;
     --bs-btn-hover-color: #fff;
     --bs-btn-hover-bg: #959595;
@@ -52029,7 +52031,7 @@ textarea.form-control-xxl {
 }
 
 .btn-outline-light {
-    --bs-btn-color: #f3f1f1;
+    --bs-btn-color: #959595;
     --bs-btn-border-color: #e0e0e0;
     --bs-btn-hover-color: #000;
     --bs-btn-hover-bg: #e0e0e0;

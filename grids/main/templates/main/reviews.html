@@ -46,13 +46,29 @@
                             <div class="card h-100 rounded-lg-4 rounded-3">
                                 <div class="card-body p-lg-15 pt-10 pb-lg-28">
                                     <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatar.png' %}"
-                                                                 alt="Олег Матросов"/></div>
+                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar19.jpg' %}"
+                                                                 alt="Иван Семенович Г."/></div>
                                         <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
+                                            <h6 class="fs-8 mb-2">Иван Семенович Г.</h6>
                                         </div>
+                                        
                                         <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                           href="#">Смотреть фото</a>
+                                           href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Смотреть фото</a>
+                                           <!-- Modal -->
+                                           
+                                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                    <div class="modal-content ">
+                                                        <div class="modal-body">
+                                                            <button type="button" class="btn-close  float-end button-close btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                                                            
+                                                            <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review1.jpeg' %}"
+                                                            alt="Иван Семенович Г." />
+                                                        </div>
+                                                      
+                                                    </div>
+                                                    </div>
+                                                </div>
                                     </div>
                                     <p class="fs-lg-10 fs-8 fw-light mb-0">Заказ №36378 Решетка на лоджию 3м2. Ответственные люди, я бы так назвал процесс взаимодействия с компанией. Все по плану, без заминок. Главное, что результат хороший и я им доволен.
                                     </p>
@@ -63,14 +79,29 @@
                             <div class="card h-100 rounded-lg-4 rounded-3">
                                 <div class="card-body p-lg-15 pt-10 pb-lg-28">
                                     <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatar.png' %}"
-                                                                 alt="Олег Матросов"/></div>
+                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar25.jpg' %}"
+                                                                 alt="Янина Ш."/></div>
                                         <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
+                                            <h6 class="fs-8 mb-2">Янина Ш.</h6>
                                         </div>
                                         <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                           href="#">Смотреть фото</a>
+                                           href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">Смотреть фото</a>
                                     </div>
+                                          <!-- Modal -->
+                                           
+                                          <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content ">
+                                                <div class="modal-body">
+                                                    <button type="button" class="btn-close  float-end button-close btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                                                    
+                                                    <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review2.jpg' %}"
+                                                    alt="Янина Ш." />
+                                                </div>
+                                              
+                                            </div>
+                                            </div>
+                                        </div>
                                     <p class="fs-lg-10 fs-8 fw-light mb-0">Всем довольна, тамбурную решетчатую дверь мне варили и цветочницу. Прекрасно смотрятся в доме.. мастер позвонил перед выездом на замер. Цена устроила, состояние спустя год очень хорошее</p>
                                 </div>
                             </div>
@@ -79,30 +110,29 @@
                             <div class="card h-100 rounded-lg-4 rounded-3">
                                 <div class="card-body p-lg-15 pt-10 pb-lg-28">
                                     <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatar.png' %}"
-                                                                 alt="Олег Матросов"/></div>
+                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar18.jpg' %}"
+                                                                 alt="Иван Б."/></div>
                                         <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
+                                            <h6 class="fs-8 mb-2">Иван Б.</h6>
                                         </div>
+                                        
                                         <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                           href="#">Смотреть фото</a>
-                                    </div>
-                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Обратились с запросом решетчатой двери на балкон. У нас частный салон красоты, искали решетки для бизнеса. поставили в срок
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card h-100 rounded-lg-4 rounded-3">
-                                <div class="card-body p-lg-15 pt-10 pb-lg-28">
-                                    <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatar.png' %}"
-                                                                 alt="Олег Матросов"/></div>
-                                        <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
-                                        </div>
-                                        <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                           href="#">Смотреть фото</a>
+                                           href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">Смотреть фото</a>
+                                           <!-- Modal -->
+                                           
+                                                <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                    <div class="modal-content ">
+                                                        <div class="modal-body">
+                                                            <button type="button" class="btn-close  float-end button-close btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                                                            
+                                                            <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review3.jpg' %}"
+                                                            alt="Иван Семенович Г." />
+                                                        </div>
+                                                      
+                                                    </div>
+                                                    </div>
+                                                </div>
                                     </div>
                                     <p class="fs-lg-10 fs-8 fw-light mb-0">Заказал решетки ажурные на дачу в стиле кованых ворот. Можно было этого не делать, чуть скинув цену взять прямые. но мне так хотелось. по этому за саму работу мастеров и установщиков ставлю 5, а остальное уже история =В
                                     </p>
@@ -113,15 +143,85 @@
                             <div class="card h-100 rounded-lg-4 rounded-3">
                                 <div class="card-body p-lg-15 pt-10 pb-lg-28">
                                     <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatar.png' %}"
-                                                                 alt="Олег Матросов"/></div>
+                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar14.jpg' %}"
+                                                                 alt="Александр В."/></div>
                                         <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
+                                            <h6 class="fs-8 mb-2">Александр В.</h6>
                                         </div>
                                         <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                           href="#">Смотреть фото</a>
+                                           href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop4">Смотреть фото</a>
                                     </div>
-                                    <p class="fs-lg-10 fs-8 fw-light mb-0">У меня все хорошо, ребята отлично работают. Знаю их завод под Клином, довольно дешево вышли металлические решетки на подвал и цоколь с установкой. Благодарю!
+                                          <!-- Modal -->
+                                           
+                                          <div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content ">
+                                                <div class="modal-body">
+                                                    <button type="button" class="btn-close  float-end button-close btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                                                    
+                                                    <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review4.jpeg' %}"
+                                                    alt="Иван Б." />
+                                                </div>
+                                              
+                                            </div>
+                                            </div>
+                                        </div>
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">У меня все хорошо, ребята отлично работают. Знаю их завод под Клином, довольно дешево вышли металлические решетки на подвал и цоколь с установкой. Благодарю!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 rounded-lg-4 rounded-3">
+                                <div class="card-body p-lg-15 pt-10 pb-lg-28">
+                                    <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
+                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar17.jpg' %}"
+                                                                 alt="Елена Б."/></div>
+                                        <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
+                                            <h6 class="fs-8 mb-2">Елена Б.</h6>
+                                        </div>
+                                        
+                                        <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
+                                           href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop5">Смотреть фото</a>
+                                           <!-- Modal -->
+                                           
+                                                <div class="modal fade" id="staticBackdrop5" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                    <div class="modal-dialog ">
+                                                    <div class="modal-content ">
+                                                        <div class="modal-body">
+                                                            <button type="button" class="btn-close  float-end button-close btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                                                            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                                                                <div class="carousel-inner">
+                                                                  <div class="carousel-item active">
+                                                                    <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review5-1.jpg' %}"
+                                                                    alt="Елена Б." />
+                                                                  </div>
+                                                                  <div class="carousel-item">
+                                                                    <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review5-2.jpg' %}"
+                                                                    alt="Елена Б." />
+                                                                  </div>
+                                                                  <div class="carousel-item">
+                                                                    <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review5-3.jpg' %}"
+                                                                    alt="Елена Б." />
+                                                                  </div>
+                                                                </div>
+                                                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                                                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                                  <span class="visually-hidden">Previous</span>
+                                                                </button>
+                                                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                                                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                                  <span class="visually-hidden">Next</span>
+                                                                </button>
+                                                              </div>
+                                                            
+                                                          
+                                                        </div>
+                                                      
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                    </div>
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Удобно и быстро! Нужны были решетки антикошка и защита от выпадения ребенка, я очень беспокойная мама)) Все супер, особенно общение по телефону и в мессенджерах с мастерами. Так держать, обращусь к вам еще, как куплю дачу
                                     </p>
                                 </div>
                             </div>
@@ -130,15 +230,31 @@
                             <div class="card h-100 rounded-lg-4 rounded-3">
                                 <div class="card-body p-lg-15 pt-10 pb-lg-28">
                                     <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatar.png' %}"
-                                                                 alt="Олег Матросов"/></div>
+                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar3.jpg' %}"
+                                                                 alt="Кирилл П."/></div>
                                         <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
+                                            <h6 class="fs-8 mb-2">Кирилл П.</h6>
                                         </div>
                                         <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                           href="#">Смотреть фото</a>
+                                           href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop7">Смотреть фото</a>
                                     </div>
-                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Удобно и быстро! Нужны были решетки антикошка и защита от выпадения ребенка, я очень беспокойная мама)) Все супер, особенно общение по телефону и в мессенджерах с мастерами. Так держать, обращусь к вам еще, как куплю дачу</p>
+                                          <!-- Modal -->
+                                           
+                                          <div class="modal fade" id="staticBackdrop7" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content ">
+                                                <div class="modal-body">
+                                                    <button type="button" class="btn-close  float-end button-close btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                                                    
+                                                    <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review6.jpeg' %}"
+                                                    alt="Кирилл П." />
+                                                </div>
+                                              
+                                            </div>
+                                            </div>
+                                        </div>
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Выражаем свою благодарность слаженной работе мастеров ООО «Оконные решётки» за высокое качество изготовления решеток для организации и их установку. Компания обладает профессионализмом и рекомендует 
+                                        себя как надежного подрядчика в вопросе металлических решеток. С уважением, коллектив “ХозМастер - Первый”.</p>
                                 </div>
                             </div>
                         </div>
@@ -146,15 +262,31 @@
                             <div class="card h-100 rounded-lg-4 rounded-3">
                                 <div class="card-body p-lg-15 pt-10 pb-lg-28">
                                     <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatar.png' %}"
-                                                                 alt="Олег Матросов"/></div>
+                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar9.jpg' %}"
+                                                                 alt="Марина Г."/></div>
                                         <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
+                                            <h6 class="fs-8 mb-2">Марина Г.</h6>
                                         </div>
+                                        
                                         <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                           href="#">Смотреть фото</a>
+                                           href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop8">Смотреть фото</a>
+                                           <!-- Modal -->
+                                           
+                                                <div class="modal fade" id="staticBackdrop8" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                    <div class="modal-content ">
+                                                        <div class="modal-body">
+                                                            <button type="button" class="btn-close  float-end button-close btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                                                            
+                                                            <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review7.jpeg' %}"
+                                                            alt="Марина Г." />
+                                                        </div>
+                                                      
+                                                    </div>
+                                                    </div>
+                                                </div>
                                     </div>
-                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Выражаем свою благодарность слаженной работе мастеров ООО «Оконные решётки» за высокое качество изготовления решеток для организации и их установку. Компания обладает профессионализмом и рекомендует себя как надежного подрядчика в вопросе металлических решеток. С уважением, коллектив “ХозМастер - Первый”.
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Решетки с защитой от детей, от их выпадания мне сделали за 2 дня и привезли домой
                                     </p>
                                 </div>
                             </div>
@@ -163,31 +295,31 @@
                             <div class="card h-100 rounded-lg-4 rounded-3">
                                 <div class="card-body p-lg-15 pt-10 pb-lg-28">
                                     <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatar.png' %}"
-                                                                 alt="Олег Матросов"/></div>
+                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar24.jpg' %}"
+                                                                 alt="Светлана К."/></div>
                                         <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
+                                            <h6 class="fs-8 mb-2">Светлана К..</h6>
                                         </div>
                                         <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                           href="#">Смотреть фото</a>
+                                           href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop9">Смотреть фото</a>
                                     </div>
-                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Решетки с защитой от детей, от их выпадания мне сделали за 2 дня и привезли домой</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card h-100 rounded-lg-4 rounded-3">
-                                <div class="card-body p-lg-15 pt-10 pb-lg-28">
-                                    <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatar.png' %}"
-                                                                 alt="Олег Матросов"/></div>
-                                        <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
+                                          <!-- Modal -->
+                                           
+                                          <div class="modal fade" id="staticBackdrop9" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content ">
+                                                <div class="modal-body">
+                                                    <button type="button" class="btn-close  float-end button-close btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                                                    
+                                                    <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review8.jpg' %}"
+                                                    alt="Светлана К." />
+                                                </div>
+                                              
+                                            </div>
+                                            </div>
                                         </div>
-                                        <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                           href="#">Смотреть фото</a>
-                                    </div>
-                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Как хочется чтобы все в жизни было так же быстро и четко. я НЕ участвовал ни в одном вопросе в моменте производства решеток на окна в дом, ни на моменте их установки. Действительно компания-молодец! Выбрал, заказал, оплатил - привезли
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Обратились с запросом решетчатой двери и решеток в магазин. 
+                                        Искали решетки для бизнеса. поставили в срок
                                     </p>
                                 </div>
                             </div>
@@ -196,17 +328,87 @@
                             <div class="card h-100 rounded-lg-4 rounded-3">
                                 <div class="card-body p-lg-15 pt-10 pb-lg-28">
                                     <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatar.png' %}"
-                                                                 alt="Олег Матросов"/></div>
+                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar12.jpg' %}"
+                                                                 alt="Сергей Н."/></div>
                                         <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
+                                            <h6 class="fs-8 mb-2">Сергей Н.</h6>
+                                        </div>
+                                        
+                                        <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
+                                           href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop10">Смотреть фото</a>
+                                           <!-- Modal -->
+                                           
+                                                <div class="modal fade" id="staticBackdrop10" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                    <div class="modal-content ">
+                                                        <div class="modal-body">
+                                                            <button type="button" class="btn-close  float-end button-close btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                                                            <div id="carouselExampleControls2" class="carousel slide" data-bs-ride="carousel">
+                                                                <div class="carousel-inner">
+                                                                  <div class="carousel-item active">
+                                                                    <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review9.jpeg' %}"
+                                                                    alt="Сергей Н." />
+                                                                  </div>
+                                                                  <div class="carousel-item">
+                                                                    <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review9-1.jpeg' %}"
+                                                                    alt="Сергей Н." />
+                                                                  </div>
+                                                                 
+                                                                </div>
+                                                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="prev">
+                                                                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                                  <span class="visually-hidden">Previous</span>
+                                                                </button>
+                                                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="next">
+                                                                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                                  <span class="visually-hidden">Next</span>
+                                                                </button>
+                                                              </div>
+                                                            
+                                                            
+                                                        </div>
+                                                      
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                    </div>
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Как хочется чтобы все в жизни было так же быстро и четко. 
+                                        я НЕ участвовал ни в одном вопросе в моменте производства решеток на окна в дом, ни на моменте их установки. 
+                                        Действительно компания-молодец! Выбрал, заказал, оплатил - привезли
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 rounded-lg-4 rounded-3">
+                                <div class="card-body p-lg-15 pt-10 pb-lg-28">
+                                    <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
+                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar20.jpg' %}"
+                                                                 alt="Лариса Ивановна Л."/></div>
+                                        <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
+                                            <h6 class="fs-8 mb-2">Лариса Ивановна Л.</h6>
                                         </div>
                                         <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                           href="#">Смотреть фото</a>
+                                           href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop11">Смотреть фото</a>
                                     </div>
+                                          <!-- Modal -->
+                                           
+                                          <div class="modal fade" id="staticBackdrop11" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content ">
+                                                <div class="modal-body">
+                                                    <button type="button" class="btn-close  float-end button-close btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                                                    
+                                                    <img class="rounded-3 object-fit-contain w-100 " src="{% static 'main/img/reviews_photos/review10.jpeg' %}"
+                                                    alt="Лариса Ивановна Л."/>
+                                                </div>
+                                              
+                                            </div>
+                                            </div>
+                                        </div>
                                     <p class="fs-lg-10 fs-8 fw-light mb-0">Раньше сталкивалась с частниками в вопросе стройки- ремонта и боялась столкнуться с ними в выборе оконной решетки на дачу. Совершенно мне этого не хотелось, поэтому сразу искала компанию с опытом, гарантией, договором, точной ценой и без обмана. Также не хотелось долго объяснять все на пальцах по телефону, как обычно с частниками без сайтов происходит.
-                                        По итогу ни разу не пожалела, что обратилась в вашу компанию. Вы меня прямо спасли от нечестных цен и буквально руководства людьми на объекте. Всем советую, получила идеальную цену/качество
-                                        </p>
+                                        По итогу ни разу не пожалела, что обратилась в вашу компанию. Вы меня прямо спасли от нечестных цен и буквально руководства людьми на объекте. Всем советую, получила идеальную цену/качество                                        
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -214,17 +416,33 @@
                             <div class="card h-100 rounded-lg-4 rounded-3">
                                 <div class="card-body p-lg-15 pt-10 pb-lg-28">
                                     <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatar.png' %}"
-                                                                 alt="Олег Матросов"/></div>
+                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar7.jpg' %}"
+                                                                 alt="Галина У."/></div>
                                         <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
+                                            <h6 class="fs-8 mb-2">Галина У</h6>
                                         </div>
                                         <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                           href="#">Смотреть фото</a>
+                                           href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop12">Смотреть фото</a>
                                     </div>
-                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Я далека от строительства, поэтому долго расспрашивала знакомых и искала в интернете информацию про решетки на окна в квартиру. По итогу больше всего мне впечатлили отзывы о фирме “Оконные решетки”, сразу было видно, что они давно на рынке и имеют опыт работы. Я не ошиблась) Привлекло также собственное производство, потому что у меня в апартаментах нестандартного размера окна, а хотелось не тянуть с процессом и поскорее сделать на заказ. Общением с компанией довольна, все рассказали детально, ответили на все мои вопросы, и самое главное, что со мной общались на моем языке без погружения в терминологию</p>
-                                        <p> Хочу сказать спасибо, сделали все очень качественно, мне не к чему придраться. Нужно было установить решетки на окна 40 на 23 и решетку для кондиционера, все сделали за 3 дня с учетом изготовления.</p>
-                                       
+                                          <!-- Modal -->
+                                           
+                                          <div class="modal fade" id="staticBackdrop12" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content ">
+                                                <div class="modal-body">
+                                                    <button type="button" class="btn-close  float-end button-close btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                                                    
+                                                    <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review11.jpg' %}"
+                                                    alt="Галина У" />
+                                                </div>
+                                              
+                                            </div>
+                                            </div>
+                                        </div>
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Я далека от строительства, поэтому долго расспрашивала знакомых и искала в интернете информацию про решетки на окна в квартиру. По итогу больше всего мне впечатлили отзывы о фирме “Оконные решетки”, сразу было видно, что они давно на рынке и имеют опыт работы. Я не ошиблась) Привлекло также собственное производство, потому что у меня в апартаментах нестандартного размера окна, а хотелось не тянуть с процессом и поскорее сделать на заказ. Общением с компанией довольна, все рассказали детально, ответили на все мои вопросы, и самое главное, что со мной общались на моем языке без погружения в терминологию
+                                        Хочу сказать спасибо, сделали все очень качественно, мне не к чему придраться. Нужно было установить решетки на окна 
+                                        40 на 23 и решетку для кондиционера, все сделали за 3 дня с учетом изготовления.                                        
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -232,24 +450,45 @@
                             <div class="card h-100 rounded-lg-4 rounded-3">
                                 <div class="card-body p-lg-15 pt-10 pb-lg-28">
                                     <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatar.png' %}"
-                                                                 alt="Олег Матросов"/></div>
+                                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar2.jpg' %}"
+                                                                 alt="Антонина И."/></div>
                                         <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
+                                            <h6 class="fs-8 mb-2">Антонина И.</h6>
                                         </div>
                                         <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                           href="#">Смотреть фото</a>
+                                           href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop13">Смотреть фото</a>
                                     </div>
-                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Компанию посоветовал коллега для установки решеток на приямки и решетки для бизнеса в целом. У нас офисное здание и искали надежного подрядчика в этой сфере. С уверенностью могу сказать, что компания себя зарекомендовала с отличной стороны. Из перечня работ было изготовление: сварные решетки на окна 30 штук, решетчатые двери внутренние 4 штуки, решетки на кондиционер 5 штук, решетки на приямки 17 штук. </p>
+                                          <!-- Modal -->
+                                           
+                                          <div class="modal fade" id="staticBackdrop13" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content ">
+                                                <div class="modal-body">
+                                                    <button type="button" class="btn-close  float-end button-close btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                                                    
+                                                    <img class="rounded-3 object-fit-contain w-100 " src="{% static 'main/img/reviews_photos/review13.jpeg' %}"
+                                                    alt="Антонина И."/>
+                                                </div>
+                                              
+                                            </div>
+                                            </div>
+                                        </div>
+                                    <p class="fs-lg-10 fs-8 fw-light mb-0">Компанию посоветовал коллега для установки решеток на приямки и решетки для бизнеса в целом. У нас офисное здание и искали надежного подрядчика в этой сфере. С уверенностью могу сказать, что компания себя зарекомендовала с отличной стороны. Из перечня работ было изготовление: сварные решетки на окна 30 штук, решетчатые двери внутренние 4 штуки, решетки на кондиционер 5 штук, решетки на приямки 17 штук. </p> 
 
-                                       <p> Выбрали варианты из готовых эскизов в каталоге, произвели расчет. Хочется отметить, что практически все металлические изделия изготавливались индивидуально под наши размеры окон и проемов. Были и свои нюансы с цоколем, без полностью компетентной организации в этом вопросе мы бы не обошлись.</p>
+                                       <p class="fs-lg-10 fs-8 fw-light mb-0"> Выбрали варианты из готовых эскизов в каталоге, произвели расчет. Хочется отметить, что практически все металлические изделия изготавливались индивидуально под наши размеры окон и проемов. Были и свои нюансы с цоколем, без полностью компетентной организации в этом вопросе мы бы не обошлись.</p> 
                                         
-                                       <p>  Все наши пожелания и вопросы находили отклик. Спасибо специалисту Александру Олегову и мастеру монтажа Сергею Иванову, с ними больше всех происходила коммуникация.</p>
+                                       <p class="fs-lg-10 fs-8 fw-light mb-0"> Все наши пожелания и вопросы находили отклик. Спасибо специалисту Александру Олегову и мастеру монтажа Сергею Иванову, с ними больше всех происходила коммуникация.</p> 
                                         
-                                       <p>  Нас полностью устроил результат. Отдельная благодарность за сроки и информирование в процессе работ. Такой объем нужно было изготовить за 30 рабочих дней и установить на объекте. В общей сложности, с учетом согласований у арендодателя, конечно же, мы уложились в договор. Огромное спасибо! Будем сотрудничать.</p>
+                                       <p class="fs-lg-10 fs-8 fw-light mb-0"> Нас полностью устроил результат. Отдельная благодарность за сроки и информирование в процессе работ. Такой объем нужно было изготовить за 30 рабочих дней и установить на объекте. В общей сложности, с учетом согласований у арендодателя, конечно же, мы уложились в договор. Огромное спасибо! Будем сотрудничать. </p>                                        
+                                    
                                 </div>
                             </div>
                         </div>
+                        
+
+
+                        
+                   
                     </div>
                     <div class="text-center mt-lg-20 mt-10"><a class="btn btn-outline-light btn-xxl btn-wide-xxl"
                                                                href="#">Показать еще </a></div>

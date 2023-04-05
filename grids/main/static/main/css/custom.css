@@ -17,7 +17,22 @@
     margin-top: -10px;
 }
 
+/* BTN_CATALOG */
+.baner_overlay{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 60%;
+}
+.btn_catalog{
+    color: white;
+    width: 35%;
+}
 
+/* NAZNACHENIE RESHETOK */
+.object-fit-minicontent{
+    width: 60%;
+}
 /* LIDERI PRODAZH */
 
 .card_hover_shadow:hover {
@@ -34,6 +49,13 @@
     top: 130px;
 }
 
+
+
+
+.star:hover{
+ color: red;
+ fill:red;
+}
 
 /* TABS */
 
@@ -144,7 +166,26 @@
 }
 
 
+
+
+/* MEDIA QUERIES */
+
+@media (max-width: 992px) {
+     /* BTN_CATALOG */
+.btn_catalog{
+    display: none;
+}
+}
+
+
 @media (max-width: 768px) {
+
+
+           /*  POCHEMY NASHA KOMPANIYA */
+           .pluses_company {
+            display: none;
+             }
+    
     /* SVG-icons */
 .svg_heart{
     left: 95% !important;
@@ -156,4 +197,30 @@
     z-index: 20 !important;
 }
 
+/* NAZNACHENIE RESHETOK */
+.object-fit-minicontent{
+    width: 100%;
 }
+
+}
+
+
+@media (max-width: 575px) {
+ /*    .btn_catalog{
+        display: block;
+        width: 100%;
+        margin-top: 17%;
+        
+        border: 1px solid black;
+        color: black;
+    } */
+    .bi-caret-left-fill {
+        margin-right: 0px;
+        width: 120%;
+         }
+       
+         .bi-caret-right-fill {
+            margin-left: 0px;
+          
+            }
+  }

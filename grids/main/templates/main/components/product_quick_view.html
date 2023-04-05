@@ -15,7 +15,7 @@
                                     class="text-muted text-hover-black" href="#">
                                     {% include 'main/icons/chart.html' with classes='svg-icon' %}
                             </a></div>
-                            <div class="border-lg border-lg-light rounded-lg-3 px-lg-40 py-lg-35">
+                            <div class="border-lg border-lg-light rounded-lg-3 px-lg-40  py-lg-5 py-10">
                                 <div class="swiper" id="product-swiper2"
                                      data-control="#product-swiper-control2">
                                     <div class="swiper-wrapper">
@@ -50,36 +50,56 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-between align-items-center mt-lg-10 mt-20"
+                            <div class="d-flex justify-content-between align-items-center mt-lg-5 mt-20"
                                  id="product-swiper-control2">
                                 <button class="btn btn-outline-secondary btn-swiper-prev rounded-circle d-flex justify-content-center align-items-center p-0"
-                                        type="button" style="width: 3rem; height: 3rem;"><-
+                                        type="button" style="width: 2rem; height: 2rem;"><-
                                 </button>
                                 <div class="swiper-pagination"></div>
                                 <button class="btn btn-outline-secondary btn-swiper-next rounded-circle d-flex justify-content-center align-items-center p-0"
-                                        type="button" style="width: 3rem; height: 3rem;">->
+                                        type="button" style="width: 2rem; height: 2rem;">->
                                 </button>
                             </div>
                         </div>
-                        <a class="btn btn-outline-secondary btn-xl d-lg-block d-none w-100 mt-20" href="#">Выбрать
-                            другой рисунок</a>
+            
+                            <h6 class="fs-9 fw-semibold mb-0 pt-6 text-center">Рассчитаем стоимость по телефону <h6>
+                                        <form class="mt-5">
+                                            <div class="row">
+                                                <div class="col-12 my-4">
+                                                    <input class="form-control  fs-7 text-center w-100"
+                                                           placeholder="Введите имя" type="text"/>
+                                                </div>
+                                                <div class="col-12 my-4">
+                                                    <input class="form-control  fs-7 text-center"
+                                                           placeholder="Введите номер" type="text"/>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="form-check  fs-6 pt-5 pb-5">
+                                                        <input class="form-check-input " id="consultation-personal" name="personal"
+                                                               autocomplete="off" type="checkbox" checked="checked"/>
+                                                        <label class="form-check-label " for="consultation-personal">Даю согласие на
+                                                            обработку персональных данных</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <button class="btn py-8 btn-secondary mt-2 btn-xl w-100" type="submit">Получить расчет
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
                     </div>
                     <div class="col-lg-8">
                         <div class="d-lg-flex d-none align-items-center border-bottom border-black pb-12 mb-16">
-                            <h2 class="h5 fw-medium ls-sm text-uppercase mb-0">Решетка на окно Эскиз №
+                            <div class="row">
+                                <div class="col-12">
+                            <h2 class="h5 fw-medium fs-10 ls-sm text-uppercase mb-0">Решетка на окно Эскиз №
                                 1-1</h2>
-                            <div class="ms-auto">
-                                <div class="hstack gap-10"><a class="text-secondary text-hover-black"
-                                                              href="#">
-                                    <svg class="svg-icon">
-                                        <use href="img/sprite_icons.svg#chart"></use>
-                                    </svg>
-                                </a><a class="text-secondary text-hover-black" href="#">
-                                    <svg class="svg-icon">
-                                        <use href="img/sprite_icons.svg#heart"></use>
-                                    </svg>
-                                </a></div>
                             </div>
+                                <div class="col-12">
+                                <span class="fs-10 ml-30">Цена: <span class="text-danger">2900 р.</span> </span>
+                            </div>
+                            </div>
+                          
                         </div>
                         <div class="mb-15 d-lg-block d-none">
                             <div class="row row-cols-4 gy-20">
@@ -151,15 +171,15 @@
                                 </div>
                                 <div class="col">
                                     <input class="form-control form-control-lg rounded-2"
-                                           placeholder="Ширина, см." type="text"/>
+                                           placeholder="100 см." type="text"/>
                                 </div>
                                 <div class="col">
                                     <input class="form-control form-control-lg rounded-2"
-                                           placeholder="Высота, см." type="text"/>
+                                           placeholder="100 см." type="text"/>
                                 </div>
                                 <div class="col">
                                     <input class="form-control form-control-lg rounded-2"
-                                           placeholder="Количество" type="text"/>
+                                           placeholder="1" type="text"/>
                                 </div>
                                 <div class="col">
                                     <select class="form-select form-select-lg rounded-2">

@@ -1,106 +1,54 @@
 {%extends 'main/base.html' %}
 {% load static %}
 {% block content %}
-<div class="pt-lg-30 pt-16 pb-lg-50 pb-32">
+<div class="pt-lg-20 pt-16 pb-lg-50 pb-32">
     <div class="container">
-        <header class="page-header mb-lg-45 mb-28">
+        <header class="page-header  mb-20">
 
 
-            <div class="card bg-dark text-white">
+            <div class="card text-white ">
                 <img    src="{% static 'main/img/baner.jpg' %}" class="card-img" alt="baner"/>
-                <div class="card-img-overlay" >
-                    <div class="row mb-50">
-                        <div class="col-7">
-                            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                  <div class="carousel-item active">
-                                    <h1 class="display-1  fs-3xl-25 fs-xl-23 fs-lg-22 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Металлические решетки <br> на окна по честным <br> ценам</h1>
-                                  </div>
-                                  <div class="carousel-item">
-                                    <h1 class="display-1  fs-3xl-25 fs-xl-23 fs-lg-22 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Металлические решетки <br> на окна по честным <br> ценам</h1>
-                                  </div>
-                                  <div class="carousel-item">
-                                    <h1 class="display-1  fs-3xl-25 fs-xl-23 fs-lg-22 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Металлические решетки <br> на окна по честным <br> ценам</h1>
-                                  </div>
-                                </div>
-                              <!--   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                  <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                  <span class="visually-hidden">Next</span>
-                                </button> -->
-                              </div>
+                <div class="card-img-overlay baner_overlay" >
+                    <div id="carouselExampleFade" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <h1 class="display-1  fs-3xl-25 fs-xl-23 fs-lg-20 fs-md-15 fs-9 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Металлические решетки <br> на окна по честным <br> ценам</h1>
+                          </div>
+                          <div class="carousel-item">
+                            <h1 class="display-1  fs-3xl-25 fs-xl-20 fs-lg-20 fs-md-15 fs-9 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Металлические решетки <br> на окна по честным <br> ценам</h1>
+                          </div>
+                          <div class="carousel-item">
+                            <h1 class="display-1  fs-3xl-25 fs-xl-23 fs-lg-20 fs-md-15 fs-9 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Металлические решетки <br> на окна по честным <br> ценам</h1>
+                          </div>
                         </div>
-                        <div class="col-5">
-
-                        </div>
-                    </div>
-                 
-                 
-                 <a class="btn mt-30  btn-outline-light btn-xxl "
-                        href="{%url 'catalog'%}">Перейти в каталог</a>
-                    
-              
-              
+                      <!--   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button> -->
+                      </div>
+                     <a class="btn  btn-outline-light btn-xxl btn_catalog"
+                        href="{%url 'catalog'%}">Перейти в каталог</a>        
               </div>
-           <!--  <div>
+            </div>
+     
+            <div>
 
                 <div class="row gy-lg-0  gy-12">
-                    <div class="col-lg-6">
-                        <h1 class="display-1  fs-3xl-25 fs-xl-23 fs-lg-22 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Металлические решетки на окна по честным ценам</h1>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="pt-xl-7 pt-lg-4">
-                            <p class="lead fs-lg-12 fs-9 mb-0" style="max-width: 28rem;">В нашем каталоге представлено 600+ эскизов решеток на окна. Возможно изготовление решеток по вашему эскизу.</p>
-                            <div class="mt-3xl-31 mt-lg-24 d-lg-block d-none">
-                                <div class="d-flex"><a class="btn btn-outline-black btn-xl btn-wide-xxl fs-9" 
-                                                       href="{%url 'catalog'%}">Перейти в каталог</a>
-                                                       <div class="d-flex gap-10 mt-auto ms-auto" id="intro-swiper-control">
-                                                           <button class="btn btn-outline-secondary btn-swiper-prev rounded-circle d-flex justify-content-center align-items-center p-0" type="button" style="width: 3rem; height: 3rem;"><-</button>
-                                                           <button class="btn btn-outline-secondary btn-swiper-next rounded-circle d-flex justify-content-center align-items-center p-0" type="button" style="width: 3rem; height: 3rem;">->                                    </button>
-                                                       </div>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </div>
-                                   </div>
-                                   <div class="swiper" id="intro-swiper" data-control="#intro-swiper-control">
-                                       <div class="swiper-wrapper">
-                                           <div class="swiper-slide">
-                                               <div class="ratio ratio-1x1 overflow-hidden mt-18" style="--bs-aspect-ratio: 50%; min-height: 200px; max-height: 600px;">
-                                                <img
-                                    class="rounded-lg-4 rounded-3 object-fit-cover"
-                                    src="{% static 'main/img/home-intro-img1.png' %}"
-                                    alt=""/></div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="ratio ratio-1x1 overflow-hidden mt-18"
-                                 style="--bs-aspect-ratio: 50%; min-height: 200px; max-height: 600px;"><img
-                                    class="rounded-lg-4 rounded-3 object-fit-cover"
-                                    src="{% static 'main/img/home-intro-img2.png' %}"
-                                    alt=""/></div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="ratio ratio-1x1 overflow-hidden mt-18"
-                                 style="--bs-aspect-ratio: 50%; min-height: 200px; max-height: 600px;"><img
-                                    class="rounded-lg-4 rounded-3 object-fit-cover"
-                                    src="{% static 'main/img/home-intro-img3.png' %}"
-                                    alt=""/></div>
-                        </div>
-                    </div>
-                </div>
+           
                 <div class="mt-20 d-lg-none d-block"><a class="btn btn-outline-black btn-xxl w-100"
                                                         href="{%url 'catalog'%}">Перейти
                     в каталог</a>
                 </div>
-                <hr class="opacity-100 mt-lg-50 mt-30 mb-0"/>
-            </div> -->
+                
+            </div> 
         </header>
         <main>
-            <section class="mb-lg-50 mb-28">
-                <div class="row align-items-end mb-lg-32-5 mb-16">
+            <section class="mb-lg-20 mb-20">
+                <div class="row align-items-end mb-lg-12-5 mb-16">
                     <div class="col-lg-4">
                         <h2 class="h1 fs-3xl-25  fs-lg-22 fs-13 ls-sm text-uppercase mb-0">Выберите свой тип
                             решеток</h2>
@@ -141,7 +89,7 @@
                                 </div>
                             </div>
                             <div class="d-flex">
-                                <h3 class="card-title w-50 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0">Эконом решетки </h3>
+                                <h3 class="card-title w-50 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0">Ажурные решетки </h3>
                                 <span class="text-primary fs-10 fw-medium ls-sm text-uppercase text-nowrap mt-auto ms-auto">
                                     <span class="fs-8">от</span><span class="fs-13"> 990 р</span></span>
                             </div>
@@ -160,7 +108,7 @@
                                 </div>
                             </div>
                             <div class="d-flex">
-                                <h3 class="card-title w-50 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0">Эконом решетки </h3>
+                                <h3 class="card-title w-50 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0">Кованные решетки </h3>
                                 <span class="text-primary fs-10 fw-medium ls-sm text-uppercase text-nowrap mt-auto ms-auto">
                                     <span class="fs-8">от</span><span class="fs-13"> 990 р</span></span>
                             </div>
@@ -179,7 +127,7 @@
                                 </div>
                             </div>
                             <div class="d-flex">
-                                <h3 class="card-title w-50 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0">Эконом решетки </h3>
+                                <h3 class="card-title w-50 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0">VIP<br>решетки</h3>
                                 <span class="text-primary fs-10 fw-medium ls-sm text-uppercase text-nowrap mt-auto ms-auto">
                                     <span class="fs-8">от</span><span class="fs-13"> 990 р</span></span>
                             </div>
@@ -197,16 +145,13 @@
             {% include 'main/components/lattice_tags.html' with list_of_grids_types=list_of_grids_types  %}
 
             <!--HITI PRODAZH-->
-            <section class="mb-lg-50 mb-28">
+            <section class="mb-20">
 
                 <h2 class="h1  fs-3xl-22 fs-lg-26 fs-13 ls-sm text-uppercase mb-0">Хиты продаж</h2>
                 <div class="row mt-10 row-cols-lg-4 row-cols-1 gy-20">
 
                     {% for item in leaders_of_selling %}
 
-<!--                    {% for price in prices %}-->
-<!--                        <p>{{ price.name }}: {{ price.salary }}</p>-->
-<!--                    {% endfor %}-->
                     <div class="col">
                         <div class="card card_hover_shadow card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">
                             <div class="card-body p-lg-13 py-10">
@@ -229,10 +174,10 @@
                                                 data-bs-target="#product-quick-view" type="button">Быстрый просмотр
                                         </button>
                                     </div>
-                                    <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
+                                   <a href="{%url 'product'%}"><div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
                                             class="mt-15 object-fit-contain"
                                             src="{% static 'main/img/product-card-img.png' %}"
-                                            alt="Решетки на окна эконом класса"></div>
+                                            alt="Решетки на окна эконом класса"></div></a>
                                 </div>
                                 <h3 class="card-title h5 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0  pt-5">
                                     Решетки на окна эконом класса</h3>
@@ -245,15 +190,22 @@
                     </div>
 
                     {% endfor %}
-
-
                 </div>
 
                 {% include 'main/components/product_quick_view.html' %}
 
 
-                <div class="text-center mt-lg-20 mt-10"><a class="btn btn-outline-secondary btn-xxl btn-wide-xxl"
+
+                <div class="collapse" id="collapseExample">
+                      Some placeholder content for the collapse component. 
+                      This panel is hidden by default but revealed when the user activates the relevant trigger.
+                  
+                  </div>   
+                 <div class="text-center mt-lg-20 mt-10">
+                    <a class="btn btn-outline-secondary btn-xxl btn-wide-xxl"  data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
                                                            href="#">Показать еще </a></div>
+                                                           
+                
 
 
             </section>
@@ -265,8 +217,8 @@
 
 
            
-            <section class="mb-lg-50 mb-28">
-                <div class="mb-lg-35 mb-8 mt-lg-50">
+            <section class="mb-20">
+                <div class="mb-lg-20 mb-8 mt-lg-20">
                     <div class="badge border border-secondary d-lg-inline-block d-none fs-6 text-secondary ls-sm text-uppercase mb-10 py-6" style="min-width: 12.5rem;">О компании</div>
                     <div class="row mb-16">
                         <div class="col-lg-5">
@@ -296,7 +248,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="mb-lg-50 mb-30">
+                <div class="mb-20">
                     <h3 class="h4 fs-lg-16 fs-10 fw-normal ls-sm text-uppercase mb-lg-30 mb-20">Нам есть, чем гордиться!<br>В
                         2022 году изготовлено и установлено:</h3>
                     <div class="row row-cols-xl-4 row-cols-lg-2 row-cols-1 gy-lg-20">
@@ -484,10 +436,10 @@
                 </div>
             </section>
 
-            {% include 'main/components/reasons.html' with classes='mb-lg-50 mb-30' %}
+            {% include 'main/components/reasons.html' with classes='mb-20' %}
 
         
-            <section class="cta  mb-lg-45 mb-28">
+            <section class="cta  mb-20">
                 <div class="card rounded-lg-4 rounded-3">
                     <div class="card-body pt-lg-34 pt-17-5 px-lg-40 pb-lg-35 pb-20">
                         <h3 class="card-title fs-lg-20 fs-12 fw-normal ls-sm text-uppercase mb-lg-20 mb-14"
@@ -513,19 +465,19 @@
                     </div>
                 </div>
             </section>
-            <section class="mb-lg-50 mb-28">
+            <section class="mb-20">
                 <div class="row align-items-end mb-lg-30 mb-20">
                     <div class="col-lg-4">
                         <h2 class="h1  fs-3xl-22 fs-lg-26 fs-13 ls-sm text-uppercase mb-0">Выполненные работы</h2>
                     </div>
                     <div class="col-auto d-lg-block d-none ms-auto"><a class="fs-12 text-decoration-none text-uppercase"
-                                                                       href="#">Смотреть все ↘︎</a></div>
+                        href="{%url 'projects'%}">Смотреть все ↘︎</a></div>
                 </div>
                 <div class="row row-cols-lg-4 row-cols-2 gy-lg-20 gy-10  d-lg-flex d-none">
 
-                    {% for item in list_of_grids_types %}
+                    {% for item in list_of_photos_done %}
         
-                    {% include 'main/components/photo.html' %}
+                    {% include 'main/components/photo.html' with name=item.name %}
             
                     {% endfor %}
 
@@ -581,8 +533,7 @@
                     </div>
                 </div>
             </section>
-            <hr class="d-lg-block d-none opacity-100 mt-0 mb-45">
-            <section class="mb-lg-50 mb-30">
+            <section class="mb-20">
                 <div class="row mb-lg-22 mb-17-5">
                     <div class="col-xl-5 col-lg-6">
                         <h2 class="h1  fs-3xl-22 fs-lg-26 fs-13 ls-sm text-uppercase mb-0">Отзывы довольных
