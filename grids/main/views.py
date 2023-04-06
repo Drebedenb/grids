@@ -71,7 +71,6 @@ def get_products_by_category(category_number):
                    # .values('id', 'pricewinguardfiles').annotate(min_pricewinguardmain=Min('pricewinguardmain')).order_by('category', 'id', 'pricewinguardfiles')[:20]
     for product in products:
         try:
-            print(product)
             path = "".join(
                 re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(price_winguard_sketch_id=product["id"]).path))
             path_arr = path.split("/")
@@ -85,10 +84,9 @@ def get_products_by_category(category_number):
                 product["price"] = "Нет данных в БД"
                 product["width"] = "Нет данных в БД"
         except:
-            print("ERROR")
-            print(product)
-
-
+            product["price"] = "Нет данных в БД"
+            product["path_folder"] = 1
+            product["path_file"] = 1
     return products
 
 
