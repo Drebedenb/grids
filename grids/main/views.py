@@ -1,7 +1,8 @@
 import re
-from django.db.models import Min
+from django.db.models import Min, Max
 from django.http import HttpResponseNotFound
 from django.shortcuts import render
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
@@ -41,6 +42,16 @@ list_of_photos_done = [
     {"name": "photo85.png"}
 ]
 
+list_of_open_types = [
+    {"name": "arch", "description": "Арочная"},
+    {"name": "gog", "description": "Глухая-Распашная-Глухая"},
+    {"name": "o", "description": "Распашная"},
+    {"name": "og", "description": "Распашная-Глухая"},
+    {"name": "ogo", "description": "Распашная-Глухая-Распашная"},
+    {"name": "oo", "description": "Распашная-Распашная"},
+    {"name": "solid", "description": "Глухая"}
+]
+
 categories = {  # there are categories and their number in database. It depends on database structure what number is
     "all": {"title": "Все", 'url_title': "all" , "number_of_category": 1},
     "svarka": {"title": "Сварные",'url_title': "svarka" , "number_of_category": 1},
@@ -56,20 +67,28 @@ categories = {  # there are categories and their number in database. It depends 
 
 def get_products_by_category(category_number):
     products = PriceWinguardSketch.objects.filter(category=category_number) \
-                   .values('id').annotate(min_pricewinguardmain=Min('pricewinguardmain')).values('min_pricewinguardmain', 'id')[:12]
+                   .values('id').annotate(min_pricewinguardmain=Min('pricewinguardmain')).values('min_pricewinguardmain', 'id')
                    # .values('id', 'pricewinguardfiles').annotate(min_pricewinguardmain=Min('pricewinguardmain')).order_by('category', 'id', 'pricewinguardfiles')[:20]
     for product in products:
-        path = "".join(re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(price_winguard_sketch_id=product["id"]).path))
-        path_arr = path.split("/")
-        product["path_folder"] = path_arr[1]
-        product["path_file"] = path_arr[2]
         try:
-            additional_info = PriceWinguardMain.objects.get(id=product["min_pricewinguardmain"])
-            product["price"] = additional_info.price_b2c
-            product["width"] = additional_info.name
+            print(product)
+            path = "".join(
+                re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(price_winguard_sketch_id=product["id"]).path))
+            path_arr = path.split("/")
+            product["path_folder"] = path_arr[1]
+            product["path_file"] = path_arr[2]
+            try:
+                additional_info = PriceWinguardMain.objects.get(id=product["min_pricewinguardmain"])
+                product["price"] = additional_info.price_b2c
+                product["width"] = additional_info.name
+            except:
+                product["price"] = "Нет данных в БД"
+                product["width"] = "Нет данных в БД"
         except:
-            product["price"] = "Нет данных в БД"
-            product["width"] = "Нет данных в БД"
+            print("ERROR")
+            print(product)
+
+
     return products
 
 
@@ -82,12 +101,35 @@ def index(request):
 def catalog_category(request, category_name):
     if category_name not in categories:
         return HttpResponseNotFound("Page NOT found")
+
     category = categories[category_name]
-    products = get_products_by_category(category["number_of_category"])
+    products_list = get_products_by_category(category["number_of_category"])
+
+    min_price = products_list[0]["price"]
+    max_price = products_list[0]["price"]
+    try:
+        for product in products_list:
+            if min_price > product["price"]:
+                min_price = product["price"]
+            if max_price < product["price"]:
+                max_price = product["price"]
+    except:
+        min_price=min_price
+
+    page = request.GET.get('page', 1)
+    paginator = Paginator(products_list, 12)
+
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
     # leaders_of_selling = get_products_by_category(5)
     leaders_of_selling = [];
     return render(request, 'main/catalog-category.html', {'title': 'Каталог','list_of_grids_types': list_of_grids_types,
-                                                          'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling})
+                                                          'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling,
+                                                          'min_price': min_price, 'max_price': max_price})
 
 
 def contacts(request):
@@ -103,7 +145,7 @@ def product(request, product_name):
     product["path_folder"] = path_arr[1]
     product["path_file"] = path_arr[2]
     product['additional_info'] = list(PriceWinguardMain.objects.filter(price_winguard_sketch_id=sketch_id).values('price_b2c', 'name'))
-    return render(request, 'main/product.html', product)
+    return render(request, 'main/product.html',{'product': product, 'list_of_open_types': list_of_open_types})
 
 
 def projects(request):

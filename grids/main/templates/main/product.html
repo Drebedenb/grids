@@ -238,7 +238,7 @@
                                                     <div class="swiper-wrapper">
                                                         <div class="swiper-slide">
                                                             <div class="ratio overflow-hidden" style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 265px;"><img class="object-fit-contain"
-                                                                src="{% static 'main/img/grids_pictures' %}/{{path_folder}}/solid/{{path_file}}.png">
+                                                                src="{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/solid/{{product.path_file}}.png">
 
                                                             </div>
                                                         </div>
@@ -246,8 +246,8 @@
                                                             <div class="ratio overflow-hidden"
                                                                  style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 265px;">
                                                                 <img class="object-fit-contain"
-                                                                     src="{% static 'main/img/grids_pictures' %}/{{path_folder}}/solid/{{path_file}} F.png">
-                                                                     alt="Решетка на окно Эскиз № {{path_folder}}-{{path_file}}"></div>
+                                                                     src="{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/solid/{{product.path_file}} F.png">
+                                                                     alt="Решетка на окно Эскиз № {{product.path_folder}}-{{product.path_file}}"></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -267,7 +267,7 @@
                                     <div class="col-lg-8">
                                         <div class="d-lg-flex d-none align-items-center border-bottom border-black pb-12 mb-16">
                                             <h2 class="h5 fw-medium ls-sm text-uppercase mb-0">Решетка на окно Эскиз №
-                                                {{path_folder}}-{{path_file}}</h2>
+                                                {{product.path_folder}}-{{product.path_file}}</h2>
                                             <div class="ms-auto">
                                                 <div class="hstack gap-10"><a class="text-secondary text-hover-black"
                                                                               href="#">
@@ -283,56 +283,40 @@
                                         </div>
                                         <div class="mb-15 d-lg-block d-none">
                                             <div class="row row-cols-4 gy-20">
+                                                {% for item in list_of_open_types %}
                                                 <div class="col">
-                                                    <input class="btn-check" id="product-type-1" name="product-type"
+                                                    <input class="btn-check" id="product-type-{{item.name}}" name="product-type"
                                                            value="Без открывания" type="radio" checked>
                                                     <label class="btn btn-outline-black w-100 h-100 rounded-2 p-10"
-                                                           for="product-type-1">
+                                                           for="product-type-{{item.name}}">
                                                         <div class="ratio"
-                                                             style="--bs-aspect-ratio: 100%; max-height: 80px;"><img
+                                                             style="--bs-aspect-ratio: 100%; max-height: 80px;"
+                                                        ><img
+                                                                id="{{item.name}}"
                                                                 class="object-fit-contain"
-                                                                src="{% static 'main/img/product-card-img.png' %}" alt="Без открывания">
+                                                                src="{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/{{item.name}}/1 F.png" alt="{{item.description}}">
                                                         </div>
-                                                        <span class="d-block fs-6 fw-medium text-uppercase mt-8">Без открывания</span>
+
+
+                                                        <span class="d-block fs-6 fw-medium text-uppercase mt-8">{{item.description}}</span>
                                                     </label>
                                                 </div>
-                                                <div class="col">
-                                                    <input class="btn-check" id="product-type-2" name="product-type"
-                                                           value="С 1 створкой" type="radio">
-                                                    <label class="btn btn-outline-black w-100 h-100 rounded-2 p-10"
-                                                           for="product-type-2">
-                                                        <div class="ratio"
-                                                             style="--bs-aspect-ratio: 100%; max-height: 80px;"><img
-                                                                class="object-fit-contain"
-                                                                src="{% static 'main/img/product-card-img.png' %}" alt="С 1 створкой"></div>
-                                                        <span class="d-block fs-6 fw-medium text-uppercase mt-8">С 1 створкой</span>
-                                                    </label>
-                                                </div>
-                                                <div class="col">
-                                                    <input class="btn-check" id="product-type-3" name="product-type"
-                                                           value="С 2 створками" type="radio">
-                                                    <label class="btn btn-outline-black w-100 h-100 rounded-2 p-10"
-                                                           for="product-type-3">
-                                                        <div class="ratio"
-                                                             style="--bs-aspect-ratio: 100%; max-height: 80px;"><img
-                                                                class="object-fit-contain"
-                                                                src="{% static 'main/img/product-card-img.png' %}" alt="С 2 створками">
-                                                        </div>
-                                                        <span class="d-block fs-6 fw-medium text-uppercase mt-8">С 2 створками                                       </span>
-                                                    </label>
-                                                </div>
-                                                <div class="col">
-                                                    <input class="btn-check" id="product-type-4" name="product-type"
-                                                           value="Распашная" type="radio">
-                                                    <label class="btn btn-outline-black w-100 h-100 rounded-2 p-10"
-                                                           for="product-type-4">
-                                                        <div class="ratio"
-                                                             style="--bs-aspect-ratio: 100%; max-height: 80px;"><img
-                                                                class="object-fit-contain"
-                                                                src="{% static 'main/img/product-card-img.png' %}" alt="Распашная"></div>
-                                                        <span class="d-block fs-6 fw-medium text-uppercase mt-8">Распашная</span>
-                                                    </label>
-                                                </div>
+                                                {%endfor%}
+                                                <style>
+                                                    #arch:hover {content: url("{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/arch/1.png");}
+                                                    #gog:hover {content: url("{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/gog/1.png");}
+                                                    #o:hover {content: url("{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/o/1.png");}
+                                                    #og:hover {content: url("{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/og/1.png");}
+                                                    #ogo:hover {content: url("{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/ogo/1.png");}
+                                                    #oo:hover {content: url("{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/oo/1.png");}
+                                                    #solid:hover {content: url("{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/solid/1.png");}
+
+                                                    #gog:active {content: url("{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/gog/1 O.png");}
+                                                    #o:active {content: url("{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/o/1 O.png");}
+                                                    #og:active {content: url("{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/og/1 O.png");}
+                                                    #ogo:active {content: url("{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/ogo/1 O.png");}
+                                                    #oo:active {content: url("{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/oo/1 O.png");}
+                                                </style>
                                             </div>
                                         </div>
                                         <form>
@@ -340,14 +324,20 @@
                                                 <div class="col">
                                                     <select class="form-select form-select-lg rounded-2" id="width_of_rod" onchange="changeForm()">
                                                         <option selected>Выберите ширину прутка</option>
-                                                        {% for item in additional_info %}
+                                                        {% for item in product.additional_info %}
                                                             <option>{{ item.name }} - {{ item.price_b2c }} руб.</option>
                                                         {% endfor %}
                                                     </select>
                                                 </div>
                                                 <div class="col">
                                                     <select class="form-select form-select-lg rounded-2">
-                                                        <option selected>Вариант покраса решетки</option>
+                                                        <option selected>Без покраски - 0 руб</option>
+                                                        <option>Покраска (эмаль НЦ) - 550 руб</option>
+                                                        <option>Покраска (эмаль ХВ) - 650 руб</option>
+                                                        <option>Покраска (эмаль NOVAX) - 1200 руб</option>
+                                                        <option>Покраска (краска Hammerite) - 1400 руб</option>
+                                                        <option>Покраска (порошковое нап.) - 1700 руб</option>
+                                                        <option>Покраска (эмаль Westplast) - 1900 руб</option>
                                                     </select>
                                                 </div>
                                                 <div class="col">
@@ -726,5 +716,6 @@
         total = amount * (width_of_rod * width * height / 10000) + installing;
         document.getElementById("total").textContent = total;
     }
+
     </script>
 {% endblock %}
