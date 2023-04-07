@@ -76,7 +76,32 @@
         <main>
             <div class="mb-20">
                 <h2 class="d-lg-none d-block fs-13 ls-sm text-uppercase mb-17-5">Каталог:</h2>
-           
+                <div class="row row-cols-lg-4 row-cols-2 gy-lg-20 gy-10  mb-10">
+                    <div class="col"><a
+                            class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20 px-10 py-4"
+                            href="решетки-на-окна-эконом-класс">
+                        <h3 class="w-50 h5 fs-lg-8 fs-7 fw-medium ls-sm text-uppercase mb-0">Эконом решетки</h3><span
+                            class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2"
+                            style="min-width: 3rem;">149</span></a></div>
+                    <div class="col"><a
+                            class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20 py-lg-16 px-10 py-4"
+                            href="ажурные-решетки-на-окна">
+                        <h3 class="w-50 h5 fs-lg-8 fs-7 fw-medium ls-sm text-uppercase mb-0">Ажурные решетки</h3><span
+                            class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2"
+                            style="min-width: 3rem;">111</span></a></div>
+                    <div class="col"><a
+                            class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20 px-10 py-4"
+                            href="кованые-решетки-на-окна-вип-класс">
+                        <h3 class="w-50 h5 fs-lg-8 fs-7 fw-medium ls-sm text-uppercase mb-0">VIP решетки</h3><span
+                            class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2"
+                            style="min-width: 3rem;">75</span></a></div>
+                    <div class="col"><a
+                            class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20 px-10 py-4"
+                            href="эксклюзивные-кованые-решетки">
+                        <h3 class="w-50 h5 fs-lg-8 fs-7 fw-medium ls-sm text-uppercase mb-0">Эксклюзив<br>решетки</h3><span
+                            class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2"
+                            style="min-width: 3rem;">50</span></a></div>
+                </div>
                 <div class="row gy-lg-0 gy-20">
                     <div class="col-lg-3  d-lg-block ">
                         <div class="accordion d-block">
@@ -91,10 +116,10 @@
                                             <div class="mb-18">
                                                 <div class="row gy-10 mb-20">
                                                     <div class="col-6">
-                                                        <input class="form-control text-center text-uppercase" id="price-min" placeholder="2 900 руб" type="text" />
+                                                        <input class="form-control text-center text-uppercase" id="price-min" value="{{min_price}}" type="text" />
                                                     </div>
                                                     <div class="col-6">
-                                                        <input class="form-control text-center text-uppercase" id="price-max" placeholder="122 900 руб" type="text" />
+                                                        <input class="form-control text-center text-uppercase" id="price-max" value="{{max_price}}" type="text" />
                                                     </div>
                                                 </div>
                                                 <div>
@@ -102,83 +127,39 @@
                                                 </div>
                                             </div>
 
-                                            <div class="mb-28">
-                                                <h6 class="fw-medium ls-sm text-uppercase mb-10">Тип решеток</h6>
-                                                <div>
-                                                    <div class="form-check fs-9 ls-sm mb-10">
-                                                        <input class="form-check-input" id="filter-type-1" name="filter-type" autocomplete="off" type="radio" checked="checked" />
-                                                        <label class="form-check-label" for="filter-type-1">Дутые решетки</label>
-                                                    </div>
-                                                    <div class="form-check fs-9 ls-sm mb-10">
-                                                        <input class="form-check-input" id="filter-type-2" name="filter-type" autocomplete="off" type="radio" checked="checked" />
-                                                        <label class="form-check-label" for="filter-type-2">Сварные решетки  </label>
-                                                    </div>
-                                                    <div class="form-check fs-9 ls-sm">
-                                                        <input class="form-check-input" id="filter-type-3" name="filter-type" autocomplete="off" type="radio" checked="checked" />
-                                                        <label class="form-check-label" for="filter-type-3">Кованые решетки</label>
-                                                    </div>
-                                                </div>
-                                            </div>
+
                                             <div class="mb-28">
                                                 <h6 class="fw-medium ls-sm text-uppercase mb-10">Категория решеток</h6>
                                                 <div>
                                                     <div class="form-check fs-9 ls-sm mb-10">
-                                                        <input class="form-check-input" id="filter-category-1" name="filter-category" autocomplete="off" type="radio" />
-                                                        <label class="form-check-label" for="filter-category-1">Дутые решетки</label>
+                                                        <input class="form-check-input" id="filter-type-1" name="filter-type" autocomplete="off" type="radio"/>
+                                                        <label class="form-check-label" for="filter-type-1">Сварные решетки</label>
                                                     </div>
                                                     <div class="form-check fs-9 ls-sm mb-10">
-                                                        <input class="form-check-input" id="filter-category-2" name="filter-category" autocomplete="off" type="radio" />
-                                                        <label class="form-check-label" for="filter-category-2">Дутые решетки</label>
+                                                        <input class="form-check-input" id="filter-type-2" name="filter-type" autocomplete="off" type="radio"/>
+                                                        <label class="form-check-label" for="filter-type-2">Ажурные решетки  </label>
                                                     </div>
                                                     <div class="form-check fs-9 ls-sm mb-10">
-                                                        <input class="form-check-input" id="filter-category-3" name="filter-category" autocomplete="off" type="radio" />
-                                                        <label class="form-check-label" for="filter-category-3">Дутые решетки</label>
-                                                    </div>
-                                                    <div class="form-check fs-9 ls-sm mb-10">
-                                                        <input class="form-check-input" id="filter-category-4" name="filter-category" autocomplete="off" type="radio" />
-                                                        <label class="form-check-label" for="filter-category-4">Дутые решетки</label>
-                                                    </div>
-                                                    <div class="form-check fs-9 ls-sm mb-10">
-                                                        <input class="form-check-input" id="filter-category-5" name="filter-category" autocomplete="off" type="radio" />
-                                                        <label class="form-check-label" for="filter-category-5">Дутые решетки</label>
+                                                        <input class="form-check-input" id="filter-type-3" name="filter-type" autocomplete="off" type="radio" />
+                                                        <label class="form-check-label" for="filter-type-3">VIP решетки</label>
                                                     </div>
                                                     <div class="form-check fs-9 ls-sm">
-                                                        <input class="form-check-input" id="filter-category-6" name="filter-category" autocomplete="off" type="radio" />
-                                                        <label class="form-check-label" for="filter-category-6">Дутые решетки</label>
+                                                        <input class="form-check-input" id="filter-type-4" name="filter-type" autocomplete="off" type="radio"/>
+                                                        <label class="form-check-label" for="filter-type-4">Эксклюзив решетки</label>
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <div class="mb-28">
                                                 <h6 class="fw-medium ls-sm text-uppercase mb-10">Класс решеток</h6>
                                                 <div>
                                                     <div class="form-check fs-9 ls-sm mb-10">
-                                                        <input class="form-check-input" id="filter-class-1" name="filter-class" autocomplete="off" type="radio" />
-                                                        <label class="form-check-label" for="filter-class-1">Эконом класс</label>
+                                                        <input class="form-check-input" id="filter-category-1" name="filter-category" autocomplete="off" type="radio" />
+                                                        <label class="form-check-label" for="filter-category-1">Обычные решетки</label>
                                                     </div>
                                                     <div class="form-check fs-9 ls-sm mb-10">
-                                                        <input class="form-check-input" id="filter-class-2" name="filter-class" autocomplete="off" type="radio" />
-                                                        <label class="form-check-label" for="filter-class-2">Эксклюзивные</label>
-                                                    </div>
-                                                    <div class="form-check fs-9 ls-sm">
-                                                        <input class="form-check-input" id="filter-class-3" name="filter-class" autocomplete="off" type="radio" checked="checked" />
-                                                        <label class="form-check-label" for="filter-class-3">VIP класс</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <h6 class="fw-medium ls-sm text-uppercase mb-10">Тип открывания</h6>
-                                                <div>
-                                                    <div class="form-check fs-9 ls-sm mb-10">
-                                                        <input class="form-check-input" id="filter-opening-type-1" name="filter-opening-type" autocomplete="off" type="radio" checked="checked" />
-                                                        <label class="form-check-label" for="filter-opening-type-1">Без открывания</label>
-                                                    </div>
-                                                    <div class="form-check fs-9 ls-sm mb-10">
-                                                        <input class="form-check-input" id="filter-opening-type-2" name="filter-opening-type" autocomplete="off" type="radio" />
-                                                        <label class="form-check-label" for="filter-opening-type-2">С одной створкой</label>
-                                                    </div>
-                                                    <div class="form-check fs-9 ls-sm">
-                                                        <input class="form-check-input" id="filter-opening-type-3" name="filter-opening-type" autocomplete="off" type="radio" />
-                                                        <label class="form-check-label" for="filter-opening-type-3">С двумя створками</label>
+                                                        <input class="form-check-input" id="filter-category-2" name="filter-category" autocomplete="off" type="radio" />
+                                                        <label class="form-check-label" for="filter-category-2">Дутые решетки</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -385,21 +366,27 @@
                                     {% include 'main/components/catalog_category_item.html' with category=category PriceWinguardSketchId=item.id name=item.width price=item.price path_folder=item.path_folder path_file=item.path_file %}
                                 {% endfor %}
                         </div>
-                        <div class="text-center mt-lg-20 mt-10"><a class="btn btn-outline-light btn-lg btn-wide-lg" href="#">Показать еще  </a></div>
+
+                       <div class="text-center mt-lg-20 mt-10"><a class="btn btn-outline-light btn-lg btn-wide-lg" href="#">Показать еще  </a></div>
                         <nav class="mt-lg-20 mt-20">
-                            <ol class="pagination justify-content-lg-center overflow-x-auto mb-0">
-                                <li class="page-item previous"><a class="page-link" href="#">Назад</a></li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                <li class="page-item"><a class="page-link" href="#">6</a></li>
-                                <li class="page-item"><a class="page-link" href="#">7</a></li>
-                                <li class="page-item"><a class="page-link" href="#">8</a></li>
-                                <li class="page-item"><a class="page-link" href="#">9 </a></li>
-                                <li class="page-item next"><a class="page-link" href="#">Вперед </a></li>
-                            </ol>
+                            {% if products.has_other_pages %}
+  <ol class="pagination justify-content-lg-center overflow-x-auto mb-0">
+    {% if products.has_previous %}
+      <li class="page-item previous"><a class="page-link" href="?page={{ products.previous_page_number }}">Назад</a></li>
+    {% endif %}
+    {% for i in products.paginator.page_range %}
+      {% if products.number == i %}
+      <li class="page-item active"><a class="page-link">{{ i }}</a></li>
+      {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if products.has_next %}
+      <li class="page-item next"><a class="page-link" href="?page={{ products.next_page_number }}">Вперед </a></li>
+    {% endif %}
+  </ol>
+{% endif %}
+
                         </nav>
 
                     </div>
@@ -638,10 +625,10 @@
                                                     <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
                                                         <button class="btn btn-light fs-lg-7 btn-lg btn-wide-sm " data-bs-toggle="modal" data-bs-target="#product-quick-view" type="button">Быстрый просмотр</button>
                                                     </div>
-                                                    <a href="{%url 'catalog-category' 'kovka'%}">
-                                                    <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
-                                                            class="object-fit-contain"
-                                                            src="{% static 'main/img/grids_pictures' %}/{{path_folder}}/solid/{{path_file}}.png"
+
+                                                    <a href="кованые-решетки-на-окна-вип-класс">
+                                                        <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
+                                                            class="mt-15 object-fit-contain" src="{% static 'main/img/grids_pictures'%}/{{item.path_folder}}/solid/{{item.path_file}}.png"
                                                             alt="Решетки на окна эконом класса"></div>
                                                 </div></a>
                                                
@@ -980,4 +967,16 @@
         {% include 'main/components/consultation_modal.html' %}
     </div>
 </div>
+<script>
+    let current_location = window.location.href;
+    let radio_buttons = [];
+    for (let i = 1; i <= 4; i++) {
+        radio_buttons.push(document.getElementById('filter-type-' + i))
+    }
+    let classes = []
+    for (let i = 1; i <= 2; i++) {
+        classes.push(document.getElementById('filter-category-' + i))
+    }
+
+</script>
 {% endblock %}

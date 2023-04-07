@@ -1,7 +1,8 @@
 import re
-from django.db.models import Min
+from django.db.models import Min, Max
 from django.http import HttpResponseNotFound
 from django.shortcuts import render
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
@@ -41,52 +42,134 @@ list_of_photos_done = [
     {"name": "photo85.png"}
 ]
 
+list_of_open_types = [
+    {"name": "arch", "description": "Арочная", "price": "30"},
+    {"name": "gog", "description": "Глухая-Распашная-Глухая", "price": "1500"},
+    {"name": "o", "description": "Распашная", "price": "1500"},
+    {"name": "og", "description": "Распашная-Глухая", "price": "1500"},
+    {"name": "ogo", "description": "Распашная-Глухая-Распашная", "price": "3000"},
+    {"name": "oo", "description": "Распашная-Распашная", "price": "2800"},
+    {"name": "solid", "description": "Глухая", "price": "0"}
+]
+
 categories = {  # there are categories and their number in database. It depends on database structure what number is
-    "all": {"title": "Все", 'url_title': "all" , "number_of_category": 1},
-    "svarka": {"title": "Сварные",'url_title': "svarka" , "number_of_category": 1},
-    "svarka_dut": {"title": "Дутые сварные",'url_title': "svarka_dut" , "number_of_category": 2},
-    "ajur": {"title": "Ажурные",'url_title': "ajur" , "number_of_category": 3},
-    "ajur_dut": {"title": "Дутые ажурные",'url_title': "ajur_dut" , "number_of_category": 4},
-    "kovka": {"title": "Кованые",'url_title': "kovka" , "number_of_category": 5},
-    "kovka_dut": {"title": "Дутые кованые",'url_title': "kovka_dut" , "number_of_category": 6},
-    "vip": {"title": "VIP",'url_title': "vip" , "number_of_category": 7},
-    "vip_dut": {"title": "Дутые VIP",'url_title': "vip_dut" , "number_of_category": 8},
+    "svarka": {"title": "Сварные", 'url_title': "svarka", "number_of_category": 1},
+    "svarka_dut": {"title": "Дутые сварные", 'url_title': "svarka_dut", "number_of_category": 2},
+    "ajur": {"title": "Ажурные", 'url_title': "ajur", "number_of_category": 3},
+    "ajur_dut": {"title": "Дутые ажурные", 'url_title': "ajur_dut", "number_of_category": 4},
+    "kovka": {"title": "Кованые", 'url_title': "kovka", "number_of_category": 5},
+    "kovka_dut": {"title": "Дутые кованые", 'url_title': "kovka_dut", "number_of_category": 6},
+    "vip": {"title": "VIP", 'url_title': "vip", "number_of_category": 7},
+    "vip_dut": {"title": "Дутые VIP", 'url_title': "vip_dut", "number_of_category": 8},
+}
+
+russian_categories = {
+    "все": {"title": "Все", 'url_title': "all", "number_of_category": 1},
+    "решетки-на-окна-эконом-класс": {"title": "Эконом", 'url_title': "svarka", "number_of_category": 1},
+    "дутые-решетки-на-окна-эконом-класс": {"title": "Дутые Эконом", 'url_title': "svarka_dut", "number_of_category": 2},
+    "ажурные-решетки-на-окна": {"title": "Ажурные", 'url_title': "ajur", "number_of_category": 3},
+    "дутые-ажурные-решетки": {"title": "Дутые Ажурные", 'url_title': "ajur_dut", "number_of_category": 4},
+    "кованые-решетки-на-окна-вип-класс": {"title": "VIP", 'url_title': "kovka", "number_of_category": 5},
+    "кованые-дутые-решетки-вип-класса": {"title": "Дутые VIP", 'url_title': "kovka_dut", "number_of_category": 6},
+    "эксклюзивные-кованые-решетки": {"title": "Эксклюзив", 'url_title': "vip", "number_of_category": 7},
+    "дутые-эксклюзивные-решетки": {"title": "Дутые Эксклюзив", 'url_title': "vip_dut", "number_of_category": 8},
 }
 
 
+# def get_products_amount_by_category(category_number)
+
 def get_products_by_category(category_number):
     products = PriceWinguardSketch.objects.filter(category=category_number) \
-                   .values('id').annotate(min_pricewinguardmain=Min('pricewinguardmain')).values('min_pricewinguardmain', 'id')[:12]
-                   # .values('id', 'pricewinguardfiles').annotate(min_pricewinguardmain=Min('pricewinguardmain')).order_by('category', 'id', 'pricewinguardfiles')[:20]
+        .values('id').annotate(min_pricewinguardmain=Min('pricewinguardmain')).values('min_pricewinguardmain', 'id')
     for product in products:
-        path = "".join(re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(price_winguard_sketch_id=product["id"]).path))
-        path_arr = path.split("/")
-        product["path_folder"] = path_arr[1]
-        product["path_file"] = path_arr[2]
+        try:
+            path = "".join(
+                re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(price_winguard_sketch_id=product["id"]).path))
+            path_arr = path.split("/")
+            product["path_folder"] = path_arr[1]
+            product["path_file"] = path_arr[2]
+            try:
+                additional_info = PriceWinguardMain.objects.get(id=product["min_pricewinguardmain"])
+                product["price"] = additional_info.price_b2c
+                product["width"] = additional_info.name
+            except:
+                product["price"] = "Нет данных в БД"
+                product["width"] = "Нет данных в БД"
+        except:
+            product["price"] = "Нет данных в БД"
+            product["path_folder"] = 1
+            product["path_file"] = 1
+    return products
+
+
+def get_category_min_price(category_number):
+    products = PriceWinguardSketch.objects.filter(category=category_number) \
+        .values('id').annotate(min_pricewinguardmain=Min('pricewinguardmain')).values('min_pricewinguardmain', 'id')
+    for product in products:
         try:
             additional_info = PriceWinguardMain.objects.get(id=product["min_pricewinguardmain"])
             product["price"] = additional_info.price_b2c
-            product["width"] = additional_info.name
         except:
             product["price"] = "Нет данных в БД"
-            product["width"] = "Нет данных в БД"
-    return products
+    min_price = products[0]["price"]
+    try:
+        for product in products:
+            if min_price > product["price"]:
+                min_price = product["price"]
+    except:
+        min_price = min_price
+    return min_price
 
 
 def index(request):
     products = get_products_by_category(1)
+
+    min_price_1 = get_category_min_price(1)
+    min_price_2 = get_category_min_price(2)
+    min_price_3 = get_category_min_price(3)
+    min_price_4 = get_category_min_price(4)
     return render(request, 'main/index.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Главная страница',
-                                               'leaders_of_selling': products,'list_of_photos_done': list_of_photos_done})
+                                               'leaders_of_selling': products,
+                                               'min_price_1': min_price_1,
+                                               'min_price_2': min_price_2,
+                                               'min_price_3': min_price_3,
+                                               'min_price_4': min_price_4,
+                                               })
 
 
 def catalog_category(request, category_name):
-    if category_name not in categories:
+    if category_name not in russian_categories:
         return HttpResponseNotFound("Page NOT found")
-    category = categories[category_name]
-    products = get_products_by_category(category["number_of_category"])
-    leaders_of_selling = get_products_by_category(5)
-    return render(request, 'main/catalog-category.html', {'title': 'Каталог','list_of_grids_types': list_of_grids_types,
-                                                          'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling, 'list_of_photos_done': list_of_photos_done})
+
+    category = russian_categories[category_name]
+    products_list = get_products_by_category(category["number_of_category"])
+
+    min_price = products_list[0]["price"]
+    max_price = products_list[0]["price"]
+    try:
+        for product in products_list:
+            if min_price > product["price"]:
+                min_price = product["price"]
+            if max_price < product["price"]:
+                max_price = product["price"]
+    except:
+        min_price = min_price
+
+    page = request.GET.get('page', 1)
+    paginator = Paginator(products_list, 12)
+
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
+    # leaders_of_selling = get_products_by_category(5)
+    leaders_of_selling = [];
+    return render(request, 'main/catalog-category.html',
+                  {'title': 'Каталог', 'list_of_grids_types': list_of_grids_types,
+                   'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling,
+                   'min_price': min_price, 'max_price': max_price})
 
 
 def contacts(request):
@@ -101,12 +184,14 @@ def product(request, product_name):
     path_arr = path.split("/")
     product["path_folder"] = path_arr[1]
     product["path_file"] = path_arr[2]
-    product['additional_info'] = list(PriceWinguardMain.objects.filter(price_winguard_sketch_id=sketch_id).values('price_b2c', 'name'))
-    return render(request, 'main/product.html', product)
+    product['additional_info'] = list(
+        PriceWinguardMain.objects.filter(price_winguard_sketch_id=sketch_id).values('price_b2c', 'name'))
+    return render(request, 'main/product.html', {'product': product, 'list_of_open_types': list_of_open_types})
 
 
 def projects(request):
-    return render(request, 'main/projects.html',{'list_of_grids_types': list_of_grids_types, 'title': 'Каталог', 'list_of_photos_done': list_of_photos_done})
+    return render(request, 'main/projects.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Каталог',
+                                                  'list_of_photos_done': list_of_photos_done})
 
 
 def reviews(request):

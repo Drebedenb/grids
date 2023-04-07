@@ -69,8 +69,8 @@
                 <li class="nav-item me-20"><a class="nav-link ls-sm p-0 {% if request.path == '/' %}active{% endif %}"
                                               href="{%url 'index'%}">Главная</a></li>
                 <li class="nav-item me-20"><a
-                        class="nav-link ls-sm p-0 {% if request.path == '/catalog/' %}active{% endif %}"
-                        href="{%url 'catalog-category' 'all'%}">Каталог</a></li>
+                        class="nav-link ls-sm p-0 {% if '/catalog-category/' in request.path %}active{% endif %}"
+                        href="/решетки-на-окна-эконом-класс">Каталог</a></li>
                 <li class="nav-item me-20"><a
                         class="nav-link ls-sm p-0 {% if request.path == '/reviews/' %}active{% endif %}"
                         href="{%url 'reviews'%}">Отзывы</a></li>
@@ -104,7 +104,7 @@
             <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0" href="{%url 'index'%}">Главная</a>
             </li>
             <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0"
-                                                                href="{%url 'catalog-category' 'all'%}">Каталог</a>
+                                                                href="решетки-на-окна-эконом-класс">Каталог</a>
             </li>
             <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0" href="{%url 'reviews'%}">Отзывы</a>
             </li>
@@ -116,27 +116,27 @@
         <div class="row row-cols-lg-3 row-cols-2 gy-lg-20 gy-10 mt-18">
             <div class="col"><a
                     class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
-                    href="#">
+                    href="решетки-на-окна-эконом-класс">
                 <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Эконом решетки</h5><span
                     class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
                     style="min-width: 3rem;">201</span></a></div>
             <div class="col"><a
                     class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
-                    href="#">
+                    href="ажурные-решетки-на-окна">
                 <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Ажурные решетки</h5><span
                     class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
                     style="min-width: 3rem;">178</span></a></div>
             <div class="col d-lg-block d-none"><a class="btn btn-primary btn-xxl w-100" href="#">Консультация</a></div>
             <div class="col"><a
                     class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
-                    href="#">
-                <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Кованые решетки</h5><span
+                    href="кованые-решетки-на-окна-вип-класс">
+                <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">VIP решетки</h5><span
                     class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
                     style="min-width: 3rem;">69</span></a></div>
             <div class="col"><a
                     class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
-                    href="#">
-                <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Дутые решетки</h5><span
+                    href="эксклюзивные-кованые-решетки">
+                <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Эксклюзивные решетки</h5><span
                     class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
                     style="min-width: 3rem;">69  </span></a></div>
             <div class="col"><a class="btn btn-outline-secondary rounded-3 w-100 py-4">
@@ -194,7 +194,7 @@
                         <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0" href="{%url 'index'%}">Главная</a>
                         </li>
                         <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0"
-                                                                            href="{%url 'catalog-category' 'all'%}">Каталог</a>
+                                                                            href="решетки-на-окна-эконом-класс">Каталог</a>
                         </li>
                         <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0"
                                                                             href="{%url 'reviews'%}">Отзывы</a>
@@ -211,13 +211,13 @@
                     <div class="row row-cols-lg-3 row-cols-2 gy-lg-20 gy-10">
                         <div class="col"><a
                                 class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
-                                href="#">
+                                href="решетки-на-окна-эконом-класс">
                             <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Эконом решетки</h5><span
                                 class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
                                 style="min-width: 3rem;">201</span></a></div>
                         <div class="col"><a
                                 class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
-                                href="#">
+                                href="ажурные-решетки-на-окна">
                             <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Ажурные решетки</h5><span
                                 class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
                                 style="min-width: 3rem;">178</span></a></div>
@@ -228,14 +228,14 @@
                         </div>
                         <div class="col"><a
                                 class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
-                                href="#">
-                            <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Кованые решетки</h5><span
+                                href="кованые-решетки-на-окна-вип-класс">
+                            <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">VIP решетки</h5><span
                                 class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
                                 style="min-width: 3rem;">69</span></a></div>
                         <div class="col"><a
                                 class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
-                                href="#">
-                            <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Дутые решетки</h5><span
+                                href="эксклюзивные-кованые-решетки">
+                            <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Эксклюзив решетки</h5><span
                                 class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
                                 style="min-width: 3rem;">69</span></a></div>
                         <div class="col d-lg-block d-none">

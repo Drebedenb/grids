@@ -75,9 +75,6 @@ let featuresSwiper = new Swiper("#features-swiper", {
 });
 
 
-
-
-
 let teamSwiper = new Swiper("#team-swiper", {
     loop: true,
     effect: "fade",
@@ -89,8 +86,6 @@ let teamSwiper = new Swiper("#team-swiper", {
         nextEl: "#team-swiper-control .btn-swiper-next"
     }
 });
-
-
 
 
 let projectsSwiper = new Swiper("#projects-swiper", {
@@ -129,18 +124,32 @@ let productSwiper2 = new Swiper("#product-swiper2", {
     }
 });
 
+function getCurrentURL () {
+  return window.location.href
+}
+function changeMin(minPrice) {
+    console.log(minPrice);
+    let url = new URL(getCurrentURL())
+    url.searchParams.append('minPrice', minPrice);
+    console.log(url)
+    // window.location.href = url;
+}
+
+function changeMax(maxPrice) {
+}
+
 let priceSlider = document.getElementById("price-range"),
     priceMin = document.getElementById("price-min"),
     priceMax = document.getElementById("price-max");
 
 if (priceSlider != null) {
     noUiSlider.create(priceSlider, {
-        start: [2900, 122900],
+        start: [+priceMin.value, +priceMax.value],
         connect: true,
-        step: 100,
+        step: 1,
         range: {
-            "min": 2900,
-            "max": 122900
+            "min": +priceMin.value,
+            "max": +priceMax.value
         },
         format: wNumb({
             decimals: 0,
@@ -149,22 +158,26 @@ if (priceSlider != null) {
         })
     });
 
-    priceSlider.noUiSlider.on("update", function(values, handle) {
+    priceSlider.noUiSlider.on("update", function (values, handle) {
         let value = values[handle];
 
         if (!handle) {
             priceMin.value = value;
+            changeMin(value);
         } else {
             priceMax.value = value;
+            changeMax(value);
         }
     });
 
-    priceMin.addEventListener("change", function() {
+    priceMin.addEventListener("change", function () {
         priceSlider.noUiSlider.set([this.value, null]);
+        changeMin(this.value);
     });
 
-    priceMax.addEventListener("change", function() {
+    priceMax.addEventListener("change", function () {
         priceSlider.noUiSlider.set([null, this.value]);
+        changeMax(this.value);
     });
 }
 
@@ -199,12 +212,12 @@ const span = document.querySelector('span');
 
 dropdowns.forEach((dd) => {
     const links = dd.querySelectorAll('.dropdown-list a');
-    dd.addEventListener('click', function() {
+    dd.addEventListener('click', function () {
         this.classList.toggle('is-active');
     });
 
     links.forEach((element) => {
-        element.addEventListener('click', function(evt) {
+        element.addEventListener('click', function (evt) {
             span.innerHTML = evt.currentTarget.textContent;
         });
     });
