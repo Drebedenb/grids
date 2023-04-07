@@ -81,11 +81,11 @@
                         class="nav-link ls-sm p-0 {% if request.path == '/contacts/' %}active{% endif %}"
                         href="{%url 'contacts'%}">Контакты</a></li>
             </ul>
-            <div class="hstack gap-15 ms-auto"><a class="position-relative text-white text-hover-secondary" href="#">
+            <div class="hstack gap-15 ms-auto"><a class="position-relative text-white text-hover-secondary"  href="{%url 'compare'%}">
                 {% include 'main/icons/chart.html' with classes='svg-icon' %}
                 <span class="badge d-flex justify-content-center align-items-center position-absolute top-0 end-50 p-2 fs-4 text-white bg-primary rounded-pill ls-sm"
                       style="min-width: .8rem; height: .8rem;">4</span></a><a
-                    class="position-relative text-white text-hover-secondary" href="#">
+                    class="position-relative text-white text-hover-secondary" href="{%url 'favorite'%}">
                 {% include 'main/icons/heart.html' with classes='svg-icon' %}
                 <span class="badge d-flex justify-content-center align-items-center position-absolute top-0 end-50 p-2 fs-4 text-white bg-primary rounded-pill ls-sm"
                       style="min-width: .8rem; height: .8rem;">4</span></a></div>

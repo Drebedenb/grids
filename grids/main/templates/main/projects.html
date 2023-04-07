@@ -3,7 +3,7 @@
 {% block content %}
 <div class="pt-lg-0 pt-16 pb-32">
     <div class="container">
-        <header class="page-header mb-lg-0 mb-28">
+        <header class="page-header mb-lg-0 mb-lg-10">
             <div>
                 <div class=" d-lg-none">
                     <div class="pt-xl-7 pt-lg-4">
@@ -27,10 +27,10 @@
 
 
             <div class="row gy-lg-0  gy-12">
-                <div class="col-lg-5">
+                <div class="col-lg-6">
                     <h1 class="display-1 mt-20 fs-3xl-25 fs-xl-30 fs-lg-27 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Выполненные проекты нашей компанией </h1>
                 </div>
-                <div class="col-lg-7">
+                <div class="col-lg-6">
 
 
                 </div>
@@ -39,16 +39,29 @@
         </header>
         <main>
             <section class="mb-20">
-                <div class="row align-items-end  mb-20">
-                <div class="row row-cols-lg-4 row-cols-2 gy-10">
+             
+                <div class="row row-cols-lg-4 row-cols-2 gy-10 mt-0 mb-10">
                     {% for item in list_of_photos_done %}
         
                     {% include 'main/components/photo.html' with name=item.name %}
             
                     {% endfor %}
                 </div>
-                <div class="text-center mt-lg-20 mt-10"><a class="btn btn-outline-light btn-xxl btn-wide-xxl" href="#">Показать
-                    еще </a></div>
+               
+                <div class="collapse" id="collapseExample">
+                    <div class="row row-cols-lg-4 row-cols-2 gy-10">
+                        {% for item in list_of_photos_done %}
+            
+                        {% include 'main/components/photo.html' with name=item.name %}
+                
+                        {% endfor %}
+                    </div>
+             
+               
+                  </div>   
+                 <div class="text-center mt-lg-20 mt-10">
+                    <a class="btn btn-outline-secondary btn-lg btn-wide-lg"  data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
+                                                           href="#">Показать еще </a></div>
             </section>
 
             {% include 'main/components/consultation_form.html' %}

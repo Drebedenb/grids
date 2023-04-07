@@ -76,7 +76,7 @@ def get_products_by_category(category_number):
 def index(request):
     products = get_products_by_category(1)
     return render(request, 'main/index.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Главная страница',
-                                               'leaders_of_selling': products})
+                                               'leaders_of_selling': products,'list_of_photos_done': list_of_photos_done})
 
 
 def catalog_category(request, category_name):
@@ -84,10 +84,9 @@ def catalog_category(request, category_name):
         return HttpResponseNotFound("Page NOT found")
     category = categories[category_name]
     products = get_products_by_category(category["number_of_category"])
-    # leaders_of_selling = get_products_by_category(5)
-    leaders_of_selling = [];
+    leaders_of_selling = get_products_by_category(5)
     return render(request, 'main/catalog-category.html', {'title': 'Каталог','list_of_grids_types': list_of_grids_types,
-                                                          'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling})
+                                                          'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling, 'list_of_photos_done': list_of_photos_done})
 
 
 def contacts(request):
@@ -113,6 +112,12 @@ def projects(request):
 def reviews(request):
     return render(request, 'main/reviews.html')
 
+def compare(request):
+    leaders_of_selling = get_products_by_category(1)
+    return render(request, 'main/compare.html',{'leaders_of_selling': leaders_of_selling})
+
+def favorite(request):
+    return render(request, 'main/favorite.html',{'list_of_grids_types': list_of_grids_types})    
 
 def page_not_found(request, exception):
     return HttpResponseNotFound("Page NOT found")

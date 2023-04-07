@@ -1,7 +1,7 @@
 {%extends 'main/base.html' %}
 {% load static %}
 {% block content %}
-<div class="pt-lg-30 pt-16 pb-lg-20 pb-32">
+<div class="pt-lg-15 pt-16 pb-lg-20 pb-32">
     <div class="container">
         <header class="page-header mb-lg-20 mb-28">
             <div>
@@ -13,11 +13,37 @@
                             {{category.title}} Металлические решетки на окна</h1>
                     </div>
                     <div class="col-lg-6">
-                        <div class=" d-lg-none">
-                            <div class="pt-xl-7 pt-lg-4">
-                                <p class="lead fs-lg-12 fs-9 mb-0" style="max-width: 28rem;">В нашем каталоге представлено 600+ эскизов решеток на окна. Возможно изготовление решеток по вашему эскизу.</p>
+                        
+                            <div class="">
+                                <div class="row row-cols-lg-2 row-cols-2 gy-lg-10  ">
+                                    <div class="col"><a
+                                            class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20 px-10 py-8"
+                                            href="{% url 'catalog-category' 'svarka' %}">
+                                        <h3 class="w-50 h5 fs-lg-8 fs-7 fw-medium ls-sm text-uppercase mb-0">Сварные решетки</h3><span
+                                            class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2"
+                                            style="min-width: 3rem;">149</span></a></div>
+                                    <div class="col"><a
+                                            class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20 px-10 py-8"
+                                            href="{% url 'catalog-category' 'ajur' %}">
+                                        <h3 class="w-50 h5 fs-lg-8 fs-7 fw-medium ls-sm text-uppercase mb-0">Ажурные решетки</h3><span
+                                            class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2"
+                                            style="min-width: 3rem;">111</span></a></div>
+                                    <div class="col"><a
+                                            class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20 px-10 py-8"
+                                            href="{% url 'catalog-category' 'kovka' %}">
+                                        <h3 class="w-50 h5 fs-lg-8 fs-7 fw-medium ls-sm text-uppercase mb-0">Кованые решетки</h3><span
+                                            class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2"
+                                            style="min-width: 3rem;">75</span></a></div>
+                                    <div class="col"><a
+                                            class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20 px-10 py-8"
+                                            href="{% url 'catalog-category' 'vip' %}">
+                                        <h3 class="w-50 h5 fs-lg-8 fs-7 fw-medium ls-sm text-uppercase mb-0">VIP<br>решетки</h3><span
+                                            class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2"
+                                            style="min-width: 3rem;">50</span></a></div>
+                                </div>
+                                <p class="d-lg-none lead fs-lg-12 fs-9 mb-0" style="max-width: 28rem;">В нашем каталоге представлено 600+ эскизов решеток на окна. Возможно изготовление решеток по вашему эскизу.</p>
                             </div>
-                        </div>
+                       
                         <div class="mt-20 d-lg-none d-block">
 
                             <div class="vstack flex-wrap gap-10">
@@ -26,7 +52,7 @@
                             </div>
                         </div>
                     </div>
-                    <nav class="d-lg-block d-none fs-9 mt-12">
+                    <nav class="d-lg-block d-none fs-9 mt-lg-0 mt-12">
                         <ul class="breadcrumb mb-0">
                             <li class="breadcrumb-item"><a href="index.html">Главная </a></li>
                             <li class="breadcrumb-item"><a href="catalog.html">Каталог</a></li>
@@ -50,32 +76,7 @@
         <main>
             <div class="mb-20">
                 <h2 class="d-lg-none d-block fs-13 ls-sm text-uppercase mb-17-5">Каталог:</h2>
-                <div class="row row-cols-lg-4 row-cols-2 gy-lg-20 gy-10  mb-10">
-                    <div class="col"><a
-                            class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20 px-10 py-4"
-                            href="{% url 'catalog-category' 'svarka' %}">
-                        <h3 class="w-50 h5 fs-lg-8 fs-7 fw-medium ls-sm text-uppercase mb-0">Сварные решетки</h3><span
-                            class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2"
-                            style="min-width: 3rem;">149</span></a></div>
-                    <div class="col"><a
-                            class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20 py-lg-16 px-10 py-4"
-                            href="{% url 'catalog-category' 'ajur' %}">
-                        <h3 class="w-50 h5 fs-lg-8 fs-7 fw-medium ls-sm text-uppercase mb-0">Ажурные решетки</h3><span
-                            class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2"
-                            style="min-width: 3rem;">111</span></a></div>
-                    <div class="col"><a
-                            class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20 px-10 py-4"
-                            href="{% url 'catalog-category' 'kovka' %}">
-                        <h3 class="w-50 h5 fs-lg-8 fs-7 fw-medium ls-sm text-uppercase mb-0">Кованные решетки</h3><span
-                            class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2"
-                            style="min-width: 3rem;">75</span></a></div>
-                    <div class="col"><a
-                            class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20 px-10 py-4"
-                            href="{% url 'catalog-category' 'vip' %}">
-                        <h3 class="w-50 h5 fs-lg-8 fs-7 fw-medium ls-sm text-uppercase mb-0">VIP<br>решетки</h3><span
-                            class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2"
-                            style="min-width: 3rem;">50</span></a></div>
-                </div>
+           
                 <div class="row gy-lg-0 gy-20">
                     <div class="col-lg-3  d-lg-block ">
                         <div class="accordion d-block">
@@ -384,8 +385,8 @@
                                     {% include 'main/components/catalog_category_item.html' with category=category PriceWinguardSketchId=item.id name=item.width price=item.price path_folder=item.path_folder path_file=item.path_file %}
                                 {% endfor %}
                         </div>
-                        <div class="text-center mt-lg-20 mt-10"><a class="btn btn-outline-light btn-xxl btn-wide-xxl" href="#">Показать еще  </a></div>
-                        <nav class="mt-lg-30 mt-20">
+                        <div class="text-center mt-lg-20 mt-10"><a class="btn btn-outline-light btn-lg btn-wide-lg" href="#">Показать еще  </a></div>
+                        <nav class="mt-lg-20 mt-20">
                             <ol class="pagination justify-content-lg-center overflow-x-auto mb-0">
                                 <li class="page-item previous"><a class="page-link" href="#">Назад</a></li>
                                 <li class="page-item active"><a class="page-link" href="#">1</a></li>
@@ -404,9 +405,7 @@
                     </div>
                     <div class="tab-pane fade" id="product-description-tab-pane" role="tabpanel" tabindex="0">
                         <div class="row row-cols-lg-3 row-cols-1 gy-20">
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
+                            
 
                             {% include 'main/components/catalog_category_item.html' %}
                             {% include 'main/components/catalog_category_item.html' %}
@@ -609,7 +608,7 @@
                         <section>
                             <div class="row  mb-17 pt-lg-30 pt-30">
                                 <div class="col-lg-5">
-                                    <h2 class="h1 fs-3xl-22 fs-lg-26 fs-13 ls-sm text-uppercase mb-0">Хиты продаж</h2>
+                                    <h2 class="h1 fs-3xl-20 fs-lg-20 fs-13 ls-sm text-uppercase mb-0">Хиты продаж</h2>
                                 </div>
                                 <div class="col-auto ms-auto d-lg-block d-none">
                                     <div class="d-flex">
@@ -626,33 +625,45 @@
                                     {%for item in leaders_of_selling%}
                                     <div class="swiper-slide">
                                         <div class="card card_hover_shadow card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">
-                                            <div class="card-body p-lg-13 py-10">
-                                                <div class="position-relative text-center mb-20">
+                                            <div class="card-body p-10">
+                                                <div class="position-relative text-center ">
                                                     <div class="position-absolute top-0 start-0 z-1">
-                                                        <a class="text-muted text-hover-black" href="#">
-                                                            {% include 'main/icons/chart.html' with classes="svg-icon"%}</a>
-                                                    </div>
+                                                        <a class="text-muted text-hover-black" href="#">{% include 'main/icons/chart.html' with classes="svg-icon"%}</a>
+                                                    <span class="fs-7  ms-2 py-0 bg-success text-white px-2 rounded-2">хит</span>
+                                                </div>
                                                     <div class="position-absolute top-0 end-0 z-1">
-                                                        <a class="text-muted text-hover-black" href="#">
-                                                            {% include 'main/icons/heart.html' with classes="svg-icon"%}</a>
+                                                        <span class="fs-7 ms-2 py-0 bg-danger text-white   px-2 rounded-2">-30%</span>
+                                                        <a class="text-muted text-hover-black" href="#">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a> 
                                                     </div>
                                                     <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
                                                         <button class="btn btn-light fs-lg-7 btn-lg btn-wide-sm " data-bs-toggle="modal" data-bs-target="#product-quick-view" type="button">Быстрый просмотр</button>
                                                     </div>
-
                                                     <a href="{%url 'catalog-category' 'kovka'%}">
-                                                        <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
-                                                            class="mt-15 object-fit-contain" src="{% static 'main/img/grids_pictures'%}/{{item.path_folder}}/solid/{{item.path_file}}.png"
+                                                    <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
+                                                            class="object-fit-contain"
+                                                            src="{% static 'main/img/grids_pictures' %}/{{path_folder}}/solid/{{path_file}}.png"
                                                             alt="Решетки на окна эконом класса"></div>
-                                                    </a>
-
+                                                </div></a>
+                                               
+                                           
+                                                        <h3 class="card-title h5 fs-lg-7 fs-10 fw-medium  d-lg-inline-block ls-sm text-uppercase  pb-5">
+                                                    <a class="text-decoration-none text-dark d-lg-inline-block">Решетка на окно<br>сварная {{path_folder}} - {{path_file}}</a></h3>
+                                                    <div class="float-end buy_item">
+                                                 <div class="d-flex justify-content-between">
+                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:15px' %}
+                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:15px' %}
+                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:15px' %}
+                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:15px' %}
+                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:15px' %}
+                                                                        <span class="fs-7">(32)</span>
+                                                  </div>
+                                                   <a class="btn btn-outline-dark px-8 py-5 w-100 fs-7 mt-5">Купить</a>
                                                 </div>
-                                                <h3 class="card-title h5 fs-lg-8 fs-10 fw-medium ls-sm text-uppercase mb-0  pt-5"><a class="text-decoration-none text-dark" href="#"> Решетка на окно сварная {{item.path_folder}}-{{item.path_file}} </a></h3>
-
-                                                <div class="d-flex align-items-center justify-content-between mt-10">
-                                                    <span class="d-block fs-lg-8 fs-12 text-danger fw-medium  text-uppercase ls-sm  ">от {{item.price}} руб</span>
-                                                    <a class="btn btn-outline-primary  rounded-pill py-3  px-6 fs-10 fs-lg-7   ">Купить</a>
-                                                </div>
+                                                    <span class="d-block fs-8 text-muted fw-medium  text-decoration-line-through  text-uppercase ls-sm pb-3 ">2900 руб</span>
+                                                    <span class="d-block fs-8 text-danger fw-medium  text-uppercase ls-sm  ">2900 руб</span>
+                                               
+                                      
+                                                  
                                             </div>
                                         </div>
                                     </div>
@@ -701,63 +712,26 @@
  <section class="mb-20">
     <div class="row align-items-end mb-lg-30 mb-20">
         <div class="col-lg-4">
-            <h2 class="h1  fs-3xl-22 fs-lg-26 fs-13 ls-sm text-uppercase mb-0">Фото решеток </h2>
+            <h2 class="h1  fs-3xl-20 fs-lg-20 fs-13 ls-sm text-uppercase mb-0">Фото решеток </h2>
         </div>
         <div class="col-auto d-lg-block d-none ms-auto"><a class="fs-12 text-decoration-none text-uppercase" href="#">Смотреть все ↘︎</a></div>
     </div>
-    <div class="row row-cols-lg-4 row-cols-2 gy-lg-20 gy-10  d-lg-flex d-none">
+    <div class="row row-cols-lg-4 row-cols-2 gy-lg-20 gy-10  d-lg-flex">
         {% for item in list_of_photos_done %}
         
         {% include 'main/components/photo.html' with name=item.name %}
 
         {% endfor %}
     </div>
-    <div class="swiper d-lg-none d-block" id="projects-swiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <a class="d-block" data-fslightbox="projects" href="img/project-img.png">
-                    <div class="ratio ratio-4x3" style="min-height: 100px; max-height: 260px;"><img class="rounded-4 object-fit-cover" src="img/project-img.png" /></div>
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a class="d-block" data-fslightbox="projects" href="img/project-img.png">
-                    <div class="ratio ratio-4x3" style="min-height: 100px; max-height: 260px;"><img class="rounded-4 object-fit-cover" src="img/project-img.png" /></div>
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a class="d-block" data-fslightbox="projects" href="img/project-img.png">
-                    <div class="ratio ratio-4x3" style="min-height: 100px; max-height: 260px;"><img class="rounded-4 object-fit-cover" src="img/project-img.png" /></div>
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a class="d-block" data-fslightbox="projects" href="img/project-img.png">
-                    <div class="ratio ratio-4x3" style="min-height: 100px; max-height: 260px;"><img class="rounded-4 object-fit-cover" src="img/project-img.png" /></div>
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a class="d-block" data-fslightbox="projects" href="img/project-img.png">
-                    <div class="ratio ratio-4x3" style="min-height: 100px; max-height: 260px;"><img class="rounded-4 object-fit-cover" src="img/project-img.png" /></div>
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a class="d-block" data-fslightbox="projects" href="img/project-img.png">
-                    <div class="ratio ratio-4x3" style="min-height: 100px; max-height: 260px;"><img class="rounded-4 object-fit-cover" src="img/project-img.png" /></div>
-                </a>
-            </div>
-        </div>
-        <div class="d-flex gap-10 position-absolute z-2" id="projects-swiper-control">
-            <button class="btn btn-outline-white btn-swiper-prev rounded-circle d-flex justify-content-center align-items-center p-0" type="button" style="width: 3rem; height: 3rem;"><-</button>
-            <button class="btn btn-outline-white btn-swiper-next rounded-circle d-flex justify-content-center align-items-center p-0" type="button" style="width: 3rem; height: 3rem;">->                                                                                                                              </button>
-        </div>
-    </div>
+  
 </section>
 
 
 
 <!--OTZIVI-->
-<section>
-<section class="mb-lg-0 mb-30">
-    <h2 class="h1  fs-3xl-22 fs-lg-26 fs-13 ls-sm text-uppercase my-20">Отзывы довольных
+
+<section class="mb-lg-0 mb-30 mt-30">
+    <h2 class="h1 mt-20  fs-3xl-20 fs-lg-20 fs-13 ls-sm text-uppercase my-20">Отзывы довольных
         клиентов</h2>
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -768,92 +742,212 @@
             <div class="card h-100 rounded-lg-4 rounded-3">
                 <div class="card-body p-lg-15 pt-10 pb-lg-28">
                     <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatar.png' %}" alt="Олег Матросов" /></div>
+                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar19.jpg' %}"
+                                                 alt="Иван Семенович Г."/>
+                        </div>
                         <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
-                        </div><a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto" href="#">Смотреть фото</a>
+                            <h6 class="fs-8 mb-2">Иван <br>Семенович Г.</h6>
                     </div>
-                    <p class="fs-lg-10 fs-8 fw-light mb-0">Сказочно талантливые люди, заслуживающие доверия и профессиональные, которых хорошо рекомендуют. Мы точно знали, чего хотим, и придерживались бюджета. Не могу их достаточно похвалить!</p>
+                        
+                        <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
+                        href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Смотреть фото</a>
+                        <!-- Modal -->
+                        
+                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content ">
+                                        <div class="modal-body">
+                                            <button type="button" class="btn-close  float-end button-close btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                                            
+                                            <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review1.jpeg' %}"
+                                            alt="Иван Семенович Г." />
+                                        </div>
+                                      
+                                    </div>
+                                    </div>
+                                </div>
+                    </div>
+                    <p class="fs-lg-10 fs-8 fw-light mb-0">Заказ №36378 Решетка на лоджию 3м2. Ответственные люди, я бы так назвал процесс взаимодействия с компанией. Все по плану, без заминок. Главное, что результат хороший и я им доволен.
+                    </p>
                 </div>
             </div>
         </div>
+        
         <div class="col">
             <div class="card h-100 rounded-lg-4 rounded-3">
                 <div class="card-body p-lg-15 pt-10 pb-lg-28">
                     <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                        <div class="avatar"><img class="rounded-3"  src="{% static 'main/img/avatar.png' %}" alt="Олег Матросов" /></div>
+                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar25.jpg' %}"
+                                                 alt="Янина Ш."/></div>
                         <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
-                        </div><a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto" href="#">Смотреть фото</a>
-                    </div>
-                    <p class="fs-lg-10 fs-8 fw-light mb-0">Сказочно талантливые люди, заслуживающие доверия и профессиональные, которых хорошо рекомендуют. Мы точно знали, чего хотим, и придерживались бюджета. Не могу их достаточно похвалить!</p>
+                            <h6 class="fs-8 mb-2">Янина Ш.</h6>
+                        </div>
+                        <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
+                        href="#" data-bs-toggle="modal" data-bs-target="#exampleModal2">Смотреть фото</a>
+                        <!-- Modal -->
+                    
+                             <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content ">
+                                <div class="modal-body">
+                                    <button type="button" class="btn-close  float-end button-close btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                                    
+                                    <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review2.jpg' %}"
+                                    alt="Янина Ш." />
+                                </div>
+                              
+                            </div>
+                            </div>
+                        </div>
+                    <p class="fs-lg-10 fs-8 fw-light mb-0">Всем довольна, тамбурную решетчатую дверь мне варили и цветочницу. Прекрасно смотрятся в доме.. мастер позвонил перед выездом на замер. Цена устроила, состояние спустя год очень хорошее</p>
                 </div>
+            </div>
             </div>
         </div>
     </div>
           </div>
-          <div class="carousel-item">
+    <div class="carousel-item">
 
     <div class="row row-cols-lg-2 row-cols-1 gy-lg-20 gy-10">
         <div class="col">
             <div class="card h-100 rounded-lg-4 rounded-3">
                 <div class="card-body p-lg-15 pt-10 pb-lg-28">
                     <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                        <div class="avatar"><img class="rounded-3"  src="{% static 'main/img/avatar.png' %}" alt="Олег Матросов" /></div>
+                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar24.jpg' %}"
+                                                 alt="Светлана К."/></div>
                         <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
-                        </div><a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto" href="#">Смотреть фото</a>
-                    </div>
-                    <p class="fs-lg-10 fs-8 fw-light mb-0">Сказочно талантливые люди, заслуживающие доверия и профессиональные, которых хорошо рекомендуют. Мы точно знали, чего хотим, и придерживались бюджета. Не могу их достаточно похвалить!</p>
+                            <h6 class="fs-8 mb-2">Светлана К..</h6>
+                        </div>
+                        <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
+                        href="#" data-bs-toggle="modal" data-bs-target="#exampleModal8">Смотреть фото</a>
+                        <!-- Modal -->
+                    
+                             <div class="modal fade" id="exampleModal8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content ">
+                                <div class="modal-body">
+                                    <button type="button" class="btn-close  float-end button-close btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                                    
+                                    <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review8.jpg' %}"
+                                    alt="Светлана К." />
+                                </div>
+                              
+                            </div>
+                            </div>
+                        </div>
+                    <p class="fs-lg-10 fs-8 fw-light mb-0">Обратились с запросом решетчатой двери и решеток в магазин. 
+                        Искали решетки для бизнеса. поставили в срок
+                    </p>
                 </div>
             </div>
+            </div>
         </div>
+     
         <div class="col">
             <div class="card h-100 rounded-lg-4 rounded-3">
                 <div class="card-body p-lg-15 pt-10 pb-lg-28">
                     <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                        <div class="avatar"><img class="rounded-3"  src="{% static 'main/img/avatar.png' %}" alt="Олег Матросов" /></div>
+                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar14.jpg' %}"
+                                                 alt="Александр В."/></div>
                         <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
-                        </div><a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto" href="#">Смотреть фото</a>
-                    </div>
-                    <p class="fs-lg-10 fs-8 fw-light mb-0">Сказочно талантливые люди, заслуживающие доверия и профессиональные, которых хорошо рекомендуют. Мы точно знали, чего хотим, и придерживались бюджета. Не могу их достаточно похвалить!</p>
+                            <h6 class="fs-8 mb-2">Александр В.</h6>
+                        </div>
+                        <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
+                        href="#" data-bs-toggle="modal" data-bs-target="#exampleModal4">Смотреть фото</a>
+                        <!-- Modal -->
+                    
+                             <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content ">
+                                <div class="modal-body">
+                                    <button type="button" class="btn-close  float-end button-close btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                                    
+                                    <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review4.jpeg' %}"
+                                    alt="Иван Б." />
+                                </div>
+                              
+                            </div>
+                            </div>
+                        </div>
+                    <p class="fs-lg-10 fs-8 fw-light mb-0">У меня все хорошо, ребята отлично работают. Знаю их завод под Клином, довольно дешево вышли металлические решетки на подвал и цоколь с установкой. Благодарю!</p>
                 </div>
+            </div>
             </div>
         </div>
     </div>
           </div>
+
           <div class="carousel-item">
 
-    <div class="row row-cols-lg-2 row-cols-1 gy-lg-20 gy-10">
-        <div class="col">
-            <div class="card h-100 rounded-lg-4 rounded-3">
-                <div class="card-body p-lg-15 pt-10 pb-lg-28">
-                    <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                        <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatar.png' %}"  alt="Олег Матросов" /></div>
-                        <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
-                        </div><a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto" href="#">Смотреть фото</a>
+            <div class="row row-cols-lg-2 row-cols-1 gy-lg-20 gy-10">
+                <div class="col">
+                    <div class="card h-100 rounded-lg-4 rounded-3">
+                        <div class="card-body p-lg-15 pt-10 pb-lg-28">
+                            <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
+                                <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar18.jpg' %}"
+                                                         alt="Иван Б."/></div>
+                                <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
+                                    <h6 class="fs-8 mb-2">Иван Б.</h6>
+                                </div>
+                                
+                                <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
+                                href="#" data-bs-toggle="modal" data-bs-target="#exampleModal3">Смотреть фото</a>
+                                <!-- Modal -->
+                            
+                                     <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content ">
+                                                <div class="modal-body">
+                                                    <button type="button" class="btn-close  float-end button-close btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                                                    
+                                                    <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review3.jpg' %}"
+                                                    alt="Иван Семенович Г." />
+                                                </div>
+                                              
+                                            </div>
+                                            </div>
+                                        </div>
+                            </div>
+                            <p class="fs-lg-10 fs-8 fw-light mb-0">Заказал решетки ажурные на дачу в стиле кованых ворот. Можно было этого не делать, чуть скинув цену взять прямые. но мне так хотелось. по этому за саму работу мастеров и установщиков ставлю 5, а остальное уже история =В
+                            </p>
+                        </div>
                     </div>
-                    <p class="fs-lg-10 fs-8 fw-light mb-0">Сказочно талантливые люди, заслуживающие доверия и профессиональные, которых хорошо рекомендуют. Мы точно знали, чего хотим, и придерживались бюджета. Не могу их достаточно похвалить!</p>
+                </div>
+                <div class="col">
+                    <div class="card h-100 rounded-lg-4 rounded-3">
+                        <div class="card-body p-lg-15 pt-10 pb-lg-28">
+                            <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
+                                <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar9.jpg' %}"
+                                                         alt="Марина Г."/></div>
+                                <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
+                                    <h6 class="fs-8 mb-2">Марина Г.</h6>
+                                </div>
+                                
+                                <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
+                                href="#" data-bs-toggle="modal" data-bs-target="#exampleModal7">Смотреть фото</a>
+                                <!-- Modal -->
+                            
+                                     <div class="modal fade" id="exampleModal7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content ">
+                                                <div class="modal-body">
+                                                    <button type="button" class="btn-close  float-end button-close btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                                                    
+                                                    <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review7.jpeg' %}"
+                                                    alt="Марина Г." />
+                                                </div>
+                                              
+                                            </div>
+                                            </div>
+                                        </div>
+                            </div>
+                            <p class="fs-lg-10 fs-8 fw-light mb-0">Решетки с защитой от детей, от их выпадания мне сделали за 2 дня и привезли домой
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col">
-            <div class="card h-100 rounded-lg-4 rounded-3">
-                <div class="card-body p-lg-15 pt-10 pb-lg-28">
-                    <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                        <div class="avatar"><img class="rounded-3"  src="{% static 'main/img/avatar.png' %}" alt="Олег Матросов" /></div>
-                        <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                            <h6 class="fs-8 mb-2">Олег Матросов</h6><span class="fs-8 text-muted">Для дома</span>
-                        </div><a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto" href="#">Смотреть фото</a>
-                    </div>
-                    <p class="fs-lg-10 fs-8 fw-light mb-0">Сказочно талантливые люди, заслуживающие доверия и профессиональные, которых хорошо рекомендуют. Мы точно знали, чего хотим, и придерживались бюджета. Не могу их достаточно похвалить!</p>
-                </div>
-            </div>
-        </div>
-    </div>
-          </div>
+                  </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
             <svg xmlns="http://www.w3.org/2000/svg" width="66" height="66" fill="grey" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
@@ -870,9 +964,9 @@
       </div>
 
 
-    <div class="text-center mt-lg-20 mt-10"><a class="btn btn-outline-light btn-xxl btn-wide-xxl" href="{%url 'reviews'%}">Все отзывы  </a></div>
+    <div class="text-center mt-lg-20 mt-10"><a class="btn btn-outline-light btn-lg btn-wide-lg" href="{%url 'reviews'%}">Все отзывы  </a></div>
 </section>
-</section>
+
 
 
 

@@ -67,13 +67,15 @@
     color: #b52810;
 }
 
-/* SVG-icons */
-.svg_heart{
-    left: 315% !important;
-}
+/* TABLE */
+.table th,.table td{
+    padding:10px;
+    }
 
-.svg_chart{
-    left: 305% !important;
+.compare_items{
+    position: relative;
+    vertical-align: top;
+    top:80px;
 }
 
 /* DROPDOWN */
@@ -165,6 +167,11 @@
     padding: 25px;
 }
 
+.buy_item{
+    position: relative;
+    z-index: 20;
+    margin-top: -20px;
+}
 
 
 

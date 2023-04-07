@@ -1,0 +1,41 @@
+{%extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+<div class="pt-lg-15 pt-16 pb-lg-20 pb-32">
+    <div class="container">
+        <header class="page-header mb-lg-20 mb-28">
+            <div>
+
+                <div class="row gy-lg-0  gy-12">
+
+                    <div class="col-lg-6">
+                        <h1 class="display-1 fs-3xl-25 fs-xl-23 fs-lg-27 fs-13 fw-normal ls-sm text-uppercase mb-20 pe-lg-8">
+                            {{category.title}} Избранные</h1>
+                    </div>
+              
+                    <nav class="d-lg-block d-none fs-9 mt-lg-0 mt-12">
+                        <ul class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="index.html">Главная </a></li>
+                            <li class="breadcrumb-item active">Избранные </li>
+                        </ul>
+                    </nav>
+
+                    <div class="row row-cols-lg-4 row-cols-1 gy-20">
+                        {% include 'main/components/catalog_category_item.html' %}
+                        {% include 'main/components/catalog_category_item.html' %}
+                        {% include 'main/components/catalog_category_item.html' %}
+                        {% include 'main/components/catalog_category_item.html' %}
+                    </div>
+
+                </div>
+        </header>
+        </div>
+        </div>
+
+        {% include 'main/components/measure_modal.html' %}
+
+        {% include 'main/components/product_quick_view.html' %}
+
+    {% include 'main/components/consultation_modal.html' %}
+
+{% endblock %}

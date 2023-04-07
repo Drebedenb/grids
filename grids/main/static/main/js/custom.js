@@ -27,3 +27,5 @@ let img = document.getElementsByTagName('img'); // Для запрета коп�
             return false;
         }
     }
+
+
