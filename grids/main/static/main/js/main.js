@@ -182,7 +182,7 @@ if (priceSlider != null) {
 }
 
 
-/* VIEW MORE */
+/* VIEW MORE 
 const link = document.querySelector('.view_more');
 let clickCount = localStorage.getItem('clickCount') || 0;
 
@@ -195,15 +195,14 @@ link.addEventListener('click', function(event) {
     link.textContent = 'Все отзывы';
   }
   
-  if (clickCount === 2) {
-    if (window.location.href !== 'https://www.google.com') {
+  if (clickCount === 2) { 
+      localStorage.setItem('clickCount', 0);    
       window.location.href = 'https://www.google.com';
-      localStorage.setItem('clickCount', 0);
-    }
+   
   }
   
   localStorage.setItem('clickCount', clickCount);
-});
+});*/
 
 /* DROPDOWN */
 

@@ -122,14 +122,14 @@ def get_category_min_price(category_number):
 
 
 def index(request):
-    products = get_products_by_category(1)
+    leaders_of_selling = get_products_by_category(1)
 
     min_price_1 = get_category_min_price(1)
     min_price_2 = get_category_min_price(2)
     min_price_3 = get_category_min_price(3)
     min_price_4 = get_category_min_price(4)
     return render(request, 'main/index.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Главная страница',
-                                               'leaders_of_selling': products,
+                                               'leaders_of_selling': leaders_of_selling,'list_of_photos_done': list_of_photos_done,
                                                'min_price_1': min_price_1,
                                                'min_price_2': min_price_2,
                                                'min_price_3': min_price_3,
@@ -165,11 +165,11 @@ def catalog_category(request, category_name):
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
     # leaders_of_selling = get_products_by_category(5)
-    leaders_of_selling = [];
+    leaders_of_selling = get_products_by_category(1);
     return render(request, 'main/catalog-category.html',
                   {'title': 'Каталог', 'list_of_grids_types': list_of_grids_types,
                    'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling,
-                   'min_price': min_price, 'max_price': max_price})
+                   'min_price': min_price, 'max_price': max_price,'list_of_photos_done': list_of_photos_done})
 
 
 def contacts(request):
