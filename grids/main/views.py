@@ -43,17 +43,16 @@ list_of_photos_done = [
 ]
 
 list_of_open_types = [
-    {"name": "arch", "description": "Арочная"},
-    {"name": "gog", "description": "Глухая-Распашная-Глухая"},
-    {"name": "o", "description": "Распашная"},
-    {"name": "og", "description": "Распашная-Глухая"},
-    {"name": "ogo", "description": "Распашная-Глухая-Распашная"},
-    {"name": "oo", "description": "Распашная-Распашная"},
-    {"name": "solid", "description": "Глухая"}
+    {"name": "arch", "description": "Арочная", "price": "30"},
+    {"name": "gog", "description": "Глухая-Распашная-Глухая", "price": "1500"},
+    {"name": "o", "description": "Распашная", "price": "1500"},
+    {"name": "og", "description": "Распашная-Глухая", "price": "1500"},
+    {"name": "ogo", "description": "Распашная-Глухая-Распашная", "price": "3000"},
+    {"name": "oo", "description": "Распашная-Распашная", "price": "2800"},
+    {"name": "solid", "description": "Глухая", "price": "0"}
 ]
 
 categories = {  # there are categories and their number in database. It depends on database structure what number is
-    "all": {"title": "Все", 'url_title': "all" , "number_of_category": 1},
     "svarka": {"title": "Сварные",'url_title': "svarka" , "number_of_category": 1},
     "svarka_dut": {"title": "Дутые сварные",'url_title': "svarka_dut" , "number_of_category": 2},
     "ajur": {"title": "Ажурные",'url_title': "ajur" , "number_of_category": 3},
@@ -64,11 +63,24 @@ categories = {  # there are categories and their number in database. It depends 
     "vip_dut": {"title": "Дутые VIP",'url_title': "vip_dut" , "number_of_category": 8},
 }
 
+russian_categories = {
+    "все": {"title": "Все", 'url_title': "all" , "number_of_category": 1},
+    "решетки-на-окна-эконом-класс": {"title": "Эконом",'url_title': "svarka" , "number_of_category": 1},
+    "дутые-решетки-на-окна-эконом-класс": {"title": "Дутые Эконом",'url_title': "svarka_dut" , "number_of_category": 2},
+    "ажурные-решетки-на-окна": {"title": "Ажурные",'url_title': "ajur" , "number_of_category": 3},
+    "дутые-ажурные-решетки": {"title": "Дутые Ажурные",'url_title': "ajur_dut" , "number_of_category": 4},
+    "кованые-решетки-на-окна-вип-класс": {"title": "VIP",'url_title': "kovka" , "number_of_category": 5},
+    "кованые-дутые-решетки-вип-класса": {"title": "Дутые VIP",'url_title': "kovka_dut" , "number_of_category": 6},
+    "эксклюзивные-кованые-решетки": {"title": "Эксклюзив",'url_title': "vip" , "number_of_category": 7},
+    "дутые-эксклюзивные-решетки": {"title": "Дутые Эксклюзив",'url_title': "vip_dut" , "number_of_category": 8},
+}
+
+
+# def get_products_amount_by_category(category_number)
 
 def get_products_by_category(category_number):
     products = PriceWinguardSketch.objects.filter(category=category_number) \
                    .values('id').annotate(min_pricewinguardmain=Min('pricewinguardmain')).values('min_pricewinguardmain', 'id')
-                   # .values('id', 'pricewinguardfiles').annotate(min_pricewinguardmain=Min('pricewinguardmain')).order_by('category', 'id', 'pricewinguardfiles')[:20]
     for product in products:
         try:
             path = "".join(
@@ -95,12 +107,11 @@ def index(request):
     return render(request, 'main/index.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Главная страница',
                                                'leaders_of_selling': products})
 
-
 def catalog_category(request, category_name):
-    if category_name not in categories:
+    if category_name not in russian_categories:
         return HttpResponseNotFound("Page NOT found")
 
-    category = categories[category_name]
+    category = russian_categories[category_name]
     products_list = get_products_by_category(category["number_of_category"])
 
     min_price = products_list[0]["price"]

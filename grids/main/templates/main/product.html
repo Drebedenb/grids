@@ -271,13 +271,7 @@
                                             <div class="ms-auto">
                                                 <div class="hstack gap-10"><a class="text-secondary text-hover-black"
                                                                               href="#">
-                                                    <svg class="svg-icon">
-                                                        <use href="img/sprite_icons.svg#chart"></use>
-                                                    </svg>
-                                                </a><a class="text-secondary text-hover-black" href="#">
-                                                    <svg class="svg-icon">
-                                                        <use href="img/sprite_icons.svg#heart"></use>
-                                                    </svg>
+
                                                 </a></div>
                                             </div>
                                         </div>
@@ -285,8 +279,8 @@
                                             <div class="row row-cols-4 gy-20">
                                                 {% for item in list_of_open_types %}
                                                 <div class="col">
-                                                    <input class="btn-check" id="product-type-{{item.name}}" name="product-type"
-                                                           value="Без открывания" type="radio" checked>
+                                                    <input class="btn-check open-type-price" id="product-type-{{item.name}}" name="product-type"
+                                                           value="Без открывания" type="radio" onclick="changeForm()">
                                                     <label class="btn btn-outline-black w-100 h-100 rounded-2 p-10"
                                                            for="product-type-{{item.name}}">
                                                         <div class="ratio"
@@ -294,28 +288,21 @@
                                                         ><img
                                                                 id="{{item.name}}"
                                                                 class="object-fit-contain"
-                                                                src="{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/{{item.name}}/1 F.png" alt="{{item.description}}">
+                                                                src="{% static 'main/img/grids_pictures' %}/1/{{item.name}}/1 F.png" alt="{{item.description}}">
                                                         </div>
-
-
                                                         <span class="d-block fs-6 fw-medium text-uppercase mt-8">{{item.description}}</span>
+                                                        <span class="d-block fs-6 fw-medium text-uppercase mt-8" id="price-{{item.name}}">+ {% if item.name in 'arch'%}{{item.price}}% {%else%}{{item.price}} руб.{% endif %}</span>
                                                     </label>
                                                 </div>
                                                 {%endfor%}
                                                 <style>
-                                                    #arch:hover {content: url("{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/arch/1.png");}
-                                                    #gog:hover {content: url("{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/gog/1.png");}
-                                                    #o:hover {content: url("{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/o/1.png");}
-                                                    #og:hover {content: url("{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/og/1.png");}
-                                                    #ogo:hover {content: url("{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/ogo/1.png");}
-                                                    #oo:hover {content: url("{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/oo/1.png");}
-                                                    #solid:hover {content: url("{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/solid/1.png");}
-
-                                                    #gog:active {content: url("{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/gog/1 O.png");}
-                                                    #o:active {content: url("{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/o/1 O.png");}
-                                                    #og:active {content: url("{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/og/1 O.png");}
-                                                    #ogo:active {content: url("{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/ogo/1 O.png");}
-                                                    #oo:active {content: url("{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/oo/1 O.png");}
+                                                    #arch:hover {content: url("{% static 'main/img/grids_pictures' %}/1/arch/1.png");}
+                                                    #gog:hover {content: url("{% static 'main/img/grids_pictures' %}/1/gog/1 O.png");}
+                                                    #o:hover {content: url("{% static 'main/img/grids_pictures' %}/1/o/1 O.png");}
+                                                    #og:hover {content: url("{% static 'main/img/grids_pictures' %}/1/og/1 O.png");}
+                                                    #ogo:hover {content: url("{% static 'main/img/grids_pictures' %}/1/ogo/1 O.png");}
+                                                    #oo:hover {content: url("{% static 'main/img/grids_pictures' %}/1/oo/1 O.png");}
+                                                    #solid:hover {content: url("{% static 'main/img/grids_pictures' %}/1/solid/1.png");}
                                                 </style>
                                             </div>
                                         </div>
@@ -323,15 +310,15 @@
                                             <div class="row row-cols-lg-2 row-cols-1 gy-lg-10 gy-5">
                                                 <div class="col">
                                                     <select class="form-select form-select-lg rounded-2" id="width_of_rod" onchange="changeForm()">
-                                                        <option selected>Выберите ширину прутка</option>
+                                                        <option>Выберите ширину прутка</option>
                                                         {% for item in product.additional_info %}
-                                                            <option>{{ item.name }} - {{ item.price_b2c }} руб.</option>
+                                                            <option id="{{item.name}}" class="width-option">{{ item.name }} - {{ item.price_b2c }} руб.</option>
                                                         {% endfor %}
                                                     </select>
                                                 </div>
                                                 <div class="col">
-                                                    <select class="form-select form-select-lg rounded-2">
-                                                        <option selected>Без покраски - 0 руб</option>
+                                                    <select class="form-select form-select-lg rounded-2" id="painting" onchange="changeForm()">
+                                                        <option selected>Без покраски</option>
                                                         <option>Покраска (эмаль НЦ) - 550 руб</option>
                                                         <option>Покраска (эмаль ХВ) - 650 руб</option>
                                                         <option>Покраска (эмаль NOVAX) - 1200 руб</option>
@@ -687,35 +674,58 @@
     function getValueById(id){
         return document.getElementById(id).value
     }
+    function changeValueById(id, value){
+        document.getElementById(id).value = value
+    }
+    function setOptionOnSelectById (optionId, idOfSelect) {
+        changeValueById(idOfSelect, getValueById(optionId))
+    }
+
     function changeForm() {
-        let width_of_rod = getValueById("width_of_rod")
-        if (width_of_rod !== "Выберите ширину прутка") {
-            width_of_rod = +width_of_rod.match(/\d{3,}/)[0]
-        }
-
+        let width_of_rod = getValueById("width_of_rod").match(/\d{3,}/)[0]
         let width = +getValueById("width")
-        if (!width) {
-            width = 100;
-        }
-
         let height = +getValueById("height")
-        if (!height) {
-            height = 100;
+        let amount = +getValueById("amount")
+        let openTypePrice = 0;
+
+        let optionsOfOpenTypes = document.getElementsByClassName("open-type-price")
+        for (let i = 0; i < optionsOfOpenTypes.length; i++) {
+            if (optionsOfOpenTypes[i].checked){
+                let type = optionsOfOpenTypes[i].id.split("-")[2]
+                if (type == "arch") {
+                    let priceOfWidth = getValueById("width_of_rod").match(/\d{3,}/)[0]
+                    openTypePrice = priceOfWidth  * 1.3 - priceOfWidth
+                } else if (type == "solid") {
+                    openTypePrice = 0;
+                } else {
+                    openTypePrice = +document.getElementById("price-"+type).textContent.match(/\d{4,}/)[0]
+                }
+            }
         }
 
-        let amount = +getValueById("amount")
-        if (!amount) {
-            amount = 1;
+        let painting = getValueById("painting")
+        if (painting !== "Без покраски") {
+            painting = +painting.match(/\d{3,}/)[0]
+        } else {
+            painting = 0;
         }
+
         let installing = getValueById("installing")
         if (installing !== "Без установки") {
             installing = +installing.match(/\d{3,}/)[0]
         } else {
             installing = 0;
         }
-        total = amount * (width_of_rod * width * height / 10000) + installing;
-        document.getElementById("total").textContent = total;
+        let total = amount * (width_of_rod * width * height / 10000 + openTypePrice) + installing + painting;
+        document.getElementById("total").textContent = total + " руб.";
     }
+    let optionsOfWidth = document.getElementsByClassName("width-option")
+    let firstValueInOptions = optionsOfWidth[0].id
 
+    setOptionOnSelectById(firstValueInOptions, "width_of_rod")
+    changeValueById("width", "100")
+    changeValueById("height", "100")
+    changeValueById("amount", "1")
+    changeForm()
     </script>
 {% endblock %}
