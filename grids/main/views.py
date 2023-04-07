@@ -43,13 +43,13 @@ list_of_photos_done = [
 ]
 
 list_of_open_types = [
-    {"name": "arch", "description": "Арочная", "price": "30"},
-    {"name": "gog", "description": "Глухая-Распашная-Глухая", "price": "1500"},
-    {"name": "o", "description": "Распашная", "price": "1500"},
-    {"name": "og", "description": "Распашная-Глухая", "price": "1500"},
-    {"name": "ogo", "description": "Распашная-Глухая-Распашная", "price": "3000"},
-    {"name": "oo", "description": "Распашная-Распашная", "price": "2800"},
-    {"name": "solid", "description": "Глухая", "price": "0"}
+    {"name": "arch", "description": "Арочная", "price": "30", "width": 1000, "height": 1500},
+    {"name": "gog", "description": "Глухая-Распашная-Глухая", "price": "1500" , "width": 3000, "height": 1500},
+    {"name": "o", "description": "Распашная", "price": "1500", "width": 1000, "height": 1500},
+    {"name": "og", "description": "Распашная-Глухая", "price": "1500", "width": 1500, "height": 1500},
+    {"name": "ogo", "description": "Распашная-Глухая-Распашная", "price": "3000", "width": 3000, "height": 1500},
+    {"name": "oo", "description": "Распашная-Распашная", "price": "2800", "width": 1500, "height": 1500},
+    {"name": "solid", "description": "Глухая", "price": "0", "width": 1000, "height": 1500}
 ]
 
 categories = {  # there are categories and their number in database. It depends on database structure what number is
@@ -78,6 +78,8 @@ russian_categories = {
 
 # def get_products_amount_by_category(category_number)
 
+arr_of_sale = [15,10,20,30,25,20,10,20,20,30,25,10,10,20,30,10,20,30,15,10]
+
 def get_products_by_category(category_number):
     products = PriceWinguardSketch.objects.filter(category=category_number) \
         .values('id').annotate(min_pricewinguardmain=Min('pricewinguardmain')).values('min_pricewinguardmain', 'id')
@@ -91,6 +93,8 @@ def get_products_by_category(category_number):
             try:
                 additional_info = PriceWinguardMain.objects.get(id=product["min_pricewinguardmain"])
                 product["price"] = additional_info.price_b2c
+                product["percent"] = arr_of_sale[product["min_pricewinguardmain"] % 20]
+                product["saleprice"] = int(product["price"] * (1 + product["percent"]/100))
                 product["width"] = additional_info.name
             except:
                 product["price"] = "Нет данных в БД"
@@ -197,12 +201,15 @@ def projects(request):
 def reviews(request):
     return render(request, 'main/reviews.html')
 
+
 def compare(request):
     leaders_of_selling = get_products_by_category(1)
-    return render(request, 'main/compare.html',{'leaders_of_selling': leaders_of_selling})
+    return render(request, 'main/compare.html', {'leaders_of_selling': leaders_of_selling})
+
 
 def favorite(request):
-    return render(request, 'main/favorite.html',{'list_of_grids_types': list_of_grids_types})    
+    return render(request, 'main/favorite.html', {'list_of_grids_types': list_of_grids_types})
+
 
 def page_not_found(request, exception):
     return HttpResponseNotFound("Page NOT found")

@@ -363,11 +363,11 @@
                                 <div class="row row-cols-lg-3 row-cols-1 gy-20">
 
                                     {% for item in products %}
-                                    {% include 'main/components/catalog_category_item.html' with category=category PriceWinguardSketchId=item.id name=item.width price=item.price path_folder=item.path_folder path_file=item.path_file %}
+                                    {% include 'main/components/catalog_category_item.html' with category=category PriceWinguardSketchId=item.id name=item.width price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
                                 {% endfor %}
                         </div>
 
-                       <div class="text-center mt-lg-20 mt-10"><a class="btn btn-outline-light btn-lg btn-wide-lg" href="#">Показать еще  </a></div>
+                       <div class="text-center mt-lg-20 mt-10"><a class="btn view_more btn-outline-light btn-lg btn-wide-lg" href="#">Показать еще  </a></div>
                         <nav class="mt-lg-20 mt-20">
                             {% if products.has_other_pages %}
   <ol class="pagination justify-content-lg-center overflow-x-auto mb-0">
