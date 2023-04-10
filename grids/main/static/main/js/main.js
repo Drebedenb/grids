@@ -124,16 +124,98 @@ let productSwiper2 = new Swiper("#product-swiper2", {
     }
 });
 
-function getCurrentURL () {
-  return window.location.href
+//part of Danila Kuznetsov's code
+
+const categories = [
+        {url: "решетки-на-окна-эконом-класс", "title": "Эконом", "name_of_category": "economy", "name_of_class": "usual"},
+        {url: "дутые-решетки-на-окна-эконом-класс","title": "Дутые Эконом", "name_of_category": "economy", "name_of_class": "blow"},
+        {url: "ажурные-решетки-на-окна","title": "Ажурные", "name_of_category": "ajur", "name_of_class": "usual"},
+        {url: "дутые-ажурные-решетки","title": "Дутые Ажурные", "name_of_category": "ajur", "name_of_class": "blow"},
+        {url: "кованые-решетки-на-окна-вип-класс","title": "VIP", "name_of_category": "vip", "name_of_class": "usual"},
+        {url: "кованые-дутые-решетки-вип-класса","title": "Дутые VIP", "name_of_category": "vip", "name_of_class": "blow"},
+        {url: "эксклюзивные-кованые-решетки","title": "Эксклюзив", "name_of_category": "exclusive", "name_of_class": "usual"},
+        {url: "дутые-эксклюзивные-решетки","title": "Дутые Эксклюзив", "name_of_category": "exclusive", "name_of_class": "blow"}
+    ]
+    function getCheckedCategory () {
+        for (let i = 0; i < categories.length; i++) {
+            if (document.getElementById("category-" + categories[i].name_of_category).checked) {
+                return categories[i].name_of_category
+            }
+        }
+    }
+    function getCheckedClass () {
+        for (let i = 0; i < categories.length; i++) {
+            if (document.getElementById("class-" + categories[i].name_of_class).checked) {
+                return categories[i].name_of_class
+            }
+        }
+    }
+    function changeCategory (categoryName) {
+        let className = getCheckedClass();
+        for (let i = 0; i < categories.length; i++) {
+            if (categoryName === categories[i].name_of_category && className === categories[i].name_of_class) {
+                document.location.href = "/" + categories[i].url;
+            }
+        }
+    }
+    function changeClass (className) {
+        let categoryName = getCheckedCategory();
+        for (let i = 0; i < categories.length; i++) {
+            if (className === categories[i].name_of_class && categoryName === categories[i].name_of_category) {
+                document.location.href = "/" + categories[i].url;
+            }
+        }
+    }
+    function chooseCategoryRadio (id){
+        document.getElementById('category-'+id).checked = true;
+    }
+    function chooseClassRadio (id){
+        document.getElementById('class-'+id).checked = true;
+    }
+    function getMinPriceFromUrl (){
+        return window.location.search.match(/minPrice=\d+/)[0].match(/\d+/gm)[0];
+    }
+    function getMaxPriceFromUrl (){
+        return window.location.search.match(/maxPrice=\d+/)[0].match(/\d+/gm)[0];
+    }
+    //catalog-category
+    let current_location = window.decodeURI(window.location.href.split('/').pop());
+    for (let i = 0; i < categories.length; i++) {
+        if (current_location.includes(categories[i].url)){
+            chooseCategoryRadio(categories[i].name_of_category)
+            chooseClassRadio(categories[i].name_of_class)
+        }
+    }
+
+function getCurrentURL() {
+    return window.location.href
 }
+
+
+
+let lastMinPrice;
+let lastMaxPrice; // Слайдер забирает цены при каждом движении и обновлял цену каждый такой шаг.
+                    // В итоге страница перезагружалась слишком часто и вылетала ошибка
+                    // Было решено просто брать последнюю цену и сверять с ценой, когда пользователь отпустил слайдер
+
 function changeMin(minPrice) {
-    let url = new URL(getCurrentURL())
-    url.searchParams.append('minPrice', minPrice);
-    // window.location.href = url;
+    if (minPrice === lastMinPrice) {
+        let url = new URL(getCurrentURL())
+        url.searchParams.set('minPrice', minPrice.match(/\d+/gm).join(''));
+        window.location.href = url;
+    } else {
+        lastMinPrice = minPrice;
+    }
 }
 
 function changeMax(maxPrice) {
+    if (maxPrice === lastMaxPrice) {
+        let url = new URL(getCurrentURL())
+        url.searchParams.set('maxPrice', maxPrice.match(/\d+/gm).join(''));
+        window.location.href = url;
+    } else {
+        lastMaxPrice = maxPrice;
+    }
 }
 
 let priceSlider = document.getElementById("price-range"),
@@ -142,13 +224,14 @@ let priceSlider = document.getElementById("price-range"),
 
 if (priceSlider != null) {
     noUiSlider.create(priceSlider, {
-        start: [+priceMin.value, +priceMax.value],
+        start: [+getMinPriceFromUrl(), +getMaxPriceFromUrl()],
         connect: true,
         step: 1,
         range: {
             "min": +priceMin.value,
             "max": +priceMax.value
         },
+        behaviour: 'drag-smooth-steps-tap',
         format: wNumb({
             decimals: 0,
             thousand: " ",
@@ -178,45 +261,47 @@ if (priceSlider != null) {
         changeMax(this.value);
     });
 }
+// end part of Danila Kuznetsov's code
+
 
 
 /* VIEW MORE */
-  document.addEventListener('DOMContentLoaded', function() {
-        const links1 = document.querySelectorAll('.view_more1');
-        const links2 = document.querySelectorAll('.view_more2');
-        let clickCounts = JSON.parse(localStorage.getItem('clickCounts')) || {};
+document.addEventListener('DOMContentLoaded', function () {
+    const links1 = document.querySelectorAll('.view_more1');
+    const links2 = document.querySelectorAll('.view_more2');
+    let clickCounts = JSON.parse(localStorage.getItem('clickCounts')) || {};
 
-        function handleClick(event) {
-          event.preventDefault();
-          const link = event.currentTarget;
-          const clickCount = clickCounts[link.classList[0]] || 0;
-          clickCounts[link.classList[0]] = clickCount + 1;
-          localStorage.setItem('clickCounts', JSON.stringify(clickCounts));
-          if (clickCount === 0) {
+    function handleClick(event) {
+        event.preventDefault();
+        const link = event.currentTarget;
+        const clickCount = clickCounts[link.classList[0]] || 0;
+        clickCounts[link.classList[0]] = clickCount + 1;
+        localStorage.setItem('clickCounts', JSON.stringify(clickCounts));
+        if (clickCount === 0) {
             link.textContent = link.dataset.secondClickText;
             window.location.href = link.dataset.redirectUrl;
-          }
-          if (clickCount === 1) {
+        }
+        if (clickCount === 1) {
             link.textContent = link.dataset.secondClickText;
             window.location.href = link.dataset.redirectUrl;
-          }
         }
+    }
 
-        function resetClickCounts() {
-          clickCounts = {};
-          localStorage.setItem('clickCounts', JSON.stringify(clickCounts));
-        }
+    function resetClickCounts() {
+        clickCounts = {};
+        localStorage.setItem('clickCounts', JSON.stringify(clickCounts));
+    }
 
-        resetClickCounts();
+    resetClickCounts();
 
-        links1.forEach(function(link) {
-          link.addEventListener('click', handleClick);
-        });
+    links1.forEach(function (link) {
+        link.addEventListener('click', handleClick);
+    });
 
-        links2.forEach(function(link) {
-          link.addEventListener('click', handleClick);
-        });
-      });
+    links2.forEach(function (link) {
+        link.addEventListener('click', handleClick);
+    });
+});
 
 /* DROPDOWN */
 

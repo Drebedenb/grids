@@ -80,7 +80,7 @@ russian_categories = {
 arr_of_sale = [15, 10, 20, 30, 25, 20, 10, 20, 20, 30, 25, 10, 10, 20, 30, 10, 20, 30, 15, 10]
 
 
-def get_products_by_category(category_number, amount="all"):
+def get_products_by_category(category_number, amount="all", min_price=None, max_price=None):
     if amount == "all":
         products = PriceWinguardSketch.objects.filter(category=category_number) \
             .values('id').annotate(min_pricewinguardmain=Min('pricewinguardmain')).values('min_pricewinguardmain', 'id')
@@ -97,6 +97,9 @@ def get_products_by_category(category_number, amount="all"):
             try:
                 additional_info = PriceWinguardMain.objects.get(id=product["min_pricewinguardmain"])
                 product["price"] = additional_info.price_b2c
+
+                # if product["min_pricewinguardmain"]:
+
                 product["percent"] = arr_of_sale[product["min_pricewinguardmain"] % 20]
                 product["saleprice"] = int(product["price"] * (1 + product["percent"] / 100))
                 product["width"] = additional_info.name
@@ -147,6 +150,9 @@ def index(request):
 
 
 def catalog_category(request, category_name):
+    if request.method == 'GET' and category_name in russian_categories:
+        print(request.GET)
+
     if category_name not in russian_categories:
         return HttpResponseNotFound("Page NOT found")
 

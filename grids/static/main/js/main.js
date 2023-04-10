@@ -181,27 +181,42 @@ if (priceSlider != null) {
 
 
 /* VIEW MORE */
-const link = document.querySelector('.view_more');
-let clickCount = localStorage.getItem('clickCount') || 0;
+  document.addEventListener('DOMContentLoaded', function() {
+        const links1 = document.querySelectorAll('.view_more1');
+        const links2 = document.querySelectorAll('.view_more2');
+        let clickCounts = JSON.parse(localStorage.getItem('clickCounts')) || {};
 
-link.addEventListener('click', function(event) {
-  event.preventDefault();
-  
-  clickCount++;
-  
-  if (clickCount === 1) {
-    link.textContent = 'Все отзывы';
-  }
-  
-  if (clickCount === 2) {
-    if (window.location.href !== 'https://www.google.com') {
-      window.location.href = 'https://www.google.com';
-      localStorage.setItem('clickCount', 0);
-    }
-  }
-  
-  localStorage.setItem('clickCount', clickCount);
-});
+        function handleClick(event) {
+          event.preventDefault();
+          const link = event.currentTarget;
+          const clickCount = clickCounts[link.classList[0]] || 0;
+          clickCounts[link.classList[0]] = clickCount + 1;
+          localStorage.setItem('clickCounts', JSON.stringify(clickCounts));
+          if (clickCount === 0) {
+            link.textContent = link.dataset.secondClickText;
+            window.location.href = link.dataset.redirectUrl;
+          }
+          if (clickCount === 1) {
+            link.textContent = link.dataset.secondClickText;
+            window.location.href = link.dataset.redirectUrl;
+          }
+        }
+
+        function resetClickCounts() {
+          clickCounts = {};
+          localStorage.setItem('clickCounts', JSON.stringify(clickCounts));
+        }
+
+        resetClickCounts();
+
+        links1.forEach(function(link) {
+          link.addEventListener('click', handleClick);
+        });
+
+        links2.forEach(function(link) {
+          link.addEventListener('click', handleClick);
+        });
+      });
 
 /* DROPDOWN */
 
