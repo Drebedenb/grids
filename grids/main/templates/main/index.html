@@ -154,34 +154,45 @@
 
                     <div class="col">
                         <div class="card card_hover_shadow card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">
-                            <div class="card-body p-lg-13 py-10">
-                                <div class="position-relative text-center mb-20">
+                            <div class="card-body p-10">
+                                <div class="position-relative text-center ">
                                     <div class="position-absolute top-0 start-0 z-1">
-                                        <a class="text-muted text-hover-black" href="#">
-                                            {% include 'main/icons/chart.html' with classes='svg-icon' %}
-                                        </a>
-                                    </div>
+                                        <a class="text-muted text-hover-black" href="#">{% include 'main/icons/chart.html' with classes="svg-icon"%}</a>
+                                    <span class="fs-7  ms-2 py-0 bg-success text-white px-2 rounded-2">хит</span>
+                                </div>
                                     <div class="position-absolute top-0 end-0 z-1">
-                                        <a class="text-muted text-hover-black" href="#">
-                                            {% include 'main/icons/heart.html' with classes='svg-icon' %}
-                                        </a>
+                                        <span class="fs-7 ms-2 py-0 bg-danger text-white   px-2 rounded-2">-30%</span>
+                                        <a class="text-muted text-hover-black" href="#">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a> 
                                     </div>
                                     <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
-                                        <button class="btn btn-light btn-lg btn-wide-xl" data-bs-toggle="modal"
-                                                data-bs-target="#product-quick-view" type="button">Быстрый просмотр
-                                        </button>
+                                        <button class="btn btn-light fs-lg-7 btn-lg btn-wide-sm " data-bs-toggle="modal" data-bs-target="#product-quick-view" type="button">Быстрый просмотр</button>
                                     </div>
-                                   <a href="#"><div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
-                                            class="mt-15 object-fit-contain"
-                                            src="{% static 'main/img/grids_pictures' %}/{{item.path_folder}}/solid/{{item.path_file}}.png"
+
+                                    <a href="кованые-решетки-на-окна-вип-класс">
+                                        <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
+                                            class="object-fit-contain" src="{% static 'main/img/grids_pictures'%}/{{item.path_folder}}/solid/{{item.path_file}}.png"
                                             alt="Решетки на окна эконом класса"></div>
+                                </div></a>
+                               
+                           
+                                         <h3 class="card-title h5 fs-lg-9 fs-10 fw-medium  d-lg-inline-block ls-sm text-uppercase  pb-5">
+                                    <a class="text-decoration-none text-dark d-lg-inline-block">Решетка на окно<br>сварная {{path_folder}} - {{path_file}}</a></h3>
+                                    <div class="float-end buy_item">
+                                 <div class="d-flex justify-content-between">
+                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:20px' %}
+                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:20px' %}
+                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:20px' %}
+                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:20px' %}
+                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:20px' %}
+                                    <span class="fs-8">(32)</span>
+                                  </div>
+                                  <a class="btn btn-outline-dark px-20 py-5 w-100 fs-9 mt-5">Купить</a>
                                 </div>
-                                <h3 class="card-title h5 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0  pt-5">
-                                    Решетка на окно эконом класса {{item.path_folder}}-{{item.path_file}}</h3>
-                                <div class="d-flex align-items-center justify-content-between mt-10">
-                                    <span class="d-block fs-12 text-danger fw-medium  text-uppercase ls-sm  ">от {{item.price}} руб</span>
-                                    <a class="btn btn-outline-primary  rounded-pill py-3 px-10 fs-10   ">Купить</a>
-                                </div>
+                                <span class="d-block fs-10 text-muted fw-medium  text-decoration-line-through  text-uppercase ls-sm pb-4 ">{{saleprice}} руб</span>
+                                <span class="d-block fs-10 text-danger fw-medium  text-uppercase ls-sm  ">{{price}} руб</span>
+                               
+                      
+                                  
                             </div>
                         </div>
                     </div>
@@ -200,34 +211,45 @@
     
                         <div class="col">
                             <div class="card card_hover_shadow card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">
-                                <div class="card-body p-lg-13 py-10">
-                                    <div class="position-relative text-center mb-20">
+                                <div class="card-body p-10">
+                                    <div class="position-relative text-center ">
                                         <div class="position-absolute top-0 start-0 z-1">
-                                            <a class="text-muted text-hover-black" href="#">
-                                                {% include 'main/icons/chart.html' with classes='svg-icon' %}
-                                            </a>
-                                        </div>
+                                            <a class="text-muted text-hover-black" href="#">{% include 'main/icons/chart.html' with classes="svg-icon"%}</a>
+                                        <span class="fs-7  ms-2 py-0 bg-success text-white px-2 rounded-2">хит</span>
+                                    </div>
                                         <div class="position-absolute top-0 end-0 z-1">
-                                            <a class="text-muted text-hover-black" href="#">
-                                                {% include 'main/icons/heart.html' with classes='svg-icon' %}
-                                            </a>
+                                            <span class="fs-7 ms-2 py-0 bg-danger text-white   px-2 rounded-2">-30%</span>
+                                            <a class="text-muted text-hover-black" href="#">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a> 
                                         </div>
                                         <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
-                                            <button class="btn btn-light btn-lg btn-wide-xl" data-bs-toggle="modal"
-                                                    data-bs-target="#product-quick-view" type="button">Быстрый просмотр
-                                            </button>
+                                            <button class="btn btn-light fs-lg-7 btn-lg btn-wide-sm " data-bs-toggle="modal" data-bs-target="#product-quick-view" type="button">Быстрый просмотр</button>
                                         </div>
-                                       <a href="#"><div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
-                                                class="mt-15 object-fit-contain"
-                                                src="{% static 'main/img/grids_pictures' %}/{{item.path_folder}}/solid/{{item.path_file}}.png"
+    
+                                        <a href="кованые-решетки-на-окна-вип-класс">
+                                            <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
+                                                class="object-fit-contain" src="{% static 'main/img/grids_pictures'%}/{{item.path_folder}}/solid/{{item.path_file}}.png"
                                                 alt="Решетки на окна эконом класса"></div>
+                                    </div></a>
+                                   
+                               
+                                             <h3 class="card-title h5 fs-lg-9 fs-10 fw-medium  d-lg-inline-block ls-sm text-uppercase  pb-5">
+                                        <a class="text-decoration-none text-dark d-lg-inline-block">Решетка на окно<br>сварная {{path_folder}} - {{path_file}}</a></h3>
+                                        <div class="float-end buy_item">
+                                     <div class="d-flex justify-content-between">
+                                        {% include 'main/icons/star.html' with classes='svg-icon' styles='width:20px' %}
+                                        {% include 'main/icons/star.html' with classes='svg-icon' styles='width:20px' %}
+                                        {% include 'main/icons/star.html' with classes='svg-icon' styles='width:20px' %}
+                                        {% include 'main/icons/star.html' with classes='svg-icon' styles='width:20px' %}
+                                        {% include 'main/icons/star.html' with classes='svg-icon' styles='width:20px' %}
+                                        <span class="fs-8">(32)</span>
+                                      </div>
+                                      <a class="btn btn-outline-dark px-20 py-5 w-100 fs-9 mt-5">Купить</a>
                                     </div>
-                                    <h3 class="card-title h5 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0  pt-5">
-                                        Решетки на окна эконом класса</h3>
-                                    <div class="d-flex align-items-center justify-content-between mt-10">
-                                        <span class="d-block fs-12 text-danger fw-medium  text-uppercase ls-sm  ">от {{item.price}} руб</span>
-                                        <a class="btn btn-outline-primary  rounded-pill py-3 px-10 fs-10   ">Купить</a>
-                                    </div>
+                                    <span class="d-block fs-10 text-muted fw-medium  text-decoration-line-through  text-uppercase ls-sm pb-4 ">{{saleprice}} руб</span>
+                                    <span class="d-block fs-10 text-danger fw-medium  text-uppercase ls-sm  ">{{price}} руб</span>
+                                   
+                          
+                                      
                                 </div>
                             </div>
                         </div>
@@ -237,8 +259,9 @@
                   
                   </div>   
                  <div class="text-center mt-lg-20 mt-10">
-                    <a class="btn btn-outline-secondary btn-lg btn-wide-lg"  data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
-                                                           href="#">Показать еще </a></div>
+                    <a class="view_more1 btn btn-outline-secondary btn-lg btn-wide-lg" data-redirect-url="решетки-на-окна-эконом-класс" data-second-click-text="Весь каталог" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
+                                                           href="#">Показать еще </a>
+                                                        </div>
                                                            
                 
 
@@ -1010,9 +1033,9 @@
                 
                 </div>   
                <div class="text-center mt-lg-20 mt-10">
-                  <a class="btn view_more btn-outline-secondary btn-lg btn-wide-lg"  data-bs-toggle="collapse" data-bs-target="#collapseExample
-                  " aria-expanded="false" aria-controls="collapseExample"
-                                                         href="#">Показать еще </a></div>
+                <a class="view_more2 btn btn-outline-secondary btn-lg btn-wide-lg" data-redirect-url="{%url 'reviews'%}" data-second-click-text="Все отзывы" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
+                href="#">Показать еще </a>
+                                                        </div>
             </section>
             <section class="cta">
                 <div class="card rounded-lg-4 rounded-3">
