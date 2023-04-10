@@ -12,7 +12,7 @@
                         <h1 class="display-1 fs-3xl-25 fs-xl-23 fs-lg-27 fs-13 fw-normal ls-sm text-uppercase mb-20 pe-lg-8">
                             {{category.title}} Сравнения товаров</h1>
                     </div>
-              
+
                     <nav class="d-lg-block d-none fs-9 mt-lg-0 mt-12">
                         <ul class="breadcrumb mb-0">
                             <li class="breadcrumb-item"><a href="index.html">Главная </a></li>
@@ -29,48 +29,48 @@
           <table class="table table-fixed table-bordered" style="white-space: nowrap">
              <!--Table head-->
         <thead>
-            <tr class="text-center fs-7 ">  
+            <tr class="text-center fs-7 ">
                 <th class="align-items-center compare_items"><span class="fs-14 mb-20 ">Товары</span></th>
-                
+
                 {%for item in leaders_of_selling%}
                 <th>
-              
+
                     <div class="card card_hover_shadow card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">
                         <div class="card-body p-5">
                             <div class="position-relative text-center ">
                                 <div class="position-absolute top-0 start-0 z-1">
                                     <a class="text-muted text-hover-black" href="#">{% include 'main/icons/close.html' with classes="svg-icon"%}</a>
-                               
+
                             </div>
                                 <div class="position-absolute top-0 end-0 z-1">
-                                    
-                                    <a class="text-muted text-hover-black" href="#">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a> 
+
+                                    <a class="text-muted text-hover-black" href="#">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a>
                                 </div>
-                             
+
                                 <a href="{%url 'catalog-category' 'kovka'%}">
                                 <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
                                         class="object-fit-contain"
                                         src="{% static 'main/img/grids_pictures' %}/{{path_folder}}/solid/{{path_file}}.png"
                                         alt="Решетки на окна эконом класса"></div>
                             </div></a>
-                           
-                       
+
+
                                     <h3 class="card-title h5 fs-lg-8 fs-10 fw-medium  d-lg-inline-block ls-sm text-uppercase  pb-5">
                                 <a class="text-decoration-none text-dark d-lg-inline-block">Решетка на окно<br>сварная {{path_folder}} - {{path_file}}</a></h3>
                                 <p>Артикул</p>
-            
-                           
-                  
-                              
+
+
+
+
                         </div>
                     </div>
-               
+
               </th>
                 {%endfor%}
-               
+
                 <th></th>
-          
-        
+
+
             </tr>
         </thead>
         <!--Table head-->
@@ -80,57 +80,57 @@
           <tr class="text-center fs-7">
             <th scope="row ">Цена со скидкой</th>
             <th></th>
-        
+
         </tr>
             <tr class="text-center fs-7">
                 <th scope="row ">Покраска (не требуется)</th>
                 <th></th>
-            
+
             </tr>
             <tr class="text-center fs-7">
                 <th scope="row">Покраска (эмаль НЦ)</th>
                 <th></th>
-       
+
             </tr>
             <tr class="text-center fs-7">
                 <th scope="row">Покраска (эмаль ХВ)</th>
                  <th></th>
-    
+
             </tr>
             <tr class="text-center fs-7">
                 <th scope="row">Покраска (краска Hammerite)</th>
                  <th></th>
-           
+
             </tr>
             <tr class="text-center fs-7">
                 <th scope="row">Покраска (порошковое нап.)</th>
                  <th></th>
-         
+
             </tr>
             <tr class="text-center fs-7">
                 <th scope="row">Покраска (эмаль Westplast)</th>
                  <th></th>
-          
+
             </tr>
             <tr class="text-center fs-7">
               <th scope="row">Покраска (эмаль NOVAX)</th>
                <th></th>
-        
+
           </tr>
           <tr class="text-center fs-7">
             <th scope="row">Тип открывания (глухая)</th>
              <th></th>
-      
+
         </tr>
         <tr class="text-center fs-7">
           <th scope="row">Тип открывания (распашная)</th>
            <th></th>
-    
+
       </tr>
       <tr class="text-center fs-7">
         <th scope="row">Металл (квадрат 10мм, полоса)</th>
          <th></th>
-  
+
     </tr>
     <tr class="text-center fs-7">
       <th scope="row">Металл (кв.12х12, полоса 12х6,)</th>
