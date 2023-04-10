@@ -44,7 +44,7 @@ list_of_photos_done = [
 
 list_of_open_types = [
     {"name": "arch", "description": "Арочная", "price": "30", "width": 1000, "height": 1500},
-    {"name": "gog", "description": "Глухая-Распашная-Глухая", "price": "1500" , "width": 3000, "height": 1500},
+    {"name": "gog", "description": "Глухая-Распашная-Глухая", "price": "1500", "width": 3000, "height": 1500},
     {"name": "o", "description": "Распашная", "price": "1500", "width": 1000, "height": 1500},
     {"name": "og", "description": "Распашная-Глухая", "price": "1500", "width": 1500, "height": 1500},
     {"name": "ogo", "description": "Распашная-Глухая-Распашная", "price": "3000", "width": 3000, "height": 1500},
@@ -75,14 +75,18 @@ russian_categories = {
     "дутые-эксклюзивные-решетки": {"title": "Дутые Эксклюзив", 'url_title': "vip_dut", "number_of_category": 8},
 }
 
-
 # def get_products_amount_by_category(category_number)
 
-arr_of_sale = [15,10,20,30,25,20,10,20,20,30,25,10,10,20,30,10,20,30,15,10]
+arr_of_sale = [15, 10, 20, 30, 25, 20, 10, 20, 20, 30, 25, 10, 10, 20, 30, 10, 20, 30, 15, 10]
 
-def get_products_by_category(category_number):
-    products = PriceWinguardSketch.objects.filter(category=category_number) \
-        .values('id').annotate(min_pricewinguardmain=Min('pricewinguardmain')).values('min_pricewinguardmain', 'id')
+
+def get_products_by_category(category_number, amount="all"):
+    if amount == "all":
+        products = PriceWinguardSketch.objects.filter(category=category_number) \
+            .values('id').annotate(min_pricewinguardmain=Min('pricewinguardmain')).values('min_pricewinguardmain', 'id')
+    else:
+        products = PriceWinguardSketch.objects.filter(category=category_number) \
+            .values('id').annotate(min_pricewinguardmain=Min('pricewinguardmain')).values('min_pricewinguardmain', 'id')[:amount]
     for product in products:
         try:
             path = "".join(
@@ -94,7 +98,7 @@ def get_products_by_category(category_number):
                 additional_info = PriceWinguardMain.objects.get(id=product["min_pricewinguardmain"])
                 product["price"] = additional_info.price_b2c
                 product["percent"] = arr_of_sale[product["min_pricewinguardmain"] % 20]
-                product["saleprice"] = int(product["price"] * (1 + product["percent"]/100))
+                product["saleprice"] = int(product["price"] * (1 + product["percent"] / 100))
                 product["width"] = additional_info.name
             except:
                 product["price"] = "Нет данных в БД"
@@ -126,14 +130,15 @@ def get_category_min_price(category_number):
 
 
 def index(request):
-    leaders_of_selling = get_products_by_category(1)
+    leaders_of_selling = get_products_by_category(1, 20)
 
     min_price_1 = get_category_min_price(1)
     min_price_2 = get_category_min_price(2)
     min_price_3 = get_category_min_price(3)
     min_price_4 = get_category_min_price(4)
     return render(request, 'main/index.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Главная страница',
-                                               'leaders_of_selling': leaders_of_selling,'list_of_photos_done': list_of_photos_done,
+                                               'leaders_of_selling': leaders_of_selling,
+                                               'list_of_photos_done': list_of_photos_done,
                                                'min_price_1': min_price_1,
                                                'min_price_2': min_price_2,
                                                'min_price_3': min_price_3,
@@ -173,7 +178,7 @@ def catalog_category(request, category_name):
     return render(request, 'main/catalog-category.html',
                   {'title': 'Каталог', 'list_of_grids_types': list_of_grids_types,
                    'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling,
-                   'min_price': min_price, 'max_price': max_price,'list_of_photos_done': list_of_photos_done})
+                   'min_price': min_price, 'max_price': max_price, 'list_of_photos_done': list_of_photos_done})
 
 
 def contacts(request):
