@@ -106,20 +106,20 @@
                                                 <h6 class="fw-medium ls-sm text-uppercase mb-10">Категория решеток</h6>
                                                 <div>
                                                     <div class="form-check fs-9 ls-sm mb-10">
-                                                        <input class="form-check-input" id="filter-type-1" name="filter-type" autocomplete="off" type="radio"/>
-                                                        <label class="form-check-label" for="filter-type-1">Сварные решетки</label>
+                                                        <input class="form-check-input" id="category-economy" name="filter-type" autocomplete="off" type="radio"/>
+                                                        <label class="form-check-label" for="category-economy">Эконом решетки</label>
                                                     </div>
                                                     <div class="form-check fs-9 ls-sm mb-10">
-                                                        <input class="form-check-input" id="filter-type-2" name="filter-type" autocomplete="off" type="radio"/>
-                                                        <label class="form-check-label" for="filter-type-2">Ажурные решетки  </label>
+                                                        <input class="form-check-input" id="category-ajur" name="filter-type" autocomplete="off" type="radio"/>
+                                                        <label class="form-check-label" for="category-ajur">Ажурные решетки  </label>
                                                     </div>
                                                     <div class="form-check fs-9 ls-sm mb-10">
-                                                        <input class="form-check-input" id="filter-type-3" name="filter-type" autocomplete="off" type="radio" />
-                                                        <label class="form-check-label" for="filter-type-3">VIP решетки</label>
+                                                        <input class="form-check-input" id="category-vip" name="filter-type" autocomplete="off" type="radio" />
+                                                        <label class="form-check-label" for="category-vip">VIP решетки</label>
                                                     </div>
                                                     <div class="form-check fs-9 ls-sm">
-                                                        <input class="form-check-input" id="filter-type-4" name="filter-type" autocomplete="off" type="radio"/>
-                                                        <label class="form-check-label" for="filter-type-4">Эксклюзив решетки</label>
+                                                        <input class="form-check-input" id="category-exclusive" name="filter-type" autocomplete="off" type="radio"/>
+                                                        <label class="form-check-label" for="category-exclusive">Эксклюзив решетки</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -128,12 +128,12 @@
                                                 <h6 class="fw-medium ls-sm text-uppercase mb-10">Класс решеток</h6>
                                                 <div>
                                                     <div class="form-check fs-9 ls-sm mb-10">
-                                                        <input class="form-check-input" id="filter-category-1" name="filter-category" autocomplete="off" type="radio" />
-                                                        <label class="form-check-label" for="filter-category-1">Обычные решетки</label>
+                                                        <input class="form-check-input" id="class-usual" name="filter-category" autocomplete="off" type="radio" />
+                                                        <label class="form-check-label" for="class-usual">Обычные решетки</label>
                                                     </div>
                                                     <div class="form-check fs-9 ls-sm mb-10">
-                                                        <input class="form-check-input" id="filter-category-2" name="filter-category" autocomplete="off" type="radio" />
-                                                        <label class="form-check-label" for="filter-category-2">Дутые решетки</label>
+                                                        <input class="form-check-input" id="class-blow" name="filter-category" autocomplete="off" type="radio" />
+                                                        <label class="form-check-label" for="class-blow">Дутые решетки</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -942,15 +942,28 @@
     </div>
 </div>
 <script>
-    let current_location = window.location.href;
-    let radio_buttons = [];
-    for (let i = 1; i <= 4; i++) {
-        radio_buttons.push(document.getElementById('filter-type-' + i))
+    function checkCategoryRadio (id){
+        document.getElementById('category-'+id).checked = true;
     }
-    let classes = []
-    for (let i = 1; i <= 2; i++) {
-        classes.push(document.getElementById('filter-category-' + i))
+    function checkClassRadio (id){
+        document.getElementById('class-'+id).checked = true;
     }
-
+    let categories = [
+        {url: "решетки-на-окна-эконом-класс", "title": "Эконом", "name_of_category": "economy", "name_of_class": "usual"},
+        {url: "дутые-решетки-на-окна-эконом-класс","title": "Дутые Эконом", "name_of_category": "economy", "name_of_class": "blow"},
+        {url: "ажурные-решетки-на-окна","title": "Ажурные", "name_of_category": "ajur", "name_of_class": "usual"},
+        {url: "дутые-ажурные-решетки","title": "Дутые Ажурные", "name_of_category": "ajur", "name_of_class": "blow"},
+        {url: "кованые-решетки-на-окна-вип-класс","title": "VIP", "name_of_category": "vip", "name_of_class": "usual"},
+        {url: "кованые-дутые-решетки-вип-класса","title": "Дутые VIP", "name_of_category": "vip", "name_of_class": "blow"},
+        {url: "эксклюзивные-кованые-решетки","title": "Эксклюзив", "name_of_category": "exclusive", "name_of_class": "usual"},
+        {url: "дутые-эксклюзивные-решетки","title": "Дутые Эксклюзив", "name_of_category": "exclusive", "name_of_class": "blow"}
+    ]
+    let current_location = window.decodeURI(window.location.href.split('/').pop());
+    for (let i = 0; i < categories.length; i++) {
+        if (current_location.includes(categories[i].url)){
+            checkCategoryRadio(categories[i].name_of_category)
+            checkClassRadio(categories[i].name_of_class)
+        }
+    }
 </script>
 {% endblock %}

@@ -128,10 +128,8 @@ function getCurrentURL () {
   return window.location.href
 }
 function changeMin(minPrice) {
-    console.log(minPrice);
     let url = new URL(getCurrentURL())
     url.searchParams.append('minPrice', minPrice);
-    console.log(url)
     // window.location.href = url;
 }
 

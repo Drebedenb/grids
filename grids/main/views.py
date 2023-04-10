@@ -174,7 +174,7 @@ def catalog_category(request, category_name):
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
     # leaders_of_selling = get_products_by_category(5)
-    leaders_of_selling = get_products_by_category(1);
+    leaders_of_selling = get_products_by_category(1, 12);
     return render(request, 'main/catalog-category.html',
                   {'title': 'Каталог', 'list_of_grids_types': list_of_grids_types,
                    'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling,
@@ -208,12 +208,13 @@ def reviews(request):
 
 
 def compare(request):
-    leaders_of_selling = get_products_by_category(1)
+    leaders_of_selling = get_products_by_category(1, 5)
     return render(request, 'main/compare.html', {'leaders_of_selling': leaders_of_selling})
 
 
 def favorite(request):
-    return render(request, 'main/favorite.html', {'list_of_grids_types': list_of_grids_types})
+    products = get_products_by_category(5, 3)
+    return render(request, 'main/favorite.html', {'list_of_grids_types': list_of_grids_types, 'products': products})
 
 
 def page_not_found(request, exception):
