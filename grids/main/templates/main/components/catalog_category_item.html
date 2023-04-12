@@ -12,9 +12,9 @@
                     <a class="text-muted text-hover-black" href="#">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a> 
                 </div>
                 <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
-                    <button class="btn btn-light btn-lg btn-wide-xl" data-bs-toggle="modal"
-                            data-bs-target="#product-quick-view"
-                            data-bs-product-id="{{path_file}}"
+                    <button class="btn btn-light btn-lg btn-wide-xl"
+                            data-bs-toggle="modal"
+                            data-bs-target="#{{path_file}}"
                             type="button">Быстрый
                         просмотр
                     </button>
@@ -43,8 +43,8 @@
                 <span class="d-block fs-10 text-muted fw-medium  text-decoration-line-through  text-uppercase ls-sm pb-4 ">{{saleprice}} руб</span>
                 <span class="d-block fs-10 text-danger fw-medium  text-uppercase ls-sm  ">{{price}} руб</span>
            
-  
-              
+            <!--MODAL-->
+            {% include 'main/components/product_quick_view.html' with id=path_file path_file=path_file path_folder=path_folder%}
         </div>
     </div>
 </div>

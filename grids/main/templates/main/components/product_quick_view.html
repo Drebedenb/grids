@@ -1,7 +1,5 @@
 {% load static %}
-<!-- {% load main_tags %} -->
-<!-- {% get_product_by_id product_id=3 %} -->
-<div class="modal modal-xl border border-black rounded-4 fade" id="product-quick-view">
+<div class="modal modal-xl border border-black rounded-4 fade" id="{{path_file}}">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="product modal-body p-lg-20 py-10">
@@ -63,7 +61,7 @@
                                 </button>
                             </div>
                         </div>
-            
+
                             <h6 class="fs-9 fw-semibold mb-0 pt-6 text-center">Рассчитаем стоимость по телефону <h6>
                                         <form class="mt-5">
                                             <div class="row">
@@ -94,7 +92,7 @@
                         <div class="row d-lg-flex  align-items-center border-bottom border-black pb-12 mb-16">
                                 <div class="col-6">
                             <h2 class="h5 fw-medium fs-10 ls-sm text-uppercase mb-0">Решетка на окно Эскиз №
-                                1-1</h2>
+                                {{path_folder}} - {{path_file}}</h2>
                             </div>
                                 <div class="col-3">
                                 <span class="fs-10 ml-30">Цена: <span class="text-danger">2900 р.</span> </span>
@@ -102,8 +100,8 @@
                             <div class="col-3">
                                 <span class="fs-10 ml-30">Цена: <span class="text-danger">2900 р.</span> </span>
                             </div>
-                            
-                          
+
+
                         </div>
                         <div class="mb-15 d-lg-block d-none">
                             <div class="row row-cols-4 gy-20">
