@@ -124,6 +124,7 @@ let productSwiper2 = new Swiper("#product-swiper2", {
     }
 });
 
+
 //НИЖЕ ДЛЯ ФАЙЛА catalog-category
 //блок кода о фильтрации
 let priceSlider = document.getElementById("price-range"),
@@ -218,6 +219,7 @@ if (priceSlider != null) {
 }
 //конец блока кода о создании слайдера
 //ВЫШЕ ДЛЯ ФАЙЛА catalog-category
+
 
 /* VIEW MORE */
 document.addEventListener('DOMContentLoaded', function () {
