@@ -124,6 +124,7 @@ let productSwiper2 = new Swiper("#product-swiper2", {
     }
 });
 
+
 //НИЖЕ ДЛЯ ФАЙЛА catalog-category
 //блок кода о фильтрации
 let priceSlider = document.getElementById("price-range"),
@@ -219,24 +220,24 @@ if (priceSlider != null) {
 //конец блока кода о создании слайдера
 //ВЫШЕ ДЛЯ ФАЙЛА catalog-category
 
+
 /* VIEW MORE */
 document.addEventListener('DOMContentLoaded', function () {
     const links1 = document.querySelectorAll('.view_more1');
     const links2 = document.querySelectorAll('.view_more2');
     let clickCounts = JSON.parse(localStorage.getItem('clickCounts')) || {};
 
-    function handleClick(event) {
-        event.preventDefault();
-        const link = event.currentTarget;
-        const clickCount = clickCounts[link.classList[0]] || 0;
-        clickCounts[link.classList[0]] = clickCount + 1;
-        localStorage.setItem('clickCounts', JSON.stringify(clickCounts));
-        if (clickCount === 0) {
-            link.textContent = link.dataset.secondClickText;
-            window.location.href = link.dataset.redirectUrl;
-        }
-        if (clickCount === 1) {
-            link.textContent = link.dataset.secondClickText;
+        function handleClick(event) {
+          event.preventDefault();
+          const link = event.currentTarget;
+          const clickCount = clickCounts[link.classList[0]] || 0;
+          clickCounts[link.classList[0]] = clickCount + 1;
+          localStorage.setItem('clickCounts', JSON.stringify(clickCounts));
+          if (clickCount === 0) {
+            link.textContent = 'Смотреть все';
+          }
+          if (clickCount === 1) {
+           /*  link.textContent = link.dataset.secondClickText; */
             window.location.href = link.dataset.redirectUrl;
         }
     }
@@ -256,6 +257,7 @@ document.addEventListener('DOMContentLoaded', function () {
         link.addEventListener('click', handleClick);
     });
 });
+
 
 /* DROPDOWN */
 

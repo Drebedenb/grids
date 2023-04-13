@@ -9,7 +9,7 @@
             </div>
                 <div class="position-absolute top-0 end-0 z-1">
                     <span class="fs-8 ms-2 py-0 bg-danger text-white   px-2 rounded-2">{{percent}}%</span>
-                    <a class="text-muted text-hover-black" href="#">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a> 
+                    <a class="text-muted text-hover-black" id="{{PriceWinguardSketchId}}" onclick="addToFavorite(this)" href="#">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a>
                 </div>
                 <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
                     <button class="btn btn-light btn-lg btn-wide-xl"
@@ -27,7 +27,7 @@
             </div></a>
            
        
-                    <h3 class="card-title h5 fs-lg-9 fs-10 fw-medium  d-lg-inline-block ls-sm text-uppercase  pb-5">
+                    <h3 class="card-title h5  fs-10 fw-medium  d-lg-inline-block ls-sm text-uppercase  pb-5">
                 <a class="text-decoration-none text-dark d-lg-inline-block">Решетка на окно<br>сварная {{path_folder}} - {{path_file}}</a></h3>
                 <div class="float-end buy_item">
              <div class="d-flex justify-content-between">
@@ -36,7 +36,7 @@
                 {% include 'main/icons/star.html' with classes='svg-icon' styles='width:20px' %}
                 {% include 'main/icons/star.html' with classes='svg-icon' styles='width:20px' %}
                 {% include 'main/icons/star.html' with classes='svg-icon' styles='width:20px' %}
-                                    <span class="fs-8">(32)</span>
+                                    <span class="fs-9">(32)</span>
               </div>
                <a class="btn btn-outline-dark px-20 py-5 w-100 fs-9 mt-5">Купить</a>
             </div>

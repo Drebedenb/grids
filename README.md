@@ -5,6 +5,6 @@ For frontend and backend native django
 
 To update on server:
 1. git pull
-2. 
-3.
-4.
+2. ps ax|grep gunicorn
+3. pkill gunicorn
+4. . ./bin/gunicorn_start.sh
