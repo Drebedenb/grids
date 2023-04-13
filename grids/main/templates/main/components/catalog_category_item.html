@@ -19,7 +19,7 @@
                         просмотр
                     </button>
                 </div>
-                <a href="{%url 'product' category.url_title %}-{{path_folder}}-{{path_file}}-{{PriceWinguardSketchId }}">
+                <a href="{%url 'product' category.url_title %}-{{path_folder}}-{{path_file}}-{{PriceWinguardSketchId}}">
                 <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
                         class="object-fit-contain"
                         src="{% static 'main/img/grids_pictures' %}/{{path_folder}}/solid/{{path_file}}.png"
@@ -44,7 +44,7 @@
                 <span class="d-block fs-10 text-danger fw-medium  text-uppercase ls-sm  ">{{price}} руб</span>
            
             <!--MODAL-->
-            {% include 'main/components/product_quick_view.html' with id=path_file path_file=path_file path_folder=path_folder%}
+            {% include 'main/components/product_quick_view.html' with PriceWinguardSketchId=PriceWinguardSketchId modal_id=path_file%}
         </div>
     </div>
 </div>

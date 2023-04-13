@@ -77,9 +77,6 @@ def get_products_by_category_new(category_number, amount="all", min_price=0, max
     return 0
 
 
-get_products_by_category_new(8)
-
-
 def get_products_by_category(category_number, amount="all", min_price=0, max_price=9999999):
     if amount == "all":
         products = PriceWinguardSketch.objects.filter(category=category_number) \
@@ -172,7 +169,8 @@ def catalog_category(request, category_name):
     return render(request, 'main/catalog-category.html',
                   {'title': 'Каталог', 'list_of_grids_types': list_of_grids_types,
                    'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling,
-                   'min_price': min_price, 'max_price': max_price, 'list_of_photos_done': list_of_photos_done})
+                   'min_price': min_price, 'max_price': max_price, 'list_of_photos_done': list_of_photos_done,
+                   'list_of_open_types': list_of_open_types})
 
 
 def contacts(request):
