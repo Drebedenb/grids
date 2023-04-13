@@ -124,31 +124,69 @@ let productSwiper2 = new Swiper("#product-swiper2", {
     }
 });
 
-function getCurrentURL () {
-  return window.location.href
-}
-function changeMin(minPrice) {
-    let url = new URL(getCurrentURL())
-    url.searchParams.append('minPrice', minPrice);
-    // window.location.href = url;
-}
-
-function changeMax(maxPrice) {
-}
-
+//НИЖЕ ДЛЯ ФАЙЛА catalog-category
+//блок кода о фильтрации
 let priceSlider = document.getElementById("price-range"),
     priceMin = document.getElementById("price-min"),
     priceMax = document.getElementById("price-max");
 
+let lastMinPrice;
+let lastMaxPrice; // Слайдер забирает цены при каждом движении и обновлял цену каждый такой шаг.
+// В итоге страница перезагружалась слишком часто и вылетала ошибка
+// Было решено просто брать последнюю цену и сверять с ценой, когда пользователь отпустил слайдер
+function getCurrentURL() {
+    return window.location.href
+}
+function changeMin(minPrice) {
+    if (minPrice === lastMinPrice) {
+        let url = new URL(getCurrentURL())
+        url.searchParams.set('minPriceByUser', minPrice.match(/\d+/gm).join(''));
+        window.location.href = url;
+    } else {
+        lastMinPrice = minPrice;
+    }
+}
+function changeMax(maxPrice) {
+    if (maxPrice === lastMaxPrice) {
+        let url = new URL(getCurrentURL())
+        url.searchParams.set('maxPriceByUser', maxPrice.match(/\d+/gm).join(''));
+        window.location.href = url;
+    } else {
+        lastMaxPrice = maxPrice;
+    }
+}
+function getMinPriceFromUrl() {
+    let minimal;
+    try {
+       minimal = window.location.search.match(/minPriceByUser=\d+/)[0].match(/\d+/gm)[0];
+    } catch (e) {
+        minimal =  priceMin.value
+    }
+    return minimal;
+}
+function getMaxPriceFromUrl() {
+    let maximum;
+    try {
+       maximum = window.location.search.match(/maxPriceByUser=\d+/)[0].match(/\d+/gm)[0];
+    } catch (e) {
+        maximum =  priceMax.value
+    }
+    return maximum;
+}
+//конец блока кода о фильтрации
+
+//блок кода для создания слайдера
+
 if (priceSlider != null) {
     noUiSlider.create(priceSlider, {
-        start: [+priceMin.value, +priceMax.value],
+        start: [+getMinPriceFromUrl(), +getMaxPriceFromUrl()],
         connect: true,
         step: 1,
         range: {
             "min": +priceMin.value,
             "max": +priceMax.value
         },
+        behaviour: 'drag-smooth-steps-tap',
         format: wNumb({
             decimals: 0,
             thousand: " ",
@@ -178,45 +216,46 @@ if (priceSlider != null) {
         changeMax(this.value);
     });
 }
-
+//конец блока кода о создании слайдера
+//ВЫШЕ ДЛЯ ФАЙЛА catalog-category
 
 /* VIEW MORE */
-  document.addEventListener('DOMContentLoaded', function() {
-        const links1 = document.querySelectorAll('.view_more1');
-        const links2 = document.querySelectorAll('.view_more2');
-        let clickCounts = JSON.parse(localStorage.getItem('clickCounts')) || {};
+document.addEventListener('DOMContentLoaded', function () {
+    const links1 = document.querySelectorAll('.view_more1');
+    const links2 = document.querySelectorAll('.view_more2');
+    let clickCounts = JSON.parse(localStorage.getItem('clickCounts')) || {};
 
-        function handleClick(event) {
-          event.preventDefault();
-          const link = event.currentTarget;
-          const clickCount = clickCounts[link.classList[0]] || 0;
-          clickCounts[link.classList[0]] = clickCount + 1;
-          localStorage.setItem('clickCounts', JSON.stringify(clickCounts));
-          if (clickCount === 0) {
+    function handleClick(event) {
+        event.preventDefault();
+        const link = event.currentTarget;
+        const clickCount = clickCounts[link.classList[0]] || 0;
+        clickCounts[link.classList[0]] = clickCount + 1;
+        localStorage.setItem('clickCounts', JSON.stringify(clickCounts));
+        if (clickCount === 0) {
             link.textContent = link.dataset.secondClickText;
             window.location.href = link.dataset.redirectUrl;
-          }
-          if (clickCount === 1) {
+        }
+        if (clickCount === 1) {
             link.textContent = link.dataset.secondClickText;
             window.location.href = link.dataset.redirectUrl;
-          }
         }
+    }
 
-        function resetClickCounts() {
-          clickCounts = {};
-          localStorage.setItem('clickCounts', JSON.stringify(clickCounts));
-        }
+    function resetClickCounts() {
+        clickCounts = {};
+        localStorage.setItem('clickCounts', JSON.stringify(clickCounts));
+    }
 
-        resetClickCounts();
+    resetClickCounts();
 
-        links1.forEach(function(link) {
-          link.addEventListener('click', handleClick);
-        });
+    links1.forEach(function (link) {
+        link.addEventListener('click', handleClick);
+    });
 
-        links2.forEach(function(link) {
-          link.addEventListener('click', handleClick);
-        });
-      });
+    links2.forEach(function (link) {
+        link.addEventListener('click', handleClick);
+    });
+});
 
 /* DROPDOWN */
 

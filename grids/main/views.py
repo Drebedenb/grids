@@ -1,4 +1,6 @@
 import re
+import traceback
+
 from django.db.models import Min, Max
 from django.http import HttpResponseNotFound
 from django.shortcuts import render
@@ -52,17 +54,6 @@ list_of_open_types = [
     {"name": "solid", "description": "Глухая", "price": "0", "width": 1000, "height": 1500}
 ]
 
-categories = {  # there are categories and their number in database. It depends on database structure what number is
-    "svarka": {"title": "Сварные", 'url_title': "svarka", "number_of_category": 1},
-    "svarka_dut": {"title": "Дутые сварные", 'url_title': "svarka_dut", "number_of_category": 2},
-    "ajur": {"title": "Ажурные", 'url_title': "ajur", "number_of_category": 3},
-    "ajur_dut": {"title": "Дутые ажурные", 'url_title': "ajur_dut", "number_of_category": 4},
-    "kovka": {"title": "Кованые", 'url_title': "kovka", "number_of_category": 5},
-    "kovka_dut": {"title": "Дутые кованые", 'url_title': "kovka_dut", "number_of_category": 6},
-    "vip": {"title": "VIP", 'url_title': "vip", "number_of_category": 7},
-    "vip_dut": {"title": "Дутые VIP", 'url_title': "vip_dut", "number_of_category": 8},
-}
-
 russian_categories = {
     "все": {"title": "Все", 'url_title': "all", "number_of_category": 1},
     "решетки-на-окна-эконом-класс": {"title": "Эконом", 'url_title': "svarka", "number_of_category": 1},
@@ -80,62 +71,67 @@ russian_categories = {
 arr_of_sale = [15, 10, 20, 30, 25, 20, 10, 20, 20, 30, 25, 10, 10, 20, 30, 10, 20, 30, 15, 10]
 
 
-def get_products_by_category(category_number, amount="all"):
+def get_products_by_category_new(category_number, amount="all", min_price=0, max_price=9999999):
+    products = PriceWinguardMain.objects.filter(price_winguard_sketch__category=category_number).values('id','price_b2c', 'name')
+    # print(products)
+    return 0
+
+
+def get_products_by_category(category_number, amount="all", min_price=0, max_price=9999999):
     if amount == "all":
         products = PriceWinguardSketch.objects.filter(category=category_number) \
             .values('id').annotate(min_pricewinguardmain=Min('pricewinguardmain')).values('min_pricewinguardmain', 'id')
     else:
         products = PriceWinguardSketch.objects.filter(category=category_number) \
-            .values('id').annotate(min_pricewinguardmain=Min('pricewinguardmain')).values('min_pricewinguardmain', 'id')[:amount]
+                       .values('id').annotate(min_pricewinguardmain=Min('pricewinguardmain')).values(
+            'min_pricewinguardmain', 'id')[:amount]
     for product in products:
+        # get price
+        try:
+            additional_info = PriceWinguardMain.objects.get(id=product["min_pricewinguardmain"])
+            product["price"] = additional_info.price_b2c
+            if not (max_price > product["price"] > min_price):
+                products.get(product["id"]).delete()
+                continue
+            product["percent"] = arr_of_sale[product["min_pricewinguardmain"] % 20]
+            product["saleprice"] = int(product["price"] * (1 + product["percent"] / 100))
+            product["width"] = additional_info.name
+        except Exception as e:
+            product["price"] = "Нет данных в БД"
+            product["width"] = "Нет данных в БД"
+        # get path to image
         try:
             path = "".join(
                 re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(price_winguard_sketch_id=product["id"]).path))
             path_arr = path.split("/")
             product["path_folder"] = path_arr[1]
             product["path_file"] = path_arr[2]
-            try:
-                additional_info = PriceWinguardMain.objects.get(id=product["min_pricewinguardmain"])
-                product["price"] = additional_info.price_b2c
-                product["percent"] = arr_of_sale[product["min_pricewinguardmain"] % 20]
-                product["saleprice"] = int(product["price"] * (1 + product["percent"] / 100))
-                product["width"] = additional_info.name
-            except:
-                product["price"] = "Нет данных в БД"
-                product["width"] = "Нет данных в БД"
         except:
-            product["price"] = "Нет данных в БД"
             product["path_folder"] = 1
             product["path_file"] = 1
     return products
 
 
 def get_category_min_price(category_number):
-    products = PriceWinguardSketch.objects.filter(category=category_number) \
-        .values('id').annotate(min_pricewinguardmain=Min('pricewinguardmain')).values('min_pricewinguardmain', 'id')
-    for product in products:
-        try:
-            additional_info = PriceWinguardMain.objects.get(id=product["min_pricewinguardmain"])
-            product["price"] = additional_info.price_b2c
-        except:
-            product["price"] = "Нет данных в БД"
-    min_price = products[0]["price"]
-    try:
-        for product in products:
-            if min_price > product["price"]:
-                min_price = product["price"]
-    except:
-        min_price = min_price
+    min_price = \
+        PriceWinguardMain.objects.filter(price_winguard_sketch__category=category_number).aggregate(Min('price_b2c'))[
+            'price_b2c__min']
     return min_price
+
+
+def get_category_max_price(category_number):
+    max_price = \
+        PriceWinguardMain.objects.filter(price_winguard_sketch__category=category_number).aggregate(Max('price_b2c'))[
+            'price_b2c__max']
+    return max_price
 
 
 def index(request):
     leaders_of_selling = get_products_by_category(1, 20)
-
     min_price_1 = get_category_min_price(1)
-    min_price_2 = get_category_min_price(2)
-    min_price_3 = get_category_min_price(3)
-    min_price_4 = get_category_min_price(4)
+    min_price_2 = get_category_min_price(3)
+    min_price_3 = get_category_min_price(5)
+    min_price_4 = get_category_min_price(7)
     return render(request, 'main/index.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Главная страница',
                                                'leaders_of_selling': leaders_of_selling,
                                                'list_of_photos_done': list_of_photos_done,
@@ -147,38 +143,34 @@ def index(request):
 
 
 def catalog_category(request, category_name):
+    # if request.method == 'GET' and category_name in russian_categories:
+    #     print(request.GET)
+
     if category_name not in russian_categories:
         return HttpResponseNotFound("Page NOT found")
 
     category = russian_categories[category_name]
     products_list = get_products_by_category(category["number_of_category"])
 
-    min_price = products_list[0]["price"]
-    max_price = products_list[0]["price"]
-    try:
-        for product in products_list:
-            if min_price > product["price"]:
-                min_price = product["price"]
-            if max_price < product["price"]:
-                max_price = product["price"]
-    except:
-        min_price = min_price
+    min_price = get_category_min_price(category["number_of_category"])
+    max_price = get_category_max_price(category["number_of_category"])
 
     page = request.GET.get('page', 1)
     paginator = Paginator(products_list, 12)
-
     try:
         products = paginator.page(page)
     except PageNotAnInteger:
         products = paginator.page(1)
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
+
     # leaders_of_selling = get_products_by_category(5)
-    leaders_of_selling = get_products_by_category(1, 12);
+    leaders_of_selling = get_products_by_category(1, 12)
     return render(request, 'main/catalog-category.html',
                   {'title': 'Каталог', 'list_of_grids_types': list_of_grids_types,
                    'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling,
-                   'min_price': min_price, 'max_price': max_price, 'list_of_photos_done': list_of_photos_done})
+                   'min_price': min_price, 'max_price': max_price, 'list_of_photos_done': list_of_photos_done,
+                   'list_of_open_types': list_of_open_types})
 
 
 def contacts(request):

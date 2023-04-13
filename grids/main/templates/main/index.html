@@ -111,7 +111,7 @@
                             <div class="d-flex">
                                 <h3 class="card-title w-50 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0">VIP <br> решетки</h3>
                                 <span class="text-primary fs-10 fw-medium ls-sm text-uppercase text-nowrap mt-auto ms-auto">
-                                    <span class="fs-8">от</span><span class="fs-13"> 3380 р</span></span>
+                                    <span class="fs-8">от</span><span class="fs-13"> {{min_price_3}} р</span></span>
                             </div>
                         </div>
                     </a></div>
@@ -176,7 +176,7 @@
                                
                            
                                          <h3 class="card-title h5 fs-lg-9 fs-10 fw-medium  d-lg-inline-block ls-sm text-uppercase  pb-5">
-                                    <a class="text-decoration-none text-dark d-lg-inline-block">Решетка на окно<br>сварная {{path_folder}} - {{path_file}}</a></h3>
+                                    <a class="text-decoration-none text-dark d-lg-inline-block">Решетка на окно<br>сварная {{item.path_folder}} - {{item.path_file}}</a></h3>
                                     <div class="float-end buy_item">
                                  <div class="d-flex justify-content-between">
                                     {% include 'main/icons/star.html' with classes='svg-icon' styles='width:20px' %}
@@ -188,8 +188,8 @@
                                   </div>
                                   <a class="btn btn-outline-dark px-20 py-5 w-100 fs-9 mt-5">Купить</a>
                                 </div>
-                                <span class="d-block fs-10 text-muted fw-medium  text-decoration-line-through  text-uppercase ls-sm pb-4 ">{{saleprice}} руб</span>
-                                <span class="d-block fs-10 text-danger fw-medium  text-uppercase ls-sm  ">{{price}} руб</span>
+                                <span class="d-block fs-10 text-muted fw-medium  text-decoration-line-through  text-uppercase ls-sm pb-4 ">{{item.saleprice}} руб</span>
+                                <span class="d-block fs-10 text-danger fw-medium  text-uppercase ls-sm  ">{{item.price}} руб</span>
                                
                       
                                   
@@ -200,7 +200,6 @@
                     {% endfor %}
                 </div>
 
-                {% include 'main/components/product_quick_view.html' %}
 
 
 
@@ -225,7 +224,7 @@
                                             <button class="btn btn-light fs-lg-7 btn-lg btn-wide-sm " data-bs-toggle="modal" data-bs-target="#product-quick-view" type="button">Быстрый просмотр</button>
                                         </div>
     
-                                        <a href="кованые-решетки-на-окна-вип-класс">
+                                        <a href="/кованые-решетки-на-окна-вип-класс">
                                             <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
                                                 class="object-fit-contain" src="{% static 'main/img/grids_pictures'%}/{{item.path_folder}}/solid/{{item.path_file}}.png"
                                                 alt="Решетки на окна эконом класса"></div>
@@ -233,7 +232,7 @@
                                    
                                
                                              <h3 class="card-title h5 fs-lg-9 fs-10 fw-medium  d-lg-inline-block ls-sm text-uppercase  pb-5">
-                                        <a class="text-decoration-none text-dark d-lg-inline-block">Решетка на окно<br>сварная {{path_folder}} - {{path_file}}</a></h3>
+                                        <a class="text-decoration-none text-dark d-lg-inline-block">Решетка на окно<br>сварная {{item.path_folder}} - {{item.path_file}}</a></h3>
                                         <div class="float-end buy_item">
                                      <div class="d-flex justify-content-between">
                                         {% include 'main/icons/star.html' with classes='svg-icon' styles='width:20px' %}
@@ -245,8 +244,8 @@
                                       </div>
                                       <a class="btn btn-outline-dark px-20 py-5 w-100 fs-9 mt-5">Купить</a>
                                     </div>
-                                    <span class="d-block fs-10 text-muted fw-medium  text-decoration-line-through  text-uppercase ls-sm pb-4 ">{{saleprice}} руб</span>
-                                    <span class="d-block fs-10 text-danger fw-medium  text-uppercase ls-sm  ">{{price}} руб</span>
+                                    <span class="d-block fs-10 text-muted fw-medium  text-decoration-line-through  text-uppercase ls-sm pb-4 ">{{item.saleprice}} руб</span>
+                                    <span class="d-block fs-10 text-danger fw-medium  text-uppercase ls-sm  ">{{item.price}} руб</span>
                                    
                           
                                       
