@@ -94,7 +94,7 @@
     content: "";
     position: absolute;
     right: 15px;
-    top: 3px;
+    top: 20px;
     border-width: 10px 10px 0 10px;
     width: 10px;
     height: 10px;
@@ -111,7 +111,7 @@
 
 .dropdown-wrapper.is-active:after {
     position: absolute;
-    top: 5px;
+    top: 22px;
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
@@ -120,8 +120,7 @@
 }
 
 .dropdown-wrapper.is-active .dropdown-list {
-    border-bottom: 1px solid rgba(45, 44, 44, 0.2);
-    max-height: 400px;
+    max-height: 230px;
 }
 
 .dropdown-list {
@@ -174,6 +173,28 @@
 
 
 
+/* VIDI RESHETKI*/
+
+    .product-description-arch{
+        padding-left: 10px;
+        padding-right: 30px;  
+    }
+
+    .product-price-arch{
+        padding-left: 5px;   
+    }
+
+    .product-description-gog{
+        padding-left: 10px;
+    }
+
+
+    #gog{
+        width: 70px;
+}
+
+
+
 /* MEDIA QUERIES */
 
 @media (max-width: 992px) {
@@ -208,10 +229,30 @@
     width: 100%;
 }
 
+/*SWIPER*/
+.swiper_container {
+    padding: 0px;
+}
+
+.star{
+  width: 20px !important;
+}
+
 }
 
 
 @media (max-width: 575px) {
+/*TIPI RESHETOK*/
+
+.mini-img{
+    width: 50%;
+    margin-left: 25%;
+}
+.mini-ratio{
+    height: 20px;
+}
+
+
  /*    .btn_catalog{
         display: block;
         width: 100%;
@@ -229,4 +270,21 @@
             margin-left: 0px;
           
             }
+  /*BUTTON_CLOSE*/
+
+            .button-close {
+                margin-right: -12px;
+                margin-top: -16px;
+                margin-bottom: 5px;
+                width: 6px;
+            }
+
+/*CARD-RATIO*/
+.card-ratio{
+    max-width: 300px;
+}
   }
+
+
+
+

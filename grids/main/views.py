@@ -44,12 +44,9 @@ list_of_photos_done = [
 
 list_of_open_types = [
     {"name": "arch", "description": "Арочная", "price": "30", "width": 1000, "height": 1500},
-    {"name": "gog", "description": "Глухая-Распашная-Глухая", "price": "1500", "width": 3000, "height": 1500},
     {"name": "o", "description": "Распашная", "price": "1500", "width": 1000, "height": 1500},
-    {"name": "og", "description": "Распашная-Глухая", "price": "1500", "width": 1500, "height": 1500},
-    {"name": "ogo", "description": "Распашная-Глухая-Распашная", "price": "3000", "width": 3000, "height": 1500},
-    {"name": "oo", "description": "Распашная-Распашная", "price": "2800", "width": 1500, "height": 1500},
-    {"name": "solid", "description": "Глухая", "price": "0", "width": 1000, "height": 1500}
+    {"name": "og", "description": "Распашная-распашная", "price": "1500", "width": 1500, "height": 1500},
+    {"name": "gog", "description": "На балкон", "price": "1500", "width": 3000, "height": 1500},  
 ]
 
 categories = {  # there are categories and their number in database. It depends on database structure what number is

@@ -1,5 +1,5 @@
-{%extends 'main/base.html' %}
-{% load static %}
+{%extends 'main/base.html' %} 
+{% load static %} 
 {% block content %}
 <div class="pt-lg-30 pt-16 pb-lg-50 pb-32">
     <div class="container">
@@ -40,7 +40,8 @@
                         <li class="breadcrumb-item active">Эскиз № 1-1 </li>
                     </ul>
                 </nav>
-                <h1 class="fs-13 ls-sm text-uppercase mb-0">Решетка на окно Эскиз № 1-1 </h1>
+                <h1 class="fs-13 ls-sm text-uppercase mb-0">Решетка на окно Эскиз №
+                    {{path_folder}}-{{path_file}}</h1>
             </div>
         </header>
         <main>
@@ -65,164 +66,310 @@
                 </div>
                 <div class="row gy-lg-0 gy-20">
                     <div class="col-lg-3  d-lg-block d-none">
-                    
-                        <div class="mb-lg-10 mb-18 mt-20">
-                            <h6 class="fw-medium ls-sm text-uppercase ">Популярные разделы</h6>
-                            <div class="mt-10">
-                                <div class="hstack flex-row-lg flex-column align-items-start flex-wrap row-gap-lg-8 row-gap-6 column-gap-lg-12 fs-lg-10 fs-7 ls-sm">
-                                    <a class="text-black text-hover-secondary text-decoration-none" href="#"> <span class="d-inline-flex align-items-center">ТОП 100</span></a>
-                                    <a class="text-black text-hover-secondary text-decoration-none" href="#"><span class="d-inline-flex align-items-center">Без открывания</span></a>
-                                    <a class="text-black text-hover-secondary text-decoration-none" href="#"><span class="d-inline-flex align-items-center">VIP Класс </span></a>
+
+                        <div class="mb-lg-10 mb-18 ">
+                            <h6 class="fw-medium ls-sm text-uppercase mb-0 d-inline-block px-10 py-5 rounded-top-3 border border-radius">Популярные разделы</h6>
+                            <div class="border border-light rounded-end-3 rounded-end-3 rounded-bottom-3">
+                                <div class="hstack flex-row-lg flex-column align-items-start flex-wrap row-gap-lg-8 row-gap-6 column-gap-lg-12 fs-lg-10 fs-10 ls-sm">
+                                    <a class="text-black text-hover-secondary mt-10 text-decoration-none ms-10" href="#"> <span class="d-inline-flex align-items-center">ТОП 100</span></a>
+                                    <a class="text-black text-hover-secondary text-decoration-none ms-10" href="#"><span class="d-inline-flex align-items-center">Без открывания</span></a>
+                                    <a class="text-black text-hover-secondary mb-10 text-decoration-none ms-10" href="#"><span class="d-inline-flex align-items-center">VIP Класс </span></a>
 
                                 </div>
 
                             </div>
 
                         </div>
+                        <div class="my-20">
+                            <div id="dropdown-wrapper" class="dropdown-wrapper fw-medium mb-10 rounded-3 border border-radius" tabindex="1">
+                                <h6 class="fw-medium ls-sm text-uppercase mt-8 ms-10 mb-0">Вид</h6>
 
-                        <div id="dropdown-wrapper" class="dropdown-wrapper" tabindex="1">
-                            <h6 class="fw-medium ls-sm text-uppercase ">Вид</h6>
+                                <ul class="dropdown-list mb-8">
+                                    <li><a class="nav-link text-hover-secondary mt-5 ms-10" href="#">Сварные</a></li>
+                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Кованые</a></li>
+                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Дутые</a></li>
+                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Ажурные</a></li>
+                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Арочные</a></li>
 
-                            <ul class="dropdown-list">
-                                <li><a class="nav-link text-hover-secondary" href="#">Эконом</a></li>
-                                <li><a class="nav-link text-hover-secondary" href="#">Кованые</a></li>
-                                <li><a class="nav-link text-hover-secondary" href="#">Дутые</a></li>
-                                <li><a class="nav-link text-hover-secondary" href="#">Ажурные</a></li>
-                                <li><a class="nav-link text-hover-secondary" href="#">Арочные</a></li>
+                                </ul>
 
-                            </ul>
+                            </div>
+                            <div id="dropdown-wrapper" class="dropdown-wrapper fw-medium mb-10 rounded-3 border border-radius" tabindex="1">
+                                <h6 class="fw-medium ls-sm text-uppercase mt-8 ms-10 mb-0">Коллекции</h6>
 
+                                <ul class="dropdown-list mb-8">
+                                    <li><a class="nav-link text-hover-secondary mt-5 ms-10" href="#">Сварные</a></li>
+                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Кованые</a></li>
+                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Дутые</a></li>
+                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Ажурные</a></li>
+                                </ul>
+
+                            </div>
+                            <div id="dropdown-wrapper" class="dropdown-wrapper fw-medium   rounded-3 border border-radius" tabindex="1">
+                                <h6 class="fw-medium ls-sm text-uppercase mt-8 ms-10 mb-0">Назначение</h6>
+
+                                <ul class="dropdown-list mb-8">
+                                    <li><a class="nav-link text-hover-secondary mt-5 ms-10" href="#">Сварные</a></li>
+                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Кованые</a></li>
+                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Дутые</a></li>
+                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Ажурные</a></li>
+                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Арочные</a></li>
+                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Распашные</a></li>
+                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">На балкон</a></li>
+                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">На лоджию</a></li>
+                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Для квартиры</a></li>
+                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">на первый этаж</a></li>
+                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Цоколь/подвал</a></li>
+                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Для дома</a></li>
+                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Антикошка</a></li>
+                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">от выпадения детей</a></li>
+                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">На кондиционер</a></li>
+                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Под цветы</a></li>
+                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">в подьезд</a></li>
+                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">На приямки</a></li>
+                                </ul>
+
+                            </div>
                         </div>
-                        <div id="dropdown-wrapper" class="dropdown-wrapper" tabindex="1">
-                            <h6 class="fw-medium ls-sm text-uppercase ">Коллекции</h6>
 
-                            <ul class="dropdown-list">
-                                <li><a class="nav-link text-hover-secondary" href="#">Сварные</a></li>
-                                <li><a class="nav-link" href="#">Кованые</a></li>
-                                <li><a class="nav-link" href="#">Дутые</a></li>
-                                <li><a class="nav-link" href="#">Ажурные</a></li>
-                            </ul>
 
-                        </div>
-                        <div id="dropdown-wrapper" class="dropdown-wrapper" tabindex="1">
-                            <h6 class="fw-medium ls-sm text-uppercase ">назначение</h6>
+                        <div class="left_sidebar"><img class="w-100" src="{% static 'main/img/sale.png' %}" alt="sale">
 
-                            <ul class="dropdown-list">
-                                <li><a class="nav-link text-hover-secondary" href="#">Сварные</a></li>
-                                <li><a class="nav-link text-hover-secondary" href="#">Кованые</a></li>
-                                <li><a class="nav-link text-hover-secondary" href="#">Дутые</a></li>
-                                <li><a class="nav-link text-hover-secondary" href="#">Ажурные</a></li>
-                                <li><a class="nav-link text-hover-secondary" href="#">Арочные</a></li>
-                                <li><a class="nav-link text-hover-secondary" href="#">Распашные</a></li>
-                                <li><a class="nav-link text-hover-secondary" href="#">На балкон</a></li>
-                                <li><a class="nav-link text-hover-secondary" href="#">На лоджию</a></li>
-                                <li><a class="nav-link text-hover-secondary" href="#">Для квартиры</a></li>
-                                <li><a class="nav-link text-hover-secondary" href="#">на первый этаж</a></li>
-                                <li><a class="nav-link text-hover-secondary" href="#">Цоколь/подвал</a></li>
-                                <li><a class="nav-link text-hover-secondary" href="#">Для дома</a></li>
-                                <li><a class="nav-link text-hover-secondary" href="#">Антикошка</a></li>
-                                <li><a class="nav-link text-hover-secondary" href="#">от выпадения детей</a></li>
-                                <li><a class="nav-link text-hover-secondary" href="#">На кондиционер</a></li>
-                                <li><a class="nav-link text-hover-secondary" href="#">Под цветы</a></li>
-                                <li><a class="nav-link text-hover-secondary" href="#">в подьезд</a></li>
-                                <li><a class="nav-link text-hover-secondary" href="#">на приямки</a></li>
-                            </ul>
+                            <!-- POCHEMY NASHA KOMPANIYA -->
+                            <section>
 
-                        </div>
+                                <div class="mt-10 pluses_company">
 
-                    </div>
-                    <div class="col-lg-9">
-                        <div class="border-lg border-lg-black rounded-lg-4 rounded-lg-3 p-lg-20">
-                            <div class="product border-lg-0 border border-light rounded-3 p-lg-0 p-10">
-                                <div class="row gy-lg-0 gy-20">
-                                    <div class="col-lg-4">
-                                        <div class="position-relative text-center">
-                                            <div class="d-lg-none d-block position-absolute top-0 start-0 z-1"><a
-                                                    class="text-muted text-hover-black" href="#">
-                                                    {% include 'main/icons/chart.html' with classes='svg-icon' %}
-                                            </a></div>
-                                            <div class="d-lg-none d-block position-absolute top-0 end-0 z-1"><a
-                                                    class="text-muted text-hover-black" href="#">
-                                                    {% include 'main/icons/heart.html' with classes='svg-icon' %}
-                                            </a></div>
-                                            <div class="border-lg border-lg-light rounded-lg-3">
-                                                <div class="swiper" id="product-swiper"
-                                                     data-control="#product-swiper-control">
-                                                    <div class="swiper-wrapper">
-                                                        <div class="swiper-slide">
-                                                            <div class="ratio overflow-hidden" style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 265px;"><img class="object-fit-contain"
-                                                                src="{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/solid/{{product.path_file}}.png">
 
-                                                            </div>
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <div class="ratio overflow-hidden"
-                                                                 style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 265px;">
-                                                                <img class="object-fit-contain"
-                                                                     src="{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/solid/{{product.path_file}} F.png">
-                                                                     alt="Решетка на окно Эскиз № {{product.path_folder}}-{{product.path_file}}"></div>
-                                                        </div>
-                                                    </div>
+                                    <div class="card h-100 rounded-lg-5 rounded-3 mb-5">
+                                        <div class="card-body p-10 ">
+                                            <div class="row">
+                                                <div class="col-4 d-flex align-items-center">
+                                                    {% include 'main/icons/reasons/tape-measure.html' with classes='svg-icon w-auto' styles='height: 2rem;' %}
                                                 </div>
-                                            </div>
-                                            <div class="d-flex justify-content-between align-items-center mt-lg-10 mt-20"
-                                                 id="product-swiper-control">
-                                                <button class="btn btn-outline-secondary btn-swiper-prev rounded-circle d-flex justify-content-center align-items-center p-0"
-                                                        type="button" style="width: 2.5rem; height: 2.5rem;"><-
-                                                </button>
-                                                <div class="swiper-pagination"></div>
-                                                <button class="btn btn-outline-secondary btn-swiper-next rounded-circle d-flex justify-content-center align-items-center p-0"
-                                                        type="button" style="width: 2.5rem; height: 2.5rem;">->
-                                                </button>
+                                                <div class="col-8 px-lg-0 ">
+                                                    <h5 class="card-title fs-lg-7 fs-10 fw-normal mt-3 text-uppercase mb-0">По вашим размерам</h5>
+                                                    <p class="card-text fs-lg-7 fs-7 text-muted ">Учитываем оконные проемы, безопасность и воплощаем любой дизайн в жизнь</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-8">
-                                        <div class="d-lg-flex d-none align-items-center border-bottom border-black pb-12 mb-16">
-                                            <h2 class="h5 fw-medium ls-sm text-uppercase mb-0">Решетка на окно Эскиз №
-                                                {{product.path_folder}}-{{product.path_file}}</h2>
-                                            <div class="ms-auto">
-                                                <div class="hstack gap-10"><a class="text-secondary text-hover-black"
-                                                                              href="#">
+                                    <div class="card h-100 rounded-lg-5 rounded-3 mb-5">
+                                        <div class="card-body p-10 ">
+                                            <div class="row">
+                                                <div class="col-4  d-flex align-items-center">
+                                                    {% include 'main/icons/reasons/book.html' with classes='svg-icon w-auto mb-3' styles='height: 2.5rem;' %}
+                                                </div>
+                                                <div class="col-8 px-lg-0">
+                                                    <h5 class="card-title fs-lg-7 fs-10 fw-normal mt-3 text-uppercase mb-0">Готовые эскизы решеток</h5>
+                                                    <p class="card-text fs-lg-7 fs-7 text-muted ">615 вариантов металлических решеток на окна, двери и балкон</p>
+                                                </div>
 
-                                                </a></div>
                                             </div>
+
                                         </div>
-                                        <div class="mb-15 d-lg-block d-none">
-                                            <div class="row row-cols-4 gy-20">
+                                    </div>
+                                    <div class="card h-100 rounded-lg-5 rounded-3 mb-5">
+                                        <div class="card-body p-10 ">
+                                            <div class="row">
+                                                <div class="col-4  d-flex align-items-center">
+                                                    {% include 'main/icons/reasons/gear.html' with classes='svg-icon w-auto mb-3' styles='height: 2.5rem;' %}
+                                                </div>
+                                                <div class="col-8 px-lg-0">
+                                                    <h5 class="card-title fs-lg-7 fs-10 fw-normal mt-3 text-uppercase mb-0">Сварщики и кузнецы </h5>
+                                                    <p class="card-text fs-lg-7 fs-7 text-muted ">С профильным образованием ежедневно изготавливают 57 разных видов изделий
+                                                    </p>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="card h-100 rounded-lg-5 rounded-3 mb-5">
+                                        <div class="card-body p-10 ">
+                                            <div class="row">
+                                                <div class="col-4  d-flex align-items-center">
+                                                    {% include 'main/icons/reasons/garanty.html' with classes='svg-icon w-auto mb-3' styles='height: 2rem;' %}
+                                                </div>
+                                                <div class="col-8 px-lg-0">
+                                                    <h5 class="card-title fs-lg-7 fs-10 fw-normal mt-3 text-uppercase mb-0">Гарантия 5 лет
+                                                    </h5>
+                                                    <p class="card-text fs-lg-7 fs-7 text-muted ">Заключаем договор с фиксированной ценой, сроками изготовления и монтажа</p>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="card h-100 rounded-lg-5 rounded-3 mb-5">
+                                        <div class="card-body p-10 ">
+                                            <div class="row">
+                                                <div class="col-4 d-flex align-items-center">
+                                                    {% include 'main/icons/reasons/years.html' with classes='svg-icon w-auto mb-3' styles='height: 0.5rem;' %}
+                                                </div>
+                                                <div class="col-8 px-lg-0">
+                                                    <h5 class="card-title fs-lg-7 fs-10 fw-normal mt-3 text-uppercase mb-0">50 лет службы
+                                                    </h5>
+                                                    <p class="card-text fs-lg-7 fs-7 text-muted ">Благодаря контролю качества и краски с антикоррозийным напылением </p>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+
+                            </section>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-9 ">
+                        <div class="border-lg border-lg-black rounded-lg-4 rounded-lg-3 p-lg-20">
+                            
+                            <div class="product border-lg-0 border border-light rounded-3 p-lg-0 p-10">
+                                
+                                <div class="row gy-lg-0 gy-20">
+                                    <div class="col-lg-4">
+                                        <div class="card-body p-10 border-lg border-lg-light rounded-lg-3 shadow-lg">
+                                        <div class="position-relative text-center ">
+                                            <div class="position-absolute top-0 start-0 z-2">
+                                                <a class="text-muted text-hover-black" href="#">{% include 'main/icons/chart.html' with classes="svg-icon"%}</a>
+                                                <span class="fs-8  ms-2 py-0 bg-success text-white px-2 rounded-2">хит</span>
+                                            </div>
+                                            <div class="position-absolute top-0 end-0 z-2">
+                                                <a class="text-muted text-hover-black" href="#">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a>
+                                            </div>
+                                            <div class="">
+                                                <div id="carouselExampleIndicators" class="carousel slide " data-bs-interval="false" >
+                                                    <div class="carousel-indicators">
+                                                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active bg-light " aria-current="true" aria-label="Slide 1" style="height:7px;"></button>
+                                                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="bg-light" aria-label="Slide 2" style="height:7px;"></button>
+                                                     
+                                                    </div>
+                                                    <div class="carousel-inner">
+                                                      <div class="carousel-item active">
+                                                        <div class="ratio overflow-hidden" style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 400px;">
+                                                            <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/solid/{{product.path_file}}.png">
+                                                            </div>
+                                                      </div>
+                                                      <div class="carousel-item">
+                                                        <div class="ratio overflow-hidden" style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 400px;">
+                                                            <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/solid/{{product.path_file}}.png">
+                                                            </div>
+                                                      </div>
+                                                   
+                                                    </div>
+                                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                                      <span class="" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="grey" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                                                      </svg></span>
+                                                      <span class="visually-hidden">Previous</span>
+                                                    </button>
+                                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                                      <span class="" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="grey" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                                      </svg></span>
+                                                      <span class="visually-hidden">Next</span>
+                                                    </button>
+                                                  </div>
+                                       
+                                                </div>
+                                            
+                                            </div>
+                                            </div>
+                                            
+                                            <div class="row  mt-1 gy-20">
                                                 {% for item in list_of_open_types %}
-                                                <div class="col">
-                                                    <input class="btn-check open-type-price" id="product-type-{{item.name}}" name="product-type"
-                                                           value="Без открывания" type="radio" onclick="changeForm()">
-                                                    <label class="btn btn-outline-black w-100 h-100 rounded-2 p-10"
-                                                           for="product-type-{{item.name}}">
-                                                        <div class="ratio"
-                                                             style="--bs-aspect-ratio: 100%; max-height: 80px;"
-                                                        ><img
+                                                <div class="mt-15">
+                                                    <input class="btn-check open-type-price" id="product-type-{{item.name}}" name="product-type" value="Без открывания" type="radio" onclick="changeForm()">
+                                                    <label class="btn btn-outline-black d-flex w-100 h-100 rounded-2 py-10" for="product-type-{{item.name}}">
+                                                        <div class="row">
+                                                            <div class="col-3">
+                                                              <img
                                                                 id="{{item.name}}"
                                                                 class="object-fit-contain"
-                                                                src="{% static 'main/img/grids_pictures' %}/1/{{item.name}}/1 F.png" alt="{{item.description}}">
-                                                        </div>
-                                                        <span class="d-block fs-6 fw-medium text-uppercase mt-8">{{item.description}}</span>
-                                                        <span class="d-block fs-6 fw-medium text-uppercase mt-8" id="price-{{item.name}}">+ {% if item.name in 'arch'%}{{item.price}}% {%else%}{{item.price}} руб.{% endif %}</span>
+                                                                src="{% static 'main/img/grids_pictures' %}/1/{{item.name}}/1 F.png" alt="{{item.description}}" width="50">
+                                                        
+                                                           </div>
+                                                           <div class="col-5 align-items-center d-flex">
+                                                              <span class="product-description-{{item.name}} fs-7 fw-medium  ">{{item.description}}</span>
+                                                           </div>
+                                                           <div class="col-4 px-5 align-items-center d-flex">
+                                                               <span class="fs-7 fw-medium product-price-{{item.name}}" id="price-{{item.name}}" >+ {% if item.name in 'arch'%}{{item.price}}% {%else%}{{item.price}} руб.{% endif %}</span>
+                                                           </div>
+                                                    </div>
                                                     </label>
                                                 </div>
                                                 {%endfor%}
                                                 <style>
-                                                    #arch:hover {content: url("{% static 'main/img/grids_pictures' %}/1/arch/1.png");}
-                                                    #gog:hover {content: url("{% static 'main/img/grids_pictures' %}/1/gog/1 O.png");}
-                                                    #o:hover {content: url("{% static 'main/img/grids_pictures' %}/1/o/1 O.png");}
-                                                    #og:hover {content: url("{% static 'main/img/grids_pictures' %}/1/og/1 O.png");}
-                                                    #ogo:hover {content: url("{% static 'main/img/grids_pictures' %}/1/ogo/1 O.png");}
-                                                    #oo:hover {content: url("{% static 'main/img/grids_pictures' %}/1/oo/1 O.png");}
-                                                    #solid:hover {content: url("{% static 'main/img/grids_pictures' %}/1/solid/1.png");}
+                                                    #arch:hover {
+                                                        content: url("{% static 'main/img/grids_pictures' %}/1/arch/1.png");
+                                                    }
+                                                    
+                                                    #gog:hover {
+                                                        content: url("{% static 'main/img/grids_pictures' %}/1/gog/1 O.png");
+                                                    }
+                                                    
+                                                    #o:hover {
+                                                        content: url("{% static 'main/img/grids_pictures' %}/1/o/1 O.png");
+                                                    }
+                                                    
+                                                    #og:hover {
+                                                        content: url("{% static 'main/img/grids_pictures' %}/1/og/1 O.png");
+                                                    }
+                                                    
+                                                    #ogo:hover {
+                                                        content: url("{% static 'main/img/grids_pictures' %}/1/ogo/1 O.png");
+                                                    }
+                                                    
+                                                    #oo:hover {
+                                                        content: url("{% static 'main/img/grids_pictures' %}/1/oo/1 O.png");
+                                                    }
+                                                    
+                                                    #solid:hover {
+                                                        content: url("{% static 'main/img/grids_pictures' %}/1/solid/1.png");
+                                                    }
                                                 </style>
+                                          
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 ">
+
+                                        <h2 class="h5 fw-medium ls-sm text-uppercase d-none d-lg-block">Решетка на окно Эскиз №
+                                            {{path_folder}}-{{path_file}}</h2>
+                                        <div class="row mx-0 mb-10 py-3 border rounded-2 ">
+                                            <div class="col-4 text-center">
+                                                <p class="mb-0 fs-7 text-muted">Цена сегодня</p>
+                                                <span class="fs-9">990 р./ м²</span>
+                                            </div>
+                                            <div class="col-4 text-center">
+                                                <p class="mb-0 fs-7 text-muted">Старая цена:</p>
+                                                <span class="fs-9 text-muted text-decoration-line-through">1200 р./ м²</span>
+                                            </div>
+                                            <div class="col-4 text-center">
+                                                <p class="mb-0 fs-7 text-muted">Рейтинг 4 из 5</p>
+                                                <div class="d-flex pt-2 justify-content-center">
+                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %} 
+                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %} 
+                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %} 
+                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %} 
+                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %}
+                                                    <span class="fs-lg-6 fs-8">(32)</span>
+                                                </div>
                                             </div>
                                         </div>
-                                        <form>
+
+                                        <form class=" mb-10">
+
                                             <div class="row row-cols-lg-2 row-cols-1 gy-lg-10 gy-5">
+
+
                                                 <div class="col">
-                                                    <select class="form-select form-select-lg rounded-2" id="width_of_rod" onchange="changeForm()">
+                                                    <select class="form-select form-select-lg text-muted rounded-2" id="width_of_rod" onchange="changeForm()">
                                                         <option>Выберите ширину прутка</option>
                                                         {% for item in product.additional_info %}
                                                             <option id="{{item.name}}" class="width-option">{{ item.name }} - {{ item.price_b2c }} руб.</option>
@@ -230,7 +377,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="col">
-                                                    <select class="form-select form-select-lg rounded-2" id="painting" onchange="changeForm()">
+                                                    <select class="form-select text-muted form-select-lg rounded-2" id="painting" onchange="changeForm()">
                                                         <option selected>Без покраски</option>
                                                         <option>Покраска (эмаль НЦ) - 550 руб</option>
                                                         <option>Покраска (эмаль ХВ) - 650 руб</option>
@@ -240,357 +387,193 @@
                                                         <option>Покраска (эмаль Westplast) - 1900 руб</option>
                                                     </select>
                                                 </div>
-                                                <div class="col">
-                                                    <input class="form-control form-control-lg rounded-2" id="width"
-                                                           placeholder="100 см." type="text" oninput="changeForm()">
+                                                <div class="col text-muted">
+                                                    <input class="form-control text-muted form-control-lg rounded-2" id="width" placeholder="100 см." type="text" oninput="changeForm() ">
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-control form-control-lg rounded-2" id="height" oninput="changeForm()"
-                                                           placeholder="100 см." type="text">
+                                                    <input class="form-control text-muted form-control-lg rounded-2" id="height" oninput="changeForm()" placeholder="100 см." type="text">
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-control form-control-lg rounded-2" id="amount" oninput="changeForm()"
-                                                           placeholder="1" type="text">
+                                                    <input class="form-control  text-muted form-control-lg rounded-2" id="amount" oninput="changeForm()" placeholder="1" type="text">
                                                 </div>
                                                 <div class="col">
-                                                    <select class="form-select form-select-lg rounded-2" id="installing" onchange="changeForm()">
+                                                    <select class="form-select  text-muted form-select-lg rounded-2" id="installing" onchange="changeForm()">
                                                         <option selected>Без установки</option>
                                                         <option>Установка - 500 руб</option>
                                                     </select>
                                                 </div>
+                                                
                                             </div>
                                         </form>
-                                        <div class="mt-17-5">
-                                            <div class="row row-cols-lg-2 row-cols-1 align-items-center gy-lg-0 gy-15">
-                                                <div class="col"><span id="total"
-                                                        class="fs-lg-13 fs-11 fw-semibold text-uppercase">0</span><span
-                                                        class="d-block fs-lg-8 fs-7 text-muted text-uppercase mt-lg-1 mt-7-5">Для точного расчета <br>закажите   <span
-                                                        class="text-primary">бесплатный замер</span></span></div>
+                                       
+                                            <div class="row row-cols-lg-2 row-cols-1 align-items-center  gy-lg-0 gy-15">
+                                                <div class="col">
+                                                    <div class="d-flex  mb-lg-2 mb-10  border rounded-2 py-2">
+                                                        <div class="form-check ms-5 me-0">
+                                                            <input class="form-check-input  " type="checkbox" value="" id="flexCheckDefault">
+                                                          </div>
+                                                          <span class="fs-8 pt-1   text-muted ">Открывающаяся <span class="fs-7 ps-5 text-light"> +1500</span></span>
+                                                    </div>
+                                                    <span class="fs-lg-14 fs-20  fw-semibold text-uppercase">итого: </span>
+                                                    <span id="total" class="fs-lg-14 fs-20 fw-semibold text-uppercase">0</span>
+                                                  
+                                                </div>
                                                 <div class="col"><a class="btn btn-primary btn-xl w-100" href="#">Заказать
                                                     в 1 клик</a></div>
                                             </div>
+                                 
+                                        <div class="row row-cols-lg-3 row-cols-2 mt-2 gy-10">
+                                            <div class="col px-5">
+                                                <a class="d-block">
+                                                    <div class="ratio ratio-4x3 border border-light rounded-4" style="max-height: 260px;"><p class="text-center pt-2 fs-6 fs-sm-8 fs-md-12 fs-xl-7   text-secondary">Обратите внимание! Быстрый расчет не учитывает установку и доставку. Для точного расчета закажите
+                                                        <span class="text-danger">бесплатный замер</span> или позвоните по телефону: 
+                                                        <span class="text-danger"><br>+7 495 127-04-43</span></p></div>
+                                                </a>
+                                            </div>
+                                            <div class="col px-5">
+                                                <a class="d-block" data-fslightbox="images" href="{% static 'main/img/project-img.png' %}">
+                                                    <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/project-img.png' %}"></div>
+                                                </a>
+                                            </div>
+                                            <div class="col px-5">
+                                                <a class="d-block" data-fslightbox="images" href="{% static 'main/img/project-img.png' %}">
+                                                    <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/project-img.png' %}"></div>
+                                                </a>
+                                            </div>
+                                            <div class="col px-5">
+                                                <a class="d-block" data-fslightbox="images" href="{% static 'main/img/project-img.png' %}">
+                                                    <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/project-img.png' %}"></div>
+                                                </a>
+                                            </div>
+                                            <div class="col px-5">
+                                                <a class="d-block" data-fslightbox="images" href="{% static 'main/img/project-img.png' %}">
+                                                    <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/project-img.png' %}"></div>
+                                                </a>
+                                            </div>
+                                            <div class="col px-5">
+                                                <a class="d-block" data-fslightbox="images" href="{% static 'main/img/project-img.png' %}">
+                                                    <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/project-img.png' %}"></div>
+                                                </a>
+                                            </div>
+                                            <div class="col px-5">
+                                                <a class="d-block" data-fslightbox="images" href="{% static 'main/img/project-img.png' %}">
+                                                    <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/project-img.png' %}"></div>
+                                                </a>
+                                            </div>
+                                            <div class="col px-5">
+                                                <a class="d-block" data-fslightbox="images" href="{% static 'main/img/project-img.png' %}">
+                                                    <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/project-img.png' %}"></div>
+                                                </a>
+                                            </div>
+                                            <div class="col px-5">
+                                                <a class="d-block" data-fslightbox="images" href="{% static 'main/img/project-img.png' %}">
+                                                    <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/project-img.png' %}"></div>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
 
-                             <!-- TABS -->
+                            <!-- TABS -->
                             <div class="border-top-lg border-lg-black mt-20 pt-lg-20">
-                             <ul class="nav nav-pills  fs-lg-9 fs-7 ls-sm  gap-lg-10 gap-5" id="myTab" role="tablist">
-                                        <li class="nav-item" style="flex: 1 0 0%">
-                                            <button class="nav-link active w-100" id="product-characteristics-tab" data-bs-toggle="tab" data-bs-target="#product-characteristics-tab-pane" type="button" role="tab">Характеристики</button>
-                                        </li>
-                                        <li class="nav-item" style="flex: 1 0 0%">
-                                            <button class="nav-link w-100" id="product-description-tab" data-bs-toggle="tab" data-bs-target="#product-description-tab-pane" type="button" role="tab">Описание</button>
-                                        </li>
-                                        <li class="nav-item" style="flex: 1 0 0%">
-                                            <button class="nav-link w-100" id="product-delivery-tab" data-bs-toggle="tab" data-bs-target="#product-delivery-tab-pane" type="button" role="tab">Доставка</button>
-                                        </li>
-                                        <li class="nav-item" style="flex: 1 0 0%">
-                                            <button class="nav-link w-100" id="product-installation-tab" data-bs-toggle="tab" data-bs-target="#product-installation-tab-pane" type="button" role="tab">Установка</button>
-                                        </li>
-                                        <li class="nav-item" style="flex: 1 0 0%">
-                                            <button class="nav-link w-100" id="product-payment-tab" data-bs-toggle="tab" data-bs-target="#product-payment-tab-pane" type="button" role="tab">Оплата   </button>
-                                        </li>
-                                    </ul>
-                                    <div class="tab-content pt-lg-20 pt-10" id="myTabContent">
-                                        <div class="tab-pane fade show active" id="product-characteristics-tab-pane" role="tabpanel" tabindex="0">
-                                            <table class="table fs-lg-9 fs-8 text-muted">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Размер: 1000х1000 мм</td>
-                                                        <td class="d-lg-table-cell d-none">Размер: 1000х1000 мм</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Кол-во створок: : однастворчетая</td>
-                                                        <td class="d-lg-table-cell d-none">Кол-во створок: : однастворчетая</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Огнестойкость: EI-60 (60 мин)</td>
-                                                        <td class="d-lg-table-cell d-none">Огнестойкость: EI-60 (60 мин)</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Отделка: прошковое напыление, любой цвет RAL</td>
-                                                        <td class="d-lg-table-cell d-none">Отделка: прошковое напыление, любой цвет RAL</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Огнестойкость: EI-60 (60 мин)</td>
-                                                        <td class="d-lg-table-cell d-none">Огнестойкость: EI-60 (60 мин) </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                <ul class="nav nav-pills  fs-lg-9 fs-7 ls-sm  gap-lg-10 gap-5" id="myTab" role="tablist">
+                                    <li class="nav-item" style="flex: 1 0 0%">
+                                        <button class="nav-link active w-100" id="product-characteristics-tab" data-bs-toggle="tab" data-bs-target="#product-characteristics-tab-pane" type="button" role="tab">Характеристики</button>
+                                    </li>
+                                    <li class="nav-item" style="flex: 1 0 0%">
+                                        <button class="nav-link w-100" id="product-description-tab" data-bs-toggle="tab" data-bs-target="#product-description-tab-pane" type="button" role="tab">Описание</button>
+                                    </li>
+                                    <li class="nav-item" style="flex: 1 0 0%">
+                                        <button class="nav-link w-100" id="product-delivery-tab" data-bs-toggle="tab" data-bs-target="#product-delivery-tab-pane" type="button" role="tab">Доставка</button>
+                                    </li>
+                                    <li class="nav-item" style="flex: 1 0 0%">
+                                        <button class="nav-link w-100" id="product-installation-tab" data-bs-toggle="tab" data-bs-target="#product-installation-tab-pane" type="button" role="tab">Установка</button>
+                                    </li>
+                                    <li class="nav-item" style="flex: 1 0 0%">
+                                        <button class="nav-link w-100" id="product-payment-tab" data-bs-toggle="tab" data-bs-target="#product-payment-tab-pane" type="button" role="tab">Оплата   </button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content pt-lg-20 pt-10" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="product-characteristics-tab-pane" role="tabpanel" tabindex="0">
+                                        <table class="table fs-lg-9 fs-8 text-muted">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Размер: 1000х1000 мм</td>
+                                                    <td class="d-lg-table-cell d-none">Размер: 1000х1000 мм</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Кол-во створок: : однастворчетая</td>
+                                                    <td class="d-lg-table-cell d-none">Кол-во створок: : однастворчетая</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Огнестойкость: EI-60 (60 мин)</td>
+                                                    <td class="d-lg-table-cell d-none">Огнестойкость: EI-60 (60 мин)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Отделка: прошковое напыление, любой цвет RAL</td>
+                                                    <td class="d-lg-table-cell d-none">Отделка: прошковое напыление, любой цвет RAL</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Огнестойкость: EI-60 (60 мин)</td>
+                                                    <td class="d-lg-table-cell d-none">Огнестойкость: EI-60 (60 мин) </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="tab-pane fade" id="product-description-tab-pane" role="tabpanel" tabindex="0">
+                                        <div class="fs-lg-9 fs-8">
+                                            <p>Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так. Его корни уходят в один фрагмент классической латыни. Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский
+                                                набор слов, но это не совсем так. Его корни уходят в один фрагмент классической латыни.</p>
+                                            <p>Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так. Его корни уходят в один фрагмент классической латыни. Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский
+                                                набор слов, но это не совсем так. Его корни уходят в один фрагмент классической латыни.</p>
+                                            <p>Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так. Его корни уходят в один фрагмент классической латыни. Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский
+                                                набор слов, но это не совсем так. Его корни уходят в один фрагмент классической латыни.</p>
                                         </div>
-                                        <div class="tab-pane fade" id="product-description-tab-pane" role="tabpanel" tabindex="0">
-                                            <div class="fs-lg-9 fs-8">
-                                                <p>Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так. Его корни уходят в один фрагмент классической латыни. Многие думают, что Lorem Ipsum - взятый с потолка
-                                                    псевдо-латинский набор слов, но это не совсем так. Его корни уходят в один фрагмент классической латыни.</p>
-                                                <p>Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так. Его корни уходят в один фрагмент классической латыни. Многие думают, что Lorem Ipsum - взятый с потолка
-                                                    псевдо-латинский набор слов, но это не совсем так. Его корни уходят в один фрагмент классической латыни.</p>
-                                                <p>Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так. Его корни уходят в один фрагмент классической латыни. Многие думают, что Lorem Ipsum - взятый с потолка
-                                                    псевдо-латинский набор слов, но это не совсем так. Его корни уходят в один фрагмент классической латыни.</p>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="product-delivery-tab-pane" role="tabpanel" tabindex="0"></div>
-                                        <div class="tab-pane fade" id="product-installation-tab-pane" role="tabpanel" tabindex="0"></div>
-                                        <div class="tab-pane fade" id="product-payment-tab-pane" role="tabpanel" tabindex="0"></div>
                                     </div>
-                            </div>
-                            <div class="border-top border-black mt-20 pt-20">
-                                <div class="row row-cols-lg-3 row-cols-2 gy-10">
-                                    <div class="col">
-                                        <a class="d-block" data-fslightbox="images" href="{% static 'main/img/project-img.png' %}">
-                                            <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover"  src="{% static 'main/img/project-img.png' %}"></div>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a class="d-block" data-fslightbox="images" href="{% static 'main/img/project-img.png' %}">
-                                            <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover"  src="{% static 'main/img/project-img.png' %}"></div>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a class="d-block" data-fslightbox="images" href="{% static 'main/img/project-img.png' %}">
-                                            <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover"  src="{% static 'main/img/project-img.png' %}"></div>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a class="d-block" data-fslightbox="images" href="{% static 'main/img/project-img.png' %}">
-                                            <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover"  src="{% static 'main/img/project-img.png' %}"></div>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a class="d-block" data-fslightbox="images" href="{% static 'main/img/project-img.png' %}">
-                                            <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover"  src="{% static 'main/img/project-img.png' %}"></div>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a class="d-block" data-fslightbox="images" href="{% static 'main/img/project-img.png' %}">
-                                            <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover"  src="{% static 'main/img/project-img.png' %}"></div>
-                                        </a>
-                                    </div>
+                                    <div class="tab-pane fade" id="product-delivery-tab-pane" role="tabpanel" tabindex="0"></div>
+                                    <div class="tab-pane fade" id="product-installation-tab-pane" role="tabpanel" tabindex="0"></div>
+                                    <div class="tab-pane fade" id="product-payment-tab-pane" role="tabpanel" tabindex="0"></div>
                                 </div>
                             </div>
+                          
                         </div>
 
 
 
-                    
-                            <!-- DRUGIE RESHETKI -->
-                            <div class="border-lg border-lg-black rounded-lg-4 mt-lg-20 mt-28 p-lg-20">
-                                <h3 class="h5 fs-lg-13 fs-11 fw-medium ls-sm text-uppercase mb-17-5">Другие решетки по схожим ценам</h3>
-                                <div class="row row-cols-lg-3 row-cols-1 gy-lg-0 gy-20">
-                                    <div class="col mb-10 mb-md-20">
-                                        <div class="card card_hover_shadow card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">
-                                            <div class="card-body p-lg-13 py-10">
-                                                <div class="position-relative text-center mb-20">
-                                                    <div class="position-absolute top-0 start-0 z-1">
-                                                        <a class="text-muted text-hover-black" href="#">
-                                                            {% include 'main/icons/heart.html' with classes='svg-icon' %}
-                                                </a></div>
-                                                <div class="position-absolute top-0 end-0 z-1"><a
-                                                        class="text-muted text-hover-black" href="#">
-                                                        {% include 'main/icons/chart.html' with classes='svg-icon' %}
-                                                </a></div>
-                                                <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
-                                                    <button class="btn btn-light btn-lg btn-wide-xl"
-                                                            data-bs-toggle="modal" data-bs-target="#product-quick-view"
-                                                            type="button">Быстрый просмотр
-                                                    </button>
-                                                </div>
-                                                <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;">
-                                                    <img class="object-fit-contain mt-15" src="{% static 'main/img/product-card-img.png' %}"
-                                                         alt="Решетки на окна эконом класса"></div>
-                                            </div>
-                                            <h3 class="card-title h5 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0  pt-5">
 
-                                            <div class="d-flex align-items-center justify-content-between mt-10">
-                                                <span class="d-block fs-11 text-danger fw-medium  text-uppercase ls-sm  ">от 2900 руб</span>
-                                                <a class="btn btn-outline-primary  rounded-pill py-3 px-10 fs-9   ">Купить</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col mb-10 mb-md-20">
-                                    <div class="card card_hover_shadow card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">
-                                        <div class="card-body p-lg-13 py-10">
-                                            <div class="position-relative text-center mb-20">
-                                                <div class="position-absolute top-0 start-0 z-1">
-                                                    <a class="text-muted text-hover-black" href="#">
-                                                        {% include 'main/icons/heart.html' with classes='svg-icon' %}
-                                            </a></div>
-                                            <div class="position-absolute top-0 end-0 z-1"><a
-                                                    class="text-muted text-hover-black" href="#">
-                                                    {% include 'main/icons/chart.html' with classes='svg-icon' %}
-                                            </a></div>
-                                            <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
-                                                <button class="btn btn-light btn-lg btn-wide-xl"
-                                                        data-bs-toggle="modal" data-bs-target="#product-quick-view"
-                                                        type="button">Быстрый просмотр
-                                                </button>
-                                            </div>
-                                            <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;">
-                                                <img class="object-fit-contain mt-15" src="{% static 'main/img/product-card-img.png' %}"
-                                                     alt="Решетки на окна эконом класса"></div>
-                                        </div>
-                                        <h3 class="card-title h5 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0  pt-5">
-
-                                        <div class="d-flex align-items-center justify-content-between mt-10">
-                                            <span class="d-block fs-11 text-danger fw-medium  text-uppercase ls-sm  ">от 2900 руб</span>
-                                            <a class="btn btn-outline-primary  rounded-pill py-3 px-10 fs-9   ">Купить</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col mb-10 mb-md-20">
-                                <div class="card card_hover_shadow card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">
-                                    <div class="card-body p-lg-13 py-10">
-                                        <div class="position-relative text-center mb-20">
-                                            <div class="position-absolute top-0 start-0 z-1">
-                                                <a class="text-muted text-hover-black" href="#">
-                                                    {% include 'main/icons/heart.html' with classes='svg-icon' %}
-                                        </a></div>
-                                        <div class="position-absolute top-0 end-0 z-1"><a
-                                                class="text-muted text-hover-black" href="#">
-                                                {% include 'main/icons/chart.html' with classes='svg-icon' %}
-                                        </a></div>
-                                        <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
-                                            <button class="btn btn-light btn-lg btn-wide-xl"
-                                                    data-bs-toggle="modal" data-bs-target="#product-quick-view"
-                                                    type="button">Быстрый просмотр
-                                            </button>
-                                        </div>
-                                        <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;">
-                                            <img class="object-fit-contain mt-15" src="{% static 'main/img/product-card-img.png' %}"
-                                                 alt="Решетки на окна эконом класса"></div>
-                                    </div>
-                                    <h3 class="card-title h5 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0  pt-5">
-
-                                    <div class="d-flex align-items-center justify-content-between mt-10">
-                                        <span class="d-block fs-11 text-danger fw-medium  text-uppercase ls-sm  ">от 2900 руб</span>
-                                        <a class="btn btn-outline-primary  rounded-pill py-3 px-10 fs-9   ">Купить</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col mb-10 mb-md-20">
-                            <div class="card card_hover_shadow card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">
-                                <div class="card-body p-lg-13 py-10">
-                                    <div class="position-relative text-center mb-20">
-                                        <div class="position-absolute top-0 start-0 z-1">
-                                            <a class="text-muted text-hover-black" href="#">
-                                                {% include 'main/icons/heart.html' with classes='svg-icon' %}
-                                    </a></div>
-                                    <div class="position-absolute top-0 end-0 z-1"><a
-                                            class="text-muted text-hover-black" href="#">
-                                            {% include 'main/icons/chart.html' with classes='svg-icon' %}
-                                    </a></div>
-                                    <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
-                                        <button class="btn btn-light btn-lg btn-wide-xl"
-                                                data-bs-toggle="modal" data-bs-target="#product-quick-view"
-                                                type="button">Быстрый просмотр
-                                        </button>
-                                    </div>
-                                    <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;">
-                                        <img class="object-fit-contain mt-15" src="{% static 'main/img/product-card-img.png' %}"
-                                             alt="Решетки на окна эконом класса"></div>
-                                </div>
-                                <h3 class="card-title h5 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0  pt-5">
-
-                                <div class="d-flex align-items-center justify-content-between mt-10">
-                                    <span class="d-block fs-11 text-danger fw-medium  text-uppercase ls-sm  ">от 2900 руб</span>
-                                    <a class="btn btn-outline-primary  rounded-pill py-3 px-10 fs-9   ">Купить</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-10 mb-md-20">
-                        <div class="card card_hover_shadow card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">
-                            <div class="card-body p-lg-13 py-10">
-                                <div class="position-relative text-center mb-20">
-                                    <div class="position-absolute top-0 start-0 z-1">
-                                        <a class="text-muted text-hover-black" href="#">
-                                            {% include 'main/icons/heart.html' with classes='svg-icon' %}
-                                </a></div>
-                                <div class="position-absolute top-0 end-0 z-1"><a
-                                        class="text-muted text-hover-black" href="#">
-                                        {% include 'main/icons/chart.html' with classes='svg-icon' %}
-                                </a></div>
-                                <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
-                                    <button class="btn btn-light btn-lg btn-wide-xl"
-                                            data-bs-toggle="modal" data-bs-target="#product-quick-view"
-                                            type="button">Быстрый просмотр
-                                    </button>
-                                </div>
-                                <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;">
-                                    <img class="object-fit-contain mt-15" src="{% static 'main/img/product-card-img.png' %}"
-                                         alt="Решетки на окна эконом класса"></div>
-                            </div>
-                            <h3 class="card-title h5 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0  pt-5">
-
-                            <div class="d-flex align-items-center justify-content-between mt-10">
-                                <span class="d-block fs-11 text-danger fw-medium  text-uppercase ls-sm  ">от 2900 руб</span>
-                                <a class="btn btn-outline-primary  rounded-pill py-3 px-10 fs-9   ">Купить</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mb-10 mb-md-20">
-                    <div class="card card_hover_shadow card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">
-                        <div class="card-body p-lg-13 py-10">
-                            <div class="position-relative text-center mb-20">
-                                <div class="position-absolute top-0 start-0 z-1">
-                                    <a class="text-muted text-hover-black" href="#">
-                                        {% include 'main/icons/heart.html' with classes='svg-icon' %}
-                            </a></div>
-                            <div class="position-absolute top-0 end-0 z-1"><a
-                                    class="text-muted text-hover-black" href="#">
-                                    {% include 'main/icons/chart.html' with classes='svg-icon' %}
-                            </a></div>
-                            <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
-                                <button class="btn btn-light btn-lg btn-wide-xl"
-                                        data-bs-toggle="modal" data-bs-target="#product-quick-view"
-                                        type="button">Быстрый просмотр
-                                </button>
-                            </div>
-                            <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;">
-                                <img class="object-fit-contain mt-15" src="{% static 'main/img/product-card-img.png' %}"
-                                     alt="Решетки на окна эконом класса"></div>
-                        </div>
-                        <h3 class="card-title h5 fs-lg-10 fs-10 fw-medium ls-sm text-uppercase mb-0  pt-5">
-
-                        <div class="d-flex align-items-center justify-content-between mt-10">
-                            <span class="d-block fs-11 text-danger fw-medium  text-uppercase ls-sm  ">от 2900 руб</span>
-                            <a class="btn btn-outline-primary  rounded-pill py-3 px-10 fs-9   ">Купить</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        <!-- DRUGIE RESHETKI -->
+                        <div class="border-lg border-lg-black rounded-lg-4 mt-lg-20 mt-28 p-lg-20">
+                            <h3 class="h5 fs-lg-13 fs-11 fw-medium ls-sm text-uppercase mb-17-5">Другие решетки по схожим ценам</h3>
+                            <div class="row row-cols-lg-3 row-cols-1 gy-lg-0 gy-20">
+             
+    
+    
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {% include 'main/components/consultation_form.html' %}
-
-            {% include 'main/components/reasons.html' %}
-
+            {% include 'main/components/consultation_form.html' %} 
+            {% include 'main/components/reasons.html' %} 
             {% include 'main/components/consultation_modal.html' %}
-
             {% include 'main/components/measure_modal.html' %}
-
-{#            {% include 'main/components/product_quick_view.html' %}#}
+            {% include 'main/components/product_quick_view.html' %}
         </main>
     </div>
 </div>
-    <script>
-    function getValueById(id){
+<script>
+    function getValueById(id) {
         return document.getElementById(id).value
     }
-    function changeValueById(id, value){
+
+    function changeValueById(id, value) {
         document.getElementById(id).value = value
     }
-    function setOptionOnSelectById (optionId, idOfSelect) {
+
+    function setOptionOnSelectById(optionId, idOfSelect) {
         changeValueById(idOfSelect, getValueById(optionId))
     }
 
@@ -603,15 +586,15 @@
 
         let optionsOfOpenTypes = document.getElementsByClassName("open-type-price")
         for (let i = 0; i < optionsOfOpenTypes.length; i++) {
-            if (optionsOfOpenTypes[i].checked){
+            if (optionsOfOpenTypes[i].checked) {
                 let type = optionsOfOpenTypes[i].id.split("-")[2]
                 if (type == "arch") {
                     let priceOfWidth = getValueById("width_of_rod").match(/\d{3,}/)[0]
-                    openTypePrice = priceOfWidth  * 1.3 - priceOfWidth
+                    openTypePrice = priceOfWidth * 1.3 - priceOfWidth
                 } else if (type == "solid") {
                     openTypePrice = 0;
                 } else {
-                    openTypePrice = +document.getElementById("price-"+type).textContent.match(/\d{4,}/)[0]
+                    openTypePrice = +document.getElementById("price-" + type).textContent.match(/\d{4,}/)[0]
                 }
             }
         }
@@ -640,5 +623,5 @@
     changeValueById("height", "100")
     changeValueById("amount", "1")
     changeForm()
-    </script>
+</script>
 {% endblock %}

@@ -128,8 +128,10 @@ function getCurrentURL () {
   return window.location.href
 }
 function changeMin(minPrice) {
+    console.log(minPrice);
     let url = new URL(getCurrentURL())
     url.searchParams.append('minPrice', minPrice);
+    console.log(url)
     // window.location.href = url;
 }
 
@@ -193,11 +195,10 @@ if (priceSlider != null) {
           clickCounts[link.classList[0]] = clickCount + 1;
           localStorage.setItem('clickCounts', JSON.stringify(clickCounts));
           if (clickCount === 0) {
-            link.textContent = link.dataset.secondClickText;
-            window.location.href = link.dataset.redirectUrl;
+            link.textContent = 'Смотреть все';
           }
           if (clickCount === 1) {
-            link.textContent = link.dataset.secondClickText;
+           /*  link.textContent = link.dataset.secondClickText; */
             window.location.href = link.dataset.redirectUrl;
           }
         }
@@ -217,6 +218,7 @@ if (priceSlider != null) {
           link.addEventListener('click', handleClick);
         });
       });
+
 
 /* DROPDOWN */
 
