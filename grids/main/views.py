@@ -202,8 +202,20 @@ def compare(request):
 
 
 def favorite(request):
-    products = get_products_by_category(5, 3)
-    return render(request, 'main/favorite.html', {'list_of_grids_types': list_of_grids_types, 'products': products})
+    list_of_favorites_cookie = request.COOKIES.get('Favorites').split(',')
+    list_of_favorites = []
+    for sketch_id in list_of_favorites_cookie:
+        product = {}
+        product["id"] = sketch_id
+        path = "".join(
+            re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(price_winguard_sketch_id=sketch_id).path))
+        path_arr = path.split("/")
+        product["path_folder"] = path_arr[1]
+        product["path_file"] = path_arr[2]
+        product['additional_info'] = list(
+            PriceWinguardMain.objects.filter(price_winguard_sketch_id=sketch_id).values('price_b2c', 'name'))
+        list_of_favorites.append(product)
+    return render(request, 'main/favorite.html', {'list_of_grids_types': list_of_grids_types, 'products': list_of_favorites})
 
 
 def page_not_found(request, exception):
