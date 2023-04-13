@@ -174,8 +174,7 @@ def contacts(request):
     return render(request, 'main/contacts.html')
 
 
-def product(request, product_name):
-    sketch_id = re.findall("\d+", product_name)[2]
+def product(request, sketch_id):
     product = {}
     path = "".join(
         re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(price_winguard_sketch_id=sketch_id).path))
