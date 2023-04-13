@@ -83,21 +83,21 @@
                                                     <h3 class="fw-medium ls-sm fs-9 text-secondary text-uppercase  my-5 d-inline-block ms-10">Сварные решетки</h3>
                                                     
                                                     <div class="form-check fs-9 ls-sm mb-10 d-inline-block ms-10">
-                                                        <input class="form-check-input" id="category-economy" name="filter-type" autocomplete="off" type="radio"/>
+                                                        <input class="form-check-input" id="category-economy" name="filter-type" autocomplete="off" type="radio" onclick="changeCategoryAndUrl('economy')"/>
                                                         <label class="form-check-label" for="category-economy">Эконом решетки</label>
                                                     </div>
                                                     <div class="form-check fs-9 ls-sm mb-10 d-inline-block ml-10 ms-10">
-                                                        <input class="form-check-input" id="category-ajur" name="filter-type" autocomplete="off" type="radio"/>
+                                                        <input class="form-check-input" id="category-ajur" name="filter-type" autocomplete="off" type="radio" onclick="changeCategoryAndUrl('ajur')"/>
                                                         <label class="form-check-label" for="category-ajur">Ажурные решетки</label>
                                                     </div>
                                                     <h3 class="fw-medium ls-sm fs-9 text-secondary text-uppercase ms-10">Сварные решетки</h3>
                                                     <div class="form-check fs-9 ls-sm mb-10 d-inline-block ms-10">
-                                                        <input class="form-check-input" id="category-economy" name="filter-type" autocomplete="off" type="radio"/>
-                                                        <label class="form-check-label" for="category-economy">VIP решетки</label>
+                                                        <input class="form-check-input" id="category-vip" name="filter-type" autocomplete="off" type="radio" onclick="changeCategoryAndUrl('vip')"/>
+                                                        <label class="form-check-label" for="category-vip">VIP решетки</label>
                                                     </div>
                                                     <div class="form-check fs-9 ls-sm mb-10 d-inline-block ml-10 ms-10">
-                                                        <input class="form-check-input" id="category-ajur" name="filter-type" autocomplete="off" type="radio"/>
-                                                        <label class="form-check-label" for="category-ajur">Эксклюзив решетки</label>
+                                                        <input class="form-check-input" id="category-exlusive" name="filter-type" autocomplete="off" type="radio" onclick="changeCategoryAndUrl('exclusive')"/>
+                                                        <label class="form-check-label" for="category-exlusive">Эксклюзив решетки</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -106,11 +106,11 @@
                                                 <h6 class="fw-medium ls-sm text-uppercase mb-0 d-inline-block px-10 py-5 rounded-top-3 border border-radius">Класс решеток</h6>
                                                 <div class="border border-light rounded-end-3 rounded-end-3 rounded-bottom-3">
                                                     <div class="form-check fs-9 ls-sm my-10 d-inline-block ml-10  ms-10">
-                                                        <input class="form-check-input" id="class-usual" name="filter-category" autocomplete="off" type="radio" />
+                                                        <input class="form-check-input" id="class-usual" name="filter-category" autocomplete="off" type="radio" onclick="changeClassAndUrl('usual')"/>
                                                         <label class="form-check-label" for="class-usual">Обычные решетки</label>
                                                     </div>
                                                     <div class="form-check fs-9 ls-sm mb-10  ml-10  d-inline-block ms-10">
-                                                        <input class="form-check-input" id="class-blow" name="filter-category" autocomplete="off" type="radio" />
+                                                        <input class="form-check-input" id="class-blow" name="filter-category" autocomplete="off" type="radio" onclick="changeClassAndUrl('blow')"/>
                                                         <label class="form-check-label" for="class-blow">Дутые решетки</label>
                                                     </div>
                                                 </div>
@@ -911,7 +911,6 @@
 
             {% include 'main/components/measure_modal.html' %}
 
-            {% include 'main/components/product_quick_view.html' %}
         </main>
 
         {% include 'main/components/consultation_form.html' %}
@@ -920,28 +919,90 @@
     </div>
 </div>
 <script>
-    function checkCategoryRadio (id){
-        document.getElementById('category-'+id).checked = true;
-    }
-    function checkClassRadio (id){
-        document.getElementById('class-'+id).checked = true;
-    }
-    let categories = [
-        {url: "решетки-на-окна-эконом-класс", "title": "Эконом", "name_of_category": "economy", "name_of_class": "usual"},
-        {url: "дутые-решетки-на-окна-эконом-класс","title": "Дутые Эконом", "name_of_category": "economy", "name_of_class": "blow"},
-        {url: "ажурные-решетки-на-окна","title": "Ажурные", "name_of_category": "ajur", "name_of_class": "usual"},
-        {url: "дутые-ажурные-решетки","title": "Дутые Ажурные", "name_of_category": "ajur", "name_of_class": "blow"},
-        {url: "кованые-решетки-на-окна-вип-класс","title": "VIP", "name_of_category": "vip", "name_of_class": "usual"},
-        {url: "кованые-дутые-решетки-вип-класса","title": "Дутые VIP", "name_of_category": "vip", "name_of_class": "blow"},
-        {url: "эксклюзивные-кованые-решетки","title": "Эксклюзив", "name_of_category": "exclusive", "name_of_class": "usual"},
-        {url: "дутые-эксклюзивные-решетки","title": "Дутые Эксклюзив", "name_of_category": "exclusive", "name_of_class": "blow"}
-    ]
-    let current_location = window.decodeURI(window.location.href.split('/').pop());
+
+    //Блок кода для успешной смены категории/класса и смены юрла
+const categories = [
+    {url: "решетки-на-окна-эконом-класс", "title": "Эконом", "name_of_category": "economy", "name_of_class": "usual"},
+    {url: "дутые-решетки-на-окна-эконом-класс","title": "Дутые Эконом","name_of_category": "economy","name_of_class": "blow"},
+    {url: "ажурные-решетки-на-окна", "title": "Ажурные", "name_of_category": "ajur", "name_of_class": "usual"},
+    {url: "дутые-ажурные-решетки", "title": "Дутые Ажурные", "name_of_category": "ajur", "name_of_class": "blow"},
+    {url: "кованые-решетки-на-окна-вип-класс", "title": "VIP", "name_of_category": "vip", "name_of_class": "usual"},
+    {url: "кованые-дутые-решетки-вип-класса", "title": "Дутые VIP", "name_of_category": "vip", "name_of_class": "blow"},
+    {url: "эксклюзивные-кованые-решетки","title": "Эксклюзив","name_of_category": "exclusive","name_of_class": "usual"},
+    {url: "дутые-эксклюзивные-решетки", "title": "Дутые Эксклюзив", "name_of_category": "exclusive", "name_of_class": "blow"}
+]
+function getCheckedCategory() {
     for (let i = 0; i < categories.length; i++) {
-        if (current_location.includes(categories[i].url)){
-            checkCategoryRadio(categories[i].name_of_category)
-            checkClassRadio(categories[i].name_of_class)
+        if (document.getElementById("category-" + categories[i].name_of_category).checked) {
+            return categories[i].name_of_category
         }
     }
+}
+function getCheckedClass() {
+    for (let i = 0; i < categories.length; i++) {
+        if (document.getElementById("class-" + categories[i].name_of_class).checked) {
+            return categories[i].name_of_class
+        }
+    }
+}
+function changeCategoryAndUrl(categoryName) {
+    let className = getCheckedClass();
+    for (let i = 0; i < categories.length; i++) {
+        if (categoryName === categories[i].name_of_category && className === categories[i].name_of_class) {
+            document.location.href = "/" + categories[i].url;
+        }
+    }
+}
+
+function changeClassAndUrl(className) {
+    let categoryName = getCheckedCategory();
+    for (let i = 0; i < categories.length; i++) {
+        if (className === categories[i].name_of_class && categoryName === categories[i].name_of_category) {
+            document.location.href = "/" + categories[i].url;
+        }
+    }
+}
+function chooseCategoryRadio(id) {
+    document.getElementById('category-' + id).checked = true;
+}
+function chooseClassRadio(id) {
+    document.getElementById('class-' + id).checked = true;
+}
+let current_location = window.decodeURI(window.location.href.split('/').pop());
+for (let i = 0; i < categories.length; i++) {
+    if (current_location.includes(categories[i].url)) {
+        chooseCategoryRadio(categories[i].name_of_category)
+        chooseClassRadio(categories[i].name_of_class)
+    }
+}
+//конец блока кода о выборе класса или категории
+
+//блок кода о добавлении в избранное
+function setCookie(name,value,days) {
+    let expires = "";
+    if (days) {
+        let date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+    let nameEQ = name + "=";
+    let ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+function eraseCookie(name) {
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+function addToFavorite(element){
+    setCookie("Favorites", element.id, 7)
+}
+//конец блока кода о добавлении в избранное
 </script>
 {% endblock %}

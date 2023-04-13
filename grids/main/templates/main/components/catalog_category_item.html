@@ -9,17 +9,17 @@
             </div>
                 <div class="position-absolute top-0 end-0 z-1">
                     <span class="fs-8 ms-2 py-0 bg-danger text-white   px-2 rounded-2">{{percent}}%</span>
-                    <a class="text-muted text-hover-black" href="#">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a> 
+                    <a class="text-muted text-hover-black" id="{{PriceWinguardSketchId}}" onclick="addToFavorite(this)" href="#">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a>
                 </div>
                 <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
-                    <button class="btn btn-light btn-lg btn-wide-xl" data-bs-toggle="modal"
-                            data-bs-target="#product-quick-view"
-                            data-bs-product-id="{{path_file}}"
+                    <button class="btn btn-light btn-lg btn-wide-xl"
+                            data-bs-toggle="modal"
+                            data-bs-target="#{{path_file}}"
                             type="button">Быстрый
                         просмотр
                     </button>
                 </div>
-                <a href="{%url 'product' category.url_title %}-{{path_folder}}-{{path_file}}-{{PriceWinguardSketchId }}">
+                <a href="{%url 'product' category.url_title %}-{{path_folder}}-{{path_file}}-{{PriceWinguardSketchId}}">
                 <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
                         class="object-fit-contain"
                         src="{% static 'main/img/grids_pictures' %}/{{path_folder}}/solid/{{path_file}}.png"
@@ -43,8 +43,8 @@
                 <span class="d-block fs-10 text-muted fw-medium  text-decoration-line-through  text-uppercase ls-sm pb-4 ">{{saleprice}} руб</span>
                 <span class="d-block fs-10 text-danger fw-medium  text-uppercase ls-sm  ">{{price}} руб</span>
            
-  
-              
+            <!--MODAL-->
+            {% include 'main/components/product_quick_view.html' with PriceWinguardSketchId=PriceWinguardSketchId modal_id=path_file%}
         </div>
     </div>
 </div>
