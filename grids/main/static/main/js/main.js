@@ -175,13 +175,16 @@ function changeFavoriteList(element){
     if (!stringOfFavorite) {
         paintHeartRed(heartClassName)
         setCookie(cookieName, [idOfProduct], 7)
+        callSnackbar('Вы добавили товар в избранное')
     } else if (stringOfFavorite.includes(idOfProduct)) {
         let str = stringOfFavorite.split(',').filter(item => item !== idOfProduct).join(',')
         paintHeartGrey(heartClassName)
         setCookie(cookieName, [str], 7)
+        callSnackbar('Вы убрали товар из избранного')
     } else {
         paintHeartRed(heartClassName)
         setCookie(cookieName, [stringOfFavorite, idOfProduct], 7)
+        callSnackbar('Вы добавили товар в избранное')
     }
     changeFavoriteCounter();
 }
@@ -226,13 +229,16 @@ function changeCompareList(element){
     if (!stringOfCompare) {
         paintChartRed(chartClassName)
         setCookie(cookieName, [idOfProduct], 7)
+        callSnackbar('Вы добавили товар в сравнение')
     } else if (stringOfCompare.includes(idOfProduct)) {
         let str = stringOfCompare.split(',').filter(item => item !== idOfProduct).join(',')
         paintChartGrey(chartClassName)
         setCookie(cookieName, [str], 7)
+        callSnackbar('Вы убрали товар из сравнения')
     } else {
         paintChartRed(chartClassName)
         setCookie(cookieName, [stringOfCompare, idOfProduct], 7)
+        callSnackbar('Вы добавили товар в сравнение')
     }
     changeCompareCounter();
 }
@@ -250,6 +256,15 @@ for (const productId of getCookie("Compare").split(',')) {
     } catch (e) {}
 }
 //конец блока кода о добавлении в сравнение
+
+//блок кода о снекбаре
+function callSnackbar(text) {
+  const x = document.getElementById("snackbar");
+  x.textContent = text;
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+//конец блока кода о снекбаре
 
 //НИЖЕ ДЛЯ ФАЙЛА catalog-category
 //блок кода о фильтрации
