@@ -83,14 +83,13 @@ def get_products_by_category(category_number, amount="all", min_price=0, max_pri
                        .values('id').annotate(min_pricewinguardmain=Min('pricewinguardmain')).values(
             'min_pricewinguardmain', 'id')[:amount]
     for product in products:
-        # get price
         try:
             additional_info = PriceWinguardMain.objects.get(id=product["min_pricewinguardmain"])
             product["price"] = additional_info.price_b2c
             if not (max_price > product["price"] > min_price):
                 products.get(product["id"]).delete()
                 continue
-            product["percent"] = arr_of_sale[product["min_pricewinguardmain"] % 20]
+            product["percent"] = arr_of_sale[product["id"] % 20]
             product["saleprice"] = int(product["price"] * (1 + product["percent"] / 100))
             product["width"] = additional_info.name
         except Exception as e:
@@ -196,25 +195,51 @@ def reviews(request):
 
 
 def compare(request):
-    leaders_of_selling = get_products_by_category(1, 5)
-    return render(request, 'main/compare.html', {'leaders_of_selling': leaders_of_selling})
-
-
-def favorite(request):
-    list_of_favorites_cookie = request.COOKIES.get('Favorites').split(',')
-    list_of_favorites = []
-    for sketch_id in list_of_favorites_cookie:
-        product = {}
-        product["id"] = sketch_id
+    str_of_cookies = request.COOKIES.get('Compare')
+    if str_of_cookies is '':
+        return render(request, 'main/compare.html',
+                      {'products': []})
+    list_of_compares_cookie = str_of_cookies.split(',')
+    list_of_compares = []
+    for sketch_id in list_of_compares_cookie:
+        product = {"id": sketch_id}
+        product["price"] = \
+        PriceWinguardMain.objects.filter(price_winguard_sketch_id=product["id"]).values('price_b2c')[0]['price_b2c']
+        product["percent"] = arr_of_sale[int(product["id"]) % 20]
+        product["saleprice"] = int(product["price"] * (1 + product["percent"] / 100))
         path = "".join(
-            re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(price_winguard_sketch_id=sketch_id).path))
+            re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(price_winguard_sketch_id=product["id"]).path))
         path_arr = path.split("/")
         product["path_folder"] = path_arr[1]
         product["path_file"] = path_arr[2]
         product['additional_info'] = list(
-            PriceWinguardMain.objects.filter(price_winguard_sketch_id=sketch_id).values('price_b2c', 'name'))
+            PriceWinguardMain.objects.filter(price_winguard_sketch_id=product["id"]).values('price_b2c', 'name'))
+        list_of_compares.append(product)
+    print(list_of_compares)
+    return render(request, 'main/compare.html',
+                  {'products': list_of_compares})
+
+
+def favorite(request):
+    str_of_cookies = request.COOKIES.get('Favorites')
+    if str_of_cookies is '':
+        return render(request, 'main/favorite.html',
+                      {'products': []})
+    list_of_favorites_cookie = str_of_cookies.split(',')
+    print(list_of_favorites_cookie)
+    list_of_favorites = []
+    for sketch_id in list_of_favorites_cookie:
+        product = {"id": sketch_id}
+        product["price"] = PriceWinguardMain.objects.filter(price_winguard_sketch_id=product["id"]).values('price_b2c')[0]['price_b2c']
+        product["percent"] = arr_of_sale[int(product["id"]) % 20]
+        product["saleprice"] = int(product["price"] * (1 + product["percent"] / 100))
+        path = "".join(
+            re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(price_winguard_sketch_id=product["id"]).path))
+        path_arr = path.split("/")
+        product["path_folder"] = path_arr[1]
+        product["path_file"] = path_arr[2]
         list_of_favorites.append(product)
-    return render(request, 'main/favorite.html', {'list_of_grids_types': list_of_grids_types, 'products': list_of_favorites})
+    return render(request, 'main/favorite.html', {'products': list_of_favorites})
 
 
 def page_not_found(request, exception):

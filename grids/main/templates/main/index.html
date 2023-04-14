@@ -151,52 +151,7 @@
                 <div class="row mt-10 row-cols-lg-4 row-cols-1 gy-20">
 
                     {% for item in leaders_of_selling %}
-
-                    <div class="col">
-                        <div class="card card_hover_shadow card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">
-                            <div class="card-body p-10">
-                                <div class="position-relative text-center ">
-                                    <div class="position-absolute top-0 start-0 z-1">
-                                        <a class="text-muted text-hover-black" href="#">{% include 'main/icons/chart.html' with classes="svg-icon"%}</a>
-                                    <span class="fs-7  ms-2 py-0 bg-success text-white px-2 rounded-2">хит</span>
-                                </div>
-                                    <div class="position-absolute top-0 end-0 z-1">
-                                        <span class="fs-7 ms-2 py-0 bg-danger text-white   px-2 rounded-2">-30%</span>
-                                        <a class="text-muted text-hover-black" href="#">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a> 
-                                    </div>
-                                    <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
-                                        <button class="btn btn-light btn-lg btn-wide-xl " data-bs-toggle="modal" data-bs-target="#product-quick-view" type="button">Быстрый просмотр</button>
-                                    </div>
-
-                                    <a href="кованые-решетки-на-окна-вип-класс">
-                                        <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
-                                            class="object-fit-contain" src="{% static 'main/img/grids_pictures'%}/{{item.path_folder}}/solid/{{item.path_file}}.png"
-                                            alt="Решетки на окна эконом класса"></div>
-                                </div></a>
-                               
-                           
-                                         <h3 class="card-title h5  fs-10 fw-medium  d-lg-inline-block ls-sm text-uppercase  pb-5">
-                                    <a class="text-decoration-none text-dark d-lg-inline-block">Решетка на окно<br>сварная {{item.path_folder}} - {{item.path_file}}</a></h3>
-                                    <div class="float-end buy_item">
-                                 <div class="d-flex justify-content-between">
-                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:20px' %}
-                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:20px' %}
-                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:20px' %}
-                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:20px' %}
-                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:20px' %}
-                                    <span class="fs-8">(32)</span>
-                                  </div>
-                                  <a class="btn btn-outline-dark px-20 py-5 w-100 fs-9 mt-5">Купить</a>
-                                </div>
-                                <span class="d-block fs-10 text-muted fw-medium  text-decoration-line-through  text-uppercase ls-sm pb-4 ">{{item.saleprice}} руб</span>
-                                <span class="d-block fs-10 text-danger fw-medium  text-uppercase ls-sm  ">{{item.price}} руб</span>
-                               
-                      
-                                  
-                            </div>
-                        </div>
-                    </div>
-
+                                    {% include 'main/components/catalog_category_item.html' with PriceWinguardSketchId=item.id name=item.width price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
                     {% endfor %}
                 </div>
 
@@ -218,7 +173,7 @@
                                     </div>
                                         <div class="position-absolute top-0 end-0 z-1">
                                             <span class="fs-7 ms-2 py-0 bg-danger text-white   px-2 rounded-2">-30%</span>
-                                            <a class="text-muted text-hover-black" href="#">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a> 
+                                            <a class="text-muted text-hover-black">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a>
                                         </div>
                                         <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
                                             <button class="btn btn-light fs-lg-7 btn-lg btn-wide-sm " data-bs-toggle="modal" data-bs-target="#product-quick-view" type="button">Быстрый просмотр</button>

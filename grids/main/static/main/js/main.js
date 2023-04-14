@@ -124,6 +124,132 @@ let productSwiper2 = new Swiper("#product-swiper2", {
     }
 });
 
+//блок кода о  кукисах
+function setCookie(name,value,days) {
+    let expires = "";
+    if (days) {
+        let date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+    let nameEQ = name + "=";
+    let ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+function eraseCookie(name) {
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+//конец блока кода о кукисах
+
+//блок кода о добавлении в избранное
+function paintHeartRed (className) {
+    let items = document.getElementsByClassName(className);
+    for (let i = 0; i < items.length; i++) {
+        items[i].style.fill = '#F5320E';
+        items[i].style.stroke = '#F5320E';
+    }
+}
+function paintHeartGrey (className) {
+    let items = document.getElementsByClassName(className);
+    for (let i = 0; i < items.length; i++) {
+        items[i].style.fill = 'none';
+        items[i].style.stroke = '#959595';
+    }
+}
+function changeFavoriteList(element){
+    let heartClassName; //heart-(number) example: heart-1, heart-193
+    for (let i = 0; i < element.classList.length; i++) {
+        if (element.classList[i].includes('heart')) heartClassName = element.classList[i]
+    }
+    let idOfProduct = heartClassName.match(/\d+/)[0]
+    let cookieName = "Favorites"
+    let stringOfFavorite = getCookie(cookieName)
+    if (!stringOfFavorite) {
+        paintHeartRed(heartClassName)
+        setCookie(cookieName, [idOfProduct], 7)
+    } else if (stringOfFavorite.includes(idOfProduct)) {
+        let str = stringOfFavorite.split(',').filter(item => item !== idOfProduct).join(',')
+        paintHeartGrey(heartClassName)
+        setCookie(cookieName, [str], 7)
+    } else {
+        paintHeartRed(heartClassName)
+        setCookie(cookieName, [stringOfFavorite, idOfProduct], 7)
+    }
+    changeFavoriteCounter();
+}
+function getAmountOfFavorite() {
+    let str = getCookie("Favorites")
+    return str === "" ? 0 : str.split(",").length
+}
+function changeFavoriteCounter () {
+    document.getElementById("amountOfFavorite").textContent = getAmountOfFavorite().toString()
+}
+changeFavoriteCounter();//вызываем при начальной загрузке любой страницы
+for (const productId of getCookie("Favorites").split(',')) {
+    try {
+    paintHeartRed("heart-" + productId)
+    } catch (e) {}
+}
+//конец блока кода о добавлении в избранное
+
+//блок кода о добавлении в сравнение
+function paintChartRed (className) {
+    let items = document.getElementsByClassName(className);
+    for (let i = 0; i < items.length; i++) {
+        items[i].style.fill = '#F5320E';
+        items[i].style.stroke = '#F5320E';
+    }
+}
+function paintChartGrey (className) {
+    let items = document.getElementsByClassName(className);
+    for (let i = 0; i < items.length; i++) {
+        items[i].style.fill = 'none';
+        items[i].style.stroke = '#959595';
+    }
+}
+function changeCompareList(element){
+    let chartClassName; //chart-(number) example: chart-1, chart-193
+    for (let i = 0; i < element.classList.length; i++) {
+        if (element.classList[i].includes('chart')) chartClassName = element.classList[i]
+    }
+    let idOfProduct = chartClassName.match(/\d+/)[0]
+    let cookieName = "Compare"
+    let stringOfCompare = getCookie(cookieName)
+    if (!stringOfCompare) {
+        paintChartRed(chartClassName)
+        setCookie(cookieName, [idOfProduct], 7)
+    } else if (stringOfCompare.includes(idOfProduct)) {
+        let str = stringOfCompare.split(',').filter(item => item !== idOfProduct).join(',')
+        paintChartGrey(chartClassName)
+        setCookie(cookieName, [str], 7)
+    } else {
+        paintChartRed(chartClassName)
+        setCookie(cookieName, [stringOfCompare, idOfProduct], 7)
+    }
+    changeCompareCounter();
+}
+function getAmountOfCompare() {
+    let str = getCookie("Compare")
+    return str === "" ? 0 : str.split(",").length
+}
+function changeCompareCounter () {
+    document.getElementById("amountOfCompare").textContent = getAmountOfCompare().toString()
+}
+changeCompareCounter();//вызываем при начальной загрузке любой страницы
+for (const productId of getCookie("Compare").split(',')) {
+    try {
+    paintChartRed("chart-" + productId)
+    } catch (e) {}
+}
+//конец блока кода о добавлении в сравнение
 
 //НИЖЕ ДЛЯ ФАЙЛА catalog-category
 //блок кода о фильтрации

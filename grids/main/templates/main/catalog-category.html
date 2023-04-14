@@ -90,7 +90,7 @@
                                                         <input class="form-check-input" id="category-ajur" name="filter-type" autocomplete="off" type="radio" onclick="changeCategoryAndUrl('ajur')"/>
                                                         <label class="form-check-label" for="category-ajur">Ажурные решетки</label>
                                                     </div>
-                                                    <h3 class="fw-medium ls-sm fs-9 text-secondary text-uppercase ms-10">Сварные решетки</h3>
+                                                    <h3 class="fw-medium ls-sm fs-9 text-secondary text-uppercase ms-10">Кованые решетки</h3>
                                                     <div class="form-check fs-9 ls-sm mb-10 d-inline-block ms-10">
                                                         <input class="form-check-input" id="category-vip" name="filter-type" autocomplete="off" type="radio" onclick="changeCategoryAndUrl('vip')"/>
                                                         <label class="form-check-label" for="category-vip">VIP решетки</label>
@@ -315,7 +315,7 @@
                                 <div class="row row-cols-lg-3 row-cols-1 gy-20">
 
                                     {% for item in products %}
-                                    {% include 'main/components/catalog_category_item.html' with category=category PriceWinguardSketchId=item.id name=item.width price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
+                                    {% include 'main/components/catalog_category_item.html' with PriceWinguardSketchId=item.id name=item.width price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
                                 {% endfor %}
                         </div>
 
@@ -562,50 +562,52 @@
                                 <div class="swiper-wrapper">
 
                                     {%for item in leaders_of_selling%}
-                                    <div class="swiper-slide">
-                                        <div class="card card_hover_shadow card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">
-                                            <div class="card-body p-10">
-                                                <div class="position-relative text-center ">
-                                                    <div class="position-absolute top-0 start-0 z-1">
-                                                        <a class="text-muted text-hover-black" href="#">{% include 'main/icons/chart.html' with classes="svg-icon"%}</a>
-                                                    <span class="fs-7  ms-2 py-0 bg-success text-white px-2 rounded-2">хит</span>
-                                                </div>
-                                                    <div class="position-absolute top-0 end-0 z-1">
-                                                        <span class="fs-7 ms-2 py-0 bg-danger text-white   px-2 rounded-2">-30%</span>
-                                                        <a class="text-muted text-hover-black" href="#">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a> 
-                                                    </div>
-                                                    <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
-                                                        <button class="btn btn-light fs-lg-7 btn-lg btn-wide-sm " data-bs-toggle="modal" data-bs-target="#product-quick-view" type="button">Быстрый просмотр</button>
-                                                    </div>
+                                                                        {% include 'main/components/catalog_category_item.html' with PriceWinguardSketchId=item.id name=item.width price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
 
-                                                    <a href="/кованые-решетки-на-окна-вип-класс">
-                                                        <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
-                                                            class="mt-5 object-fit-contain" src="{% static 'main/img/grids_pictures'%}/{{item.path_folder}}/solid/{{item.path_file}}.png"
-                                                            alt="Решетки на окна эконом класса"></div>
-                                                </div></a>
-                                               
-                                           
-                                                        <h3 class="card-title h5 fs-lg-7 fs-10 fw-medium  d-lg-inline-block ls-sm text-uppercase  pb-5">
-                                                    <a class="text-decoration-none text-dark d-lg-inline-block">Решетка на окно<br>сварная {{path_folder}} - {{path_file}}</a></h3>
-                                                    <div class="float-end buy_item">
-                                                 <div class="d-flex justify-content-between">
-                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:15px' %}
-                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:15px' %}
-                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:15px' %}
-                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:15px' %}
-                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:15px' %}
-                                                                        <span class="fs-lg-7 fs-8">(32)</span>
-                                                  </div>
-                                                   <a class="btn btn-outline-dark px-8 py-5 w-100 fs-lg-7 fs-9 mt-5">Купить</a>
-                                                </div>
-                                                    <span class="d-block fs-lg-8 fs-10 text-muted fw-medium  text-decoration-line-through  text-uppercase ls-sm pb-3 ">2900 руб</span>
-                                                    <span class="d-block fs-lg-8 fs-10 text-danger fw-medium  text-uppercase ls-sm">2900 руб</span>
-                                               
-                                      
-                                                  
-                                            </div>
-                                        </div>
-                                    </div>
+<!--                                    <div class="swiper-slide">-->
+<!--                                        <div class="card card_hover_shadow card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">-->
+<!--                                            <div class="card-body p-10">-->
+<!--                                                <div class="position-relative text-center ">-->
+<!--                                                    <div class="position-absolute top-0 start-0 z-1">-->
+<!--                                                        <a class="text-muted text-hover-black" href="#">{% include 'main/icons/chart.html' with classes="svg-icon"%}</a>-->
+<!--                                                    <span class="fs-7  ms-2 py-0 bg-success text-white px-2 rounded-2">хит</span>-->
+<!--                                                </div>-->
+<!--                                                    <div class="position-absolute top-0 end-0 z-1">-->
+<!--                                                        <span class="fs-7 ms-2 py-0 bg-danger text-white   px-2 rounded-2">-30%</span>-->
+<!--                                                        <a class="text-muted text-hover-black">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">-->
+<!--                                                        <button class="btn btn-light fs-lg-7 btn-lg btn-wide-sm " data-bs-toggle="modal" data-bs-target="#product-quick-view" type="button">Быстрый просмотр</button>-->
+<!--                                                    </div>-->
+
+<!--                                                    <a href="/кованые-решетки-на-окна-вип-класс">-->
+<!--                                                        <div class="ratio" style="&#45;&#45;bs-aspect-ratio: 100%; max-height: 265px;"><img-->
+<!--                                                            class="mt-5 object-fit-contain" src="{% static 'main/img/grids_pictures'%}/{{item.path_folder}}/solid/{{item.path_file}}.png"-->
+<!--                                                            alt="Решетки на окна эконом класса"></div>-->
+<!--                                                </div></a>-->
+
+
+<!--                                                        <h3 class="card-title h5 fs-lg-7 fs-10 fw-medium  d-lg-inline-block ls-sm text-uppercase  pb-5">-->
+<!--                                                    <a class="text-decoration-none text-dark d-lg-inline-block">Решетка на окно<br>сварная {{path_folder}} - {{path_file}}</a></h3>-->
+<!--                                                    <div class="float-end buy_item">-->
+<!--                                                 <div class="d-flex justify-content-between">-->
+<!--                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:15px' %}-->
+<!--                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:15px' %}-->
+<!--                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:15px' %}-->
+<!--                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:15px' %}-->
+<!--                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:15px' %}-->
+<!--                                                                        <span class="fs-lg-7 fs-8">(32)</span>-->
+<!--                                                  </div>-->
+<!--                                                   <a class="btn btn-outline-dark px-8 py-5 w-100 fs-lg-7 fs-9 mt-5">Купить</a>-->
+<!--                                                </div>-->
+<!--                                                    <span class="d-block fs-lg-8 fs-10 text-muted fw-medium  text-decoration-line-through  text-uppercase ls-sm pb-3 ">2900 руб</span>-->
+<!--                                                    <span class="d-block fs-lg-8 fs-10 text-danger fw-medium  text-uppercase ls-sm">2900 руб</span>-->
+
+
+
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
                                     {%endfor%}
 
                                 </div>
@@ -977,39 +979,6 @@ for (let i = 0; i < categories.length; i++) {
 }
 //конец блока кода о выборе класса или категории
 
-//блок кода о добавлении в избранное
-function setCookie(name,value,days) {
-    let expires = "";
-    if (days) {
-        let date = new Date();
-        date.setTime(date.getTime() + (days*24*60*60*1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-}
-function getCookie(name) {
-    let nameEQ = name + "=";
-    let ca = document.cookie.split(';');
-    for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-    }
-    return null;
-}
-function eraseCookie(name) {
-    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-}
-function addToFavorite(element){
-    let cookieName = "Favorites"
-    let arrOfFavorite = getCookie(cookieName)
-    if (!arrOfFavorite) {
-        setCookie(cookieName, [element.id], 7)
-    } else {
-        setCookie(cookieName, [arrOfFavorite, element.id], 7)
-    }
-    console.log(getCookie("Favorites"))
-}
-//конец блока кода о добавлении в избранное
+
 </script>
 {% endblock %}
