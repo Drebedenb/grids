@@ -48,7 +48,7 @@ list_of_open_types = [
     {"name": "arch", "description": "Арочная", "price": "30", "width": 1000, "height": 1500},
     {"name": "o", "description": "Распашная", "price": "1500", "width": 1000, "height": 1500},
     {"name": "og", "description": "Распашная-распашная", "price": "1500", "width": 1500, "height": 1500},
-    {"name": "gog", "description": "На балкон", "price": "1500", "width": 3000, "height": 1500},  
+    {"name": "gog", "description": "На балкон", "price": "1500", "width": 3000, "height": 1500},
 ]
 
 russian_categories = {
@@ -69,19 +69,20 @@ arr_of_sale = [15, 10, 20, 30, 25, 20, 10, 20, 20, 30, 25, 10, 10, 20, 30, 10, 2
 
 
 def get_products_by_category_new(category_number, amount="all", min_price=0, max_price=9999999):
-    products = PriceWinguardMain.objects.filter(price_winguard_sketch__category=category_number).values('id','price_b2c', 'name')
-    # print(products)
+    products = PriceWinguardMain.objects.filter(price_winguard_sketch__category=category_number).values('id',
+                                                                                                        'price_b2c',
+                                                                                                        'name')
     return 0
 
 
-def get_products_by_category(category_number, amount="all", min_price=0, max_price=9999999):
-    if amount == "all":
-        products = PriceWinguardSketch.objects.filter(category=category_number) \
-            .values('id').annotate(min_pricewinguardmain=Min('pricewinguardmain')).values('min_pricewinguardmain', 'id')
-    else:
-        products = PriceWinguardSketch.objects.filter(category=category_number) \
-                       .values('id').annotate(min_pricewinguardmain=Min('pricewinguardmain')).values(
-            'min_pricewinguardmain', 'id')[:amount]
+def count_products_by_category(category_number):
+    return PriceWinguardSketch.objects.filter(category=category_number).count()
+
+
+def get_products_by_category(category_number, amount=None, order_type=None, order_asc_or_desc=None, min_price=0,
+                             max_price=9999999):
+    products = PriceWinguardSketch.objects.filter(category=category_number).values('id').annotate(
+        min_pricewinguardmain=Min('pricewinguardmain')).values('min_pricewinguardmain', 'id')[:amount]
     for product in products:
         try:
             additional_info = PriceWinguardMain.objects.get(id=product["min_pricewinguardmain"])
@@ -123,6 +124,12 @@ def get_category_max_price(category_number):
 
 
 def index(request):
+    count = {
+        "economy": count_products_by_category(1),
+        "ajur": count_products_by_category(3),
+        "vip": count_products_by_category(5),
+        "exlusive": count_products_by_category(7),
+    }
     leaders_of_selling = get_products_by_category(1, 20)
     min_price_1 = get_category_min_price(1)
     min_price_2 = get_category_min_price(3)
@@ -135,16 +142,19 @@ def index(request):
                                                'min_price_2': min_price_2,
                                                'min_price_3': min_price_3,
                                                'min_price_4': min_price_4,
+                                               'count': count
                                                })
 
 
 def catalog_category(request, category_name):
-    # if request.method == 'GET' and category_name in russian_categories:
-    #     print(request.GET)
+    order_type = None
+    order_asc_or_desc = None
+    if request.method == 'GET' and category_name in russian_categories:
+        order_type = request.GET.get('orderType')
+        order_asc_or_desc = request.GET.get('orderAscOrDesc')
 
     if category_name not in russian_categories:
         return HttpResponseNotFound("Page NOT found")
-
     category = russian_categories[category_name]
     products_list = get_products_by_category(category["number_of_category"])
 
@@ -204,7 +214,7 @@ def compare(request):
     for sketch_id in list_of_compares_cookie:
         product = {"id": sketch_id}
         product["price"] = \
-        PriceWinguardMain.objects.filter(price_winguard_sketch_id=product["id"]).values('price_b2c')[0]['price_b2c']
+            PriceWinguardMain.objects.filter(price_winguard_sketch_id=product["id"]).values('price_b2c')[0]['price_b2c']
         product["percent"] = arr_of_sale[int(product["id"]) % 20]
         product["saleprice"] = int(product["price"] * (1 + product["percent"] / 100))
         path = "".join(
@@ -215,7 +225,6 @@ def compare(request):
         product['additional_info'] = list(
             PriceWinguardMain.objects.filter(price_winguard_sketch_id=product["id"]).values('price_b2c', 'name'))
         list_of_compares.append(product)
-    print(list_of_compares)
     return render(request, 'main/compare.html',
                   {'products': list_of_compares})
 
@@ -226,11 +235,11 @@ def favorite(request):
         return render(request, 'main/favorite.html',
                       {'products': []})
     list_of_favorites_cookie = str_of_cookies.split(',')
-    print(list_of_favorites_cookie)
     list_of_favorites = []
     for sketch_id in list_of_favorites_cookie:
         product = {"id": sketch_id}
-        product["price"] = PriceWinguardMain.objects.filter(price_winguard_sketch_id=product["id"]).values('price_b2c')[0]['price_b2c']
+        product["price"] = \
+        PriceWinguardMain.objects.filter(price_winguard_sketch_id=product["id"]).values('price_b2c')[0]['price_b2c']
         product["percent"] = arr_of_sale[int(product["id"]) % 20]
         product["saleprice"] = int(product["price"] * (1 + product["percent"] / 100))
         path = "".join(

@@ -361,7 +361,42 @@ if (priceSlider != null) {
 //конец блока кода о создании слайдера
 //ВЫШЕ ДЛЯ ФАЙЛА catalog-category
 
+//блок кода для сортировки по возрастанию или убыванию цены
 
+function changeArrowIcon () {
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),});
+    if (params.orderAscOrDesc === 'desc') {
+        document.getElementById('arrow-order-price').style.display = 'inline';
+        document.getElementById('arrow-order-price').style.transform = 'rotate(180deg)';
+    } else if (params.orderAscOrDesc === 'asc') {
+        document.getElementById('arrow-order-price').style.display = 'inline';
+    } else {
+        document.getElementById('arrow-order-price').style.display = 'none';
+    }
+}
+changeArrowIcon();
+function setParameterToUrl (nameOfParameter, value) {
+    const url = new URL(getCurrentURL())
+    url.searchParams.set(nameOfParameter, value);
+    window.location.href = url;
+}
+function orderByPrice() {
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),});
+    if (!params.orderAscOrDesc) {
+    setParameterToUrl('orderType', 'orderPrice')
+        setParameterToUrl('orderAscOrDesc', 'asc')
+    } else if (params.orderAscOrDesc === "asc") {
+    setParameterToUrl('orderType', 'orderPrice')
+        setParameterToUrl('orderAscOrDesc', 'desc')
+    } else {
+    setParameterToUrl('orderType', 'orderPrice')
+        setParameterToUrl('orderAscOrDesc', 'asc')
+    }
+}
+
+//блок кода для сортировки по возрастанию или убыванию цены закончен
 /* VIEW MORE */
 document.addEventListener('DOMContentLoaded', function () {
     const links1 = document.querySelectorAll('.view_more1');

@@ -31,7 +31,7 @@
                         <ul class="breadcrumb mb-0">
                             <li class="breadcrumb-item"><a href="index.html">Главная </a></li>
                             <li class="breadcrumb-item"><a href="catalog.html">Каталог</a></li>
-                            <li class="breadcrumb-item active">Дутые решетки на окна </li>
+                            <li class="breadcrumb-item active">{{category.title}} решетки на окна </li>
                         </ul>
                     </nav>
 
@@ -295,18 +295,18 @@
                                 <p class=" text-center d-lg-inline d-none text-uppercase fw-semibold fs-9 w-100">Сортировать :</p>
                             </li>
                             <li class="nav-item" style="flex: 1 0 0%">
-                                <p class="w-100 active sort fs-8 text-center fs-md-9 rounded-2" id="product-characteristics-tab" data-bs-toggle="tab" data-bs-target="#product-characteristics-tab-pane" type="button" role="tab">По популярности</p>
+                                <p class="w-100 active sort fs-8 text-center fs-md-9 rounded-2" id="product-characteristics-tab" type="button" role="tab">По популярности</p>
                             </li>
                             <li class="nav-item" style="flex: 1 0 0%">
-                                <p class=" text-center fs-9 fs-md-9 sort w-100 rounded-2" id="product-description-tab" data-bs-toggle="tab" data-bs-target="#product-description-tab-pane" type="button" role="tab">По цене <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                                  </svg> </p>
+                                <p class=" text-center fs-9 fs-md-9 sort w-100 rounded-2" id="product-description-tab" type="button" role="tab" onclick="orderByPrice()">По цене
+                                    {% include 'main/icons/arrow.html' %}
+                                    </p>
                             </li>
                             <li class="nav-item" style="flex: 1 0 0%">
-                                <p class="text-center fs-9 fs-md-9 sort w-100 rounded-2" id="product-delivery-tab" data-bs-toggle="tab" data-bs-target="#product-delivery-tab-pane" type="button" role="tab">Хиты продаж</p>
+                                <p class="text-center fs-9 fs-md-9 sort w-100 rounded-2" id="product-delivery-tab" type="button" role="tab">Хиты продаж</p>
                             </li>
                             <li class="nav-item" style="flex: 1 0 0%">
-                                <p class="text-center fs-8 fs-md-9 sort w-100 rounded-2" id="product-installation-tab"  data-bs-toggle="tab" data-bs-target="#product-installation-tab-pane" type="button" role="tab">По номеру эскиза</p>
+                                <p class="text-center fs-8 fs-md-9 sort w-100 rounded-2" id="product-installation-tab" type="button" role="tab">По номеру эскиза</p>
                             </li>
 
                         </ul>
