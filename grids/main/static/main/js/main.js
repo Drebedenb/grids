@@ -315,6 +315,11 @@ function getMaxPriceFromUrl() {
     }
     return maximum;
 }
+
+if (document.getElementById('arrow-order-price')){
+changeArrowIcon();
+
+}
 //конец блока кода о фильтрации
 
 //блок кода для создания слайдера
@@ -375,7 +380,6 @@ function changeArrowIcon () {
         document.getElementById('arrow-order-price').style.display = 'none';
     }
 }
-changeArrowIcon();
 function setParameterToUrl (nameOfParameter, value) {
     const url = new URL(getCurrentURL())
     url.searchParams.set(nameOfParameter, value);

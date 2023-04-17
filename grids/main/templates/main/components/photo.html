@@ -1,17 +1,18 @@
 {% load static %}
 <div class="col">
-    <a href="" data-bs-toggle="modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <a href="" data-bs-toggle="modal" data-bs-toggle="modal" data-bs-target="#{{item.name}}">
         <div class="ratio ratio-4x3" style="min-height: 100px; max-height: 260px;">
             <img class="rounded-4 object-fit-cover" src="{% static 'main/img/photos/'%}{{name}}"/>
         </div>
     </a>
+
     <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="{{item.name}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-body">
           <button type="button" class="btn-close float-end button-close btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
-          <img class="w-100" src="{% static 'main/img/photos/photo74.png' %}" alt="">
+          <img class="w-100" src="{% static 'main/img/photos/'%}{{item.name}}" alt="">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal">Подробнее</button>
