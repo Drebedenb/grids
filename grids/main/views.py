@@ -69,21 +69,20 @@ arr_of_sale = [15, 10, 20, 30, 25, 20, 10, 20, 20, 30, 25, 10, 10, 20, 30, 10, 2
 
 
 def get_products_by_category_new(category_number, amount="all", min_price=0, max_price=9999999):
-    # products = PriceWinguardMain.objects.filter(price_winguard_sketch__category=category_number).select_related('price_winguard_files')\
-    #     .values('price_winguard_sketch').annotate(price=Min('price_b2c'))
-    # print(PriceWinguardFiles.objects.filter
-    #       (price_winguard_sketch__in=PriceWinguardSketch.objects.filter(category=category_number)).values('path','price_winguard_sketch'))
-    query = """SELECT MIN(price_b2c) AS min_price, ps.id, pf.path
+    query = """SELECT MIN(price_b2c) AS price, ps.id, pf.path
                 FROM price.price_winguard_main pm
                 JOIN price.price_winguard_sketch ps ON pm.price_winguard_sketch_id=ps.id 
                 JOIN price.price_winguard_files pf ON pm.price_winguard_sketch_id=pf.price_winguard_sketch_id
-                WHERE category = 1
+                WHERE category = %s
                 GROUP BY ps.id, pf.path"""
-    # products = PriceWinguardMain.objects.raw("SELECT *  FROM price_winguard_main JOIN price_winguard_sketch ON price_winguard_main.price_winguard_sketch_id=price_winguard_sketch.id WHERE category=1")
-    products = PriceWinguardMain.objects.raw(query)
+    products = PriceWinguardMain.objects.raw(query, [category_number])
     for product in products:
-        print(product.id, product.min_price, product.path)
-    return 0
+        path_arr = "".join(re.findall("\/\d+\/\d+", product.path)).split("/")
+        product.path_folder = path_arr[1]
+        product.path_file = path_arr[2]
+        product.percent = arr_of_sale[product.id % 20]
+        product.saleprice = int(product.price * (1 + product.percent / 100)) #TODO: реализовать через SQL
+    return products
 
 
 
@@ -93,7 +92,6 @@ def count_products_by_category(category_number):
 
 def get_products_by_category(category_number, amount=None, order_type=None, order_asc_or_desc=None, min_price=0,
                              max_price=9999999):
-    print(get_products_by_category_new(1))
     products = PriceWinguardSketch.objects.filter(category=category_number).values('id').annotate(
         min_pricewinguardmain=Min('pricewinguardmain')).values('min_pricewinguardmain', 'id')[:amount]
     for product in products:
@@ -128,6 +126,13 @@ def get_category_min_price(category_number):
             'price_b2c__min']
     return min_price
 
+def get_category_min_price_new(category_number):
+    query = """SELECT MIN(price_b2c) AS price
+                    FROM price.price_winguard_main pm
+                    JOIN price.price_winguard_sketch ps ON pm.price_winguard_sketch_id=ps.id 
+                    WHERE category = %s
+                    LIMIT 1"""
+    return PriceWinguardMain.objects.raw(query, [category_number])[0]
 
 def get_category_max_price(category_number):
     max_price = \
@@ -169,8 +174,11 @@ def catalog_category(request, category_name):
     if category_name not in russian_categories:
         return HttpResponseNotFound("Page NOT found")
     category = russian_categories[category_name]
-    products_list = get_products_by_category(category["number_of_category"])
 
+    products_list = get_products_by_category_new(category["number_of_category"])
+    # products_list = get_products_by_category(category["number_of_category"])
+
+    # print(get_category_min_price_new(category["number_of_category"]))
     min_price = get_category_min_price(category["number_of_category"])
     max_price = get_category_max_price(category["number_of_category"])
 
