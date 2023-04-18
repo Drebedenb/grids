@@ -68,14 +68,23 @@ russian_categories = {
 arr_of_sale = [15, 10, 20, 30, 25, 20, 10, 20, 20, 30, 25, 10, 10, 20, 30, 10, 20, 30, 15, 10]
 
 
-def get_products_by_category_new(category_number, amount="all", min_price=0, max_price=9999999):
+def get_products_by_category(category_number, min_price=0, max_price=9999999, order_by_name='id', order_scending='ASC', limit=9999):
+    dictionary_of_orders = ['price', 'id', 'popularity', 'ASC', 'DESC']
+    if order_by_name not in dictionary_of_orders or order_scending not in dictionary_of_orders:
+        return []
+    if not (isinstance(category_number, int) and isinstance(min_price, int) and isinstance(max_price, int) and isinstance(limit, int)):
+        return []
     query = """SELECT MIN(price_b2c) AS price, ps.id, pf.path
                 FROM price.price_winguard_main pm
                 JOIN price.price_winguard_sketch ps ON pm.price_winguard_sketch_id=ps.id 
                 JOIN price.price_winguard_files pf ON pm.price_winguard_sketch_id=pf.price_winguard_sketch_id
-                WHERE category = %s
-                GROUP BY ps.id, pf.path"""
-    products = PriceWinguardMain.objects.raw(query, [category_number])
+                WHERE category = {category_number}
+                GROUP BY ps.id, pf.path
+                HAVING price > {min_price} AND price < {max_price}
+                ORDER BY {order_by_name} {order_scending}
+                LIMIT {limit}""".format(category_number=category_number, min_price=min_price, max_price=max_price
+                                          ,order_by_name=order_by_name,order_scending=order_scending,limit=limit)
+    products = PriceWinguardMain.objects.raw(query)
     for product in products:
         path_arr = "".join(re.findall("\/\d+\/\d+", product.path)).split("/")
         product.path_folder = path_arr[1]
@@ -90,56 +99,18 @@ def count_products_by_category(category_number):
     return PriceWinguardSketch.objects.filter(category=category_number).count()
 
 
-def get_products_by_category(category_number, amount=None, order_type=None, order_asc_or_desc=None, min_price=0,
-                             max_price=9999999):
-    products = PriceWinguardSketch.objects.filter(category=category_number).values('id').annotate(
-        min_pricewinguardmain=Min('pricewinguardmain')).values('min_pricewinguardmain', 'id')[:amount]
-    for product in products:
-        try:
-            additional_info = PriceWinguardMain.objects.get(id=product["min_pricewinguardmain"])
-            product["price"] = additional_info.price_b2c
-            if not (max_price > product["price"] > min_price):
-                products.get(product["id"]).delete()
-                continue
-            product["percent"] = arr_of_sale[product["id"] % 20]
-            product["saleprice"] = int(product["price"] * (1 + product["percent"] / 100))
-            product["width"] = additional_info.name
-        except Exception as e:
-            product["price"] = "Нет данных в БД"
-            product["width"] = "Нет данных в БД"
-        # get path to image
-        try:
-            path = "".join(
-                re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(price_winguard_sketch_id=product["id"]).path))
-            path_arr = path.split("/")
-            product["path_folder"] = path_arr[1]
-            product["path_file"] = path_arr[2]
-        except:
-            product["path_folder"] = 1
-            product["path_file"] = 1
-    return products
-
-
 def get_category_min_price(category_number):
     min_price = \
         PriceWinguardMain.objects.filter(price_winguard_sketch__category=category_number).aggregate(Min('price_b2c'))[
             'price_b2c__min']
     return min_price
 
-def get_category_min_price_new(category_number):
-    query = """SELECT MIN(price_b2c) AS price
-                    FROM price.price_winguard_main pm
-                    JOIN price.price_winguard_sketch ps ON pm.price_winguard_sketch_id=ps.id 
-                    WHERE category = %s
-                    LIMIT 1"""
-    return PriceWinguardMain.objects.raw(query, [category_number])[0]
 
 def get_category_max_price(category_number):
     max_price = \
         PriceWinguardMain.objects.filter(price_winguard_sketch__category=category_number).aggregate(Max('price_b2c'))[
             'price_b2c__max']
     return max_price
-
 
 def index(request):
     count = {
@@ -175,10 +146,8 @@ def catalog_category(request, category_name):
         return HttpResponseNotFound("Page NOT found")
     category = russian_categories[category_name]
 
-    products_list = get_products_by_category_new(category["number_of_category"])
-    # products_list = get_products_by_category(category["number_of_category"])
+    products_list = get_products_by_category(category["number_of_category"])
 
-    # print(get_category_min_price_new(category["number_of_category"]))
     min_price = get_category_min_price(category["number_of_category"])
     max_price = get_category_max_price(category["number_of_category"])
 
@@ -191,7 +160,6 @@ def catalog_category(request, category_name):
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
 
-    # leaders_of_selling = get_products_by_category(1, 12)
     leaders_of_selling = []
     return render(request, 'main/catalog-category.html',
                   {'title': 'Каталог', 'list_of_grids_types': list_of_grids_types,
