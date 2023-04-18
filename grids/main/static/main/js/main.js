@@ -349,10 +349,6 @@ function getMaxPriceFromUrl() {
     return maximum;
 }
 
-if (document.getElementById('arrow-order-price')) {
-    changeArrowIcon();
-
-}
 //конец блока кода о фильтрации
 
 //блок кода для создания слайдера
@@ -414,25 +410,33 @@ function changeArrowIcon() {
         document.getElementById('arrow-order-price').style.display = 'none';
     }
 }
-
+if (document.getElementById('arrow-order-price')) {
+    changeArrowIcon();
+}
 function setParameterToUrl(nameOfParameter, value) {
     const url = new URL(getCurrentURL())
     url.searchParams.set(nameOfParameter, value);
     window.location.href = url;
 }
-
-function orderByPrice() {
+function orderByPrice(idOfElement) {
+    const ordersToId = {
+        'order-price': 'price',
+        'order-popularity': 'popularity',
+        'order-sketch': 'id',
+    }
+    const orderName = ordersToId[idOfElement]
+    console.log(orderName)
     const params = new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop) => searchParams.get(prop),
     });
     if (!params.orderAscOrDesc) {
-        setParameterToUrl('orderType', 'orderPrice')
+        setParameterToUrl('orderType', orderName)
         setParameterToUrl('orderAscOrDesc', 'asc')
     } else if (params.orderAscOrDesc === "asc") {
-        setParameterToUrl('orderType', 'orderPrice')
+        setParameterToUrl('orderType', orderName)
         setParameterToUrl('orderAscOrDesc', 'desc')
     } else {
-        setParameterToUrl('orderType', 'orderPrice')
+        setParameterToUrl('orderType', orderName)
         setParameterToUrl('orderAscOrDesc', 'asc')
     }
 }

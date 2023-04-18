@@ -295,10 +295,10 @@
                                 <p class=" text-center d-lg-inline d-none text-uppercase fw-semibold fs-9 w-100">Сортировать :</p>
                             </li>
                             <li class="nav-item" style="flex: 1 0 0%">
-                                <p class="w-100 active sort fs-8 text-center fs-md-9 rounded-2" id="product-characteristics-tab" type="button" role="tab">По популярности</p>
+                                <p class="w-100 active sort fs-8 text-center fs-md-9 rounded-2" id="order-popularity" type="button" role="tab" onclick="orderByPrice(self.id)">По популярности</p>
                             </li>
                             <li class="nav-item" style="flex: 1 0 0%">
-                                <p class=" text-center fs-9 fs-md-9 sort w-100 rounded-2" id="product-description-tab" type="button" role="tab" onclick="orderByPrice()">По цене
+                                <p class=" text-center fs-9 fs-md-9 sort w-100 rounded-2" id="order-price" type="button" role="tab" onclick="orderByPrice(self.id)">По цене
                                     {% include 'main/icons/arrow.html' %}
                                     </p>
                             </li>
@@ -306,7 +306,7 @@
 <!--                                <p class="text-center fs-9 fs-md-9 sort w-100 rounded-2" id="product-delivery-tab" type="button" role="tab">Хиты продаж</p>-->
 <!--                            </li>-->
                             <li class="nav-item" style="flex: 1 0 0%">
-                                <p class="text-center fs-8 fs-md-9 sort w-100 rounded-2" id="product-installation-tab" type="button" role="tab">По номеру эскиза</p>
+                                <p class="text-center fs-8 fs-md-9 sort w-100 rounded-2" id="order-sketchNumber" type="button" role="tab" onclick="orderByPrice(self.id)">По номеру эскиза</p>
                             </li>
 
                         </ul>
