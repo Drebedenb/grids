@@ -274,28 +274,25 @@
                     <div class="col-lg-9  mt-6 mt-md-0">
                         <!-- TABS -->
 
-                        <ul class="nav sorting_border mb-20 mb-lg-0  nav-pills mt-8 mt-md-8 fs-lg-9 fs-5  ls-sm mb-lg-6 mb-0  gap-lg-10 gap-5" id="myTab" role="tablist">
-                            <li class="nav-item sorting ">
-                                <p class=" text-center mb-0 mt-4 mt-lg-0 text-uppercase fw-semibold fs-9 ">Сортировать :</p>
+                        <ul class="nav nav-pills mt-8 mt-md-8 fs-lg-9 fs-5  ls-sm mb-lg-6  gap-lg-10 gap-5" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <p class=" text-center d-lg-inline d-none text-uppercase fw-semibold fs-9 w-100">Сортировать :</p>
                             </li>
                             <li class="nav-item" style="flex: 1 0 0%">
-                                <p class="w-100 active sort fs-8 mb-4 ps-5 fs-sm-9 fs-md-9 text-center  rounded-2" id="product-characteristics-tab" data-bs-toggle="tab" data-bs-target="#product-characteristics-tab-pane" type="button" role="tab">По популярности
+                                <p class="w-100 active sort fs-8 text-center fs-md-9 rounded-2" id="order-popularity" type="button" role="tab" onclick="orderByParameter(this.id)">По популярности
                                     {% include 'main/icons/arrow.html' with arrowId='order-popularity-arrow'%}
                                 </p>
                             </li>
                             <li class="nav-item" style="flex: 1 0 0%">
-                                <p class=" text-center fs-8 mb-4   fs-sm-9 fs-md-9 sort w-100 rounded-2" id="product-description-tab" data-bs-toggle="tab" data-bs-target="#product-description-tab-pane" type="button" role="tab">По цене 
+                                <p class=" text-center fs-9 fs-md-9 sort w-100 rounded-2" id="order-price" type="button" role="tab" onclick="orderByParameter(this.id)">По цене
                                     {% include 'main/icons/arrow.html' with arrowId='order-price-arrow'%}
-                                </p>
+                                    </p>
                             </li>
 <!--                            <li class="nav-item" style="flex: 1 0 0%">-->
 <!--                                <p class="text-center fs-9 fs-md-9 sort w-100 rounded-2" id="product-delivery-tab" type="button" role="tab">Хиты продаж</p>-->
 <!--                            </li>-->
                             <li class="nav-item" style="flex: 1 0 0%">
-                                <p class="text-center fs-8 mb-4  fs-sm-9 fs-md-9 sort w-100 rounded-2" id="product-delivery-tab" data-bs-toggle="tab" data-bs-target="#product-delivery-tab-pane" type="button" role="tab">Хиты продаж</p>
-                            </li>
-                            <li class="nav-item" style="flex: 1 0 0%">
-                                <p class="text-center fs-8 fs-md-9 sort w-100 rounded-2" id="product-installation-tab"  data-bs-toggle="tab" data-bs-target="#product-installation-tab-pane" type="button" role="tab">По номеру эскиза
+                                <p class="text-center fs-8 fs-md-9 sort w-100 rounded-2" id="order-sketchNumber" type="button" role="tab" onclick="orderByParameter(this.id)">По номеру эскиза
                                     {% include 'main/icons/arrow.html' with arrowId='order-sketchNumber-arrow'%}
                                 </p>
                             </li>

@@ -75,6 +75,14 @@ def get_products_by_category(category_number, min_price, max_price, order_by_nam
         return []
     if not (isinstance(category_number, int) and isinstance(min_price, int) and isinstance(max_price, int) and isinstance(limit, int)):
         return []
+    prods = PriceWinguardMain.objects.filter(price_winguard_sketch__category=1)\
+    .values('price_winguard_sketch__id', 'price_winguard_sketch__pricewinguardfiles__path')\
+    .annotate(price=Min('price_b2c'))\
+    .filter(price__gt=0, price__lt=99999)\
+    .order_by('price')\
+    .values('price', 'price_winguard_sketch__id', 'price_winguard_sketch__pricewinguardfiles__path')\
+    .distinct()[:9999]
+
     query = """SELECT MIN(price_b2c) AS price, ps.id, pf.path
                 FROM price.price_winguard_main pm
                 JOIN price.price_winguard_sketch ps ON pm.price_winguard_sketch_id=ps.id 
@@ -197,7 +205,7 @@ def reviews(request):
 
 def compare(request):
     str_of_cookies = request.COOKIES.get('Compare')
-    if str_of_cookies is '':
+    if str_of_cookies == '':
         return render(request, 'main/compare.html',
                       {'products': []})
     list_of_compares_cookie = str_of_cookies.split(',')
@@ -222,7 +230,7 @@ def compare(request):
 
 def favorite(request):
     str_of_cookies = request.COOKIES.get('Favorites')
-    if str_of_cookies is '':
+    if str_of_cookies == '':
         return render(request, 'main/favorite.html',
                       {'products': []})
     list_of_favorites_cookie = str_of_cookies.split(',')
