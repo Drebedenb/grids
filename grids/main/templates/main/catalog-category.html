@@ -25,7 +25,7 @@
                         <ul class="breadcrumb mb-0">
                             <li class="breadcrumb-item"><a href="index.html">Главная </a></li>
                             <li class="breadcrumb-item"><a href="catalog.html">Каталог</a></li>
-                            <li class="breadcrumb-item active">Дутые решетки на окна </li>
+                            <li class="breadcrumb-item active">{{category.title}} решетки на окна </li>
                         </ul>
                     </nav>
 
@@ -74,7 +74,7 @@
                                                         <input class="form-check-input" id="category-ajur" name="filter-type" autocomplete="off" type="radio" onclick="changeCategoryAndUrl('ajur')"/>
                                                         <label class="form-check-label" for="category-ajur">Ажурные решетки</label>
                                                     </div>
-                                                    <h3 class="fw-medium ls-sm fs-9 text-secondary text-uppercase ms-10">Сварные решетки</h3>
+                                                    <h3 class="fw-medium ls-sm fs-9 text-secondary text-uppercase ms-10">Кованые решетки</h3>
                                                     <div class="form-check fs-9 ls-sm mb-10 d-inline-block ms-10">
                                                         <input class="form-check-input" id="category-vip" name="filter-type" autocomplete="off" type="radio" onclick="changeCategoryAndUrl('vip')"/>
                                                         <label class="form-check-label" for="category-vip">VIP решетки</label>
@@ -279,18 +279,25 @@
                                 <p class=" text-center mb-0 mt-4 mt-lg-0 text-uppercase fw-semibold fs-9 ">Сортировать :</p>
                             </li>
                             <li class="nav-item" style="flex: 1 0 0%">
-                                <p class="w-100 active sort fs-8 mb-4 ps-5 fs-sm-9 fs-md-9 text-center  rounded-2" id="product-characteristics-tab" data-bs-toggle="tab" data-bs-target="#product-characteristics-tab-pane" type="button" role="tab">По популярности</p>
+                                <p class="w-100 active sort fs-8 mb-4 ps-5 fs-sm-9 fs-md-9 text-center  rounded-2" id="product-characteristics-tab" data-bs-toggle="tab" data-bs-target="#product-characteristics-tab-pane" type="button" role="tab">По популярности
+                                    {% include 'main/icons/arrow.html' with arrowId='order-popularity-arrow'%}
+                                </p>
                             </li>
                             <li class="nav-item" style="flex: 1 0 0%">
-                                <p class=" text-center fs-8 mb-4   fs-sm-9 fs-md-9 sort w-100 rounded-2" id="product-description-tab" data-bs-toggle="tab" data-bs-target="#product-description-tab-pane" type="button" role="tab">По цене <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                                  </svg> </p>
+                                <p class=" text-center fs-8 mb-4   fs-sm-9 fs-md-9 sort w-100 rounded-2" id="product-description-tab" data-bs-toggle="tab" data-bs-target="#product-description-tab-pane" type="button" role="tab">По цене 
+                                    {% include 'main/icons/arrow.html' with arrowId='order-price-arrow'%}
+                                </p>
                             </li>
+<!--                            <li class="nav-item" style="flex: 1 0 0%">-->
+<!--                                <p class="text-center fs-9 fs-md-9 sort w-100 rounded-2" id="product-delivery-tab" type="button" role="tab">Хиты продаж</p>-->
+<!--                            </li>-->
                             <li class="nav-item" style="flex: 1 0 0%">
                                 <p class="text-center fs-8 mb-4  fs-sm-9 fs-md-9 sort w-100 rounded-2" id="product-delivery-tab" data-bs-toggle="tab" data-bs-target="#product-delivery-tab-pane" type="button" role="tab">Хиты продаж</p>
                             </li>
                             <li class="nav-item" style="flex: 1 0 0%">
-                                <p class="text-center fs-8 mb-4 pe-5  fs-sm-8 fs-md-9 sort w-100 rounded-2" id="product-installation-tab"  data-bs-toggle="tab" data-bs-target="#product-installation-tab-pane" type="button" role="tab">По номеру эскиза</p>
+                                <p class="text-center fs-8 fs-md-9 sort w-100 rounded-2" id="product-installation-tab"  data-bs-toggle="tab" data-bs-target="#product-installation-tab-pane" type="button" role="tab">По номеру эскиза
+                                    {% include 'main/icons/arrow.html' with arrowId='order-sketchNumber-arrow'%}
+                                </p>
                             </li>
 
                         </ul>
@@ -299,7 +306,7 @@
                                 <div class="row row-cols-lg-3 row-cols-1 gy-20">
 
                                     {% for item in products %}
-                                    {% include 'main/components/catalog_category_item.html' with category=category PriceWinguardSketchId=item.id name=item.width price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
+                                    {% include 'main/components/catalog_category_item.html' with PriceWinguardSketchId=item.id price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
                                 {% endfor %}
                         </div>
 
@@ -332,207 +339,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="product-description-tab-pane" role="tabpanel" tabindex="0">
-                        <div class="row row-cols-lg-3 row-cols-1 gy-20">
-                            
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                             {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                        </div>
-                        <div class="text-center mt-lg-20 mt-10"><a class="btn btn-outline-light btn-xxl btn-wide-xxl" href="#">Показать еще  </a></div>
-                        <nav class="mt-lg-30 mt-20">
-                            <ol class="pagination justify-content-lg-center overflow-x-auto mb-0">
-                                <li class="page-item previous"><a class="page-link" href="#">Назад</a></li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                <li class="page-item"><a class="page-link" href="#">6</a></li>
-                                <li class="page-item"><a class="page-link" href="#">7</a></li>
-                                <li class="page-item"><a class="page-link" href="#">8</a></li>
-                                <li class="page-item"><a class="page-link" href="#">9</a></li>
-                                <li class="page-item next"><a class="page-link" href="#">Вперед</a></li>
-                            </ol>
-                        </nav>
-
-                    </div>
-                    <div class="tab-pane fade" id="product-delivery-tab-pane" role="tabpanel" tabindex="0">
-                        <div class="row row-cols-lg-3 row-cols-1 gy-20">
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                             {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                        </div>
-                        <div class="text-center mt-lg-20 mt-10"><a class="btn btn-outline-light btn-xxl btn-wide-xxl" href="#">Показать еще  </a></div>
-                        <nav class="mt-lg-30 mt-20">
-                            <ol class="pagination justify-content-lg-center overflow-x-auto mb-0">
-                                <li class="page-item previous"><a class="page-link" href="#">Назад</a></li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                <li class="page-item"><a class="page-link" href="#">6</a></li>
-                                <li class="page-item"><a class="page-link" href="#">7</a></li>
-                                <li class="page-item"><a class="page-link" href="#">8</a></li>
-                                <li class="page-item"><a class="page-link" href="#">9</a></li>
-                                <li class="page-item next"><a class="page-link" href="#">Вперед </a></li>
-                            </ol>
-                        </nav>
-                    </div>
-                    <div class="tab-pane fade" id="product-installation-tab-pane" role="tabpanel" tabindex="0">
-                        <div class="row row-cols-lg-3 row-cols-1 gy-20">
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                            {% include 'main/components/catalog_category_item.html' %}
-                        </div>
-                        <div class="text-center mt-lg-20 mt-10"><a class="btn btn-outline-light btn-xxl btn-wide-xxl" href="#">Показать еще  </a></div>
-                        <nav class="mt-lg-30 mt-20">
-                            <ol class="pagination justify-content-lg-center overflow-x-auto mb-0">
-                                <li class="page-item previous"><a class="page-link" href="#">Назад</a></li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                <li class="page-item"><a class="page-link" href="#">6</a></li>
-                                <li class="page-item"><a class="page-link" href="#">7</a></li>
-                                <li class="page-item"><a class="page-link" href="#">8</a></li>
-                                <li class="page-item"><a class="page-link" href="#">9                        </a></li>
-                                <li class="page-item next"><a class="page-link" href="#">Вперед                      </a></li>
-                            </ol>
-                        </nav>
-                    </div>
-
                         <!--HITI PRODAZH-->
                         <section>
                             <div class="row  mb-17 pt-lg-30 pt-30">
@@ -568,34 +374,50 @@
                                                         <button class="btn btn-light fs-lg-7 btn-lg btn-wide-sm " data-bs-toggle="modal" data-bs-target="#product-quick-view" type="button">Быстрый просмотр</button>
                                                     </div>
 
-                                                    <a href="/кованые-решетки-на-окна-вип-класс">
-                                                        <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
-                                                            class="mt-5 object-fit-contain" src="{% static 'main/img/grids_pictures'%}/{{item.path_folder}}/solid/{{item.path_file}}.png"
-                                                            alt="Решетки на окна эконом класса"></div>
-                                                </div></a>
-                                               
-                                           
-                                                        <h3 class="card-title h5 fs-lg-7 fs-10 fw-medium  d-lg-inline-block ls-sm text-uppercase  pb-5">
-                                                    <a class="text-decoration-none text-dark d-lg-inline-block">Решетка на окно<br>сварная {{path_folder}} - {{path_file}}</a></h3>
-                                                    <div class="float-end buy_item">
-                                                 <div class="d-flex justify-content-between">
-                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:15px' %}
-                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:15px' %}
-                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:15px' %}
-                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:15px' %}
-                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:15px' %}
-                                                                        <span class="fs-lg-7 fs-8">(32)</span>
-                                                  </div>
-                                                   <a class="btn btn-outline-dark px-8 py-5 w-100 fs-lg-7 fs-9 mt-5">Купить</a>
-                                                </div>
-                                                    <span class="d-block fs-lg-8 fs-10 text-muted fw-medium  text-decoration-line-through  text-uppercase ls-sm pb-3 ">2900 руб</span>
-                                                    <span class="d-block fs-lg-8 fs-10 text-danger fw-medium  text-uppercase ls-sm">2900 руб</span>
-                                               
-                                      
-                                                  
-                                            </div>
-                                        </div>
-                                    </div>
+<!--                                    <div class="swiper-slide">-->
+<!--                                        <div class="card card_hover_shadow card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">-->
+<!--                                            <div class="card-body p-10">-->
+<!--                                                <div class="position-relative text-center ">-->
+<!--                                                    <div class="position-absolute top-0 start-0 z-1">-->
+<!--                                                        <a class="text-muted text-hover-black" href="#">{% include 'main/icons/chart.html' with classes="svg-icon"%}</a>-->
+<!--                                                    <span class="fs-7  ms-2 py-0 bg-success text-white px-2 rounded-2">хит</span>-->
+<!--                                                </div>-->
+<!--                                                    <div class="position-absolute top-0 end-0 z-1">-->
+<!--                                                        <span class="fs-7 ms-2 py-0 bg-danger text-white   px-2 rounded-2">-30%</span>-->
+<!--                                                        <a class="text-muted text-hover-black">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">-->
+<!--                                                        <button class="btn btn-light fs-lg-7 btn-lg btn-wide-sm " data-bs-toggle="modal" data-bs-target="#product-quick-view" type="button">Быстрый просмотр</button>-->
+<!--                                                    </div>-->
+
+<!--                                                    <a href="/кованые-решетки-на-окна-вип-класс">-->
+<!--                                                        <div class="ratio" style="&#45;&#45;bs-aspect-ratio: 100%; max-height: 265px;"><img-->
+<!--                                                            class="mt-5 object-fit-contain" src="{% static 'main/img/grids_pictures'%}/{{item.path_folder}}/solid/{{item.path_file}}.png"-->
+<!--                                                            alt="Решетки на окна эконом класса"></div>-->
+<!--                                                </div></a>-->
+
+
+<!--                                                        <h3 class="card-title h5 fs-lg-7 fs-10 fw-medium  d-lg-inline-block ls-sm text-uppercase  pb-5">-->
+<!--                                                    <a class="text-decoration-none text-dark d-lg-inline-block">Решетка на окно<br>сварная {{path_folder}} - {{path_file}}</a></h3>-->
+<!--                                                    <div class="float-end buy_item">-->
+<!--                                                 <div class="d-flex justify-content-between">-->
+<!--                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:15px' %}-->
+<!--                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:15px' %}-->
+<!--                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:15px' %}-->
+<!--                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:15px' %}-->
+<!--                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:15px' %}-->
+<!--                                                                        <span class="fs-lg-7 fs-8">(32)</span>-->
+<!--                                                  </div>-->
+<!--                                                   <a class="btn btn-outline-dark px-8 py-5 w-100 fs-lg-7 fs-9 mt-5">Купить</a>-->
+<!--                                                </div>-->
+<!--                                                    <span class="d-block fs-lg-8 fs-10 text-muted fw-medium  text-decoration-line-through  text-uppercase ls-sm pb-3 ">2900 руб</span>-->
+<!--                                                    <span class="d-block fs-lg-8 fs-10 text-danger fw-medium  text-uppercase ls-sm">2900 руб</span>-->
+
+
+
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
                                     {%endfor%}
 
                                 </div>
@@ -629,9 +451,8 @@
                           Материал рамы – уголок различной толщины и ширины. Внутренние детали привариваются к каркасу, образуя декоративный или технический узор.
                           Решетки можно разделить на сварные и кованые. Первые не включают элементы художественной ковки, что обеспечивает бюджетность цен.
                           Но первую очередь изделия отличаются назначением, разделяясь на решетки для: дома, квартиры, офиса; балконов и лоджий; приямков, окон цокольных этажей и подвалов. В Москве спросом пользуются кованые решетки – защитные ограждения с дизайнерским уклоном. Они могут включать в себя имитации веток, цветов, средневековых стрел. Изогнутые элементы дополняются витыми деталями, составными фигурами, цельнолитыми изделиями. На металлических узорах можно увидеть техники искусственного состаривания, частичной покраски. Решетка, размещается с внешней или внутренней стороны помещения. Уличный вариант предпочтителен для жилых, коммерческих зданий, производственных, общественных объектов. Внутреннее расположение характерно для спортивных площадок, где есть риск разбить стекло мячом, спортивным снарядом. Эластичная сетка не способна задержать тяжелый предмет. Противовзломные железные решетки на окна обычно имеют плотный узор и толстые прутья, привариваются к металлическим закладным или имеют надежную анкерную систему фиксации. По способу монтажа также можно выделить модели на болтах и быстросъемных соединениях. Их выбор может быть продиктован требованиями пожарной безопасности или связан с желанием снимать ограждения, например, во время летней эксплуатации дачного домика. Оконные решения От чего зависит на решетки на окна цена? От варианта исполнения, требуя использования разных технологий и оборудования. Сварные и кованые конструкции могут быть глухими и распашными. Открывающаяся наружу решетка позволит выглянуть из окна, помыть стекла и раму, увеличить светопропускную способность. Съемная или стационарная решетка. Способ монтажа, тип крепежа определяют защитные показатели. Съемная решетка подойдет для декорирования фасада 2-3 этажного коттеджа. Ажурные ограждения. Отличаются витиеватыми узорами, увеличенным числом деталей из прутка малого диаметра с элементами художественной ковки. Ровные, дутые. Выпирающая нижняя часть позволяет устанавливать цветы, высовывать голову, наблюдать за прохожими. Цены решеток на окна, имеющих одну плоскость, как правило, ниже, чем у дутых моделей. Дутые решетки используются для создания свободного пространства, открывания форточки, размещения цветов на балконе и т.д. Некоторые модели для частных домов предусматривают установку под выступающим за пределы проема подоконником (с выпуклостью в нижней части). Решетка защитная на окна металлическая от компании «Svarnik» Имея собственное производство и предоставляя огромный выбор базовых моделей, мы готовы изготовить ограждение любых размеров и конфигурации в самые короткие сроки. Оставьте заявку прямо сейчас, указав свои данные в поле «заказать звонок» или написав нам на электронную почту. Заказать установку решеток Работы выполняют производители, частные бригады и отдельные фирмы. В компании «Сварник» можно купить типовую решетку, выбрав размер, профиль. Для определения совместимости ограждения с проемом стоит вызвать мастера для проведения замеров и осмотра откосов. Для установки может потребоваться демонтаж облицовки, сборка нестандартной конструкции, поиск усиленного крепежа. </p>
-
-            
-               
+                </div>
+            </div>
         </section>
 
 
@@ -967,32 +788,5 @@ for (let i = 0; i < categories.length; i++) {
 }
 //конец блока кода о выборе класса или категории
 
-//блок кода о добавлении в избранное
-function setCookie(name,value,days) {
-    let expires = "";
-    if (days) {
-        let date = new Date();
-        date.setTime(date.getTime() + (days*24*60*60*1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-}
-function getCookie(name) {
-    let nameEQ = name + "=";
-    let ca = document.cookie.split(';');
-    for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-    }
-    return null;
-}
-function eraseCookie(name) {
-    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-}
-function addToFavorite(element){
-    setCookie("Favorites", element.id, 7)
-}
-//конец блока кода о добавлении в избранное
 </script>
 {% endblock %}

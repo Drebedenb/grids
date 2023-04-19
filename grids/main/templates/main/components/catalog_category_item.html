@@ -4,12 +4,12 @@
         <div class="card-body p-10">
             <div class="position-relative text-center ">
                 <div class="position-absolute top-0 start-0 z-1">
-                    <a class="text-muted text-hover-black" href="#">{% include 'main/icons/chart.html' with classes="svg-icon"%}</a>
+                    <a class="text-muted text-hover-black">{% include 'main/icons/chart.html' with classes="svg-icon"%}</a>
                 <span class="fs-8  ms-2 py-0 bg-success text-white px-2 rounded-2">хит</span>
             </div>
                 <div class="position-absolute top-0 end-0 z-1">
                     <span class="fs-8 ms-2 py-0 bg-danger text-white   px-2 rounded-2">{{percent}}%</span>
-                    <a class="text-muted text-hover-black" id="{{PriceWinguardSketchId}}" onclick="addToFavorite(this)" href="#">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a>
+                    <a class="text-muted text-hover-black">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a>
                 </div>
                 <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
                     <button class="btn btn-light btn-lg btn-wide-xl"
@@ -19,14 +19,14 @@
                         просмотр
                     </button>
                 </div>
-                <a href="{%url 'product' category.url_title %}-{{path_folder}}-{{path_file}}-{{PriceWinguardSketchId}}">
+                <a href="{%url 'product' PriceWinguardSketchId %}">
                 <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
                         class="object-fit-contain"
                         src="{% static 'main/img/grids_pictures' %}/{{path_folder}}/solid/{{path_file}}.png"
                         alt="Решетки на окна эконом класса"></div>
             </div></a>
-           
-       
+
+
                     <h3 class="card-title h5  fs-10 fw-medium  d-lg-inline-block ls-sm text-uppercase  pb-5">
                 <a class="text-decoration-none text-dark d-lg-inline-block">Решетка на окно<br>сварная {{path_folder}} - {{path_file}}</a></h3>
                 <div class="float-end buy_item">
@@ -42,7 +42,7 @@
             </div>
                 <span class="d-block fs-10 text-muted fw-medium  text-decoration-line-through  text-uppercase ls-sm pb-4 ">{{saleprice}} руб</span>
                 <span class="d-block fs-10 text-danger fw-medium  text-uppercase ls-sm  ">{{price}} руб</span>
-           
+
             <!--MODAL-->
             {% include 'main/components/product_quick_view.html' with PriceWinguardSketchId=PriceWinguardSketchId modal_id=path_file%}
         </div>
