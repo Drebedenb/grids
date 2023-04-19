@@ -68,9 +68,10 @@ russian_categories = {
 arr_of_sale = [15, 10, 20, 30, 25, 20, 10, 20, 20, 30, 25, 10, 10, 20, 30, 10, 20, 30, 15, 10]
 
 
-def get_products_by_category(category_number, min_price=0, max_price=9999999, order_by_name='id', order_scending='ASC', limit=9999):
-    dictionary_of_orders = ['price', 'id', 'popularity', 'ASC', 'DESC']
+def get_products_by_category(category_number, min_price, max_price, order_by_name, order_scending, limit):
+    dictionary_of_orders = ['price', 'id', 'popularity', 'asc', 'desc']
     if order_by_name not in dictionary_of_orders or order_scending not in dictionary_of_orders:
+
         return []
     if not (isinstance(category_number, int) and isinstance(min_price, int) and isinstance(max_price, int) and isinstance(limit, int)):
         return []
@@ -90,7 +91,7 @@ def get_products_by_category(category_number, min_price=0, max_price=9999999, or
         product.path_folder = path_arr[1]
         product.path_file = path_arr[2]
         product.percent = arr_of_sale[product.id % 20]
-        product.saleprice = int(product.price * (1 + product.percent / 100)) #TODO: реализовать через SQL
+        product.saleprice = int((product.price / (1 - product.percent / 100))/10) * 10 #TODO: реализовать через SQL
     return products
 
 
@@ -110,6 +111,9 @@ def get_category_max_price(category_number):
     max_price = \
         PriceWinguardMain.objects.filter(price_winguard_sketch__category=category_number).aggregate(Max('price_b2c'))[
             'price_b2c__max']
+    products = PriceWinguardMain.objects.filter(price_winguard_sketch__category=category_number)
+    for product in products:
+        print(product)
     return max_price
 
 def index(request):
@@ -136,17 +140,20 @@ def index(request):
 
 
 def catalog_category(request, category_name):
-    order_type = None
-    order_asc_or_desc = None
-    if request.method == 'GET' and category_name in russian_categories:
-        order_type = request.GET.get('orderType')
-        order_asc_or_desc = request.GET.get('orderAscOrDesc')
-
     if category_name not in russian_categories:
         return HttpResponseNotFound("Page NOT found")
     category = russian_categories[category_name]
-
-    products_list = get_products_by_category(category["number_of_category"])
+    min_price_for_sort = 0
+    max_price_for_sort = 9999999
+    order_type = 'id'
+    order_scending = 'asc'
+    limit = 9999
+    if request.method == 'GET':
+        order_type = 'id' if request.GET.get('order') is None else request.GET.get('order')
+        order_scending = 'asc' if request.GET.get('orderScending') is None else request.GET.get('orderScending')
+        min_price_for_sort = 0 if request.GET.get('minPriceByUser') is None else int(request.GET.get('minPriceByUser'))
+        max_price_for_sort = 9999999 if request.GET.get('maxPriceByUser') is None else int(request.GET.get('maxPriceByUser'))
+    products_list = get_products_by_category(category["number_of_category"], min_price_for_sort, max_price_for_sort, order_type, order_scending, limit)
 
     min_price = get_category_min_price(category["number_of_category"])
     max_price = get_category_max_price(category["number_of_category"])

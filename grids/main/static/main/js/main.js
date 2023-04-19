@@ -397,48 +397,59 @@ if (priceSlider != null) {
 
 //блок кода для сортировки по возрастанию или убыванию цены
 
-function changeArrowIcon() {
-    const params = new Proxy(new URLSearchParams(window.location.search), {
-        get: (searchParams, prop) => searchParams.get(prop),
-    });
-    if (params.orderAscOrDesc === 'desc') {
-        document.getElementById('arrow-order-price').style.display = 'inline';
-        document.getElementById('arrow-order-price').style.transform = 'rotate(180deg)';
-    } else if (params.orderAscOrDesc === 'asc') {
-        document.getElementById('arrow-order-price').style.display = 'inline';
-    } else {
-        document.getElementById('arrow-order-price').style.display = 'none';
-    }
-}
-if (document.getElementById('arrow-order-price')) {
-    changeArrowIcon();
-}
-function setParameterToUrl(nameOfParameter, value) {
-    const url = new URL(getCurrentURL())
-    url.searchParams.set(nameOfParameter, value);
-    window.location.href = url;
-}
-function orderByPrice(idOfElement) {
-    const ordersToId = {
+const idToOrders = {
         'order-price': 'price',
         'order-popularity': 'popularity',
-        'order-sketch': 'id',
-    }
-    const orderName = ordersToId[idOfElement]
-    console.log(orderName)
+        'order-sketchNumber': 'id',
+}
+const ordersToId = {
+        'price': 'order-price',
+        'popularity': 'order-popularity',
+        'id': 'order-sketchNumber',
+}
+function changeArrowIcon() {
+    let orderScending;
+    let order;
     const params = new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop) => searchParams.get(prop),
     });
-    if (!params.orderAscOrDesc) {
-        setParameterToUrl('orderType', orderName)
-        setParameterToUrl('orderAscOrDesc', 'asc')
-    } else if (params.orderAscOrDesc === "asc") {
-        setParameterToUrl('orderType', orderName)
-        setParameterToUrl('orderAscOrDesc', 'desc')
-    } else {
-        setParameterToUrl('orderType', orderName)
-        setParameterToUrl('orderAscOrDesc', 'asc')
+    // TODO: сделать по номеру эскиза заранее выбранным
+    // if (!params.order ) {
+    //     order = 'id'
+    //     orderScending = 'asc'
+    // } else {
+        order = params.order
+        orderScending = params.orderScending
+    // }
+    const arrowId = ordersToId[order] + '-arrow'
+    if (orderScending === 'desc') {
+        document.getElementById(arrowId).style.display = 'inline';
+        document.getElementById(arrowId).style.transform = 'rotate(180deg)';
+    } else if (orderScending === 'asc') {
+        document.getElementById(arrowId).style.display = 'inline';
     }
+}
+if (document.getElementById('order-sketchNumber')) {
+    changeArrowIcon();
+}
+function orderByParameter(idOfElement) {
+    const orderName = idToOrders[idOfElement]
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+    });
+    const url = new URL(getCurrentURL())
+    if (params.order === orderName) {
+        if (params.orderScending === 'asc') {
+            url.searchParams.set('orderScending', 'desc')
+        } else {
+            url.searchParams.set('orderScending', 'asc')
+        }
+    }
+    else {
+        url.searchParams.set('order', orderName)
+        url.searchParams.set('orderScending','asc')
+    }
+    window.location.href = url;
 }
 
 //блок кода для сортировки по возрастанию или убыванию цены закончен
