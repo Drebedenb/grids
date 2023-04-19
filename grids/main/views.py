@@ -95,7 +95,6 @@ def get_products_by_category(category_number, min_price, max_price, order_by_nam
     return products
 
 
-
 def count_products_by_category(category_number):
     return PriceWinguardSketch.objects.filter(category=category_number).count()
 
@@ -123,7 +122,7 @@ def index(request):
         "vip": count_products_by_category(5),
         "exlusive": count_products_by_category(7),
     }
-    leaders_of_selling = get_products_by_category(1, 20)
+    leaders_of_selling = get_products_by_category(1, 0, 99999, 'id', 'asc', 9999)
     min_price_1 = get_category_min_price(1)
     min_price_2 = get_category_min_price(3)
     min_price_3 = get_category_min_price(5)
