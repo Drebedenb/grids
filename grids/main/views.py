@@ -107,12 +107,8 @@ def get_category_min_price(category_number):
 
 
 def get_category_max_price(category_number):
-    max_price = \
-        PriceWinguardMain.objects.filter(price_winguard_sketch__category=category_number).aggregate(Max('price_b2c'))[
-            'price_b2c__max']
-    products = PriceWinguardMain.objects.filter(price_winguard_sketch__category=category_number)
-    for product in products:
-        print(product)
+    max_price = PriceWinguardMain.objects.filter(price_winguard_sketch__category=category_number).values('price_winguard_sketch__id')\
+        .annotate(min_price=Min('price_b2c')).values('min_price').aggregate(Max('min_price'))['min_price__max']
     return max_price
 
 def index(request):
