@@ -12,6 +12,10 @@
     }
 }
 
+.modal-xl {
+    --bs-modal-width: 1080px;
+  }
+
 .button-close {
     margin-right: -15px;
     margin-top: -10px;
@@ -66,6 +70,8 @@
 .sort:hover {
     color: #b52810;
 }
+
+
 
 /* TABLE */
 .table th,.table td{
@@ -155,11 +161,14 @@
 }
 
 /* SALE ARRROW ROTATE */
-.text-center.fs-9.fs-md-9.sort.w-100.rounded-2.active > svg{
+.text-center.fs-sm-9.fs-md-9.sort.w-100.rounded-2.active > svg{
     transform:rotate(180deg);
   }
   
 /* CAROUSEL */
+.carousel-indicators {
+    bottom: -30px;
+  }
 
 
 .swiper_container {
@@ -170,6 +179,33 @@
     position: relative;
     margin-top: -20px;
 }
+
+
+/*OTZIVI*/
+.arrow-prev{
+    left: -100px;
+}
+
+.arrow-next{
+    right: -100px;
+}
+
+
+/*BUTTON-CLOSE*/
+.btn_close{
+    background-color: rgba(0, 0, 0, 0.344);
+    border: none;
+    right: 10px;
+}
+.btn_close:hover{
+    background-color: rgba(0, 0, 0, 0.776);
+}
+.bi-x-lg{
+    color: white;
+}
+
+
+
 
 
 
@@ -187,21 +223,54 @@
     .product-description-gog{
         padding-left: 10px;
     }
+    .product-description-og{
+        text-align: start;
+    }
 
 
-    #gog{
+    #product-gog{
         width: 70px;
 }
 
 
 
 /* MEDIA QUERIES */
+@media (max-width: 1200px) {
+     /*OTZIVI*/
+.arrow-prev{
+    left: -80px;
+}
+
+.arrow-next{
+    right: -80px;
+}
+
+}
 
 @media (max-width: 992px) {
      /* BTN_CATALOG */
 .btn_catalog{
     display: none;
 }
+   /*TABS*/
+   .sorting{
+    width: 100%;
+ }
+.sorting_border{
+    border: 1px solid red;
+    border-radius: 10px;
+ }
+
+
+ /*OTZIVI*/
+.arrow-prev{
+    left: -80px;
+}
+
+.arrow-next{
+    right: -80px;
+}
+
 }
 
 
@@ -212,6 +281,22 @@
            .pluses_company {
             display: none;
              }
+
+          
+             /*OTZIVI*/
+.arrow-prev{
+    display: none;
+}
+
+.arrow-next{
+   display: none;
+}
+
+    /*FILTER*/
+    
+    .sort{
+        white-space: pre-wrap;
+    }
     
     /* SVG-icons */
 .svg_heart{
@@ -237,7 +322,6 @@
 .star{
   width: 20px !important;
 }
-
 }
 
 
@@ -283,7 +367,27 @@
 .card-ratio{
     max-width: 300px;
 }
+
+   
   }
+
+
+  @media (max-width: 410px) {
+        /* TABS */
+
+.sort {
+   font-size: 14px !important;
+}
+   }
+
+
+   @media (max-width: 370px) {
+    /* TABS */
+
+.sort {
+font-size: 13px !important;
+}
+}
 
 
 

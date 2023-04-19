@@ -23,7 +23,7 @@ list_of_grids_types = [
     {'title': 'Цоколь/Подвал', 'img_path': 'main/img/grids_types/11_cokol.png'},
     {'title': 'Для дома', 'img_path': 'main/img/grids_types/12_dlya_doma.png'},
     {'title': 'Антикошка', 'img_path': 'main/img/grids_types/13_antikoshka.png'},
-    {'title': 'От выпадения детей', 'img_path': 'main/img/grids_types/14_ot_vipadenia.png'},
+    {'title': 'Кид-стоп', 'img_path': 'main/img/grids_types/14_ot_vipadenia.png'},
     {'title': 'На кондиционер', 'img_path': 'main/img/grids_types/15_na_condicioner.png'},
     {'title': 'Под цветы', 'img_path': 'main/img/grids_types/16_pod_cveti.png'},
     {'title': 'В подъезд', 'img_path': 'main/img/grids_types/17_v_podezd.png'},
@@ -208,3 +208,6 @@ def favorite(request):
 
 def page_not_found(request, exception):
     return HttpResponseNotFound("Page NOT found")
+
+def privacy(request):
+    return render(request, 'main/privacy.html')

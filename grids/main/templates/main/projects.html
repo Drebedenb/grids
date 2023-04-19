@@ -52,8 +52,9 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-body">
-        <button type="button" class="btn-close float-end button-close btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+        <div class="modal-body p-5">
+            <button type="button" class=" position-absolute  btn_close  " aria-label="Close" data-bs-dismiss="modal">
+                {% include 'main/icons/btn_close.html' with classes="svg-icon"%}</button>
         <img class="w-100" src="{% static 'main/img/photos/photo74.png' %}" alt="">
       </div>
       <div class="modal-footer">
