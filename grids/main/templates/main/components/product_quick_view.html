@@ -1,175 +1,193 @@
 {% load static %}
 {% load main_tags %}
 {% get_product_by_id sketch_id=PriceWinguardSketchId as product %}
-<div class="modal modal-xl border border-black rounded-4 fade" id="{{modal_id}}">
+<div class="modal modal-xl modal-custom border border-black rounded-4 fade" id="{{modal_id}}">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="product modal-body p-lg-20 py-10">
                 <button type="button" class="btn-close button-close  float-end btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
                 <div class="row gy-lg-0 gy-20">
-                    <div class="col-lg-4">
-                        <div class="position-relative text-center">
-                            <div class="d-block position-absolute top-0 mt-2 ms-3 svg_heart z-1"><a
-                                    class="text-muted text-hover-black" href="#">
-                                    {% include 'main/icons/heart.html' with classes='svg-icon' %}
-                            </a></div>
-                            <div class="d-block position-absolute svg_chart mt-2 me-3 top-0 end-0 z-1"><a
-                                    class="text-muted text-hover-black" href="#">
-                                    {% include 'main/icons/chart.html' with classes='svg-icon' %}
-                            </a></div>
-                            <div class="border-lg border-lg-light rounded-lg-3 px-lg-40  py-lg-5 py-10">
-                                <div class="swiper" id="product-swiper2"
-                                     data-control="#product-swiper-control2">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="ratio overflow-hidden"
-                                                 style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 265px;">
-                                                <img class="object-fit-contain"
-                                                     src="{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/solid/{{product.path_file}}.png"
-                                                     alt="Решетка на окно Эскиз № {{product.path_folder}}-{{product.path_file}}"/></div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="ratio overflow-hidden"
-                                                 style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 265px;">
-                                                <img class="object-fit-contain"
-                                                     src="{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/solid/{{product.path_file}} F.png"
-                                                     alt="Решетка на окно Эскиз № {{product.path_folder}}-{{product.path_file}}"/></div>
-                                        </div>
-                                    </div>
+                    <div class="col-lg-6">
+                        <div class="card-body p-10 border-lg border-lg-light rounded-lg-3 shadow-lg">
+                            <div class="position-relative text-center ">
+                                <div class="position-absolute top-0 start-0 z-2">
+                                    <a class="text-muted text-hover-black" href="#">{% include 'main/icons/chart.html' with classes="svg-icon"%}</a>
+                                    <span class="fs-8  ms-2 py-0 bg-success text-white px-2 rounded-2">хит</span>
                                 </div>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mt-lg-5 mt-20"
-                                 id="product-swiper-control2">
-                                <button class="btn btn-outline-secondary btn-swiper-prev rounded-circle d-flex justify-content-center align-items-center p-0"
-                                        type="button" style="width: 2rem; height: 2rem;"><-
-                                </button>
-                                <div class="swiper-pagination"></div>
-                                <button class="btn btn-outline-secondary btn-swiper-next rounded-circle d-flex justify-content-center align-items-center p-0"
-                                        type="button" style="width: 2rem; height: 2rem;">->
-                                </button>
-                            </div>
-                        </div>
+                                <div class="position-absolute top-0 end-0 z-2">
+                                    <a class="text-muted text-hover-black" href="#">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a>
+                                </div>
+                                <div class="">
+                                    <div id="carouselExampleIndicators" class="carousel slide " data-bs-interval="false" >
+                                        <div class="carousel-indicators">
+                                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active bg-light " aria-current="true" aria-label="Slide 1" style="height:7px;"></button>
+                                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="bg-light" aria-label="Slide 2" style="height:7px;"></button>
+                                         
+                                        </div>
+                                        <div class="carousel-inner">
+                                          <div class="carousel-item active">
+                                            <div class="ratio overflow-hidden" style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 350px;">
+                                                <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/solid/{{product.path_file}}.png">
+                                                </div>
+                                          </div>
+                                          <div class="carousel-item">
+                                            <div class="ratio overflow-hidden" style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 350px;">
+                                                <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/solid/{{product.path_file}}.png">
+                                                </div>
+                                          </div>
+                                       
+                                        </div>
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                          <span class="" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="grey" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                                          </svg></span>
+                                          <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                          <span class="" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="grey" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                          </svg></span>
+                                          <span class="visually-hidden">Next</span>
+                                        </button>
+                                      </div>
+                           
+                                    </div>
+                                
+                                </div>
+                                </div>
 
-                            <h6 class="fs-9 fw-semibold mb-0 pt-6 text-center">Рассчитаем стоимость по телефону <h6>
-                                        <form class="mt-5">
-                                            <div class="row">
-                                                <div class="col-12 my-4">
+                            <h6 class="fs-8 fw-normal mb-0 pt-10 text-uppercase text-center">Рассчитаем стоимость по телефону <h6>
+                                        <form class="mt-10">
+                                            <div class="row gx-10 gy-10">
+                                                <div class="col-12 col-md-6 ">
                                                     <input class="form-control  fs-7 text-center w-100"
                                                            placeholder="Введите имя" type="text"/>
                                                 </div>
-                                                <div class="col-12 my-4">
-                                                    <input class="form-control  fs-7 text-center"
+                                                <div class="col-12 col-md-6 ">
+                                                    <input class="form-control  fs-7 text-center  w-100"
                                                            placeholder="Введите номер" type="text"/>
                                                 </div>
-                                                <div class="col-lg-12">
-                                                    <div class="form-check  fs-6 pt-2 pb-2">
-                                                        <input class="form-check-input " id="consultation-personal" name="personal"
-                                                               autocomplete="off" type="checkbox" checked="checked"/>
-                                                        <label class="form-check-label " for="consultation-personal">Даю согласие на
-                                                            обработку персональных данных</label>
+                                                <div class="col-12 col-md-6">
+                                                    <button class="btn py-8 btn-primary mt-2 fs-8 rounded-3 w-100" type="submit">Получить расчет
+                                                    </button>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-check  fs-6 pt-2 pb-2 ps-0">
+                                                        <label class="form-check-label " for="consultation-personal">Оставляя заявку, Вы даете
+                                                            свое согласие на обработку <a class="text-decoration-underline text-dark"  href="{%url 'privacy'%}">персональных данных</a> </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
-                                                    <button class="btn py-8 btn-secondary mt-2 btn-xl w-100" type="submit">Получить расчет
-                                                    </button>
+                                                    <div class="text-center p-5 border rounded-2">
+                                                    <p class="mb-0 fs-7 text-muted">Или отправьте запрос нам на почту</p>
+                                                    <span class="fs-7 text-primary">INFO@SMARMATIX.RU</span>
                                                 </div>
+                                                </div>
+                                              
                                             </div>
                                         </form>
                     </div>
-                    <div class="col-lg-8">
-                        <div class="row d-lg-flex  align-items-center border-bottom border-black pb-12 mb-16">
-                                <div class="col-6">
-                            <h2 class="h5 fw-medium fs-10 ls-sm text-uppercase mb-0">Решетка на окно Эскиз №
-                                {{product.path_folder}} - {{product.path_file}}</h2>
-                            </div>
-                                <div class="col-3">
-                                <span class="fs-10 ml-30">Цена: <span class="text-danger">2900 р.</span> </span>
-                            </div>
-                            <div class="col-3">
-                                <span class="fs-10 ml-30">Цена: <span class="text-danger">2900 р.</span> </span>
-                            </div>
-
-
-                        </div>
-                        <div class="mb-15 d-lg-block d-none">
-                            <div class="row row-cols-4 gy-20">
-                            {% for item in list_of_open_types %}
-                                                <div class="col">
-                                                    <input class="btn-check open-type-price" id="product-type-{{item.name}}" name="product-type"
-                                                           value="Без открывания" type="radio" onclick="changeForm()">
-                                                    <label class="btn btn-outline-black w-100 h-100 rounded-2 p-10"
-                                                           for="product-type-{{item.name}}">
-                                                        <div class="ratio"
-                                                             style="--bs-aspect-ratio: 100%; max-height: 80px;"
-                                                        ><img
-                                                                id="{{item.name}}"
-                                                                class="object-fit-contain"
-                                                                src="{% static 'main/img/grids_pictures' %}/1/{{item.name}}/1 F.png" alt="{{item.description}}">
-                                                        </div>
-                                                        <span class="d-block fs-6 fw-medium text-uppercase mt-8">{{item.description}}</span>
-                                                        <span class="d-block fs-6 fw-medium text-uppercase mt-8" id="price-{{item.name}}">+ {% if item.name in 'arch'%}{{item.price}}% {%else%}{{item.price}} руб.{% endif %}</span>
-                                                    </label>
-                                                </div>
-                                {%endfor%}
-                                <style>
-                                                    #arch:hover {content: url("{% static 'main/img/grids_pictures' %}/1/arch/1.png");}
-                                                    #gog:hover {content: url("{% static 'main/img/grids_pictures' %}/1/gog/1 O.png");}
-                                                    #o:hover {content: url("{% static 'main/img/grids_pictures' %}/1/o/1 O.png");}
-                                                    #og:hover {content: url("{% static 'main/img/grids_pictures' %}/1/og/1 O.png");}
-                                                    #ogo:hover {content: url("{% static 'main/img/grids_pictures' %}/1/ogo/1 O.png");}
-                                                    #oo:hover {content: url("{% static 'main/img/grids_pictures' %}/1/oo/1 O.png");}
-                                                    #solid:hover {content: url("{% static 'main/img/grids_pictures' %}/1/solid/1.png");}
-                                </style>
-                            </div>
-                        </div>
+                    <div class="col-lg-6 mt-0 mt-lg-10">
+                        <h2 class="h5 fw-medium ls-sm text-uppercase d-none d-lg-block">Решетка на окно Эскиз №
+                            {{path_folder}}-{{path_file}}</h2>
                         <form>
                             <div class="row row-cols-lg-2 row-cols-1 gy-lg-10 gy-5">
                                 <div class="col">
-                                    <select class="form-select form-select-lg rounded-2">
-                                        {% for item in product.additional_info %}
-                                                            <option id="{{item.name}}" class="width-option">{{ item.name }} - {{ item.price_b2c }} руб.</option>
-                                        {% endfor %}
-                                    </select>
+                                    <div class="text-center border py-3 rounded-2">
+                                    <p class="mb-0 fs-7 text-muted">Цена сегодня</p>
+                                    <span class="fs-7 fs-lg-9">990 р./ м²</span>
+                                </div>
                                 </div>
                                 <div class="col">
-                                    <select class="form-select form-select-lg rounded-2" id="painting" onchange="changeForm()">
-                                                        <option selected>Без покраски</option>
-                                                        <option>Покраска (эмаль НЦ) - 550 руб</option>
-                                                        <option>Покраска (эмаль ХВ) - 650 руб</option>
-                                                        <option>Покраска (эмаль NOVAX) - 1200 руб</option>
-                                                        <option>Покраска (краска Hammerite) - 1400 руб</option>
-                                                        <option>Покраска (порошковое нап.) - 1700 руб</option>
-                                                        <option>Покраска (эмаль Westplast) - 1900 руб</option>
-                                    </select>
+                                    <div class="text-center border py-3 rounded-2">
+                                    <p class="mb-0 fs-7 text-muted">Старая цена:</p>
+                                    <span class="fs-7 fs-lg-9 text-muted text-decoration-line-through">1200 р./ м²</span>
                                 </div>
-                                <div class="col">
-                                    <input class="form-control form-control-lg rounded-2"
+                                </div>
+                                <div class="col ">
+                                    <input class="form-control text-center form-control-lg rounded-2"
                                            placeholder="100 см." type="text"/>
                                 </div>
                                 <div class="col">
-                                    <input class="form-control form-control-lg rounded-2"
+                                    <input class="form-control text-center form-control-lg rounded-2"
                                            placeholder="100 см." type="text"/>
                                 </div>
                                 <div class="col">
-                                    <input class="form-control form-control-lg rounded-2"
-                                           placeholder="1" type="text"/>
-                                </div>
-                                <div class="col">
-                                    <select class="form-select form-select-lg rounded-2">
-                                        <option selected="selected">Установка</option>
-                                    </select>
-                                </div>
+                                    <div class="d-flex align-items-center text-center  mb-lg-10  border rounded-2 py-3">
+                                        <div class="form-check ms-5 me-0">
+                                            <input class="form-check-input  " type="checkbox" value="" id="flexCheckDefault">
+                                          </div>
+                                          <span class="fs-8 pt-1   text-muted ">Открывающаяся <span class="fs-7 ps-5 text-muted"> +1500 р. за шт.</span></span>
+                                    </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="d-flex align-items-center text-center mb-lg-10  border rounded-2 py-3">
+                                            <div class="form-check ms-5 me-0">
+                                                <input class="form-check-input  " type="checkbox" value="" id="flexCheckDefault">
+                                              </div>
+                                              <span class="fs-8 pt-1   text-muted ">Открывающаяся <span class="fs-7 ps-5 text-muted"> +1500 р. за шт.</span></span>
+                                        </div>
+                                        </div>
                             </div>
                         </form>
-                        <div class="mt-17-5">
+                        <div class="mt-15-5">
                             <div class="row row-cols-lg-2 row-cols-1 align-items-center gy-lg-0 gy-15">
-                                <div class="col"><span class="fs-lg-13 fs-11 fw-semibold text-uppercase">Итого: 31 320 руб</span><span
-                                        class="d-block fs-lg-8 fs-7 text-muted text-uppercase mt-lg-1 mt-7-5">Для точного расчета <br/>закажите   <span
-                                        class="text-primary">бесплатный замер</span></span></div>
-                                <div class="col"><a class="btn btn-primary btn-xl w-100" href="#">Заказать в
+                                <div class="col pt-10"><span class="fs-lg-10 fs-13 fw-semibold text-uppercase">Итого: 31 320 руб</span></div>
+                                <div class="col"><a class="btn btn-primary fs-9 rounded-2  w-100" href="#">Заказать в
                                     1 клик</a></div>
                             </div>
                         </div>
+                        <div class="row row-cols-lg-2 mt-10  row-cols-2 mx-0">
+                                
+                                    <div class="col border  p-7">
+                                        
+                                        <p class="mb-0 fs-7 text-muted">Материал рисунка</p>
+                                </div>
+                                    <div class="col border p-7">
+                                        
+                                        <p class="mb-0 fs-7 text-muted">пруток Ø 6мм</p>
+                                </div>
+                                <div class="col border p-7">
+                                        
+                                    <p class="mb-0 fs-7 text-muted">Материал рамки</p>
+                            </div>
+                                <div class="col border p-7">
+                                    
+                                    <p class="mb-0 fs-7 text-muted">профиль 20х20мм</p>
+                            </div>
+                            <div class="col border p-7">
+                                        
+                                <p class="mb-0 fs-7 text-muted">Выезд замерщика</p>
+                        </div>
+                            <div class="col border p-7">
+                                
+                                <p class="mb-0 fs-7 text-muted">бесплатно</p>
+                        </div>
+                        <div class="col border p-7">
+                                        
+                            <p class="mb-0 fs-7 text-muted">Доставка</p>
+                    </div>
+                        <div class="col border p-7">
+                            
+                            <p class="mb-0 fs-7 text-muted">от 500 р.</p>
+                    </div>
+                    <div class="col border p-7">
+                                        
+                        <p class="mb-0 fs-7 text-muted">Гарантия</p>
+                </div>
+                    <div class="col border p-7">
+                        
+                        <p class="mb-0 fs-7 text-muted">до 50 лет</p>
+                </div>
+                <div class="col border p-7">
+                                        
+                    <p class="mb-0 fs-7 text-muted">Срок производства</p>
+            </div>
+                <div class="col border p-7">
+                    
+                    <p class="mb-0 fs-7 text-muted">12-24 часа</p>
+            </div>
+                            </div>
                     </div>
                 </div>
             </div>

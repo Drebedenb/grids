@@ -33,13 +33,6 @@
 
             </div>
             <div class="d-lg-none d-block">
-                <nav class="border-top border-bottom border-light mb-17 py-5">
-                    <ul class="breadcrumb fs-6 mb-0">
-                        <li class="breadcrumb-item"><a href="index.html">Главная </a></li>
-                        <li class="breadcrumb-item"><a href="catalog.html">Каталог</a></li>
-                        <li class="breadcrumb-item active">Эскиз № 1-1 </li>
-                    </ul>
-                </nav>
                 <h1 class="fs-13 ls-sm text-uppercase mb-0">Решетка на окно Эскиз №
                     {{path_folder}}-{{path_file}}</h1>
             </div>
@@ -282,26 +275,25 @@
                                             </div>
                                             </div>
                                             
-                                            <div class="row  mt-1 gy-20">
+                                            <div class="row  mt-1 gy-20 ">
                                                 {% for item in list_of_open_types %}
                                                 <div class="mt-15">
                                                     <input class="btn-check open-type-price" id="product-type-{{item.name}}" name="product-type" value="Без открывания" type="radio" onclick="changeForm()">
-                                                    <label class="btn btn-outline-black d-flex w-100 h-100 rounded-2 py-10" for="product-type-{{item.name}}">
-                                                        <div class="row">
-                                                            <div class="col-3">
+                                                    <label class="btn btn-outline-black d-flex w-100 h-100 rounded-2 py-10 px-0" for="product-type-{{item.name}}">
+                                                            <div class="col-4">
                                                               <img
-                                                                id="{{item.name}}"
+                                                                id="product-{{item.name}}"
                                                                 class="object-fit-contain"
                                                                 src="{% static 'main/img/grids_pictures' %}/1/{{item.name}}/1 F.png" alt="{{item.description}}" width="50">
                                                         
                                                            </div>
-                                                           <div class="col-5 align-items-center d-flex">
+                                                           <div class="col-4 align-items-center d-flex">
                                                               <span class="product-description-{{item.name}} fs-7 fw-medium  ">{{item.description}}</span>
                                                            </div>
-                                                           <div class="col-4 px-5 align-items-center d-flex">
+                                                           <div class="col-4  align-items-center d-flex">
                                                                <span class="fs-7 fw-medium product-price-{{item.name}}" id="price-{{item.name}}" >+ {% if item.name in 'arch'%}{{item.price}}% {%else%}{{item.price}} руб.{% endif %}</span>
                                                            </div>
-                                                    </div>
+                                                  
                                                     </label>
                                                 </div>
                                                 {%endfor%}
@@ -344,21 +336,21 @@
                                         <div class="row mx-0 mb-10 py-3 border rounded-2 ">
                                             <div class="col-4 text-center">
                                                 <p class="mb-0 fs-7 text-muted">Цена сегодня</p>
-                                                <span class="fs-9">990 р./ м²</span>
+                                                <span class="fs-7 fs-lg-9">990 р./ м²</span>
                                             </div>
                                             <div class="col-4 text-center">
                                                 <p class="mb-0 fs-7 text-muted">Старая цена:</p>
-                                                <span class="fs-9 text-muted text-decoration-line-through">1200 р./ м²</span>
+                                                <span class="fs-7 fs-lg-9 text-muted text-decoration-line-through">1200 р./ м²</span>
                                             </div>
                                             <div class="col-4 text-center">
-                                                <p class="mb-0 fs-7 text-muted">Рейтинг 4 из 5</p>
+                                                <p class="mb-0 fs-7 fs-lg-7 text-muted">Рейтинг 4 из 5</p>
                                                 <div class="d-flex pt-2 justify-content-center">
                                                     {% include 'main/icons/star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %} 
                                                     {% include 'main/icons/star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %} 
                                                     {% include 'main/icons/star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %} 
                                                     {% include 'main/icons/star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %} 
                                                     {% include 'main/icons/star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %}
-                                                    <span class="fs-lg-6 fs-8">(32)</span>
+                                                    <span class="fs-lg-6 fs-6">(32)</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -387,14 +379,38 @@
                                                         <option>Покраска (эмаль Westplast) - 1900 руб</option>
                                                     </select>
                                                 </div>
-                                                <div class="col text-muted">
-                                                    <input class="form-control text-muted form-control-lg rounded-2" id="width" placeholder="100 см." type="text" oninput="changeForm() ">
+                                                <div class="col">
+                                                    <div class="row mx-0 border border-light h-100 rounded-2">
+                                                        <div class="col-6  align-items-center d-flex">
+                                                            <span class="text-secondary">ширина</span>
+                                                        </div>
+                                                        <div class="col-6 align-items-center d-flex">
+                                                            <input class="form-control my-5 form-control-sm text-muted  rounded-2" id="height" oninput="changeForm()" placeholder="100 см." type="text">
+                                                        </div>                                                     
+                                                    </div>
+                                               
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-control text-muted form-control-lg rounded-2" id="height" oninput="changeForm()" placeholder="100 см." type="text">
+                                                    <div class="row mx-0 border border-light h-100 rounded-2">
+                                                        <div class="col-6  align-items-center d-flex">
+                                                            <span class="text-secondary">высота</span>
+                                                        </div>
+                                                        <div class="col-6 align-items-center d-flex">
+                                                            <input class="form-control form-control-sm text-muted  rounded-2" id="height" oninput="changeForm()" placeholder="100 см." type="text">
+                                                        </div>                                                     
+                                                    </div>
+                                               
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-control  text-muted form-control-lg rounded-2" id="amount" oninput="changeForm()" placeholder="1" type="text">
+                                                    <div class="row mx-0 border border-light h-100 rounded-2">
+                                                        <div class="col-6  align-items-center d-flex">
+                                                            <span class="text-secondary ">количество</span>
+                                                        </div>
+                                                        <div class="col-6 align-items-center d-flex">
+                                                            <input class="form-control form-control-sm text-muted  rounded-2" id="height" oninput="changeForm()" placeholder="1" type="text">
+                                                        </div>                                                     
+                                                    </div>
+                                               
                                                 </div>
                                                 <div class="col">
                                                     <select class="form-select  text-muted form-select-lg rounded-2" id="installing" onchange="changeForm()">
@@ -408,8 +424,9 @@
                                        
                                             <div class="row row-cols-lg-2 row-cols-1 align-items-center  gy-lg-0 gy-15">
                                                 <div class="col">
-                                                    <span class="fs-lg-14 fs-20  fw-semibold text-uppercase">итого: </span>
-                                                    <span id="total" class="fs-lg-14 fs-20 fw-semibold text-uppercase">0</span>
+                                               
+                                                    <span class="fs-lg-14 fs-15  fw-semibold text-uppercase">итого: </span>
+                                                    <span id="total" class="fs-lg-14 fs-15 fw-semibold text-uppercase">0</span>
                                                   
                                                 </div>
                                                 <div class="col"><a class="btn btn-primary btn-xl w-100" href="#">Заказать
@@ -419,7 +436,7 @@
                                         <div class="row row-cols-lg-3 row-cols-2 mt-2 gy-10">
                                             <div class="col px-5">
                                                 <a class="d-block">
-                                                    <div class="ratio ratio-4x3 border border-light rounded-4" style="max-height: 260px;"><p class="text-center pt-2 fs-6 fs-sm-8 fs-md-12 fs-xl-7   text-secondary">Обратите внимание! Быстрый расчет не учитывает установку и доставку. Для точного расчета закажите
+                                                    <div class="ratio ratio-4x3 border border-light rounded-4" style="max-height: 260px;"><p class="text-center pt-2 fs-5 fs-sm-8 fs-md-7 fs-lg-7  fs-xl-7 text-secondary">Обратите внимание!<br> Быстрый расчет не учитывает установку и доставку. Для точного расчета закажите
                                                         <span class="text-danger">бесплатный замер</span> или позвоните по телефону: 
                                                         <span class="text-danger"><br>+7 495 127-04-43</span></p></div>
                                                 </a>

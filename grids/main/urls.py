@@ -13,4 +13,5 @@ urlpatterns = [
     path('compare/', compare, name="compare"),
     path('favorite/', favorite, name="favorite"),
     path('__debug__/', include('debug_toolbar.urls')),
+    path('privacy/', privacy, name="privacy")
 ]

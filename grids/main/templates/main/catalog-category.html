@@ -19,13 +19,7 @@
                                 <p class="d-lg-none lead fs-lg-12 fs-9 mb-0" style="max-width: 28rem;">В нашем каталоге представлено 600+ эскизов решеток на окна. Возможно изготовление решеток по вашему эскизу.</p>
                             </div>
                        
-                        <div class="mt-20 d-lg-none d-block">
-
-                            <div class="vstack flex-wrap gap-10">
-                                <btn class="btn btn-secondary btn-xxl w-100" data-bs-toggle="modal" data-bs-target="#modal-consultation" type="button">Консультация</btn>
-                                <btn class="btn  btn-primary btn-xxl w-100" data-bs-toggle="modal" data-bs-target="#modal-measurement" type="button">Вызвать на замер </btn>
-                            </div>
-                        </div>
+                      
                     </div>
                     <nav class="d-lg-block d-none fs-9 mt-lg-0 mt-12">
                         <ul class="breadcrumb mb-0">
@@ -36,27 +30,17 @@
                     </nav>
 
                 </div>
-                <div class="d-lg-none d-block">
-                    <nav class="border-top border-bottom border-light mb-17 py-5">
-                        <ul class="breadcrumb fs-6 mb-0">
-                            <li class="breadcrumb-item"><a href="index.html">Главная </a></li>
-                            <li class="breadcrumb-item"><a href="catalog.html">Каталог</a></li>
-                            <li class="breadcrumb-item active">Эскиз № 1-1 </li>
-                        </ul>
-                    </nav>
-
-                </div>
+              
         </header>
 
         <main>
             <div class="mb-20">
-                <h2 class="d-lg-none d-block fs-13 ls-sm text-uppercase mb-17-5">Каталог:</h2>
                 <div class="row gy-lg-0 gy-20">
-                    <div class="col-lg-3  d-lg-block ">
-                        <div class="accordion d-block">
+                    <div class="col-lg-3   d-lg-block ">
+                        <div class="accordion">
                             <div class="accordion-item border-0 mb-20">
                                 <div class="accordion-header d-lg-none d-block">
-                                    <button class="accordion-button justify-content-center fs-9 bg-transparent btn border btn-outline-secondary border-dark rounded-2 shadow-none px-10 py-8 collapsed" data-bs-toggle="collapse" data-bs-target="#catalog-filter" type="button">Фильтр по параметрам</button>
+                                    <button class="accordion-button justify-content-center fs-9  btn border btn-outline-secondary border-dark rounded-2 shadow-none px-10 py-8 collapsed" data-bs-toggle="collapse" data-bs-target="#catalog-filter" type="button">Фильтр по параметрам</button>
                                 </div>
                                 <div class="accordion-collapse collapse d-lg-block mt-lg-0 mt-5" id="catalog-filter">
                                     <div class="accordion-body p-0">
@@ -128,7 +112,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mb-lg-10 mb-18 ">
+                        <div class="mb-lg-10 mb-18 d-none d-lg-block">
                             <h6 class="fw-medium ls-sm text-uppercase mb-0 d-inline-block px-10 py-5 rounded-top-3 border border-radius">Популярные разделы</h6>
                             <div class="border border-light rounded-end-3 rounded-end-3 rounded-bottom-3">
                                 <div class="hstack flex-row-lg flex-column align-items-start flex-wrap row-gap-lg-8 row-gap-6 column-gap-lg-12 fs-lg-10 fs-10 ls-sm">
@@ -141,7 +125,7 @@
                             </div>
 
                         </div>
-                           <div class="my-20">
+                           <div class="my-20 d-none d-lg-block">
                         <div id="dropdown-wrapper" class="dropdown-wrapper fw-medium mb-10 rounded-3 border border-radius" tabindex="1">
                             <h6 class="fw-medium ls-sm text-uppercase mt-8 ms-10 mb-0">Вид</h6>
 
@@ -155,7 +139,7 @@
                             </ul>
 
                         </div>
-                        <div id="dropdown-wrapper" class="dropdown-wrapper fw-medium mb-10 rounded-3 border border-radius" tabindex="1">
+                       <!--  <div id="dropdown-wrapper" class="dropdown-wrapper fw-medium mb-10 rounded-3 border border-radius" tabindex="1">
                             <h6 class="fw-medium ls-sm text-uppercase mt-8 ms-10 mb-0">Коллекции</h6>
 
                             <ul class="dropdown-list mb-8">
@@ -165,7 +149,7 @@
                                 <li><a class="nav-link text-hover-secondary ms-10" href="#">Ажурные</a></li>
                             </ul>
 
-                        </div>
+                        </div> -->
                         <div id="dropdown-wrapper" class="dropdown-wrapper fw-medium   rounded-3 border border-radius" tabindex="1">
                             <h6 class="fw-medium ls-sm text-uppercase mt-8 ms-10 mb-0">Назначение</h6>
 
@@ -183,7 +167,7 @@
                                 <li><a class="nav-link text-hover-secondary ms-10" href="#">Цоколь/подвал</a></li>
                                 <li><a class="nav-link text-hover-secondary ms-10" href="#">Для дома</a></li>
                                 <li><a class="nav-link text-hover-secondary ms-10" href="#">Антикошка</a></li>
-                                <li><a class="nav-link text-hover-secondary ms-10" href="#">от выпадения детей</a></li>
+                                <li><a class="nav-link text-hover-secondary ms-10" href="#">Кид-стоп</a></li>
                                 <li><a class="nav-link text-hover-secondary ms-10" href="#">На кондиционер</a></li>
                                 <li><a class="nav-link text-hover-secondary ms-10" href="#">Под цветы</a></li>
                                 <li><a class="nav-link text-hover-secondary ms-10" href="#">в подьезд</a></li>
@@ -290,25 +274,28 @@
                     <div class="col-lg-9  mt-6 mt-md-0">
                         <!-- TABS -->
 
-                        <ul class="nav nav-pills mt-8 mt-md-8 fs-lg-9 fs-5  ls-sm mb-lg-6  gap-lg-10 gap-5" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <p class=" text-center d-lg-inline d-none text-uppercase fw-semibold fs-9 w-100">Сортировать :</p>
+                        <ul class="nav sorting_border mb-20 mb-lg-0  nav-pills mt-8 mt-md-8 fs-lg-9 fs-5  ls-sm mb-lg-6 mb-0  gap-lg-10 gap-5" id="myTab" role="tablist">
+                            <li class="nav-item sorting ">
+                                <p class=" text-center mb-0 mt-4 mt-lg-0 text-uppercase fw-semibold fs-9 ">Сортировать :</p>
                             </li>
                             <li class="nav-item" style="flex: 1 0 0%">
-                                <p class="w-100 active sort fs-8 text-center fs-md-9 rounded-2" id="order-popularity" type="button" role="tab" onclick="orderByParameter(this.id)">По популярности
+                                <p class="w-100 active sort fs-8 mb-4 ps-5 fs-sm-9 fs-md-9 text-center  rounded-2" id="product-characteristics-tab" data-bs-toggle="tab" data-bs-target="#product-characteristics-tab-pane" type="button" role="tab">По популярности
                                     {% include 'main/icons/arrow.html' with arrowId='order-popularity-arrow'%}
                                 </p>
                             </li>
                             <li class="nav-item" style="flex: 1 0 0%">
-                                <p class=" text-center fs-9 fs-md-9 sort w-100 rounded-2" id="order-price" type="button" role="tab" onclick="orderByParameter(this.id)">По цене
+                                <p class=" text-center fs-8 mb-4   fs-sm-9 fs-md-9 sort w-100 rounded-2" id="product-description-tab" data-bs-toggle="tab" data-bs-target="#product-description-tab-pane" type="button" role="tab">По цене 
                                     {% include 'main/icons/arrow.html' with arrowId='order-price-arrow'%}
-                                    </p>
+                                </p>
                             </li>
 <!--                            <li class="nav-item" style="flex: 1 0 0%">-->
 <!--                                <p class="text-center fs-9 fs-md-9 sort w-100 rounded-2" id="product-delivery-tab" type="button" role="tab">Хиты продаж</p>-->
 <!--                            </li>-->
                             <li class="nav-item" style="flex: 1 0 0%">
-                                <p class="text-center fs-8 fs-md-9 sort w-100 rounded-2" id="order-sketchNumber" type="button" role="tab" onclick="orderByParameter(this.id)">По номеру эскиза
+                                <p class="text-center fs-8 mb-4  fs-sm-9 fs-md-9 sort w-100 rounded-2" id="product-delivery-tab" data-bs-toggle="tab" data-bs-target="#product-delivery-tab-pane" type="button" role="tab">Хиты продаж</p>
+                            </li>
+                            <li class="nav-item" style="flex: 1 0 0%">
+                                <p class="text-center fs-8 fs-md-9 sort w-100 rounded-2" id="product-installation-tab"  data-bs-toggle="tab" data-bs-target="#product-installation-tab-pane" type="button" role="tab">По номеру эскиза
                                     {% include 'main/icons/arrow.html' with arrowId='order-sketchNumber-arrow'%}
                                 </p>
                             </li>
@@ -344,6 +331,13 @@
 {% endif %}
 
                         </nav>
+                        <div class="mt-20 d-lg-none d-block">
+
+                            <div class="vstack flex-wrap gap-10">
+                                <btn class="btn btn-secondary btn-xxl w-100" data-bs-toggle="modal" data-bs-target="#modal-consultation" type="button">Консультация</btn>
+                                <btn class="btn  btn-primary btn-xxl w-100" data-bs-toggle="modal" data-bs-target="#modal-measurement" type="button">Вызвать на замер </btn>
+                            </div>
+                        </div>
                     </div>
                         <!--HITI PRODAZH-->
                         <section>
@@ -364,7 +358,21 @@
                                 <div class="swiper-wrapper">
 
                                     {%for item in leaders_of_selling%}
-                                                                        {% include 'main/components/catalog_category_item.html' with PriceWinguardSketchId=item.id price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
+                                    <div class="swiper-slide">
+                                        <div class="card card_hover_shadow card-hover border-0 rounded-lg-4 rounded-3 shadow-sm">
+                                            <div class="card-body p-10">
+                                                <div class="position-relative text-center ">
+                                                    <div class="position-absolute top-0 start-0 z-1">
+                                                        <a class="text-muted text-hover-black" href="#">{% include 'main/icons/chart.html' with classes="svg-icon"%}</a>
+                                                    <span class="fs-7  ms-2 py-0 bg-success text-white px-2 rounded-2">хит</span>
+                                                </div>
+                                                    <div class="position-absolute top-0 end-0 z-1">
+                                                        <span class="fs-7 ms-2 py-0 bg-danger text-white   px-2 rounded-2">-30%</span>
+                                                        <a class="text-muted text-hover-black" href="#">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a> 
+                                                    </div>
+                                                    <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
+                                                        <button class="btn btn-light fs-lg-7 btn-lg btn-wide-sm " data-bs-toggle="modal" data-bs-target="#product-quick-view" type="button">Быстрый просмотр</button>
+                                                    </div>
 
 <!--                                    <div class="swiper-slide">-->
 <!--                                        <div class="card card_hover_shadow card-hover border-0 rounded-lg-4 rounded-3 shadow-lg">-->
@@ -691,16 +699,16 @@
             </div>
                   </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-            <svg xmlns="http://www.w3.org/2000/svg" width="66" height="66" fill="grey" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
-                <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
-              </svg></span>
+        <button class="carousel-control-prev arrow-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="grey" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+              </svg>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-          <span  aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="66" height="66" fill="gray" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
-            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
-          </svg></span>
+        <button class="carousel-control-next arrow-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+         <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="grey" class="bi bi-chevron-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+          </svg>
           <span class="visually-hidden">Next</span>
         </button>
       </div>
