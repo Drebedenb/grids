@@ -1,7 +1,4 @@
-from django.urls import path, include
-
-from django.conf.urls.static import static
-from grids import settings
+from django.urls import path
 from .views import *
 
 urlpatterns = [
@@ -15,10 +12,3 @@ urlpatterns = [
     path('favorite/', favorite, name="favorite"),
     path('privacy/', privacy, name="privacy")
 ]
-
-if settings.DEBUG:
-    urlpatterns = [
-        path('__debug__/', include('debug_toolbar.urls')),
-    ] + urlpatterns
-
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
