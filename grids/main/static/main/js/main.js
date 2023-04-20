@@ -401,11 +401,13 @@ const idToOrders = {
         'order-price': 'price',
         'order-popularity': 'popularity',
         'order-sketchNumber': 'id',
+        'order-percent': 'percent'
 }
 const ordersToId = {
         'price': 'order-price',
         'popularity': 'order-popularity',
         'id': 'order-sketchNumber',
+        'percent': 'order-percent'
 }
 function changeArrowIcon() {
     let orderScending;

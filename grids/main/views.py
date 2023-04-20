@@ -69,37 +69,33 @@ arr_of_sale = [15, 10, 20, 30, 25, 20, 10, 20, 20, 30, 25, 10, 10, 20, 30, 10, 2
 
 
 def get_products_by_category(category_number, min_price, max_price, order_by_name, order_scending, limit):
-    dictionary_of_orders = ['price', 'id', 'popularity', 'asc', 'desc']
+    dictionary_of_orders = ['price', 'id', 'popularity', 'percent', 'asc', 'desc']
     if order_by_name not in dictionary_of_orders or order_scending not in dictionary_of_orders:
 
         return []
     if not (isinstance(category_number, int) and isinstance(min_price, int) and isinstance(max_price, int) and isinstance(limit, int)):
         return []
-    prods = PriceWinguardMain.objects.filter(price_winguard_sketch__category=1)\
-    .values('price_winguard_sketch__id', 'price_winguard_sketch__pricewinguardfiles__path')\
-    .annotate(price=Min('price_b2c'))\
-    .filter(price__gt=0, price__lt=99999)\
-    .order_by('price')\
-    .values('price', 'price_winguard_sketch__id', 'price_winguard_sketch__pricewinguardfiles__path')\
-    .distinct()[:9999]
 
-    query = """SELECT MIN(price_b2c) AS price, ps.id, pf.path
-                FROM price.price_winguard_main pm
-                JOIN price.price_winguard_sketch ps ON pm.price_winguard_sketch_id=ps.id 
-                JOIN price.price_winguard_files pf ON pm.price_winguard_sketch_id=pf.price_winguard_sketch_id
-                WHERE category = {category_number}
-                GROUP BY ps.id, pf.path
-                HAVING price > {min_price} AND price < {max_price}
-                ORDER BY {order_by_name} {order_scending}
-                LIMIT {limit}""".format(category_number=category_number, min_price=min_price, max_price=max_price
-                                          ,order_by_name=order_by_name,order_scending=order_scending,limit=limit)
+    query = """SELECT *,
+ROUND(price / (1-percent/100), -1) AS saleprice
+FROM
+(SELECT MIN(price_b2c) AS price, ps.id, pf.path, (MOD(ps.id, 3) + 1)*10 + (MOD(ps.id,2) * 5) AS percent,
+                        {category_number} AS path_folder,
+                        SUBSTRING_INDEX(SUBSTRING_INDEX(pf.path, '/', -2), '/', 1) AS path_file
+                        FROM price.price_winguard_main pm
+                        JOIN price.price_winguard_sketch ps ON pm.price_winguard_sketch_id=ps.id
+                        JOIN price.price_winguard_files pf ON pm.price_winguard_sketch_id=pf.price_winguard_sketch_id
+                        WHERE category = {category_number}
+                        GROUP BY ps.id, pf.path
+                        HAVING price > {min_price} AND price < {max_price}
+                        ORDER BY {order_by_name} {order_scending}
+                        LIMIT {limit}) dup""".format(category_number=category_number, min_price=min_price,
+                                                max_price=max_price
+                                                , order_by_name=order_by_name, order_scending=order_scending,
+                                                limit=limit)
     products = PriceWinguardMain.objects.raw(query)
-    for product in products:
-        path_arr = "".join(re.findall("\/\d+\/\d+", product.path)).split("/")
-        product.path_folder = path_arr[1]
-        product.path_file = path_arr[2]
-        product.percent = arr_of_sale[product.id % 20]
-        product.saleprice = int((product.price / (1 - product.percent / 100))/10) * 10 #TODO: реализовать через SQL
+    # for product in products:
+    #     product.saleprice = int((product.price / (1 - product.percent / 100))/10) * 10 #TODO: реализовать через SQL
     return products
 
 
