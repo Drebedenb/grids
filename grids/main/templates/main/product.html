@@ -5,7 +5,6 @@
     <div class="container">
         <header class="page-header mb-lg-20 mb-17-5">
             <div class="d-lg-block d-none">
-
                 <div class="row gy-lg-0  gy-12">
                     <div class="col-lg-6">
                         <h1 class="display-1 fs-3xl-25 fs-xl-23 fs-lg-22 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Дутые металлические решетки на окна</h1>
@@ -25,16 +24,16 @@
                 </div>
                 <nav class="d-lg-block d-none fs-9 mt-12">
                     <ul class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a href="index.html">Главная </a></li>
-                        <li class="breadcrumb-item"><a href="catalog.html">Каталог</a></li>
-                        <li class="breadcrumb-item active">Дутые решетки на окна </li>
+                        <li class="breadcrumb-item"><a href="{%url 'index'%}">Главная </a></li>
+                        <li class="breadcrumb-item"><a href="/решетки-на-окна-эконом-класс">Каталог</a></li>
+                        <li class="breadcrumb-item active">Решетка {{product.0.path_folder}}-{{product.0.path_file}} </li>
                     </ul>
                 </nav>
 
             </div>
             <div class="d-lg-none d-block">
                 <h1 class="fs-13 ls-sm text-uppercase mb-0">Решетка на окно Эскиз №
-                    {{path_folder}}-{{path_file}}</h1>
+                    {{product.0.path_folder}}-{{product.0.path_file}}</h1>
             </div>
         </header>
         <main>
@@ -246,12 +245,12 @@
                                                     <div class="carousel-inner">
                                                       <div class="carousel-item active">
                                                         <div class="ratio overflow-hidden" style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 400px;">
-                                                            <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/solid/{{product.path_file}}.png">
+                                                            <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{product.0.path_folder}}/solid/{{product.0.path_file}}.png">
                                                             </div>
                                                       </div>
                                                       <div class="carousel-item">
                                                         <div class="ratio overflow-hidden" style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 400px;">
-                                                            <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/solid/{{product.path_file}} F.png">
+                                                            <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{product.0.path_folder}}/solid/{{product.0.path_file}} F.png">
                                                             </div>
                                                       </div>
                                                    
@@ -363,7 +362,7 @@
                                                 <div class="col">
                                                     <select class="form-select form-select-lg text-muted rounded-2" id="width_of_rod" onchange="changeForm()">
                                                         <option>Выберите ширину прутка</option>
-                                                        {% for item in product.additional_info %}
+                                                        {% for item in product %}
                                                             <option id="{{item.name}}" class="width-option">{{ item.name }} - {{ item.price_b2c }} руб.</option>
                                                         {% endfor %}
                                                     </select>
@@ -558,9 +557,9 @@
                         <div class="border-lg border-lg-black rounded-lg-4 mt-lg-20 mt-28 p-lg-20">
                             <h3 class="h5 fs-lg-13 fs-11 fw-medium ls-sm text-uppercase mb-17-5">Другие решетки по схожим ценам</h3>
                             <div class="row row-cols-lg-3 row-cols-1 gy-lg-0 gy-20">
-             
-    
-    
+                                {% for item in similar_grids_by_price %}
+                                    {% include 'main/components/catalog_category_item.html' with PriceWinguardSketchId=item.id price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
