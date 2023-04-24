@@ -790,5 +790,35 @@ for (let i = 0; i < categories.length; i++) {
 }
 //конец блока кода о выборе класса или категории
 
+// для калькулятора в быстром просмотре
+    function changeSpanTextById(spanId, value) {
+        document.getElementById(spanId).textContent = value
+    }
+    function getSpanTextById(spanId) {
+         return document.getElementById(spanId).textContent
+    }
+    function changeOpenType(isChecked) {
+        console.log(isChecked)
+    }
+    function changeNitro (isChecked) {
+        if (isChecked) {
+            changeTotal(getTotal() + 1500)
+        } else {
+            changeTotal(getTotal() - 1500)
+        }
+    }
+    function changeWidth (newWidth) {
+        console.log(newWidth)
+    }
+    function changeHeight (newHeight) {
+        console.log(newHeight)
+    }
+    function changeTotal(newPrice){
+        changeSpanTextById('quick-view-total', newPrice)
+    }
+    function getTotal(){
+        return +getSpanTextById('quick-view-total')
+    }
+//конец блока для калькулятора
 </script>
 {% endblock %}

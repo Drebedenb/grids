@@ -228,13 +228,16 @@
                                     <div class="col-lg-4">
                                         <div class="card-body p-10 border-lg border-lg-light rounded-lg-3 shadow-lg">
                                         <div class="position-relative text-center ">
+                                    {% with PriceWinguardSketchId=product.0.id %}
                                             <div class="position-absolute top-0 start-0 z-2">
-                                                <a class="text-muted text-hover-black" href="#">{% include 'main/icons/chart.html' with classes="svg-icon"%}</a>
+                                                <a class="text-muted text-hover-black">{% include 'main/icons/chart.html' with classes="svg-icon"%}</a>
                                                 <span class="fs-8  ms-2 py-0 bg-success text-white px-2 rounded-2">хит</span>
                                             </div>
                                             <div class="position-absolute top-0 end-0 z-2">
+                                                <span id="form-percent" class="fs-8 ms-2 py-0 bg-danger text-white px-2 rounded-2">{{product.0.percent}}%</span>
                                                 <a class="text-muted text-hover-black">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a>
                                             </div>
+                                    {% endwith %}
                                             <div class="">
                                                 <div id="carouselExampleIndicators" class="carousel slide " data-bs-interval="false" >
                                                     <div class="carousel-indicators">
@@ -331,15 +334,15 @@
                                     <div class="col-lg-8 ">
 
                                         <h2 class="h5 fw-medium ls-sm text-uppercase d-none d-lg-block">Решетка на окно Эскиз №
-                                            {{path_folder}}-{{path_file}}</h2>
+                                            {{product.0.path_folder}}-{{product.0.path_file}}</h2>
                                         <div class="row mx-0 mb-10 py-3 border rounded-2 ">
                                             <div class="col-4 text-center">
                                                 <p class="mb-0 fs-7 text-muted">Цена сегодня</p>
-                                                <span class="fs-7 fs-lg-9">990 р./ м²</span>
+                                                <span id="price-today" class="fs-7 fs-lg-9">0 р./ м²</span>
                                             </div>
                                             <div class="col-4 text-center">
                                                 <p class="mb-0 fs-7 text-muted">Старая цена:</p>
-                                                <span class="fs-7 fs-lg-9 text-muted text-decoration-line-through">1200 р./ м²</span>
+                                                <span id="price-old" class="fs-7 fs-lg-9 text-muted text-decoration-line-through">1200 р./ м²</span>
                                             </div>
                                             <div class="col-4 text-center">
                                                 <p class="mb-0 fs-7 fs-lg-7 text-muted">Рейтинг 4 из 5</p>
@@ -384,7 +387,7 @@
                                                             <span class="text-secondary">ширина</span>
                                                         </div>
                                                         <div class="col-6 align-items-center d-flex">
-                                                            <input class="form-control my-5 form-control-sm text-muted  rounded-2" id="height" oninput="changeForm()" placeholder="100 см." type="text">
+                                                            <input class="form-control my-5 form-control-sm text-muted  rounded-2" id="width" oninput="changeForm()" placeholder="100 см." type="text">
                                                         </div>                                                     
                                                     </div>
                                                
@@ -406,7 +409,7 @@
                                                             <span class="text-secondary ">количество</span>
                                                         </div>
                                                         <div class="col-6 align-items-center d-flex">
-                                                            <input class="form-control form-control-sm text-muted  rounded-2" id="height" oninput="changeForm()" placeholder="1" type="text">
+                                                            <input class="form-control form-control-sm text-muted  rounded-2" id="amount" oninput="changeForm()" placeholder="1" type="text">
                                                         </div>                                                     
                                                     </div>
                                                
@@ -575,23 +578,41 @@
     </div>
 </div>
 <script>
-    function getValueById(id) {
+    function getInputValueById(id) {
         return document.getElementById(id).value
     }
-
-    function changeValueById(id, value) {
+    function changeInputValueById(id, value) {
         document.getElementById(id).value = value
     }
-
+     function getSpanTextById(spanId) {
+         return document.getElementById(spanId).textContent
+    }
+    function changeSpanTextById(spanId, value) {
+        document.getElementById(spanId).textContent = value
+    }
     function setOptionOnSelectById(optionId, idOfSelect) {
-        changeValueById(idOfSelect, getValueById(optionId))
+        changeInputValueById(idOfSelect, getInputValueById(optionId))
     }
 
+    function changePriceToday (newPrice) {
+        changeSpanTextById("price-today", newPrice)
+    }
+    function changePriceOld (newPrice) {
+        changeSpanTextById("price-old", newPrice)
+    }
+    function getPercentOfPrice(){
+        return +getSpanTextById("form-percent").match(/\d+/)[0]
+    }
+    function makeOldPrice(price){
+        return Math.round((price/(1 - (getPercentOfPrice()/100)))/10) * 10
+    }
     function changeForm() {
-        let width_of_rod = getValueById("width_of_rod").match(/\d{3,}/)[0]
-        let width = +getValueById("width")
-        let height = +getValueById("height")
-        let amount = +getValueById("amount")
+        let width_of_rod = getInputValueById("width_of_rod").match(/\d{3,}/)[0]
+        changePriceToday(width_of_rod)
+        changePriceOld(makeOldPrice(width_of_rod))
+        let width = +getInputValueById("width")
+        let height = +getInputValueById("height")
+        let amount = +getInputValueById("amount")
         let openTypePrice = 0;
 
         let optionsOfOpenTypes = document.getElementsByClassName("open-type-price")
@@ -599,7 +620,7 @@
             if (optionsOfOpenTypes[i].checked) {
                 let type = optionsOfOpenTypes[i].id.split("-")[2]
                 if (type == "arch") {
-                    let priceOfWidth = getValueById("width_of_rod").match(/\d{3,}/)[0]
+                    let priceOfWidth = getInputValueById("width_of_rod").match(/\d{3,}/)[0]
                     openTypePrice = priceOfWidth * 1.3 - priceOfWidth
                 } else if (type == "solid") {
                     openTypePrice = 0;
@@ -609,14 +630,14 @@
             }
         }
 
-        let painting = getValueById("painting")
+        let painting = getInputValueById("painting")
         if (painting !== "Без покраски") {
             painting = +painting.match(/\d{3,}/)[0]
         } else {
             painting = 0;
         }
 
-        let installing = getValueById("installing")
+        let installing = getInputValueById("installing")
         if (installing !== "Без установки") {
             installing = +installing.match(/\d{3,}/)[0]
         } else {
@@ -625,13 +646,13 @@
         let total = amount * (width_of_rod * width * height / 10000 + openTypePrice) + installing + painting;
         document.getElementById("total").textContent = total + " руб.";
     }
-    let optionsOfWidth = document.getElementsByClassName("width-option")
-    let firstValueInOptions = optionsOfWidth[0].id
+    const optionsOfWidth = document.getElementsByClassName("width-option")
+    const firstValueInOptions = optionsOfWidth[0].id
 
     setOptionOnSelectById(firstValueInOptions, "width_of_rod")
-    changeValueById("width", "100")
-    changeValueById("height", "100")
-    changeValueById("amount", "1")
+    changeInputValueById("width", "100")
+    changeInputValueById("height", "100")
+    changeInputValueById("amount", "1")
     changeForm()
 </script>
 {% endblock %}
