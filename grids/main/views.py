@@ -5,6 +5,7 @@ from django.db.models import Min, Max, Count
 from django.http import HttpResponseNotFound
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.decorators.cache import cache_page
 
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
@@ -146,6 +147,8 @@ def get_category_max_price(category_number):
         .annotate(min_price=Min('price_b2c')).values('min_price').aggregate(Max('min_price'))['min_price__max']
     return max_price
 
+
+# @cache_page(60 * 15)
 def index(request):
     count = {
         "economy": count_products_by_category(1),
@@ -169,6 +172,7 @@ def index(request):
                                                })
 
 
+# @cache_page(60 * 15)
 def catalog_category(request, category_name):
     if category_name not in russian_categories:
         return HttpResponseNotFound("Page NOT found")
@@ -189,7 +193,7 @@ def catalog_category(request, category_name):
     max_price = get_category_max_price(category["number_of_category"])
 
     page = request.GET.get('page', 1)
-    paginator = Paginator(products_list, 12)
+    paginator = Paginator(products_list, 45)
     try:
         products = paginator.page(page)
     except PageNotAnInteger:
