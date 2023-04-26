@@ -6,6 +6,7 @@ from django.http import HttpResponseNotFound
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.decorators.cache import cache_page
+from django.core.cache import cache
 
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
