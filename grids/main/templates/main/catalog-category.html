@@ -1,19 +1,26 @@
 {%extends 'main/base.html' %}
 {% load static %}
 {% block content %}
-<div class="pt-lg-15 pt-16 pb-lg-20 pb-32">
+<div class="pt-lg-20 pt-16 pb-lg-20 pb-32">
     <div class="container">
         <header class="page-header mb-lg-20 mb-28">
             <div>
 
-                <div class="row gy-lg-0  gy-12">
+                <div class="row gy-lg-0 gy-12 ">
 
                     <div class="col-lg-6">
-                        <h1 class="display-1 fs-3xl-25 fs-xl-23 fs-lg-27 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">
+                        <h1 class="display-1 pt-lg-30 fs-3xl-25 fs-xl-23 fs-lg-27 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">
                             {{category.title}} Металлические решетки на окна</h1>
+                            <nav class="d-lg-block d-none fs-9 mt-lg-0 pt-lg-12  ">
+                                <ul class="breadcrumb mb-0">
+                                    <li class="breadcrumb-item"><a href="index.html">Главная </a></li>
+                                    <li class="breadcrumb-item"><a href="catalog.html">Каталог</a></li>
+                                    <li class="breadcrumb-item active">{{category.title}} решетки на окна </li>
+                                </ul>
+                            </nav>
                     </div>
                     <div class="col-lg-6">
-                        
+                        <img class="w-100 rounded-3" src="{% static 'main/img/sale_baner.jpg' %}" alt="sale_baner">
                             <div class="d-none d-lg-block">
                     
                                 <p class="d-lg-none lead fs-lg-12 fs-9 mb-0" style="max-width: 28rem;">В нашем каталоге представлено 600+ эскизов решеток на окна. Возможно изготовление решеток по вашему эскизу.</p>
@@ -21,26 +28,26 @@
                        
                       
                     </div>
-                    <nav class="d-lg-block d-none fs-9 mt-lg-0 mt-12">
-                        <ul class="breadcrumb mb-0">
-                            <li class="breadcrumb-item"><a href="index.html">Главная </a></li>
-                            <li class="breadcrumb-item"><a href="catalog.html">Каталог</a></li>
-                            <li class="breadcrumb-item active">{{category.title}} решетки на окна </li>
-                        </ul>
-                    </nav>
+                 
 
                 </div>
+            
               
         </header>
 
         <main>
-            <div class="mb-20">
+            <div class="mb-20 main_block">
+                
                 <div class="row gy-lg-0 gy-20">
-                    <div class="col-lg-3   d-lg-block ">
+                 
+                    <div class="col-lg-3 d-lg-block  mt-10 mt-lg-0">
                         <div class="accordion">
-                            <div class="accordion-item border-0 mb-20">
+                            <div class="accordion-item border-0 mb-0 mb-lg-20">
                                 <div class="accordion-header d-lg-none d-block">
-                                    <button class="accordion-button justify-content-center fs-9  btn border btn-outline-secondary border-dark rounded-2 shadow-none px-10 py-8 collapsed" data-bs-toggle="collapse" data-bs-target="#catalog-filter" type="button">Фильтр по параметрам</button>
+                                    <button class="accordion-button justify-content-between   fs-9  btn border btn-outline-secondary border-dark rounded-2 shadow-none px-5 py-8 collapsed" data-bs-toggle="collapse" data-bs-target="#catalog-filter" type="button">
+                                        <span> Фильтр по параметрам</span>
+                                        {% include 'main/icons/filter.html' with classes='svg-icon' %}
+                                    </button>
                                 </div>
                                 <div class="accordion-collapse collapse d-lg-block mt-lg-0 mt-5" id="catalog-filter">
                                     <div class="accordion-body p-0">
@@ -178,12 +185,12 @@
                         </div>
                 
 
-                        <div class="left_sidebar" ><img class="w-100"  src="{% static 'main/img/sale.png' %}" alt="sale">
+                        <div class="left_sidebar" ><img class="w-100 d-none d-lg-block"  src="{% static 'main/img/sale.png' %}" alt="sale">
 
                          <!-- POCHEMY NASHA KOMPANIYA -->
             <section>
 
-                <div class="mt-10 pluses_company">
+                <div class="mt-10 pluses_company d-none d-lg-block">
 
 
                             <div class="card h-100 rounded-lg-5 rounded-3 mb-5">
@@ -271,39 +278,50 @@
             </section>
         </div>
                     </div>
-                    <div class="col-lg-9  mt-6 mt-md-0">
+                    <div class="col-lg-9  mt-0 mt-lg-6 mt-md-0">
                         <!-- TABS -->
 
-                        <ul class="nav sorting_border mb-20 mb-lg-0  nav-pills mt-8 mt-md-8 fs-lg-9 fs-5  ls-sm mb-lg-6 mb-0  gap-lg-10 gap-5" id="myTab" role="tablist">
-                            <li class="nav-item sorting ">
-                                <p class=" text-center mb-0 mt-4 mt-lg-0 text-uppercase fw-semibold fs-9 ">Сортировать :</p>
+                        <ul class="nav sorting_border  mb-lg-0  nav-pills mt-8 mt-md-8 fs-lg-9 fs-5  ls-sm mb-lg-6 mb-10  gap-10" id="myTab" role="tablist">
+                            <li class="nav-item sorting px-6 py-5">
+                                <p class="mb-4 mb-lg-0 mt-4 mt-lg-0   fw-md-medium fw-lg-semibold fs-9 fs-sm-8 fs-lg-11">Сортировать :</p>
+                                <div class="d-block d-lg-none my-4">
+                                {% include 'main/icons/up_filter.html' with classes='svg-icon' %}
+                                <span class="text-secondary ">по возрастанию</span>
+                            </div>
+                            <div class="d-block d-lg-none my-4">
+                                {% include 'main/icons/down_filter.html' with classes='svg-icon' %}
+                                <span class="text-secondary ">по убыванию</span>
+                            </div>
                             </li>
-                            <li class="nav-item" style="flex: 1 0 0%">
-                                <p class="w-100 active sort fs-8 mb-4 ps-5 fs-sm-9 fs-md-9 text-center  rounded-2" id="product-characteristics-tab" data-bs-toggle="tab" data-bs-target="#product-characteristics-tab-pane" type="button" role="tab">По популярности
+                            <li class="nav-item "  style="flex: 1 0 0%">
+                                <button class="d-block d-lg-none btn btn-sm text-white mobile_filter_button   ms-3 fs-8 text-uppercase rounded-3 rounded-pill w-100 mx-auto"> Хит</button>
+                                <p class="w-100 active sort  mb-4 mb-lg-0 ps-5 fs-5 fs-sm-6 fs-md-7 fs-lg-9 text-center  rounded-2 pt-6 pb-0" id="product-characteristics-tab" data-bs-toggle="tab" data-bs-target="#product-characteristics-tab-pane" type="button" role="tab">По популярности</p>
                                     {% include 'main/icons/arrow.html' with arrowId='order-popularity-arrow'%}
-                                </p>
                             </li>
                             <li class="nav-item" style="flex: 1 0 0%">
-                                <p class=" text-center fs-8 mb-4   fs-sm-9 fs-md-9 sort w-100 rounded-2" id="product-description-tab" data-bs-toggle="tab" data-bs-target="#product-description-tab-pane" type="button" role="tab">По цене 
-                                    {% include 'main/icons/arrow.html' with arrowId='order-price-arrow'%}
-                                </p>
+                                <button class="d-block d-lg-none btn btn-sm text-white mobile_filter_button   fs-8 text-uppercase rounded-3 rounded-pill w-100 mx-auto">₽</button>
+                                <p class="text-center mb-4 mb-lg-0 fs-5 fs-sm-6 fs-md-7 sort fs-lg-9 w-100 rounded-2 pt-6 pb-0" id="product-description-tab" data-bs-toggle="tab" data-bs-target="#product-description-tab-pane" type="button" role="tab">По цене  </p>
+                                {% include 'main/icons/arrow.html' with arrowId='order-price-arrow'%}
                             </li>
 <!--                            <li class="nav-item" style="flex: 1 0 0%">-->
 <!--                                <p class="text-center fs-9 fs-md-9 sort w-100 rounded-2" id="product-delivery-tab" type="button" role="tab">Хиты продаж</p>-->
 <!--                            </li>-->
                             <li class="nav-item" style="flex: 1 0 0%">
-                                <p class="text-center fs-8 mb-4  fs-sm-9 fs-md-9 sort w-100 rounded-2" id="product-delivery-tab" data-bs-toggle="tab" data-bs-target="#product-delivery-tab-pane" type="button" role="tab">Хиты продаж</p>
+                                <button class="d-block d-lg-none btn btn-sm text-white mobile_filter_button   fs-8 text-uppercase rounded-3 rounded-pill w-100 mx-auto"> №</button>
+                                <p class="text-center mb-4 mb-lg-0 fs-5 fs-sm-6 fs-md-7 sort fs-lg-9 w-100 rounded-2 pt-6 pb-0" id="product-delivery-tab" data-bs-toggle="tab" data-bs-target="#product-delivery-tab-pane" type="button" role="tab">По номеру эскиза</p>
+                                {% include 'main/icons/arrow.html' with arrowId='order-sketchNumber-arrow'%}
                             </li>
                             <li class="nav-item" style="flex: 1 0 0%">
-                                <p class="text-center fs-8 fs-md-9 sort w-100 rounded-2" id="product-installation-tab"  data-bs-toggle="tab" data-bs-target="#product-installation-tab-pane" type="button" role="tab">По номеру эскиза
-                                    {% include 'main/icons/arrow.html' with arrowId='order-sketchNumber-arrow'%}
+                                <button class="d-block d-lg-none btn btn-sm text-white  mobile_persent_button fs-8 text-uppercase rounded-3 rounded-pill w-100 ">%</button>
+                                <p class="text-center mb-4 mb-lg-0 fs-5 fs-sm-6 fs-md-7 sort fs-lg-9 persent_txt  w-100 rounded-2 pt-6 pb-0" id="product-installation-tab"  data-bs-toggle="tab" data-bs-target="#product-installation-tab-pane" type="button" role="tab">По скидке  
                                 </p>
+                                {% include 'main/icons/arrow.html' with arrowId='order-percent-arrow'%}
                             </li>
 
                         </ul>
                         <div class="tab-content pt-0" id="myTabContent">
                             <div class="tab-pane fade show active" id="product-characteristics-tab-pane" role="tabpanel" tabindex="0">
-                                <div class="row row-cols-lg-3 row-cols-1 gy-20">
+                                <div class="row row-cols-lg-3 row-cols-2 gy-20">
 
                                     {% for item in products %}
                                     {% include 'main/components/catalog_category_item.html' with PriceWinguardSketchId=item.id price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
@@ -339,9 +357,12 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="mt-20">  <img class="w-100 mb-20 d-lg-none mt-0"  src="{% static 'main/img/sale.png' %}" alt="sale"></div>
+                    
                         <!--HITI PRODAZH-->
                         <section>
-                            <div class="row  mb-17 pt-lg-30 pt-30">
+                            <div class="row  mb-17 pt-lg-30 pt-0">
                                 <div class="col-lg-5">
                                     <h2 class="h1 fs-3xl-20 fs-lg-20 fs-13 ls-sm text-uppercase mb-0">Хиты продаж</h2>
                                 </div>

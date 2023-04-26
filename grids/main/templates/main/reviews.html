@@ -5,7 +5,7 @@
     <div class="container">
         <header class="page-header mb-lg-20 mb-28">
             <div>
-                <div class=" d-lg-none">
+                <div class=" d-none">
                     <div class="pt-xl-7 pt-lg-4">
                         <p class="lead fs-lg-12 fs-9 mb-0" style="max-width: 28rem;">В нашем каталоге представлено 600+ эскизов решеток на окна. Возможно изготовление решеток по вашему эскизу.</p>
                         <div class="mt-3xl-31 mt-lg-24 d-lg-block d-none">
@@ -17,7 +17,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-20 d-lg-none d-block">
+            <div class="mt-20 d-none ">
                 <div class="vstack flex-wrap gap-10">
                     <btn class="btn btn-secondary  btn-xxl w-100" data-bs-toggle="modal" data-bs-target="#modal-consultation" type="button">Консультация</btn>
                     <btn class="btn btn-primary btn-xxl w-100" data-bs-toggle="modal" data-bs-target="#modal-measurement" type="button">Вызвать на замер </btn>
@@ -28,7 +28,7 @@
 
             <div class="row gy-lg-0  gy-12">
                 <div class="col-lg-6">
-                    <h1 class="display-1 mt-20 fs-3xl-25 fs-xl-30 fs-lg-27 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Более 1000+ <br> довольных <br> клиентов </h1>
+                    <h1 class="display-1 mt-0 mt-lg-30 fs-3xl-25 fs-xl-30 fs-lg-27 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Более 1000+ <br> довольных клиентов </h1>
                 </div>
                 <div class="col-lg-6 rounded-3">
                     <img class="rounded-3 w-100" src="{% static 'main/img/sale_to_reviews.jpg' %}" alt="sale_to_reviews">
@@ -520,51 +520,40 @@
                                         href="#" data-bs-toggle="modal" data-bs-target="#exampleModal13">Смотреть фото</a>
                                         <!-- Modal -->
                                     
-                                             <div class="modal fade" id="exampleModal13" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog ">
-                                                    <div class="modal-content ">
-                                                        <div class="modal-body p-5">
-                                                            <button type="button" class=" position-absolute  btn_close rounded-2 z-2" aria-label="Close" data-bs-dismiss="modal">
-                                                                {% include 'main/icons/btn_close.html' with classes="svg-icon"%}</button>
-                                                            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                                                                <div class="carousel-inner">
-                                                                  <div class="carousel-item active">
-                                                                    <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review14.jpg' %}"
-                                                                    alt="Андрей Алексеевич Б." />
-                                                                  </div>
-                                                                  <div class="carousel-item">
-                                                                    <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review15.jpg' %}"
-                                                                    alt="Андрей Алексеевич Б." />
-                                                                  </div>
-                                                                  <div class="carousel-item">
-                                                                    <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review16.jpg' %}"
-                                                                    alt="Андрей Алексеевич Б." />
-                                                                  </div>
-                                                                  <div class="carousel-item">
-                                                                    <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review17.jpg' %}"
-                                                                    alt="Андрей Алексеевич Б." />
-                                                                  </div>
-                                                                  <div class="carousel-item">
-                                                                    <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review18.jpg' %}"
-                                                                    alt="Андрей Алексеевич Б." />
-                                                                  </div>
-                                                                </div>
-                                                                <button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                                                                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                                  <span class="visually-hidden">Previous</span>
-                                                                </button>
-                                                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                                                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                                  <span class="visually-hidden">Next</span>
-                                                                </button>
-                                                              </div>
-                                                            
-                                                          
+                                        <div class="modal fade" id="exampleModal13" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content ">
+                                                <div class="modal-body p-5">
+                                                    <button type="button" class=" position-absolute  btn_close rounded-2 z-2" aria-label="Close" data-bs-dismiss="modal">
+                                                        {% include 'main/icons/btn_close.html' with classes="svg-icon"%}</button>
+                                                    <div id="carouselExampleControls2" class="carousel slide" data-bs-ride="carousel">
+                                                        <div class="carousel-inner">
+                                                          <div class="carousel-item active">
+                                                            <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review9.jpeg' %}"
+                                                            alt="Сергей Н." />
+                                                          </div>
+                                                          <div class="carousel-item">
+                                                            <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review9-1.jpeg' %}"
+                                                            alt="Сергей Н." />
+                                                          </div>
+                                                         
                                                         </div>
-                                                      
-                                                    </div>
-                                                    </div>
+                                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="prev">
+                                                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                          <span class="visually-hidden">Previous</span>
+                                                        </button>
+                                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="next">
+                                                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                          <span class="visually-hidden">Next</span>
+                                                        </button>
+                                                      </div>
+                                                    
+                                                    
                                                 </div>
+                                              
+                                            </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <p class="fs-lg-10 fs-8 fw-light mb-0">
                                         Заказывал кованые решетки себе на дачу. Очень крепкие, безопасность чувствуется сразу,

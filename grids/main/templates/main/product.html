@@ -1,35 +1,36 @@
 {%extends 'main/base.html' %} 
 {% load static %} 
 {% block content %}
-<div class="pt-lg-30 pt-16 pb-lg-50 pb-32">
+<div class="pt-lg-20 pt-16 pb-lg-50 pb-32">
     <div class="container">
         <header class="page-header mb-lg-20 mb-17-5">
             <div class="d-lg-block d-none">
 
                 <div class="row gy-lg-0  gy-12">
                     <div class="col-lg-6">
-                        <h1 class="display-1 fs-3xl-25 fs-xl-23 fs-lg-22 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Дутые металлические решетки на окна</h1>
+                        <h1 class="display-1 pt-lg-30 fs-3xl-25 fs-xl-23 fs-lg-22 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Дутые металлические решетки на окна</h1>
+                        <nav class="d-lg-block d-none fs-9 mt-lg-0 pt-lg-12  ">
+                            <ul class="breadcrumb mb-0">
+                                <li class="breadcrumb-item"><a href="index.html">Главная </a></li>
+                                <li class="breadcrumb-item"><a href="catalog.html">Каталог</a></li>
+                                <li class="breadcrumb-item active">{{category.title}} решетки на окна </li>
+                            </ul>
+                        </nav>
                     </div>
                     <div class="col-lg-6">
                         <div class="pt-xl-7 pt-lg-4">
-
+                            <img class="w-100 rounded-3" src="{% static 'main/img/sale_baner.jpg' %}" alt="sale_baner">
                         </div>
                     </div>
                 </div>
-                <div class="mt-20 d-lg-none d-block">
+                <div class="mt-20 d-none d-block">
 
                     <div class="vstack flex-wrap gap-10">
                         <btn class="btn btn-primary btn-xxl w-100" data-bs-toggle="modal" data-bs-target="#modal-consultation" type="button">Консультация</btn>
                         <btn class="btn btn-outline-black btn-xxl w-100" data-bs-toggle="modal" data-bs-target="#modal-measurement" type="button">Вызвать на замер </btn>
                     </div>
                 </div>
-                <nav class="d-lg-block d-none fs-9 mt-12">
-                    <ul class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a href="index.html">Главная </a></li>
-                        <li class="breadcrumb-item"><a href="catalog.html">Каталог</a></li>
-                        <li class="breadcrumb-item active">Дутые решетки на окна </li>
-                    </ul>
-                </nav>
+               
 
             </div>
             <div class="d-lg-none d-block">
@@ -38,7 +39,7 @@
             </div>
         </header>
         <main>
-            <section class="mb-lg-50 mb-30">
+            <section class="mb-lg-50 mb-30 ">
                 <div class="row row-cols-4 d-lg-flex d-none gy-10 mb-10">
                     <div class="col">
                         <a class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20  px-10 py-4" href="/решетки-на-окна-эконом-класс">
@@ -491,19 +492,22 @@
                             <div class="border-top-lg border-lg-black mt-20 pt-lg-20">
                                 <ul class="nav nav-pills  fs-lg-9 fs-7 ls-sm  gap-lg-10 gap-5" id="myTab" role="tablist">
                                     <li class="nav-item" style="flex: 1 0 0%">
-                                        <button class="nav-link active w-100" id="product-characteristics-tab" data-bs-toggle="tab" data-bs-target="#product-characteristics-tab-pane" type="button" role="tab">Характеристики</button>
+                                        <button class="nav-link active w-100 px-3" id="product-characteristics-tab" data-bs-toggle="tab" data-bs-target="#product-characteristics-tab-pane" type="button" role="tab">Характеристики</button>
                                     </li>
                                     <li class="nav-item" style="flex: 1 0 0%">
-                                        <button class="nav-link w-100" id="product-description-tab" data-bs-toggle="tab" data-bs-target="#product-description-tab-pane" type="button" role="tab">Описание</button>
+                                        <button class="nav-link w-100 px-3" id="product-delivery-tab" data-bs-toggle="tab" data-bs-target="#product-delivery-tab-pane" type="button" role="tab">Доставка</button>
                                     </li>
                                     <li class="nav-item" style="flex: 1 0 0%">
-                                        <button class="nav-link w-100" id="product-delivery-tab" data-bs-toggle="tab" data-bs-target="#product-delivery-tab-pane" type="button" role="tab">Доставка</button>
+                                        <button class="nav-link w-100 px-3" id="product-payment-tab" data-bs-toggle="tab" data-bs-target="#product-payment-tab-pane" type="button" role="tab">Оплата</button>
                                     </li>
                                     <li class="nav-item" style="flex: 1 0 0%">
-                                        <button class="nav-link w-100" id="product-installation-tab" data-bs-toggle="tab" data-bs-target="#product-installation-tab-pane" type="button" role="tab">Установка</button>
+                                        <button class="nav-link w-100 px-3" id="product-servises-tab" data-bs-toggle="tab" data-bs-target="#product-servises-tab-pane" type="button" role="tab">Услуги</button>
                                     </li>
                                     <li class="nav-item" style="flex: 1 0 0%">
-                                        <button class="nav-link w-100" id="product-payment-tab" data-bs-toggle="tab" data-bs-target="#product-payment-tab-pane" type="button" role="tab">Оплата   </button>
+                                        <button class="nav-link w-100 px-3" id="product-reviews-tab" data-bs-toggle="tab" data-bs-target="#product-reviews-tab-pane" type="button" role="tab">Отзывы</button>
+                                    </li>
+                                    <li class="nav-item" style="flex: 1 0 0%">
+                                        <button class="nav-link w-100 px-3" id="product-sertificate-tab" data-bs-toggle="tab" data-bs-target="#product-sertificate-tab-pane" type="button" role="tab">Сертификаты</button>
                                     </li>
                                 </ul>
                                 <div class="tab-content pt-lg-20 pt-10" id="myTabContent">
@@ -533,19 +537,169 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="tab-pane fade" id="product-description-tab-pane" role="tabpanel" tabindex="0">
+                                    <div class="tab-pane fade" id="product-delivery-tab-pane" role="tabpanel" tabindex="0">
                                         <div class="fs-lg-9 fs-8">
-                                            <p>Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так. Его корни уходят в один фрагмент классической латыни. Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский
-                                                набор слов, но это не совсем так. Его корни уходят в один фрагмент классической латыни.</p>
-                                            <p>Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так. Его корни уходят в один фрагмент классической латыни. Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский
-                                                набор слов, но это не совсем так. Его корни уходят в один фрагмент классической латыни.</p>
-                                            <p>Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так. Его корни уходят в один фрагмент классической латыни. Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский
-                                                набор слов, но это не совсем так. Его корни уходят в один фрагмент классической латыни.</p>
+                                           <div class="row gx-5">
+                                            <div class="col-lg-4 ">
+                                                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                                                    <div class="carousel-inner">
+                                                      <div class="carousel-item active">
+                                                        <img class="rounded-2 object-fit-contain w-100" src="{% static 'main/img/delivery-slide.png' %}"
+                                                        alt="delivery-slide"/>
+                                                      </div>
+                                                      <div class="carousel-item">
+                                                        <img class="rounded-2 object-fit-contain w-100" src="{% static 'main/img/delivery-slide2.png' %}"
+                                                        alt="delivery-slide"/>
+                                                      </div>
+                                                    </div>
+                                                    <button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                      <span class="visually-hidden">Previous</span>
+                                                    </button>
+                                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                      <span class="visually-hidden">Next</span>
+                                                    </button>
+                                                  </div>
+                                            </div>
+                                            <div class="col-lg-8 border border-light rounded-2 p-5">
+                                                <p class="mb-5">Доставка осуществляется собственным транспортом в удобное для Вас
+                                                    время. Стоимость доставки зависит от удаленности населённого пункта.
+                                                    Для точного расчета оставьте заявку или позвоните нам.</p>
+                                                    
+                                                    <p class="mb-5">Представленные тарифы действуют при заказе монтажа.
+                                                    Если Вы планируете устанавливать изделия самостоятельно,
+                                                    то стоимость доставки может измениться. Уточняйте точную стоимость
+                                                    у наших специалистов заранее по телефону.</p>
+
+                                                    <ul class="mb-0">
+                                                        <li class="text-uppercase fw-semibold ">Доставка по Москве: 500 р.</li>
+                                                        <li class="text-uppercase fw-semibold">Доставка за пределы МКАД: 500 р. + 20 р. за 1 км.</li>
+                                                    </ul>
+                                            </div>
+                                           </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="product-delivery-tab-pane" role="tabpanel" tabindex="0"></div>
-                                    <div class="tab-pane fade" id="product-installation-tab-pane" role="tabpanel" tabindex="0"></div>
-                                    <div class="tab-pane fade" id="product-payment-tab-pane" role="tabpanel" tabindex="0"></div>
+                                    <div class="tab-pane fade" id="product-payment-tab-pane" role="tabpanel" tabindex="0">
+                                        <p class="fs-9">Оплатить заказ Вы можете любым удобным для Вас способом:</p>
+                                         <div class="row mx-0 gx-5 gy-5">
+                                            <div class="col-6 col-lg-3 ">
+                                                <div class="card pt-20 pt-lg-30 pt-xl-30 pt-xxl-30 align-items-center">
+                                                    {% include 'main/icons/pay_icons/pay_icon1.html' with classes="svg-icon"  styles='max-width: 70%; width:151px; ' %}
+                                                    <div class="card-body px-0">
+                                                      <p class="card-text fs-7 fs-sm-10">Наличные</p>
+                                                    </div>
+                                                  </div>
+                                        </div>
+                                        <div class="col-6 col-lg-3">
+                                            <div class="card pt-20 pt-lg-30 pt-xl-30 pt-xxl-30 align-items-center">
+                                                {% include 'main/icons/pay_icons/pay_icon2.html' with classes="svg-icon"  styles='max-width: 70%; width:151px; ' %}
+                                                <div class="card-body px-0">
+                                                  <p class="card-text fs-7 fs-sm-10">Банковская карта</p>
+                                                </div>
+                                              </div>
+                                        </div>
+                                        <div class="col-6 col-lg-3">
+                                            <div class="card pt-20 pt-sm-20 pt-lg-0 pt-xl-15 pt-xxl-17 align-items-center">
+                                                {% include 'main/icons/pay_icons/pay_icon3.html' with classes="svg-icon"  styles='max-width: 70%; width:121px; ' %}
+                                                <div class="card-body px-0 ">
+                                                  <p class="card-text fs-7 fs-sm-10">Онлайн банк</p>
+                                                </div>
+                                              </div>
+                                        </div>
+                                        <div class="col-6 col-lg-3">
+                                            <div class="card pt-20 pt-sm-20 pt-lg-0 pt-xl-15 pt-xxl-17 align-items-center">
+                                                {% include 'main/icons/pay_icons/pay_icon4.html' with classes="svg-icon"  styles='max-width: 63%; width:110px; ' %}
+                                                <div class="card-body px-0">
+                                                  <p class="card-text fs-7 fs-sm-10">Счет для юр. лиц</p>
+                                                </div>
+                                              </div>
+                                         </div>
+                                         <p class="fs-9 py-10">После замера и составления точного технического задания мы заключаем договор. Схема оплаты отличается
+                                            для физических и юридических лиц:</p>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <p class="fw-medium">Физическое лицо (частный клиент)</p>
+                                                     <div class="row mx-0 text-center ">
+                                                        <div class="col-4 bg-primary rounded-start-2">
+                                                            <p class="text-white fs-8 fs-sm-10 mt-10"><span class="fs-12">30% </span><br>предоплата</p>
+                                                        </div>
+                                                         <div class="col-8 bg-light rounded-end-2">
+                                                                <p class="text-dark fs-8 fs-sm-10 fw-semibold postpay_item  mt-10"><span class="fs-12">70% </span><br>постоплата</p>
+                                                                <div>
+                                                          
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="border border-light pt-5 px-10 mt-10 rounded-2" >
+                                                                <p class="fs-8 mb-5">Предоплата 30% производится в момент подписания
+                                                                    договора. Остаток в размере 70% от общей суммы
+                                                                    оплачивается по факту доставки и установки.</p>
+                                                                    <div class="d-flex ">
+                                                                         {% include 'main/icons/pay_icons/pay_eclipse.html' with classes="svg-icon"%}
+                                                                         <p class="fs-8 ms-10 mt-5">Заказ отправляется в производство
+                                                                            только после поступления предоплаты.</p>
+                                                                        </div>
+                                                                    </div>
+                                                               
+                                                </div>
+                                                <div class="col-lg-6 mt-10 mt-lg-0">
+                                                    <p class="fw-medium">Юридическое лицо (организация или ИП)</p>
+                                                    <div class="bg-primary text-center rounded-2">
+                                                        <p class="text-white fs-8 fs-sm-10 py-10 mt-10"><span class="fs-12">100% </span><br>предоплата</p>
+                                                    </div>
+                                                    <div class="border border-light pt-5 px-10 mt-10 rounded-2" >
+                                                        <p class="fs-8 mb-5">С юридическими лицами и ИП мы работаем по 100%
+                                                            предоплате. В отдельных случаях (крупные заказы)
+                                                            возможна как частичная, так и поэтапная оплата.</p>
+                                                            <div class="d-flex ">
+                                                                 {% include 'main/icons/pay_icons/pay_eclipse.html' with classes="svg-icon"%}
+                                                                 <p class="fs-8 ms-10 mt-5">Заказ отправляется в производство
+                                                                    только после поступления предоплаты.</p>
+                                                                </div>
+                                                            </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="product-servises-tab-pane" role="tabpanel" tabindex="0"></div>
+                                    <div class="tab-pane fade" id="product-reviews-tab-pane" role="tabpanel" tabindex="0">
+                                       
+                                    </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="product-sertificate-tab-pane" role="tabpanel" tabindex="0">
+                                        <div class="row gx-5 gy-10  mx-0 text-center">
+                                            <div class="col-6 col-lg-2">
+                                                <div class="border border-light rounded-2">
+                                                <img class="p-5 w-100" src="{% static 'main/img/sertificate.png' %}">
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-lg-2">
+                                                <div class="border border-light rounded-2">
+                                                <img class="p-5 w-100" src="{% static 'main/img/sertificate.png' %}">
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-lg-2">
+                                                <div class="border border-light rounded-2">
+                                                <img class="p-5 w-100" src="{% static 'main/img/sertificate.png' %}">
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-lg-2">
+                                                <div class="border border-light rounded-2">
+                                                <img class="p-5 w-100" src="{% static 'main/img/sertificate.png' %}">
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-lg-2">
+                                                <div class="border border-light rounded-2">
+                                                <img class="p-5 w-100" src="{% static 'main/img/sertificate.png' %}">
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-lg-2">
+                                                <div class="border border-light rounded-2">
+                                                <img class="p-5 w-100" src="{% static 'main/img/sertificate.png' %}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                           
@@ -557,10 +711,39 @@
                         <!-- DRUGIE RESHETKI -->
                         <div class="border-lg border-lg-black rounded-lg-4 mt-lg-20 mt-28 p-lg-20">
                             <h3 class="h5 fs-lg-13 fs-11 fw-medium ls-sm text-uppercase mb-17-5">Другие решетки по схожим ценам</h3>
-                            <div class="row row-cols-lg-3 row-cols-1 gy-lg-0 gy-20">
-             
-    
-    
+                            <div class="row   gy-lg-0 gy-20">
+                                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                      <div class="carousel-item active">
+                                        <div class="row-cols-lg-4 row-cols-2">
+                                            <img src="..." class="d-block w-100" alt="...">
+                                        </div>
+                                      </div>
+                                      <div class="carousel-item">
+                                        <div class="row-cols-lg-4 row-cols-2">
+                                            <img src="..." class="d-block w-100" alt="...">
+                                        </div>
+                                      </div>
+                                      <div class="carousel-item">
+                                        <div class="row-cols-lg-4 row-cols-2">
+                                            <img src="..." class="d-block w-100" alt="...">
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <button class="carousel-control-prev arrow-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="grey" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                                          </svg>
+                                      <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next arrow-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                     <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="grey" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                      </svg>
+                                      <span class="visually-hidden">Next</span>
+                                    </button>
+                                  </div>
+
                             </div>
                         </div>
                     </div>

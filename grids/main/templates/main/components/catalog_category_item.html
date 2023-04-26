@@ -1,18 +1,18 @@
 {% load static %}
 <div class="col">
     <div class="card card-hover card_hover_shadow border-0 rounded-lg-4 rounded-3 shadow-lg">
-        <div class="card-body p-10">
+        <div class="card-body p-5 p-sm-10">
             <div class="position-relative text-center ">
                 <div class="position-absolute top-0 start-0 z-1">
                     <a class="text-muted text-hover-black">{% include 'main/icons/chart.html' with classes="svg-icon"%}</a>
-                <span class="fs-8  ms-2 py-0 bg-success text-white px-2 rounded-2">хит</span>
+                <span class="fs-5 fs-sm-6 fs-md-7 fs-lg-8  ms-2 py-0 bg-success text-white px-2 rounded-2">хит</span>
             </div>
                 <div class="position-absolute top-0 end-0 z-1">
-                    <span class="fs-8 ms-2 py-0 bg-danger text-white   px-2 rounded-2">{{percent}}%</span>
+                    <span class="fs-5  fs-sm-6 fs-md-7 fs-lg-8 ms-2 py-0 bg-danger text-white   px-2 rounded-2">{{percent}}%</span>
                     <a class="text-muted text-hover-black">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a>
                 </div>
                 <div class="position-absolute w-100 top-50 start-50 translate-middle opacity-0 z-1">
-                    <button class="btn btn-light btn-lg btn-wide-xl"
+                    <button class="btn btn-light fs-4 fs-sm-5 fs-md-8 px-5 py-5 py-sm-5 px-sm-10 px-md-20 py-md-7 rounded-3 "
                             data-bs-toggle="modal"
                             data-bs-target="#{{path_file}}"
                             type="button">Быстрый
@@ -27,8 +27,8 @@
             </div></a>
 
 
-                    <h3 class="card-title h5  fs-10 fw-medium  d-lg-inline-block ls-sm text-uppercase  pb-5">
-                <a class="text-decoration-none text-dark d-lg-inline-block">Решетка на окно<br>сварная {{path_folder}} - {{path_file}}</a></h3>
+                    <h3 class="card-title h5 mb-5 mb-sm-5 mb-md-10  fs-10 fw-medium  d-lg-inline-block ls-sm text-uppercase  pb-5">
+                <a class="text-decoration-none fs-6 fs-sm-8 fs-md-9 fs-md-10 text-dark d-lg-inline-block">Решетка на окно<br>сварная {{path_folder}} - {{path_file}}</a></h3>
                 <div class="float-end buy_item">
              <div class="d-flex justify-content-between">
                 {% include 'main/icons/star.html' with classes='svg-icon' styles='width:20px' %}
@@ -36,12 +36,12 @@
                 {% include 'main/icons/star.html' with classes='svg-icon' styles='width:20px' %}
                 {% include 'main/icons/star.html' with classes='svg-icon' styles='width:20px' %}
                 {% include 'main/icons/star.html' with classes='svg-icon' styles='width:20px' %}
-                                    <span class="fs-9">(32)</span>
+                                    <span class="fs-5 fs-sm-7 fs-md-6 fs-lg-9">(32)</span>
               </div>
-               <a class="btn btn-outline-dark px-20 py-5 w-100 fs-9 mt-5">Купить</a>
+               <a class="btn btn-outline-dark py-3 px-3 py-sm-5 px-sm-5  py-md-9  px-md-15  px-lg-20 py-lg-5 w-100 fs-5 fs-sm-7 fs-md-7 fs-lg-9 mt-5">Купить</a>
             </div>
-                <span class="d-block fs-10 text-muted fw-medium  text-decoration-line-through  text-uppercase ls-sm pb-4 ">{{saleprice}} руб</span>
-                <span class="d-block fs-10 text-danger fw-medium  text-uppercase ls-sm  ">{{price}} руб</span>
+                <span class="d-block fs-6 fs-sm-7 fs-md-9 fs-lg-10 text-muted fw-medium  text-decoration-line-through old_price text-uppercase ls-sm pb-4 ">{{saleprice}} руб</span>
+                <span class="d-block fs-6 fs-sm-7 fs-md-9 fs-lg-10 text-danger fw-medium  text-uppercase ls-sm  ">{{price}} руб</span>
 
             <!--MODAL-->
             {% include 'main/components/product_quick_view.html' with PriceWinguardSketchId=PriceWinguardSketchId modal_id=path_file%}
