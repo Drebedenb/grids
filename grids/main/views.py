@@ -217,7 +217,6 @@ SIMILAR_GRIDS_STEP_IN_PRICE = 100
 def product(request, sketch_id):
     product = get_product_by_sketch_id(sketch_id)
     first_row_product = product[0]
-    print(first_row_product.price_b2c)
     similar_grids_by_price = get_products_by_category(first_row_product.path_folder,
                                                       first_row_product.price_b2c - SIMILAR_GRIDS_STEP_IN_PRICE,
                                                       first_row_product.price_b2c + SIMILAR_GRIDS_STEP_IN_PRICE,
