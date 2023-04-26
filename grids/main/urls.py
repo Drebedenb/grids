@@ -1,6 +1,4 @@
-from django.urls import path, include
-
-from grids import settings
+from django.urls import path
 from .views import *
 
 urlpatterns = [
@@ -12,6 +10,5 @@ urlpatterns = [
     path('reviews/', reviews, name='reviews'),
     path('compare/', compare, name="compare"),
     path('favorite/', favorite, name="favorite"),
-    path('__debug__/', include('debug_toolbar.urls')),
     path('privacy/', privacy, name="privacy")
 ]

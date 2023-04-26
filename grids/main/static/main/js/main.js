@@ -156,16 +156,16 @@ function eraseCookie(name) {
 function paintHeartRed(className) {
     let items = document.getElementsByClassName(className);
     for (let i = 0; i < items.length; i++) {
-        items[i].style.fill = '#F5320E';
-        items[i].style.stroke = '#F5320E';
+        items[i].children[0].style.fill = '#F5320E';
+        items[i].children[0].style.stroke = '#F5320E';
     }
 }
 
 function paintHeartGrey(className) {
     let items = document.getElementsByClassName(className);
     for (let i = 0; i < items.length; i++) {
-        items[i].style.fill = 'none';
-        items[i].style.stroke = '#959595';
+         items[i].children[0].style.fill = 'none';
+         items[i].children[0].style.stroke = '#959595';
     }
 }
 
@@ -204,9 +204,16 @@ function changeFavoriteCounter() {
 }
 
 function changeFavoriteCounterAndPaintHearts() {
-    changeFavoriteCounter();//вызываем при начальной загрузке любой страницы
+    changeFavoriteCounter();//вызываем при начальной за грузке любой страницы
     let favoritesStr = getCookie("Favorites")
-    let favorites = favoritesStr === null ? [] : favoritesStr.split(',')
+    console.log(favoritesStr);
+    let favorites;
+    if ( favoritesStr === '' || favoritesStr === null) {
+        favorites = []
+    } else {
+        favorites = favoritesStr.split(',')
+    }
+    // let favorites = favoritesStr === '' ? [] : 
     for (const productId of favorites) {
         try {
             paintHeartRed("heart-" + productId)
@@ -271,7 +278,13 @@ function changeCompareCounter() {
 function changeCompareCounterAndPaintCompares() {
     changeCompareCounter();//вызываем при начальной загрузке любой страницы
     let comparesStr = getCookie("Compare")
-    let compares = comparesStr === null ? [] : comparesStr.split(',')
+    let compares;
+    if ( comparesStr === '' || comparesStr === null) {
+        compares = []
+    } else {
+        compares = comparesStr.split(',')
+    }
+    // let compares = comparesStr === '' ? [] : comparesStr.split(',')
     for (const productId of compares) {
         try {
             paintChartRed("chart-" + productId)
@@ -401,11 +414,13 @@ const idToOrders = {
         'order-price': 'price',
         'order-popularity': 'popularity',
         'order-sketchNumber': 'id',
+        'order-percent': 'percent'
 }
 const ordersToId = {
         'price': 'order-price',
         'popularity': 'order-popularity',
         'id': 'order-sketchNumber',
+        'percent': 'order-percent'
 }
 function changeArrowIcon() {
     let orderScending;

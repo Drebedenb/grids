@@ -1,6 +1,5 @@
 {% load static %}
 {% load main_tags %}
-{% get_product_by_id sketch_id=PriceWinguardSketchId as product %}
 <div class="modal modal-xl modal-custom border border-black rounded-4 fade" id="{{modal_id}}">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -18,32 +17,32 @@
                                     <a class="text-muted text-hover-black" href="#">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a>
                                 </div>
                                 <div class="">
-                                    <div id="carouselExampleIndicators" class="carousel slide " data-bs-interval="false" >
+                                    <div id="carousel-{{modal_id}}" class="carousel slide " data-bs-interval="false" >
                                         <div class="carousel-indicators">
-                                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active bg-light " aria-current="true" aria-label="Slide 1" style="height:7px;"></button>
-                                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="bg-light" aria-label="Slide 2" style="height:7px;"></button>
+                                          <button type="button" data-bs-target="#carousel-{{modal_id}}" data-bs-slide-to="0" class="active bg-light " aria-current="true" aria-label="Slide 1" style="height:7px;"></button>
+                                          <button type="button" data-bs-target="#carousel-{{modal_id}}" data-bs-slide-to="1" class="bg-light" aria-label="Slide 2" style="height:7px;"></button>
                                          
                                         </div>
                                         <div class="carousel-inner">
                                           <div class="carousel-item active">
                                             <div class="ratio overflow-hidden" style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 350px;">
-                                                <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/solid/{{product.path_file}}.png">
+                                                <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{path_folder}}/solid/{{path_file}}.png">
                                                 </div>
                                           </div>
                                           <div class="carousel-item">
                                             <div class="ratio overflow-hidden" style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 350px;">
-                                                <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{product.path_folder}}/solid/{{product.path_file}}.png">
+                                                <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{path_folder}}/solid/{{path_file}} F.png">
                                                 </div>
                                           </div>
                                        
                                         </div>
-                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel-{{modal_id}}" data-bs-slide="prev">
                                           <span class="" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="grey" class="bi bi-chevron-left" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
                                           </svg></span>
                                           <span class="visually-hidden">Previous</span>
                                         </button>
-                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                        <button class="carousel-control-next" type="button" data-bs-target="#carousel-{{modal_id}}" data-bs-slide="next">
                                           <span class="" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="grey" class="bi bi-chevron-right" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                                           </svg></span>
@@ -56,7 +55,7 @@
                                 </div>
                                 </div>
 
-                            <h6 class="fs-8 fw-normal mb-0 pt-10 text-uppercase text-center">Рассчитаем стоимость по телефону <h6>
+                            <h6 class="fs-8 fw-normal mb-0 pt-10 text-uppercase text-center">Рассчитаем стоимость по телефону </h6>
                                         <form class="mt-10">
                                             <div class="row gx-10 gy-10">
                                                 <div class="col-12 col-md-6 ">
@@ -73,7 +72,7 @@
                                                 </div>
                                                 <div class="col-12 col-md-6">
                                                     <div class="form-check  fs-6 pt-2 pb-2 ps-0">
-                                                        <label class="form-check-label " for="consultation-personal">Оставляя заявку, Вы даете
+                                                        <label class="form-check-label " >Оставляя заявку, Вы даете
                                                             свое согласие на обработку <a class="text-decoration-underline text-dark"  href="{%url 'privacy'%}">персональных данных</a> </label>
                                                     </div>
                                                 </div>
@@ -95,27 +94,27 @@
                                 <div class="col">
                                     <div class="text-center border py-3 rounded-2">
                                     <p class="mb-0 fs-7 text-muted">Цена сегодня</p>
-                                    <span class="fs-7 fs-lg-9">990 р./ м²</span>
+                                    <span class="fs-7 fs-lg-9"><span id="{{path_folder}}-{{path_file}}-price">{{price}}</span> р./ м²</span>
                                 </div>
                                 </div>
                                 <div class="col">
                                     <div class="text-center border py-3 rounded-2">
                                     <p class="mb-0 fs-7 text-muted">Старая цена:</p>
-                                    <span class="fs-7 fs-lg-9 text-muted text-decoration-line-through">1200 р./ м²</span>
+                                    <span class="fs-7 fs-lg-9 text-muted text-decoration-line-through">{{saleprice}} р./ м²</span>
                                 </div>
                                 </div>
                                 <div class="col ">
-                                    <input class="form-control text-center form-control-lg rounded-2"
-                                           placeholder="100 см." type="text"/>
+                                    <input class="form-control text-center form-control-lg rounded-2 quick-view-width"
+                                           placeholder="100 см." type="text" oninput="changeWidth(this.value)"/>
                                 </div>
                                 <div class="col">
-                                    <input class="form-control text-center form-control-lg rounded-2"
-                                           placeholder="100 см." type="text"/>
+                                    <input   class="form-control text-center form-control-lg rounded-2 quick-view-height"
+                                           placeholder="100 см." type="text" oninput="changeHeight(this.value)"/>
                                 </div>
                                 <div class="col">
                                     <div class="d-flex align-items-center text-center  mb-lg-10  border rounded-2 py-3">
                                         <div class="form-check ms-5 me-0">
-                                            <input class="form-check-input  " type="checkbox" value="" id="flexCheckDefault">
+                                            <input class="form-check-input  quick-view-isopen" type="checkbox" value="" id="flexCheckDefault" oninput="changeIsOpen(this.checked)">
                                           </div>
                                           <span class="fs-8 pt-1   text-muted ">Открывающаяся <span class="fs-7 ps-5 text-muted"> +1500 р. за шт.</span></span>
                                     </div>
@@ -123,16 +122,16 @@
                                     <div class="col">
                                         <div class="d-flex align-items-center text-center mb-lg-10  border rounded-2 py-3">
                                             <div class="form-check ms-5 me-0">
-                                                <input class="form-check-input  " type="checkbox" value="" id="flexCheckDefault">
+                                                <input class="form-check-input  quick-view-nitro" type="checkbox" value="" oninput="changeIsNitro(this.checked)">
                                               </div>
-                                              <span class="fs-8 pt-1   text-muted ">Открывающаяся <span class="fs-7 ps-5 text-muted"> +1500 р. за шт.</span></span>
+                                              <span class="fs-8 pt-1   text-muted ">Нитро-эмаль <span class="fs-7 ps-5 text-muted"> +550 р. за м².</span></span>
                                         </div>
-                                        </div>
+                                    </div>
                             </div>
                         </form>
                         <div class="mt-15-5">
                             <div class="row row-cols-lg-2 row-cols-1 align-items-center gy-lg-0 gy-15">
-                                <div class="col pt-10"><span class="fs-lg-10 fs-13 fw-semibold text-uppercase">Итого: 31 320 руб</span></div>
+                                <div class="col pt-10"><span class="fs-lg-10 fs-13 fw-semibold text-uppercase">Итого: <span id="{{path_folder}}-{{path_file}}-total">0</span>  руб</span></div>
                                 <div class="col"><a class="btn btn-primary fs-9 rounded-2  w-100" href="#">Заказать в
                                     1 клик</a></div>
                             </div>

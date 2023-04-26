@@ -15,7 +15,9 @@
                     <button class="btn btn-light fs-4 fs-sm-5 fs-md-8 px-5 py-5 py-sm-5 px-sm-10 px-md-20 py-md-7 rounded-3 "
                             data-bs-toggle="modal"
                             data-bs-target="#{{path_file}}"
-                            type="button">Быстрый
+                            type="button"
+                            id="{{price}}"
+                        onclick="changePriceForSquare(this.id)">Быстрый
                         просмотр
                     </button>
                 </div>
@@ -44,7 +46,7 @@
                 <span class="d-block fs-6 fs-sm-7 fs-md-9 fs-lg-10 text-danger fw-medium  text-uppercase ls-sm  ">{{price}} руб</span>
 
             <!--MODAL-->
-            {% include 'main/components/product_quick_view.html' with PriceWinguardSketchId=PriceWinguardSketchId modal_id=path_file%}
+            {% include 'main/components/product_quick_view.html' with price=price saleprice=saleprice percent=percent path_folder=path_folder path_file=path_file PriceWinguardSketchId=PriceWinguardSketchId modal_id=path_file%}
         </div>
     </div>
 </div>

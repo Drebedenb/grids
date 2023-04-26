@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from grids import settings
 
 from main.views import *
 
@@ -23,4 +24,9 @@ urlpatterns = [
     path('', include('main.urls'))
 ]
 
+
+if settings.DEBUG:
+    urlpatterns = [
+        path('__debug__/', include('debug_toolbar.urls')),
+    ] + urlpatterns
 handler404 = page_not_found

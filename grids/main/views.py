@@ -44,6 +44,21 @@ list_of_photos_done = [
     {"name": "photo85.png"}
 ]
 
+list_of_photos_done_collapsed = [
+    {"name": "photo86.png"},
+    {"name": "photo87.png"},
+    {"name": "photo88.png"},
+    {"name": "photo89.png"},
+    {"name": "photo90.png"},
+    {"name": "photo91.png"},
+    {"name": "photo92.png"},
+    {"name": "photo93.png"},
+    {"name": "photo94.png"},
+    {"name": "photo109.png"},
+    {"name": "photo110.png"},
+    {"name": "photo111.png"}
+]
+
 list_of_open_types = [
     {"name": "arch", "description": "Арочная", "price": "30", "width": 1000, "height": 1500},
     {"name": "gog", "description": "Глухая-Распашная-Глухая", "price": "1500", "width": 3000, "height": 1500},
@@ -69,31 +84,51 @@ arr_of_sale = [15, 10, 20, 30, 25, 20, 10, 20, 20, 30, 25, 10, 10, 20, 30, 10, 2
 
 
 def get_products_by_category(category_number, min_price, max_price, order_by_name, order_scending, limit):
-    dictionary_of_orders = ['price', 'id', 'popularity', 'asc', 'desc']
+    dictionary_of_orders = ['price', 'id', 'popularity', 'percent', 'asc', 'desc']
     if order_by_name not in dictionary_of_orders or order_scending not in dictionary_of_orders:
 
         return []
     if not (isinstance(category_number, int) and isinstance(min_price, int) and isinstance(max_price, int) and isinstance(limit, int)):
         return []
-    query = """SELECT MIN(price_b2c) AS price, ps.id, pf.path
-                FROM price.price_winguard_main pm
-                JOIN price.price_winguard_sketch ps ON pm.price_winguard_sketch_id=ps.id 
-                JOIN price.price_winguard_files pf ON pm.price_winguard_sketch_id=pf.price_winguard_sketch_id
-                WHERE category = {category_number}
-                GROUP BY ps.id, pf.path
-                HAVING price > {min_price} AND price < {max_price}
-                ORDER BY {order_by_name} {order_scending}
-                LIMIT {limit}""".format(category_number=category_number, min_price=min_price, max_price=max_price
-                                          ,order_by_name=order_by_name,order_scending=order_scending,limit=limit)
+
+    query = """SELECT *,
+                        ROUND(price / (1-percent/100), -1) AS saleprice
+                        FROM
+                        (SELECT MIN(price_b2c) AS price, ps.id, pf.path, (MOD(ps.id, 3) + 1)*10 + (MOD(ps.id,2) * 5) AS percent,
+                        {category_number} AS path_folder,
+                        SUBSTRING_INDEX(SUBSTRING_INDEX(pf.path, '/', -2), '/', 1) AS path_file
+                        FROM price.price_winguard_main pm
+                        JOIN price.price_winguard_sketch ps ON pm.price_winguard_sketch_id=ps.id
+                        JOIN price.price_winguard_files pf ON pm.price_winguard_sketch_id=pf.price_winguard_sketch_id
+                        WHERE category = {category_number}
+                        GROUP BY ps.id, pf.path
+                        HAVING price > {min_price} AND price < {max_price}
+                        ORDER BY {order_by_name} {order_scending}
+                        LIMIT {limit}) dup""".format(category_number=category_number, min_price=min_price,
+                                                max_price=max_price
+                                                , order_by_name=order_by_name, order_scending=order_scending,
+                                                limit=limit)
     products = PriceWinguardMain.objects.raw(query)
-    for product in products:
-        path_arr = "".join(re.findall("\/\d+\/\d+", product.path)).split("/")
-        product.path_folder = path_arr[1]
-        product.path_file = path_arr[2]
-        product.percent = arr_of_sale[product.id % 20]
-        product.saleprice = int((product.price / (1 - product.percent / 100))/10) * 10 #TODO: реализовать через SQL
     return products
 
+
+def get_product_by_sketch_id(id):
+    query = """
+        SELECT *,
+        ROUND(price_b2c / (1-percent/100), -1) AS saleprice
+        FROM
+        (
+        SELECT ps.category AS path_folder, pm.price_b2c, pm.name, ps.id, 
+        (MOD(ps.id, 3) + 1)*10 + (MOD(ps.id,2) * 5) AS percent, 
+        SUBSTRING_INDEX(SUBSTRING_INDEX(pf.path, '/', -2), '/', 1) AS path_file
+        FROM price_winguard_main pm
+        JOIN price.price_winguard_sketch ps ON pm.price_winguard_sketch_id=ps.id
+        JOIN price.price_winguard_files pf ON pm.price_winguard_sketch_id=pf.price_winguard_sketch_id
+        WHERE ps.id={product_id}
+        ) inner_query
+    """.format(product_id=id)
+    product = PriceWinguardMain.objects.raw(query)
+    return product
 
 def count_products_by_category(category_number):
     return PriceWinguardSketch.objects.filter(category=category_number).count()
@@ -107,12 +142,8 @@ def get_category_min_price(category_number):
 
 
 def get_category_max_price(category_number):
-    max_price = \
-        PriceWinguardMain.objects.filter(price_winguard_sketch__category=category_number).aggregate(Max('price_b2c'))[
-            'price_b2c__max']
-    products = PriceWinguardMain.objects.filter(price_winguard_sketch__category=category_number)
-    for product in products:
-        print(product)
+    max_price = PriceWinguardMain.objects.filter(price_winguard_sketch__category=category_number).values('price_winguard_sketch__id')\
+        .annotate(min_price=Min('price_b2c')).values('min_price').aggregate(Max('min_price'))['min_price__max']
     return max_price
 
 def index(request):
@@ -122,7 +153,7 @@ def index(request):
         "vip": count_products_by_category(5),
         "exlusive": count_products_by_category(7),
     }
-    leaders_of_selling = get_products_by_category(1, 0, 99999, 'id', 'asc', 9999)
+    leaders_of_selling = get_products_by_category(1, 0, 99999, 'id', 'asc', 16)
     min_price_1 = get_category_min_price(1)
     min_price_2 = get_category_min_price(3)
     min_price_3 = get_category_min_price(5)
@@ -178,21 +209,22 @@ def contacts(request):
     return render(request, 'main/contacts.html')
 
 
+SIMILAR_GRIDS_STEP_IN_PRICE = 100
 def product(request, sketch_id):
-    product = {}
-    path = "".join(
-        re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(price_winguard_sketch_id=sketch_id).path))
-    path_arr = path.split("/")
-    product["path_folder"] = path_arr[1]
-    product["path_file"] = path_arr[2]
-    product['additional_info'] = list(
-        PriceWinguardMain.objects.filter(price_winguard_sketch_id=sketch_id).values('price_b2c', 'name'))
-    return render(request, 'main/product.html', {'product': product, 'list_of_open_types': list_of_open_types})
+    product = get_product_by_sketch_id(sketch_id)
+    first_row_product = product[0]
+    print(first_row_product.price_b2c)
+    similar_grids_by_price = get_products_by_category(first_row_product.path_folder,
+                                                      first_row_product.price_b2c - SIMILAR_GRIDS_STEP_IN_PRICE,
+                                                      first_row_product.price_b2c + SIMILAR_GRIDS_STEP_IN_PRICE,
+                                                      'price', 'asc', 15)
+    return render(request, 'main/product.html', {'product': product, 'list_of_open_types': list_of_open_types,
+                                                 "similar_grids_by_price": similar_grids_by_price})
 
 
 def projects(request):
     return render(request, 'main/projects.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Каталог',
-                                                  'list_of_photos_done': list_of_photos_done})
+                                                  'list_of_photos_done': list_of_photos_done, 'list_of_photos_done_collapsed': list_of_photos_done_collapsed})
 
 
 def reviews(request):
@@ -201,7 +233,7 @@ def reviews(request):
 
 def compare(request):
     str_of_cookies = request.COOKIES.get('Compare')
-    if str_of_cookies is '':
+    if str_of_cookies == '':
         return render(request, 'main/compare.html',
                       {'products': []})
     list_of_compares_cookie = str_of_cookies.split(',')
@@ -226,7 +258,7 @@ def compare(request):
 
 def favorite(request):
     str_of_cookies = request.COOKIES.get('Favorites')
-    if str_of_cookies is '':
+    if str_of_cookies == '':
         return render(request, 'main/favorite.html',
                       {'products': []})
     list_of_favorites_cookie = str_of_cookies.split(',')
