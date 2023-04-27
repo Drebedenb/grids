@@ -66,15 +66,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# Key in `CACHES` dict
-CACHE_MIDDLEWARE_ALIAS = 'default'
-
-# Additional prefix for cache keys
-CACHE_MIDDLEWARE_KEY_PREFIX = ''
-
-# Cache key TTL in seconds
-CACHE_MIDDLEWARE_SECONDS = 600
-
 ROOT_URLCONF = 'grids.urls'
 
 TEMPLATES = [
@@ -122,6 +113,9 @@ CACHES = {
         }
     }
 }
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SESSION_CACHE_ALIAS = 'default'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

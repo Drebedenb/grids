@@ -5,8 +5,8 @@ from django.db.models import Min, Max, Count
 from django.http import HttpResponseNotFound
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.views.decorators.cache import cache_page
 from django.core.cache import cache
+
 
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
@@ -188,7 +188,18 @@ def catalog_category(request, category_name):
         order_scending = 'asc' if request.GET.get('orderScending') is None else request.GET.get('orderScending')
         min_price_for_sort = 0 if request.GET.get('minPriceByUser') is None else int(request.GET.get('minPriceByUser'))
         max_price_for_sort = 9999999 if request.GET.get('maxPriceByUser') is None else int(request.GET.get('maxPriceByUser'))
-    products_list = get_products_by_category(category["number_of_category"], min_price_for_sort, max_price_for_sort, order_type, order_scending, limit)
+
+    products_list = []
+    if cache.get(category["number_of_category"]):
+        products_list = cache.get(category["number_of_category"])
+        print('hit cache')
+    else:
+        products_list = get_products_by_category(category["number_of_category"], min_price_for_sort, max_price_for_sort,
+                                                 order_type, order_scending, limit)
+        cache.set(category["number_of_category"], products_list)
+        print('hit db')
+
+    # products_list = get_products_by_category(category["number_of_category"], min_price_for_sort, max_price_for_sort, order_type, order_scending, limit)
 
     min_price = get_category_min_price(category["number_of_category"])
     max_price = get_category_max_price(category["number_of_category"])
@@ -214,7 +225,7 @@ def contacts(request):
     return render(request, 'main/contacts.html')
 
 
-SIMILAR_GRIDS_STEP_IN_PRICE = 100
+SIMILAR_GRIDS_STEP_IN_PRICE = 500
 def product(request, sketch_id):
     product = get_product_by_sketch_id(sketch_id)
     first_row_product = product[0]
@@ -222,6 +233,8 @@ def product(request, sketch_id):
                                                       first_row_product.price_b2c - SIMILAR_GRIDS_STEP_IN_PRICE,
                                                       first_row_product.price_b2c + SIMILAR_GRIDS_STEP_IN_PRICE,
                                                       'price', 'asc', 15)
+    for item in similar_grids_by_price:
+        print(item)
     return render(request, 'main/product.html', {'product': product, 'list_of_open_types': list_of_open_types,
                                                  "similar_grids_by_price": similar_grids_by_price})
 
