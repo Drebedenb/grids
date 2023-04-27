@@ -192,12 +192,10 @@ def catalog_category(request, category_name):
     products_list = []
     if cache.get(category["number_of_category"]):
         products_list = cache.get(category["number_of_category"])
-        print('hit cache')
     else:
         products_list = get_products_by_category(category["number_of_category"], min_price_for_sort, max_price_for_sort,
                                                  order_type, order_scending, limit)
         cache.set(category["number_of_category"], products_list)
-        print('hit db')
 
     # products_list = get_products_by_category(category["number_of_category"], min_price_for_sort, max_price_for_sort, order_type, order_scending, limit)
 
@@ -233,8 +231,6 @@ def product(request, sketch_id):
                                                       first_row_product.price_b2c - SIMILAR_GRIDS_STEP_IN_PRICE,
                                                       first_row_product.price_b2c + SIMILAR_GRIDS_STEP_IN_PRICE,
                                                       'price', 'asc', 15)
-    for item in similar_grids_by_price:
-        print(item)
     return render(request, 'main/product.html', {'product': product, 'list_of_open_types': list_of_open_types,
                                                  "similar_grids_by_price": similar_grids_by_price})
 
