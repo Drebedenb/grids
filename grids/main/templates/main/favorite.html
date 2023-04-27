@@ -20,7 +20,7 @@
                         </ul>
                     </nav>
 
-                    <div class="row row-cols-lg-4 row-cols-1 gy-20">
+                    <div class="row row-cols-lg-4 row-cols-2 gy-20 mt-0 mt-lg-20">
                         {% for item in products %}
                                     {% include 'main/components/catalog_category_item.html' with PriceWinguardSketchId=item.id price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
                                 {% endfor %}

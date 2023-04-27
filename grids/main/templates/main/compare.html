@@ -30,11 +30,11 @@
              <!--Table head-->
         <thead>
             <tr class="text-center fs-7 ">
-                <th class="align-items-center compare_items"><span class="fs-14 mb-20 ">Товары</span></th>
+                <th class="align-items-center compare_items"><span class="fs-10 fs-md-14 mb-20 ">Товары</span></th>
 
                 {%for item in products%}
                 <th>
-                    {% include 'main/components/catalog_category_item.html' with PriceWinguardSketchId=item.id price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
+                    {% include 'main/components/compare_item.html' with PriceWinguardSketchId=item.id price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
               </th>
                 {%endfor%}
             </tr>
@@ -43,7 +43,7 @@
 
         <!--Table body-->
         <tbody>
-          <tr class="text-center fs-7">
+          <tr class="text-center fs-5 fs-md-7">
             <th scope="row ">Цена со скидкой</th>
               {%for item in products%}
             <th>
@@ -52,63 +52,63 @@
               {%endfor%}
 
         </tr>
-            <tr class="text-center fs-7">
+            <tr class="text-center fs-5 fs-md-7">
                 <th scope="row ">Покраска (не требуется)</th>
                 {%for item in products%}
             <th>+0 р. м²</th>
               {%endfor%}
 
             </tr>
-            <tr class="text-center fs-7">
+            <tr class="text-center fs-5 fs-md-7">
                 <th scope="row">Покраска (эмаль НЦ)</th>
                 {%for item in products%}
             <th>+550 р. м²</th>
               {%endfor%}
 
             </tr>
-            <tr class="text-center fs-7">
+            <tr class="text-center fs-5 fs-md-7">
                 <th scope="row">Покраска (эмаль ХВ)</th>
                  {%for item in products%}
             <th>+650 р. м²</th>
               {%endfor%}
 
             </tr>
-            <tr class="text-center fs-7">
+            <tr class="text-center fs-5 fs-md-7">
                 <th scope="row">Покраска (краска Hammerite)</th>
                  {%for item in products%}
             <th>+1 400 р. м²</th>
               {%endfor%}
 
             </tr>
-            <tr class="text-center fs-7">
+            <tr class="text-center fs-5 fs-md-7">
                 <th scope="row">Покраска (порошковое нап.)</th>
                  {%for item in products%}
             <th>+1 700 р. м²</th>
               {%endfor%}
 
             </tr>
-            <tr class="text-center fs-7">
+            <tr class="text-center fs-5 fs-md-7">
                 <th scope="row">Покраска (эмаль Westplast)</th>
                  {%for item in products%}
             <th>+1 900 р. м²</th>
               {%endfor%}
 
             </tr>
-            <tr class="text-center fs-7">
+            <tr class="text-center fs-5 fs-md-7">
               <th scope="row">Покраска (эмаль NOVAX)</th>
                {%for item in products%}
             <th>+1 200 р. м²</th>
               {%endfor%}
 
           </tr>
-          <tr class="text-center fs-7">
+          <tr class="text-center fs-5 fs-md-7">
             <th scope="row">Тип открывания (глухая)</th>
              {%for item in products%}
             <th>+0 р. / шт.</th>
               {%endfor%}
 
         </tr>
-        <tr class="text-center fs-7">
+        <tr class="text-center fs-5 fs-md-7">
           <th scope="row">Тип открывания (распашная)</th>
            {%for item in products%}
             <th>+1 500 р. / шт.</th>
@@ -116,42 +116,42 @@
 
       </tr>
 
-  <tr class="text-center fs-7">
+  <tr class="text-center fs-5 fs-md-7">
     <th scope="row">Пруток 6 мм</th>
      {%for item in products%}
             <th>{{item.additional_info.0.price_b2c}}</th>
               {%endfor%}
 
 </tr>
-        <tr class="text-center fs-7">
+        <tr class="text-center fs-5 fs-md-7">
     <th scope="row">Пруток 8 мм</th>
      {%for item in products%}
             <th>{{item.additional_info.1.price_b2c}}</th>
               {%endfor%}
 
 </tr>
-        <tr class="text-center fs-7">
+        <tr class="text-center fs-5 fs-md-7">
     <th scope="row">Пруток 10 мм</th>
      {%for item in products%}
             <th>{{item.additional_info.2.price_b2c}}</th>
               {%endfor%}
 
 </tr>
-        <tr class="text-center fs-7">
+        <tr class="text-center fs-5 fs-md-7">
     <th scope="row">Пруток 12 мм</th>
      {%for item in products%}
             <th>{{item.additional_info.3.price_b2c}}</th>
               {%endfor%}
 
 </tr>
-        <tr class="text-center fs-7">
+        <tr class="text-center fs-5 fs-md-7">
     <th scope="row">Пруток 14 мм</th>
      {%for item in products%}
             <th>{{item.additional_info.4.price_b2c}}</th>
               {%endfor%}
 
 </tr>
-        <tr class="text-center fs-7">
+        <tr class="text-center fs-5 fs-md-7">
     <th scope="row">Пруток 16 мм</th>
      {%for item in products%}
             <th>{{item.additional_info.5.price_b2c}}</th>

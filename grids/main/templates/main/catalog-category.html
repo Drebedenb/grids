@@ -9,7 +9,7 @@
                 <div class="row gy-lg-0 gy-12 ">
 
                     <div class="col-lg-6">
-                        <h1 class="display-1 pt-lg-30 fs-3xl-25 fs-xl-23 fs-lg-27 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">
+                        <h1 class="display-1 pt-lg-0 pt-xl-30 fs-3xl-25 fs-xl-23 fs-lg-27 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">
                             {{category.title}} Металлические решетки на окна</h1>
                             <nav class="d-lg-block d-none fs-9 mt-lg-0 pt-lg-12  ">
                                 <ul class="breadcrumb mb-0">
@@ -20,7 +20,17 @@
                             </nav>
                     </div>
                     <div class="col-lg-6">
-                        <img class="w-100 rounded-3" src="{% static 'main/img/sale_baner.jpg' %}" alt="sale_baner">
+                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                              <div class="carousel-item active">
+                                <img src="{% static 'main/img/sale_baner.png' %}"  class="d-block w-100 rounded-3" alt="sale_baner">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="{% static 'main/img/sale_baner2.png' %}"  class="d-block w-100 rounded-3" alt="sale_baner2">
+                              </div>
+                            </div>
+                        
+                          </div>
                             <div class="d-none d-lg-block">
                     
                                 <p class="d-lg-none lead fs-lg-12 fs-9 mb-0" style="max-width: 28rem;">В нашем каталоге представлено 600+ эскизов решеток на окна. Возможно изготовление решеток по вашему эскизу.</p>
@@ -131,7 +141,7 @@
 
                         </div>
                            <div class="my-20 d-none d-lg-block">
-                        <div id="dropdown-wrapper" class="dropdown-wrapper fw-medium mb-10 rounded-3 border border-radius" tabindex="1">
+                        <div id="dropdown-wrapper_vid" class="dropdown-wrapper fw-medium mb-10 rounded-3 border border-radius" tabindex="1">
                             <h6 class="fw-medium ls-sm text-uppercase mt-8 ms-10 mb-0">Вид</h6>
 
                             <ul class="dropdown-list mb-8">
@@ -155,7 +165,7 @@
                             </ul>
 
                         </div> -->
-                        <div id="dropdown-wrapper" class="dropdown-wrapper fw-medium   rounded-3 border border-radius" tabindex="1">
+                        <div id="dropdown-wrapper_naznachenie" class="dropdown-wrapper fw-medium   rounded-3 border border-radius" tabindex="1">
                             <h6 class="fw-medium ls-sm text-uppercase mt-8 ms-10 mb-0">Назначение</h6>
 
                             <ul class="dropdown-list mb-8">
@@ -168,14 +178,14 @@
                                 <li><a class="nav-link text-hover-secondary ms-10" href="#">На балкон</a></li>
                                 <li><a class="nav-link text-hover-secondary ms-10" href="#">На лоджию</a></li>
                                 <li><a class="nav-link text-hover-secondary ms-10" href="#">Для квартиры</a></li>
-                                <li><a class="nav-link text-hover-secondary ms-10" href="#">на первый этаж</a></li>
+                                <li><a class="nav-link text-hover-secondary ms-10" href="#">На первый этаж</a></li>
                                 <li><a class="nav-link text-hover-secondary ms-10" href="#">Цоколь/подвал</a></li>
                                 <li><a class="nav-link text-hover-secondary ms-10" href="#">Для дома</a></li>
                                 <li><a class="nav-link text-hover-secondary ms-10" href="#">Антикошка</a></li>
                                 <li><a class="nav-link text-hover-secondary ms-10" href="#">Кид-стоп</a></li>
                                 <li><a class="nav-link text-hover-secondary ms-10" href="#">На кондиционер</a></li>
                                 <li><a class="nav-link text-hover-secondary ms-10" href="#">Под цветы</a></li>
-                                <li><a class="nav-link text-hover-secondary ms-10" href="#">в подьезд</a></li>
+                                <li><a class="nav-link text-hover-secondary ms-10" href="#">В подьезд</a></li>
                                 <li><a class="nav-link text-hover-secondary ms-10" href="#">На приямки</a></li>
                             </ul>
 
@@ -293,24 +303,23 @@
                             </li>
                             <li class="nav-item "  style="flex: 1 0 0%">
                                 <button class="d-block d-lg-none btn btn-sm text-white mobile_filter_button   ms-3 fs-8 text-uppercase rounded-3 rounded-pill w-100 mx-auto" id="order-popularity" onclick="orderByParameter(this.id)"> Хит</button>
-                                <p class="w-100 active sort  mb-4 mb-lg-0 ps-5 fs-5 fs-sm-6 fs-md-7 fs-lg-9 text-center  rounded-2 pt-6 pb-0" id="product-characteristics-tab" data-bs-toggle="tab" data-bs-target="#product-characteristics-tab-pane" type="button" role="tab" onclick="orderByParameter('order-popularity')">По популярности</p>
-                                {% include 'main/icons/arrow.html' with arrowId='order-popularity-arrow'%}
+                                <p class="w-100 active sort  mb-4 mb-lg-0 ps-5 fs-5 fs-sm-6 fs-md-7 fs-lg-9 text-center  rounded-2 pt-6 pb-0" id="product-characteristics-tab" data-bs-toggle="tab" data-bs-target="#product-characteristics-tab-pane" type="button" role="tab" onclick="orderByParameter('order-popularity')">По популярности  {% include 'main/icons/arrow.html' with arrowId='order-popularity-arrow'%}</p>
+                               
                             </li>
                             <li class="nav-item" style="flex: 1 0 0%">
                                 <button class="d-block d-lg-none btn btn-sm text-white mobile_filter_button   fs-8 text-uppercase rounded-3 rounded-pill w-100 mx-auto" id="order-price" onclick="orderByParameter(this.id)">₽</button>
-                                <p class="text-center mb-4 mb-lg-0 fs-5 fs-sm-6 fs-md-7 sort fs-lg-9 w-100 rounded-2 pt-6 pb-0" id="product-description-tab" data-bs-toggle="tab" data-bs-target="#product-description-tab-pane" type="button" role="tab" onclick="orderByParameter('order-price')">По цене  </p>
-                                {% include 'main/icons/arrow.html' with arrowId='order-price-arrow'%}
+                                <p class="text-center mb-4 mb-lg-0 fs-5 fs-sm-6 fs-md-7 sort fs-lg-9 w-100 rounded-2 pt-6 pb-0" id="product-description-tab" data-bs-toggle="tab" data-bs-target="#product-description-tab-pane" type="button" role="tab" onclick="orderByParameter('order-price')">По цене  {% include 'main/icons/arrow.html' with arrowId='order-price-arrow'%} </p>
+                               
                             </li>
                             <li class="nav-item" style="flex: 1 0 0%">
                                 <button class="d-block d-lg-none btn btn-sm text-white mobile_filter_button   fs-8 text-uppercase rounded-3 rounded-pill w-100 mx-auto" id="order-sketchNumber" onclick="orderByParameter(this.id)"> № </button>
-                                <p class="text-center mb-4 mb-lg-0 fs-5 fs-sm-6 fs-md-7 sort fs-lg-9 w-100 rounded-2 pt-6 pb-0" id="product-delivery-tab" data-bs-toggle="tab" data-bs-target="#product-delivery-tab-pane" type="button" role="tab" onclick="orderByParameter('order-sketchNumber')">По номеру эскиза</p>
-                                {% include 'main/icons/arrow.html' with arrowId='order-sketchNumber-arrow'%}
+                                <p class="text-center mb-4 mb-lg-0 fs-5 fs-sm-6 fs-md-7 sort fs-lg-9 w-100 rounded-2 pt-6 pb-0" id="product-delivery-tab" data-bs-toggle="tab" data-bs-target="#product-delivery-tab-pane" type="button" role="tab" onclick="orderByParameter('order-sketchNumber')">По номеру эскиза  {% include 'main/icons/arrow.html' with arrowId='order-sketchNumber-arrow'%}</p>
                             </li>
                             <li class="nav-item" style="flex: 1 0 0%">
                                 <button class="d-block d-lg-none btn btn-sm text-white  mobile_persent_button fs-8 text-uppercase rounded-3 rounded-pill w-100 " id="order-percent" onclick="orderByParameter(this.id)">%</button>
-                                <p class="text-center mb-4 mb-lg-0 fs-5 fs-sm-6 fs-md-7 sort fs-lg-9 persent_txt  w-100 rounded-2 pt-6 pb-0" id="product-installation-tab"  data-bs-toggle="tab" data-bs-target="#product-installation-tab-pane" type="button" role="tab" onclick="orderByParameter('order-percent')">По скидке  
+                                <p class="text-center mb-4 mb-lg-0 fs-5 fs-sm-6 fs-md-7 sort fs-lg-9 persent_txt  w-100 rounded-2 pt-6 pb-0" id="product-installation-tab"  data-bs-toggle="tab" data-bs-target="#product-installation-tab-pane" type="button" role="tab" onclick="orderByParameter('order-percent')">По скидке {% include 'main/icons/arrow.html' with arrowId='order-percent-arrow'%}
                                 </p>
-                                {% include 'main/icons/arrow.html' with arrowId='order-percent-arrow'%}
+                                
                             </li>
 
                         </ul>
@@ -439,7 +448,7 @@
                                 </div>
                             </div>
                             <div class="d-lg-none d-flex mt-10">
-                                <div class="d-flex gap-10 mt-auto" id="features-swiper-control">
+                                <div class="d-flex gap-10 mt-auto" id="features-swiper-control_mobile">
                                     <button class="btn btn-outline-secondary btn-swiper-prev rounded-circle d-flex justify-content-center align-items-center p-0" type="button" style="width: 3rem; height: 3rem;"><-</button>
                                     <button class="btn btn-outline-secondary btn-swiper-next rounded-circle d-flex justify-content-center align-items-center p-0" type="button" style="width: 3rem; height: 3rem;">->                               </button>
                                 </div>
@@ -499,7 +508,7 @@
 <section class="mb-lg-0 mb-30 mt-30">
     <h2 class="h1 mt-20  fs-3xl-20 fs-lg-20 fs-13 ls-sm text-uppercase my-20">Отзывы довольных
         клиентов</h2>
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div id="carouselExampleControls_reviews_catalog-category" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
 

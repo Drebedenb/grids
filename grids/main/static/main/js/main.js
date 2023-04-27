@@ -47,8 +47,8 @@ let featuresSwiper = new Swiper("#features-swiper", {
     slidesPerGroup: 1,
     spaceBetween: 20,
     navigation: {
-        prevEl: "#features-swiper-control .btn-swiper-prev",
-        nextEl: "#features-swiper-control .btn-swiper-next"
+        prevEl: "#features-swiper-control #features-swiper-control_mobile .btn-swiper-prev",
+        nextEl: "#features-swiper-control #features-swiper-control_mobile .btn-swiper-next"
     },
     breakpoints: {
         576: {

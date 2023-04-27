@@ -17,9 +17,17 @@
                         </nav>
                     </div>
                     <div class="col-lg-6">
-                        <div class="pt-xl-7 pt-lg-4">
-                            <img class="w-100 rounded-3" src="{% static 'main/img/sale_baner.jpg' %}" alt="sale_baner">
-                        </div>
+                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                              <div class="carousel-item active">
+                                <img src="{% static 'main/img/sale_baner.png' %}"  class="d-block w-100 rounded-3" alt="sale_baner">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="{% static 'main/img/sale_baner2.png' %}"  class="d-block w-100 rounded-3" alt="sale_baner2">
+                              </div>
+                            </div>
+                        
+                          </div>
                     </div>
                 </div>
                 <div class="mt-20 d-none d-block">
@@ -93,7 +101,7 @@
                                 </ul>
 
                             </div>
-                            <div id="dropdown-wrapper" class="dropdown-wrapper fw-medium mb-10 rounded-3 border border-radius" tabindex="1">
+                            <div id="dropdown-wrapper_collection" class="dropdown-wrapper fw-medium mb-10 rounded-3 border border-radius" tabindex="1">
                                 <h6 class="fw-medium ls-sm text-uppercase mt-8 ms-10 mb-0">Коллекции</h6>
 
                                 <ul class="dropdown-list mb-8">
@@ -104,7 +112,7 @@
                                 </ul>
 
                             </div>
-                            <div id="dropdown-wrapper" class="dropdown-wrapper fw-medium   rounded-3 border border-radius" tabindex="1">
+                            <div id="dropdown-wrapper_naznachenie" class="dropdown-wrapper fw-medium   rounded-3 border border-radius" tabindex="1">
                                 <h6 class="fw-medium ls-sm text-uppercase mt-8 ms-10 mb-0">Назначение</h6>
 
                                 <ul class="dropdown-list mb-8">
@@ -549,7 +557,7 @@
                                         <div class="fs-lg-9 fs-8">
                                            <div class="row gx-5">
                                             <div class="col-lg-4 ">
-                                                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                                                <div id="carouselExampleControls_doctavka" class="carousel slide" data-bs-ride="carousel">
                                                     <div class="carousel-inner">
                                                       <div class="carousel-item active">
                                                         <img class="rounded-2 object-fit-contain w-100" src="{% static 'main/img/delivery-slide.png' %}"
@@ -570,8 +578,8 @@
                                                     </button>
                                                   </div>
                                             </div>
-                                            <div class="col-lg-8 border border-light rounded-2 p-5">
-                                                <p class="mb-5">Доставка осуществляется собственным транспортом в удобное для Вас
+                                            <div class="col-lg-8 border border-light rounded-2 mt-10 mt-lg-0 p-5">
+                                                <p class="mb-5  fs-lg-8 fs-xl-8 fs-xxl-9">Доставка осуществляется собственным транспортом в удобное для Вас
                                                     время. Стоимость доставки зависит от удаленности населённого пункта.
                                                     Для точного расчета оставьте заявку или позвоните нам.</p>
                                                     
@@ -608,7 +616,7 @@
                                               </div>
                                         </div>
                                         <div class="col-6 col-lg-3">
-                                            <div class="card pt-20 pt-sm-20 pt-lg-0 pt-xl-15 pt-xxl-17 align-items-center">
+                                            <div class="card pt-20 pt-sm-20 pt-lg-0 pt-xl-1 pt-xxl-17 align-items-center">
                                                 {% include 'main/icons/pay_icons/pay_icon3.html' with classes="svg-icon"  styles='max-width: 70%; width:121px; ' %}
                                                 <div class="card-body px-0 ">
                                                   <p class="card-text fs-7 fs-sm-10">Онлайн банк</p>
@@ -616,7 +624,7 @@
                                               </div>
                                         </div>
                                         <div class="col-6 col-lg-3">
-                                            <div class="card pt-20 pt-sm-20 pt-lg-0 pt-xl-15 pt-xxl-17 align-items-center">
+                                            <div class="card pt-20 pt-sm-20 pt-lg-0 pt-xl-0 pt-xxl-17 align-items-center">
                                                 {% include 'main/icons/pay_icons/pay_icon4.html' with classes="svg-icon"  styles='max-width: 63%; width:110px; ' %}
                                                 <div class="card-body px-0">
                                                   <p class="card-text fs-7 fs-sm-10">Счет для юр. лиц</p>
@@ -627,7 +635,7 @@
                                             для физических и юридических лиц:</p>
                                             <div class="row">
                                                 <div class="col-lg-6">
-                                                    <p class="fw-medium">Физическое лицо (частный клиент)</p>
+                                                    <p class="fw-medium fs-lg-9 fs-xxl-10">Физическое лицо (частный клиент)</p>
                                                      <div class="row mx-0 text-center ">
                                                         <div class="col-4 bg-primary rounded-start-2">
                                                             <p class="text-white fs-8 fs-sm-10 mt-10"><span class="fs-12">30% </span><br>предоплата</p>
@@ -652,7 +660,7 @@
                                                                
                                                 </div>
                                                 <div class="col-lg-6 mt-10 mt-lg-0">
-                                                    <p class="fw-medium">Юридическое лицо (организация или ИП)</p>
+                                                    <p class="fw-medium fs-lg-9 fs-xxl-10">Юридическое лицо (организация или ИП)</p>
                                                     <div class="bg-primary text-center rounded-2">
                                                         <p class="text-white fs-8 fs-sm-10 py-10 mt-10"><span class="fs-12">100% </span><br>предоплата</p>
                                                     </div>
@@ -720,7 +728,7 @@
                         <div class="border-lg border-lg-black rounded-lg-4 mt-lg-20 mt-28 p-lg-20">
                             <h3 class="h5 fs-lg-13 fs-11 fw-medium ls-sm text-uppercase mb-17-5">Другие решетки по схожим ценам</h3>
                             <div class="row   gy-lg-0 gy-20">
-                                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                                <div id="carouselExampleControls_drugie_reshetki" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner">
                                       <div class="carousel-item active">
                                         <div class="row-cols-lg-4 row-cols-2">

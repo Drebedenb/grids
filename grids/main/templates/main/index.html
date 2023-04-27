@@ -34,7 +34,6 @@
                         href="/решетки-на-окна-эконом-класс">Перейти в каталог</a>
               </div>
             </div>
-     
             <div>
 
                 <div class="row gy-lg-0  gy-12">
@@ -155,7 +154,7 @@
                 </div>
 
                         <div class="collapse" id="collapseExample">
-                            <div class="row mt-10 row-cols-lg-4 row-cols-1 gy-20">
+                            <div class="row mt-0 mt-lg-5 row-cols-lg-4 row-cols-2 gy-20">
                                     {% include 'main/components/catalog_category_item.html' with PriceWinguardSketchId=item.id name=item.width price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
                         {% elif forloop.counter == leaders_of_selling|length %}
                                     {% include 'main/components/catalog_category_item.html' with PriceWinguardSketchId=item.id name=item.width price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
@@ -503,10 +502,10 @@
                                 </div>
                                     
                                     <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal1">Смотреть фото</a>
+                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal_review_index_1">Смотреть фото</a>
                                     <!-- Modal -->
                                     
-                                         <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                         <div class="modal fade" id="exampleModal_review_index_1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                 <div class="modal-content ">
                                                     <div class="modal-body p-5">
@@ -514,8 +513,9 @@
                                                             {% include 'main/icons/btn_close.html' with classes="svg-icon"%}
                                                         </button>
                                                         
-                                                        <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review1.jpeg' %}"
+                                                        <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review1.jpg' %}"
                                                         alt="Иван Семенович Г." />
+                                                        <a href="#"> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal"> Перейти в карточку товара</button></a>
                                                     </div>
                                                   
                                                 </div>
@@ -537,10 +537,10 @@
                                         <h6 class="fs-8 mb-2">Янина Ш.</h6>
                                     </div>
                                     <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal2">Смотреть фото</a>
+                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal_review_index_2">Смотреть фото</a>
                                     <!-- Modal -->
                                 
-                                         <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                         <div class="modal fade" id="exampleModal_review_index_2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                         <div class="modal-content ">
                                             <div class="modal-body p-5">
@@ -549,6 +549,7 @@
                                                 
                                                 <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review2.jpg' %}"
                                                 alt="Янина Ш." />
+                                                <a href="#"> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal"> Перейти в карточку товара</button></a>
                                             </div>
                                           
                                         </div>
@@ -570,10 +571,10 @@
                                     </div>
                                     
                                     <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal3">Смотреть фото</a>
+                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal__review_index_3">Смотреть фото</a>
                                     <!-- Modal -->
                                 
-                                         <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                         <div class="modal fade" id="exampleModal__review_index_3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                 <div class="modal-content ">
                                                     <div class="modal-body p-5">
@@ -582,6 +583,7 @@
                                                         
                                                         <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review3.jpg' %}"
                                                         alt="Иван Семенович Г." />
+                                                        <a href="#"> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal"> Перейти в карточку товара</button></a>
                                                     </div>
                                                   
                                                 </div>
@@ -603,10 +605,10 @@
                                         <h6 class="fs-8 mb-2">Александр В.</h6>
                                     </div>
                                     <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal4">Смотреть фото</a>
+                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal__review_index_4">Смотреть фото</a>
                                     <!-- Modal -->
                                 
-                                         <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                         <div class="modal fade" id="exampleModal__review_index_4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                         <div class="modal-content ">
                                             <div class="modal-body p-5">
@@ -615,6 +617,7 @@
                                                 
                                                 <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review4.jpeg' %}"
                                                 alt="Иван Б." />
+                                                <a href="#"> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal"> Перейти в карточку товара</button></a>
                                             </div>
                                           
                                         </div>
@@ -627,7 +630,7 @@
                     </div>
                 </div>
            
-                <div class="row row-cols-lg-2  mt-0 row-cols-1 gy-lg-20 gy-10 collapse" id="collapseExample">
+                <div class="row row-cols-lg-2  mt-0 row-cols-1 gy-lg-20 gy-10 collapse" id="collapseExample_review">
                     <div class="col">
                         <div class="card h-100 rounded-lg-4 rounded-3">
                             <div class="card-body p-lg-15 pt-10 pb-lg-28">
@@ -639,10 +642,10 @@
                                     </div>
                                     
                                     <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal5">Смотреть фото</a>
+                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal__review_index_5">Смотреть фото</a>
                                     <!-- Modal -->
                                 
-                                         <div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                         <div class="modal fade" id="exampleModal__review_index_5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog ">
                                                 <div class="modal-content ">
                                                     <div class="modal-body p-5">
@@ -663,6 +666,7 @@
                                                                 alt="Елена Б." />
                                                               </div>
                                                             </div>
+                                                            <a href="#"> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal"> Перейти в карточку товара</button></a>
                                                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                                                               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                                               <span class="visually-hidden">Previous</span>
@@ -695,10 +699,10 @@
                                         <h6 class="fs-8 mb-2">Кирилл П.</h6>
                                     </div>
                                     <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal6">Смотреть фото</a>
+                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal__review_index_6">Смотреть фото</a>
                                     <!-- Modal -->
                                 
-                                         <div class="modal fade" id="exampleModal6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                         <div class="modal fade" id="exampleModal__review_index_6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                         <div class="modal-content ">
                                             <div class="modal-body p-5">
@@ -707,6 +711,7 @@
                                                 
                                                 <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review6.jpeg' %}"
                                                 alt="Кирилл П." />
+                                                <a href="#"> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal"> Перейти в карточку товара</button></a>
                                             </div>
                                           
                                         </div>
@@ -729,10 +734,10 @@
                                     </div>
                                     
                                     <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal7">Смотреть фото</a>
+                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal_review_index_7">Смотреть фото</a>
                                     <!-- Modal -->
                                 
-                                         <div class="modal fade" id="exampleModal7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                         <div class="modal fade" id="exampleModal_review_index_7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                 <div class="modal-content ">
                                                     <div class="modal-body p-5">
@@ -741,6 +746,7 @@
                                                         
                                                         <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review7.jpeg' %}"
                                                         alt="Марина Г." />
+                                                        <a href="#"> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal"> Перейти в карточку товара</button></a>
                                                     </div>
                                                   
                                                 </div>
@@ -762,10 +768,10 @@
                                         <h6 class="fs-8 mb-2">Светлана К..</h6>
                                     </div>
                                     <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal8">Смотреть фото</a>
+                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal_review_index_8">Смотреть фото</a>
                                     <!-- Modal -->
                                 
-                                         <div class="modal fade" id="exampleModal8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                         <div class="modal fade" id="exampleModal_review_index_8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                         <div class="modal-content ">
                                             <div class="modal-body p-5">
@@ -774,6 +780,7 @@
                                                 
                                                 <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review8.jpg' %}"
                                                 alt="Светлана К." />
+                                                <a href="#"> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal"> Перейти в карточку товара</button></a>
                                             </div>
                                           
                                         </div>
@@ -797,10 +804,10 @@
                                     </div>
                                     
                                     <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal9">Смотреть фото</a>
+                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal_review_index_9">Смотреть фото</a>
                                     <!-- Modal -->
                                 
-                                         <div class="modal fade" id="exampleModal9" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                         <div class="modal fade" id="exampleModal_review_index_9" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                 <div class="modal-content ">
                                                     <div class="modal-body p-5">
@@ -818,6 +825,7 @@
                                                               </div>
                                                              
                                                             </div>
+                                                            <a href="#"> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal"> Перейти в карточку товара</button></a>
                                                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="prev">
                                                               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                                               <span class="visually-hidden">Previous</span>
@@ -852,10 +860,10 @@
                                         <h6 class="fs-8 mb-2">Лариса Ивановна Л.</h6>
                                     </div>
                                     <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal10">Смотреть фото</a>
+                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal_review_index_10">Смотреть фото</a>
                                     <!-- Modal -->
                                 
-                                         <div class="modal fade" id="exampleModal10" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                         <div class="modal fade" id="exampleModal_review_index_10" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                         <div class="modal-content ">
                                             <div class="modal-body p-5">
@@ -864,6 +872,7 @@
                                                 
                                                 <img class="rounded-3 object-fit-contain w-100 " src="{% static 'main/img/reviews_photos/review10.jpeg' %}"
                                                 alt="Лариса Ивановна Л."/>
+                                                <a href="#"> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal"> Перейти в карточку товара</button></a>
                                             </div>
                                           
                                         </div>
@@ -886,10 +895,10 @@
                                         <h6 class="fs-8 mb-2">Галина У</h6>
                                     </div>
                                     <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal11">Смотреть фото</a>
+                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal_review_index_11">Смотреть фото</a>
                                     <!-- Modal -->
                                
-                                         <div class="modal fade" id="exampleModal11" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                         <div class="modal fade" id="exampleModal_review_index_11" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                         <div class="modal-content ">
                                             <div class="modal-body p-5">
@@ -898,6 +907,7 @@
                                                 
                                                 <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review11.jpg' %}"
                                                 alt="Галина У" />
+                                                <a href="#"> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal"> Перейти в карточку товара</button></a>
                                             </div>
                                           
                                         </div>
@@ -922,10 +932,10 @@
                                         <h6 class="fs-8 mb-2">Антонина И.</h6>
                                     </div>
                                     <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal12">Смотреть фото</a>
+                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal_review_index_12">Смотреть фото</a>
                                     <!-- Modal -->
                                 
-                                    <div class="modal fade" id="exampleModal12" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="exampleModal_review_index_12" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                         <div class="modal-content ">
                                             <div class="modal-body p-5">
@@ -934,6 +944,7 @@
                                                 
                                                 <img class="rounded-3 object-fit-contain w-100 " src="{% static 'main/img/reviews_photos/review13.jpeg' %}"
                                                 alt="Антонина И."/>
+                                                <a href="#"> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal"> Перейти в карточку товара</button></a>
                                             </div>
                                           
                                         </div>
@@ -954,7 +965,7 @@
                 
                 </div>   
                <div class="text-center mt-lg-20 mt-10">
-                <a class="view_more2 btn btn-outline-secondary btn-lg btn-wide-lg" data-redirect-url="{%url 'reviews'%}" data-second-click-text="Все отзывы" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
+                <a class="view_more2 btn btn-outline-secondary btn-lg btn-wide-lg" data-redirect-url="{%url 'reviews'%}" data-second-click-text="Все отзывы" data-bs-toggle="collapse" data-bs-target="#collapseExample_review" aria-expanded="false" aria-controls="collapseExample_review"
                 href="#">Показать еще </a>
                                                         </div>
             </section>
