@@ -188,14 +188,15 @@ def catalog_category(request, category_name):
         order_scending = 'asc' if request.GET.get('orderScending') is None else request.GET.get('orderScending')
         min_price_for_sort = 0 if request.GET.get('minPriceByUser') is None else int(request.GET.get('minPriceByUser'))
         max_price_for_sort = 9999999 if request.GET.get('maxPriceByUser') is None else int(request.GET.get('maxPriceByUser'))
-
-    products_list = []
-    if cache.get(category["number_of_category"]):
-        products_list = cache.get(category["number_of_category"])
-    else:
-        products_list = get_products_by_category(category["number_of_category"], min_price_for_sort, max_price_for_sort,
-                                                 order_type, order_scending, limit)
-        cache.set(category["number_of_category"], products_list)
+    products_list = get_products_by_category(category["number_of_category"], min_price_for_sort, max_price_for_sort,
+                                             order_type, order_scending, limit)
+    # products_list = []
+    # if cache.get(category["number_of_category"]):
+    #     products_list = cache.get(category["number_of_category"])
+    # else:
+    #     products_list = get_products_by_category(category["number_of_category"], min_price_for_sort, max_price_for_sort,
+    #                                              order_type, order_scending, limit)
+    #     cache.set(category["number_of_category"], products_list)
 
     # products_list = get_products_by_category(category["number_of_category"], min_price_for_sort, max_price_for_sort, order_type, order_scending, limit)
 
