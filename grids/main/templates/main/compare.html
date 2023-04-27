@@ -16,7 +16,7 @@
                     <nav class="d-lg-block d-none fs-9 mt-lg-0 mt-12">
                         <ul class="breadcrumb mb-0">
                             <li class="breadcrumb-item"><a href="index.html">Главная </a></li>
-                            <li class="breadcrumb-item active">Сравнения товаров </li>
+                            <li class="breadcrumb-item active">Сравнения товаров</li>
                         </ul>
                     </nav>
 
@@ -26,6 +26,7 @@
 
         <section>
         <div style="overflow-x: auto ">
+            {%if products|length %}
           <table class="table table-fixed table-bordered" style="white-space: nowrap">
              <!--Table head-->
         <thead>
@@ -114,7 +115,7 @@
             <th>+1 500 р. / шт.</th>
               {%endfor%}
 
-      </tr>
+                    </tr>
 
   <tr class="text-center fs-5 fs-md-7">
     <th scope="row">Пруток 6 мм</th>
@@ -157,20 +158,23 @@
             <th>{{item.additional_info.5.price_b2c}}</th>
               {%endfor%}
 
-</tr>
-        </tbody>
-        <!--Table body-->
-          </table>
-      </div>
-      </section>
+                    </tr>
+                    </tbody>
+                    <!--Table body-->
+                </table>
+                {%else %}
+                    <div>У вас нет товаров в "Сравнении"</div>
+                {% endif %}
+            </div>
+        </section>
 
-        </div>
-        </div>
+    </div>
+</div>
 
 
-        {% include 'main/components/measure_modal.html' %}
+{% include 'main/components/measure_modal.html' %}
 
 
-    {% include 'main/components/consultation_modal.html' %}
+{% include 'main/components/consultation_modal.html' %}
 
 {% endblock %}

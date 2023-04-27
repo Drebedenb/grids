@@ -5,6 +5,8 @@ from django.db.models import Min, Max, Count
 from django.http import HttpResponseNotFound
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.cache import cache
+
 
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
@@ -146,6 +148,8 @@ def get_category_max_price(category_number):
         .annotate(min_price=Min('price_b2c')).values('min_price').aggregate(Max('min_price'))['min_price__max']
     return max_price
 
+
+# @cache_page(60 * 15)
 def index(request):
     count = {
         "economy": count_products_by_category(1),
@@ -169,6 +173,7 @@ def index(request):
                                                })
 
 
+# @cache_page(60 * 15)
 def catalog_category(request, category_name):
     if category_name not in russian_categories:
         return HttpResponseNotFound("Page NOT found")
@@ -183,13 +188,23 @@ def catalog_category(request, category_name):
         order_scending = 'asc' if request.GET.get('orderScending') is None else request.GET.get('orderScending')
         min_price_for_sort = 0 if request.GET.get('minPriceByUser') is None else int(request.GET.get('minPriceByUser'))
         max_price_for_sort = 9999999 if request.GET.get('maxPriceByUser') is None else int(request.GET.get('maxPriceByUser'))
-    products_list = get_products_by_category(category["number_of_category"], min_price_for_sort, max_price_for_sort, order_type, order_scending, limit)
+    products_list = get_products_by_category(category["number_of_category"], min_price_for_sort, max_price_for_sort,
+                                             order_type, order_scending, limit)
+    # products_list = []
+    # if cache.get(category["number_of_category"]):
+    #     products_list = cache.get(category["number_of_category"])
+    # else:
+    #     products_list = get_products_by_category(category["number_of_category"], min_price_for_sort, max_price_for_sort,
+    #                                              order_type, order_scending, limit)
+    #     cache.set(category["number_of_category"], products_list)
+
+    # products_list = get_products_by_category(category["number_of_category"], min_price_for_sort, max_price_for_sort, order_type, order_scending, limit)
 
     min_price = get_category_min_price(category["number_of_category"])
     max_price = get_category_max_price(category["number_of_category"])
 
     page = request.GET.get('page', 1)
-    paginator = Paginator(products_list, 12)
+    paginator = Paginator(products_list, 45)
     try:
         products = paginator.page(page)
     except PageNotAnInteger:
@@ -209,11 +224,10 @@ def contacts(request):
     return render(request, 'main/contacts.html')
 
 
-SIMILAR_GRIDS_STEP_IN_PRICE = 100
+SIMILAR_GRIDS_STEP_IN_PRICE = 500
 def product(request, sketch_id):
     product = get_product_by_sketch_id(sketch_id)
     first_row_product = product[0]
-    print(first_row_product.price_b2c)
     similar_grids_by_price = get_products_by_category(first_row_product.path_folder,
                                                       first_row_product.price_b2c - SIMILAR_GRIDS_STEP_IN_PRICE,
                                                       first_row_product.price_b2c + SIMILAR_GRIDS_STEP_IN_PRICE,
@@ -233,7 +247,7 @@ def reviews(request):
 
 def compare(request):
     str_of_cookies = request.COOKIES.get('Compare')
-    if str_of_cookies == '':
+    if str_of_cookies == '' or str_of_cookies == None:
         return render(request, 'main/compare.html',
                       {'products': []})
     list_of_compares_cookie = str_of_cookies.split(',')

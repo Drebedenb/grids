@@ -315,31 +315,31 @@
                                                 </div>
                                                 {%endfor%}
                                                 <style>
-                                                    #arch:hover {
+                                                    #product-arch:hover {
                                                         content: url("{% static 'main/img/grids_pictures' %}/1/arch/1.png");
                                                     }
                                                     
-                                                    #gog:hover {
+                                                    #product-gog:hover {
                                                         content: url("{% static 'main/img/grids_pictures' %}/1/gog/1 O.png");
                                                     }
                                                     
-                                                    #o:hover {
+                                                    #product-o:hover {
                                                         content: url("{% static 'main/img/grids_pictures' %}/1/o/1 O.png");
                                                     }
                                                     
-                                                    #og:hover {
+                                                    #product-og:hover {
                                                         content: url("{% static 'main/img/grids_pictures' %}/1/og/1 O.png");
                                                     }
                                                     
-                                                    #ogo:hover {
+                                                    #product-ogo:hover {
                                                         content: url("{% static 'main/img/grids_pictures' %}/1/ogo/1 O.png");
                                                     }
                                                     
-                                                    #oo:hover {
+                                                    #product-oo:hover {
                                                         content: url("{% static 'main/img/grids_pictures' %}/1/oo/1 O.png");
                                                     }
                                                     
-                                                    #solid:hover {
+                                                    #product-solid:hover {
                                                         content: url("{% static 'main/img/grids_pictures' %}/1/solid/1.png");
                                                     }
                                                 </style>
@@ -568,11 +568,11 @@
                                                         alt="delivery-slide"/>
                                                       </div>
                                                     </div>
-                                                    <button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                                    <button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleControlsForDelivery" data-bs-slide="prev">
                                                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                                       <span class="visually-hidden">Previous</span>
                                                     </button>
-                                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsForDelivery" data-bs-slide="next">
                                                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                                       <span class="visually-hidden">Next</span>
                                                     </button>
@@ -724,35 +724,49 @@
 
 
 
+
+
                         <!-- DRUGIE RESHETKI -->
                         <div class="border-lg border-lg-black rounded-lg-4 mt-lg-20 mt-28 p-lg-20">
                             <h3 class="h5 fs-lg-13 fs-11 fw-medium ls-sm text-uppercase mb-17-5">Другие решетки по схожим ценам</h3>
                             <div class="row   gy-lg-0 gy-20">
                                 <div id="carouselExampleControls_drugie_reshetki" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner">
-                                      <div class="carousel-item active">
-                                        <div class="row-cols-lg-4 row-cols-2">
-                                            <img src="..." class="d-block w-100" alt="...">
+                                        {% for item in similar_grids_by_price %}
+                                        {% if forloop.counter == 1  %}
+                                                <div class="carousel-item active">
+                                                    {% else %}
+                                                <div class="carousel-item active">
+                                            {% endif %}
+                                            <div class="row-cols-lg-4 row-cols-2">
+                                                    {% include 'main/components/catalog_category_item.html' with PriceWinguardSketchId=item.id price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice %}
+                                            </div>
                                         </div>
-                                      </div>
-                                      <div class="carousel-item">
-                                        <div class="row-cols-lg-4 row-cols-2">
-                                            <img src="..." class="d-block w-100" alt="...">
-                                        </div>
-                                      </div>
-                                      <div class="carousel-item">
-                                        <div class="row-cols-lg-4 row-cols-2">
-                                            <img src="..." class="d-block w-100" alt="...">
-                                        </div>
-                                      </div>
+                                        {% endfor %}
+
+<!--                                      <div class="carousel-item active">-->
+<!--                                        <div class="row-cols-lg-4 row-cols-2">-->
+<!--                                            <img src="..." class="d-block w-100" alt="...">-->
+<!--                                        </div>-->
+<!--                                      </div>-->
+<!--                                      <div class="carousel-item">-->
+<!--                                        <div class="row-cols-lg-4 row-cols-2">-->
+<!--                                            <img src="..." class="d-block w-100" alt="...">-->
+<!--                                        </div>-->
+<!--                                      </div>-->
+<!--                                      <div class="carousel-item">-->
+<!--                                        <div class="row-cols-lg-4 row-cols-2">-->
+<!--                                            <img src="..." class="d-block w-100" alt="...">-->
+<!--                                        </div>-->
+<!--                                      </div>-->
                                     </div>
-                                    <button class="carousel-control-prev arrow-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                    <button class="carousel-control-prev arrow-prev" type="button" data-bs-target="#carouselExampleControlsForSimilarPrices" data-bs-slide="prev">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="grey" class="bi bi-chevron-left" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
                                           </svg>
                                       <span class="visually-hidden">Previous</span>
                                     </button>
-                                    <button class="carousel-control-next arrow-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                    <button class="carousel-control-next arrow-next" type="button" data-bs-target="#carouselExampleControlsForSimilarPrices" data-bs-slide="next">
                                      <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="grey" class="bi bi-chevron-right" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                                       </svg>
