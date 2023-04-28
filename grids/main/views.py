@@ -188,20 +188,28 @@ def catalog_category(request, category_name):
         order_scending = 'asc' if request.GET.get('orderScending') is None else request.GET.get('orderScending')
         min_price_for_sort = 0 if request.GET.get('minPriceByUser') is None else int(request.GET.get('minPriceByUser'))
         max_price_for_sort = 9999999 if request.GET.get('maxPriceByUser') is None else int(request.GET.get('maxPriceByUser'))
-    products_list = get_products_by_category(category["number_of_category"], min_price_for_sort, max_price_for_sort,
-                                             order_type, order_scending, limit)
-    # products_list = []
+
+    products_list = []
     # if cache.get(category["number_of_category"]):
     #     products_list = cache.get(category["number_of_category"])
+    #     print("hit cache")
     # else:
-    #     products_list = get_products_by_category(category["number_of_category"], min_price_for_sort, max_price_for_sort,
-    #                                              order_type, order_scending, limit)
-    #     cache.set(category["number_of_category"], products_list)
+    #     # products_list = get_products_by_category(category["number_of_category"], min_price_for_sort, max_price_for_sort,
+    #     #                                          order_type, order_scending, limit)
+    #     cache.set(category["number_of_category"], products_list, 60*60)
+    #     print("hit db")
 
-    # products_list = get_products_by_category(category["number_of_category"], min_price_for_sort, max_price_for_sort, order_type, order_scending, limit)
+    min_price = 0
+    max_price = 99999
 
-    min_price = get_category_min_price(category["number_of_category"])
-    max_price = get_category_max_price(category["number_of_category"])
+    if cache.get("min_price_" + str(category["number_of_category"])):
+        min_price = cache.get("min_price_" + str(category["number_of_category"]))
+        max_price = cache.get("max_price_" + str(category["number_of_category"]))
+    else:
+        min_price = get_category_min_price(category["number_of_category"])
+        max_price = get_category_max_price(category["number_of_category"])
+        cache.set("min_price_" + str(category["number_of_category"]), min_price)
+        cache.set("max_price_" + str(category["number_of_category"]), max_price)
 
     page = request.GET.get('page', 1)
     paginator = Paginator(products_list, 45)
