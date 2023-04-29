@@ -6,7 +6,18 @@ from django.db.models.functions import Round, Substr, Mod, Reverse
 from django.http import HttpResponseNotFound
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.core.cache import cache
+# from django.core.cache import cache
+
+
+class MockDjangoRedis:
+    def get(self, arg):
+        return False
+
+    def set(arg, bla, ble, blu):
+        return arg
+
+
+cache = MockDjangoRedis()
 
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
@@ -138,7 +149,7 @@ def get_products_by_category(category_number, min_price, max_price, order_by_nam
 
     products = PriceWinguardMain.objects.raw(query)
     products_list = []
-    for product in products: #TODO: переписать на ORM
+    for product in products:  # TODO: переписать на ORM
         products_list.append(product)
     cache.set("category_" + str(category_number) + str(min_price) + str(max_price) + order_by_name
               + order_scending + str(limit), products_list, TTL_OF_CACHE_SECONDS)
@@ -162,7 +173,7 @@ def get_product_by_sketch_id(id):
             WHERE ps.id={product_id}
             ) inner_query
         """.format(product_id=id)
-        product = PriceWinguardMain.objects.raw(query) #TODO: посмотреть что будет при замене на ORM
+        product = PriceWinguardMain.objects.raw(query)  # TODO: посмотреть что будет при замене на ORM
         product_list = []
         for item in product:
             product_list.append(item)
@@ -182,8 +193,10 @@ def count_products_by_category(category_number):
 def get_category_min_price(category_number):
     min_price = cache.get("min_price_" + str(category_number))
     if min_price is None:
-        min_price = PriceWinguardMain.objects.filter(price_winguard_sketch__category=category_number).aggregate(Min('price_b2c'))[
-            'price_b2c__min']
+        min_price = \
+            PriceWinguardMain.objects.filter(price_winguard_sketch__category=category_number).aggregate(
+                Min('price_b2c'))[
+                'price_b2c__min']
         cache.set("min_price_" + str(category_number), min_price, TTL_OF_CACHE_SECONDS)
     return min_price
 
@@ -191,9 +204,9 @@ def get_category_min_price(category_number):
 def get_category_max_price(category_number):
     max_price = cache.get("max_price_" + str(category_number))
     if max_price is None:
-        max_price =  PriceWinguardMain.objects.filter(price_winguard_sketch__category=category_number).values(
-        'price_winguard_sketch__id') \
-        .annotate(min_price=Min('price_b2c')).values('min_price').aggregate(Max('min_price'))['min_price__max']
+        max_price = PriceWinguardMain.objects.filter(price_winguard_sketch__category=category_number).values(
+            'price_winguard_sketch__id') \
+            .annotate(min_price=Min('price_b2c')).values('min_price').aggregate(Max('min_price'))['min_price__max']
         cache.set("max_price_" + str(category_number), max_price, TTL_OF_CACHE_SECONDS)
     return max_price
 
