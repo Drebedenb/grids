@@ -11,7 +11,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 class MockDjangoRedis:
     def get(self, arg):
-        return False
+        return None
 
     def set(arg, bla, ble, blu):
         return arg
