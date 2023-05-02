@@ -264,9 +264,7 @@ li::marker {
     }
 
   
-    .product-description-o{
-        padding-left: 15px;
-    }
+
     .product-description-og{
         text-align: start;
     }
@@ -274,6 +272,11 @@ li::marker {
 
     #product-gog{
         width: 70px;
+}
+
+
+.compare_close{
+    color: black;
 }
 
 
@@ -342,6 +345,13 @@ li::marker {
     display: none !important;
 }
 
+/* VIDI RESHETKI*/
+
+.product-description-arch{
+    padding-left: 0px;
+    padding-right: 0px;  
+}
+
 
  /*OTZIVI*/
 .arrow-prev{
@@ -390,6 +400,8 @@ li::marker {
     z-index: 20 !important;
 }
 
+
+
 /* NAZNACHENIE RESHETOK */
 .object-fit-minicontent{
     width: 100%;
@@ -403,6 +415,14 @@ li::marker {
 .star{
   width: 15px !important;
 }
+
+/*PRODUCT-PRICE*/
+.price_panel{
+    background-color: #dfdfdf;
+  }
+    .panel_item{
+        color: #000;
+    }
 }
 
 
@@ -448,6 +468,7 @@ li::marker {
 .card-ratio{
     max-width: 300px;
 }
+
 /*STAR*/
 .star{
     width: 10px !important;
@@ -456,6 +477,7 @@ li::marker {
   .old_price{
     margin-top: -10px;
   }
+
   }
 
 

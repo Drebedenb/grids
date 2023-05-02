@@ -292,23 +292,23 @@
                                             </div>
                                             </div>
                                             
-                                            <div class="row  mt-1 gy-20 ">
+                                            <div class="row row-cols-2 row-cols-lg-1 mt-1 gy-20 ">
                                                 {% for item in list_of_open_types %}
-                                                <div class="mt-15">
+                                                <div class="mt-10">
                                                     <input class="btn-check open-type-price" id="product-type-{{item.name}}" name="product-type" value="Без открывания" type="radio" onclick="changeForm()">
-                                                    <label class="btn btn-outline-black d-flex w-100 h-100 rounded-2 py-10 px-0" for="product-type-{{item.name}}">
-                                                            <div class="col-4">
+                                                    <label class="btn btn-outline-black  d-lg-flex  w-100 h-100 rounded-2 py-5 py-lg-10 px-0" for="product-type-{{item.name}}">
+                                                            <div class="col-12 col-lg-4">
                                                               <img
                                                                 id="product-{{item.name}}"
                                                                 class="object-fit-contain"
                                                                 src="{% static 'main/img/grids_pictures' %}/1/{{item.name}}/1 F.png" alt="{{item.description}}" width="50">
                                                         
                                                            </div>
-                                                           <div class="col-4 align-items-center d-flex">
-                                                              <span class="product-description-{{item.name}} fs-7 fw-medium  ">{{item.description}}</span>
+                                                           <div class="col-12 col-lg-4 align-items-center justify-content-center d-flex">
+                                                              <span class="product-description-{{item.name}} fs-6 fs-sm-7 fw-medium  ">{{item.description}}</span>
                                                            </div>
-                                                           <div class="col-4  align-items-center d-flex">
-                                                               <span class="fs-7 fw-medium product-price-{{item.name}}" id="price-{{item.name}}" >+ {% if item.name in 'arch'%}{{item.price}}% {%else%}{{item.price}} руб.{% endif %}</span>
+                                                           <div class="col-12 col-lg-4  align-items-center justify-content-center d-flex">
+                                                               <span class="fs-6 fs-sm-7 fw-medium product-price-{{item.name}}" id="price-{{item.name}}" >+ {% if item.name in 'arch'%}{{item.price}}% {%else%}{{item.price}} руб.{% endif %}</span>
                                                            </div>
                                                   
                                                     </label>
@@ -346,21 +346,21 @@
                                           
                                         </div>
                                     </div>
-                                    <div class="col-lg-8 ">
+                                    <div class="mt-15 mt-lg-0 col-lg-8 ">
 
                                         <h2 class="h5 fw-medium ls-sm text-uppercase d-none d-lg-block">Решетка на окно Эскиз №
                                             {{product.0.path_folder}}-{{product.0.path_file}}</h2>
-                                        <div class="row mx-0 mb-10 py-3 border rounded-2 ">
+                                        <div class="row mx-0 mb-10 py-3 border rounded-2 price_panel">
                                             <div class="col-4 text-center">
-                                                <p class="mb-0 fs-7 text-muted">Цена сегодня</p>
-                                                <span id="price-today" class="fs-7 fs-lg-9">0 р./ м²</span>
+                                                <p class="mb-0 fs-7 panel_item">Цена сегодня</p>
+                                                <span id="price-today" class="fs-7 text-primary fs-lg-9">0 р./ м²</span>
                                             </div>
                                             <div class="col-4 text-center">
-                                                <p class="mb-0 fs-7 text-muted">Старая цена:</p>
+                                                <p class="mb-0 fs-7 panel_item">Старая цена:</p>
                                                 <span id="price-old" class="fs-7 fs-lg-9 text-muted text-decoration-line-through">1200 р./ м²</span>
                                             </div>
                                             <div class="col-4 text-center">
-                                                <p class="mb-0 fs-7 fs-lg-7 text-muted">Рейтинг 4 из 5</p>
+                                                <p class="mb-0 fs-7 fs-lg-7 panel_item">Рейтинг 4 из 5</p>
                                                 <div class="d-flex pt-2 justify-content-center">
                                                     {% include 'main/icons/star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %} 
                                                     {% include 'main/icons/star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %} 
@@ -387,19 +387,19 @@
                                                 </div>
                                                 <div class="col">
                                                     <select class="form-select text-muted form-select-lg rounded-2" id="painting" onchange="changeForm()">
-                                                        <option selected>Без покраски</option>
-                                                        <option>Покраска (эмаль НЦ) - 550 руб</option>
-                                                        <option>Покраска (эмаль ХВ) - 650 руб</option>
-                                                        <option>Покраска (эмаль NOVAX) - 1200 руб</option>
-                                                        <option>Покраска (краска Hammerite) - 1400 руб</option>
-                                                        <option>Покраска (порошковое нап.) - 1700 руб</option>
-                                                        <option>Покраска (эмаль Westplast) - 1900 руб</option>
+                                                        <option selected>без покраски</option>
+                                                        <option>покраска (эмаль НЦ) - 550 руб</option>
+                                                        <option>покраска (эмаль ХВ) - 650 руб</option>
+                                                        <option>покраска (эмаль NOVAX) - 1200 руб</option>
+                                                        <option>покраска (краска Hammerite) - 1400 руб</option>
+                                                        <option>покраска (порошковое нап.) - 1700 руб</option>
+                                                        <option>покраска (эмаль Westplast) - 1900 руб</option>
                                                     </select>
                                                 </div>
                                                 <div class="col">
                                                     <div class="row mx-0 border border-light h-100 rounded-2">
                                                         <div class="col-6  align-items-center d-flex">
-                                                            <span class="text-secondary">ширина</span>
+                                                            <span class="ps-4 ps-lg-0 fs-7 fs-lg-9  text-secondary">ширина</span>
                                                         </div>
                                                         <div class="col-6 align-items-center d-flex">
                                                             <input class="form-control my-5 form-control-sm text-muted  rounded-2" id="width" oninput="changeForm()" placeholder="100 см." type="text">
@@ -410,10 +410,10 @@
                                                 <div class="col">
                                                     <div class="row mx-0 border border-light h-100 rounded-2">
                                                         <div class="col-6  align-items-center d-flex">
-                                                            <span class="text-secondary">высота</span>
+                                                            <span class="ps-4 ps-lg-0 fs-7 fs-lg-9 text-secondary">высота</span>
                                                         </div>
                                                         <div class="col-6 align-items-center d-flex">
-                                                            <input class="form-control form-control-sm text-muted  rounded-2" id="height" oninput="changeForm()" placeholder="100 см." type="text">
+                                                            <input class="form-control my-5  form-control-sm text-muted  rounded-2" id="height" oninput="changeForm()" placeholder="100 см." type="text">
                                                         </div>                                                     
                                                     </div>
                                                
@@ -421,18 +421,18 @@
                                                 <div class="col">
                                                     <div class="row mx-0 border border-light h-100 rounded-2">
                                                         <div class="col-6  align-items-center d-flex">
-                                                            <span class="text-secondary ">количество</span>
+                                                            <span class=" ps-4 ps-lg-0 fs-7 fs-lg-9 text-secondary ">количество</span>
                                                         </div>
                                                         <div class="col-6 align-items-center d-flex">
-                                                            <input class="form-control form-control-sm text-muted  rounded-2" id="amount" oninput="changeForm()" placeholder="1" type="text">
+                                                            <input class="form-control my-5  form-control-sm text-muted  rounded-2" id="amount" oninput="changeForm()" placeholder="1" type="text">
                                                         </div>                                                     
                                                     </div>
                                                
                                                 </div>
                                                 <div class="col">
                                                     <select class="form-select  text-muted form-select-lg rounded-2" id="installing" onchange="changeForm()">
-                                                        <option selected>Без установки</option>
-                                                        <option>Установка - 500 руб</option>
+                                                        <option selected>без установки</option>
+                                                        <option>установка - 500 руб</option>
                                                     </select>
                                                 </div>
                                                 
@@ -459,43 +459,43 @@
                                                 </a>
                                             </div>
                                             <div class="col px-5">
-                                                <a class="d-block" data-fslightbox="images" href="{% static 'main/img/project-img.png' %}">
-                                                    <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/project-img.png' %}"></div>
+                                                <a class="d-block" data-fslightbox="images" href="{% static 'main/img/projects/category_1/1-1/1.jpg' %}">
+                                                    <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/projects/category_1/1-1/1.jpg' %}"></div>
                                                 </a>
                                             </div>
                                             <div class="col px-5">
-                                                <a class="d-block" data-fslightbox="images" href="{% static 'main/img/project-img.png' %}">
-                                                    <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/project-img.png' %}"></div>
+                                                <a class="d-block" data-fslightbox="images" href="{% static 'main/img/projects/category_1/1-1/2.jpg' %}">
+                                                    <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/projects/category_1/1-1/2.jpg' %}"></div>
                                                 </a>
                                             </div>
                                             <div class="col px-5">
-                                                <a class="d-block" data-fslightbox="images" href="{% static 'main/img/project-img.png' %}">
-                                                    <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/project-img.png' %}"></div>
+                                                <a class="d-block" data-fslightbox="images" href="{% static 'main/img/projects/category_1/1-1/3.jpg' %}">
+                                                    <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/projects/category_1/1-1/3.jpg' %}"></div>
                                                 </a>
                                             </div>
                                             <div class="col px-5">
-                                                <a class="d-block" data-fslightbox="images" href="{% static 'main/img/project-img.png' %}">
-                                                    <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/project-img.png' %}"></div>
+                                                <a class="d-block" data-fslightbox="images" href="{% static 'main/img/projects/category_1/1-1/4.jpg' %}">
+                                                    <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/projects/category_1/1-1/4.jpg' %}"></div>
                                                 </a>
                                             </div>
                                             <div class="col px-5">
-                                                <a class="d-block" data-fslightbox="images" href="{% static 'main/img/project-img.png' %}">
-                                                    <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/project-img.png' %}"></div>
+                                                <a class="d-block" data-fslightbox="images" href="{% static 'main/img/projects/category_1/1-1/5.jpg' %}">
+                                                    <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/projects/category_1/1-1/5.jpg' %}"></div>
                                                 </a>
                                             </div>
                                             <div class="col px-5">
-                                                <a class="d-block" data-fslightbox="images" href="{% static 'main/img/project-img.png' %}">
-                                                    <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/project-img.png' %}"></div>
+                                                <a class="d-block" data-fslightbox="images" href="{% static 'main/img/projects/category_1/1-1/6.jpg' %}">
+                                                    <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/projects/category_1/1-1/6.jpg' %}"></div>
                                                 </a>
                                             </div>
                                             <div class="col px-5">
-                                                <a class="d-block" data-fslightbox="images" href="{% static 'main/img/project-img.png' %}">
-                                                    <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/project-img.png' %}"></div>
+                                                <a class="d-block" data-fslightbox="images" href="{% static 'main/img/projects/category_1/1-1/7.jpg' %}">
+                                                    <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/projects/category_1/1-1/7.jpg' %}"></div>
                                                 </a>
                                             </div>
-                                            <div class="col px-5">
-                                                <a class="d-block" data-fslightbox="images" href="{% static 'main/img/project-img.png' %}">
-                                                    <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/project-img.png' %}"></div>
+                                            <div class="col d-none d-lg-block px-5">
+                                                <a class="d-block" data-fslightbox="images" href="{% static 'main/img/projects/category_1/1-1/8.jpg' %}">
+                                                    <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/projects/category_1/1-1/8.jpg' %}"></div>
                                                 </a>
                                             </div>
                                         </div>
@@ -638,10 +638,10 @@
                                                     <p class="fw-medium fs-lg-9 fs-xxl-10">Физическое лицо (частный клиент)</p>
                                                      <div class="row mx-0 text-center ">
                                                         <div class="col-4 bg-primary rounded-start-2">
-                                                            <p class="text-white fs-8 fs-sm-10 mt-10"><span class="fs-12">30% </span><br>предоплата</p>
+                                                            <p class="text-white fs-7 fs-sm-10 mt-10"><span class="fs-12">30% </span><br>предоплата</p>
                                                         </div>
                                                          <div class="col-8 bg-light rounded-end-2">
-                                                                <p class="text-dark fs-8 fs-sm-10 fw-semibold postpay_item  mt-10"><span class="fs-12">70% </span><br>постоплата</p>
+                                                                <p class="text-dark fs-7 fs-sm-10 fw-semibold postpay_item  mt-10"><span class="fs-12">70% </span><br>постоплата</p>
                                                                 <div>
                                                           
                                                                 </div>
@@ -662,7 +662,7 @@
                                                 <div class="col-lg-6 mt-10 mt-lg-0">
                                                     <p class="fw-medium fs-lg-9 fs-xxl-10">Юридическое лицо (организация или ИП)</p>
                                                     <div class="bg-primary text-center rounded-2">
-                                                        <p class="text-white fs-8 fs-sm-10 py-10 mt-10"><span class="fs-12">100% </span><br>предоплата</p>
+                                                        <p class="text-white fs-7 fs-sm-10 py-10 mt-10"><span class="fs-12">100% </span><br>предоплата</p>
                                                     </div>
                                                     <div class="border border-light pt-5 px-10 mt-10 rounded-2" >
                                                         <p class="fs-8 mb-5">С юридическими лицами и ИП мы работаем по 100%

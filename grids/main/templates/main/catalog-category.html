@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="accordion-collapse collapse d-lg-block mt-lg-0 mt-5" id="catalog-filter">
                                     <div class="accordion-body p-0">
-                                        <div class=" rounded-lg-0 rounded-2 p-lg-0 p-10 ">
+                                        <div class=" rounded-lg-0 rounded-2 p-0">
                                             <h5 class="d-lg-block border-bottom-lg  border-lg-0 border border-light d-none fs-12 fw-medium ls-sm text-uppercase mb-12-5">Фильтр</h5>
                                             <div class="mb-18">
                                                 <div class="row gy-10 mb-20">
@@ -531,11 +531,13 @@
                              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                     <div class="modal-content ">
-                                        <div class="modal-body">
-                                            <button type="button" class="btn-close  float-end button-close btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                                        <div class="modal-body p-5">
+                                            <button type="button" class=" position-absolute  btn_close rounded-2 " aria-label="Close" data-bs-dismiss="modal">
+                                                {% include 'main/icons/btn_close.html' with classes="svg-icon"%}</button>
                                             
-                                            <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review1.jpeg' %}"
+                                            <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review1.jpg' %}"
                                             alt="Иван Семенович Г." />
+                                            <a href="#"> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal"> Перейти в карточку товара</button></a>
                                         </div>
                                       
                                     </div>
@@ -564,11 +566,13 @@
                              <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                             <div class="modal-content ">
-                                <div class="modal-body">
-                                    <button type="button" class="btn-close  float-end button-close btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                                <div class="modal-body p-5">
+                                    <button type="button" class=" position-absolute  btn_close rounded-2 " aria-label="Close" data-bs-dismiss="modal">
+                                        {% include 'main/icons/btn_close.html' with classes="svg-icon"%}</button>
                                     
                                     <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review2.jpg' %}"
                                     alt="Янина Ш." />
+                                    <a href="#"> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal"> Перейти в карточку товара</button></a>
                                 </div>
                               
                             </div>
@@ -591,7 +595,7 @@
                         <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar24.jpg' %}"
                                                  alt="Светлана К."/></div>
                         <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                            <h6 class="fs-8 mb-2">Светлана К..</h6>
+                            <h6 class="fs-8 mb-2">Светлана К.</h6>
                         </div>
                         <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
                         href="#" data-bs-toggle="modal" data-bs-target="#exampleModal8">Смотреть фото</a>
@@ -600,11 +604,13 @@
                              <div class="modal fade" id="exampleModal8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                             <div class="modal-content ">
-                                <div class="modal-body">
-                                    <button type="button" class="btn-close  float-end button-close btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                                <div class="modal-body p-5">
+                                    <button type="button" class=" position-absolute  btn_close rounded-2 " aria-label="Close" data-bs-dismiss="modal">
+                                        {% include 'main/icons/btn_close.html' with classes="svg-icon"%}</button>
                                     
                                     <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review8.jpg' %}"
                                     alt="Светлана К." />
+                                    <a href="#"> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal"> Перейти в карточку товара</button></a>
                                 </div>
                               
                             </div>
@@ -634,11 +640,13 @@
                              <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                             <div class="modal-content ">
-                                <div class="modal-body">
-                                    <button type="button" class="btn-close  float-end button-close btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                                <div class="modal-body p-5">
+                                    <button type="button" class=" position-absolute  btn_close rounded-2 " aria-label="Close" data-bs-dismiss="modal">
+                                        {% include 'main/icons/btn_close.html' with classes="svg-icon"%}</button>
                                     
                                     <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review4.jpeg' %}"
                                     alt="Иван Б." />
+                                    <a href="#"> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal"> Перейти в карточку товара</button></a>
                                 </div>
                               
                             </div>
@@ -672,11 +680,13 @@
                                      <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                             <div class="modal-content ">
-                                                <div class="modal-body">
-                                                    <button type="button" class="btn-close  float-end button-close btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                                                <div class="modal-body p-5">
+                                                    <button type="button" class=" position-absolute  btn_close rounded-2 " aria-label="Close" data-bs-dismiss="modal">
+                                                        {% include 'main/icons/btn_close.html' with classes="svg-icon"%}</button>
                                                     
                                                     <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review3.jpg' %}"
                                                     alt="Иван Семенович Г." />
+                                                    <a href="#"> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal"> Перейти в карточку товара</button></a>
                                                 </div>
                                               
                                             </div>
@@ -705,11 +715,13 @@
                                      <div class="modal fade" id="exampleModal7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                             <div class="modal-content ">
-                                                <div class="modal-body">
-                                                    <button type="button" class="btn-close  float-end button-close btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                                                <div class="modal-body p-5">
+                                                    <button type="button" class=" position-absolute  btn_close rounded-2 " aria-label="Close" data-bs-dismiss="modal">
+                                                        {% include 'main/icons/btn_close.html' with classes="svg-icon"%}</button>
                                                     
                                                     <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review7.jpeg' %}"
                                                     alt="Марина Г." />
+                                                    <a href="#"> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal"> Перейти в карточку товара</button></a>
                                                 </div>
                                               
                                             </div>
@@ -724,13 +736,13 @@
             </div>
                   </div>
         </div>
-        <button class="carousel-control-prev arrow-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <button class="carousel-control-prev arrow-prev" type="button" data-bs-target="#carouselExampleControls_reviews_catalog-category" data-bs-slide="prev">
             <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="grey" class="bi bi-chevron-left" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
               </svg>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next arrow-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <button class="carousel-control-next arrow-next" type="button" data-bs-target="#carouselExampleControls_reviews_catalog-category" data-bs-slide="next">
          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="grey" class="bi bi-chevron-right" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
           </svg>
@@ -739,7 +751,7 @@
       </div>
 
 
-    <div class="text-center mt-lg-20 mt-10"><a class="btn btn-outline-light btn-lg btn-wide-lg" href="{%url 'reviews'%}">Все отзывы  </a></div>
+    <div class="text-center mt-lg-20 mt-10"><a class="btn btn-outline-secondary btn-lg btn-wide-lg" href="{%url 'reviews'%}">Все отзывы  </a></div>
 </section>
 
 
