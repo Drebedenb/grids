@@ -387,7 +387,7 @@
                                                 </div>
                                                 <div class="col">
                                                     <select class="form-select text-muted form-select-lg rounded-2" id="painting" onchange="changeForm()">
-                                                        <option selected>без покраски</option>
+                                                        <option selected>Без покраски</option>
                                                         <option>покраска (эмаль НЦ) - 550 руб</option>
                                                         <option>покраска (эмаль ХВ) - 650 руб</option>
                                                         <option>покраска (эмаль NOVAX) - 1200 руб</option>
@@ -727,54 +727,44 @@
 
 
                         <!-- DRUGIE RESHETKI -->
+
+
                         <div class="border-lg border-lg-black rounded-lg-4 mt-lg-20 mt-28 p-lg-20">
                             <h3 class="h5 fs-lg-13 fs-11 fw-medium ls-sm text-uppercase mb-17-5">Другие решетки по схожим ценам</h3>
                             <div class="row   gy-lg-0 gy-20">
-                                <div id="carouselExampleControls_drugie_reshetki" class="carousel slide" data-bs-ride="carousel">
-                                    <div class="carousel-inner">
-                                        {% for item in similar_grids_by_price %}
-                                        {% if forloop.counter == 1  %}
-                                                <div class="carousel-item active">
-                                                    {% else %}
-                                                <div class="carousel-item active">
-                                            {% endif %}
-                                            <div class="row-cols-lg-4 row-cols-2">
-                                                    {% include 'main/components/catalog_category_item.html' with PriceWinguardSketchId=item.id price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice %}
+                                <section>
+                                <div class="row  mb-17 pt-lg-30 pt-0">
+                                    <div class="col-auto ms-auto d-lg-block">
+                                        <div class="d-flex">
+                                            <div class="d-flex gap-10 mt-auto" id="features-swiper-control">
+                                                <button class="btn btn-outline-secondary btn-swiper-prev rounded-circle d-flex justify-content-center align-items-center p-0"
+                                                        type="button" style="width: 3rem; height: 3rem;"><-
+                                                </button>
+                                                <button class="btn btn-outline-secondary btn-swiper-next rounded-circle d-flex justify-content-center align-items-center p-0"
+                                                        type="button" style="width: 3rem; height: 3rem;">->
+                                                </button>
                                             </div>
                                         </div>
-                                        {% endfor %}
-
-<!--                                      <div class="carousel-item active">-->
-<!--                                        <div class="row-cols-lg-4 row-cols-2">-->
-<!--                                            <img src="..." class="d-block w-100" alt="...">-->
-<!--                                        </div>-->
-<!--                                      </div>-->
-<!--                                      <div class="carousel-item">-->
-<!--                                        <div class="row-cols-lg-4 row-cols-2">-->
-<!--                                            <img src="..." class="d-block w-100" alt="...">-->
-<!--                                        </div>-->
-<!--                                      </div>-->
-<!--                                      <div class="carousel-item">-->
-<!--                                        <div class="row-cols-lg-4 row-cols-2">-->
-<!--                                            <img src="..." class="d-block w-100" alt="...">-->
-<!--                                        </div>-->
-<!--                                      </div>-->
                                     </div>
-                                    <button class="carousel-control-prev arrow-prev" type="button" data-bs-target="#carouselExampleControlsForSimilarPrices" data-bs-slide="prev">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="grey" class="bi bi-chevron-left" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-                                          </svg>
-                                      <span class="visually-hidden">Previous</span>
-                                    </button>
-                                    <button class="carousel-control-next arrow-next" type="button" data-bs-target="#carouselExampleControlsForSimilarPrices" data-bs-slide="next">
-                                     <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="grey" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                                      </svg>
-                                      <span class="visually-hidden">Next</span>
-                                    </button>
-                                  </div>
+                                </div>
+                                <div class="swiper swiper_container" id="features-swiper" data-control="#features-swiper-control">
+                                    <div class="swiper-wrapper">
 
-                            </div>
+                                        {%for item in similar_grids_by_price%}
+
+
+
+                                        <div class="swiper-slide">
+
+                                    {% include 'main/components/catalog_category_item.html' with PriceWinguardSketchId=item.id price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
+
+                                        </div>
+
+                                        {%endfor%}
+
+                                    </div>
+                                </div>
+                            </section>
                         </div>
                     </div>
                 </div>
@@ -841,20 +831,21 @@
             }
         }
 
-        let painting = getInputValueById("painting")
-        if (painting !== "Без покраски") {
-            painting = +painting.match(/\d{3,}/)[0]
+        let painting = getInputValueById("painting").match(/\d{3,}/)
+        if (painting) {
+            painting = +painting[0]
         } else {
-            painting = 0;
+            painting = 0
         }
 
-        let installing = getInputValueById("installing")
-        if (installing !== "Без установки") {
-            installing = +installing.match(/\d{3,}/)[0]
+        let installing = getInputValueById("installing").match(/\d{3,}/)
+        if (installing) {
+            installing = +installing[0]
         } else {
             installing = 0;
         }
-        let total = amount * (width_of_rod * width * height / 10000 + openTypePrice) + installing + painting;
+
+        const total = amount * (width_of_rod * width * height / 10000 + openTypePrice) + installing + painting;
         document.getElementById("total").textContent = total + " руб.";
     }
     const optionsOfWidth = document.getElementsByClassName("width-option")

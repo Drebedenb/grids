@@ -6,18 +6,18 @@ from django.db.models.functions import Round, Substr, Mod, Reverse
 from django.http import HttpResponseNotFound
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-# from django.core.cache import cache
+from django.core.cache import cache
 
 
-class MockDjangoRedis:
-    def get(self, arg):
-        return None
-
-    def set(arg, bla, ble, blu):
-        return arg
-
-
-cache = MockDjangoRedis()
+# class MockDjangoRedis:
+#     def get(self, arg):
+#         return None
+#
+#     def set(arg, bla, ble, blu):
+#         return arg
+#
+#
+# cache = MockDjangoRedis()
 
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
@@ -211,7 +211,6 @@ def get_category_max_price(category_number):
     return max_price
 
 
-# @cache_page(60 * 15)
 def index(request):
     count = {
         "economy": count_products_by_category(1),
@@ -236,7 +235,6 @@ def index(request):
                                                })
 
 
-# @cache_page(60 * 15)
 def catalog_category(request, category_name):
     if category_name not in russian_categories:
         return HttpResponseNotFound("Page NOT found")
@@ -267,7 +265,8 @@ def catalog_category(request, category_name):
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
 
-    leaders_of_selling = []
+    leaders_of_selling = get_products_by_category(5, min_price_for_sort, max_price_for_sort,
+                                             order_type, order_scending, 15)
     return render(request, 'main/catalog-category.html',
                   {'title': 'Каталог', 'list_of_grids_types': list_of_grids_types,
                    'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling,
@@ -279,18 +278,26 @@ def contacts(request):
     return render(request, 'main/contacts.html')
 
 
-SIMILAR_GRIDS_STEP_IN_PRICE = 500
-
+price_step_for_category = {
+    1: 100,
+    3: 200,
+    5: 1000,
+    7: 2000
+}
 
 def product(request, sketch_id):
     product = get_product_by_sketch_id(sketch_id)
-    # first_row_product = product[0]
-    # similar_grids_by_price = get_products_by_category(first_row_product.path_folder,
-    #                                                   first_row_product.price_b2c - SIMILAR_GRIDS_STEP_IN_PRICE,
-    #                                                   first_row_product.price_b2c + SIMILAR_GRIDS_STEP_IN_PRICE,
-    #                                                   'price', 'asc', 15)
-    return render(request, 'main/product.html', {'product': product, 'list_of_open_types': list_of_open_types,
-                                                 })
+    first_row_product = product[0]
+    similar_grids_by_price = get_products_by_category(first_row_product.path_folder,
+                                                      first_row_product.price_b2c - price_step_for_category[first_row_product.path_folder],
+                                                      first_row_product.price_b2c + price_step_for_category[first_row_product.path_folder],
+                                                      'price', 'asc', 15)
+    context = {
+        'product': product,
+        'list_of_open_types': list_of_open_types,
+        'similar_grids_by_price': similar_grids_by_price
+    }
+    return render(request, 'main/product.html', context)
 
 
 def projects(request):

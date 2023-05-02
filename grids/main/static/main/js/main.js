@@ -1,3 +1,14 @@
+//перезагружать страницу каждый раз, когда пользователь нажимает кнопку назад в истории браузера
+window.addEventListener( "pageshow", function ( event ) {
+  const historyTraversal = event.persisted ||
+                         ( typeof window.performance != "undefined" &&
+                              window.performance.getEntriesByType("navigation")[0].type === "back_forward" );
+  if ( historyTraversal ) {
+    window.location.reload();
+  }
+});
+
+
 let introSwiper = new Swiper("#intro-swiper", {
     loop: true,
     effect: "fade",
@@ -43,32 +54,35 @@ let reasonsSwiper = new Swiper("#reasons-swiper", {
 });
 
 let featuresSwiper = new Swiper("#features-swiper", {
-    slidesPerView: 1,
-    slidesPerGroup: 1,
+    slidesPerView: 2,
+    slidesPerGroup: 2,
     spaceBetween: 20,
     navigation: {
-        prevEl: "#features-swiper-control #features-swiper-control_mobile .btn-swiper-prev",
-        nextEl: "#features-swiper-control #features-swiper-control_mobile .btn-swiper-next"
+        // prevEl: "#features-swiper-control #features-swiper-control_mobile .btn-swiper-prev",
+        // nextEl: "#features-swiper-control #features-swiper-control_mobile .btn-swiper-next"
+
+        prevEl: "#features-swiper-control .btn-swiper-prev",
+        nextEl: "#features-swiper-control .btn-swiper-next"
     },
     breakpoints: {
         576: {
-            slidesPerView: 1,
-            slidesPerGroup: 1,
-            spaceBetween: 20
-        },
-        992: {
             slidesPerView: 2,
             slidesPerGroup: 2,
-            spaceBetween: 20
+            spaceBetween: 25
+        },
+        992: {
+            slidesPerView: 3,
+            slidesPerGroup: 3,
+            spaceBetween: 25
         },
         1200: {
             slidesPerView: 3,
             slidesPerGroup: 3,
-            spaceBetween: 30
+            spaceBetween: 25
         },
         1400: {
-            slidesPerView: 4,
-            slidesPerGroup: 4,
+            slidesPerView: 3,
+            slidesPerGroup: 3,
             spaceBetween: 25
         }
     }
@@ -206,7 +220,6 @@ function changeFavoriteCounter() {
 function changeFavoriteCounterAndPaintHearts() {
     changeFavoriteCounter();//вызываем при начальной за грузке любой страницы
     let favoritesStr = getCookie("Favorites")
-    console.log(favoritesStr);
     let favorites;
     if ( favoritesStr === '' || favoritesStr === null) {
         favorites = []
@@ -422,20 +435,19 @@ const ordersToId = {
         'id': 'order-sketchNumber',
         'percent': 'order-percent'
 }
-function changeArrowIcon() {
-    let orderScending;
-    let order;
-    const params = new Proxy(new URLSearchParams(window.location.search), {
+function getSearchParams() {
+    return  new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop) => searchParams.get(prop),
     });
-    // TODO: сделать по номеру эскиза заранее выбранным
-    // if (!params.order ) {
-    //     order = 'id'
-    //     orderScending = 'asc'
-    // } else {
-        order = params.order
-        orderScending = params.orderScending
-    // }
+}
+function getOrderScending() {
+    return getSearchParams().orderScending
+}
+function getOrder() {
+    return getSearchParams().order
+}
+
+function changeArrowIcon(order, orderScending) {
     const arrowId = ordersToId[order] + '-arrow'
     if (orderScending === 'desc') {
         document.getElementById(arrowId).style.display = 'inline';
@@ -444,8 +456,34 @@ function changeArrowIcon() {
         document.getElementById(arrowId).style.display = 'inline';
     }
 }
+function changeOrderScendingSpanTitle(orderScending) {
+    document.getElementById("order-scending-title-" + orderScending).style.display = 'inline';
+}
+function changeFilterIcon (order, orderScending) {
+    const filterId = ordersToId[order] + '-filter'
+    if (orderScending === 'desc') {
+        document.getElementById(filterId+'-down').style.display = 'inline';
+    } else if (orderScending === 'asc') {
+        document.getElementById(filterId+'-up').style.display = 'inline';
+    }
+}
+function paintOrderButtonInRed (order) {
+    document.getElementById(order).style.backgroundColor = '#F5320E';
+}
+function changeAppearanceDependsOnOrder() {
+    const order = getOrder()
+    const orderScending = getOrderScending()
+
+    //for desktop
+    changeArrowIcon(order, orderScending)
+
+    //for mobile
+    changeFilterIcon(order, orderScending)
+    paintOrderButtonInRed(ordersToId[order])
+    changeOrderScendingSpanTitle(orderScending)
+}
 if (document.getElementById('order-sketchNumber')) {
-    changeArrowIcon();
+    changeAppearanceDependsOnOrder()
 }
 function orderByParameter(idOfElement) {
     const orderName = idToOrders[idOfElement]
