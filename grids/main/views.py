@@ -1,12 +1,23 @@
 import re
 import traceback
 
-from django.db.models import Min, Max, Count
+from django.db.models import Min, Max, Count, F, Value, IntegerField
+from django.db.models.functions import Round, Substr, Mod, Reverse
 from django.http import HttpResponseNotFound
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.core.cache import cache
+# from django.core.cache import cache
 
+
+class MockDjangoRedis:
+    def get(self, arg):
+        return None
+
+    def set(arg, bla, ble, blu):
+        return arg
+
+
+cache = MockDjangoRedis()
 
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
@@ -84,13 +95,21 @@ russian_categories = {
 
 arr_of_sale = [15, 10, 20, 30, 25, 20, 10, 20, 20, 30, 25, 10, 10, 20, 30, 10, 20, 30, 15, 10]
 
+# one day cache will be stored
+TTL_OF_CACHE_SECONDS = 60 * 60 * 24
+
 
 def get_products_by_category(category_number, min_price, max_price, order_by_name, order_scending, limit):
+    products_list_from_cache = cache.get("category_" + str(category_number) + str(min_price) +
+                                         str(max_price) + order_by_name + order_scending + str(limit))
+    if products_list_from_cache:
+        return products_list_from_cache
     dictionary_of_orders = ['price', 'id', 'popularity', 'percent', 'asc', 'desc']
     if order_by_name not in dictionary_of_orders or order_scending not in dictionary_of_orders:
-
         return []
-    if not (isinstance(category_number, int) and isinstance(min_price, int) and isinstance(max_price, int) and isinstance(limit, int)):
+    if not (isinstance(category_number, int) and isinstance(min_price, int) and isinstance(max_price,
+                                                                                           int) and isinstance(limit,
+                                                                                                               int)):
         return []
 
     query = """SELECT *,
@@ -107,45 +126,88 @@ def get_products_by_category(category_number, min_price, max_price, order_by_nam
                         HAVING price > {min_price} AND price < {max_price}
                         ORDER BY {order_by_name} {order_scending}
                         LIMIT {limit}) dup""".format(category_number=category_number, min_price=min_price,
-                                                max_price=max_price
-                                                , order_by_name=order_by_name, order_scending=order_scending,
-                                                limit=limit)
+                                                     max_price=max_price
+                                                     , order_by_name=order_by_name, order_scending=order_scending,
+                                                     limit=limit)
+    # subquery = PriceWinguardMain.objects.filter(
+    #     price_winguard_sketch__category=category_number,
+    #     price_b2c__gt=min_price,
+    #     price_b2c__lt=max_price,
+    # ).values(
+    #     'price_winguard_sketch_id',
+    #     'price_winguard_sketch__pricewinguardfiles__path',
+    # ).annotate(
+    #     price=F('price_b2c'),
+    #     percent=(Mod('price_winguard_sketch_id', 3) + 1) * 10 + (Mod('price_winguard_sketch_id', 2) * 5),
+    #     path_folder=Value(category_number, output_field=IntegerField()),
+    #
+    # ).order_by('{order_by_name}'.format(order_by_name=order_by_name))[:limit]
+    #
+    # query = subquery.annotate(
+    #     saleprice=Round(F('price') / (1 - F('percent') / 100), -1),
+    # )
+
     products = PriceWinguardMain.objects.raw(query)
-    return products
+    products_list = []
+    for product in products:  # TODO: переписать на ORM
+        products_list.append(product)
+    cache.set("category_" + str(category_number) + str(min_price) + str(max_price) + order_by_name
+              + order_scending + str(limit), products_list, TTL_OF_CACHE_SECONDS)
+    return products_list
 
 
 def get_product_by_sketch_id(id):
-    query = """
-        SELECT *,
-        ROUND(price_b2c / (1-percent/100), -1) AS saleprice
-        FROM
-        (
-        SELECT ps.category AS path_folder, pm.price_b2c, pm.name, ps.id, 
-        (MOD(ps.id, 3) + 1)*10 + (MOD(ps.id,2) * 5) AS percent, 
-        SUBSTRING_INDEX(SUBSTRING_INDEX(pf.path, '/', -2), '/', 1) AS path_file
-        FROM price_winguard_main pm
-        JOIN price.price_winguard_sketch ps ON pm.price_winguard_sketch_id=ps.id
-        JOIN price.price_winguard_files pf ON pm.price_winguard_sketch_id=pf.price_winguard_sketch_id
-        WHERE ps.id={product_id}
-        ) inner_query
-    """.format(product_id=id)
-    product = PriceWinguardMain.objects.raw(query)
+    product = cache.get("product_" + str(id))
+    if product is None:
+        query = """
+            SELECT *,
+            ROUND(price_b2c / (1-percent/100), -1) AS saleprice
+            FROM
+            (
+            SELECT ps.category AS path_folder, pm.price_b2c, pm.name, ps.id, 
+            (MOD(ps.id, 3) + 1)*10 + (MOD(ps.id,2) * 5) AS percent, 
+            SUBSTRING_INDEX(SUBSTRING_INDEX(pf.path, '/', -2), '/', 1) AS path_file
+            FROM price_winguard_main pm
+            JOIN price.price_winguard_sketch ps ON pm.price_winguard_sketch_id=ps.id
+            JOIN price.price_winguard_files pf ON pm.price_winguard_sketch_id=pf.price_winguard_sketch_id
+            WHERE ps.id={product_id}
+            ) inner_query
+        """.format(product_id=id)
+        product = PriceWinguardMain.objects.raw(query)  # TODO: посмотреть что будет при замене на ORM
+        product_list = []
+        for item in product:
+            product_list.append(item)
+        cache.set("product_" + str(id), product_list, TTL_OF_CACHE_SECONDS)
+        return product_list
     return product
 
+
 def count_products_by_category(category_number):
-    return PriceWinguardSketch.objects.filter(category=category_number).count()
+    count = cache.get("count_" + str(category_number))
+    if count is None:
+        count = PriceWinguardSketch.objects.filter(category=category_number).count()
+        cache.set("count_" + str(category_number), count, TTL_OF_CACHE_SECONDS)
+    return count
 
 
 def get_category_min_price(category_number):
-    min_price = \
-        PriceWinguardMain.objects.filter(price_winguard_sketch__category=category_number).aggregate(Min('price_b2c'))[
-            'price_b2c__min']
+    min_price = cache.get("min_price_" + str(category_number))
+    if min_price is None:
+        min_price = \
+            PriceWinguardMain.objects.filter(price_winguard_sketch__category=category_number).aggregate(
+                Min('price_b2c'))[
+                'price_b2c__min']
+        cache.set("min_price_" + str(category_number), min_price, TTL_OF_CACHE_SECONDS)
     return min_price
 
 
 def get_category_max_price(category_number):
-    max_price = PriceWinguardMain.objects.filter(price_winguard_sketch__category=category_number).values('price_winguard_sketch__id')\
-        .annotate(min_price=Min('price_b2c')).values('min_price').aggregate(Max('min_price'))['min_price__max']
+    max_price = cache.get("max_price_" + str(category_number))
+    if max_price is None:
+        max_price = PriceWinguardMain.objects.filter(price_winguard_sketch__category=category_number).values(
+            'price_winguard_sketch__id') \
+            .annotate(min_price=Min('price_b2c')).values('min_price').aggregate(Max('min_price'))['min_price__max']
+        cache.set("max_price_" + str(category_number), max_price, TTL_OF_CACHE_SECONDS)
     return max_price
 
 
@@ -158,6 +220,7 @@ def index(request):
         "exlusive": count_products_by_category(7),
     }
     leaders_of_selling = get_products_by_category(1, 0, 99999, 'id', 'asc', 16)
+
     min_price_1 = get_category_min_price(1)
     min_price_2 = get_category_min_price(3)
     min_price_3 = get_category_min_price(5)
@@ -187,19 +250,11 @@ def catalog_category(request, category_name):
         order_type = 'id' if request.GET.get('order') is None else request.GET.get('order')
         order_scending = 'asc' if request.GET.get('orderScending') is None else request.GET.get('orderScending')
         min_price_for_sort = 0 if request.GET.get('minPriceByUser') is None else int(request.GET.get('minPriceByUser'))
-        max_price_for_sort = 9999999 if request.GET.get('maxPriceByUser') is None else int(request.GET.get('maxPriceByUser'))
+        max_price_for_sort = 9999999 if request.GET.get('maxPriceByUser') is None else int(
+            request.GET.get('maxPriceByUser'))
+
     products_list = get_products_by_category(category["number_of_category"], min_price_for_sort, max_price_for_sort,
                                              order_type, order_scending, limit)
-    # products_list = []
-    # if cache.get(category["number_of_category"]):
-    #     products_list = cache.get(category["number_of_category"])
-    # else:
-    #     products_list = get_products_by_category(category["number_of_category"], min_price_for_sort, max_price_for_sort,
-    #                                              order_type, order_scending, limit)
-    #     cache.set(category["number_of_category"], products_list)
-
-    # products_list = get_products_by_category(category["number_of_category"], min_price_for_sort, max_price_for_sort, order_type, order_scending, limit)
-
     min_price = get_category_min_price(category["number_of_category"])
     max_price = get_category_max_price(category["number_of_category"])
 
@@ -225,20 +280,23 @@ def contacts(request):
 
 
 SIMILAR_GRIDS_STEP_IN_PRICE = 500
+
+
 def product(request, sketch_id):
     product = get_product_by_sketch_id(sketch_id)
-    first_row_product = product[0]
-    similar_grids_by_price = get_products_by_category(first_row_product.path_folder,
-                                                      first_row_product.price_b2c - SIMILAR_GRIDS_STEP_IN_PRICE,
-                                                      first_row_product.price_b2c + SIMILAR_GRIDS_STEP_IN_PRICE,
-                                                      'price', 'asc', 15)
+    # first_row_product = product[0]
+    # similar_grids_by_price = get_products_by_category(first_row_product.path_folder,
+    #                                                   first_row_product.price_b2c - SIMILAR_GRIDS_STEP_IN_PRICE,
+    #                                                   first_row_product.price_b2c + SIMILAR_GRIDS_STEP_IN_PRICE,
+    #                                                   'price', 'asc', 15)
     return render(request, 'main/product.html', {'product': product, 'list_of_open_types': list_of_open_types,
-                                                 "similar_grids_by_price": similar_grids_by_price})
+                                                 })
 
 
 def projects(request):
     return render(request, 'main/projects.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Каталог',
-                                                  'list_of_photos_done': list_of_photos_done, 'list_of_photos_done_collapsed': list_of_photos_done_collapsed})
+                                                  'list_of_photos_done': list_of_photos_done,
+                                                  'list_of_photos_done_collapsed': list_of_photos_done_collapsed})
 
 
 def reviews(request):
@@ -280,7 +338,7 @@ def favorite(request):
     for sketch_id in list_of_favorites_cookie:
         product = {"id": sketch_id}
         product["price"] = \
-        PriceWinguardMain.objects.filter(price_winguard_sketch_id=product["id"]).values('price_b2c')[0]['price_b2c']
+            PriceWinguardMain.objects.filter(price_winguard_sketch_id=product["id"]).values('price_b2c')[0]['price_b2c']
         product["percent"] = arr_of_sale[int(product["id"]) % 20]
         product["saleprice"] = int(product["price"] * (1 + product["percent"] / 100))
         path = "".join(
@@ -294,6 +352,7 @@ def favorite(request):
 
 def page_not_found(request, exception):
     return HttpResponseNotFound("Page NOT found")
+
 
 def privacy(request):
     return render(request, 'main/privacy.html')
