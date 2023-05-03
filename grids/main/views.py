@@ -213,10 +213,10 @@ def get_category_max_price(category_number):
 
 def index(request):
     count = {
-        "economy": count_products_by_category(1),
-        "ajur": count_products_by_category(3),
-        "vip": count_products_by_category(5),
-        "exlusive": count_products_by_category(7),
+        "economy": count_products_by_category(1) + count_products_by_category(2),
+        "ajur": count_products_by_category(3) + count_products_by_category(4),
+        "vip": count_products_by_category(5) + count_products_by_category(6),
+        "exlusive": count_products_by_category(7) + count_products_by_category(8),
     }
     leaders_of_selling = get_products_by_category(1, 0, 99999, 'id', 'asc', 16)
 

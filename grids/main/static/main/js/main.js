@@ -544,6 +544,11 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+//блок кода для быстрого просмотра и калькулятора в нем
+
+//конец блока кода о калькуляторе и быстром просмотре
+
+
 /* DROPDOWN */
 
 const dropdowns = document.querySelectorAll('.dropdown-wrapper');
