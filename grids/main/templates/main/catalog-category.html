@@ -13,8 +13,8 @@
                             {{category.title}} Металлические решетки на окна</h1>
                         <nav class="d-lg-block d-none fs-9 mt-lg-0 pt-lg-12  ">
                             <ul class="breadcrumb mb-0">
-                                <li class="breadcrumb-item"><a href="index.html">Главная </a></li>
-                                <li class="breadcrumb-item"><a href="catalog.html">Каталог</a></li>
+                                <li class="breadcrumb-item"><a href="{%url 'index'%}">Главная </a></li>
+                                <li class="breadcrumb-item"><a href="/металлические-решетки-на-окна">Каталог</a></li>
                                 <li class="breadcrumb-item active">{{category.title}} решетки на окна</li>
                             </ul>
                         </nav>
@@ -970,39 +970,14 @@
 
     //Блок кода для успешной смены категории/класса и смены юрла
     const categories = [
-        {
-            url: "решетки-на-окна-эконом-класс",
-            "title": "Эконом",
-            "name_of_category": "economy",
-            "name_of_class": "usual"
-        },
-        {
-            url: "дутые-решетки-на-окна-эконом-класс",
-            "title": "Дутые Эконом",
-            "name_of_category": "economy",
-            "name_of_class": "blow"
-        },
+        {url: "решетки-на-окна-эконом-класс", "title": "Эконом", "name_of_category": "economy", "name_of_class": "usual"},
+        {url: "дутые-решетки-на-окна-эконом-класс", "title": "Дутые Эконом", "name_of_category": "economy", "name_of_class": "blow"},
         {url: "ажурные-решетки-на-окна", "title": "Ажурные", "name_of_category": "ajur", "name_of_class": "usual"},
         {url: "дутые-ажурные-решетки", "title": "Дутые Ажурные", "name_of_category": "ajur", "name_of_class": "blow"},
         {url: "кованые-решетки-на-окна-вип-класс", "title": "VIP", "name_of_category": "vip", "name_of_class": "usual"},
-        {
-            url: "кованые-дутые-решетки-вип-класса",
-            "title": "Дутые VIP",
-            "name_of_category": "vip",
-            "name_of_class": "blow"
-        },
-        {
-            url: "эксклюзивные-кованые-решетки",
-            "title": "Эксклюзив",
-            "name_of_category": "exclusive",
-            "name_of_class": "usual"
-        },
-        {
-            url: "дутые-эксклюзивные-решетки",
-            "title": "Дутые Эксклюзив",
-            "name_of_category": "exclusive",
-            "name_of_class": "blow"
-        }
+        {url: "кованые-дутые-решетки-вип-класса", "title": "Дутые VIP", "name_of_category": "vip", "name_of_class": "blow"},
+        {url: "эксклюзивные-кованые-решетки", "title": "Эксклюзив", "name_of_category": "exclusive", "name_of_class": "usual"},
+        {url: "дутые-эксклюзивные-решетки", "title": "Дутые Эксклюзив", "name_of_category": "exclusive", "name_of_class": "blow"}
     ]
 
     function getCheckedCategory() {
@@ -1011,6 +986,7 @@
                 return categories[i].name_of_category
             }
         }
+        return 'all'
     }
 
     function getCheckedClass() {
@@ -1023,6 +999,9 @@
 
     function changeCategoryAndUrl(categoryName) {
         let className = getCheckedClass();
+        if (className === undefined) { //TODO: fix hard-coded choise of class
+            className = 'usual'
+        }
         for (let i = 0; i < categories.length; i++) {
             if (categoryName === categories[i].name_of_category && className === categories[i].name_of_class) {
                 document.location.href = "/" + categories[i].url;

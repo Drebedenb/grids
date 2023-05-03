@@ -1,5 +1,6 @@
 import re
 import traceback
+import os
 
 from django.db.models import Min, Max, Count, F, Value, IntegerField
 from django.db.models.functions import Round, Substr, Mod, Reverse
@@ -7,7 +8,6 @@ from django.http import HttpResponseNotFound
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.cache import cache
-
 
 # class MockDjangoRedis:
 #     def get(self, arg):
@@ -80,7 +80,7 @@ list_of_open_types = [
 ]
 
 russian_categories = {
-    "все": {"title": "Все", 'url_title': "all", "number_of_category": 1},
+    "металлические-решетки-на-окна": {"title": "Все", 'url_title': "all", "number_of_category": 'all'},
     "решетки-на-окна-эконом-класс": {"title": "Эконом", 'url_title': "svarka", "number_of_category": 1},
     "дутые-решетки-на-окна-эконом-класс": {"title": "Дутые Эконом", 'url_title': "svarka_dut", "number_of_category": 2},
     "ажурные-решетки-на-окна": {"title": "Ажурные", 'url_title': "ajur", "number_of_category": 3},
@@ -117,7 +117,7 @@ def get_products_by_category(category_number, min_price, max_price, order_by_nam
                         FROM
                         (SELECT MIN(price_b2c) AS price, ps.id, pf.path, (MOD(ps.id, 3) + 1)*10 + (MOD(ps.id,2) * 5) AS percent,
                         {category_number} AS path_folder,
-                        SUBSTRING_INDEX(SUBSTRING_INDEX(pf.path, '/', -2), '/', 1) AS path_file
+                        ps.number AS path_file
                         FROM price.price_winguard_main pm
                         JOIN price.price_winguard_sketch ps ON pm.price_winguard_sketch_id=ps.id
                         JOIN price.price_winguard_files pf ON pm.price_winguard_sketch_id=pf.price_winguard_sketch_id
@@ -155,31 +155,83 @@ def get_products_by_category(category_number, min_price, max_price, order_by_nam
               + order_scending + str(limit), products_list, TTL_OF_CACHE_SECONDS)
     return products_list
 
+def get_all_products(min_price, max_price, order_by_name, order_scending, limit):
+    products_list_from_cache = cache.get("all_" + str(min_price) +
+                                         str(max_price) + order_by_name + order_scending + str(limit))
+    if products_list_from_cache:
+        return products_list_from_cache
+    dictionary_of_orders = ['price', 'id', 'popularity', 'percent', 'asc', 'desc']
+    if order_by_name not in dictionary_of_orders or order_scending not in dictionary_of_orders:
+        return []
+    if not (isinstance(min_price, int) and isinstance(max_price, int) and isinstance(limit, int)):
+        return []
+    query = """SELECT *,
+                        ROUND(price / (1-percent/100), -1) AS saleprice
+                        FROM
+                        (SELECT MIN(price_b2c) AS price, ps.id, pf.path, (MOD(ps.id, 3) + 1)*10 + (MOD(ps.id,2) * 5) AS percent,
+                        ps.category AS path_folder,
+                        ps.number AS path_file
+                        FROM price.price_winguard_main pm
+                        JOIN price.price_winguard_sketch ps ON pm.price_winguard_sketch_id=ps.id
+                        JOIN price.price_winguard_files pf ON pm.price_winguard_sketch_id=pf.price_winguard_sketch_id
+                        GROUP BY ps.id, pf.path
+                        HAVING price > {min_price} AND price < {max_price}
+                        ORDER BY {order_by_name} {order_scending}
+                        LIMIT {limit}) dup""".format(min_price=min_price,
+                                                     max_price=max_price
+                                                     , order_by_name=order_by_name, order_scending=order_scending,
+                                                     limit=limit)
+    products = PriceWinguardMain.objects.raw(query)
+    products_list = []
+    for product in products:  # TODO: переписать на ORM
+        products_list.append(product)
+    cache.set("all_" + str(min_price) + str(max_price) + order_by_name + order_scending + str(limit),
+              products_list, TTL_OF_CACHE_SECONDS)
+    return products_list
 
-def get_product_by_sketch_id(id):
-    product = cache.get("product_" + str(id))
+
+
+def get_product_by_sketch_category_and_number(category, number):
+    product = cache.get("product_" + str(category) + "_" + str(number))
     if product is None:
         query = """
             SELECT *,
             ROUND(price_b2c / (1-percent/100), -1) AS saleprice
             FROM
             (
-            SELECT ps.category AS path_folder, pm.price_b2c, pm.name, ps.id, 
+            SELECT  ps.category AS path_folder, pm.price_b2c, pm.name, ps.id, 
             (MOD(ps.id, 3) + 1)*10 + (MOD(ps.id,2) * 5) AS percent, 
-            SUBSTRING_INDEX(SUBSTRING_INDEX(pf.path, '/', -2), '/', 1) AS path_file
-            FROM price_winguard_main pm
+            ps.number AS path_file 
+            FROM price.price_winguard_main pm
             JOIN price.price_winguard_sketch ps ON pm.price_winguard_sketch_id=ps.id
             JOIN price.price_winguard_files pf ON pm.price_winguard_sketch_id=pf.price_winguard_sketch_id
-            WHERE ps.id={product_id}
+            WHERE category={category} AND number={number}
             ) inner_query
-        """.format(product_id=id)
+        """.format(category=category, number=number)
         product = PriceWinguardMain.objects.raw(query)  # TODO: посмотреть что будет при замене на ORM
         product_list = []
         for item in product:
             product_list.append(item)
-        cache.set("product_" + str(id), product_list, TTL_OF_CACHE_SECONDS)
+        cache.set("product_" + str(category) + "_" + str(number), product_list, TTL_OF_CACHE_SECONDS)
         return product_list
     return product
+
+
+def get_folder_of_photos_by_category_and_number(category, numberOfProduct):
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_dir, f'main/static/main/img/projects/{category}/{category}-{numberOfProduct}')
+
+
+def get_product_project_photos_eight(category, numberOfProduct):
+    try:
+        img_list = os.listdir(get_folder_of_photos_by_category_and_number(category, numberOfProduct))
+    except:
+        img_list = []
+    for i in range(len(img_list)):
+        img_list[i] = f'{category}/{category}-{numberOfProduct}/' + img_list[i]
+    for i in range(len(img_list) + 1, 9):
+        img_list.append(f'1/1-1/{i}.webp')
+    return img_list
 
 
 def count_products_by_category(category_number):
@@ -208,6 +260,26 @@ def get_category_max_price(category_number):
             'price_winguard_sketch__id') \
             .annotate(min_price=Min('price_b2c')).values('min_price').aggregate(Max('min_price'))['min_price__max']
         cache.set("max_price_" + str(category_number), max_price, TTL_OF_CACHE_SECONDS)
+    return max_price
+
+
+def get_min_price_of_all_products():
+    min_price = cache.get("min_price_all")
+    if min_price is None:
+        min_price = \
+            PriceWinguardMain.objects.aggregate(
+                Min('price_b2c'))[
+                'price_b2c__min']
+        cache.set("min_price_all", min_price, TTL_OF_CACHE_SECONDS)
+    return min_price
+
+def get_max_price_of_all_products():
+    max_price = cache.get("max_price_all")
+    if max_price is None:
+        max_price = PriceWinguardMain.objects.values(
+            'price_winguard_sketch__id') \
+            .annotate(min_price=Min('price_b2c')).values('min_price').aggregate(Max('min_price'))['min_price__max']
+        cache.set("max_price_all", max_price, TTL_OF_CACHE_SECONDS)
     return max_price
 
 
@@ -251,10 +323,15 @@ def catalog_category(request, category_name):
         max_price_for_sort = 9999999 if request.GET.get('maxPriceByUser') is None else int(
             request.GET.get('maxPriceByUser'))
 
-    products_list = get_products_by_category(category["number_of_category"], min_price_for_sort, max_price_for_sort,
+    if (category["number_of_category"] is 'all'):
+        products_list = get_all_products(min_price_for_sort, max_price_for_sort, order_type, order_scending, limit)
+        min_price = get_min_price_of_all_products()
+        max_price = get_max_price_of_all_products()
+    else:
+        products_list = get_products_by_category(category["number_of_category"], min_price_for_sort, max_price_for_sort,
                                              order_type, order_scending, limit)
-    min_price = get_category_min_price(category["number_of_category"])
-    max_price = get_category_max_price(category["number_of_category"])
+        min_price = get_category_min_price(category["number_of_category"])
+        max_price = get_category_max_price(category["number_of_category"])
 
     page = request.GET.get('page', 1)
     paginator = Paginator(products_list, 45)
@@ -266,7 +343,7 @@ def catalog_category(request, category_name):
         products = paginator.page(paginator.num_pages)
 
     leaders_of_selling = get_products_by_category(5, min_price_for_sort, max_price_for_sort,
-                                             order_type, order_scending, 15)
+                                                  order_type, order_scending, 15)
     return render(request, 'main/catalog-category.html',
                   {'title': 'Каталог', 'list_of_grids_types': list_of_grids_types,
                    'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling,
@@ -285,17 +362,24 @@ price_step_for_category = {
     7: 2000
 }
 
-def product(request, sketch_id):
-    product = get_product_by_sketch_id(sketch_id)
+
+def product(request, category, file_number):
+    print(category)
+    print(file_number)
+    product = get_product_by_sketch_category_and_number(category, file_number)
     first_row_product = product[0]
     similar_grids_by_price = get_products_by_category(first_row_product.path_folder,
-                                                      first_row_product.price_b2c - price_step_for_category[first_row_product.path_folder],
-                                                      first_row_product.price_b2c + price_step_for_category[first_row_product.path_folder],
+                                                      first_row_product.price_b2c - price_step_for_category[
+                                                          first_row_product.path_folder],
+                                                      first_row_product.price_b2c + price_step_for_category[
+                                                          first_row_product.path_folder],
                                                       'price', 'asc', 15)
+    photos_of_projects = get_product_project_photos_eight(first_row_product.path_folder, first_row_product.path_file)
     context = {
         'product': product,
         'list_of_open_types': list_of_open_types,
-        'similar_grids_by_price': similar_grids_by_price
+        'similar_grids_by_price': similar_grids_by_price,
+        'photos_of_projects': photos_of_projects
     }
     return render(request, 'main/product.html', context)
 

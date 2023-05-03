@@ -468,19 +468,28 @@ function changeFilterIcon (order, orderScending) {
     }
 }
 function paintOrderButtonInRed (order) {
-    document.getElementById(order).style.backgroundColor = '#F5320E';
+    try {
+        document.getElementById(order).style.backgroundColor = '#F5320E';
+    } catch {
+        return 0;
+    }
 }
 function changeAppearanceDependsOnOrder() {
     const order = getOrder()
     const orderScending = getOrderScending()
 
-    //for desktop
-    changeArrowIcon(order, orderScending)
+    try{
+        //for desktop
+        changeArrowIcon(order, orderScending)
 
-    //for mobile
-    changeFilterIcon(order, orderScending)
-    paintOrderButtonInRed(ordersToId[order])
-    changeOrderScendingSpanTitle(orderScending)
+        //for mobile
+        changeFilterIcon(order, orderScending)
+        paintOrderButtonInRed(ordersToId[order])
+        changeOrderScendingSpanTitle(orderScending)
+    } catch (e) {
+        console.log(e)
+    }
+
 }
 if (document.getElementById('order-sketchNumber')) {
     changeAppearanceDependsOnOrder()
