@@ -7,7 +7,7 @@
             <div class="d-lg-block d-none">
                 <div class="row gy-lg-0  gy-12">
                     <div class="col-lg-6">
-                        <h1 class="display-1 pt-lg-30 fs-3xl-25 fs-xl-23 fs-lg-22 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Дутые металлические решетки на окна</h1>
+                        <h1 class="display-1 pt-lg-30 fs-3xl-25 fs-xl-23 fs-lg-22 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Металлические решетки на окна</h1>
 <!--                        <nav class="d-lg-block d-none fs-9 mt-lg-0 pt-lg-12  ">-->
 <!--                            <ul class="breadcrumb mb-0">-->
 <!--                                <li class="breadcrumb-item"><a href="index.html">Главная </a></li>-->
@@ -20,10 +20,10 @@
                         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-inner">
                               <div class="carousel-item active">
-                                <img src="{% static 'main/img/sale_baner.png' %}"  class="d-block w-100 rounded-3" alt="sale_baner">
+                                <img src="{% static 'main/img/sale_baner.webp' %}"  class="d-block w-100 rounded-3" alt="sale_baner">
                               </div>
                               <div class="carousel-item">
-                                <img src="{% static 'main/img/sale_baner2.png' %}"  class="d-block w-100 rounded-3" alt="sale_baner2">
+                                <img src="{% static 'main/img/sale_baner2.webp' %}"  class="d-block w-100 rounded-3" alt="sale_baner2">
                               </div>
                             </div>
                         
@@ -78,10 +78,9 @@
                             <h6 class="fw-medium ls-sm text-uppercase mb-0 d-inline-block px-10 py-5 rounded-top-3 border border-radius">Популярные разделы</h6>
                             <div class="border border-light rounded-end-3 rounded-end-3 rounded-bottom-3">
                                 <div class="hstack flex-row-lg flex-column align-items-start flex-wrap row-gap-lg-8 row-gap-6 column-gap-lg-12 fs-lg-10 fs-10 ls-sm">
-                                    <a class="text-black text-hover-secondary mt-10 text-decoration-none ms-10" href="#"> <span class="d-inline-flex align-items-center">ТОП 100</span></a>
-                                    <a class="text-black text-hover-secondary text-decoration-none ms-10" href="#"><span class="d-inline-flex align-items-center">Без открывания</span></a>
-                                    <a class="text-black text-hover-secondary mb-10 text-decoration-none ms-10" href="#"><span class="d-inline-flex align-items-center">VIP Класс </span></a>
-
+                                    {%for item in list_of_popular_sections%}
+                                        <a class="text-black text-hover-secondary mt-10 text-decoration-none ms-10" href="{{item.url}}"> <span class="d-inline-flex align-items-center">{{item.title}}</span></a>
+                                    {%endfor%}
                                 </div>
 
                             </div>
@@ -92,23 +91,9 @@
                                 <h6 class="fw-medium ls-sm text-uppercase mt-8 ms-10 mb-0">Вид</h6>
 
                                 <ul class="dropdown-list mb-8">
-                                    <li><a class="nav-link text-hover-secondary mt-5 ms-10" href="#">Сварные</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Кованые</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Дутые</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Ажурные</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Арочные</a></li>
-
-                                </ul>
-
-                            </div>
-                            <div id="dropdown-wrapper_collection" class="dropdown-wrapper fw-medium mb-10 rounded-3 border border-radius" tabindex="1">
-                                <h6 class="fw-medium ls-sm text-uppercase mt-8 ms-10 mb-0">Коллекции</h6>
-
-                                <ul class="dropdown-list mb-8">
-                                    <li><a class="nav-link text-hover-secondary mt-5 ms-10" href="#">Сварные</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Кованые</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Дутые</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Ажурные</a></li>
+                                    {%for item in list_of_kinds%}
+                                    <li><a class="nav-link text-hover-secondary mt-5 ms-10" href="{{item.url}}">{{item.title}}</a></li>
+                                    {%endfor%}
                                 </ul>
 
                             </div>
@@ -116,21 +101,9 @@
                                 <h6 class="fw-medium ls-sm text-uppercase mt-8 ms-10 mb-0">Назначение</h6>
 
                                 <ul class="dropdown-list mb-8">
-                                    <li><a class="nav-link text-hover-secondary mt-5 ms-10" href="#">Сварные</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Кованые</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Дутые</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Ажурные</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Арочные</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Распашные</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">На балкон</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">На лоджию</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Для квартиры</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">на первый этаж</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Цоколь/подвал</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Для дома</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">от выпадения детей</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">На кондиционер</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">На приямки</a></li>
+                                    {%for item  in list_of_grids_types%}
+                                    <li><a class="nav-link text-hover-secondary ms-10" href="{{item.url}}">{{item.title}}</a></li>
+                                    {%endfor%}
                                 </ul>
 
                             </div>
@@ -260,12 +233,12 @@
                                                     <div class="carousel-inner">
                                                       <div class="carousel-item active">
                                                         <div class="ratio overflow-hidden" style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 400px;">
-                                                            <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{product.0.path_folder}}/solid/{{product.0.path_file}}.png">
+                                                            <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{product.0.path_folder}}/solid/{{product.0.path_file}}.webp">
                                                             </div>
                                                       </div>
                                                       <div class="carousel-item">
                                                         <div class="ratio overflow-hidden" style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 400px;">
-                                                            <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{product.0.path_folder}}/solid/{{product.0.path_file}} F.png">
+                                                            <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{product.0.path_folder}}/solid/{{product.0.path_file}} F.webp">
                                                             </div>
                                                       </div>
                                                    
@@ -298,7 +271,7 @@
                                                               <img
                                                                 id="product-{{item.name}}"
                                                                 class="object-fit-contain"
-                                                                src="{% static 'main/img/grids_pictures' %}/1/{{item.name}}/1 F.png" alt="{{item.description}}" width="50">
+                                                                src="{% static 'main/img/grids_pictures' %}/1/{{item.name}}/1 F.webp" alt="{{item.description}}" width="50">
                                                         
                                                            </div>
                                                            <div class="col-12 col-lg-4 align-items-center justify-content-center d-flex">
@@ -313,31 +286,31 @@
                                                 {%endfor%}
                                                 <style>
                                                     #product-arch:hover {
-                                                        content: url("{% static 'main/img/grids_pictures' %}/1/arch/1.png");
+                                                        content: url("{% static 'main/img/grids_pictures' %}/1/arch/1.webp");
                                                     }
 
                                                     #product-gog:hover {
-                                                        content: url("{% static 'main/img/grids_pictures' %}/1/gog/1 O.png");
+                                                        content: url("{% static 'main/img/grids_pictures' %}/1/gog/1 O.webp");
                                                     }
 
                                                     #product-o:hover {
-                                                        content: url("{% static 'main/img/grids_pictures' %}/1/o/1 O.png");
+                                                        content: url("{% static 'main/img/grids_pictures' %}/1/o/1 O.webp");
                                                     }
 
                                                     #product-og:hover {
-                                                        content: url("{% static 'main/img/grids_pictures' %}/1/og/1 O.png");
+                                                        content: url("{% static 'main/img/grids_pictures' %}/1/og/1 O.webp");
                                                     }
 
                                                     #product-ogo:hover {
-                                                        content: url("{% static 'main/img/grids_pictures' %}/1/ogo/1 O.png");
+                                                        content: url("{% static 'main/img/grids_pictures' %}/1/ogo/1 O.webp");
                                                     }
 
                                                     #product-oo:hover {
-                                                        content: url("{% static 'main/img/grids_pictures' %}/1/oo/1 O.png");
+                                                        content: url("{% static 'main/img/grids_pictures' %}/1/oo/1 O.webp");
                                                     }
 
                                                     #product-solid:hover {
-                                                        content: url("{% static 'main/img/grids_pictures' %}/1/solid/1.png");
+                                                        content: url("{% static 'main/img/grids_pictures' %}/1/solid/1.webp");
                                                     }
                                                 </style>
                                           
@@ -527,11 +500,11 @@
                                                 <div id="carouselExampleControls_doctavka" class="carousel slide" data-bs-ride="carousel">
                                                     <div class="carousel-inner">
                                                       <div class="carousel-item active">
-                                                        <img class="rounded-2 object-fit-contain w-100" src="{% static 'main/img/delivery-slide.png' %}"
+                                                        <img class="rounded-2 object-fit-contain w-100" src="{% static 'main/img/delivery-slide.webp' %}"
                                                         alt="delivery-slide"/>
                                                       </div>
                                                       <div class="carousel-item">
-                                                        <img class="rounded-2 object-fit-contain w-100" src="{% static 'main/img/delivery-slide2.png' %}"
+                                                        <img class="rounded-2 object-fit-contain w-100" src="{% static 'main/img/delivery-slide2.webp' %}"
                                                         alt="delivery-slide"/>
                                                       </div>
                                                     </div>
@@ -653,32 +626,32 @@
                                         <div class="row gx-5 gy-10  mx-0 text-center">
                                             <div class="col-6 col-lg-2">
                                                 <div class="border border-light rounded-2">
-                                                <img class="p-5 w-100" src="{% static 'main/img/sertificate.png' %}">
+                                                <img class="p-5 w-100" src="{% static 'main/img/sertificate.webp' %}">
                                                 </div>
                                             </div>
                                             <div class="col-6 col-lg-2">
                                                 <div class="border border-light rounded-2">
-                                                <img class="p-5 w-100" src="{% static 'main/img/sertificate.png' %}">
+                                                <img class="p-5 w-100" src="{% static 'main/img/sertificate.webp' %}">
                                                 </div>
                                             </div>
                                             <div class="col-6 col-lg-2">
                                                 <div class="border border-light rounded-2">
-                                                <img class="p-5 w-100" src="{% static 'main/img/sertificate.png' %}">
+                                                <img class="p-5 w-100" src="{% static 'main/img/sertificate.webp' %}">
                                                 </div>
                                             </div>
                                             <div class="col-6 col-lg-2">
                                                 <div class="border border-light rounded-2">
-                                                <img class="p-5 w-100" src="{% static 'main/img/sertificate.png' %}">
+                                                <img class="p-5 w-100" src="{% static 'main/img/sertificate.webp' %}">
                                                 </div>
                                             </div>
                                             <div class="col-6 col-lg-2">
                                                 <div class="border border-light rounded-2">
-                                                <img class="p-5 w-100" src="{% static 'main/img/sertificate.png' %}">
+                                                <img class="p-5 w-100" src="{% static 'main/img/sertificate.webp' %}">
                                                 </div>
                                             </div>
                                             <div class="col-6 col-lg-2">
                                                 <div class="border border-light rounded-2">
-                                                <img class="p-5 w-100" src="{% static 'main/img/sertificate.png' %}">
+                                                <img class="p-5 w-100" src="{% static 'main/img/sertificate.webp' %}">
                                                 </div>
                                             </div>
                                         </div>
