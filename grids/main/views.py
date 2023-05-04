@@ -22,24 +22,35 @@ from django.core.cache import cache
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
 list_of_grids_types = [
-    {'title': 'Сварные', 'img_path': 'main/img/grids_types/1_svarnie.png'},
-    {'title': 'Кованые', 'img_path': 'main/img/grids_types/2_kovanie.png'},
-    {'title': 'Дутые', 'img_path': 'main/img/grids_types/3_dutie.png'},
-    {'title': 'Ажурные', 'img_path': 'main/img/grids_types/4_azhurnie.png'},
-    {'title': 'Арочные', 'img_path': 'main/img/grids_types/5_arochnie.png'},
-    {'title': 'Распашные', 'img_path': 'main/img/grids_types/6_raspashnie.png'},
-    {'title': 'На балкон', 'img_path': 'main/img/grids_types/7_na_balkon.png'},
-    {'title': 'На приямки', 'img_path': 'main/img/grids_types/18_na_pryamki.png'},
-    {'title': 'На лоджию', 'img_path': 'main/img/grids_types/8_na_lodjiu.png'},
-    {'title': 'Для квартиры', 'img_path': 'main/img/grids_types/9_dlya_kvartiri.png'},
-    {'title': 'На первый этаж', 'img_path': 'main/img/grids_types/10_na_perviy.png'},
-    {'title': 'Цоколь/Подвал', 'img_path': 'main/img/grids_types/11_cokol.png'},
-    {'title': 'Для дома', 'img_path': 'main/img/grids_types/12_dlya_doma.png'},
-    {'title': 'Антикошка', 'img_path': 'main/img/grids_types/13_antikoshka.png'},
-    {'title': 'Кид-стоп', 'img_path': 'main/img/grids_types/14_ot_vipadenia.png'},
-    {'title': 'На кондиционер', 'img_path': 'main/img/grids_types/15_na_condicioner.png'},
-    {'title': 'Под цветы', 'img_path': 'main/img/grids_types/16_pod_cveti.png'},
-    {'title': 'В подъезд', 'img_path': 'main/img/grids_types/17_v_podezd.png'},
+    {'title': 'Сварные', 'img_path': 'main/img/grids_types/1_svarnie.png', 'url': '/решетки-на-окна-эконом-класс'},
+    {'title': 'Кованые', 'img_path': 'main/img/grids_types/2_kovanie.png', 'url': '/кованые-решетки-на-окна-вип-класс'},
+    {'title': 'Дутые', 'img_path': 'main/img/grids_types/3_dutie.png', 'url': '/дутые-решетки-на-окна'},
+    {'title': 'Ажурные', 'img_path': 'main/img/grids_types/4_azhurnie.png', 'url': '/ажурные-решетки-на-окна'},
+    {'title': 'Арочные', 'img_path': 'main/img/grids_types/5_arochnie.png', 'url': '/арочные-решетки-на-окна'},
+    {'title': 'Распашные', 'img_path': 'main/img/grids_types/6_raspashnie.png', 'url': '/распашные-решетки-на-окна'},
+    {'title': 'На балкон', 'img_path': 'main/img/grids_types/8_na_lodjiu.png', 'url': '/решетки-на-балкон'},
+    {'title': 'На приямки', 'img_path': 'main/img/grids_types/18_na_pryamki.png', 'url': '/решетки-на-приямки'},
+    {'title': 'На лоджию', 'img_path': 'main/img/grids_types/7_na_balkon.png', 'url': '/решетки-на-лоджию'},
+    {'title': 'Для квартиры', 'img_path': 'main/img/grids_types/9_dlya_kvartiri.png', 'url': '/решетки-для-квартиры'},
+    {'title': 'На первый этаж', 'img_path': 'main/img/grids_types/10_na_perviy.png', 'url': '/решетки-на-первый-этаж'},
+    {'title': 'Цоколь/Подвал', 'img_path': 'main/img/grids_types/11_cokol.png', 'url': '/решетки-для-цоколя'},
+    {'title': 'Для дома', 'img_path': 'main/img/grids_types/12_dlya_doma.png', 'url': '/решетки-для-дома'},
+    {'title': 'Кид-стоп', 'img_path': 'main/img/grids_types/14_ot_vipadenia.png', 'url': '/решетки-от-выпадения-детей'},
+    {'title': 'На кондиционер', 'img_path': 'main/img/grids_types/15_na_condicioner.png', 'url': '/решетки-на-кондиционер'},
+]
+
+list_of_popular_sections = [
+    {'title': 'ТОП 100',  'url': '/топ-100-решеток'},
+    {'title': 'Без открывания',  'url': '/решетки-без-открывания'},
+    {'title': 'VIP Класс',  'url': '/кованые-решетки-на-окна-вип-класс'},
+]
+
+list_of_kinds = [
+    {'title': 'Cварные', 'url': '/сварные-решетки-на-окна'},
+    {'title': 'Кованые', 'url': '/кованые-решетки-на-окна-вип-класс'},
+    {'title': 'Дутые', 'url': '/дутые-решетки-на-окна'},
+    {'title': 'Ажурные', 'url': '/ажурные-решетки-на-окна'},
+    {'title': 'Арочные', 'url': '/арочные-решетки-на-окна'},
 ]
 
 list_of_photos_done = [
@@ -86,7 +97,7 @@ list_of_reviews = [
     {'id': 'review-11', 'author': 'Галина У.', 'author_avatar': 'avatar7.jpg', 'project_photo': '5-41/1.webp', 'description': 'Я далека от строительства, поэтому долго расспрашивала знакомых и искала в интернете информацию про решетки на окна в квартиру. По итогу больше всего мне впечатлили отзывы о фирме “Оконные решетки”, сразу было видно, что они давно на рынке и имеют опыт работы. Я не ошиблась) Привлекло также собственное производство, потому что у меня в апартаментах нестандартного размера окна, а хотелось не тянуть с процессом и поскорее сделать на заказ. Общением с компанией довольна, все рассказали детально, ответили на все мои вопросы, и самое главное, что со мной общались на моем языке без погружения в терминологиюХочу сказать спасибо, сделали все очень качественно, мне не к чему придраться. Нужно было установить решетки на окна 40 на 23 и решетку для кондиционера, все сделали за 3 дня с учетом изготовления.'},
     {'id': 'review-12', 'author': 'Антонина И.', 'author_avatar': 'avatar2.jpg', 'project_photo': '1-10/1.webp', 'description': 'Компанию посоветовал коллега для установки решеток на приямки и решетки для бизнеса в целом. У нас офисное здание и искали надежного подрядчика в этой сфере. С уверенностью могу сказать, что компания себя зарекомендовала с отличной стороны. Из перечня работ было изготовление: сварные решетки на окна 30 штук, решетчатые двери внутренние 4 штуки, решетки на кондиционер 5 штук, решетки на приямки 17 штук. '}
 ]
-# 5-66 6-12 8-11
+
 list_of_reviews_collapsed = [
     {'id': 'review-13', 'author': 'Андрей Алексеевич Б.', 'author_avatar': 'avatar15.jpg', 'project_photo': '5-31/1.webp', 'description': 'Заказывал кованые решетки себе на дачу. Очень крепкие, безопасность чувствуется сразу, а главное - красивые, соседи обзавидовались. Быстро и качественно установили, всем советую!'},
     {'id': 'review-14', 'author': 'Алексей Р.', 'author_avatar': 'avatar26.png', 'project_photo': '5-66/1.webp', 'description': 'Я заказал оконные решетки для моего небольшого антикварного магазина на цокольном этаже. Проблема была в том, что окошки маленькие и не представлял как бы сделать их еще и красивыми. Для меня подготовили эскизы кованых решеток, которые прекрасно вписались в тематику моего магазина. После их установки решил заказать и решетчатые двери на вход. Доволен на 100%! Безопасность и красота одновременно. Большое спасибо за индивидуальный подход'},
@@ -117,7 +128,25 @@ list_of_open_types = [
 ]
 
 russian_categories = {
-    "металлические-решетки-на-окна": {"title": "Все", 'url_title': "all", "number_of_category": 'all'},
+    "металлические-решетки-на-окна": {"title": "", 'url_title': "all", "number_of_category": 'all'},
+    "дутые-решетки-на-окна": {"title": "Дутые", 'url_title': "blow", "number_of_category": '5'}, #TODO: сделать все дутые рещетки а не только одну группу
+
+    "сварные-решетки-на-окна": {"title": "Сварные", 'url_title': "svarka", "number_of_category": 1},
+    "арочные-решетки-на-окна": {"title": "Арочные", 'url_title': "svarka", "number_of_category": 'all'},
+    "распашные-решетки-на-окна": {"title": "Распашные", 'url_title': "svarka", "number_of_category": 'all'},
+    "решетки-на-балкон": {"title": "На балкон", 'url_title': "svarka", "number_of_category": 'all'},
+    "решетки-на-приямки": {"title": "На приямки", 'url_title': "svarka", "number_of_category": 'all'},
+    "решетки-на-лоджию": {"title": "На лоджию", 'url_title': "svarka", "number_of_category": 'all'},
+    "решетки-для-квартиры": {"title": "Для квартиры", 'url_title': "svarka", "number_of_category": 'all'},
+    "решетки-на-первый-этаж": {"title": "На первый этаж", 'url_title': "svarka", "number_of_category": 'all'},
+    "решетки-для-цоколя": {"title": "Цоколь/Подвал", 'url_title': "svarka", "number_of_category": 'all'},
+    "решетки-для-дома": {"title": "Для дома", 'url_title': "svarka", "number_of_category": 'all'},
+    "решетки-от-выпадения-детей": {"title": "Кид-стоп", 'url_title': "svarka", "number_of_category": 'all'},
+    "решетки-на-кондиционер": {"title": "На кондиционер", 'url_title': "svarka", "number_of_category": 'all'},
+
+    "топ-100-решеток": {"title": "Топ-100", 'url_title': "svarka", "number_of_category": 'all'},
+    "решетки-без-открывания": {"title": "Без открывания", 'url_title': "svarka", "number_of_category": 'all'},
+
     "решетки-на-окна-эконом-класс": {"title": "Эконом", 'url_title': "svarka", "number_of_category": 1},
     "дутые-решетки-на-окна-эконом-класс": {"title": "Дутые Эконом", 'url_title': "svarka_dut", "number_of_category": 2},
     "ажурные-решетки-на-окна": {"title": "Ажурные", 'url_title': "ajur", "number_of_category": 3},
@@ -387,11 +416,16 @@ def catalog_category(request, category_name):
 
     leaders_of_selling = get_products_by_category(5, min_price_for_sort, max_price_for_sort,
                                                   order_type, order_scending, 15)
-    return render(request, 'main/catalog-category.html',
-                  {'title': 'Каталог', 'list_of_grids_types': list_of_grids_types,
-                   'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling,
-                   'min_price': min_price, 'max_price': max_price, 'list_of_photos_done': list_of_photos_done,
-                   'list_of_open_types': list_of_open_types})
+    context = {
+        'title': 'Каталог',
+        'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling,
+        'min_price': min_price, 'max_price': max_price, 'list_of_photos_done': list_of_photos_done,
+        'list_of_open_types': list_of_open_types,
+        'list_of_grids_types': list_of_grids_types,
+        'list_of_kinds': list_of_kinds,
+        'list_of_popular_sections': list_of_popular_sections
+    }
+    return render(request, 'main/catalog-category.html', context)
 
 
 def contacts(request):

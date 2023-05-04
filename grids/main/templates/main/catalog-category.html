@@ -10,7 +10,7 @@
 
                     <div class="col-lg-6">
                         <h1 class="display-1 pt-lg-0 pt-xl-30 fs-3xl-25 fs-xl-23 fs-lg-27 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">
-                            {{category.title}} Металлические решетки на окна</h1>
+                            <span id="choosenCategoryByUserSpan">{{category.title}}</span> Металлические решетки на окна</h1>
                         <nav class="d-lg-block d-none fs-9 mt-lg-0 pt-lg-12  ">
                             <ul class="breadcrumb mb-0">
                                 <li class="breadcrumb-item"><a href="{%url 'index'%}">Главная </a></li>
@@ -161,13 +161,10 @@
                                 Популярные разделы</h6>
                             <div class="border border-light rounded-end-3 rounded-end-3 rounded-bottom-3">
                                 <div class="hstack flex-row-lg flex-column align-items-start flex-wrap row-gap-lg-8 row-gap-6 column-gap-lg-12 fs-lg-10 fs-10 ls-sm">
-                                    <a class="text-black text-hover-secondary mt-10 text-decoration-none ms-10"
-                                       href="#"> <span class="d-inline-flex align-items-center">ТОП 100</span></a>
-                                    <a class="text-black text-hover-secondary text-decoration-none ms-10" href="#"><span
-                                            class="d-inline-flex align-items-center">Без открывания</span></a>
-                                    <a class="text-black text-hover-secondary mb-10 text-decoration-none ms-10"
-                                       href="#"><span class="d-inline-flex align-items-center">VIP Класс </span></a>
-
+                                    {%for item in list_of_popular_sections%}
+                                    <a class="text-black text-hover-secondary mt-1 mb-1 text-decoration-none ms-10"
+                                       href="{{item.url}}"> <span class="d-inline-flex align-items-center">{{item.title}}</span></a>
+                                    {%endfor%}
                                 </div>
 
                             </div>
@@ -179,46 +176,20 @@
                                 <h6 class="fw-medium ls-sm text-uppercase mt-8 ms-10 mb-0">Вид</h6>
 
                                 <ul class="dropdown-list mb-8">
-                                    <li><a class="nav-link text-hover-secondary mt-5 ms-10" href="#">Сварные</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Кованые</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Дутые</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Ажурные</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Арочные</a></li>
-
+                                    {%for item in list_of_kinds%}
+                                    <li><a class="nav-link text-hover-secondary mt-5 ms-10" href="{{item.url}}">{{item.title}}</a></li>
+                                    {%endfor%}
                                 </ul>
 
                             </div>
-                            <!--  <div id="dropdown-wrapper" class="dropdown-wrapper fw-medium mb-10 rounded-3 border border-radius" tabindex="1">
-                                 <h6 class="fw-medium ls-sm text-uppercase mt-8 ms-10 mb-0">Коллекции</h6>
-
-                                 <ul class="dropdown-list mb-8">
-                                     <li><a class="nav-link text-hover-secondary mt-5 ms-10" href="#">Сварные</a></li>
-                                     <li><a class="nav-link text-hover-secondary ms-10" href="#">Кованые</a></li>
-                                     <li><a class="nav-link text-hover-secondary ms-10" href="#">Дутые</a></li>
-                                     <li><a class="nav-link text-hover-secondary ms-10" href="#">Ажурные</a></li>
-                                 </ul>
-
-                             </div> -->
                             <div id="dropdown-wrapper_naznachenie"
                                  class="dropdown-wrapper fw-medium   rounded-3 border border-radius" tabindex="1">
                                 <h6 class="fw-medium ls-sm text-uppercase mt-8 ms-10 mb-0">Назначение</h6>
 
                                 <ul class="dropdown-list mb-8">
-                                    <li><a class="nav-link text-hover-secondary mt-5 ms-10" href="#">Сварные</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Кованые</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Дутые</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Ажурные</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Арочные</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Распашные</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">На балкон</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">На лоджию</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Для квартиры</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">На первый этаж</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Цоколь/подвал</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Для дома</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">Кид-стоп</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">На кондиционер</a></li>
-                                    <li><a class="nav-link text-hover-secondary ms-10" href="#">На приямки</a></li>
+                                    {%for item in list_of_grids_types%}
+                                    <li><a class="nav-link text-hover-secondary ms-10" href="{{item.url}}">{{item.title}}</a></li>
+                                    {%endfor%}
                                 </ul>
                             </div>
                         </div>
@@ -1032,11 +1003,11 @@
     //конец блока кода о выборе класса или категории
 
     // для калькулятора в быстром просмотре
-    let width = 100;
-    let height = 100;
-    let isOpen = false;
-    let isNitro = false;
-    let priceForSquare = 1;
+    // let width = 100;
+    // let height = 100;
+    // let isOpen = false;
+    // let isNitro = false;
+    // let priceForSquare = 1;
 
     function changeWidth(value) {
         width = value;

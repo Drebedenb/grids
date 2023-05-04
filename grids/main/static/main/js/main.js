@@ -552,8 +552,26 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+//блок кода для перехода в catalog-category с подставлением имени решеток
+
+function goToCatalogWitnName (urlAndName) {
+    let [url, name] = urlAndName.split(',')
+    url = url + '?choosenCategory=' + name //set getParametets
+    window.location.href = url;
+}
+
+
+//конец блока кода для перехода в catalog-category с подставлением имени решеток
 
 //блок кода для быстрого просмотра и калькулятора в нем
+let width = 100;
+let height = 100;
+let isOpen = false;
+let isNitro = false;
+let priceForSquare = 1;
+
+
+
 
 //конец блока кода о калькуляторе и быстром просмотре
 
