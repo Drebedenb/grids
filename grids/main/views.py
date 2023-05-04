@@ -364,8 +364,6 @@ price_step_for_category = {
 
 
 def product(request, category, file_number):
-    print(category)
-    print(file_number)
     product = get_product_by_sketch_category_and_number(category, file_number)
     first_row_product = product[0]
     similar_grids_by_price = get_products_by_category(first_row_product.path_folder,
