@@ -155,13 +155,13 @@
 
                         <div class="collapse" id="collapseExample">
                             <div class="row mt-0 mt-lg-5 row-cols-lg-4 row-cols-2 gy-20">
-                                    {% include 'main/components/catalog_category_item.html' with PriceWinguardSketchId=item.id name=item.width price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
+                                    {% include 'main/components/catalog_category_item.html' with stars_count=item.stars_count PriceWinguardSketchId=item.id name=item.width price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
                         {% elif forloop.counter == leaders_of_selling|length %}
-                                    {% include 'main/components/catalog_category_item.html' with PriceWinguardSketchId=item.id name=item.width price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
+                                    {% include 'main/components/catalog_category_item.html' with stars_count=item.stars_count PriceWinguardSketchId=item.id name=item.width price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
                             </div>
                         </div>
                         {% else %}
-                                    {% include 'main/components/catalog_category_item.html' with PriceWinguardSketchId=item.id name=item.width price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
+                                    {% include 'main/components/catalog_category_item.html' with stars_count=item.stars_count PriceWinguardSketchId=item.id name=item.width price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
                     {% endif %}
                     {% endfor %}
 

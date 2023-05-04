@@ -180,6 +180,7 @@ def get_products_by_category(category_number, min_price, max_price, order_by_nam
                         ROUND(price / (1-percent/100), -1) AS saleprice
                         FROM
                         (SELECT MIN(price_b2c) AS price, ps.id, pf.path, (MOD(ps.id, 3) + 1)*10 + (MOD(ps.id,2) * 5) AS percent,
+                        (MOD(ps.id,2) + 4) AS stars_count,
                         {category_number} AS path_folder,
                         ps.number AS path_file
                         FROM price.price_winguard_main pm
@@ -233,6 +234,7 @@ def get_all_products(min_price, max_price, order_by_name, order_scending, limit)
                         ROUND(price / (1-percent/100), -1) AS saleprice
                         FROM
                         (SELECT MIN(price_b2c) AS price, ps.id, pf.path, (MOD(ps.id, 3) + 1)*10 + (MOD(ps.id,2) * 5) AS percent,
+                        (MOD(ps.id,2) + 4) AS stars_count,
                         ps.category AS path_folder,
                         ps.number AS path_file
                         FROM price.price_winguard_main pm
@@ -265,6 +267,7 @@ def get_product_by_sketch_category_and_number(category, number):
             (
             SELECT  ps.category AS path_folder, pm.price_b2c, pm.name, ps.id, 
             (MOD(ps.id, 3) + 1)*10 + (MOD(ps.id,2) * 5) AS percent, 
+            (MOD(ps.id,2) + 4) AS stars_count,
             ps.number AS path_file 
             FROM price.price_winguard_main pm
             JOIN price.price_winguard_sketch ps ON pm.price_winguard_sketch_id=ps.id
