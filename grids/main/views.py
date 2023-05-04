@@ -1,23 +1,21 @@
 import re
-import traceback
 import os
 
-from django.db.models import Min, Max, Count, F, Value, IntegerField
-from django.db.models.functions import Round, Substr, Mod, Reverse
+from django.db.models import Min, Max
 from django.http import HttpResponseNotFound
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.core.cache import cache
+# from django.core.cache import cache
 
-# class MockDjangoRedis:
-#     def get(self, arg):
-#         return None
-#
-#     def set(arg, bla, ble, blu):
-#         return arg
-#
-#
-# cache = MockDjangoRedis()
+class MockDjangoRedis:
+    def get(self, arg):
+        return None
+
+    def set(arg, bla, ble, blu):
+        return arg
+
+
+cache = MockDjangoRedis()
 
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 

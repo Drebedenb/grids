@@ -436,20 +436,19 @@
                                     <div class="swiper-wrapper">
 
                                         {%for item in leaders_of_selling%}
-
-
-
                                         <div class="swiper-slide">
-
-                                    {% include 'main/components/catalog_category_item.html' with PriceWinguardSketchId=item.id price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
-
+                                    {% include 'main/components/catalog_category_item_without_quick_view.html' with PriceWinguardSketchId=item.id price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
                                         </div>
-
                                         {%endfor%}
+
 
                                     </div>
                                 </div>
                             </section>
+                            {#      Modal for similar prices items       #}
+                            {%for item in leaders_of_selling%}
+                                {% include 'main/components/product_quick_view.html' with price=item.price saleprice=item.saleprice percent=item.percent path_folder=item.path_folder path_file=item.path_file modal_id=item.id%}
+                            {%endfor%}
 
 
                             <!--  NAZNACHENIE RESHETOK -->
@@ -1009,67 +1008,7 @@
     // let isNitro = false;
     // let priceForSquare = 1;
 
-    function changeWidth(value) {
-        width = value;
-        changeQuickForms()
-    }
 
-    function changeHeight(value) {
-        height = value;
-        changeQuickForms()
-    }
-
-    function changeIsOpen(value) {
-        isOpen = value;
-        changeQuickForms()
-    }
-
-    function changeIsNitro(value) {
-        isNitro = value;
-        changeQuickForms()
-    }
-
-    function changePriceForSquare(value) {
-        priceForSquare = value;
-        changeQuickForms()
-    }
-
-    function changeCheckboxesByClass(className, isChecked) {
-        let items = document.getElementsByClassName(className)
-        for (let i = 0; i < items.length; i++) {
-            items[i].checked = isChecked;
-        }
-    }
-
-    function changeInputsByClass(className, value) {
-        let items = document.getElementsByClassName(className)
-        for (let i = 0; i < items.length; i++) {
-            items[i].value = value;
-        }
-    }
-
-    function changeSpanTextById(spanId, value) {
-        document.getElementById(spanId).textContent = value
-    }
-
-    function changeQuickForms() {
-        changeCheckboxesByClass('quick-view-nitro', isNitro)
-        changeCheckboxesByClass('quick-view-isopen', isOpen)
-        changeInputsByClass('quick-view-width', width)
-        changeInputsByClass('quick-view-height', height)
-        changeSpanTextById("quick-view-total", countTotal())
-    }
-
-    function countTotal() {
-        let total = (width / 100 * height / 100) * priceForSquare
-        if (isOpen) {
-            total += 1500
-        }
-        if (isNitro) {
-            total += 550
-        }
-        return total
-    }
 
     //конец блока для калькулятора
 </script>
