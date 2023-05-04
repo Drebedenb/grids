@@ -137,7 +137,7 @@
                         </div>
 
 
-                        <div class="left_sidebar"><img class="w-100" src="{% static 'main/img/sale.png' %}" alt="sale">
+                        <div class="left_sidebar"><img class="w-100" src="{% static 'main/img/sale.webp' %}" alt="sale">
 
                             <!-- POCHEMY NASHA KOMPANIYA -->
                             <section>
@@ -390,7 +390,7 @@
                                                         <option>покраска (эмаль NOVAX) - 1200 руб</option>
                                                         <option>покраска (краска Hammerite) - 1400 руб</option>
                                                         <option>покраска (порошковое нап.) - 1700 руб</option>
-                                                        <option>покраска (эмаль Westplast) - 1900 руб</option>
+                                                        <option>покраска (эмаль WS-plast) - 1900 руб</option>
                                                     </select>
                                                 </div>
                                                 <div class="col">
@@ -443,7 +443,9 @@
                                                     <span id="total" class="fs-lg-14 fs-15 fw-semibold text-uppercase">0</span>
                                                   
                                                 </div>
-                                                <div class="col"><a class="btn btn-primary btn-xl w-100" href="#">Заказать
+
+                                                <div class="col"><a class="btn btn-primary btn-xl w-100" data-bs-toggle="modal"
+                                 data-bs-target="#modal-measurement" type="button">Заказать
                                                     в 1 клик</a></div>
                                             </div>
                                  
@@ -773,8 +775,8 @@
     }
     function changeForm() {
         let width_of_rod = getInputValueById("width_of_rod").match(/\d{3,}/)[0]
-        changePriceToday(width_of_rod)
-        changePriceOld(makeOldPrice(width_of_rod))
+        changePriceToday(width_of_rod + 'р/м²')
+        changePriceOld(makeOldPrice(width_of_rod) + 'р/м²')
         let width = +getInputValueById("width")
         let height = +getInputValueById("height")
         let amount = +getInputValueById("amount")

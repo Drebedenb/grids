@@ -558,6 +558,13 @@ document.addEventListener('DOMContentLoaded', function () {
 //конец блока кода о калькуляторе и быстром просмотре
 
 
+//блок кода для перемещения с карточки фотки
+function goToProduct(photoName) {
+    const numberOfProduct = photoName.match(/\d-\d+/)[0]
+    window.location.href = "/product/" + numberOfProduct
+}
+// конец блока кода о перемещении
+
 /* DROPDOWN */
 
 const dropdowns = document.querySelectorAll('.dropdown-wrapper');
