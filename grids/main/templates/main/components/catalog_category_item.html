@@ -40,7 +40,9 @@
                 {% include 'main/icons/star.html' with classes='svg-icon' styles='width:20px' %}
                                     <span class="fs-5 fs-sm-7 fs-md-6 fs-lg-9">(32)</span>
               </div>
-               <a class="btn btn-outline-dark py-3 px-3 py-sm-5 px-sm-5  py-md-9  px-md-15  px-lg-20 py-lg-5 w-100 fs-5 fs-sm-7 fs-md-7 fs-lg-9 mt-5">Купить</a>
+                    <btn class="btn btn-outline-dark py-3 px-3 py-sm-5 px-sm-5  py-md-9  px-md-15  px-lg-20 py-lg-5 w-100 fs-5 fs-sm-7 fs-md-7 fs-lg-9 mt-5" data-bs-toggle="modal"
+                                 data-bs-target="#modal-measurement" type="button">Купить
+                            </btn>
             </div>
                 <span class="d-block fs-6 fs-sm-7 fs-md-9 fs-lg-10 text-muted fw-medium  text-decoration-line-through old_price text-uppercase ls-sm pb-4 ">{{saleprice}} руб</span>
                 <span class="d-block fs-6 fs-sm-7 fs-md-9 fs-lg-10 text-danger fw-medium  text-uppercase ls-sm  ">{{price}} руб</span>
