@@ -458,13 +458,12 @@
                                                 </a>
                                             </div>
 
-                                            {%for photo_path in photos_of_projects%}
-                                                <div class="col px-5">
-                                                    <a class="d-block" data-fslightbox="images" href="{% static 'main/img/projects/'%}{{photo_path}}">
-                                                        <div class="ratio ratio-4x3" style="max-height: 260px;"><img class="rounded-lg-4 rounded-3 object-fit-cover" src="{% static 'main/img/projects/'%}{{photo_path}}"></div>
-                                                    </a>
-                                                </div>
-                                            {%endfor%}
+                                            {% for item in photos_of_projects %}
+
+                                            {% include 'main/components/photo.html' with name=item %}
+
+                                            {% endfor %}
+
 
                                         </div>
                                     </div>

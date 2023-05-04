@@ -43,33 +43,33 @@ list_of_grids_types = [
 ]
 
 list_of_photos_done = [
-    {"name": "1-1/1.webp"},
-    {"name": "1-4/1.webp"},
-    {"name": "1-16/1.webp"},
-    {"name": "1-62/1.webp"},
-    {"name": "2-14/1.webp"},
-    {"name": "3-16/1.webp"},
-    {"name": "3-43/1.webp"},
-    {"name": "5-25/1.webp"},
-    {"name": "5-59/1.webp"},
-    {"name": "6-11/1.webp"},
-    {"name": "7-33/1.webp"},
-    {"name": "8-17/1.webp"}
+    {"name": "photos/1-1/1.webp"},
+    {"name": "photos/1-4/1.webp"},
+    {"name": "photos/1-16/1.webp"},
+    {"name": "photos/1-62/1.webp"},
+    {"name": "photos/2-14/1.webp"},
+    {"name": "photos/3-16/1.webp"},
+    {"name": "photos/3-43/1.webp"},
+    {"name": "photos/5-25/1.webp"},
+    {"name": "photos/5-59/1.webp"},
+    {"name": "photos/6-11/1.webp"},
+    {"name": "photos/7-33/1.webp"},
+    {"name": "photos/8-17/1.webp"}
 ]
 
 list_of_photos_done_collapsed = [
-    {"name": "2-40/1.webp"},
-    {"name": "3-56/1.webp"},
-    {"name": "4-4/1.webp"},
-    {"name": "4-16/1.webp"},
-    {"name": "6-3/1.webp"},
-    {"name": "7-34/1.webp"},
-    {"name": "8-11/1.webp"},
-    {"name": "6-12/1.webp"},
-    {"name": "4-48/1.webp"},
-    {"name": "5-66/1.webp"},
-    {"name": "7-9/1.webp"},
-    {"name": "1-67/1.webp"}
+    {"name": "photos/2-40/1.webp"},
+    {"name": "photos/3-56/1.webp"},
+    {"name": "photos/4-4/1.webp"},
+    {"name": "photos/4-16/1.webp"},
+    {"name": "photos/6-3/1.webp"},
+    {"name": "photos/7-34/1.webp"},
+    {"name": "photos/8-11/1.webp"},
+    {"name": "photos/6-12/1.webp"},
+    {"name": "photos/4-48/1.webp"},
+    {"name": "photos/5-66/1.webp"},
+    {"name": "photos/7-9/1.webp"},
+    {"name": "photos/1-67/1.webp"}
 ]
 
 list_of_reviews = [
@@ -265,9 +265,9 @@ def get_product_project_photos_eight(category, numberOfProduct):
     except:
         img_list = []
     for i in range(len(img_list)):
-        img_list[i] = f'{category}/{category}-{numberOfProduct}/' + img_list[i]
+        img_list[i] = f'projects/{category}/{category}-{numberOfProduct}/' + img_list[i]
     for i in range(len(img_list) + 1, 9):
-        img_list.append(f'1/1-1/{i}.webp')
+        img_list.append(f'projects/1/1-1/{i}.webp')
     return img_list
 
 
@@ -333,15 +333,21 @@ def index(request):
     min_price_2 = get_category_min_price(3)
     min_price_3 = get_category_min_price(5)
     min_price_4 = get_category_min_price(7)
-    return render(request, 'main/index.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Главная страница',
-                                               'leaders_of_selling': leaders_of_selling,
-                                               'list_of_photos_done': list_of_photos_done,
-                                               'min_price_1': min_price_1,
-                                               'min_price_2': min_price_2,
-                                               'min_price_3': min_price_3,
-                                               'min_price_4': min_price_4,
-                                               'count': count
-                                               })
+    short_list_of_reviews = list_of_reviews[:4]
+    short_list_of_reviews_collapsed = list_of_reviews_collapsed[:8]
+    context = {
+        'list_of_grids_types': list_of_grids_types, 'title': 'Главная страница',
+        'leaders_of_selling': leaders_of_selling,
+        'list_of_photos_done': list_of_photos_done,
+        'min_price_1': min_price_1,
+        'min_price_2': min_price_2,
+        'min_price_3': min_price_3,
+        'min_price_4': min_price_4,
+        'short_list_of_reviews': short_list_of_reviews,
+        'short_list_of_reviews_collapsed': short_list_of_reviews_collapsed,
+        'count': count
+    }
+    return render(request, 'main/index.html', context)
 
 
 def catalog_category(request, category_name):
@@ -418,7 +424,7 @@ def product(request, category, file_number):
         'product': product,
         'list_of_open_types': list_of_open_types,
         'similar_grids_by_price': similar_grids_by_price,
-        'photos_of_projects': photos_of_projects
+        'photos_of_projects': photos_of_projects,
     }
     return render(request, 'main/product.html', context)
 

@@ -1,20 +1,20 @@
 {% load static %}
 <div class="col">
-    <a href="" data-bs-toggle="modal" data-bs-toggle="modal" data-bs-target="#{{item.name}}">
+    <a href="" data-bs-toggle="modal" data-bs-toggle="modal" data-bs-target="#{{name}}">
         <div class="ratio ratio-4x3" style="min-height: 100px; max-height: 260px;">
-            <img class="rounded-3 object-fit-cover" src="{% static 'main/img/photos/'%}{{name}}"/>
+            <img class="rounded-3 object-fit-cover" src="{% static 'main/img/'%}{{name}}"/>
         </div>
     </a>
 
     <!-- Modal -->
-<div class="modal fade" id="{{item.name}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="{{name}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-body p-5">
           <button type="button" class=" position-absolute  btn_close rounded-3" aria-label="Close" data-bs-dismiss="modal">
               {% include 'main/icons/btn_close.html' with classes="svg-icon"%}</button>
-          <img class="w-100 rounded-2" src="{% static 'main/img/photos/'%}{{item.name}}" alt="">
-          <a> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal" id="photo-{{item.name}}" onclick="goToProduct(this.id)"> Перейти в карточку товара</button></a>
+          <img class="w-100 rounded-2" src="{% static 'main/img/'%}{{name}}" alt="">
+          <a> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal" id="photo-{{name}}" onclick="goToProduct(this.id)"> Перейти в карточку товара</button></a>
         </div>
       </div>
     </div>
