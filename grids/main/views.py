@@ -6,6 +6,7 @@ from django.http import HttpResponseNotFound
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.cache import cache
+from urllib.parse import urlencode
 
 # class MockDjangoRedis:
 #     def get(self, arg):
@@ -164,6 +165,10 @@ arr_of_sale = [15, 10, 20, 30, 25, 20, 10, 20, 20, 30, 25, 10, 10, 20, 30, 10, 2
 # one day cache will be stored
 TTL_OF_CACHE_SECONDS = 60 * 60 * 24
 
+def get_paginated_url(request, page_number):
+    params = request.GET.copy()
+    params['page'] = page_number
+    return f"{request.path}?{urlencode(params)}"
 
 def get_products_by_category(category_number, min_price, max_price, order_by_name, order_scending, limit):
     products_list_from_cache = cache.get("category_" + str(category_number) + str(min_price) +
@@ -426,6 +431,10 @@ def catalog_category(request, category_name):
         'list_of_grids_types': list_of_grids_types,
         'list_of_kinds': list_of_kinds,
         'list_of_popular_sections': list_of_popular_sections,
+
+        'prev_url': get_paginated_url(request, products.previous_page_number()) if products.has_previous() else None, #for pagination
+        'next_url': get_paginated_url(request, products.next_page_number()) if products.has_next() else None,
+
         'count': count
     }
     return render(request, 'main/catalog-category.html', context)

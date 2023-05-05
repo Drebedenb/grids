@@ -1,6 +1,7 @@
 {%extends 'main/base.html' %}
 {% load static %}
 {% block content %}
+{% load pagination_tags %}
 <div class="pt-lg-20 pt-16 pb-lg-20 pb-32">
     <div class="container">
         <header class="page-header mb-lg-20 mb-28">
@@ -377,24 +378,26 @@
                                     <ol class="pagination justify-content-lg-center overflow-x-auto mb-0">
                                         {% if products.has_previous %}
                                         <li class="page-item previous"><a class="page-link"
-                                                                          href="?page={{ products.previous_page_number }}">Назад</a>
+                                                href="{{ prev_url }}">Назад</a>
                                         </li>
                                         {% endif %}
+
                                         {% for i in products.paginator.page_range %}
-                                        {% if products.number == i %}
-                                        <li class="page-item active"><a class="page-link">{{ i }}</a></li>
-                                        {% else %}
-                                        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
-                                        {% endif %}
+                                            {% if products.number == i %}
+                                                <li class="page-item active"><a class="page-link">{{ i }}</a></li>
+                                            {% else %}
+                                                {% with url_args=request|urlencode %}
+    <li class="page-item"><a class="page-link" href="{% paginated_url request=request page=i %}">{{ i }}</a></li>
+{% endwith %}
+                                            {% endif %}
                                         {% endfor %}
                                         {% if products.has_next %}
                                         <li class="page-item next"><a class="page-link"
-                                                                      href="?page={{ products.next_page_number }}">Вперед </a>
+                                                href="{{ next_url }}">Вперед </a>
                                         </li>
                                         {% endif %}
                                     </ol>
                                     {% endif %}
-
                                 </nav>
                                 <div class="mt-20 d-lg-none d-block">
 
