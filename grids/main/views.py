@@ -145,7 +145,7 @@ russian_categories = {
     "решетки-на-кондиционер": {"title": "На кондиционер", 'url_title': "svarka", "number_of_category": 'all'},
 
     "топ-100-кованых-оконных-решеток": {"title": "Топ-100", 'url_title': "svarka", "number_of_category": 'all'},
-    "топ-100-сварных-решеток-на-окна": {"title": "Топ-100", 'url_title': "svarka", "number_of_category": 'all'},
+    "топ-100-сварных-решеток-на-окна": {"title": "Топ-100", 'url_title': "svarka", "number_of_category": 5},
     "решетки-без-открывания": {"title": "Без открывания", 'url_title': "svarka", "number_of_category": 'all'},
 
     "решетки-на-окна-эконом-класс": {"title": "Эконом", 'url_title': "svarka", "number_of_category": 1},
