@@ -952,7 +952,6 @@
                 return categories[i].name_of_category
             }
         }
-        return 'all'
     }
 
     function getCheckedClass() {
@@ -977,6 +976,9 @@
 
     function changeClassAndUrl(className) {
         let categoryName = getCheckedCategory();
+        if (categoryName === undefined) { //TODO: fix hard-coded choise of category
+            categoryName = 'economy'
+        }
         for (let i = 0; i < categories.length; i++) {
             if (className === categories[i].name_of_class && categoryName === categories[i].name_of_category) {
                 document.location.href = "/" + categories[i].url;
@@ -1001,15 +1003,5 @@
     }
     //конец блока кода о выборе класса или категории
 
-    // для калькулятора в быстром просмотре
-    // let width = 100;
-    // let height = 100;
-    // let isOpen = false;
-    // let isNitro = false;
-    // let priceForSquare = 1;
-
-
-
-    //конец блока для калькулятора
 </script>
 {% endblock %}

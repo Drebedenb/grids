@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Оконные решетки - Главная</title>
+    <title>{{title}}</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport"
@@ -119,26 +119,26 @@
                     href="/решетки-на-окна-эконом-класс">
                 <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Эконом решетки</h5><span
                     class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
-                    style="min-width: 3rem;">149</span></a></div>
+                    style="min-width: 3rem;">{{count.economy}}</span></a></div>
             <div class="col"><a
                     class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
                     href="/ажурные-решетки-на-окна">
                 <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Ажурные решетки</h5><span
                     class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
-                    style="min-width: 3rem;">111</span></a></div>
+                    style="min-width: 3rem;">{{count.ajur}}</span></a></div>
             <div class="col d-lg-block d-none">111<a class="btn btn-primary btn-xxl w-100" href="#">Консультация</a></div>
             <div class="col"><a
                     class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
                     href="/кованые-решетки-на-окна-вип-класс">
                 <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">VIP решетки</h5><span
                     class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
-                    style="min-width: 3rem;">75</span></a></div>
+                    style="min-width: 3rem;">{{count.vip}}</span></a></div>
             <div class="col"><a
                     class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
                     href="/эксклюзивные-кованые-решетки">
                 <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Эксклюзивные решетки</h5><span
                     class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
-                    style="min-width: 3rem;">48  </span></a></div>
+                    style="min-width: 3rem;">{{count.exlusive}}</span></a></div>
             <div class="col"><a href="{%url 'compare'%}" class="btn btn-outline-secondary rounded-3 w-100 py-4">
                 {% include 'main/icons/chart.html' with classes='svg-icon' %}
             </a></div>
@@ -214,13 +214,13 @@
                                 href="/решетки-на-окна-эконом-класс">
                             <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Эконом решетки</h5><span
                                 class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
-                                style="min-width: 3rem;">149</span></a></div>
+                                style="min-width: 3rem;">{{count.economy}}</span></a></div>
                         <div class="col"><a
                                 class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
                                 href="/ажурные-решетки-на-окна">
                             <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Ажурные решетки</h5><span
                                 class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
-                                style="min-width: 3rem;">111</span></a></div>
+                                style="min-width: 3rem;">{{count.ajur}}</span></a></div>
                         <div class="col d-lg-block d-none">
                             <btn class="btn btn-secondary btn-xxl w-100" data-bs-toggle="modal"
                                  data-bs-target="#modal-consultation" type="button">Консультация
@@ -231,13 +231,13 @@
                                 href="/кованые-решетки-на-окна-вип-класс">
                             <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">VIP решетки</h5><span
                                 class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
-                                style="min-width: 3rem;">75</span></a></div>
+                                style="min-width: 3rem;">{{count.vip}}</span></a></div>
                         <div class="col"><a
                                 class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
                                 href="/эксклюзивные-кованые-решетки">
                             <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Эксклюзив решетки</h5><span
                                 class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
-                                style="min-width: 3rem;">48</span></a></div>
+                                style="min-width: 3rem;">{{count.exlusive}}</span></a></div>
                         <div class="col d-lg-block d-none">
                             <btn class="btn btn-primary btn-xxl w-100" data-bs-toggle="modal"
                                  data-bs-target="#modal-measurement" type="button">Вызвать на замер

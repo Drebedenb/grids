@@ -5,22 +5,22 @@ from django.db.models import Min, Max
 from django.http import HttpResponseNotFound
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-# from django.core.cache import cache
+from django.core.cache import cache
 
-class MockDjangoRedis:
-    def get(self, arg):
-        return None
+# class MockDjangoRedis:
+#     def get(self, arg):
+#         return None
+#
+#     def set(arg, bla, ble, blu):
+#         return arg
 
-    def set(arg, bla, ble, blu):
-        return arg
 
-
-cache = MockDjangoRedis()
+# cache = MockDjangoRedis()
 
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
 list_of_grids_types = [
-    {'title': 'Сварные', 'img_path': 'main/img/grids_types/1_svarnie.webp', 'url': '/решетки-на-окна-эконом-класс'},
+    {'title': 'Сварные', 'img_path': 'main/img/grids_types/1_svarnie.webp', 'url': '/сварные-решетки-на-окна'},
     {'title': 'Кованые', 'img_path': 'main/img/grids_types/2_kovanie.webp', 'url': '/кованые-решетки-на-окна-вип-класс'},
     {'title': 'Дутые', 'img_path': 'main/img/grids_types/3_dutie.webp', 'url': '/дутые-решетки-на-окна'},
     {'title': 'Ажурные', 'img_path': 'main/img/grids_types/4_azhurnie.webp', 'url': '/ажурные-решетки-на-окна'},
@@ -38,7 +38,8 @@ list_of_grids_types = [
 ]
 
 list_of_popular_sections = [
-    {'title': 'ТОП 100',  'url': '/топ-100-решеток'},
+    {'title': 'ТОП 100 сварных',  'url': '/топ-100-сварных-решеток-на-окна'},
+    {'title': 'ТОП 100 кованых',  'url': '/топ-100-кованых-оконных-решеток'},
     {'title': 'Без открывания',  'url': '/решетки-без-открывания'},
     {'title': 'VIP Класс',  'url': '/кованые-решетки-на-окна-вип-класс'},
 ]
@@ -127,7 +128,7 @@ list_of_open_types = [
 
 russian_categories = {
     "металлические-решетки-на-окна": {"title": "", 'url_title': "all", "number_of_category": 'all'},
-    "дутые-решетки-на-окна": {"title": "Дутые", 'url_title': "blow", "number_of_category": '5'}, #TODO: сделать все дутые рещетки а не только одну группу
+    "дутые-решетки-на-окна": {"title": "Дутые", 'url_title': "blow", "number_of_category": 'all'}, #TODO: сделать все дутые рещетки а не только одну группу
 
     "сварные-решетки-на-окна": {"title": "Сварные", 'url_title': "svarka", "number_of_category": 1},
     "арочные-решетки-на-окна": {"title": "Арочные", 'url_title': "svarka", "number_of_category": 'all'},
@@ -142,7 +143,8 @@ russian_categories = {
     "решетки-от-выпадения-детей": {"title": "Кид-стоп", 'url_title': "svarka", "number_of_category": 'all'},
     "решетки-на-кондиционер": {"title": "На кондиционер", 'url_title': "svarka", "number_of_category": 'all'},
 
-    "топ-100-решеток": {"title": "Топ-100", 'url_title': "svarka", "number_of_category": 'all'},
+    "топ-100-кованых-оконных-решеток": {"title": "Топ-100", 'url_title': "svarka", "number_of_category": 'all'},
+    "топ-100-сварных-решеток-на-окна": {"title": "Топ-100", 'url_title': "svarka", "number_of_category": 'all'},
     "решетки-без-открывания": {"title": "Без открывания", 'url_title': "svarka", "number_of_category": 'all'},
 
     "решетки-на-окна-эконом-класс": {"title": "Эконом", 'url_title': "svarka", "number_of_category": 1},
@@ -349,16 +351,14 @@ def get_max_price_of_all_products():
         cache.set("max_price_all", max_price, TTL_OF_CACHE_SECONDS)
     return max_price
 
-
-def index(request):
-    count = {
+count = {
         "economy": count_products_by_category(1) + count_products_by_category(2),
         "ajur": count_products_by_category(3) + count_products_by_category(4),
         "vip": count_products_by_category(5) + count_products_by_category(6),
         "exlusive": count_products_by_category(7) + count_products_by_category(8),
-    }
+}
+def index(request):
     leaders_of_selling = get_products_by_category(1, 0, 99999, 'id', 'asc', 16)
-
     min_price_1 = get_category_min_price(1)
     min_price_2 = get_category_min_price(3)
     min_price_3 = get_category_min_price(5)
@@ -366,7 +366,8 @@ def index(request):
     short_list_of_reviews = list_of_reviews[:4]
     short_list_of_reviews_collapsed = list_of_reviews_collapsed[:8]
     context = {
-        'list_of_grids_types': list_of_grids_types, 'title': 'Главная страница',
+        'title': 'Главная страница',
+        'list_of_grids_types': list_of_grids_types,
         'leaders_of_selling': leaders_of_selling,
         'list_of_photos_done': list_of_photos_done,
         'min_price_1': min_price_1,
@@ -418,19 +419,24 @@ def catalog_category(request, category_name):
     leaders_of_selling = get_products_by_category(5, min_price_for_sort, max_price_for_sort,
                                                   order_type, order_scending, 15)
     context = {
-        'title': 'Каталог',
+        'title': 'Каталог металлических решеток',
         'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling,
         'min_price': min_price, 'max_price': max_price, 'list_of_photos_done': list_of_photos_done,
         'list_of_open_types': list_of_open_types,
         'list_of_grids_types': list_of_grids_types,
         'list_of_kinds': list_of_kinds,
-        'list_of_popular_sections': list_of_popular_sections
+        'list_of_popular_sections': list_of_popular_sections,
+        'count': count
     }
     return render(request, 'main/catalog-category.html', context)
 
 
 def contacts(request):
-    return render(request, 'main/contacts.html')
+    context = {
+        'title': 'Контакты',
+        'count': count
+    }
+    return render(request, 'main/contacts.html', context)
 
 
 price_step_for_category = {
@@ -456,27 +462,36 @@ def product(request, category, file_number):
                                                       'price', 'asc', 15)
     photos_of_projects = get_product_project_photos_eight(first_row_product.path_folder, first_row_product.path_file)
     context = {
+        'title': 'Решетка на окно ' + str(first_row_product.path_folder) + '-' + str(first_row_product.path_file),
         'product': product,
         'list_of_open_types': list_of_open_types,
         'similar_grids_by_price': similar_grids_by_price,
         'photos_of_projects': photos_of_projects,
         'list_of_grids_types': list_of_grids_types,
         'list_of_kinds': list_of_kinds,
-        'list_of_popular_sections': list_of_popular_sections
+        'list_of_popular_sections': list_of_popular_sections,
+        'count': count
     }
     return render(request, 'main/product.html', context)
 
 
 def projects(request):
-    return render(request, 'main/projects.html', {'list_of_grids_types': list_of_grids_types, 'title': 'Каталог',
-                                                  'list_of_photos_done': list_of_photos_done,
-                                                  'list_of_photos_done_collapsed': list_of_photos_done_collapsed})
+    context = {
+        'title': 'Наши работы',
+        'list_of_grids_types': list_of_grids_types,
+        'list_of_photos_done': list_of_photos_done,
+        'list_of_photos_done_collapsed': list_of_photos_done_collapsed,
+        'count': count
+    }
+    return render(request, 'main/projects.html', context)
 
 
 def reviews(request):
     context = {
+        'title': 'Отзывы клиентов',
         'list_of_reviews': list_of_reviews,
-        'list_of_reviews_collapsed': list_of_reviews_collapsed
+        'list_of_reviews_collapsed': list_of_reviews_collapsed,
+        'count': count
     }
     return render(request, 'main/reviews.html', context)
 
@@ -502,8 +517,12 @@ def compare(request):
         product['additional_info'] = list(
             PriceWinguardMain.objects.filter(price_winguard_sketch_id=product["id"]).values('price_b2c', 'name'))
         list_of_compares.append(product)
-    return render(request, 'main/compare.html',
-                  {'products': list_of_compares})
+    context = {
+        'title': 'Сравнение решеток',
+        'products': list_of_compares,
+        'count': count
+    }
+    return render(request, 'main/compare.html', context)
 
 
 def favorite(request):
@@ -525,7 +544,12 @@ def favorite(request):
         product["path_folder"] = path_arr[1]
         product["path_file"] = path_arr[2]
         list_of_favorites.append(product)
-    return render(request, 'main/favorite.html', {'products': list_of_favorites})
+    context = {
+        'title': 'Избранные решетки',
+        'products': list_of_favorites,
+        'count': count
+    }
+    return render(request, 'main/favorite.html', context)
 
 
 def page_not_found(request, exception):
@@ -533,4 +557,8 @@ def page_not_found(request, exception):
 
 
 def privacy(request):
+    context = {
+        'title': 'Конфиденциальность',
+        'count': count
+    }
     return render(request, 'main/privacy.html')
