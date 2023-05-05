@@ -598,4 +598,7 @@ font-size: 7px !important;
   }
 }
 
+.lattice-tag-title:hover {
+    cursor: pointer;
+}
 

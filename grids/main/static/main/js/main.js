@@ -1,3 +1,14 @@
+//перезагружать страницу каждый раз, когда пользователь нажимает кнопку назад в истории браузера
+window.addEventListener( "pageshow", function ( event ) {
+  const historyTraversal = event.persisted ||
+                         ( typeof window.performance != "undefined" &&
+                              window.performance.getEntriesByType("navigation")[0].type === "back_forward" );
+  if ( historyTraversal ) {
+    window.location.reload();
+  }
+});
+
+
 let introSwiper = new Swiper("#intro-swiper", {
     loop: true,
     effect: "fade",
@@ -43,32 +54,35 @@ let reasonsSwiper = new Swiper("#reasons-swiper", {
 });
 
 let featuresSwiper = new Swiper("#features-swiper", {
-    slidesPerView: 1,
-    slidesPerGroup: 1,
+    slidesPerView: 2,
+    slidesPerGroup: 2,
     spaceBetween: 20,
     navigation: {
-        prevEl: "#features-swiper-control #features-swiper-control_mobile .btn-swiper-prev",
-        nextEl: "#features-swiper-control #features-swiper-control_mobile .btn-swiper-next"
+        // prevEl: "#features-swiper-control #features-swiper-control_mobile .btn-swiper-prev",
+        // nextEl: "#features-swiper-control #features-swiper-control_mobile .btn-swiper-next"
+
+        prevEl: "#features-swiper-control .btn-swiper-prev",
+        nextEl: "#features-swiper-control .btn-swiper-next"
     },
     breakpoints: {
         576: {
-            slidesPerView: 1,
-            slidesPerGroup: 1,
-            spaceBetween: 20
-        },
-        992: {
             slidesPerView: 2,
             slidesPerGroup: 2,
-            spaceBetween: 20
+            spaceBetween: 25
+        },
+        992: {
+            slidesPerView: 3,
+            slidesPerGroup: 3,
+            spaceBetween: 25
         },
         1200: {
             slidesPerView: 3,
             slidesPerGroup: 3,
-            spaceBetween: 30
+            spaceBetween: 25
         },
         1400: {
-            slidesPerView: 4,
-            slidesPerGroup: 4,
+            slidesPerView: 3,
+            slidesPerGroup: 3,
             spaceBetween: 25
         }
     }
@@ -206,7 +220,6 @@ function changeFavoriteCounter() {
 function changeFavoriteCounterAndPaintHearts() {
     changeFavoriteCounter();//вызываем при начальной за грузке любой страницы
     let favoritesStr = getCookie("Favorites")
-    console.log(favoritesStr);
     let favorites;
     if ( favoritesStr === '' || favoritesStr === null) {
         favorites = []
@@ -422,20 +435,19 @@ const ordersToId = {
         'id': 'order-sketchNumber',
         'percent': 'order-percent'
 }
-function changeArrowIcon() {
-    let orderScending;
-    let order;
-    const params = new Proxy(new URLSearchParams(window.location.search), {
+function getSearchParams() {
+    return  new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop) => searchParams.get(prop),
     });
-    // TODO: сделать по номеру эскиза заранее выбранным
-    // if (!params.order ) {
-    //     order = 'id'
-    //     orderScending = 'asc'
-    // } else {
-        order = params.order
-        orderScending = params.orderScending
-    // }
+}
+function getOrderScending() {
+    return getSearchParams().orderScending
+}
+function getOrder() {
+    return getSearchParams().order
+}
+
+function changeArrowIcon(order, orderScending) {
     const arrowId = ordersToId[order] + '-arrow'
     if (orderScending === 'desc') {
         document.getElementById(arrowId).style.display = 'inline';
@@ -444,8 +456,42 @@ function changeArrowIcon() {
         document.getElementById(arrowId).style.display = 'inline';
     }
 }
+function changeOrderScendingSpanTitle(orderScending) {
+    document.getElementById("order-scending-title-" + orderScending).style.display = 'inline';
+}
+function changeFilterIcon (order, orderScending) {
+    const filterId = ordersToId[order] + '-filter'
+    if (orderScending === 'desc') {
+        document.getElementById(filterId+'-down').style.display = 'inline';
+    } else if (orderScending === 'asc') {
+        document.getElementById(filterId+'-up').style.display = 'inline';
+    }
+}
+function paintOrderButtonInRed (order) {
+    try {
+        document.getElementById(order).style.backgroundColor = '#F5320E';
+    } catch {
+        return 0;
+    }
+}
+function changeAppearanceDependsOnOrder() {
+    const order = getOrder()
+    const orderScending = getOrderScending()
+
+    try{
+        //for desktop
+        changeArrowIcon(order, orderScending)
+
+        //for mobile
+        changeFilterIcon(order, orderScending)
+        paintOrderButtonInRed(ordersToId[order])
+        changeOrderScendingSpanTitle(orderScending)
+    } catch (e) {
+    }
+
+}
 if (document.getElementById('order-sketchNumber')) {
-    changeArrowIcon();
+    changeAppearanceDependsOnOrder()
 }
 function orderByParameter(idOfElement) {
     const orderName = idToOrders[idOfElement]
@@ -505,6 +551,94 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+//блок кода для быстрого просмотра и калькулятора в нем
+let width = 100;
+let height = 100;
+let isOpen = false;
+let isNitro = false;
+let priceForSquare = 1;
+
+function changeWidth(value) {
+        width = value;
+        changeQuickForms()
+    }
+
+    function changeHeight(value) {
+        height = value;
+        changeQuickForms()
+    }
+
+    function changeIsOpen(value) {
+        isOpen = value;
+        changeQuickForms()
+    }
+
+    function changeIsNitro(value) {
+        isNitro = value;
+        changeQuickForms()
+    }
+
+    function changePriceForSquare(value) {
+        priceForSquare = value;
+        changeQuickForms()
+    }
+
+    function changeCheckboxesByClass(className, isChecked) {
+        let items = document.getElementsByClassName(className)
+        for (let i = 0; i < items.length; i++) {
+            items[i].checked = isChecked;
+        }
+    }
+
+    function changeInputsByClass(className, value) {
+        let items = document.getElementsByClassName(className)
+        for (let i = 0; i < items.length; i++) {
+            items[i].value = value;
+        }
+    }
+
+    function changeSpanByClass(className, value) {
+        let items = document.getElementsByClassName(className)
+        for (let i = 0; i < items.length; i++) {
+            items[i].textContent = value;
+        }
+    }
+
+    function changeSpanTextById(spanId, value) {
+        document.getElementById(spanId).textContent = value
+    }
+
+    function changeQuickForms() {
+        changeCheckboxesByClass('quick-view-nitro', isNitro)
+        changeCheckboxesByClass('quick-view-isopen', isOpen)
+        changeInputsByClass('quick-view-width', width)
+        changeInputsByClass('quick-view-height', height)
+        changeSpanByClass("quick-view-total", countTotal())
+    }
+
+    function countTotal() {
+        let total = (width / 100 * height / 100) * priceForSquare
+        if (isOpen) {
+            total += 1500
+        }
+        if (isNitro) {
+            total += 550
+        }
+        return total
+    }
+
+
+
+
+//конец блока кода о калькуляторе и быстром просмотре
+
+
+//блок кода для перемещения с карточки фотки
+function goToProduct(photoName) {
+    const numberOfProduct = photoName.match(/\d-\d+/)[0]
+    window.location.href = "/product/" + numberOfProduct
+}
+// конец блока кода о перемещении
 
 /* DROPDOWN */
 

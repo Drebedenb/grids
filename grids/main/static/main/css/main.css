@@ -51623,7 +51623,7 @@ body {
 }
 
 body {
-    background: var(--bs-body-bg) url(../img/body-noise-bg.png) center center repeat;
+    background: var(--bs-body-bg) url(../img/body-noise-bg.webp) center center repeat;
 }
 
 ol,

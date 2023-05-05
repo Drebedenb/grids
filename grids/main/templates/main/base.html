@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Оконные решетки - Главная</title>
+    <title>{{title}}</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport"
@@ -27,8 +27,8 @@
                 </div>
                 <div class="col-auto text-end ms-auto">
                     <div class="d-lg-block d-none"><a
-                            class="fs-13 text-white text-hover-light ls-sm text-decoration-none" href="tel:84951270443">8
-                        (495) 127-04-43</a><small class="d-block fs-7 ls-sm">
+                            class="fs-13 text-white text-hover-light ls-sm text-decoration-none" href="tel:84953745364">8
+                        (495) 374-53-64</a><small class="d-block fs-7 ls-sm">
                         <div class="indicator bg-success me-3"></div>
                         Сейчас работаем</small></div>
                 </div>
@@ -39,7 +39,7 @@
                 <div class="col-auto ms-lg-0 ms-auto">
                     <div class="hstack d-lg-none d-flex gap-5"><a
                             class="btn btn-outline-secondary d-inline-flex justify-content-center align-items-center p-0"
-                            href="tel:84951270443" style="width: 1.5rem; height: 1.5rem;">
+                            href="tel:84953745364" style="width: 1.5rem; height: 1.5rem;">
 
                         {% include 'main/icons/phone-call.html' with classes="svg-icon"%}
 
@@ -70,7 +70,7 @@
                                               href="{%url 'index'%}">Главная</a></li>
                 <li class="nav-item me-20"><a
                         class="nav-link ls-sm p-0 {% if request.path != '/' and request.path != '/reviews/' and request.path != '/projects/' and request.path != '/contacts/'  %}active{% endif %}"
-                        href="/решетки-на-окна-эконом-класс">Каталог</a></li>
+                        href="/металлические-решетки-на-окна">Каталог</a></li>
                 <li class="nav-item me-20"><a
                         class="nav-link ls-sm p-0 {% if request.path == '/reviews/' %}active{% endif %}"
                         href="{%url 'reviews'%}">Отзывы</a></li>
@@ -104,7 +104,7 @@
             <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0" href="{%url 'index'%}">Главная</a>
             </li>
             <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0"
-                                                                href="/решетки-на-окна-эконом-класс">Каталог</a>
+                                                                href="/металлические-решетки-на-окна">Каталог</a>
             </li>
             <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0" href="{%url 'reviews'%}">Отзывы</a>
             </li>
@@ -119,26 +119,26 @@
                     href="/решетки-на-окна-эконом-класс">
                 <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Эконом решетки</h5><span
                     class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
-                    style="min-width: 3rem;">149</span></a></div>
+                    style="min-width: 3rem;">{{count.economy}}</span></a></div>
             <div class="col"><a
                     class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
                     href="/ажурные-решетки-на-окна">
                 <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Ажурные решетки</h5><span
                     class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
-                    style="min-width: 3rem;">111</span></a></div>
+                    style="min-width: 3rem;">{{count.ajur}}</span></a></div>
             <div class="col d-lg-block d-none">111<a class="btn btn-primary btn-xxl w-100" href="#">Консультация</a></div>
             <div class="col"><a
                     class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
                     href="/кованые-решетки-на-окна-вип-класс">
                 <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">VIP решетки</h5><span
                     class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
-                    style="min-width: 3rem;">75</span></a></div>
+                    style="min-width: 3rem;">{{count.vip}}</span></a></div>
             <div class="col"><a
                     class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
                     href="/эксклюзивные-кованые-решетки">
                 <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Эксклюзивные решетки</h5><span
                     class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
-                    style="min-width: 3rem;">48  </span></a></div>
+                    style="min-width: 3rem;">{{count.exlusive}}</span></a></div>
             <div class="col"><a href="{%url 'compare'%}" class="btn btn-outline-secondary rounded-3 w-100 py-4">
                 {% include 'main/icons/chart.html' with classes='svg-icon' %}
             </a></div>
@@ -156,7 +156,7 @@
             </btn>
         </div>
         <div class="mt-15 text-center"><a class="fs-13 text-muted text-hover-white ls-sm text-decoration-none"
-                                          href="tel:84951270443">8 (495) 127-04-43 </a></div>
+                                          href="tel:84953745364">8 (495) 374-53-64 </a></div>
     </div>
 </div>
 
@@ -178,8 +178,8 @@
                 <div class="col-auto d-lg-block d-none">
                     <div class="d-inline-flex align-items-center">
                         {% include 'main/icons/phone-call.html' with classes="svg-icon me-11" %}
-                        <a class="fs-13 text-muted text-hover-white ls-sm text-decoration-none" href="tel:84951270443">8
-                            (495) 127-04-43</a>
+                        <a class="fs-13 text-muted text-hover-white ls-sm text-decoration-none" href="tel:84953745364">8
+                            (495) 374-53-64</a>
                     </div>
                 </div>
             </div>
@@ -194,7 +194,7 @@
                         <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0" href="{%url 'index'%}">Главная</a>
                         </li>
                         <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0"
-                                                                            href="/решетки-на-окна-эконом-класс">Каталог</a>
+                                                                            href="/металлические-решетки-на-окна">Каталог</a>
                         </li>
                         <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0"
                                                                             href="{%url 'reviews'%}">Отзывы</a>
@@ -214,13 +214,13 @@
                                 href="/решетки-на-окна-эконом-класс">
                             <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Эконом решетки</h5><span
                                 class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
-                                style="min-width: 3rem;">149</span></a></div>
+                                style="min-width: 3rem;">{{count.economy}}</span></a></div>
                         <div class="col"><a
                                 class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
                                 href="/ажурные-решетки-на-окна">
                             <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Ажурные решетки</h5><span
                                 class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
-                                style="min-width: 3rem;">111</span></a></div>
+                                style="min-width: 3rem;">{{count.ajur}}</span></a></div>
                         <div class="col d-lg-block d-none">
                             <btn class="btn btn-secondary btn-xxl w-100" data-bs-toggle="modal"
                                  data-bs-target="#modal-consultation" type="button">Консультация
@@ -231,13 +231,13 @@
                                 href="/кованые-решетки-на-окна-вип-класс">
                             <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">VIP решетки</h5><span
                                 class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
-                                style="min-width: 3rem;">75</span></a></div>
+                                style="min-width: 3rem;">{{count.vip}}</span></a></div>
                         <div class="col"><a
                                 class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
                                 href="/эксклюзивные-кованые-решетки">
                             <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">Эксклюзив решетки</h5><span
                                 class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
-                                style="min-width: 3rem;">48</span></a></div>
+                                style="min-width: 3rem;">{{count.exlusive}}</span></a></div>
                         <div class="col d-lg-block d-none">
                             <btn class="btn btn-primary btn-xxl w-100" data-bs-toggle="modal"
                                  data-bs-target="#modal-measurement" type="button">Вызвать на замер
@@ -258,8 +258,8 @@
             </div>
         </div>
         <div class="d-lg-none d-block text-center p-7-5"><a
-                class="fs-13 text-muted text-hover-white ls-sm text-decoration-none" href="tel:84951270443">8 (495)
-            127-04-43</a></div>
+                class="fs-13 text-muted text-hover-white ls-sm text-decoration-none" href="tel:84953745364">8 (495)
+            374-53-64</a></div>
         <hr class="d-lg-none d-block w-100 my-0">
         <div class="py-10 d-lg-none d-block">
             <div class="row row-cols-2">
