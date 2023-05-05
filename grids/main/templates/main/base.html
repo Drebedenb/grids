@@ -95,10 +95,10 @@
 
 <!--Mobile menu-->
 <div class="offcanvas offcanvas-end d-lg-none d-block bg-black text-white" id="mobile-menu">
-    <div class="offcanvas-header">
+    <div class="offcanvas-header pb-5">
         <button class="btn-close ms-auto" data-bs-dismiss="offcanvas" type="button"></button>
     </div>
-    <div class="offcanvas-body px-5 py-19">
+    <div class="offcanvas-body px-5 py-0">
         <ul class="nav flex-lg-column fs-lg-10 fs-8 fw-medium ls-sm text-uppercase row-gap-lg-0 row-gap-5"
             style="--bs-nav-link-color: var(--bs-white); --bs-nav-link-hover-color: var(--bs-primary);">
             <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0" href="{%url 'index'%}">Главная</a>
@@ -113,7 +113,7 @@
             </li>
             <li class="nav-item w-lg-auto w-50 m-0"><a class="nav-link p-0" href="{%url 'contacts'%}">Контакты </a></li>
         </ul>
-        <div class="row row-cols-lg-3 row-cols-2 gy-lg-20 gy-10 mt-18">
+        <div class="row row-cols-lg-3 row-cols-2 gy-lg-20 gy-10 mt-5">
             <div class="col"><a
                     class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
                     href="/решетки-на-окна-эконом-класс">
@@ -277,7 +277,7 @@
         </div>
     </div>
 
-    <div id="snackbar">asdasd</div>
+    <div id="snackbar" class="snackbar">asdasd</div>
 
 </footer>
 <script src="{% static 'main/js/bootstrap.bundle.min.js' %}"></script>
