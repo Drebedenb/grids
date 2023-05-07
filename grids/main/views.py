@@ -5,18 +5,19 @@ from django.db.models import Min, Max
 from django.http import HttpResponseNotFound
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.core.cache import cache
+# from django.core.cache import cache
 from urllib.parse import urlencode
+import collections.abc
 
-# class MockDjangoRedis:
-#     def get(self, arg):
-#         return None
-#
-#     def set(arg, bla, ble, blu):
-#         return arg
-#
-#
-# cache = MockDjangoRedis()
+class MockDjangoRedis:
+    def get(self, arg):
+        return None
+
+    def set(arg, bla, ble, blu):
+        return arg
+
+
+cache = MockDjangoRedis()
 
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
@@ -36,6 +37,8 @@ list_of_grids_types = [
     {'title': 'Для дома', 'img_path': 'main/img/grids_types/12_dlya_doma.webp', 'url': '/решетки-для-дома'},
     {'title': 'Кид-стоп', 'img_path': 'main/img/grids_types/14_ot_vipadenia.webp', 'url': '/решетки-от-выпадения-детей'},
     {'title': 'На кондиционер', 'img_path': 'main/img/grids_types/15_na_condicioner.webp', 'url': '/решетки-на-кондиционер'},
+    {'title': 'Внутренние', 'img_path': 'main/img/grids_types/12_dlya_doma.webp', 'url': '/внутренние-решетки'},
+    {'title': 'Для дачи', 'img_path': 'main/img/grids_types/8_na_lodjiu.webp', 'url': '/решетки-для-дачи'},
 ]
 
 list_of_popular_sections = [
@@ -121,46 +124,54 @@ list_of_reviews_collapsed = [
 ]
 
 list_of_open_types = [
-    {"name": "arch", "description": "Арочная", "price": "30", "width": 1000, "height": 1500},
-    {"name": "gog", "description": "Глухая-Распашная-Глухая", "price": "1500", "width": 3000, "height": 1500},
-    {"name": "o", "description": "Распашная", "price": "1500", "width": 1000, "height": 1500},
-    {"name": "oo", "description": "Распашная-Распашная", "price": "2800", "width": 1500, "height": 1500},
+    {"name": "arch", "description": "Арочная", "price": "30"},
+    {"name": "gog", "description": "Глухая-Распашная-Глухая", "price": "1500"},
+    {"name": "o", "description": "Распашная", "price": "1500"},
+    {"name": "oo", "description": "Распашная-Распашная", "price": "2800"},
 ]
 
+ALL_CATEGORIES = [1, 2, 3, 4, 5, 6, 7, 8]
 russian_categories = {
-    "металлические-решетки-на-окна": {"title": "", 'url_title': "all", "number_of_category": 'all'},
-    "дутые-решетки-на-окна": {"title": "Дутые", 'url_title': "blow", "number_of_category": 'all'}, #TODO: сделать все дутые рещетки а не только одну группу
+    "металлические-решетки-на-окна": {"title": "Все", "number_of_category": ALL_CATEGORIES},
+    "дутые-решетки-на-окна": {"title": "Дутые", "number_of_category": [2,4,6,8]},
+    "решетки-на-окна-без-дутости": {"title": "Прямые", "number_of_category": [1,3,5,7]},
+    "сварные-решетки-на-окна": {"title": "Сварные", "number_of_category": [1,3]},
+    "кованые-решетки-на-окна": {"title": "Кованые", "number_of_category": [5,7]},
 
-    "сварные-решетки-на-окна": {"title": "Сварные", 'url_title': "svarka", "number_of_category": 1},
-    "арочные-решетки-на-окна": {"title": "Арочные", 'url_title': "svarka", "number_of_category": 'all'},
-    "распашные-решетки-на-окна": {"title": "Распашные", 'url_title': "svarka", "number_of_category": 'all'},
-    "решетки-на-балкон": {"title": "На балкон", 'url_title': "svarka", "number_of_category": 'all'},
-    "решетки-на-приямки": {"title": "На приямки", 'url_title': "svarka", "number_of_category": 'all'},
-    "решетки-на-лоджию": {"title": "На лоджию", 'url_title': "svarka", "number_of_category": 'all'},
-    "решетки-для-квартиры": {"title": "Для квартиры", 'url_title': "svarka", "number_of_category": 'all'},
-    "решетки-на-первый-этаж": {"title": "На первый этаж", 'url_title': "svarka", "number_of_category": 'all'},
-    "решетки-для-цоколя": {"title": "Цоколь/Подвал", 'url_title': "svarka", "number_of_category": 'all'},
-    "решетки-для-дома": {"title": "Для дома", 'url_title': "svarka", "number_of_category": 'all'},
-    "решетки-от-выпадения-детей": {"title": "Кид-стоп", 'url_title': "svarka", "number_of_category": 'all'},
-    "решетки-на-кондиционер": {"title": "На кондиционер", 'url_title': "svarka", "number_of_category": 'all'},
+    "арочные-решетки-на-окна": {"title": "Арочные", "number_of_category": ALL_CATEGORIES},
+    "распашные-решетки-на-окна": {"title": "Распашные", "number_of_category": ALL_CATEGORIES},
+    "решетки-на-балкон": {"title": "На балкон", "number_of_category": ALL_CATEGORIES},
+    "решетки-на-приямки": {"title": "На приямки", "number_of_category": ALL_CATEGORIES},
+    "решетки-на-лоджию": {"title": "На лоджию", "number_of_category": ALL_CATEGORIES},
+    "решетки-для-квартиры": {"title": "Для квартиры", "number_of_category": ALL_CATEGORIES},
+    "решетки-на-первый-этаж": {"title": "На первый этаж", "number_of_category": ALL_CATEGORIES},
+    "решетки-для-цоколя": {"title": "Цоколь/Подвал", "number_of_category": ALL_CATEGORIES},
+    "решетки-для-дома": {"title": "Для дома", "number_of_category": ALL_CATEGORIES},
+    "решетки-от-выпадения-детей": {"title": "Кид-стоп", "number_of_category": ALL_CATEGORIES},
+    "решетки-на-кондиционер": {"title": "На кондиционер", "number_of_category": ALL_CATEGORIES},
+    "внутренние-решетки": {"title": "Внутренние", "number_of_category": ALL_CATEGORIES},
+    "решетки-для-дачи": {"title": "Для дачи", "number_of_category": ALL_CATEGORIES},
+    "решетки-без-открывания": {"title": "Без открывания", "number_of_category": ALL_CATEGORIES},
 
-    "топ-100-кованых-оконных-решеток": {"title": "Топ-100", 'url_title': "svarka", "number_of_category": 'all'},
-    "топ-100-сварных-решеток-на-окна": {"title": "Топ-100", 'url_title': "svarka", "number_of_category": 5},
-    "решетки-без-открывания": {"title": "Без открывания", 'url_title': "svarka", "number_of_category": 'all'},
+    "топ-100-кованых-оконных-решеток": {"title": "Топ-100", "number_of_category": ALL_CATEGORIES},
+    "топ-100-сварных-решеток-на-окна": {"title": "Топ-100", "number_of_category": ALL_CATEGORIES},
 
-    "решетки-на-окна-эконом-класс": {"title": "Эконом", 'url_title': "svarka", "number_of_category": 1},
-    "дутые-решетки-на-окна-эконом-класс": {"title": "Дутые Эконом", 'url_title': "svarka_dut", "number_of_category": 2},
-    "ажурные-решетки-на-окна": {"title": "Ажурные", 'url_title': "ajur", "number_of_category": 3},
-    "дутые-ажурные-решетки": {"title": "Дутые Ажурные", 'url_title': "ajur_dut", "number_of_category": 4},
-    "кованые-решетки-на-окна-вип-класс": {"title": "VIP", 'url_title': "kovka", "number_of_category": 5},
-    "кованые-дутые-решетки-вип-класса": {"title": "Дутые VIP", 'url_title': "kovka_dut", "number_of_category": 6},
-    "эксклюзивные-кованые-решетки": {"title": "Эксклюзив", 'url_title': "vip", "number_of_category": 7},
-    "дутые-эксклюзивные-решетки": {"title": "Дутые Эксклюзив", 'url_title': "vip_dut", "number_of_category": 8},
+    "решетки-на-окна-эконом-класс": {"title": "Эконом", "number_of_category": 1},
+    "дутые-решетки-на-окна-эконом-класс": {"title": "Дутые Эконом", "number_of_category": 2},
+    "дутые-и-обычные-решетки-на-окна-эконом-класс": {"title": "Дутые и обычные эконом", "number_of_category": [1, 2]},
+
+    "ажурные-решетки-на-окна": {"title": "Ажурные", "number_of_category": 3},
+    "дутые-ажурные-решетки": {"title": "Дутые Ажурные", "number_of_category": 4},
+    "дутые-и-обычные-ажурные-решетки": {"title": "Дутые и Обычные Ажурные", "number_of_category": [3, 4]},
+
+    "кованые-решетки-на-окна-вип-класс": {"title": "VIP", "number_of_category": 5},
+    "кованые-дутые-решетки-вип-класса": {"title": "Дутые VIP", "number_of_category": 6},
+    "кованые-дутые-и-обычные-решетки-вип-класса": {"title": "Дутые и Обычные VIP", "number_of_category": [5, 6]},
+
+    "эксклюзивные-кованые-решетки": {"title": "Эксклюзив", "number_of_category": 7},
+    "дутые-эксклюзивные-решетки": {"title": "Дутые Эксклюзив", "number_of_category": 8},
+    "дутые-и-обычные-эксклюзивные-решетки": {"title": "Дутые и Обычные Эксклюзив", "number_of_category": [7, 8]},
 }
-
-# def get_products_amount_by_category(category_number)
-
-arr_of_sale = [15, 10, 20, 30, 25, 20, 10, 20, 20, 30, 25, 10, 10, 20, 30, 10, 20, 30, 15, 10]
 
 # one day cache will be stored
 TTL_OF_CACHE_SECONDS = 60 * 60 * 24
@@ -170,7 +181,17 @@ def get_paginated_url(request, page_number):
     params['page'] = page_number
     return f"{request.path}?{urlencode(params)}"
 
-def get_products_by_category(category_number, min_price, max_price, order_by_name, order_scending, limit):
+def convert_int_to_array(integer):
+    return [integer]
+def convert_int_and_array_to_str_for_sql(int_or_arr):
+    if isinstance(int_or_arr, int):
+        return "(" + str(int_or_arr) + ")"
+    elif isinstance((int_or_arr), collections.abc.Sequence):
+        return "(" + ",".join(map(str, int_or_arr)) + ")"
+    else:
+        return 'Error: Invalid'
+
+def get_products_by_categories(category_number, min_price, max_price, order_by_name, order_scending, limit):
     products_list_from_cache = cache.get("category_" + str(category_number) + str(min_price) +
                                          str(max_price) + order_by_name + order_scending + str(limit))
     if products_list_from_cache:
@@ -178,9 +199,9 @@ def get_products_by_category(category_number, min_price, max_price, order_by_nam
     dictionary_of_orders = ['price', 'id', 'popularity', 'percent', 'asc', 'desc']
     if order_by_name not in dictionary_of_orders or order_scending not in dictionary_of_orders:
         return []
-    if not (isinstance(category_number, int) and isinstance(min_price, int) and isinstance(max_price,
-                                                                                           int) and isinstance(limit,
-                                                                                                               int)):
+    category_number = convert_int_and_array_to_str_for_sql(category_number)
+    print(category_number)
+    if not (isinstance(min_price, int) and isinstance(max_price,int) and isinstance(limit,int)):
         return []
 
     query = """SELECT *,
@@ -188,12 +209,12 @@ def get_products_by_category(category_number, min_price, max_price, order_by_nam
                         FROM
                         (SELECT MIN(price_b2c) AS price, ps.id, pf.path, (MOD(ps.id, 3) + 1)*10 + (MOD(ps.id,2) * 5) AS percent,
                         (MOD(ps.id,2) + 4) AS stars_count,
-                        {category_number} AS path_folder,
+                        ps.category AS path_folder,
                         ps.number AS path_file
                         FROM price.price_winguard_main pm
                         JOIN price.price_winguard_sketch ps ON pm.price_winguard_sketch_id=ps.id
                         JOIN price.price_winguard_files pf ON pm.price_winguard_sketch_id=pf.price_winguard_sketch_id
-                        WHERE category = {category_number}
+                        WHERE category IN {category_number}
                         GROUP BY ps.id, pf.path
                         HAVING price > {min_price} AND price < {max_price}
                         ORDER BY {order_by_name} {order_scending}
@@ -226,43 +247,6 @@ def get_products_by_category(category_number, min_price, max_price, order_by_nam
     cache.set("category_" + str(category_number) + str(min_price) + str(max_price) + order_by_name
               + order_scending + str(limit), products_list, TTL_OF_CACHE_SECONDS)
     return products_list
-
-def get_all_products(min_price, max_price, order_by_name, order_scending, limit):
-    products_list_from_cache = cache.get("all_" + str(min_price) +
-                                         str(max_price) + order_by_name + order_scending + str(limit))
-    if products_list_from_cache:
-        return products_list_from_cache
-    dictionary_of_orders = ['price', 'id', 'popularity', 'percent', 'asc', 'desc']
-    if order_by_name not in dictionary_of_orders or order_scending not in dictionary_of_orders:
-        return []
-    if not (isinstance(min_price, int) and isinstance(max_price, int) and isinstance(limit, int)):
-        return []
-    query = """SELECT *,
-                        ROUND(price / (1-percent/100), -1) AS saleprice
-                        FROM
-                        (SELECT MIN(price_b2c) AS price, ps.id, pf.path, (MOD(ps.id, 3) + 1)*10 + (MOD(ps.id,2) * 5) AS percent,
-                        (MOD(ps.id,2) + 4) AS stars_count,
-                        ps.category AS path_folder,
-                        ps.number AS path_file
-                        FROM price.price_winguard_main pm
-                        JOIN price.price_winguard_sketch ps ON pm.price_winguard_sketch_id=ps.id
-                        JOIN price.price_winguard_files pf ON pm.price_winguard_sketch_id=pf.price_winguard_sketch_id
-                        GROUP BY ps.id, pf.path
-                        HAVING price > {min_price} AND price < {max_price}
-                        ORDER BY {order_by_name} {order_scending}
-                        LIMIT {limit}) dup""".format(min_price=min_price,
-                                                     max_price=max_price
-                                                     , order_by_name=order_by_name, order_scending=order_scending,
-                                                     limit=limit)
-    products = PriceWinguardMain.objects.raw(query)
-    products_list = []
-    for product in products:  # TODO: переписать на ORM
-        products_list.append(product)
-    cache.set("all_" + str(min_price) + str(max_price) + order_by_name + order_scending + str(limit),
-              products_list, TTL_OF_CACHE_SECONDS)
-    return products_list
-
-
 
 def get_product_by_sketch_category_and_number(category, number):
     product = cache.get("product_" + str(category) + "_" + str(number))
@@ -316,45 +300,30 @@ def count_products_by_category(category_number):
     return count
 
 
-def get_category_min_price(category_number):
+def get_categories_min_price(category_number):
+    if isinstance(category_number, int):
+        category_number = convert_int_to_array(category_number)
     min_price = cache.get("min_price_" + str(category_number))
     if min_price is None:
         min_price = \
-            PriceWinguardMain.objects.filter(price_winguard_sketch__category=category_number).aggregate(
+            PriceWinguardMain.objects.filter(price_winguard_sketch__category__in=category_number).aggregate(
                 Min('price_b2c'))[
                 'price_b2c__min']
         cache.set("min_price_" + str(category_number), min_price, TTL_OF_CACHE_SECONDS)
     return min_price
 
 
-def get_category_max_price(category_number):
+def get_categories_max_price(category_number):
+    if isinstance(category_number, int):
+        category_number = convert_int_to_array(category_number)
     max_price = cache.get("max_price_" + str(category_number))
     if max_price is None:
-        max_price = PriceWinguardMain.objects.filter(price_winguard_sketch__category=category_number).values(
+        max_price = PriceWinguardMain.objects.filter(price_winguard_sketch__category__in=category_number).values(
             'price_winguard_sketch__id') \
             .annotate(min_price=Min('price_b2c')).values('min_price').aggregate(Max('min_price'))['min_price__max']
         cache.set("max_price_" + str(category_number), max_price, TTL_OF_CACHE_SECONDS)
     return max_price
 
-
-def get_min_price_of_all_products():
-    min_price = cache.get("min_price_all")
-    if min_price is None:
-        min_price = \
-            PriceWinguardMain.objects.aggregate(
-                Min('price_b2c'))[
-                'price_b2c__min']
-        cache.set("min_price_all", min_price, TTL_OF_CACHE_SECONDS)
-    return min_price
-
-def get_max_price_of_all_products():
-    max_price = cache.get("max_price_all")
-    if max_price is None:
-        max_price = PriceWinguardMain.objects.values(
-            'price_winguard_sketch__id') \
-            .annotate(min_price=Min('price_b2c')).values('min_price').aggregate(Max('min_price'))['min_price__max']
-        cache.set("max_price_all", max_price, TTL_OF_CACHE_SECONDS)
-    return max_price
 
 count = {
         "economy": count_products_by_category(1) + count_products_by_category(2),
@@ -363,11 +332,11 @@ count = {
         "exlusive": count_products_by_category(7) + count_products_by_category(8),
 }
 def index(request):
-    leaders_of_selling = get_products_by_category(1, 0, 99999, 'id', 'asc', 16)
-    min_price_1 = get_category_min_price(1)
-    min_price_2 = get_category_min_price(3)
-    min_price_3 = get_category_min_price(5)
-    min_price_4 = get_category_min_price(7)
+    leaders_of_selling = get_products_by_categories(1, 0, 99999, 'id', 'asc', 16)
+    min_price_1 = get_categories_min_price(1)
+    min_price_2 = get_categories_min_price(3)
+    min_price_3 = get_categories_min_price(5)
+    min_price_4 = get_categories_min_price(7)
     short_list_of_reviews = list_of_reviews[:4]
     short_list_of_reviews_collapsed = list_of_reviews_collapsed[:8]
     context = {
@@ -401,16 +370,10 @@ def catalog_category(request, category_name):
         min_price_for_sort = 0 if request.GET.get('minPriceByUser') is None else int(request.GET.get('minPriceByUser'))
         max_price_for_sort = 9999999 if request.GET.get('maxPriceByUser') is None else int(
             request.GET.get('maxPriceByUser'))
-
-    if (category["number_of_category"] == 'all'):
-        products_list = get_all_products(min_price_for_sort, max_price_for_sort, order_type, order_scending, limit)
-        min_price = get_min_price_of_all_products()
-        max_price = get_max_price_of_all_products()
-    else:
-        products_list = get_products_by_category(category["number_of_category"], min_price_for_sort, max_price_for_sort,
-                                             order_type, order_scending, limit)
-        min_price = get_category_min_price(category["number_of_category"])
-        max_price = get_category_max_price(category["number_of_category"])
+    products_list = get_products_by_categories(category["number_of_category"], min_price_for_sort, max_price_for_sort,
+                                               order_type, order_scending, limit)
+    min_price = get_categories_min_price(category["number_of_category"])
+    max_price = get_categories_max_price(category["number_of_category"])
 
     page = request.GET.get('page', 1)
     paginator = Paginator(products_list, 45)
@@ -421,8 +384,8 @@ def catalog_category(request, category_name):
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
 
-    leaders_of_selling = get_products_by_category(5, min_price_for_sort, max_price_for_sort,
-                                                  order_type, order_scending, 15)
+    leaders_of_selling = get_products_by_categories(5, min_price_for_sort, max_price_for_sort,
+                                                    order_type, order_scending, 15)
     context = {
         'title': 'Каталог металлических решеток',
         'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling,
@@ -463,10 +426,10 @@ price_step_for_category = {
 def product(request, category, file_number):
     product = get_product_by_sketch_category_and_number(category, file_number)
     first_row_product = product[0]
-    similar_grids_by_price = get_products_by_category(first_row_product.path_folder,
-                                                      first_row_product.price_b2c - price_step_for_category[
+    similar_grids_by_price = get_products_by_categories(first_row_product.path_folder,
+                                                        first_row_product.price_b2c - price_step_for_category[
                                                           first_row_product.path_folder],
-                                                      first_row_product.price_b2c + price_step_for_category[
+                                                        first_row_product.price_b2c + price_step_for_category[
                                                           first_row_product.path_folder],
                                                       'price', 'asc', 15)
     photos_of_projects = get_product_project_photos_eight(first_row_product.path_folder, first_row_product.path_file)
@@ -516,7 +479,7 @@ def compare(request):
         product = {"id": sketch_id}
         product["price"] = \
             PriceWinguardMain.objects.filter(price_winguard_sketch_id=product["id"]).values('price_b2c')[0]['price_b2c']
-        product["percent"] = arr_of_sale[int(product["id"]) % 20]
+        product["percent"] = (int(product["id"]) % 3 + 1) * 10 + (int(product["id"]) % 2) * 5
         product["saleprice"] = int(product["price"] * (1 + product["percent"] / 100))
         path = "".join(
             re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(price_winguard_sketch_id=product["id"]).path))
@@ -545,7 +508,7 @@ def favorite(request):
         product = {"id": sketch_id}
         product["price"] = \
             PriceWinguardMain.objects.filter(price_winguard_sketch_id=product["id"]).values('price_b2c')[0]['price_b2c']
-        product["percent"] = arr_of_sale[int(product["id"]) % 20]
+        product["percent"] = (int(product["id"]) % 3 + 1) * 10 + (int(product["id"]) % 2) * 5
         product["saleprice"] = int(product["price"] * (1 + product["percent"] / 100))
         path = "".join(
             re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(price_winguard_sketch_id=product["id"]).path))
