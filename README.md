@@ -2,7 +2,7 @@
 For styles was used Bootstrap
 For frontend and backend native django
 
-Redis was installed
+Redis was installed for cache
 
 1. git pull
 2. python manage.py collectstatic
