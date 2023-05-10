@@ -627,9 +627,6 @@ function changeWidth(value) {
         return total
     }
 
-
-
-
 //конец блока кода о калькуляторе и быстром просмотре
 
 

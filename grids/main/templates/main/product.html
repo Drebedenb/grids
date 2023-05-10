@@ -1095,11 +1095,18 @@
         changeInputValueById(idOfSelect, getInputValueById(optionId))
     }
 
+    function changeArchPercentToPrice() {
+        changeSpanTextById('price-arch', '+ ' + getTodayPrice().match(/\d+/)[0] * 0.3 + " руб.")
+    }
     function changePriceToday (newPrice) {
         changeSpanTextById("price-today", newPrice)
     }
     function changePriceOld (newPrice) {
         changeSpanTextById("price-old", newPrice)
+    }
+
+    function getTodayPrice () {
+        return getSpanTextById('price-today')
     }
     function getPercentOfPrice(){
         return +getSpanTextById("form-percent").match(/\d+/)[0]
@@ -1156,5 +1163,7 @@
     changeInputValueById("height", "100")
     changeInputValueById("amount", "1")
     changeForm()
+    changeArchPercentToPrice()
+
 </script>
 {% endblock %}
