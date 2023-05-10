@@ -192,8 +192,9 @@ def convert_int_and_array_to_str_for_sql(int_or_arr):
         return 'Error: Invalid'
 
 def get_products_by_categories(category_number, min_price, max_price, order_by_name, order_scending, limit):
-    products_list_from_cache = cache.get("category_" + str(category_number) + str(min_price) +
-                                         str(max_price) + order_by_name + order_scending + str(limit))
+    cache_key = "category_" + str(category_number) + "_" + str(min_price) + \
+                str(max_price) + order_by_name + order_scending + str(limit)
+    products_list_from_cache = cache.get(cache_key)
     if products_list_from_cache:
         return products_list_from_cache
     dictionary_of_orders = ['price', 'id', 'popularity', 'percent', 'asc', 'desc']
@@ -243,12 +244,12 @@ def get_products_by_categories(category_number, min_price, max_price, order_by_n
     products_list = []
     for product in products:  # TODO: переписать на ORM
         products_list.append(product)
-    cache.set("category_" + str(category_number) + str(min_price) + str(max_price) + order_by_name
-              + order_scending + str(limit), products_list, TTL_OF_CACHE_SECONDS)
+    cache.set(cache_key, products_list, TTL_OF_CACHE_SECONDS)
     return products_list
 
 def get_product_by_sketch_category_and_number(category, number):
-    product = cache.get("product_" + str(category) + "_" + str(number))
+    cache_key = "product_" + str(category) + "_" + str(number)
+    product = cache.get(cache_key)
     if product is None:
         query = """
             SELECT *,
@@ -269,7 +270,7 @@ def get_product_by_sketch_category_and_number(category, number):
         product_list = []
         for item in product:
             product_list.append(item)
-        cache.set("product_" + str(category) + "_" + str(number), product_list, TTL_OF_CACHE_SECONDS)
+        cache.set(cache_key, product_list, TTL_OF_CACHE_SECONDS)
         return product_list
     return product
 
@@ -292,35 +293,38 @@ def get_product_project_photos_eight(category, numberOfProduct):
 
 
 def count_products_by_category(category_number):
-    count = cache.get("count_" + str(category_number))
+    cache_key = "count_" + str(category_number)
+    count = cache.get(cache_key)
     if count is None:
         count = PriceWinguardSketch.objects.filter(category=category_number).count()
-        cache.set("count_" + str(category_number), count, TTL_OF_CACHE_SECONDS)
+        cache.set(cache_key, count, TTL_OF_CACHE_SECONDS)
     return count
 
 
 def get_categories_min_price(category_number):
+    cache_key = "min_price_" + str(category_number)
     if isinstance(category_number, int):
         category_number = convert_int_to_array(category_number)
-    min_price = cache.get("min_price_" + str(category_number))
+    min_price = cache.get(cache_key)
     if min_price is None:
         min_price = \
             PriceWinguardMain.objects.filter(price_winguard_sketch__category__in=category_number).aggregate(
                 Min('price_b2c'))[
                 'price_b2c__min']
-        cache.set("min_price_" + str(category_number), min_price, TTL_OF_CACHE_SECONDS)
+        cache.set(cache_key, min_price, TTL_OF_CACHE_SECONDS)
     return min_price
 
 
 def get_categories_max_price(category_number):
+    cache_key = "max_price_" + str(category_number)
     if isinstance(category_number, int):
         category_number = convert_int_to_array(category_number)
-    max_price = cache.get("max_price_" + str(category_number))
+    max_price = cache.get(cache_key)
     if max_price is None:
         max_price = PriceWinguardMain.objects.filter(price_winguard_sketch__category__in=category_number).values(
             'price_winguard_sketch__id') \
             .annotate(min_price=Min('price_b2c')).values('min_price').aggregate(Max('min_price'))['min_price__max']
-        cache.set("max_price_" + str(category_number), max_price, TTL_OF_CACHE_SECONDS)
+        cache.set(cache_key, max_price, TTL_OF_CACHE_SECONDS)
     return max_price
 
 
@@ -435,6 +439,7 @@ def product(request, category, file_number):
     context = {
         'title': 'Решетка на окно ' + str(first_row_product.path_folder) + '-' + str(first_row_product.path_file),
         'product': product,
+        'list_of_reviews': list_of_reviews,
         'list_of_open_types': list_of_open_types,
         'similar_grids_by_price': similar_grids_by_price,
         'photos_of_projects': photos_of_projects,
