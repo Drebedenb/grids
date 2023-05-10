@@ -200,7 +200,6 @@ def get_products_by_categories(category_number, min_price, max_price, order_by_n
     if order_by_name not in dictionary_of_orders or order_scending not in dictionary_of_orders:
         return []
     category_number = convert_int_and_array_to_str_for_sql(category_number)
-    print(category_number)
     if not (isinstance(min_price, int) and isinstance(max_price,int) and isinstance(limit,int)):
         return []
 
