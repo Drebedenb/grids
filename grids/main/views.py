@@ -88,25 +88,6 @@ list_of_photos_done_collapsed = [
     {"name": "photos/1-67/1.webp"}
 ]
 
-best_photos_in_every_category = {
-    '1': ['1-1/1.webp', '1-2/1.webp', '1-3/1.webp', '1-4/1.webp', '1-5/1.webp', '1-6/1.webp', '1-7/1.webp',
-          '1-8/1.webp'],
-    '2': ['1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp',
-          '1-1/1.webp'],
-    '3': ['1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp',
-          '1-1/1.webp'],
-    '4': ['1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp',
-          '1-1/1.webp'],
-    '5': ['1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp',
-          '1-1/1.webp'],
-    '6': ['1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp',
-          '1-1/1.webp'],
-    '7': ['1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp',
-          '1-1/1.webp'],
-    '8': ['1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp', '1-1/1.webp',
-          '1-1/1.webp'],
-}
-
 list_of_reviews = [
     {'id': 'review-1', 'author': 'Иван', 'author_avatar': 'avatar19.webp', 'project_photo': '1-19/1.webp',
      'description': 'Заказ №36378 Решетка на лоджию 3м2. Ответственные люди, я бы так назвал процесс взаимодействия с компанией. Все по плану, без заминок. Главное, что результат хороший и я им доволен.'},
@@ -402,6 +383,9 @@ count = {
     "ajur": count_products_by_category(3) + count_products_by_category(4),
     "vip": count_products_by_category(5) + count_products_by_category(6),
     "exlusive": count_products_by_category(7) + count_products_by_category(8),
+    'amount_of_all': count_products_by_category(1) + count_products_by_category(2) + count_products_by_category(3) +
+                     count_products_by_category(4) + count_products_by_category(5) + count_products_by_category(6) +
+                     count_products_by_category(7) + count_products_by_category(8)
 }
 
 
