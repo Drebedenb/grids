@@ -1,7 +1,7 @@
 import re
 import os
 
-from django.db.models import Min, Max, F, Count
+from django.db.models import Min, Max, F
 from django.db.models.functions import Round
 from django.http import HttpResponseNotFound
 from django.shortcuts import render
@@ -240,7 +240,8 @@ def get_products_by_categories(category_number, min_price, max_price, order_by_n
         path_folder=F('price_winguard_sketch__category'),
         path_file=F('price_winguard_sketch__number'),
         price=F('price_b2c'),
-        saleprice=Round(F('price_b2c') / (1 - F('percent') / 100), -1)
+        saleprice=Round(F('price_b2c') / (1 - F('percent') / 100), -1),
+        popularity=F('price_winguard_sketch__popularity')
     ).values('price_winguard_sketch__id').annotate(
         id=F('price_winguard_sketch__id'),
         percent=Min('percent'),
@@ -248,7 +249,8 @@ def get_products_by_categories(category_number, min_price, max_price, order_by_n
         path_folder=Min('path_folder'),
         path_file=Min('path_file'),
         price=Min('price_b2c'),
-        saleprice=Min('saleprice'),).order_by(f'{order_by_name}')[:limit]
+        saleprice=Min('saleprice'),
+        popularity=Min('popularity')).order_by(f'{order_by_name}')[:limit]
     cache.set(cache_key, queryset, TTL_OF_CACHE_SECONDS)
     return queryset
 
@@ -294,7 +296,7 @@ def get_product_project_photos_eight(category, numberOfProduct):
         img_list = []
     for i in range(len(img_list)):
         img_list[i] = f'projects/{category}/{category}-{initialNumberOfProduct}/' + img_list[i]
-    while len(img_list) < 8 and numberOfProduct < 200: # TODO: отвратительный хардкод
+    while len(img_list) < 8 and numberOfProduct < 200: # TODO: отвратительный хардкод пофиксить когда будут фотки работ
         numberOfProduct = numberOfProduct + 1
         if numberOfProduct == initialNumberOfProduct:
             continue
