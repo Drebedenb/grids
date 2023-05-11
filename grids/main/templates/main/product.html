@@ -1118,6 +1118,7 @@
         let width_of_rod = getInputValueById("width_of_rod").match(/\d{3,}/)[0]
         changePriceToday(width_of_rod + 'р/м²')
         changePriceOld(makeOldPrice(width_of_rod) + 'р/м²')
+        changeArchPercentToPrice()
         let width = +getInputValueById("width")
         let height = +getInputValueById("height")
         let amount = +getInputValueById("amount")
@@ -1163,7 +1164,6 @@
     changeInputValueById("height", "100")
     changeInputValueById("amount", "1")
     changeForm()
-    changeArchPercentToPrice()
 
 </script>
 {% endblock %}

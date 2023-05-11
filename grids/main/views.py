@@ -1,14 +1,15 @@
 import re
 import os
 
-from django.db.models import Min, Max
+from django.db.models import Min, Max, F, Count
+from django.db.models.functions import Round
 from django.http import HttpResponseNotFound
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.cache import cache
 from urllib.parse import urlencode
 import collections.abc
-#
+
 # class MockDjangoRedis:
 #     def get(self, arg):
 #         return None
@@ -190,20 +191,20 @@ russian_categories = {
     "топ-100-кованых-оконных-решеток": {"title": "Топ-100", "number_of_category": ALL_CATEGORIES},
     "топ-100-сварных-решеток-на-окна": {"title": "Топ-100", "number_of_category": ALL_CATEGORIES},
 
-    "решетки-на-окна-эконом-класс": {"title": "Эконом", "number_of_category": 1},
-    "дутые-решетки-на-окна-эконом-класс": {"title": "Дутые Эконом", "number_of_category": 2},
+    "решетки-на-окна-эконом-класс": {"title": "Эконом", "number_of_category": [1]},
+    "дутые-решетки-на-окна-эконом-класс": {"title": "Дутые Эконом", "number_of_category": [2]},
     "дутые-и-обычные-решетки-на-окна-эконом-класс": {"title": "Дутые и обычные эконом", "number_of_category": [1, 2]},
 
-    "ажурные-решетки-на-окна": {"title": "Ажурные", "number_of_category": 3},
-    "дутые-ажурные-решетки": {"title": "Дутые Ажурные", "number_of_category": 4},
+    "ажурные-решетки-на-окна": {"title": "Ажурные", "number_of_category": [3]},
+    "дутые-ажурные-решетки": {"title": "Дутые Ажурные", "number_of_category": [4]},
     "дутые-и-обычные-ажурные-решетки": {"title": "Дутые и Обычные Ажурные", "number_of_category": [3, 4]},
 
-    "кованые-решетки-на-окна-вип-класс": {"title": "VIP", "number_of_category": 5},
-    "кованые-дутые-решетки-вип-класса": {"title": "Дутые VIP", "number_of_category": 6},
+    "кованые-решетки-на-окна-вип-класс": {"title": "VIP", "number_of_category": [5]},
+    "кованые-дутые-решетки-вип-класса": {"title": "Дутые VIP", "number_of_category": [6]},
     "кованые-дутые-и-обычные-решетки-вип-класса": {"title": "Дутые и Обычные VIP", "number_of_category": [5, 6]},
 
-    "эксклюзивные-кованые-решетки": {"title": "Эксклюзив", "number_of_category": 7},
-    "дутые-эксклюзивные-решетки": {"title": "Дутые Эксклюзив", "number_of_category": 8},
+    "эксклюзивные-кованые-решетки": {"title": "Эксклюзив", "number_of_category": [7]},
+    "дутые-эксклюзивные-решетки": {"title": "Дутые Эксклюзив", "number_of_category": [8]},
     "дутые-и-обычные-эксклюзивные-решетки": {"title": "Дутые и Обычные Эксклюзив", "number_of_category": [7, 8]},
 }
 
@@ -220,98 +221,59 @@ def get_paginated_url(request, page_number):
 def convert_int_to_array(integer):
     return [integer]
 
-
-def convert_int_and_array_to_str_for_sql(int_or_arr):
-    if isinstance(int_or_arr, int):
-        return "(" + str(int_or_arr) + ")"
-    elif isinstance((int_or_arr), collections.abc.Sequence):
-        return "(" + ",".join(map(str, int_or_arr)) + ")"
-    else:
-        return 'Error: Invalid'
-
-
 def get_products_by_categories(category_number, min_price, max_price, order_by_name, order_scending, limit):
     cache_key = "category_" + str(category_number) + "_" + str(min_price) + \
                 str(max_price) + order_by_name + order_scending + str(limit)
     products_list_from_cache = cache.get(cache_key)
     if products_list_from_cache:
         return products_list_from_cache
-    dictionary_of_orders = ['price', 'id', 'popularity', 'percent', 'asc', 'desc']
-    if order_by_name not in dictionary_of_orders or order_scending not in dictionary_of_orders:
-        return []
-    category_number = convert_int_and_array_to_str_for_sql(category_number)
-    if not (isinstance(min_price, int) and isinstance(max_price, int) and isinstance(limit, int)):
-        return []
 
-    query = """SELECT *,
-                        ROUND(price / (1-percent/100), -1) AS saleprice
-                        FROM
-                        (SELECT MIN(price_b2c) AS price, ps.id, pf.path, (MOD(ps.id, 3) + 1)*10 + (MOD(ps.id,2) * 5) AS percent,
-                        (MOD(ps.id,10) + MOD(ps.id,3) + MOD(ps.id,7) + MOD(ps.id,5) + MOD(ps.id,11)) AS stars_count,
-                        ps.category AS path_folder,
-                        ps.number AS path_file
-                        FROM price.price_winguard_main pm
-                        JOIN price.price_winguard_sketch ps ON pm.price_winguard_sketch_id=ps.id
-                        JOIN price.price_winguard_files pf ON pm.price_winguard_sketch_id=pf.price_winguard_sketch_id
-                        WHERE category IN {category_number}
-                        GROUP BY ps.id, pf.path
-                        HAVING price > {min_price} AND price < {max_price}
-                        ORDER BY {order_by_name} {order_scending}
-                        LIMIT {limit}) dup""".format(category_number=category_number, min_price=min_price,
-                                                     max_price=max_price
-                                                     , order_by_name=order_by_name, order_scending=order_scending,
-                                                     limit=limit)
-    # subquery = PriceWinguardMain.objects.filter(
-    #     price_winguard_sketch__category=category_number,
-    #     price_b2c__gt=min_price,
-    #     price_b2c__lt=max_price,
-    # ).values(
-    #     'price_winguard_sketch_id',
-    #     'price_winguard_sketch__pricewinguardfiles__path',
-    # ).annotate(
-    #     price=F('price_b2c'),
-    #     percent=(Mod('price_winguard_sketch_id', 3) + 1) * 10 + (Mod('price_winguard_sketch_id', 2) * 5),
-    #     path_folder=Value(category_number, output_field=IntegerField()),
-    #
-    # ).order_by('{order_by_name}'.format(order_by_name=order_by_name))[:limit]
-    #
-    # query = subquery.annotate(
-    #     saleprice=Round(F('price') / (1 - F('percent') / 100), -1),
-    # )
-
-    products = PriceWinguardMain.objects.raw(query)
-    products_list = []
-    for product in products:  # TODO: переписать на ORM
-        products_list.append(product)
-    cache.set(cache_key, products_list, TTL_OF_CACHE_SECONDS)
-    return products_list
+    order_by_name = order_by_name if order_scending == 'asc' else '-' + order_by_name
+    # в прошлых версиях проекта GIT можно найти SQL запрос аналогичный этому ОРМ запросу
+    queryset = PriceWinguardMain.objects.filter(
+        price_winguard_sketch__category__in=category_number,
+        price_b2c__gt=min_price,
+        price_b2c__lt=max_price
+    ).annotate(
+        percent=(F('price_winguard_sketch__id') % 3 + 1) * 10 + (F('price_winguard_sketch__id') % 2 * 5),
+        stars_count=(F('price_winguard_sketch__id') % 10 + F('price_winguard_sketch__id') % 3 + F('price_winguard_sketch__id') % 7 + F('price_winguard_sketch__id') % 5 + F('price_winguard_sketch__id') % 11),
+        path_folder=F('price_winguard_sketch__category'),
+        path_file=F('price_winguard_sketch__number'),
+        price=F('price_b2c'),
+        saleprice=Round(F('price_b2c') / (1 - F('percent') / 100), -1)
+    ).values('price_winguard_sketch__id').annotate(
+        id=F('price_winguard_sketch__id'),
+        percent=Min('percent'),
+        stars_count=Min('stars_count'),
+        path_folder=Min('path_folder'),
+        path_file=Min('path_file'),
+        price=Min('price_b2c'),
+        saleprice=Min('saleprice'),).order_by(f'{order_by_name}')[:limit]
+    cache.set(cache_key, queryset, TTL_OF_CACHE_SECONDS)
+    return queryset
 
 
 def get_product_by_sketch_category_and_number(category, number):
+    if isinstance(category, int):
+        category = [category]
     cache_key = "product_" + str(category) + "_" + str(number)
     product = cache.get(cache_key)
-    if product is None:
-        query = """
-            SELECT *,
-            ROUND(price_b2c / (1-percent/100), -1) AS saleprice
-            FROM
-            (
-            SELECT  ps.category AS path_folder, pm.price_b2c, pm.name, ps.id, 
-            (MOD(ps.id, 3) + 1)*10 + (MOD(ps.id,2) * 5) AS percent, 
-            (MOD(ps.id,10) + MOD(ps.id,3) + MOD(ps.id,7) + MOD(ps.id,5) + MOD(ps.id,11)) AS stars_count,
-            ps.number AS path_file 
-            FROM price.price_winguard_main pm
-            JOIN price.price_winguard_sketch ps ON pm.price_winguard_sketch_id=ps.id
-            JOIN price.price_winguard_files pf ON pm.price_winguard_sketch_id=pf.price_winguard_sketch_id
-            WHERE category={category} AND number={number}
-            ) inner_query
-        """.format(category=category, number=number)
-        product = PriceWinguardMain.objects.raw(query)  # TODO: посмотреть что будет при замене на ORM
-        product_list = []
-        for item in product:
-            product_list.append(item)
-        cache.set(cache_key, product_list, TTL_OF_CACHE_SECONDS)
-        return product_list
+    if product:
+        return product
+    product = PriceWinguardMain.objects.filter(
+        price_winguard_sketch__category__in=category,
+        price_winguard_sketch__number=number,
+    ).annotate(
+        percent=(F('price_winguard_sketch__id') % 3 + 1) * 10 + (F('price_winguard_sketch__id') % 2 * 5),
+        stars_count=(F('price_winguard_sketch__id') % 10 + F('price_winguard_sketch__id') % 3 + F(
+            'price_winguard_sketch__id') % 7 + F('price_winguard_sketch__id') % 5 + F(
+            'price_winguard_sketch__id') % 11),
+        path_folder=F('price_winguard_sketch__category'),
+        path_file=F('price_winguard_sketch__number'),
+        price=F('price_b2c'),
+        saleprice=Round(F('price_b2c') / (1 - F('percent') / 100), -1)
+    )
+    cache.set(cache_key, product, TTL_OF_CACHE_SECONDS)
     return product
 
 
@@ -390,7 +352,7 @@ count = {
 
 
 def index(request):
-    leaders_of_selling = get_products_by_categories(1, 0, 99999, 'id', 'asc', 16)
+    leaders_of_selling = get_products_by_categories([1], 0, 99999, 'id', 'asc', 16)
     min_price_1 = get_categories_min_price(1)
     min_price_2 = get_categories_min_price(3)
     min_price_3 = get_categories_min_price(5)
@@ -442,7 +404,7 @@ def catalog_category(request, category_name):
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
 
-    leaders_of_selling = get_products_by_categories(5, min_price_for_sort, max_price_for_sort,
+    leaders_of_selling = get_products_by_categories([5], min_price_for_sort, max_price_for_sort,
                                                     order_type, order_scending, 15)
     context = {
         'title': 'Каталог металлических решеток',
@@ -485,7 +447,7 @@ price_step_for_category = {
 def product(request, category, file_number):
     product = get_product_by_sketch_category_and_number(category, file_number)
     first_row_product = product[0]
-    similar_grids_by_price = get_products_by_categories(first_row_product.path_folder,
+    similar_grids_by_price = get_products_by_categories([first_row_product.path_folder],
                                                         first_row_product.price_b2c - price_step_for_category[
                                                             first_row_product.path_folder],
                                                         first_row_product.price_b2c + price_step_for_category[
