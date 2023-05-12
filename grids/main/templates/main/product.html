@@ -379,7 +379,7 @@
                                                             <span class="ps-4 ps-lg-0 fs-7 fs-lg-9  text-secondary">ширина, см</span>
                                                         </div>
                                                         <div class="col-6 align-items-center d-flex">
-                                                            <input class="form-control my-5 form-control-sm text-muted  rounded-2" id="width" oninput="changeForm()" placeholder="100 см." type="text">
+                                                            <input  class="form-control my-5 form-control-sm text-muted  rounded-2" id="width" oninput="changeForm()" placeholder="100 см." type="text"">
                                                         </div>                                                     
                                                     </div>
                                                
@@ -390,7 +390,7 @@
                                                             <span class="ps-4 ps-lg-0 fs-7 fs-lg-9 text-secondary">высота, см</span>
                                                         </div>
                                                         <div class="col-6 align-items-center d-flex">
-                                                            <input class="form-control my-5  form-control-sm text-muted  rounded-2" id="height" oninput="changeForm()" placeholder="100 см." type="text">
+                                                            <input  class="form-control my-5  form-control-sm text-muted  rounded-2" id="height" oninput="changeForm()" placeholder="100 см." type="text"">
                                                         </div>                                                     
                                                     </div>
                                                
@@ -1079,6 +1079,42 @@
     </div>
 </div>
 <script>
+    //блок кода о валидации с помощью js
+    // Restricts input for the given textbox to the given inputFilter function.
+    function setInputFilter(textbox, inputFilter, errMsg) {
+      [ "input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop", "focusout" ].forEach(function(event) {
+        textbox.addEventListener(event, function(e) {
+          if (inputFilter(this.value)) {
+            // Accepted value.
+            if ([ "keydown", "mousedown", "focusout" ].indexOf(e.type) >= 0){
+              this.classList.remove("input-error");
+              this.setCustomValidity("");
+            }
+
+            this.oldValue = this.value;
+            this.oldSelectionStart = this.selectionStart;
+            this.oldSelectionEnd = this.selectionEnd;
+          }
+          else if (this.hasOwnProperty("oldValue")) {
+            // Rejected value: restore the previous one.
+            this.classList.add("input-error");
+            this.setCustomValidity(errMsg);
+            this.reportValidity();
+            this.value = this.oldValue;
+            this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+          }
+          else {
+            // Rejected value: nothing to restore.
+            this.value = "";
+          }
+        });
+      });
+    }
+    setInputFilter(document.getElementById("width"), function(value) {
+        return /^\d*\.?\d*$/.test(value); // Allow digits and '.' only, using a RegExp.
+        }, "Разрешены только цифры и знак точки.");
+
+    //блок кода о подсчетах в калькуляторе
     function getInputValueById(id) {
         return document.getElementById(id).value
     }
@@ -1096,7 +1132,7 @@
     }
 
     function changeArchPercentToPrice() {
-        changeSpanTextById('price-arch', '+ ' + getTodayPrice().match(/\d+/)[0] * 0.3 + " руб.")
+        changeSpanTextById('price-arch', '+ ' + getTotalPrice().match(/\d+/)[0] * 0.3 + " руб.")
     }
     function changePriceToday (newPrice) {
         changeSpanTextById("price-today", newPrice)
@@ -1114,11 +1150,13 @@
     function makeOldPrice(price){
         return Math.round((price/(1 - (getPercentOfPrice()/100)))/10) * 10
     }
+    function getTotalPrice() {
+        return document.getElementById("total").textContent
+    }
     function changeForm() {
         let width_of_rod = getInputValueById("width_of_rod").match(/\d{3,}/)[0]
         changePriceToday(width_of_rod + 'р/м²')
         changePriceOld(makeOldPrice(width_of_rod) + 'р/м²')
-        changeArchPercentToPrice()
         let width = +getInputValueById("width")
         let height = +getInputValueById("height")
         let amount = +getInputValueById("amount")
@@ -1164,6 +1202,6 @@
     changeInputValueById("height", "100")
     changeInputValueById("amount", "1")
     changeForm()
-
+    changeArchPercentToPrice()
 </script>
 {% endblock %}
