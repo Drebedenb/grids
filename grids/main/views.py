@@ -167,45 +167,45 @@ list_of_open_types = [
 
 ALL_CATEGORIES = [1, 2, 3, 4, 5, 6, 7, 8]
 russian_categories = {
-    "металлические-решетки-на-окна": {"title": "Все", "number_of_category": ALL_CATEGORIES},
-    "дутые-решетки-на-окна": {"title": "Дутые", "number_of_category": [2, 4, 6, 8]},
-    "решетки-на-окна-без-дутости": {"title": "Прямые", "number_of_category": [1, 3, 5, 7]},
-    "сварные-решетки-на-окна": {"title": "Сварные", "number_of_category": [1, 3]},
-    "кованые-решетки-на-окна": {"title": "Кованые", "number_of_category": [5, 7]},
+    "металлические-решетки-на-окна": {"title": "Все металлические решетки на окна", "number_of_category": ALL_CATEGORIES},
+    "дутые-решетки-на-окна": {"title": "Дутые металлические решетки на окна", "number_of_category": [2, 4, 6, 8]},
+    "решетки-на-окна-без-дутости": {"title": "Прямые металлические решетки на окна", "number_of_category": [1, 3, 5, 7]},
+    "сварные-решетки-на-окна": {"title": "Сварные металлические решетки на окна", "number_of_category": [1, 3]},
+    "кованые-решетки-на-окна": {"title": "Кованые металлические решетки на окна", "number_of_category": [5, 7]},
 
-    "арочные-решетки-на-окна": {"title": "Арочные", "number_of_category": ALL_CATEGORIES},
-    "распашные-решетки-на-окна": {"title": "Распашные", "number_of_category": ALL_CATEGORIES},
-    "решетки-на-балкон": {"title": "На балкон", "number_of_category": ALL_CATEGORIES},
-    "решетки-на-приямки": {"title": "На приямки", "number_of_category": ALL_CATEGORIES},
-    "решетки-на-лоджию": {"title": "На лоджию", "number_of_category": ALL_CATEGORIES},
-    "решетки-для-квартиры": {"title": "Для квартиры", "number_of_category": ALL_CATEGORIES},
-    "решетки-на-первый-этаж": {"title": "На первый этаж", "number_of_category": ALL_CATEGORIES},
-    "решетки-для-цоколя": {"title": "Цоколь/Подвал", "number_of_category": ALL_CATEGORIES},
-    "решетки-для-дома": {"title": "Для дома", "number_of_category": ALL_CATEGORIES},
-    "решетки-от-выпадения-детей": {"title": "Кид-стоп", "number_of_category": ALL_CATEGORIES},
-    "решетки-на-кондиционер": {"title": "На кондиционер", "number_of_category": ALL_CATEGORIES},
-    "внутренние-решетки": {"title": "Внутренние", "number_of_category": ALL_CATEGORIES},
-    "решетки-для-дачи": {"title": "Для дачи", "number_of_category": ALL_CATEGORIES},
-    "решетки-без-открывания": {"title": "Без открывания", "number_of_category": ALL_CATEGORIES},
+    "арочные-решетки-на-окна": {"title": "Арочные металлические решетки на окна", "number_of_category": ALL_CATEGORIES},
+    "распашные-решетки-на-окна": {"title": "Распашные металлические решетки на окна", "number_of_category": ALL_CATEGORIES},
+    "решетки-на-балкон": {"title": "Металлические решетки на балкон", "number_of_category": ALL_CATEGORIES},
+    "решетки-на-приямки": {"title": "Металлические решетки на приямки", "number_of_category": ALL_CATEGORIES},
+    "решетки-на-лоджию": {"title": "Металлические решетки на лоджию", "number_of_category": ALL_CATEGORIES},
+    "решетки-для-квартиры": {"title": "Металлические решетки на окна квартиры", "number_of_category": ALL_CATEGORIES},
+    "решетки-на-первый-этаж": {"title": "Металлические решетки на окна первого этажа", "number_of_category": ALL_CATEGORIES},
+    "решетки-для-цоколя": {"title": "Металлические решетки на цоколь или в подвал", "number_of_category": ALL_CATEGORIES},
+    "решетки-для-дома": {"title": "Металлические решетки на окна дома", "number_of_category": ALL_CATEGORIES},
+    "решетки-от-выпадения-детей": {"title": "Металлические решетки на окна от выпадения детей (кид-стоп)", "number_of_category": ALL_CATEGORIES},
+    "решетки-на-кондиционер": {"title": "Металлические решетки на кондиционер", "number_of_category": ALL_CATEGORIES},
+    "внутренние-решетки": {"title": "Внутренние металлические решетки на окна", "number_of_category": ALL_CATEGORIES},
+    "решетки-для-дачи": {"title": "Металлические решетки на окна для дачи", "number_of_category": ALL_CATEGORIES},
+    "решетки-без-открывания": {"title": "Металлические решетки на окна без открывания", "number_of_category": ALL_CATEGORIES},
 
-    "топ-100-кованых-оконных-решеток": {"title": "Топ-100", "number_of_category": ALL_CATEGORIES},
-    "топ-100-сварных-решеток-на-окна": {"title": "Топ-100", "number_of_category": ALL_CATEGORIES},
+    "топ-100-кованых-оконных-решеток": {"title": "Кованые оконные решетки | топ - 100 эскизов", "number_of_category": ALL_CATEGORIES},
+    "топ-100-сварных-решеток-на-окна": {"title": "Сварные оконные решетки | топ - 100 эскизов", "number_of_category": ALL_CATEGORIES},
 
-    "решетки-на-окна-эконом-класс": {"title": "Эконом", "number_of_category": [1]},
-    "дутые-решетки-на-окна-эконом-класс": {"title": "Дутые Эконом", "number_of_category": [2]},
-    "дутые-и-обычные-решетки-на-окна-эконом-класс": {"title": "Дутые и обычные эконом", "number_of_category": [1, 2]},
+    "решетки-на-окна-эконом-класс": {"title": "Металлические решетки на окна эконом класс", "number_of_category": [1]},
+    "дутые-решетки-на-окна-эконом-класс": {"title": "Дутые эконом металлические решетки на окна", "number_of_category": [2]},
+    "дутые-и-обычные-решетки-на-окна-эконом-класс": {"title": "Дутые и обычные эконом металлические решетки на окна", "number_of_category": [1, 2]},
 
-    "ажурные-решетки-на-окна": {"title": "Ажурные", "number_of_category": [3]},
-    "дутые-ажурные-решетки": {"title": "Дутые Ажурные", "number_of_category": [4]},
-    "дутые-и-обычные-ажурные-решетки": {"title": "Дутые и Обычные Ажурные", "number_of_category": [3, 4]},
+    "ажурные-решетки-на-окна": {"title": "Ажурные металлические решетки на окна", "number_of_category": [3]},
+    "дутые-ажурные-решетки": {"title": "Дутые ажурные металлические решетки на окна", "number_of_category": [4]},
+    "дутые-и-обычные-ажурные-решетки": {"title": "Дутые и обычные ажурные металлические решетки на окна", "number_of_category": [3, 4]},
 
-    "кованые-решетки-на-окна-вип-класс": {"title": "VIP", "number_of_category": [5]},
-    "кованые-дутые-решетки-вип-класса": {"title": "Дутые VIP", "number_of_category": [6]},
-    "кованые-дутые-и-обычные-решетки-вип-класса": {"title": "Дутые и Обычные VIP", "number_of_category": [5, 6]},
+    "кованые-решетки-на-окна-вип-класс": {"title": "Металлические решетки на окна vip класс", "number_of_category": [5]},
+    "кованые-дутые-решетки-вип-класса": {"title": "Дутые металлические решетки на окна vip класс", "number_of_category": [6]},
+    "кованые-дутые-и-обычные-решетки-вип-класса": {"title": "Дутые и обычные металлические решетки на окна vip класс", "number_of_category": [5, 6]},
 
-    "эксклюзивные-кованые-решетки": {"title": "Эксклюзив", "number_of_category": [7]},
-    "дутые-эксклюзивные-решетки": {"title": "Дутые Эксклюзив", "number_of_category": [8]},
-    "дутые-и-обычные-эксклюзивные-решетки": {"title": "Дутые и Обычные Эксклюзив", "number_of_category": [7, 8]},
+    "эксклюзивные-кованые-решетки": {"title": "Металлические решетки на окна эксклюзив", "number_of_category": [7]},
+    "дутые-эксклюзивные-решетки": {"title": "Дутые металлические решетки на окна эксклюзив", "number_of_category": [8]},
+    "дутые-и-обычные-эксклюзивные-решетки": {"title": "Дутые и обычные металлические решетки на окна эксклюзив", "number_of_category": [7, 8]},
 }
 
 # one day cache will be stored
@@ -362,7 +362,7 @@ def index(request):
     short_list_of_reviews = list_of_reviews[:4]
     short_list_of_reviews_collapsed = list_of_reviews_collapsed[:8]
     context = {
-        'title': 'Главная страница',
+        'title': 'Металлические решетки на окна с установкой',
         'list_of_grids_types': list_of_grids_types,
         'leaders_of_selling': leaders_of_selling,
         'list_of_photos_done': list_of_photos_done,
@@ -409,7 +409,7 @@ def catalog_category(request, category_name):
     leaders_of_selling = get_products_by_categories([5], min_price_for_sort, max_price_for_sort,
                                                     order_type, order_scending, 15)
     context = {
-        'title': 'Каталог металлических решеток',
+        'title': category['title'],
         'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling,
         'min_price': min_price, 'max_price': max_price, 'list_of_photos_done': list_of_photos_done,
         'list_of_open_types': list_of_open_types,
@@ -417,8 +417,8 @@ def catalog_category(request, category_name):
         'list_of_kinds': list_of_kinds,
         'list_of_popular_sections': list_of_popular_sections,
 
-        'prev_url': get_paginated_url(request, products.previous_page_number()) if products.has_previous() else None,
         # for pagination
+        'prev_url': get_paginated_url(request, products.previous_page_number()) if products.has_previous() else None,
         'next_url': get_paginated_url(request, products.next_page_number()) if products.has_next() else None,
 
         'count': count
