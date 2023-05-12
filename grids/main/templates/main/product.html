@@ -20,10 +20,10 @@
                         <div id="carouselExampleControllers_product" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-inner">
                               <div class="carousel-item active">
-                                <img src="{% static 'main/img/sale_baners/sale_baner.webp' %}"  class="d-block w-100 rounded-3" alt="sale_baner">
+                                <img src="{% static 'main/img/sale_baners/sale_baner.webp' %}"  class="d-block w-100 rounded-3" alt="Скидка 20 процентов при полной предоплате">
                               </div>
                               <div class="carousel-item">
-                                <img src="{% static 'main/img/sale_baners/sale_baner2.webp' %}"  class="d-block w-100 rounded-3" alt="sale_baner2">
+                                <img src="{% static 'main/img/sale_baners/sale_baner2.webp' %}"  class="d-block w-100 rounded-3" alt="Скидка 10 процентов при оплате в день приезда замерщика">
                               </div>
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControllers_product" data-bs-slide="prev">
@@ -63,19 +63,19 @@
                 <div class="row row-cols-4 d-lg-flex d-none gy-10 mb-10">
                     <div class="col">
                         <a class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20  px-10 py-4" href="/решетки-на-окна-эконом-класс">
-                            <h3 class="w-50 h5 fs-lg-8 fs-7 fw-medium ls-sm text-uppercase mb-0">Эконом решетки</h3><span class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2" style="min-width: 3rem;">149</span></a>
+                            <h3 class="w-50 h5 fs-lg-8 fs-7 fw-medium ls-sm text-uppercase mb-0">Эконом решетки</h3><span class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2" style="min-width: 3rem;">{{count.economy}}</span></a>
                     </div>
                     <div class="col">
                         <a class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20  px-10 py-4" href="/ажурные-решетки-на-окна">
-                            <h3 class="w-50 h5 fs-lg-8 fs-7 fw-medium ls-sm text-uppercase mb-0">Ажурные решетки</h3><span class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2" style="min-width: 3rem;">111</span></a>
+                            <h3 class="w-50 h5 fs-lg-8 fs-7 fw-medium ls-sm text-uppercase mb-0">Ажурные решетки</h3><span class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2" style="min-width: 3rem;">{{count.ajur}}</span></a>
                     </div>
                     <div class="col">
                         <a class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20  px-10 py-4" href="/кованые-решетки-на-окна-вип-класс">
-                            <h3 class="w-50 h5 fs-lg-8 fs-7 fw-medium ls-sm text-uppercase mb-0">VIP <br/> решетки</h3><span class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2" style="min-width: 3rem;">75</span></a>
+                            <h3 class="w-50 h5 fs-lg-8 fs-7 fw-medium ls-sm text-uppercase mb-0">VIP <br/> решетки</h3><span class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2" style="min-width: 3rem;">{{count.vip}}</span></a>
                     </div>
                     <div class="col">
                         <a class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20  px-10 py-4" href="/эксклюзивные-кованые-решетки">
-                            <h3 class="w-50 h5 fs-lg-8 fs-7 fw-medium ls-sm text-uppercase mb-0">Эксклюзив решетки</h3><span class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2" style="min-width: 3rem;">50</span></a>
+                            <h3 class="w-50 h5 fs-lg-8 fs-7 fw-medium ls-sm text-uppercase mb-0">Эксклюзив решетки</h3><span class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2" style="min-width: 3rem;">{{count.exlusive}}</span></a>
                     </div>
                 </div>
                 <div class="row gy-lg-0 gy-20">
@@ -117,7 +117,7 @@
                         </div>
 
 
-                        <div class="left_sidebar"><img class="w-100" src="{% static 'main/img/sale_baners/sale_baner3.webp' %}" alt="sale">
+                        <div class="left_sidebar"><img class="w-100" src="{% static 'main/img/sale_baners/sale_baner3.webp' %}" alt="Решётка на заказ">
 
                             <!-- POCHEMY NASHA KOMPANIYA -->
                             <section>
@@ -146,7 +146,7 @@
                                                 </div>
                                                 <div class="col-8 px-lg-0">
                                                     <h5 class="card-title fs-lg-7 fs-10 fw-normal mt-3 text-uppercase mb-0">Готовые эскизы решеток</h5>
-                                                    <p class="card-text fs-lg-7 fs-7 text-muted ">615 вариантов металлических решеток на окна, двери и балкон</p>
+                                                    <p class="card-text fs-lg-7 fs-7 text-muted ">{{count.amount_of_all}} варианта металлических решеток на окна, двери и балкон</p>
                                                 </div>
 
                                             </div>
@@ -240,12 +240,12 @@
                                                     <div class="carousel-inner">
                                                       <div class="carousel-item active">
                                                         <div class="ratio overflow-hidden" style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 400px;">
-                                                            <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{product.0.path_folder}}/solid/{{product.0.path_file}}.webp">
+                                                            <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{product.0.path_folder}}/solid/{{product.0.path_file}}.webp" alt="Фото решётки">
                                                             </div>
                                                       </div>
                                                       <div class="carousel-item">
                                                         <div class="ratio overflow-hidden" style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 400px;">
-                                                            <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{product.0.path_folder}}/solid/{{product.0.path_file}} F.webp">
+                                                            <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{product.0.path_folder}}/solid/{{product.0.path_file}} F.webp" alt="Фото решётки">
                                                             </div>
                                                       </div>
                                                    
@@ -386,7 +386,7 @@
                                                             <span class="ps-4 ps-lg-0 fs-7 fs-lg-9  text-secondary">ширина, см</span>
                                                         </div>
                                                         <div class="col-6 align-items-center d-flex">
-                                                            <input class="form-control my-5 form-control-sm text-muted  rounded-2" id="width" oninput="changeForm()" placeholder="100 см." type="text">
+                                                            <input  class="form-control my-5 form-control-sm text-muted  rounded-2" id="width" oninput="changeForm()" placeholder="100 см." type="text"">
                                                         </div>                                                     
                                                     </div>
                                                
@@ -397,7 +397,7 @@
                                                             <span class="ps-4 ps-lg-0 fs-7 fs-lg-9 text-secondary">высота, см</span>
                                                         </div>
                                                         <div class="col-6 align-items-center d-flex">
-                                                            <input class="form-control my-5  form-control-sm text-muted  rounded-2" id="height" oninput="changeForm()" placeholder="100 см." type="text">
+                                                            <input  class="form-control my-5  form-control-sm text-muted  rounded-2" id="height" oninput="changeForm()" placeholder="100 см." type="text"">
                                                         </div>                                                     
                                                     </div>
                                                
@@ -475,7 +475,7 @@
                                         <button class="nav-link w-100 px-3" id="product-reviews-tab" data-bs-toggle="tab" data-bs-target="#product-reviews-tab-pane" type="button" role="tab">Отзывы</button>
                                     </li>
                                     <li class="nav-item" style="flex: 1 0 0%">
-                                        <button class="nav-link w-100 px-3" id="product-garanty-tab" data-bs-toggle="tab" data-bs-target="#product-garanty-tab-pane" type="button" role="tab">Услуги</button>
+                                        <button class="nav-link w-100 px-3" id="product-garanty-tab" data-bs-toggle="tab" data-bs-target="#product-garanty-tab-pane" type="button" role="tab">Гарантия</button>
                                     </li>
                                    
                                     <li class="nav-item" style="flex: 1 0 0%">
@@ -682,11 +682,11 @@
                                                     <div class="carousel-inner">
                                                       <div class="carousel-item active">
                                                         <img class="rounded-2 object-fit-contain w-100" src="{% static 'main/img/delivery-slide.webp' %}"
-                                                        alt="delivery-slide"/>
+                                                        alt="Доставка по всей Московской области"/>
                                                       </div>
                                                       <div class="carousel-item">
                                                         <img class="rounded-2 object-fit-contain w-100" src="{% static 'main/img/delivery-slide2.webp' %}"
-                                                        alt="delivery-slide"/>
+                                                        alt="Бесплатная доставка по московской области"/>
                                                       </div>
                                                     </div>
                                                     <button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleControlsForDelivery" data-bs-slide="prev">
@@ -804,320 +804,26 @@
                                         <h3 class="fs-10 fs-lg-13 text-uppercase">Отзывы довольных клиентов</h3>
                                         <div id="carouselExampleControlz" class="carousel slide" data-bs-ride="carousel" data-bs-interval="10000">
                                             <div class="carousel-inner">
-                                              <div class="carousel-item active "  >
-                                                <div class="row row-cols-lg-3 row-cols-1 gy-lg-20 gy-10">
-                                                    <div class="col">
-                                                        <div class="card h-100 rounded-lg-4 rounded-3">
-                                                            <div class="card-body p-lg-15 pt-10 pb-lg-15">
-                                                                <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                                                                    <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar19.webp' %}"
-                                                                                             alt="Иван Семенович Г."/>
-                                                                    </div>
-                                                                    <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                                                        <h6 class="fs-7 mb-2">Иван Семенович Г.</h6>
-                                                                </div>
-                                                                    
-                                                                    <a class="btn btn-outline-black btn-sm btn-wide-lg z-2 w-100"
-                                                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Смотреть фото</a>
-                                                                    <!-- Modal -->
-                                                                    
-                                                                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                                <div class="modal-dialog">
-                                                                                <div class="modal-content ">
-                                                                                    <div class="modal-body p-5">
-                                                                                        <button type="button" class=" position-absolute  btn_close rounded-2 " aria-label="Close" data-bs-dismiss="modal">
-                                                                                            {% include 'main/icons/btn_close.html' with classes="svg-icon"%}
-                                                                                        </button>
-                                                                                        
-                                                                                        <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review1.webp' %}"
-                                                                                        alt="Иван Семенович Г." />
-                                                                                        <a href="#"> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal"> Перейти в карточку товара</button></a>
-                                                                                    </div>
-                                                                                  
-                                                                                </div>
-                                                                                </div>
-                                                                            </div>
-                                                                </div>
-                                                                <p class="fs-lg-8 fs-6 fw-light mb-0">Заказ №36378 Решетка на лоджию 3м2. Ответственные люди, я бы так назвал процесс взаимодействия с компанией. Все по плану, без заминок. Главное, что результат хороший и я им доволен.
-                                                                </p>
-                                                            </div>
+                                                {% for review in list_of_reviews %}
+                                                    {% if forloop.counter == 1%}
+                                                    <div class="carousel-item active">
+                                                        <div class="row row-cols-lg-3 row-cols-1 gy-lg-20 gy-10">
+                                                            {% include 'main/components/review.html' with id=review.id author_avatar=review.author_avatar project_photo=review.project_photo author=review.author description=review.description%}
+                                                    {% elif forloop.counter == list_of_reviews|length %}
+                                                            {% include 'main/components/review.html' with id=review.id author_avatar=review.author_avatar project_photo=review.project_photo author=review.author description=review.description%}
                                                         </div>
                                                     </div>
-                                                    <div class="col d-none d-lg-block">
-                                                        <div class="card h-100 rounded-lg-4 rounded-3">
-                                                            <div class="card-body p-lg-15 pt-10 pb-lg-15">
-                                                                <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                                                                    <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar25.webp' %}"
-                                                                                             alt="Янина Ш."/></div>
-                                                                    <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                                                        <h6 class="fs-7 mb-2">Янина Ш.</h6>
-                                                                    </div>
-                                                                    <a class="btn btn-outline-black btn-sm btn-wide-lg z-2 w-100 "
-                                                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal2">Смотреть фото</a>
-                                                                    <!-- Modal -->
-                                                                
-                                                                         <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                        <div class="modal-dialog">
-                                                                        <div class="modal-content ">
-                                                                            <div class="modal-body p-5">
-                                                                                <button type="button" class=" position-absolute  btn_close rounded-2 " aria-label="Close" data-bs-dismiss="modal">
-                                                                                    {% include 'main/icons/btn_close.html' with classes="svg-icon"%}</button>
-                                                                                
-                                                                                <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review2.webp' %}"
-                                                                                alt="Янина Ш." />
-                                                                                <a href="#"> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal"> Перейти в карточку товара</button></a>
-                                                                            </div>
-                                                                          
-                                                                        </div>
-                                                                        </div>
-                                                                    </div>
-                                                                <p class="fs-lg-8 fs-6 fw-light mb-0">Всем довольна, тамбурную решетчатую дверь мне варили и цветочницу. Прекрасно смотрятся в доме.. мастер позвонил перед выездом на замер. Цена устроила, состояние спустя год очень хорошее</p>
-                                                            </div>
-                                                        </div>
+                                                    {% elif forloop.counter0|divisibleby:3 %}
                                                         </div>
                                                     </div>
-                                                    <div class="col d-none d-lg-block">
-                                                        <div class="card h-100 rounded-lg-4 rounded-3">
-                                                            <div class="card-body p-lg-15 pt-10 pb-lg-15">
-                                                                <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                                                                    <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar18.webp' %}"
-                                                                                             alt="Иван Б."/></div>
-                                                                    <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                                                        <h6 class="fs-7 mb-2">Иван Б.</h6>
-                                                                    </div>
-                                                                    
-                                                                    <a class="btn btn-outline-black btn-sm btn-wide-lg z-2 w-100 "
-                                                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal3">Смотреть фото</a>
-                                                                    <!-- Modal -->
-                                                                
-                                                                         <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                                <div class="modal-dialog">
-                                                                                <div class="modal-content ">
-                                                                                    <div class="modal-body p-5">
-                                                                                        <button type="button" class=" position-absolute  btn_close rounded-2 " aria-label="Close" data-bs-dismiss="modal">
-                                                                                            {% include 'main/icons/btn_close.html' with classes="svg-icon"%}</button>
-                                                                                        
-                                                                                        <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review3.webp' %}"
-                                                                                        alt="Иван Семенович Г." />
-                                                                                        <a href="#"> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal"> Перейти в карточку товара</button></a>
-                                                                                    </div>
-                                                                                  
-                                                                                </div>
-                                                                                </div>
-                                                                            </div>
-                                                                </div>
-                                                                <p class="fs-lg-8 fs-6 fw-light mb-0">Заказал решетки ажурные на дачу в стиле кованых ворот. Можно было этого не делать, чуть скинув цену взять прямые. но мне так хотелось. по этому за саму работу мастеров и установщиков ставлю 5, а остальное уже история =В
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                              </div>
-                                              <div class="carousel-item">
-                                                <div class="row row-cols-lg-3 row-cols-1 gy-lg-20 gy-10">
-                                                    <div class="col">
-                                                        <div class="card h-100 rounded-lg-4 rounded-3">
-                                                            <div class="card-body p-lg-15 pt-10 pb-lg-15">
-                                                                <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                                                                    <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar14.webp' %}"
-                                                                                             alt="Александр В."/></div>
-                                                                    <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                                                        <h6 class="fs-7 mb-2">Александр В.</h6>
-                                                                    </div>
-                                                                    <a class="btn btn-outline-black btn-sm btn-wide-lg w-100 "
-                                                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal4">Смотреть фото</a>
-                                                                    <!-- Modal -->
-                                                                
-                                                                         <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                        <div class="modal-dialog">
-                                                                        <div class="modal-content ">
-                                                                            <div class="modal-body p-5">
-                                                                                <button type="button" class=" position-absolute  btn_close rounded-2 " aria-label="Close" data-bs-dismiss="modal">
-                                                                                    {% include 'main/icons/btn_close.html' with classes="svg-icon"%}</button>
-                                                                                
-                                                                                <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review4.webp' %}"
-                                                                                alt="Александр В" />
-                                                                                <a href="#"> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal"> Перейти в карточку товара</button></a>
-                                                                            </div>
-                                                                           
-                                                                        </div>
-                                                                        </div>
-                                                                        
-                                                                    </div>
-                                                                    <p class="fs-lg-8 fs-6 fw-light mb-0">У меня все хорошо, ребята отлично работают. Знаю их завод под Клином, довольно дешево вышли металлические решетки на подвал и цоколь с установкой. Благодарю!</p>
-                                                               
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col d-none d-lg-block">
-                                                        <div class="card h-100 rounded-lg-4 rounded-3">
-                                                            <div class="card-body p-lg-15 pt-10 pb-lg-15">
-                                                                <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                                                                    <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar9.webp' %}"
-                                                                                             alt="Марина Г."/></div>
-                                                                    <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                                                        <h6 class="fs-7 mb-2">Марина Г.</h6>
-                                                                    </div>
-                                                                    
-                                                                    <a class="btn btn-outline-black btn-sm btn-wide-lg  z-2 w-100 "
-                                                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal7">Смотреть фото</a>
-                                                                    <!-- Modal -->
-                                                                
-                                                                         <div class="modal fade" id="exampleModal7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                                <div class="modal-dialog">
-                                                                                <div class="modal-content ">
-                                                                                    <div class="modal-body p-5">
-                                                                                        <button type="button" class=" position-absolute  btn_close rounded-2 " aria-label="Close" data-bs-dismiss="modal">
-                                                                                            {% include 'main/icons/btn_close.html' with classes="svg-icon"%}</button>
-                                                                                        
-                                                                                        <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review7.webp' %}"
-                                                                                        alt="Марина Г." />
-                                                                                        <a href="#"> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal"> Перейти в карточку товара</button></a>
-                                                                                    </div>
-                                                                                  
-                                                                                </div>
-                                                                                </div>
-                                                                            </div>
-                                                                </div>
-                                                                <p class="fs-lg-8 fs-6 fw-light mb-0">Решетки с защитой от детей, от их выпадания мне сделали за 2 дня и привезли домой
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col d-none d-lg-block">
-                                                        <div class="card h-100 rounded-lg-4 rounded-3">
-                                                            <div class="card-body p-lg-15 pt-10 pb-lg-15">
-                                                                <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                                                                    <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar24.webp' %}"
-                                                                                             alt="Светлана К."/></div>
-                                                                    <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                                                        <h6 class="fs-7 mb-2">Светлана К..</h6>
-                                                                    </div>
-                                                                    <a class="btn btn-outline-black btn-sm btn-wide-lg z-2 w-100 "
-                                                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal8">Смотреть фото</a>
-                                                                    <!-- Modal -->
-                                                                
-                                                                         <div class="modal fade" id="exampleModal8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                        <div class="modal-dialog">
-                                                                        <div class="modal-content ">
-                                                                            <div class="modal-body p-5">
-                                                                                <button type="button" class=" position-absolute  btn_close rounded-2 " aria-label="Close" data-bs-dismiss="modal">
-                                                                                    {% include 'main/icons/btn_close.html' with classes="svg-icon"%}</button>
-                                                                                
-                                                                                <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/review8.webp' %}"
-                                                                                alt="Светлана К." />
-                                                                                <a href="#"> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal"> Перейти в карточку товара</button></a>
-                                                                            </div>
-                                                                          
-                                                                        </div>
-                                                                        </div>
-                                                                    </div>
-                                                                <p class="fs-lg-8 fs-6 fw-light mb-0">Обратились с запросом решетчатой двери и решеток в магазин. 
-                                                                    Искали решетки для бизнеса. поставили в срок
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <div class="row row-cols-lg-3 row-cols-1 gy-lg-20 gy-10">
+                                                             {% include 'main/components/review.html' with id=review.id author_avatar=review.author_avatar project_photo=review.project_photo author=review.author description=review.description%}
 
-                                                </div>
-                                              </div>
-                                              <div class="carousel-item">
-                                                <div class="row row-cols-lg-3 row-cols-1 gy-lg-20 gy-10">
-                                                    <div class="col">
-                                                        <div class="card h-100 rounded-lg-4 rounded-3">
-                                                            <div class="card-body p-lg-15 pt-10 pb-lg-15">
-                                                                <div class="d-flex flex-wrap align-items-center gap-10 z-2 mb-lg-7 mb-10">
-                                                                    <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar41.webp' %}"
-                                                                                             alt="Иван Ж."/></div>
-                                                                    <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                                                        <h6 class="fs-7 mb-2">Иван Ж.</h6>
-                                                                    </div>
-                            
-                                                                    <!-- Modal -->
-                                                                
-                                                                    
-                                                                <p class="fs-lg-8 fs-6 fw-light mb-0">
-                                                                    Заказал цветочницы на окна, а на днях их уже установили. Я в этом ничего не понимаю, но по телефону мне помогли с выбором и сделали скидку. Жена безумно рада, теперь вся зелень красуется на окнах. Спасибо вам огромное
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                    <div class="col d-none d-lg-block">
-                                                        <div class="card h-100 rounded-lg-4 rounded-3">
-                                                            <div class="card-body p-lg-15 pt-10 pb-lg-15">
-                                                                <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                                                                    <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar42.webp' %}"
-                                                                                             alt="Клим П."/></div>
-                                                                    <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                                                        <h6 class="fs-7 mb-2">Клим П.</h6>
-                                                                    </div>
-                                                                    <a class="btn btn-outline-black d-none btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal27">Смотреть фото</a>
-                                                                    <!-- Modal -->
-                                                                
-                                                                         <div class="modal fade" id="exampleModal27" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                        <div class="modal-dialog">
-                                                                        <div class="modal-content ">
-                                                                            <div class="modal-body p-5">
-                                                                                <button type="button" class=" position-absolute  btn_close rounded-2 " aria-label="Close" data-bs-dismiss="modal">
-                                                                                    {% include 'main/icons/btn_close.html' with classes="svg-icon"%}</button>
-                                                                                
-                                                                                <img class="rounded-3 object-fit-contain w-100 " src="{% static 'main/img/reviews_photos/review41.webp' %}"
-                                                                                alt="Клим П."/>
-                                                                                <a href="#"> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal"> Перейти в карточку товара</button></a>
-                                                                            </div>
-                                                                          
-                                                                        </div>
-                                                                        </div>
-                                                                    </div>
-                                                                <p class="fs-lg-8 fs-6 fw-light mb-0">
-                                                                    Срочно заказывал решетки на подвал. Всё ок, быстро и четко. Даже мышь не пролезет
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                    <div class="col d-none d-lg-block">
-                                                        <div class="card h-100 rounded-lg-4 rounded-3">
-                                                            <div class="card-body p-lg-15 pt-10 pb-lg-15">
-                                                                <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7  mb-10">
-                                                                    <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/avatar43.webp' %}"
-                                                                                             alt="Николай Ш."/></div>
-                                                                    <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                                                        <h6 class="fs-7 mb-2">Николай Ш.</h6>
-                                                                    </div>
-                                                                    <a class="btn btn-outline-black d-none btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal28">Смотреть фото</a>
-                                                                    <!-- Modal -->
-                                                                
-                                                                         <div class="modal fade" id="exampleModal28" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                        <div class="modal-dialog">
-                                                                        <div class="modal-content ">
-                                                                            <div class="modal-body p-5">
-                                                                                <button type="button" class=" position-absolute  btn_close rounded-2 " aria-label="Close" data-bs-dismiss="modal">
-                                                                                    {% include 'main/icons/btn_close.html' with classes="svg-icon"%}</button>
-                                                                                
-                                                                                <img class="rounded-3 object-fit-contain w-100 " src="{% static 'main/img/reviews_photos/review41.webp' %}"
-                                                                                alt="Николай Ш."/>
-                                                                                <a href="#"> <button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal"> Перейти в карточку товара</button></a>
-                                                                            </div>
-                                                                          
-                                                                        </div>
-                                                                        </div>
-                                                                    </div>
-                                                                <p class="fs-lg-8 fs-6 fw-light mb-0">
-                                                                    Мы учительским советом решили заказать нашим детям в школу решетчатые двери на спортзал и столовку. 
-                                                                    Удивило то, что цена совсем не кусается и всё вышло нам по карману. Большое вам спасибо, всё сделали быстро и профессионально
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                </div>
-                                              </div>
+                                                    {%else %}
+                                                             {% include 'main/components/review.html' with id=review.id author_avatar=review.author_avatar project_photo=review.project_photo author=review.author description=review.description%}
+                                                    {%endif%}
+                                                {%endfor%}
                                             </div>
                                             <button class="carousel-control-prev arrow-prev" type="button" data-bs-target="#carouselExampleControlz" data-bs-slide="prev">
                                               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="grey"
@@ -1152,7 +858,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col">
-                                                    <img class="w-100 rounded-2" src="{% static 'main/img/sale_baners/sale_to_reviews.webp' %}" alt="">
+                                                    <img class="w-100 rounded-2" src="{% static 'main/img/sale_baners/sale_to_reviews.webp' %}" alt="Скидка в 10 процентов за оставленный отзыв">
                                                 </div>
                                             </div>
                                          
@@ -1169,7 +875,7 @@
                                                 </div>
                                                 <div class="col py-2 bg-light">
 
-                                                    <p class="mb-0 fs-7 fs-sm-7 fs-lg-8 fw-medium text-dark">Стоимость</p>
+                                                    <p class="mb-0 fs-6 fs-sm-7 fs-lg-8 fw-medium text-dark">Гарантия</p>
                                                 </div>
 
                                                 <div class="col-8  border-top border-end py-2">
@@ -1214,7 +920,7 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-4">
-                                            <img class="w-100" src="{% static 'main/img/garanty_image.webp' %}" alt="garanty_image.webp">
+                                            <img class="w-100" src="{% static 'main/img/garanty_image.webp' %}" alt="Решётка с гарантией">
                                         </div>
                                     </div>
                                     <p class="py-5 mb-0 s-10">Гарантия включает в себя:</p>
@@ -1230,7 +936,7 @@
                                             <div class="row g-10">
                                                 <div class="col-6">
                                                     <div class="card">
-                                                        <img src="{% static 'main/img/painting/card_color1.webp' %}" class="card-img-top" alt="card_color1">
+                                                        <img src="{% static 'main/img/painting/card_color1.webp' %}" class="card-img-top" alt="Любой цвет решетки">
                                                         <div class="card-body py-6 px-0">
                                                             <p class="fs-6 fs-lg-8 card-text text-center text-muted">Нитроэмаль</p>
                                                         </div>
@@ -1238,7 +944,7 @@
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="card">
-                                                        <img src="{% static 'main/img/painting/card_color2.webp' %}" class="card-img-top" alt="card_color2">
+                                                        <img src="{% static 'main/img/painting/card_color2.webp' %}" class="card-img-top" alt="Решётки любого цвета">
                                                         <div class="card-body py-6 px-0">
                                                             <p class="fs-6 fs-lg-8 card-text text-center text-muted">Патина</p>
                                                         </div>
@@ -1246,7 +952,7 @@
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="card">
-                                                        <img src="{% static 'main/img/painting/card_color3.webp' %}" class="card-img-top" alt="card_color3">
+                                                        <img src="{% static 'main/img/painting/card_color3.webp' %}" class="card-img-top" alt="Клиент выбирает цвет решетки">
                                                         <div class="card-body py-6 px-0">
                                                             <p class="fs-6 fs-lg-8 card-text text-center text-muted">Краска Hammerite</p>
                                                         </div>
@@ -1254,7 +960,7 @@
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="card">
-                                                        <img src="{% static 'main/img/painting/card_color4.webp' %}" class="card-img-top" alt="card_color4">
+                                                        <img src="{% static 'main/img/painting/card_color4.webp' %}" class="card-img-top" alt="Красивый цвет решетки">
                                                         <div class="card-body py-6 px-0">
                                                             <p class="fs-6 fs-lg-8 card-text text-center text-muted">Порошковое напыление</p>
                                                         </div>
@@ -1389,6 +1095,42 @@
     </div>
 </div>
 <script>
+    //блок кода о валидации с помощью js
+    // Restricts input for the given textbox to the given inputFilter function.
+    function setInputFilter(textbox, inputFilter, errMsg) {
+      [ "input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop", "focusout" ].forEach(function(event) {
+        textbox.addEventListener(event, function(e) {
+          if (inputFilter(this.value)) {
+            // Accepted value.
+            if ([ "keydown", "mousedown", "focusout" ].indexOf(e.type) >= 0){
+              this.classList.remove("input-error");
+              this.setCustomValidity("");
+            }
+
+            this.oldValue = this.value;
+            this.oldSelectionStart = this.selectionStart;
+            this.oldSelectionEnd = this.selectionEnd;
+          }
+          else if (this.hasOwnProperty("oldValue")) {
+            // Rejected value: restore the previous one.
+            this.classList.add("input-error");
+            this.setCustomValidity(errMsg);
+            this.reportValidity();
+            this.value = this.oldValue;
+            this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+          }
+          else {
+            // Rejected value: nothing to restore.
+            this.value = "";
+          }
+        });
+      });
+    }
+    setInputFilter(document.getElementById("width"), function(value) {
+        return /^\d*\.?\d*$/.test(value); // Allow digits and '.' only, using a RegExp.
+        }, "Разрешены только цифры и знак точки.");
+
+    //блок кода о подсчетах в калькуляторе
     function getInputValueById(id) {
         return document.getElementById(id).value
     }
@@ -1405,17 +1147,27 @@
         changeInputValueById(idOfSelect, getInputValueById(optionId))
     }
 
+    function changeArchPercentToPrice() {
+        changeSpanTextById('price-arch', '+ ' + getTotalPrice().match(/\d+/)[0] * 0.3 + " руб.")
+    }
     function changePriceToday (newPrice) {
         changeSpanTextById("price-today", newPrice)
     }
     function changePriceOld (newPrice) {
         changeSpanTextById("price-old", newPrice)
     }
+
+    function getTodayPrice () {
+        return getSpanTextById('price-today')
+    }
     function getPercentOfPrice(){
         return +getSpanTextById("form-percent").match(/\d+/)[0]
     }
     function makeOldPrice(price){
         return Math.round((price/(1 - (getPercentOfPrice()/100)))/10) * 10
+    }
+    function getTotalPrice() {
+        return document.getElementById("total").textContent
     }
     function changeForm() {
         let width_of_rod = getInputValueById("width_of_rod").match(/\d{3,}/)[0]
@@ -1466,5 +1218,6 @@
     changeInputValueById("height", "100")
     changeInputValueById("amount", "1")
     changeForm()
+    changeArchPercentToPrice()
 </script>
 {% endblock %}

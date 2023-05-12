@@ -26,12 +26,12 @@
                                         <div class="carousel-inner">
                                           <div class="carousel-item active">
                                             <div class="ratio overflow-hidden" style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 350px;">
-                                                <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{path_folder}}/solid/{{path_file}}.webp">
+                                                <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{path_folder}}/solid/{{path_file}}.webp" alt="Фото решетки {{path_folder}}-{{path_file}}">
                                                 </div>
                                           </div>
                                           <div class="carousel-item">
                                             <div class="ratio overflow-hidden" style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 350px;">
-                                                <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{path_folder}}/solid/{{path_file}} F.webp">
+                                                <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{path_folder}}/solid/{{path_file}} F.webp" alt="Фото решетки {{path_folder}}-{{path_file}}">
                                                 </div>
                                           </div>
                                        
@@ -64,7 +64,7 @@
                                                 </div>
                                                 <div class="col-12 col-md-6 ">
                                                     <input class="form-control  fs-7 text-center  w-100"
-                                                           placeholder="Введите номер" type="text"/>
+                                                           placeholder="Введите номер" type="text" required/>
                                                 </div>
                                                 <div class="col-12 col-md-6">
                                                     <button class="btn py-8 btn-primary mt-2 fs-8 rounded-3 w-100" type="submit">Получить расчет
