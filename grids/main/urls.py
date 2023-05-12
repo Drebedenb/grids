@@ -10,5 +10,6 @@ urlpatterns = [
     path('reviews/', reviews, name='reviews'),
     path('compare/', compare, name="compare"),
     path('favorite/', favorite, name="favorite"),
-    path('privacy/', privacy, name="privacy")
+    path('privacy/', privacy, name="privacy"),
+    path('акции/', sales, name="sales")
 ]

@@ -3,90 +3,32 @@
 <div class="modal modal-xl modal-custom border border-black rounded-4 fade" id="{{modal_id}}">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="product modal-body p-lg-20 py-10">
-                <button type="button" class="btn-close button-close  float-end btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
-                <div class="row gy-lg-0 gy-20">
-                    <div class="col-lg-6">
-                        <div class="card-body p-10 border-lg border-lg-light rounded-lg-3 shadow-lg">
-                            <div class="position-relative text-center ">
-                                <div class="position-absolute top-0 start-0 z-2">
-                                    <a class="text-muted text-hover-black" href="#">{% include 'main/icons/chart.html' with classes="svg-icon"%}</a>
-                                    <span class="fs-8  ms-2 py-0 bg-success text-white px-2 rounded-2">хит</span>
-                                </div>
-                                <div class="position-absolute top-0 end-0 z-2">
-                                    <a class="text-muted text-hover-black" href="#">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a>
-                                </div>
-                                <div class="">
-                                    <div id="carousel-{{modal_id}}" class="carousel slide " data-bs-interval="false" >
-                                        <div class="carousel-indicators">
-                                          <button type="button" data-bs-target="#carousel-{{modal_id}}" data-bs-slide-to="0" class="active bg-light " aria-current="true" aria-label="Slide 1" style="height:7px;"></button>
-                                          <button type="button" data-bs-target="#carousel-{{modal_id}}" data-bs-slide-to="1" class="bg-light" aria-label="Slide 2" style="height:7px;"></button>
-                                         
-                                        </div>
-                                        <div class="carousel-inner">
-                                          <div class="carousel-item active">
-                                            <div class="ratio overflow-hidden" style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 350px;">
-                                                <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{path_folder}}/solid/{{path_file}}.png">
-                                                </div>
-                                          </div>
-                                          <div class="carousel-item">
-                                            <div class="ratio overflow-hidden" style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 350px;">
-                                                <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{path_folder}}/solid/{{path_file}} F.png">
-                                                </div>
-                                          </div>
-                                       
-                                        </div>
-                                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel-{{modal_id}}" data-bs-slide="prev">
-                                          <span class="" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="grey" class="bi bi-chevron-left" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-                                          </svg></span>
-                                          <span class="visually-hidden">Previous</span>
-                                        </button>
-                                        <button class="carousel-control-next" type="button" data-bs-target="#carousel-{{modal_id}}" data-bs-slide="next">
-                                          <span class="" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="grey" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                                          </svg></span>
-                                          <span class="visually-hidden">Next</span>
-                                        </button>
-                                      </div>
-                           
-                                    </div>
-                                
-                                </div>
-                                </div>
-
-                            <h6 class="fs-8 fw-normal mb-0 pt-10 text-uppercase text-center">Рассчитаем стоимость по телефону </h6>
+            <div class="product modal-body px-20 ">
+                <button type="button" class="btn-close button-close float-end btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                            <h6 class="fs-10 fs-lg-14 fs-lg-10 fw-normal mb-0 pt-10 text-uppercase text-center">Заказать решетку <span class="text-primary">3-37</span> </h6>
                                         <form class="mt-10">
-                                            <div class="row gx-10 gy-10">
-                                                <div class="col-12 col-md-6 ">
-                                                    <input class="form-control  fs-7 text-center w-100"
-                                                           placeholder="Введите имя" type="text"/>
-                                                </div>
-                                                <div class="col-12 col-md-6 ">
-                                                    <input class="form-control  fs-7 text-center  w-100"
-                                                           placeholder="Введите номер" type="text"/>
-                                                </div>
-                                                <div class="col-12 col-md-6">
-                                                    <button class="btn py-8 btn-primary mt-2 fs-8 rounded-3 w-100" type="submit">Получить расчет
-                                                    </button>
-                                                </div>
-                                                <div class="col-12 col-md-6">
-                                                    <div class="form-check  fs-6 pt-2 pb-2 ps-0">
-                                                        <label class="form-check-label " >Оставляя заявку, Вы даете
-                                                            свое согласие на обработку <a class="text-decoration-underline text-dark"  href="{%url 'privacy'%}">персональных данных</a> </label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <div class="text-center p-5 border rounded-2">
-                                                    <p class="mb-0 fs-7 text-muted">Или отправьте запрос нам на почту</p>
-                                                    <span class="fs-7 text-primary">INFO@SMARMATIX.RU</span>
-                                                </div>
-                                                </div>
-                                              
+                                            <div class="form-check text-center fs-6 pt-2 pb-2 ps-0 mb-10">
+                                                <label class="form-check-label fs-lg-8 text-muted" >Укажите Ваши контактные данные и наши сотрудники свяжутся с Вами</label>
                                             </div>
+                                                      
+                                                    <input class="form-control py-lg-15 fs-7 text-center w-100 mb-10"
+                                                           placeholder="Введите Ваше имя" type="text"/>
+                                             
+                                              
+                                                    <input class="form-control py-lg-15 fs-7 text-center  w-100 mb-10"
+                                                           placeholder="Укажите Ваш телефон *" type="text"/>
+                                             
+                                              
+                                                    <button class="btn py-8 btn-primary py-lg-15 mt-2 fs-8 fs-lg-10 rounded-3 w-100 mb-10" type="submit" >Заказать решетку
+                                                    </button>
+                                             
+                                               
+                                                    <div class="form-check text-center fs-6 fs-lg-8 pt-2 pb-2 ps-0">
+                                                        <label class="form-check-label  text-muted" >Оставляя заявку, Вы даете
+                                                            свое согласие на обработку <a class="text-decoration-underline text-dark text-hover-secondary"  href="{%url 'privacy'%}">персональных данных</a> </label>
+                                                         </div>
                                         </form>
-                    </div>
-                </div>
+                  
             </div>
         </div>
     </div>

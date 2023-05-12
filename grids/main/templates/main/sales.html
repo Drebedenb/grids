@@ -1,0 +1,137 @@
+{%extends 'main/base.html' %} 
+{% load static %} 
+{% block content %}
+<div class="pt-lg-15 pt-16 pb-lg-20 pb-32">
+    <div class="container">
+        <header class="page-header mb-lg-0 mb-lg-10">
+            <div>
+                <div class=" d-none">
+                    <div class="pt-xl-7 pt-lg-4">
+                        <p class="lead fs-lg-12 fs-9 mb-0" style="max-width: 28rem;">В нашем каталоге представлено 600+ эскизов решеток на окна. Возможно изготовление решеток по вашему эскизу.</p>
+                        <div class="mt-3xl-31 mt-lg-24 d-lg-block d-none">
+                            <div class="hstack flex-wrap gap-20">
+                                <btn class="btn btn-secondary btn-xxl btn-wide-xxl" data-bs-toggle="modal" data-bs-target="#modal-consultation" type="button">Консультация</btn>
+                                <btn class="btn btn-primary btn-xxl btn-wide-xxl" data-bs-toggle="modal" data-bs-target="#modal-measurement" type="button">Вызвать на замер </btn>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-20 d-none ">
+                <div class="vstack flex-wrap gap-10">
+                    <btn class="btn btn-secondary  btn-xxl w-100" data-bs-toggle="modal" data-bs-target="#modal-consultation" type="button">Консультация</btn>
+                    <btn class="btn btn-primary btn-xxl w-100" data-bs-toggle="modal" data-bs-target="#modal-measurement" type="button">Вызвать на замер </btn>
+                </div>
+            </div>
+
+
+
+            <div class="row gy-lg-0  gy-12">
+                <div class="col-lg-6">
+                    <h1 class="display-1 pt-lg-30 fs-3xl-25 fs-xl-23 fs-lg-22 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Акции на металлические решетки</h1>
+                </div>
+                <div class="col-lg-6">
+                    <img src="{% static 'main/img/sale_baners/sale_baner1.webp' %}"  class="d-block w-100 rounded-2" alt="works_baner">
+
+                </div>
+
+            </div>
+            <nav class="fs-5 d-none d-lg-block fs-lg-9 mt-12 mb-lg-10 mt-lg-0">
+                <ul class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a class="fs-6 fs-sm-8 fs-lg-9" href="index.html">Главная </a></li>
+                    <li class="breadcrumb-item"><a class="fs-6 fs-sm-8 fs-lg-9" href="catalog.html">Клиентам</a></li>
+                    <li class="breadcrumb-item active"><a class="fs-6 fs-sm-8 fs-lg-9 text-dark">{{category.title}} Акции</a> </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="mb-20 mt-15">
+                <div class="row gy-15 gy-lg-20 row-cols-1 row-cols-lg-2">
+                    <div class="col">
+                        <div class="card">
+                            <img src="{% static 'main/img/sale_baners/sale_baner2.webp' %}" class="card-img-top" alt="sale_baner5">
+                            <div class="card-body">
+                              <h5 class="card-title fs-8 fw-medium fs-lg-10">Закажите бесплатный вызов замерщика и оплатите заказ в тот же
+                                день, чтобы получить скидку в 10%</h5>
+                              <p class="card-text text-muted fs-7 fs-lg-8">Подробнее об условиях и акциях уточняйте по телефону:<br>
+                                <a class="text-muted text-hover-light" href="tel:84953745364">+7 495 374-53-64</a></p>
+                              <a href="#" class="btn fs-7 fs-lg-8 btn-primary rounded-3 ">Замер по акции</a>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img src="{% static 'main/img/sale_baners/sale_baner.webp' %}" class="card-img-top" alt="sale_baner5">
+                            <div class="card-body">
+                              <h5 class="card-title fs-8 fw-medium fs-lg-10">Получите скидку в 20% при 100% предоплате ( для физических лиц )</h5>
+                              <p class="card-text text-muted fs-7 fs-lg-8">Подробнее об условиях и акциях уточняйте по телефону:<br>
+                                <a class="text-muted text-hover-light" href="tel:84953745364">+7 495 374-53-64</a></p>
+                              <a href="#" class="btn fs-7 fs-lg-8 btn-primary rounded-3">Замер по акции</a>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="col">
+                        <div class="card border-top-0">
+                            <img src="{% static 'main/img/sale_baners/sale_baner3.webp' %}" class="card-img-top" alt="sale_baner3">
+                            <div class="card-body">
+                              <h5 class="card-title fs-8 fw-medium fs-lg-10">Создадим проект на основе Ваших эскизов и размеров, если Вы
+                                не найдете подходящий макет в нашем <br>каталоге</h5>
+                              <p class="card-text text-muted fs-7 fs-lg-8">Подробнее об условиях и акциях уточняйте по телефону:<br>
+                                <a class="text-muted text-hover-light" href="tel:84953745364">+7 495 374-53-64</a></p>
+                              <a href="#" class="btn fs-7 fs-lg-8 btn-primary rounded-3">Замер по акции</a>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="col">
+                        <div class="card border-top-0">
+                            <img src="{% static 'main/img/sale_baners/sale_baner4.webp' %}" class="card-img-top" alt="sale_baner5">
+                            <div class="card-body">
+                              <h5 class="card-title fs-8 fw-medium fs-lg-10">При заказе от 3-х решеток за каждую дополнительную единицу Вы
+                                получаете скидку 1%. Максимальная скидка - 10%.</h5>
+                              <p class="card-text text-muted fs-7 fs-lg-8">Подробнее об условиях и акциях уточняйте по телефону:<br>
+                                <a class="text-muted text-hover-light" href="tel:84953745364">+7 495 374-53-64</a></p>
+                              <a href="#" class="btn fs-7 fs-lg-8 btn-primary rounded-3">Замер по акции</a>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="col">
+                        <div class="card border-top-0">
+                            <img src="{% static 'main/img/sale_baners/sale_baner6.webp' %}" class="card-img-top" alt="sale_baner5">
+                            <div class="card-body">
+                              <h5 class="card-title fs-8 fw-medium fs-lg-10">Закажите бесплатные замер и консультацию. Наши сотрудники
+                                свяжутся с Вами для уточнения деталей и направят к Вам мастера
+                                для проведения технического рассчета</h5>
+                              <p class="card-text text-muted fs-7 fs-lg-8">Подробнее об условиях и акциях уточняйте по телефону:<br>
+                                <a class="text-muted text-hover-light" href="tel:84953745364">+7 495 374-53-64</a></p>
+                              <a href="#" class="btn fs-7 fs-lg-8 btn-primary rounded-3">Замер по акции</a>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="col">
+                        <div class="card border-top-0">
+                            <img src="{% static 'main/img/sale_baners/sale_baner5.webp' %}" class="card-img-top" alt="sale_baner5">
+                            <div class="card-body">
+                              <h5 class="card-title fs-8 fw-medium fs-lg-10">Заказывая у нас решетки на окна, Вы получаете максимально
+                                выгодную цену. Мы уверены в этом и готовы предоставить скидку,
+                                если Вы найдете такой же товар дешевле!</h5>
+                              <p class="card-text text-muted fs-7 fs-lg-8">Подробнее об условиях и акциях уточняйте по телефону:<br>
+                                <a class="text-muted text-hover-light" href="tel:84953745364">+7 495 374-53-64</a></p>
+                              <a href="#" class="btn fs-7 fs-lg-8 btn-primary rounded-3">Замер по акции</a>
+                            </div>
+                          </div>
+                    </div>
+
+                </div>
+            </section>
+            {% include 'main/components/measure_modal.html' %}
+
+        </main>
+
+        {% include 'main/components/consultation_form.html' %}
+
+        {% include 'main/components/consultation_modal.html' %}
+   
+    </div> 
+</div>
+{% endblock %}

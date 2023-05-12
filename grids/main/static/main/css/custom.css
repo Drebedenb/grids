@@ -35,6 +35,27 @@
 
 
 
+/*DROPDPWN*/
+/* ============ only desktop view ============ */
+	.navbar .nav-item .dropdown-menu{  display:block; opacity: 0;  visibility: hidden; transition:.3s; margin-top:0;  }
+	.navbar .nav-item:hover .nav-link{ color: #fff; }
+	.navbar .dropdown-menu.fade-down{ top:80%; transform: rotateX(-75deg); transform-origin: 0% 0%; }
+	.navbar .dropdown-menu.fade-up{ top:180%; left:6%;}
+	.navbar .nav-item:hover .dropdown-menu{ transition: .3s; opacity:1; visibility:visible; top:100%; transform: rotateX(0deg); left:6%;}
+    .dropdown-item_header{
+        text-transform: none;
+        font-weight: 500;
+        margin:10px 17px;
+    }
+    .dropdown-item{
+        text-transform: none;
+    }
+
+  
+
+/* ============ desktop view .end// ============ */
+
+
 /* NAZNACHENIE RESHETOK */
 .object-fit-minicontent{
     width: 60%;
@@ -60,6 +81,11 @@
     margin-top:-50px;
 }
 
+.shadow_item{
+    -webkit-box-shadow: 0px 5px 8px -1px rgba(2, 2, 2, 0.51);
+    -moz-box-shadow: 0px 5px 8px -1px rgba(2, 2, 2, 0.51);
+    box-shadow: 0px 5px 8px -1px rgba(2, 2, 2, 0.51);
+}
 
 
 .star:hover{
@@ -78,7 +104,7 @@
 }
 
 
-li::marker {
+.dots_item::marker {
     color: #f5320e;
   }
 
@@ -111,6 +137,10 @@ li::marker {
     border: none;
     background-color:rgba(163, 163, 163, 0.636);
   }
+
+.filter_item{
+    cursor: pointer;
+}
 
 
 
@@ -336,11 +366,11 @@ li::marker {
 @media (max-width: 1200px) {
      /*OTZIVI*/
 .arrow-prev{
-    left: -80px;
+    left: -60px;
 }
 
 .arrow-next{
-    right: -80px;
+    right: -60px;
 }
 
 /*STAR*/
@@ -411,13 +441,16 @@ li::marker {
 }
 
 
+
+
+
  /*OTZIVI*/
 .arrow-prev{
-    left: -80px;
+    left: -50px;
 }
 
 .arrow-next{
-    right: -80px;
+    right: -50px;
 }
 
 
@@ -439,13 +472,13 @@ li::marker {
              }
 
           
-             /*OTZIVI*/
+          /*OTZIVI*/
 .arrow-prev{
-    display: none;
+    left: -60px;
 }
 
 .arrow-next{
-   display: none;
+    right: -60px;
 }
 
     /*FILTER*/
@@ -520,6 +553,17 @@ li::marker {
         border: 1px solid black;
         color: black;
     } */
+
+
+            /*OTZIVI*/
+.arrow-prev{
+    left: -20px;
+}
+
+.arrow-next{
+    right: -20px;
+}
+
     .bi-caret-left-fill {
         margin-right: 0px;
         width: 120%;
@@ -601,4 +645,6 @@ font-size: 7px !important;
 .lattice-tag-title:hover {
     cursor: pointer;
 }
+
+
 

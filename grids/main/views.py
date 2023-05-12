@@ -571,3 +571,9 @@ def privacy(request):
         'count': count
     }
     return render(request, 'main/privacy.html')
+
+def sales(request):
+    context = {
+        'title': 'Клиентам'
+    }
+    return render(request, 'main/sales.html')
