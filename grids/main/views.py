@@ -232,8 +232,8 @@ def get_products_by_categories(category_number, min_price, max_price, order_by_n
     # в прошлых версиях проекта GIT можно найти SQL запрос аналогичный этому ОРМ запросу
     queryset = PriceWinguardMain.objects.filter(
         price_winguard_sketch__category__in=category_number,
-        price_b2c__gt=min_price,
-        price_b2c__lt=max_price
+        # price_b2c__gt=min_price,
+        # price_b2c__lt=max_price
     ).annotate(
         percent=(F('price_winguard_sketch__id') % 3 + 1) * 10 + (F('price_winguard_sketch__id') % 2 * 5),
         stars_count=(F('price_winguard_sketch__id') % 10 + F('price_winguard_sketch__id') % 3 + F('price_winguard_sketch__id') % 7 + F('price_winguard_sketch__id') % 5 + F('price_winguard_sketch__id') % 11),
@@ -250,7 +250,11 @@ def get_products_by_categories(category_number, min_price, max_price, order_by_n
         path_file=Min('path_file'),
         price=Min('price_b2c'),
         saleprice=Min('saleprice'),
-        popularity=Min('popularity')).order_by(f'{order_by_name}')[:limit]
+        popularity=Min('popularity')
+    ).filter(
+        price__gt=min_price,
+        price__lt=max_price
+    ).order_by(f'{order_by_name}')[:limit]
     cache.set(cache_key, queryset, TTL_OF_CACHE_SECONDS)
     return queryset
 
