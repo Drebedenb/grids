@@ -98,7 +98,7 @@
                 <li class="nav-item me-20"><a class="nav-link ls-sm p-0 {% if request.path == '/' %}active{% endif %}"
                                               href="{%url 'index'%}">Главная</a></li>
                 <li class="nav-item me-20"><a
-                        class="nav-link ls-sm p-0 {% if request.path != '/' and request.path != '/reviews/' and request.path != '/projects/' and request.path != '/contacts/'  %}active{% endif %}"
+                        class="nav-link ls-sm p-0 {% if request.path != '/' and request.path != '/reviews/' and request.path != '/projects/' and request.path != '/contacts/' and request.path != '/акции/'  %}active{% endif %}"
                         href="/металлические-решетки-на-окна" data-toggle="dropdown">Каталог</a>
                         <ul class="dropdown-menu fade-up d-flex ">
                             <div>
@@ -132,7 +132,7 @@
                             <li><a class="dropdown-item text-muted text-hover-primary" href="#"> На первый этаж </a></li>
                             <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Кид-стоп (защита для детей)</a></li>
                             <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Внутренние</a></li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Для дачи</a></li>
+                            <li><a class="dropdown-item text-muted text-hover-primary" href="/решетки-для-дачи"> Для дачи</a></li>
                             <li><a class="dropdown-item text-muted text-hover-primary" href="#"> На прямки </a></li>
                             <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Ажурные</a></li>
                             <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Для дома</a></li>
@@ -151,6 +151,9 @@
                 <li class="nav-item me-20"><a
                         class="nav-link ls-sm p-0 {% if request.path == '/contacts/' %}active{% endif %}"
                         href="{%url 'contacts'%}">Контакты</a></li>
+                <li class="nav-item me-20"><a
+                        class="nav-link ls-sm p-0 {% if request.path == '/акции/' %}active{% endif %}"
+                        href="{%url 'sales'%}">Клиентам</a></li>
             </ul>
             <div class="hstack gap-15 ms-auto">
                 <div>
