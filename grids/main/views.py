@@ -9,13 +9,13 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.cache import cache
 from urllib.parse import urlencode
 
-class MockDjangoRedis:
-    def get(self, arg):
-        return None
-
-    def set(arg, bla, ble, blu):
-        return arg
-cache = MockDjangoRedis()
+# class MockDjangoRedis:
+#     def get(self, arg):
+#         return None
+#
+#     def set(arg, bla, ble, blu):
+#         return arg
+# cache = MockDjangoRedis()
 
 
 
