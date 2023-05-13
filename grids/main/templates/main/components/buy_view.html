@@ -1,11 +1,11 @@
 {% load static %}
 {% load main_tags %}
-<div class="modal modal-xl modal-custom border border-black rounded-4 fade" id="{{modal_id}}">
+<div class="modal modal-xl modal-custom border border-black rounded-4 fade" id="buy_view_{{modal_id}}">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="product modal-body px-20 ">
                 <button type="button" class="btn-close button-close float-end btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
-                            <h6 class="fs-10 fs-lg-14 fs-lg-10 fw-normal mb-0 pt-10 text-uppercase text-center">Заказать решетку <span class="text-primary">3-37</span> </h6>
+                            <h6 class="fs-10 fs-lg-14 fs-lg-10 fw-normal mb-0 pt-10 text-uppercase text-center">Заказать решетку <span class="text-primary">{{ path_folder }}-{{ path_file }}</span> </h6>
                                         <form class="mt-10">
                                             <div class="form-check text-center fs-6 pt-2 pb-2 ps-0 mb-10">
                                                 <label class="form-check-label fs-lg-8 text-muted" >Укажите Ваши контактные данные и наши сотрудники свяжутся с Вами</label>

@@ -432,9 +432,12 @@
                                                 </div>
 
                                                 <div class="col"><a class="btn btn-primary btn-xl w-100" data-bs-toggle="modal"
-                                            data-bs-target="#modal-measurement" type="button">Заказать
+                                 data-bs-target="#buy_view_{{product.0.id}}" type="button">Заказать
                                                     в 1 клик</a></div>
                                             </div>
+
+                                    {% include 'main/components/buy_view.html' with path_folder=product.0.path_folder path_file=product.0.path_file modal_id=product.0.id%}
+
                                  
                                         <div class="row row-cols-lg-3 row-cols-2 mt-2 gy-10">
                                             <div class="col px-5">
