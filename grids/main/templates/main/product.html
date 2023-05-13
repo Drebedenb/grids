@@ -70,7 +70,7 @@
                             <h3 class="w-50 h5 fs-lg-8 fs-7 fw-medium ls-sm text-uppercase mb-0">Ажурные решетки</h3><span class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2" style="min-width: 3rem;">{{count.ajur}}</span></a>
                     </div>
                     <div class="col">
-                        <a class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20  px-10 py-4" href="/кованые-решетки-на-окна-вип-класс">
+                        <a class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20  px-10 py-4" href="/решетки-на-окна-вип-класс">
                             <h3 class="w-50 h5 fs-lg-8 fs-7 fw-medium ls-sm text-uppercase mb-0">VIP <br/> решетки</h3><span class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2" style="min-width: 3rem;">{{count.vip}}</span></a>
                     </div>
                     <div class="col">
@@ -108,7 +108,7 @@
                                 <h6 class="fw-medium ls-sm text-uppercase mt-8 ms-10 mb-0">Назначение</h6>
 
                                 <ul class="dropdown-list mb-8">
-                                    {%for item  in list_of_grids_types%}
+                                    {%for item  in list_of_grids_purpose%}
                                     <li><a class="nav-link text-hover-secondary ms-10" href="{{item.url}}">{{item.title}}</a></li>
                                     {%endfor%}
                                 </ul>
@@ -270,7 +270,7 @@
                                             </div>
                                             
                                             <div class="row row-cols-2 row-cols-lg-1 mt-1 gy-20 ">
-                                                {% for item in list_of_open_types %}
+                                                {% for item in list_of_open_types_for_calculator %}
                                                 <div class="mt-10">
                                                     <input class="btn-check open-type-price" id="product-type-{{item.name}}" name="product-type" value="Без открывания" type="radio" onclick="changeForm()">
                                                     <label class="btn btn-outline-black  d-lg-flex  w-100 h-100 rounded-2 py-5 px-0" for="product-type-{{item.name}}">
@@ -1147,8 +1147,8 @@
         changeInputValueById(idOfSelect, getInputValueById(optionId))
     }
 
-    function changeArchPercentToPrice() {
-        changeSpanTextById('price-arch', '+ ' + getTotalPrice().match(/\d+/)[0] * 0.3 + " руб.")
+    function changeArchPercentToPrice(price) {
+        changeSpanTextById('price-arch', '+ ' + Math.round(price) + " руб.")
     }
     function changePriceToday (newPrice) {
         changeSpanTextById("price-today", newPrice)
@@ -1166,8 +1166,24 @@
     function makeOldPrice(price){
         return Math.round((price/(1 - (getPercentOfPrice()/100)))/10) * 10
     }
-    function getTotalPrice() {
+    function getTotalPriceFromSpan() {
         return document.getElementById("total").textContent
+    }
+    function getFinalPriceWithOpenType(total){ //arch price depends on total price so we need to provide total argument
+        let optionsOfOpenTypes = document.getElementsByClassName("open-type-price")
+        for (let i = 0; i < optionsOfOpenTypes.length; i++) {
+            if (optionsOfOpenTypes[i].checked) {
+                let type = optionsOfOpenTypes[i].id.split("-")[2]
+                if (type == "arch") {
+                    return total * 1.3
+                }
+                else {
+                    const openTypePrice = +document.getElementById("price-" + type).textContent.match(/\d{4,}/)[0]
+                    return total + openTypePrice
+                }
+            }
+        }
+        return total
     }
     function changeForm() {
         let width_of_rod = getInputValueById("width_of_rod").match(/\d{3,}/)[0]
@@ -1178,20 +1194,7 @@
         let amount = +getInputValueById("amount")
         let openTypePrice = 0;
 
-        let optionsOfOpenTypes = document.getElementsByClassName("open-type-price")
-        for (let i = 0; i < optionsOfOpenTypes.length; i++) {
-            if (optionsOfOpenTypes[i].checked) {
-                let type = optionsOfOpenTypes[i].id.split("-")[2]
-                if (type == "arch") {
-                    let priceOfWidth = getInputValueById("width_of_rod").match(/\d{3,}/)[0]
-                    openTypePrice = priceOfWidth * 1.3 - priceOfWidth
-                } else if (type == "solid") {
-                    openTypePrice = 0;
-                } else {
-                    openTypePrice = +document.getElementById("price-" + type).textContent.match(/\d{4,}/)[0]
-                }
-            }
-        }
+
 
         let painting = getInputValueById("painting").match(/\d{3,}/)
         if (painting) {
@@ -1206,8 +1209,9 @@
         } else {
             installing = 0;
         }
-
-        const total = amount * (width_of_rod * width * height / 10000 + openTypePrice) + installing + painting;
+        let total = amount * (width_of_rod * width * height / 10000) + installing + painting;
+        changeArchPercentToPrice(total * 0.3)
+        total = Math.round(getFinalPriceWithOpenType(total))
         document.getElementById("total").textContent = total + " руб.";
     }
     const optionsOfWidth = document.getElementsByClassName("width-option")
@@ -1218,6 +1222,5 @@
     changeInputValueById("height", "100")
     changeInputValueById("amount", "1")
     changeForm()
-    changeArchPercentToPrice()
 </script>
 {% endblock %}

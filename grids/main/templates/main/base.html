@@ -102,43 +102,33 @@
                         href="/металлические-решетки-на-окна" data-toggle="dropdown">Каталог</a>
                         <ul class="dropdown-menu fade-up d-flex ">
                             <div>
-                            <li class="dropdown-item_header">Тип решеток</li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Эконом решетки </a></li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Ажурные решетки </a></li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> VIP решетки</a></li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Эксклюзив решетки</a></li>
-                              <li class="dropdown-item_header">Категории решеток</li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Сварные решетки </a></li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Кованые решетки </a></li>
-                            <li class="dropdown-item_header">Коллекции решеток</li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Стандарт </a></li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Стандарт-Д </a></li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Престиж</a></li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Престиж-Д</a></li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Кованые VIP </a></li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Кованые VIP-Д </a></li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Эксклюзив</a></li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Эксклюзив-Д</a></li>
+                            <li class="dropdown-item_header">Категории</li>
+                            {% for item in list_of_categories %}
+                                <li><a class="dropdown-item text-muted text-hover-primary" href="{{ item.url }}">
+                                    {{ item.title }} </a></li>
+                                {% endfor %}
+                            <li class="dropdown-item_header">Виды</li>
+                                {% for item in list_of_kinds %}
+                                <li><a class="dropdown-item text-muted text-hover-primary" href="{{ item.url }}">
+                                    {{ item.title }} </a></li>
+                                {% endfor %}
+                            <li class="dropdown-item_header">ТОПы решеток</li>
+                                {% for item in list_of_popular_sections %}
+                                <li><a class="dropdown-item text-muted text-hover-primary" href="{{ item.url }}">
+                                    {{ item.title }} </a></li>
+                                {% endfor %}
                         </div>
                             <div>
-                            <li class="dropdown-item_header">Вид решеток</li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Обычные решетки</a></li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Дутые решетки </a></li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Арочные решетки</a></li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Распашные решетки</a></li>
-                            <li class="dropdown-item_header">Назначение решеток</li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> На лоджию</a></li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> На балкон </a></li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> На первый этаж </a></li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Кид-стоп (защита для детей)</a></li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Внутренние</a></li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="/решетки-для-дачи"> Для дачи</a></li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> На прямки </a></li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Ажурные</a></li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Для дома</a></li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Для квартиры </a></li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> Цоколь/подвал</a></li>
-                            <li><a class="dropdown-item text-muted text-hover-primary" href="#"> На кондиционер</a></li>
+                            <li class="dropdown-item_header">Классы</li>
+                                {% for item in list_of_classes %}
+                                <li><a class="dropdown-item text-muted text-hover-primary" href="{{ item.url }}">
+                                    {{ item.title }} </a></li>
+                                {% endfor %}
+                            <li class="dropdown-item_header">Назначение</li>
+                            {% for item in list_of_grids_purpose %}
+                                <li><a class="dropdown-item text-muted text-hover-primary" href="{{ item.url }}">
+                                    {{ item.title }} </a></li>
+                            {% endfor %}
                         </div>
                           </ul>
                     </li>
@@ -212,7 +202,7 @@
             <div class="col d-lg-block d-none">111<a class="btn btn-primary btn-xxl w-100" href="#">Консультация</a></div>
             <div class="col"><a
                     class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
-                    href="/кованые-решетки-на-окна-вип-класс">
+                    href="/решетки-на-окна-вип-класс">
                 <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">VIP решетки</h5><span
                     class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
                     style="min-width: 3rem;">{{count.vip}}</span></a></div>
@@ -313,7 +303,7 @@
                         </div>
                         <div class="col"><a
                                 class="d-lg-flex d-block align-items-lg-center h-100 border border-secondary bg-hover-white border-hover-white text-hover-black rounded-3 text-white text-decoration-none py-lg-10 px-lg-15 p-10"
-                                href="/кованые-решетки-на-окна-вип-класс">
+                                href="/решетки-на-окна-вип-класс">
                             <h5 class="h6 w-50 fs-lg-10 fs-7 fw-medium text-uppercase mb-0">VIP решетки</h5><span
                                 class="badge fs-5 border border-primary rounded-pill text-secondary mt-lg-auto mt-8 mb-lg-4 ms-lg-auto py-2"
                                 style="min-width: 3rem;">{{count.vip}}</span></a></div>

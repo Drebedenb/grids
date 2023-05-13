@@ -64,7 +64,7 @@
                             <h3 class="w-50 h5 fs-lg-8 fs-7 fw-medium ls-sm text-uppercase mb-0">Ажурные решетки</h3><span class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2" style="min-width: 3rem;">{{count.ajur}}</span></a>
                     </div>
                     <div class="col">
-                        <a class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20  px-10 py-4" href="/кованые-решетки-на-окна-вип-класс">
+                        <a class="d-flex bg-hover-light text-body border border-light rounded-lg-3 rounded-2 text-decoration-none px-lg-20  px-10 py-4" href="/решетки-на-окна-вип-класс">
                             <h3 class="w-50 h5 fs-lg-8 fs-7 fw-medium ls-sm text-uppercase mb-0">VIP <br/> решетки</h3><span class="badge d-lg-block d-none fs-5 rounded-pill border border-secondary text-body mt-auto mb-1 ms-auto py-2" style="min-width: 3rem;">{{count.vip}}</span></a>
                     </div>
                     <div class="col">
@@ -210,7 +210,7 @@
                                 <h6 class="fw-medium ls-sm text-uppercase mt-8 ms-10 mb-0">Назначение</h6>
 
                                 <ul class="dropdown-list mb-8">
-                                    {%for item in list_of_grids_types%}
+                                    {%for item in list_of_grids_purpose%}
                                     <li><a class="nav-link text-hover-secondary ms-10" href="{{item.url}}">{{item.title}}</a></li>
                                     {%endfor%}
                                 </ul>
@@ -478,7 +478,7 @@
 
                             <!--  NAZNACHENIE RESHETOK -->
 
-                            {% include 'main/components/lattice_tags.html' with list_of_grids_types=list_of_grids_types %}
+                            {% include 'main/components/lattice_tags.html' with list_of_grids_purpose=list_of_grids_purpose %}
 
 
                             <!--  NEPRERIVNO RABOTAEM C 2010 -->
@@ -974,9 +974,9 @@
         {url: "дутые-и-обычные-ажурные-решетки", "name_of_category": "ajur", "name_of_class": null},
 
 
-        {url: "кованые-решетки-на-окна-вип-класс", "name_of_category": "vip", "name_of_class": "usual"},
-        {url: "кованые-дутые-решетки-вип-класса", "name_of_category": "vip", "name_of_class": "blow"},
-        {url: "кованые-дутые-и-обычные-решетки-вип-класса", "name_of_category": "vip", "name_of_class": null},
+        {url: "решетки-на-окна-вип-класс", "name_of_category": "vip", "name_of_class": "usual"},
+        {url: "дутые-решетки-вип-класса", "name_of_category": "vip", "name_of_class": "blow"},
+        {url: "дутые-и-обычные-решетки-вип-класса", "name_of_category": "vip", "name_of_class": null},
 
         {url: "эксклюзивные-кованые-решетки", "name_of_category": "exclusive", "name_of_class": "usual"},
         {url: "дутые-эксклюзивные-решетки", "name_of_category": "exclusive", "name_of_class": "blow"},
