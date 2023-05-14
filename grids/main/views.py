@@ -185,10 +185,6 @@ def get_paginated_url(request, page_number):
     params['page'] = page_number
     return f"{request.path}?{urlencode(params)}"
 
-
-def convert_int_to_array(integer):
-    return [integer]
-
 def get_products_by_categories(category_number, min_price, max_price, order_by_name, order_scending, limit):
     cache_key = "category_" + str(category_number) + "_" + str(min_price) + \
                 str(max_price) + order_by_name + order_scending + str(limit)
@@ -199,9 +195,7 @@ def get_products_by_categories(category_number, min_price, max_price, order_by_n
     order_by_name = order_by_name if order_scending == 'asc' else '-' + order_by_name
     # в прошлых версиях проекта GIT можно найти SQL запрос аналогичный этому ОРМ запросу
     queryset = PriceWinguardMain.objects.filter(
-        price_winguard_sketch__category__in=category_number,
-        # price_b2c__gt=min_price,
-        # price_b2c__lt=max_price
+        price_winguard_sketch__category__in=category_number
     ).annotate(
         percent=(F('price_winguard_sketch__id') % 3 + 1) * 10 + (F('price_winguard_sketch__id') % 2 * 5),
         stars_count=(F('price_winguard_sketch__id') % 10 + F('price_winguard_sketch__id') % 3 + F('price_winguard_sketch__id') % 7 + F('price_winguard_sketch__id') % 5 + F('price_winguard_sketch__id') % 11),
@@ -236,7 +230,7 @@ def get_product_by_sketch_category_and_number(category, number):
         return product
     product = PriceWinguardMain.objects.filter(
         price_winguard_sketch__category__in=category,
-        price_winguard_sketch__number=number,
+        price_winguard_sketch__number=number
     ).annotate(
         percent=(F('price_winguard_sketch__id') % 3 + 1) * 10 + (F('price_winguard_sketch__id') % 2 * 5),
         stars_count=(F('price_winguard_sketch__id') % 10 + F('price_winguard_sketch__id') % 3 + F(
@@ -289,8 +283,6 @@ def count_products_by_category(category_number):
 
 def get_categories_min_price(category_number):
     cache_key = "min_price_" + str(category_number)
-    if isinstance(category_number, int):
-        category_number = convert_int_to_array(category_number)
     min_price = cache.get(cache_key)
     if min_price is None:
         min_price = \
@@ -303,8 +295,6 @@ def get_categories_min_price(category_number):
 
 def get_categories_max_price(category_number):
     cache_key = "max_price_" + str(category_number)
-    if isinstance(category_number, int):
-        category_number = convert_int_to_array(category_number)
     max_price = cache.get(cache_key)
     if max_price is None:
         max_price = PriceWinguardMain.objects.filter(price_winguard_sketch__category__in=category_number).values(
@@ -327,10 +317,10 @@ count = {
 
 def index(request):
     leaders_of_selling = get_products_by_categories([1], 0, 99999, 'id', 'asc', 16)
-    min_price_1 = get_categories_min_price(1)
-    min_price_2 = get_categories_min_price(3)
-    min_price_3 = get_categories_min_price(5)
-    min_price_4 = get_categories_min_price(7)
+    min_price_1 = get_categories_min_price([1])
+    min_price_2 = get_categories_min_price([3])
+    min_price_3 = get_categories_min_price([5])
+    min_price_4 = get_categories_min_price([7])
     short_list_of_reviews = list_of_reviews[:4]
     short_list_of_reviews_collapsed = list_of_reviews_collapsed[:8]
     context = {
