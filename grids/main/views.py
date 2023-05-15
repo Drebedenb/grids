@@ -8,6 +8,9 @@ from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.cache import cache
 from urllib.parse import urlencode
+from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
+
+
 
 # class MockDjangoRedis:
 #     def get(self, arg):
@@ -17,9 +20,6 @@ from urllib.parse import urlencode
 #         return arg
 # cache = MockDjangoRedis()
 
-
-
-from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
 list_of_photos_done = [
     {"name": "photos/1-1/1.webp"},
@@ -323,8 +323,11 @@ def index(request):
     min_price_4 = get_categories_min_price([7])
     short_list_of_reviews = list_of_reviews[:4]
     short_list_of_reviews_collapsed = list_of_reviews_collapsed[:8]
+    meta_description = 'Решетки на окна для квартиры и дачи по ценам от производителя. ' \
+                       'Бесплатная консультация и изготовление по вашим размерам. Гарантия 5 лет.'
     context = {
         'title': 'Металлические решетки на окна с установкой',
+        'meta_description': meta_description,
         'leaders_of_selling': leaders_of_selling,
         'list_of_photos_done': list_of_photos_done,
         'min_price_1': min_price_1,
@@ -369,8 +372,11 @@ def catalog_category(request, category_name):
 
     leaders_of_selling = get_products_by_categories([5], min_price_for_sort, max_price_for_sort,
                                                     order_type, order_scending, 15)
+    meta_description = 'Металлические решетки по разным ценам. Популярные эскизы со скидками. ' \
+                       'Сварные, ажурные, кованые и дутые решетки по размерам клиента.'
     context = {
         'title': category['title'],
+        'meta_description': meta_description,
         'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling,
         'min_price': min_price, 'max_price': max_price, 'list_of_photos_done': list_of_photos_done,
 
@@ -384,8 +390,11 @@ def catalog_category(request, category_name):
 
 
 def contacts(request):
+    meta_description = 'Металлические решетки по хорошей цене. Собственное производство в Клинском районе. ' \
+                       'Бесплатная консультация по телефону: +7-495-374-53-64'
     context = {
         'title': 'Контакты',
+        'meta_description': meta_description,
         'count': count
     }
     return render(request, 'main/contacts.html', context)
@@ -413,8 +422,11 @@ def product(request, category, file_number):
                                                             first_row_product.path_folder],
                                                         'price', 'asc', 15)
     photos_of_projects = get_product_project_photos_eight(first_row_product.path_folder, first_row_product.path_file)
+    meta_description = 'Металлическая решетка со скидкой. Фотографии работ и отзывы клиентов.' \
+                       ' Покраска, покрытие, напыление по дешевой цене. Гарантия до 50 лет.'
     context = {
         'title': 'Решетка на окно ' + str(first_row_product.path_folder) + '-' + str(first_row_product.path_file),
+        'meta_description': meta_description,
         'product': product,
         'list_of_open_types_for_calculator': list_of_open_types_for_calculator,
         'list_of_reviews': list_of_reviews,
@@ -426,8 +438,11 @@ def product(request, category, file_number):
 
 
 def projects(request):
+    meta_description = 'Более 1000 довольных клиентов. Фотографии работ и возможность заказать такую же решетку. ' \
+                       'Бесплатная консультация и замер.'
     context = {
         'title': 'Наши работы',
+        'meta_description': meta_description,
         'list_of_photos_done': list_of_photos_done,
         'list_of_photos_done_collapsed': list_of_photos_done_collapsed,
         'count': count
@@ -436,8 +451,11 @@ def projects(request):
 
 
 def reviews(request):
+    meta_description = 'Отзывы клиентов о металлических решетках. Персональные скидки за оставленный комментарий. ' \
+                       'Большой опыт в ковке и сварке решеток на окна.'
     context = {
         'title': 'Отзывы клиентов',
+        'meta_description': meta_description,
         'list_of_reviews': list_of_reviews,
         'list_of_reviews_collapsed': list_of_reviews_collapsed,
         'count': count
@@ -466,8 +484,11 @@ def compare(request):
         product['additional_info'] = list(
             PriceWinguardMain.objects.filter(price_winguard_sketch_id=product["id"]).values('price_b2c', 'name'))
         list_of_compares.append(product)
+    meta_description = 'Сравнить решетки по цене, материалу, покраске, типу открывания. ' \
+                       'Компания предоставляет большой выбор металлических решеток на окна.'
     context = {
         'title': 'Сравнение решеток',
+        'meta_description': meta_description,
         'products': list_of_compares,
         'count': count
     }
@@ -493,8 +514,11 @@ def favorite(request):
         product["path_folder"] = path_arr[1]
         product["path_file"] = path_arr[2]
         list_of_favorites.append(product)
+    meta_description = 'Понравившиеся металлические решетки. Выбирайте любой эскиз и добавляйте его в свой список. ' \
+                       'Возможен заказ сразу нескольких видов изделий.'
     context = {
         'title': 'Избранные решетки',
+        'meta_description': meta_description,
         'products': list_of_favorites,
         'count': count
     }
@@ -506,14 +530,19 @@ def page_not_found(request, exception):
 
 
 def privacy(request):
+    meta_description = 'Политика конфиденциальности компании на сайте оконные-решетки.рф . Совершая покупку, вы соглашаетесь на обработку персональных данных.'
     context = {
         'title': 'Конфиденциальность',
+        'meta_description': meta_description,
         'count': count
     }
-    return render(request, 'main/privacy.html')
+    return render(request, 'main/privacy.html', context)
 
 def sales(request):
+    meta_description = 'Скидка 20% при полной предоплате металлической решетки. ' \
+                       'Скидка 10% при оплате в день приезда замерщика. Бесплатная консультация и замер.'
     context = {
-        'title': 'Клиентам'
+        'title': 'Клиентам',
+        'meta_description': meta_description
     }
-    return render(request, 'main/sales.html')
+    return render(request, 'main/sales.html', context)
