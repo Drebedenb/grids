@@ -223,7 +223,9 @@
                                     {% with PriceWinguardSketchId=product.0.id %}
                                             <div class="position-absolute top-0 start-0 z-2">
                                                 <a class="text-muted text-hover-black">{% include 'main/icons/chart.html' with classes="svg-icon"%}</a>
+                                                {% if product.0.stars_count > 20 %}
                                                 <span class="fs-8  ms-2 py-0 bg-success text-white px-2 rounded-2">хит</span>
+                                                {% endif %}
                                             </div>
                                             <div class="position-absolute top-0 end-0 z-2">
                                                 <span id="form-percent" class="fs-8 ms-2 py-0 bg-danger text-white px-2 rounded-2">{{product.0.percent}}%</span>
@@ -847,18 +849,19 @@
                                             </div>
                                             <div class="row row-cols-1 row-cols-lg-2 mt-10 gx-5 ">
                                                 <div class="col">
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlTextarea1 h-100" class="form-label"></label>
+                                                        <textarea class="form-control text-muted" id="exampleFormControlTextarea1" rows="3" placeholder="Введите текст"></textarea>
+                                                    </div>
                                                     <div class="row row-cols-2  gx-5">
-                                                        <div class="col">
-                                                            <button class="fs-6 fs-lg-8  btn btn-primary w-100">Оставьте свой отзыв о нашей работе</button>
-                                                        </div>
                                                         <div class="col">
                                                             <a href="{%url 'reviews'%}" class="fs-6 fs-lg-10 py-11 btn btn-outline-secondary w-100">Все отзывы</a>
                                                         </div>
+                                                        <div class="col">
+                                                            <button class="fs-6 fs-lg-10 py-11  btn btn-primary w-100 h-100" onclick="window.location.reload()">Отправить</button>
+                                                        </div>
                                                     </div>
-                                                    <div class="mb-3">
-                                                        <label for="exampleFormControlTextarea1 h-100" class="form-label"></label>
-                                                        <textarea class="form-control text-muted" id="exampleFormControlTextarea1" rows="3">Введите текст</textarea>
-                                                    </div>
+
                                                 </div>
                                                 <div class="col">
                                                     <img class="w-100 rounded-2" src="{% static 'main/img/sale_baners/sale_to_reviews.webp' %}" alt="Скидка в 10 процентов за оставленный отзыв">

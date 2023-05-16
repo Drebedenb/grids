@@ -20,6 +20,8 @@ from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 #         return arg
 # cache = MockDjangoRedis()
 
+base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+img_dir = os.path.join(base_dir, 'main/static/main/img/')
 
 list_of_photos_done = [
     {"name": "photos/1-1/1.webp"},
@@ -127,53 +129,59 @@ list_of_open_types_for_calculator = [
     {"name": "oo", "description": "Распашная-Распашная", "price": "2800"},
 ]
 
+def get_text_from_text_dir(file_name):
+    text_dir = os.path.join(base_dir, 'main/text/')
+    return open(os.path.join(text_dir, file_name), 'r', encoding='utf-8').read()
+
 ALL_CATEGORIES = [1, 2, 3, 4, 5, 6, 7, 8]
 russian_categories = {
+    # all grids
+    "металлические-решетки-на-окна": {"title": "Все металлические решетки на окна", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+
     #list_of_grids_purpose
-    "решетки-на-балкон": {"title": "Металлические решетки на балкон", "number_of_category": ALL_CATEGORIES},
-    "решетки-на-приямки": {"title": "Металлические решетки на приямки", "number_of_category": ALL_CATEGORIES},
-    "решетки-на-лоджию": {"title": "Металлические решетки на лоджию", "number_of_category": ALL_CATEGORIES},
-    "решетки-для-квартиры": {"title": "Металлические решетки на окна квартиры", "number_of_category": ALL_CATEGORIES},
-    "решетки-на-первый-этаж": {"title": "Металлические решетки на окна первого этажа", "number_of_category": ALL_CATEGORIES},
-    "решетки-для-цоколя": {"title": "Металлические решетки на цоколь или в подвал", "number_of_category": ALL_CATEGORIES},
-    "решетки-для-дома": {"title": "Металлические решетки на окна дома", "number_of_category": ALL_CATEGORIES},
-    "решетки-от-выпадения-детей": {"title": "Металлические решетки на окна от выпадения детей (кид-стоп)", "number_of_category": ALL_CATEGORIES},
-    "решетки-на-кондиционер": {"title": "Металлические решетки на кондиционер", "number_of_category": ALL_CATEGORIES},
-    "внутренние-решетки": {"title": "Внутренние металлические решетки на окна", "number_of_category": ALL_CATEGORIES},
-    "решетки-для-дачи": {"title": "Металлические решетки на окна для дачи", "number_of_category": ALL_CATEGORIES},
-    "металлические-решетки-на-окна": {"title": "Все металлические решетки на окна", "number_of_category": ALL_CATEGORIES},
+    "решетки-на-балкон": {"title": "Металлические решетки на балкон", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "решетки-на-приямки": {"title": "Металлические решетки на приямки", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "решетки-на-лоджию": {"title": "Металлические решетки на лоджию", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "решетки-для-квартиры": {"title": "Металлические решетки на окна квартиры", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "решетки-на-первый-этаж": {"title": "Металлические решетки на окна первого этажа", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "решетки-для-цоколя": {"title": "Металлические решетки на цоколь или в подвал", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "решетки-для-дома": {"title": "Металлические решетки на окна дома", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "решетки-от-выпадения-детей": {"title": "Металлические решетки на окна от выпадения детей (кид-стоп)", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "решетки-на-кондиционер": {"title": "Металлические решетки на кондиционер", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "внутренние-решетки": {"title": "Внутренние металлические решетки на окна", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "решетки-для-дачи": {"title": "Металлические решетки на окна для дачи", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
 
     #list_of_categories
-    "решетки-на-окна-эконом-класс": {"title": "Металлические решетки на окна эконом класс", "number_of_category": [1]},
-    "дутые-решетки-на-окна-эконом-класс": {"title": "Дутые эконом металлические решетки на окна", "number_of_category": [2]},
-    "дутые-и-обычные-решетки-на-окна-эконом-класс": {"title": "Дутые и обычные эконом металлические решетки на окна", "number_of_category": [1, 2]},
-    "ажурные-решетки-на-окна": {"title": "Ажурные металлические решетки на окна", "number_of_category": [3]},
-    "дутые-ажурные-решетки": {"title": "Дутые ажурные металлические решетки на окна", "number_of_category": [4]},
-    "дутые-и-обычные-ажурные-решетки": {"title": "Дутые и обычные ажурные металлические решетки на окна", "number_of_category": [3, 4]},
-    "решетки-на-окна-вип-класс": {"title": "Металлические решетки на окна vip класс", "number_of_category": [5]},
-    "дутые-решетки-вип-класса": {"title": "Дутые металлические решетки на окна vip класс", "number_of_category": [6]},
-    "дутые-и-обычные-решетки-вип-класса": {"title": "Дутые и обычные металлические решетки на окна vip класс", "number_of_category": [5, 6]},
-    "эксклюзивные-кованые-решетки": {"title": "Металлические решетки на окна эксклюзив", "number_of_category": [7]},
-    "дутые-эксклюзивные-решетки": {"title": "Дутые металлические решетки на окна эксклюзив", "number_of_category": [8]},
-    "дутые-и-обычные-эксклюзивные-решетки": {"title": "Дутые и обычные металлические решетки на окна эксклюзив", "number_of_category": [7, 8]},
+    "решетки-на-окна-эконом-класс": {"title": "Металлические решетки на окна эконом класс", "number_of_category": [1], 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "дутые-решетки-на-окна-эконом-класс": {"title": "Дутые эконом металлические решетки на окна", "number_of_category": [2], 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "дутые-и-обычные-решетки-на-окна-эконом-класс": {"title": "Дутые и обычные эконом металлические решетки на окна", "number_of_category": [1, 2], 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "ажурные-решетки-на-окна": {"title": "Ажурные металлические решетки на окна", "number_of_category": [3], 'text': get_text_from_text_dir('ажурные-решетки-на-окна.html')},
+    "дутые-ажурные-решетки": {"title": "Дутые ажурные металлические решетки на окна", "number_of_category": [4], 'text': get_text_from_text_dir('ажурные-решетки-на-окна.html')},
+    "дутые-и-обычные-ажурные-решетки": {"title": "Дутые и обычные ажурные металлические решетки на окна", "number_of_category": [3, 4], 'text': get_text_from_text_dir('ажурные-решетки-на-окна.html')},
+    "решетки-на-окна-вип-класс": {"title": "Металлические решетки на окна vip класс", "number_of_category": [5], 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "дутые-решетки-вип-класса": {"title": "Дутые металлические решетки на окна vip класс", "number_of_category": [6], 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "дутые-и-обычные-решетки-вип-класса": {"title": "Дутые и обычные металлические решетки на окна vip класс", "number_of_category": [5, 6], 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "эксклюзивные-кованые-решетки": {"title": "Металлические решетки на окна эксклюзив", "number_of_category": [7], 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "дутые-эксклюзивные-решетки": {"title": "Дутые металлические решетки на окна эксклюзив", "number_of_category": [8], 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "дутые-и-обычные-эксклюзивные-решетки": {"title": "Дутые и обычные металлические решетки на окна эксклюзив", "number_of_category": [7, 8], 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
 
     #list_of_classes
-    "дутые-решетки-на-окна": {"title": "Дутые металлические решетки на окна", "number_of_category": [2, 4, 6, 8]},
-    "решетки-на-окна-без-дутости": {"title": "Прямые металлические решетки на окна","number_of_category": [1, 3, 5, 7]},
+    "дутые-решетки-на-окна": {"title": "Дутые металлические решетки на окна", "number_of_category": [2, 4, 6, 8], 'text': get_text_from_text_dir('дутые-решетки-на-окна.html')},
+    "решетки-на-окна-без-дутости": {"title": "Прямые металлические решетки на окна","number_of_category": [1, 3, 5, 7], 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
 
 
     #list_of_open_types
-    "арочные-решетки-на-окна": {"title": "Арочные металлические решетки на окна", "number_of_category": ALL_CATEGORIES},
-    "распашные-решетки-на-окна": {"title": "Распашные металлические решетки на окна", "number_of_category": ALL_CATEGORIES},
-    "решетки-без-открывания": {"title": "Металлические решетки на окна без открывания", "number_of_category": ALL_CATEGORIES},
+    "арочные-решетки-на-окна": {"title": "Арочные металлические решетки на окна", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "распашные-решетки-на-окна": {"title": "Распашные металлические решетки на окна", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "решетки-без-открывания": {"title": "Металлические решетки на окна без открывания", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
 
     #list_of_kinds
-    "сварные-решетки-на-окна": {"title": "Сварные металлические решетки на окна", "number_of_category": [1, 3]},
-    "кованые-решетки-на-окна": {"title": "Кованые металлические решетки на окна", "number_of_category": [5, 7]},
+    "сварные-решетки-на-окна": {"title": "Сварные металлические решетки на окна", "number_of_category": [1, 3], 'text': get_text_from_text_dir('сварные-решетки-на-окна.html')},
+    "кованые-решетки-на-окна": {"title": "Кованые металлические решетки на окна", "number_of_category": [5, 7], 'text': get_text_from_text_dir('кованые-решетки-на-окна.html')},
 
     #list_of_popular_sections
-    "топ-100-кованых-оконных-решеток": {"title": "Кованые оконные решетки | топ - 100 эскизов", "number_of_category": ALL_CATEGORIES},
-    "топ-100-сварных-решеток-на-окна": {"title": "Сварные оконные решетки | топ - 100 эскизов", "number_of_category": ALL_CATEGORIES},
+    "топ-100-кованых-оконных-решеток": {"title": "Кованые оконные решетки | топ - 100 эскизов", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "топ-100-сварных-решеток-на-окна": {"title": "Сварные оконные решетки | топ - 100 эскизов", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
 }
 
 # one day cache will be stored
@@ -245,8 +253,6 @@ def get_product_by_sketch_category_and_number(category, number):
     return product
 
 
-base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-img_dir = os.path.join(base_dir, 'main/static/main/img/')
 
 
 def get_folder_of_photos_by_category_and_number(category, numberOfProduct):
@@ -377,6 +383,7 @@ def catalog_category(request, category_name):
     context = {
         'title': category['title'],
         'meta_description': meta_description,
+        'text': category['text'],
         'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling,
         'min_price': min_price, 'max_price': max_price, 'list_of_photos_done': list_of_photos_done,
 

@@ -1,7 +1,7 @@
 list_of_grids_purpose = [
-    {'title': 'На балкон', 'img_path': 'main/img/grids_types/8_na_lodjiu.webp', 'url': '/решетки-на-балкон'},
+    {'title': 'На балкон', 'img_path': 'main/img/grids_types/7_na_balkon.webp', 'url': '/решетки-на-балкон'},
     {'title': 'На приямки', 'img_path': 'main/img/grids_types/18_na_pryamki.webp', 'url': '/решетки-на-приямки'},
-    {'title': 'На лоджию', 'img_path': 'main/img/grids_types/7_na_balkon.webp', 'url': '/решетки-на-лоджию'},
+    {'title': 'На лоджию', 'img_path': 'main/img/grids_types/8_na_lodjiu.webp', 'url': '/решетки-на-лоджию'},
     {'title': 'Для квартиры', 'img_path': 'main/img/grids_types/9_dlya_kvartiri.webp', 'url': '/решетки-для-квартиры'},
     {'title': 'На первый этаж', 'img_path': 'main/img/grids_types/10_na_perviy.webp', 'url': '/решетки-на-первый-этаж'},
     {'title': 'Цоколь/Подвал', 'img_path': 'main/img/grids_types/11_cokol.webp', 'url': '/решетки-для-цоколя'},
