@@ -1,10 +1,10 @@
-
-<div class="modal modal-lg d-none d-lg-block  rounded-4 fade" id="{{modal_id}}">
+{% load static %}
+<div class="modal modal-lg rounded-4 fade alert_modal" id="alert_modal">
     <div class="modal-dialog">
         <div class="modal-content p-0">
             <div class="modal-body p-0">
                 <div class="card">
-                    <img src="img/allert_form.webp"  class="card-img" alt="allert_form">
+                    <img src="{% static 'main/img/allert_form.webp' %}"  class="card-img" alt="allert_form">
                     <div class="card-img-overlay">
                         <div class="row row-cols-2 px-10 h-100">
                             <div class="col"></div>

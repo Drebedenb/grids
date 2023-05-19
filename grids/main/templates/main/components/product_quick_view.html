@@ -1,5 +1,6 @@
 {% load static %}
 {% load main_tags %}
+{% include 'main/components/buy_view.html' with path_folder=path_folder path_file=path_file modal_id=modal_id%}
  <div class="modal modal-xl modal-custom border border-black rounded-4 fade" id="{{modal_id}}">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -11,7 +12,6 @@
                             <div class="position-relative text-center ">
                                 <div class="position-absolute top-0 start-0 z-2">
                                     <a class="text-muted text-hover-black" href="#">{% include 'main/icons/chart.html' with classes="svg-icon"%}</a>
-                                    <span class="fs-8  ms-2 py-0 bg-success text-white px-2 rounded-2">хит</span>
                                 </div>
                                 <div class="position-absolute top-0 end-0 z-2">
                                     <a class="text-muted text-hover-black" href="#">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a>
@@ -132,8 +132,11 @@
                         <div class="mt-15-5">
                             <div class="row row-cols-lg-2 row-cols-1 align-items-center gy-lg-0 gy-15">
                                 <div class="col pt-10"><span class="fs-lg-10 fs-13 fw-semibold text-uppercase">Итого: <span class="quick-view-total">0</span>  руб</span></div>
-                                <div class="col"><a class="btn btn-primary fs-9 rounded-2  w-100" href="#">Заказать в
-                                    1 клик</a></div>
+                                <div class="col">
+                                    <div class="btn btn-primary fs-9 rounded-2  w-100" data-bs-toggle="modal"
+                                        data-bs-target="#buy_view_{{modal_id}}">Заказать в 1 клик
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="row row-cols-lg-2 mt-10  row-cols-2 mx-0">
@@ -192,5 +195,5 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
 

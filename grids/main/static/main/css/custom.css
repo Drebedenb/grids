@@ -31,6 +31,9 @@
 }
 
 
+
+
+
 /*BANER_ARROWS*/
 .baner_arrows{
     top:5% ;
@@ -510,6 +513,12 @@
 
 .arrow-next{
     right: -60px;
+}
+
+
+/*ALERT_MODAL*/
+.alert_modal{
+    display: none;
 }
 
     /*FILTER*/
