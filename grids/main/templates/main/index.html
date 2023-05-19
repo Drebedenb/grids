@@ -7,31 +7,60 @@
 
 
             <div class="card text-white rounded-4">
-                <img    src="{% static 'main/img/baner.webp' %}" class="card-img rounded-4" alt="Собственное производство решеток"/>
-                <div class="card-img-overlay baner_overlay" >
-                    <div id="carouselExampleFade" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                          <div class="carousel-item active">
-                            <h1 class="display-1  fs-3xl-25 fs-xl-23 fs-lg-20 fs-md-15 fs-7 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Металлические решетки <br> на окна по честным <br> ценам</h1>
-                          </div>
-                  <!--         <div class="carousel-item">
-                            <h1 class="display-1  fs-3xl-25 fs-xl-20 fs-lg-20 fs-md-15 fs-7 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Металлические решетки <br> на окна по честным <br> ценам</h1>
-                          </div>
-                          <div class="carousel-item">
-                            <h1 class="display-1  fs-3xl-25 fs-xl-23 fs-lg-20 fs-md-15 fs-7 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Металлические решетки <br> на окна по честным <br> ценам</h1>
-                          </div> -->
+                    <div class="card h-100 border-0 text-white">
+                        <div class=" gap-10 position-absolute z-2 baner_arrows" id="team-swiper-baner_control">
+                            <button class="btn fs-5 fs-sm-5  fs-sm-7 px-6 py-5 px-lg-11 py-lg-10 btn-outline-white btn-swiper-prev rounded-circle p-0"
+                                    type="button"><-
+                            </button>
+                            <button class="btn fs-5 fs-sm-5  fs-sm-7 px-6 py-5 px-lg-11 py-lg-10 btn-outline-white btn-swiper-next rounded-circle p-0"
+                                    type="button">->
+                            </button>
                         </div>
-                      <!--   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="visually-hidden">Next</span>
-                        </button> -->
-                      </div>
-                     <a class="btn  btn-outline-light btn-xxl btn_catalog"
-                        href="/металлические-решетки-на-окна">Перейти в каталог</a>
+                        <div class="swiper  w-100 h-100" id="baner-swiper"
+                             data-control="#team-swiper-baner_control">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="ratio h-100"
+                                         style="--bs-aspect-ratio: 60%; min-height: 200px; max-height: 460px;">
+                                        <img class="object-fit-cover rounded-lg-4 rounded-3"
+                                        src="{% static 'main/img/baner.webp' %}" alt="Делаем решетки на заказ">
+                                        <div class="card-body  p-lg-10 px-9 py-10">
+                                            <div class="w-lg-50 h-lg-auto h-100 ">
+                                                <h1 class="display-1  fs-3xl-25 fs-xl-23 fs-lg-20 fs-md-15 fs-7 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Металлические решетки <br> на окна по честным <br> ценам</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="ratio h-100"
+                                         style="--bs-aspect-ratio: 60%; min-height: 200px; max-height: 460px;">
+                                        <img class="object-fit-cover rounded-lg-4 rounded-3"
+                                        src="{% static 'main/img/baner.webp' %}" alt="Варим решетки на заказ">
+                                        <div class="card-body  p-lg-10 px-9 py-10">
+                                            <div class="w-lg-50 h-lg-auto h-100 ">
+                                                <h1 class="display-1  fs-3xl-25 fs-xl-23 fs-lg-20 fs-md-15 fs-7 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Металлические решетки <br> на окна по честным <br> ценам</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="ratio h-100"
+                                         style="--bs-aspect-ratio: 60%; min-height: 200px; max-height: 460px;">
+                                        <img class="object-fit-cover rounded-lg-4 rounded-3"
+                                        src="{% static 'main/img/baner.webp' %}" alt="Куём решетки на заказ">
+                                        <div class="card-body  p-lg-10 px-9 py-10">
+                                            <div class="w-lg-50 h-lg-auto h-100">
+                                                <h1 class="display-1  fs-3xl-25 fs-xl-23 fs-lg-20 fs-md-15 fs-7 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Металлические решетки <br> на окна по честным <br> ценам</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+              
+                     <a class="btn fs-11 py-10  btn-outline-light btn-lg btn_catalog position-absolute z-2"
+                        href="/металлические-решетки-на-окна">Перейти в каталог</a> 
               </div>
             </div>
             <div>

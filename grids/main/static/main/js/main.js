@@ -102,6 +102,19 @@ let teamSwiper = new Swiper("#team-swiper", {
 });
 
 
+let banerSwiper = new Swiper("#baner-swiper", {
+    loop: true,
+    effect: "fade",
+    fadeEffect: {
+        crossFade: true
+    },
+    navigation: {
+        prevEl: "#team-swiper-baner_control",
+        nextEl: "#team-swiper-baner_control"
+    }
+});
+
+
 let projectsSwiper = new Swiper("#projects-swiper", {
     loop: true,
     effect: "fade",

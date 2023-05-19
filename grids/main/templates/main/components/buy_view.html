@@ -1,25 +1,33 @@
 {% load static %}
 {% load main_tags %}
-<div class="modal modal-xl modal-custom border border-black rounded-4 fade" id="{{modal_id}}">
+<div class="modal modal-custom border  border border-black rounded-4 fade" id="{{modal_id}}">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="product modal-body px-20 ">
                 <button type="button" class="btn-close button-close float-end btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
+
                             <h6 class="fs-10 fs-lg-14 fs-lg-10 fw-normal mb-0 pt-10 text-uppercase text-center">Заказать решетку <span class="text-primary">3-37</span> </h6>
                                         <form class="mt-10">
                                             <div class="form-check text-center fs-6 pt-2 pb-2 ps-0 mb-10">
                                                 <label class="form-check-label fs-lg-8 text-muted" >Укажите Ваши контактные данные и наши сотрудники свяжутся с Вами</label>
                                             </div>
                                                       
-                                                    <input class="form-control py-lg-15 fs-7 text-center w-100 mb-10"
+                                                    <input class="form-control py-lg-10 fs-10 text-center w-100 mb-10 rounded-3"
                                                            placeholder="Введите Ваше имя" type="text"/>
                                              
                                               
-                                                    <input class="form-control py-lg-15 fs-7 text-center  w-100 mb-10"
+                                                    <input class="form-control py-lg-10 fs-10 text-center  w-100 mb-10 rounded-3"
                                                            placeholder="Укажите Ваш телефон *" type="text"/>
+
+                                                           <input class="form-control py-lg-10 fs-10 text-center w-100 mb-10 rounded-3"
+                                                           placeholder="Укажите Ваш e-mail" type="text"/>
                                              
                                               
-                                                    <button class="btn py-8 btn-primary py-lg-15 mt-2 fs-8 fs-lg-10 rounded-3 w-100 mb-10" type="submit" >Заказать решетку
+                                                    <input class="form-control py-lg-10 fs-10 text-center  w-100 mb-10 rounded-3"
+                                                           placeholder="Добавьте комментарий" type="text"/>
+                                             
+                                              
+                                                    <button class="btn py-8 btn-primary py-lg-10 mt-2 fs-10 fs-lg-12 rounded-3 w-100 mb-10" type="submit" >Заказать
                                                     </button>
                                              
                                                
@@ -29,6 +37,7 @@
                                                          </div>
                                         </form>
                   
+               
             </div>
         </div>
     </div>

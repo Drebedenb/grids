@@ -152,8 +152,9 @@
                         class="nav-link ls-sm p-0 {% if request.path == '/contacts/' %}active{% endif %}"
                         href="{%url 'contacts'%}">Контакты</a></li>
             </ul>
-            <div class="hstack gap-15 ms-auto">
-                <div>
+            <div class="hstack gap-20 ms-auto">
+                <p class="fs-7 mb-0">141640, Московская область.,<br> Клинский р-он, д. Ясенево, д. 74, стр. 7</p>
+                <div>      
                 <span class="pe-5">{% include 'main/icons/email.html' with classes='svg-icon' %}</span>
                 <a class="fs-8 text-hover-primary text-decoration-none text-white" href="mailto:info@smarmatix.ru">info@stalpro.com</a>
             </div>
@@ -257,18 +258,24 @@
                         металлических <br>решеток в Московской области </small></div>
                 </div>
                 <div class="col-auto d-lg-block d-none">
-                    <div class="d-inline-flex align-items-center">
+                  
+                    <div class="d-flex align-items-center ">
                         {% include 'main/icons/phone-call.html' with classes="svg-icon me-11" %}
                         <a class="fs-13 text-muted text-hover-white ls-sm text-decoration-none" href="tel:84953745364">8
                             (495) 374-53-64</a>
+                            <div class="ps-20">
+                                <p class="fs-8 mb-0">Режим работы:</p>
+                                <p class="mb-0">с 9.00 до 21.00</p>
+                            </div>
                     </div>
+                   
                 </div>
             </div>
         </div>
         <hr class="w-100 my-0">
         <div class="pt-lg-20 pt-8 pb-lg-18 pb-10">
             <div class="row gy-lg-0 gy-16">
-                <div class="col-lg-3">
+                <div class="col-lg-2">
                     <h6 class="fs-lg-10 fs-6 fw-medium ls-sm text-uppercase mb-lg-16 mb-8">Меню</h6>
                     <ul class="nav flex-lg-column fs-lg-10 fs-8 fw-medium ls-sm text-uppercase row-gap-lg-0 row-gap-5"
                         style="--bs-nav-link-color: var(--bs-white); --bs-nav-link-hover-color: var(--bs-primary);">
@@ -287,7 +294,25 @@
                                                                    href="{%url 'contacts'%}">Контакты</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-9">
+                <div class="col-lg-2">
+                    <div class="row  h-100">
+                    <div class="col-6 col-sm-6 col-lg-12">
+                        <p class="mb-0 fs-7 fs-lg-8">Электронная почта:</p>
+                        <a  class="fs-7 fs-lg-8 text-decoration-none" href="mailto:info@smarmatix.ru">info@stalpro.com</a>
+                    </div>
+                    <div class="col-6 col-sm-6 col-lg-12">
+                        <p class="fs-6 fs-sm-8 mb-3">Адрес:</p>
+                        <p class="fs-5 fs-sm-7">141640, МОСКОВСКАЯ ОБЛ., КЛИНСКИЙ Р-ОН, Д. ЯСЕНЕВО, Д. 74, СТР. 7</p>
+                    </div>
+                    <div class="col-12 col-sm-12 d-flex justify-content-around justify-content-lg-between">
+                        {% include 'main/icons/social/VK.html' with classes="svg-icon" %}
+                        {% include 'main/icons/social/YD.html' with classes="svg-icon" %}
+                        {% include 'main/icons/social/OK.html' with classes="svg-icon" %}
+                    </div>
+              
+                    </div>
+                </div>  
+                <div class="col-lg-8">
                     <h6 class="fs-lg-10 fs-6 fw-medium ls-sm text-uppercase mb-lg-17-5 mb-10">Каталог</h6>
                     <div class="row row-cols-lg-3 row-cols-2 gy-lg-20 gy-10">
                         <div class="col"><a
@@ -328,16 +353,30 @@
                 </div>
             </div>
         </div>
-        <hr class="w-100 my-0">
+        <div class="row justify-content-between">
+            <div class="col-12 d-flex justify-content-center justify-content-lg-start col-lg-3"> <span class="fs-7"> © 2023, оконные решетки.рф </span></div>
+            <div class="col-12 col-lg-9 align-items-center"><hr class="w-100 mt-2"></div>
+          
+            </div>
+        
         <div class="fs-6 d-lg-block d-none ls-sm py-19">
             <div class="row text-uppercase">
                 <div class="col-3"><a class="text-muted text-decoration-none"  href="{%url 'privacy'%}">Политика конфиденциальности</a>
                 </div>
-                <div class="col-3"><span>ООО Оконные решетки</span></div>
-                <div class="col-3"><span>ИНН: 2313131232313</span></div>
-                <div class="col-3"><span>ОГРН: 2313131232313</span></div>
+                <div class="col-2"><span>ИНН: 2313131232313</span></div>
+                <div class="col-2"><span>ОГРН: 2313131232313</span></div>
+                <div class="col-4 d-flex justify-content-around align-items-center">
+                    {% include 'main/icons/pay_systems/alpha.html' with classes="svg-icon" %}
+                    {% include 'main/icons/pay_systems/sber.html' with classes="svg-icon" %}
+                    {% include 'main/icons/pay_systems/visa.html' with classes="svg-icon" %}
+                    {% include 'main/icons/pay_systems/mastercard.html' with classes="svg-icon" %}
+                    {% include 'main/icons/pay_systems/qivi.html' with classes="svg-icon" %}
+                   </div>
+                
             </div>
         </div>
+        <div ><p class="text-muted pb-5 mb-0 fs-6">Внимание! Данный сайт носит информационный характер и ни при каких условиях не является публичной офертой, которая определяется положениями статьи 437 (2) гражданского кодекса рф. Для получения подробной информации 
+            о наличии и стоимости указанных товаров и (или) услуг, пожалуйста, обращайтесь к нашим менеджерам. КАРТА САЙТА</p> </div>
         <div class="d-lg-none d-block text-center p-7-5"><a
                 class="fs-13 text-muted text-hover-white ls-sm text-decoration-none" href="tel:84953745364">8 (495)
             374-53-64</a>

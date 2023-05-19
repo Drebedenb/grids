@@ -324,8 +324,8 @@
                                         </div>
                                         <div>
                                             <div class="row rounded-2 mt-10 align-items-center bg-light px-0 py-5 mx-0 shadow_item">
-                                                <div class="col-3  pe-lg-0"><img class="w-100 shadow_item" src="{% static 'main/img/free_order.webp' %}" alt="free_order"></div>
-                                                <div class="col-9"><button class="btn px-lg-0 py-5 btn-primary fs-7 fs-sm-13 fs-lg-7 w-100 shadow_item"  data-bs-toggle="modal"
+                                                <div class="col-3  pe-lg-0"><img class="w-lg-100 ms-sm-10  ms-md-20 ms-lg-0 shadow_item" src="{% static 'main/img/free_order.webp' %}" alt="free_order"></div>
+                                                <div class="col-9"><button class="btn px-lg-0 py-5 btn-primary fs-7 fs-sm-10 fs-md-12 fs-lg-7 w-100 shadow_item"  data-bs-toggle="modal"
                                                     data-bs-target="#modal-measurement" type="button">Заказать бесплатный замер</button></div>
                                             </div>
                                         </div>
@@ -678,7 +678,7 @@
                                         <div class="fs-lg-9 fs-8">
                                            <div class="row gx-5">
                                             <div class="col-lg-4 ">
-                                                <div id="carouselExampleControls_doctavka" class="carousel slide" data-bs-ride="carousel">
+                                                <div id="carouselExampleControlsForDelivery" class="carousel slide" data-bs-ride="carousel" data-bs-interval="10000">
                                                     <div class="carousel-inner">
                                                       <div class="carousel-item active">
                                                         <img class="rounded-2 object-fit-contain w-100" src="{% static 'main/img/delivery-slide.webp' %}"
@@ -702,12 +702,13 @@
                                             <div class="col-lg-8 border border-light rounded-2 mt-10 mt-lg-0 p-5">
                                                 <p class="mb-5  fs-lg-8 fs-xl-8 fs-xxl-9">Доставка осуществляется собственным транспортом в удобное для Вас
                                                     время. Стоимость доставки зависит от удаленности населённого пункта.
-                                                    Для точного расчета оставьте заявку или позвоните нам.</p>
+                                                    Для точного расчета <a href="" class="text-decoration-none text-hover-danger" data-bs-toggle="modal"
+                                                    data-bs-target="#modal-measurement">оставьте заявку</a>  или <a href="tel:84953745364" class="text-decoration-none text-hover-danger">позвоните нам</a>.</p>
                                                     
-                                                    <p class="mb-5">Представленные тарифы действуют при заказе монтажа.
+                                                    <p class="mb-5">Представленные <a href="" class="text-decoration-none text-hover-danger">тарифы</a> действуют при заказе монтажа.
                                                     Если Вы планируете устанавливать изделия самостоятельно,
                                                     то стоимость доставки может измениться. Уточняйте точную стоимость
-                                                    у наших специалистов заранее по телефону.</p>
+                                                    у наших специалистов заранее по телефону <a class="text-decoration-none text-hover-secondary" href="tel:84953745364">8 (495) 374-53-64</a>.</p>
 
                                                     <ul class="mb-0">
                                                         <li class="text-uppercase fw-semibold dots_item">Доставка по Москве: 500 р.</li>
@@ -970,61 +971,69 @@
                                         </div>
                                         <div class="col-12 col-lg-6">
                                             <div class="row row-cols-lg-2  border border-top rounded-2 row-cols-2 mx-0">
-                                                <div class="col p-9">
+                                                <div class="col p-7">
 
                                                     <p class="mb-0 fs-7 fs-lg-7 fw-medium text-dark">Вид покрытия</p>
                                                 </div>
-                                                <div class="col p-9">
+                                                <div class="col p-7">
 
                                                     <p class="mb-0 fs-7 fs-lg-7 fw-medium text-dark">Стоимость</p>
                                                 </div>
 
-                                                <div class="col  border-top border-end p-10">
+                                                <div class="col  border-top border-end p-7">
                                                     <p class="mb-0 fs-7 fs-lg-7 text-muted">Эмаль НЦ</p>
                                                 </div>
-                                                <div class="col border-top p-9">
+                                                <div class="col border-top p-7">
 
                                                     <p class="mb-0 fs-7 fs-lg-7 text-muted">550 руб. м²</p>
                                                 </div>
-                                                <div class="col border-top border-end p-9">
+                                                <div class="col border-top border-end p-7">
 
                                                     <p class="mb-0 fs-7 fs-lg-7 text-muted">Грунт-эмаль «3 в 1»</p>
                                                 </div>
-                                                <div class="col border-top p-9">
+                                                <div class="col border-top p-7">
 
                                                     <p class="mb-0 fs-7 fs-lg-7 text-muted">650 руб. м²</p>
                                                 </div>
-                                                <div class="col border-top border-end p-9">
+                                                <div class="col border-top border-end p-7">
 
                                                     <p class="mb-0 fs-7 fs-lg-7 text-muted">Грунт-эмаль Novax</p>
                                                 </div>
-                                                <div class="col border-top  p-9">
+                                                <div class="col border-top  p-7">
 
                                                     <p class="mb-0 fs-7 fs-lg-7 text-muted">1 250 руб. м²</p>
                                                 </div>
-                                                <div class="col border-top border-end p-9">
+                                                <div class="col border-top border-end p-7">
 
                                                     <p class="mb-0 fs-7 fs-lg-7 text-muted">Hammerite</p>
                                                 </div>
-                                                <div class="col border-top  p-9">
+                                                <div class="col border-top  p-7">
 
                                                     <p class="mb-0 fs-7 fs-lg-7 text-muted">1 400 руб. м²</p>
                                                 </div>
-                                                <div class="col border-top border-end p-9">
+                                                <div class="col border-top border-end p-7">
 
                                                     <p class="mb-0 fs-7 fs-lg-7 text-muted">Порошковое напыление</p>
                                                 </div>
-                                                <div class="col border-top p-9">
+                                                <div class="col border-top p-7">
 
                                                     <p class="mb-0 fs-7 fs-lg-7 text-muted">1 700 руб. м²</p>
                                                 </div>
-                                                <div class="col border-top border-end p-9">
+                                                <div class="col border-top border-end p-7">
 
                                                     <p class="mb-0 fs-7 fs-lg-7 text-muted">Эмаль WS-Plast</p>
                                                 </div>
-                                                <div class="col border-top p-9">
+                                                <div class="col border-top p-7">
 
                                                     <p class="mb-0 fs-7 fs-lg-7 text-muted">1 900 руб. м²</p>
+                                                </div>
+                                                <div class="col border-top border-end p-7">
+
+                                                    <p class="mb-0 fs-7 fs-lg-7 text-muted">Патина</p>
+                                                </div>
+                                                <div class="col border-top p-7">
+
+                                                    <p class="mb-0 fs-7 fs-lg-7 text-muted">450 руб. м²</p>
                                                 </div>
                                             </div>
                                         </div>

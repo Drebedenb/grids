@@ -22,17 +22,21 @@
 }
 
 /* BTN_CATALOG */
-.baner_overlay{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 60%;
-}
+
 .btn_catalog{
     color: white;
-    width: 35%;
+    width: 20%;
+    bottom: 10%;
+    margin-left: 30px;
 }
 
+
+/*BANER_ARROWS*/
+.baner_arrows{
+    top:5% ;
+    right: 2% ;
+    width: auto;
+}
 
 
 /*DROPDPWN*/
@@ -142,6 +146,15 @@
     cursor: pointer;
 }
 
+.form-check-input[type=radio] {
+    cursor: pointer;
+}
+
+
+
+.card_border{
+    border: none !important;
+}
 
 
 /* TABLE */
@@ -278,7 +291,10 @@
 
 
 
-
+/*SOCIAL_Icons*/
+.socialicon_item{
+    cursor: pointer;
+}
 
 
 
@@ -392,6 +408,14 @@
 .btn_catalog{
     display: none;
 }
+
+/*BANER_ARROWS*/
+.baner_arrows{
+    top:5% ;
+    right: 5% ;
+    width: auto;
+}
+
    /*TABS*/
    .sorting{
     width: 100%;
@@ -465,6 +489,13 @@
 
 @media (max-width: 768px) {
 
+/*BANER_ARROWS*/
+.baner_arrows{
+    top:10% ;
+    right: 2% ;
+    width: auto;
+}
+    
 
            /*  POCHEMY NASHA KOMPANIYA */
            .pluses_company {
