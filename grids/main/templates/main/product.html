@@ -346,14 +346,23 @@
                                                 <span id="price-old" class="fs-7 fs-lg-9 text-muted text-decoration-line-through">1200 р./ м²</span>
                                             </div>
                                             <div class="col-4 text-center">
-                                                <p class="mb-0 fs-7 fs-lg-7 panel_item">Рейтинг 4 из 5</p>
+                                                <p class="mb-0 fs-7 fs-lg-7 panel_item">Рейтинг  {% if product.0.stars_count > 15 %} 5 {% else %} 4 {% endif %} из 5</p>
                                                 <div class="d-flex pt-2 justify-content-center">
-                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %} 
-                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %} 
-                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %} 
-                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %} 
-                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %}
-                                                    <span class="fs-lg-6 fs-6">(32)</span>
+
+                                                    {% if product.0.stars_count > 15 %}
+                                                    {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %}
+                                                    {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %}
+                                                    {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %}
+                                                    {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %}
+                                                    {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %}
+                                                     {% else %}
+                                                     {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %}
+                                                     {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %}
+                                                     {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %}
+                                                     {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %}
+                                                     {% include 'main/icons/star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %}
+                                                     {% endif %}
+                                                    <span class="fs-lg-6 fs-6">({{ product.0.stars_count }})</span>
                                                 </div>
                                             </div>
                                         </div>
