@@ -714,3 +714,13 @@ if (getWidth() < 768){
     }
 })();
 }
+
+//блок кода для открывания модального окна при нажатии на кнопку купить
+let buyViewModal = new bootstrap.Modal(document.getElementById('buy_view'));
+    function buyViewHandler(id){
+        const folderOfGrid = id.match(/\d+/gm)[0]
+        const numberOfGrid = id.match(/\d+/gm)[1]
+        document.getElementById('buy_view_path_folder').textContent = folderOfGrid;
+        document.getElementById('buy_view_path_file').textContent = numberOfGrid;
+        buyViewModal.show();
+    }
