@@ -1099,20 +1099,16 @@
                                     </div>
                                 </div>
                         </section>
-                                        {#      Modal for similar prices items       #}
-                                        {%for item in similar_grids_by_price%}
-                                        {% include 'main/components/product_quick_view.html' with price=item.price saleprice=item.saleprice percent=item.percent path_folder=item.path_folder path_file=item.path_file modal_id=item.id%}
-                                        {%endfor%}
                     </div>
                 </div>
             </section>
 
-
-
             {% include 'main/components/consultation_form.html' %} 
-            {% include 'main/components/reasons.html' %} 
             {% include 'main/components/consultation_modal.html' %}
             {% include 'main/components/measure_modal.html' %}
+            {% include 'main/components/product_quick_view.html' %}
+
+            {% include 'main/components/reasons.html' %}
 
         </main>
     </div>

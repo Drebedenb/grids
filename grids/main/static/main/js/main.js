@@ -564,83 +564,80 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-//блок кода для быстрого просмотра и калькулятора в нем
-let width = 100;
-let height = 100;
-let isOpen = false;
-let isNitro = false;
-let priceForSquare = 1;
-
-function changeWidth(value) {
-        width = value;
-        changeQuickForms()
-    }
-
-    function changeHeight(value) {
-        height = value;
-        changeQuickForms()
-    }
-
-    function changeIsOpen(value) {
-        isOpen = value;
-        changeQuickForms()
-    }
-
-    function changeIsNitro(value) {
-        isNitro = value;
-        changeQuickForms()
-    }
-
-    function changePriceForSquare(value) {
-        priceForSquare = value;
-        changeQuickForms()
-    }
-
-    function changeCheckboxesByClass(className, isChecked) {
-        let items = document.getElementsByClassName(className)
-        for (let i = 0; i < items.length; i++) {
-            items[i].checked = isChecked;
-        }
-    }
-
-    function changeInputsByClass(className, value) {
-        let items = document.getElementsByClassName(className)
-        for (let i = 0; i < items.length; i++) {
-            items[i].value = value;
-        }
-    }
-
-    function changeSpanByClass(className, value) {
-        let items = document.getElementsByClassName(className)
-        for (let i = 0; i < items.length; i++) {
-            items[i].textContent = value;
-        }
-    }
-
-    function changeSpanTextById(spanId, value) {
-        document.getElementById(spanId).textContent = value
-    }
-
-    function changeQuickForms() {
-        changeCheckboxesByClass('quick-view-nitro', isNitro)
-        changeCheckboxesByClass('quick-view-isopen', isOpen)
-        changeInputsByClass('quick-view-width', width)
-        changeInputsByClass('quick-view-height', height)
-        changeSpanByClass("quick-view-total", countTotal())
-    }
-
-    function countTotal() {
-        let total = (width / 100 * height / 100) * priceForSquare
-        if (isOpen) {
-            total += 1500
-        }
-        if (isNitro) {
-            total += 550
-        }
-        return total
-    }
-
-//конец блока кода о калькуляторе и быстром просмотре
+// //блок кода для быстрого просмотра и калькулятора в нем
+// let width = 100;
+// let height = 100;
+// let isOpen = false;
+// let isNitro = false;
+// let priceForSquare = 1;
+//
+// function changeWidth(value) {
+//         width = value;
+//         changeQuickForms()
+//     }
+//
+//     function changeHeight(value) {
+//         height = value;
+//         changeQuickForms()
+//     }
+//
+//     function changeIsOpen(value) {
+//         isOpen = value;
+//         changeQuickForms()
+//     }
+//
+//     function changeIsNitro(value) {
+//         isNitro = value;
+//         changeQuickForms()
+//     }
+//
+//     function changePriceForSquare(value) {
+//         priceForSquare = value;
+//         changeQuickForms()
+//     }
+//
+//     function changeCheckboxesByClass(className, isChecked) {
+//         let items = document.getElementsByClassName(className)
+//         for (let i = 0; i < items.length; i++) {
+//             items[i].checked = isChecked;
+//         }
+//     }
+//
+//     function changeInputsByClass(className, value) {
+//         let items = document.getElementsByClassName(className)
+//         for (let i = 0; i < items.length; i++) {
+//             items[i].value = value;
+//         }
+//     }
+//
+//     function changeSpanByClass(className, value) {
+//         let items = document.getElementsByClassName(className)
+//         for (let i = 0; i < items.length; i++) {
+//             items[i].textContent = value;
+//         }
+//     }
+//
+//
+//     function changeQuickForms() {
+//         changeCheckboxesByClass('quick-view-nitro', isNitro)
+//         changeCheckboxesByClass('quick-view-isopen', isOpen)
+//         changeInputsByClass('quick-view-width', width)
+//         changeInputsByClass('quick-view-height', height)
+//         changeSpanByClass("quick-view-total", countTotal())
+//     }
+//
+//     function countTotal() {
+//         let total = (width / 100 * height / 100) * priceForSquare
+//         if (isOpen) {
+//             total += 1500
+//         }
+//         if (isNitro) {
+//             total += 550
+//         }
+//         return total
+//     }
+//
+// //конец блока кода о калькуляторе и быстром просмотре
 
 
 //блок кода для перемещения с карточки фотки
@@ -723,4 +720,78 @@ let buyViewModal = new bootstrap.Modal(document.getElementById('buy_view'));
         document.getElementById('buy_view_path_folder').textContent = folderOfGrid;
         document.getElementById('buy_view_path_file').textContent = numberOfGrid;
         buyViewModal.show();
+    }
+
+//блок кода для быстрого просмотра и вызова модального окна
+let width = 100;
+let height = 100;
+let isOpen = false;
+let isNitro = false;
+let priceForSquare = 1;
+
+let quickViewModal = new bootstrap.Modal(document.getElementById('quick_view'));
+    function quickViewHandler(id){
+        const pathFolder = id.match(/\d+/gm)[0]
+        const pathFile = id.match(/\d+/gm)[1]
+        const price = id.match(/\d+/gm)[2]
+        const salePrice = id.match(/\d+/gm)[3]
+        changePriceForSquare(price)
+        changeQuickViewWindow(pathFolder, pathFile, price, salePrice)
+        changePictures(pathFolder, pathFile)
+        quickViewModal.show(price, salePrice);
+    }
+
+    function changeQuickViewWindow(pathFolder, pathFile, price, salePrice){
+        changeSpanTextById('product_quick_view-path_folder', pathFolder)
+        changeSpanTextById('product_quick_view-path_file', pathFile)
+        changeSpanTextById('product_quick_view-price', price)
+        changeSpanTextById('product_quick_view-salePrice', salePrice)
+    }
+    function changeSpanTextById(spanId, value) {
+        document.getElementById(spanId).textContent = value
+    }
+    function changeWidth(value) {
+        width = value;
+        countTotal()
+    }
+
+    function changeHeight(value) {
+        height = value;
+        countTotal()
+    }
+
+    function changeIsOpen(value) {
+        isOpen = value;
+        countTotal()
+    }
+
+    function changeIsNitro(value) {
+        isNitro = value;
+        countTotal()
+    }
+
+    function changePriceForSquare(value) {
+        priceForSquare = value;
+        countTotal()
+    }
+
+    function changePictures(pathFolder, pathFile) {
+        const photoOfCarousel = document.getElementById('quick-view-carousel-picture')
+        const photoOfCarouselF = document.getElementById('quick-view-carousel-picture-f')
+        let srcOfPhotoStatic = photoOfCarousel.getAttribute('data-original')
+        let srcOfPhotoStaticF = photoOfCarouselF.getAttribute('data-original')
+        srcOfPhotoStatic = srcOfPhotoStatic + "/" + pathFolder + "/solid/" + pathFile + ".webp"
+        srcOfPhotoStaticF = srcOfPhotoStaticF + "/" + pathFolder + "/solid/" + pathFile + " F.webp"
+        photoOfCarousel.setAttribute('src', srcOfPhotoStatic)
+        photoOfCarouselF.setAttribute('src', srcOfPhotoStaticF)
+    }
+    function countTotal() {
+        let total = (width / 100 * height / 100) * priceForSquare
+        if (isOpen) {
+            total += 1500
+        }
+        if (isNitro) {
+            total += 550
+        }
+        changeSpanTextById('quick-view-total', Math.round(total))
     }

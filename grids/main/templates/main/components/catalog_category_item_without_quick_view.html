@@ -15,17 +15,16 @@
                 </div>
                 <div class="position-absolute d-none d-lg-block w-100 top-50 start-50 translate-middle opacity-0 z-1">
                     <button class="btn btn-light  fs-4 fs-sm-5 fs-md-8 px-5 py-5 py-sm-5 px-sm-10 px-md-20 py-md-7 rounded-3 "
-                            data-bs-toggle="modal"
-                            data-bs-target="#{{PriceWinguardSketchId}}"
                             type="button"
-                            id="{{price}}"
-                        onclick="changePriceForSquare(this.id)">Быстрый
+                            id="path_folder-{{ path_folder }}-path_file-{{ path_file }}-price-{{price}}-saleprice-{{saleprice}}"
+                        onclick="quickViewHandler(this.id)">Быстрый
                         просмотр
                     </button>
                 </div>
                 <a href="{%url 'product' path_folder path_file%}">
                 <div class="ratio" style="--bs-aspect-ratio: 100%; max-height: 265px;"><img
                         class="object-fit-contain"
+                        id="grid-picture-{{path_folder}}-{{path_file}}"
                         src="{% static 'main/img/grids_pictures' %}/{{path_folder}}/solid/{{path_file}}.webp"
                         alt="Фото решетки {{path_folder}}-{{path_file}}"></div>
             </div></a>

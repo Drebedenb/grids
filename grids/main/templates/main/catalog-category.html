@@ -471,12 +471,6 @@
                                     </div>
                                 </div>
                             </section>
-                            {#      Modal for similar prices items       #}
-                            {%for item in leaders_of_selling%}
-                                {% include 'main/components/product_quick_view.html' with price=item.price saleprice=item.saleprice percent=item.percent path_folder=item.path_folder path_file=item.path_file modal_id=item.id%}
-                            {%endfor%}
-
-
                             <!--  NAZNACHENIE RESHETOK -->
 
                             {% include 'main/components/lattice_tags.html' with list_of_grids_purpose=list_of_grids_purpose %}
@@ -1108,6 +1102,8 @@
         {% include 'main/components/consultation_form.html' %}
 
         {% include 'main/components/consultation_modal.html' %}
+
+        {% include 'main/components/product_quick_view.html' %}
     </div>
 </div>
 <script>
