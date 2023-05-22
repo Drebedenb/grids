@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import *
 
+
 urlpatterns = [
     path('', index, name='index'),
     path('<str:category_name>', catalog_category, name='catalog'),
@@ -11,5 +12,5 @@ urlpatterns = [
     path('compare/', compare, name="compare"),
     path('favorite/', favorite, name="favorite"),
     path('privacy/', privacy, name="privacy"),
-    path('акции/', sales, name="sales")
+    path('акции/', sales, name="sales"),
 ]

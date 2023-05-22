@@ -37,12 +37,11 @@ def get_secret(setting, secrets=secrets):
 SECRET_KEY = get_secret('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
 # Application definition
-
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -51,9 +50,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main.apps.MainConfig',
+    'django.contrib.sitemaps',
+    'django.contrib.sites',
+    'main',
     'debug_toolbar'
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
