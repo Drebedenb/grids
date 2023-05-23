@@ -12,7 +12,6 @@ from django.core.cache import cache
 from urllib.parse import urlencode
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
-
 class MockDjangoRedis:
     def get(self, arg):
         return None
@@ -251,9 +250,6 @@ def get_product_by_sketch_category_and_number(category, number):
         saleprice=Round(F('price_b2c') / (1 - F('percent') / 100), -1)
     )
     cache.set(cache_key, product, TTL_OF_CACHE_SECONDS)
-    for item in product:
-        print(item.__dict__)
-        print(item.id)
     return product
 
 

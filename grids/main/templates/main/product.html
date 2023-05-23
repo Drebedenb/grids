@@ -442,12 +442,11 @@
                                                   
                                                 </div>
 
-                                                <div class="col"><a class="btn btn-primary btn-xl w-100" data-bs-toggle="modal"
-                                 data-bs-target="#buy_view_{{product.0.id}}" type="button">Заказать
+                                                <div class="col"><a class="btn btn-primary btn-xl w-100" type="button" id="buy-button-on-{{product.0.path_folder}}-{{ product.0.path_file }}" onclick="buyViewHandler(this.id)">Заказать
                                                     в 1 клик</a></div>
                                             </div>
 
-                                    {% include 'main/components/buy_view.html' with path_folder=product.0.path_folder path_file=product.0.path_file modal_id=product.0.id%}
+                                    {% include 'main/components/buy_view.html'%}
 
                                  
                                         <div class="row row-cols-lg-3 row-cols-2 mt-2 gy-10">
@@ -1100,20 +1099,16 @@
                                     </div>
                                 </div>
                         </section>
-                                        {#      Modal for similar prices items       #}
-                                        {%for item in similar_grids_by_price%}
-                                        {% include 'main/components/product_quick_view.html' with price=item.price saleprice=item.saleprice percent=item.percent path_folder=item.path_folder path_file=item.path_file modal_id=item.id%}
-                                        {%endfor%}
                     </div>
                 </div>
             </section>
 
-
-
             {% include 'main/components/consultation_form.html' %} 
-            {% include 'main/components/reasons.html' %} 
             {% include 'main/components/consultation_modal.html' %}
             {% include 'main/components/measure_modal.html' %}
+            {% include 'main/components/product_quick_view.html' %}
+
+            {% include 'main/components/reasons.html' %}
 
         </main>
     </div>
