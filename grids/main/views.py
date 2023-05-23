@@ -1,5 +1,7 @@
 import re
 import os
+import requests
+
 
 from django.db.models import Min, Max, F
 from django.db.models.functions import Round
@@ -11,14 +13,13 @@ from urllib.parse import urlencode
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
 
+class MockDjangoRedis:
+    def get(self, arg):
+        return None
 
-# class MockDjangoRedis:
-#     def get(self, arg):
-#         return None
-#
-#     def set(arg, bla, ble, blu):
-#         return arg
-# cache = MockDjangoRedis()
+    def set(arg, bla, ble, blu):
+        return arg
+cache = MockDjangoRedis()
 
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 img_dir = os.path.join(base_dir, 'main/static/main/img/')
@@ -250,6 +251,9 @@ def get_product_by_sketch_category_and_number(category, number):
         saleprice=Round(F('price_b2c') / (1 - F('percent') / 100), -1)
     )
     cache.set(cache_key, product, TTL_OF_CACHE_SECONDS)
+    for item in product:
+        print(item.__dict__)
+        print(item.id)
     return product
 
 
@@ -378,7 +382,7 @@ def catalog_category(request, category_name):
 
     leaders_of_selling = get_products_by_categories([5], min_price_for_sort, max_price_for_sort,
                                                     order_type, order_scending, 15)
-    meta_description = 'Металлические решетки по разным ценам. Популярные эскизы со скидками. ' \
+    meta_description = 'Решетки на окна по разным ценам. Популярные эскизы со скидками. ' \
                        'Сварные, ажурные, кованые и дутые решетки по размерам клиента.'
     context = {
         'title': category['title'],
@@ -429,6 +433,7 @@ def product(request, category, file_number):
                                                             first_row_product.path_folder],
                                                         'price', 'asc', 15)
     photos_of_projects = get_product_project_photos_eight(first_row_product.path_folder, first_row_product.path_file)
+    requests.get('http://92.63.107.238/get.php', params={'tbl': 'price_winguard_sketch', 'id':first_row_product.price_winguard_sketch_id}) #increase popularity of item by 1
     meta_description = 'Металлическая решетка со скидкой. Фотографии работ и отзывы клиентов.' \
                        ' Покраска, покрытие, напыление по дешевой цене. Гарантия до 50 лет.'
     context = {
