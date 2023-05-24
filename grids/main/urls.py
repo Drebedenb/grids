@@ -11,5 +11,6 @@ urlpatterns = [
     path('сравнение-решеток-на-окна/', compare, name="compare"),
     path('избранные-решетки-на-окна/', favorite, name="favorite"),
     path('политика-конфиденциальности/', privacy, name="privacy"),
-    path('акции/', sales, name="sales")
+    path('акции/', sales, name="sales"),
+    path('sitemap/', sitemap, name="sitemap"),
 ]
