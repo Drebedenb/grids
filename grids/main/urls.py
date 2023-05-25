@@ -12,7 +12,6 @@ urlpatterns = [
     path('избранные-решетки-на-окна/', favorite, name="favorite"),
     path('политика-конфиденциальности/', privacy, name="privacy"),
     path('акции/', sales, name="sales"),
-    path('sitemap/', sitemap, name="sitemap"),
     path('dostavka/', delivery, name="delivery"),
     path('ustanovka/', installing, name="installing"),
     path('oplata/', paying, name="paying"),
