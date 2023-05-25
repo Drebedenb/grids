@@ -391,7 +391,16 @@
                                 <div class="row row-cols-lg-3 row-cols-2 gy-20">
                                     {% include 'main/components/buy_view.html'%}
                                     {% for item in products %}
-                                    {% include 'main/components/catalog_category_item.html' with stars_count=item.stars_count PriceWinguardSketchId=item.id price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
+                                        {% include 'main/components/catalog_category_item.html' with stars_count=item.stars_count PriceWinguardSketchId=item.id price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
+                                        {% if forloop.counter == 15 %}
+                                            </div>
+                                            {% include 'main/components/minibaner_measure.html' %}
+                                            <div class="row row-cols-lg-3 row-cols-2 gy-20">
+                                        {% elif forloop.counter == 30 %}
+                                            </div>
+                                            {% include 'main/components/minibaner_variant.html' %}
+                                            <div class="row row-cols-lg-3 row-cols-2 gy-20">
+                                        {% endif %}
                                     {% endfor %}
                                 </div>
 
@@ -754,28 +763,6 @@
                                         class="btn btn-outline-secondary btn-lg btn-wide-lg" href="{%url 'reviews'%}">Все
                                     отзывы </a>
                             
-                                </div>
-
-                                <!--MINIBANERS-->
-                       <div class="text-white">
-                            <div class="row mx-0 mt-10">
-                                <div class="col-6 col-sm-3 bg-primary ps-0 minibaner_item"> <img src="{% static 'main/img/mini_baner_2.webp' %}" class="w-100 "  alt="Собственное производство решеток"/></div>
-                                <div class="col-6 col-sm-5 bg-primary d-flex justify-content-center align-items-center minibaner_item_2"> <a href="" class=" mb-0 fs-9 text-white text-decoration-none  fs-sm-10 fs-md-12 fs-lg-17  text-uppercase">закажите <br>
-                                    бесплатный замер</a></div>
-                                <div class="col-12 col-sm-4 bg-primary d-flex  justify-content-center align-items-center  minibaner_item_3"><a href="#" class="btn border-0  px-3 px-sm-10 w-100 mb-1 mt-sm-0   btn-white fs-8 fs-sm-7 fs-lg-12 py-5 py-sm-10  text-hover-white  btn-xxl  "
-                                    href="/металлические-решетки-на-окна">Вызвать замерщика</a></div>
-                               
-                            </div>
-                                 
-                                  </div>
-                                  <div class="row mx-0 mt-10">
-                                    <div class="col-6 col-sm-3  ps-0 minibaner_item_4 minibaner_item_color"> <img src="{% static 'main/img/mini_baner_1.webp' %}" class="w-100 "  alt="Собственное производство решеток"/></div>
-                                    <div class="col-6 col-sm-5  d-flex justify-content-center align-items-center minibaner_item_5 minibaner_item_color"> <a href="" class=" mb-0 fs-8 text-white text-decoration-none  fs-sm-10 fs-md-12 fs-lg-17  text-uppercase">не нашли<br>
-                                        нужный вариант? </a></div>
-                                    <div class="col-6 col-sm-4  d-flex  justify-content-center align-items-center minibaner_item_6 minibaner_item_color"><a href="#" class="btn border-0  px-3 px-sm-10 w-100 mb-1 mt-sm-0   btn-white fs-7 fs-sm-7 fs-lg-12 py-5 py-sm-10  text-hover-white  btn-xxl  "
-                                        href="/металлические-решетки-на-окна">Изготовим по Вашим
-                                        эскизам и размерам</a></div>
-                                   
                                 </div>
                             </section>
 
