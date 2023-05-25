@@ -643,7 +643,7 @@ document.addEventListener('DOMContentLoaded', function () {
 //блок кода для перемещения с карточки фотки
 function goToProduct(photoName) {
     const numberOfProduct = photoName.match(/\d-\d+/)[0]
-    window.location.href = "/product/" + numberOfProduct
+    window.location.href = "/решетка-на-окно/" + numberOfProduct
 }
 // конец блока кода о перемещении
 
