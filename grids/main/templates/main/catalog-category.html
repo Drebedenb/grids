@@ -46,7 +46,7 @@
                         <ul class="breadcrumb mb-0">
                             <li class="breadcrumb-item"><a class="fs-6 fs-sm-8 fs-lg-9" href="{%url 'index'%}">Главная </a></li>
                             <li class="breadcrumb-item"><a class="fs-6 fs-sm-8 fs-lg-9" href="/металлические-решетки-на-окна">Каталог</a></li>
-                            <li class="breadcrumb-item active"><a class="fs-6 fs-sm-8 fs-lg-9 text-dark">{{category.title}}</a> </li>
+                            <li class="breadcrumb-item active"><span class="fs-6 fs-sm-8 fs-lg-9 text-dark">{{category.title}}</span> </li>
                         </ul>
                     </nav>
                 </div>
@@ -389,7 +389,7 @@
                             <div class="tab-pane fade show active" id="product-characteristics-tab-pane" role="tabpanel"
                                  tabindex="0">
                                 <div class="row row-cols-lg-3 row-cols-2 gy-20">
-
+                                    {% include 'main/components/buy_view.html'%}
                                     {% for item in products %}
                                     {% include 'main/components/catalog_category_item.html' with stars_count=item.stars_count PriceWinguardSketchId=item.id price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
                                     {% endfor %}
@@ -407,7 +407,7 @@
 
                                         {% for i in products.paginator.page_range %}
                                             {% if products.number == i %}
-                                                <li class="page-item active"><a class="page-link">{{ i }}</a></li>
+                                                <li class="page-item active"><span class="page-link">{{ i }}</span></li>
                                             {% else %}
                                                 {% with url_args=request|urlencode %}
     <li class="page-item"><a class="page-link" href="{% paginated_url request=request page=i %}">{{ i }}</a></li>
@@ -442,8 +442,7 @@
                             <section>
                                 <div class="row  mb-17 pt-lg-30 pt-0 flex-nowrap">
                                     <div class="col-5 col-lg-5">
-                                        <h2 class="h1 fs-3xl-20 fs-lg-20 fs-13 ls-sm text-uppercase mb-0">Хиты
-                                            продаж</h2>
+                                        <h2 class="h1 fs-3xl-20 fs-lg-20 fs-13 ls-sm text-uppercase mb-0">Решетки на окна Хиты</h2>
                                     </div>
                                     <div class="col-auto ms-auto d-lg-block">
                                         <div class="d-flex">
@@ -463,7 +462,8 @@
 
                                         {%for item in leaders_of_selling%}
                                         <div class="swiper-slide">
-                                    {% include 'main/components/catalog_category_item_without_quick_view.html' with stars_count=item.stars_count PriceWinguardSketchId=item.id price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
+                                        {% include 'main/components/catalog_category_item_without_quick_view.html' with stars_count=item.stars_count PriceWinguardSketchId=item.id price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
+
                                         </div>
                                         {%endfor%}
 
@@ -471,12 +471,6 @@
                                     </div>
                                 </div>
                             </section>
-                            {#      Modal for similar prices items       #}
-                            {%for item in leaders_of_selling%}
-                                {% include 'main/components/product_quick_view.html' with price=item.price saleprice=item.saleprice percent=item.percent path_folder=item.path_folder path_file=item.path_file modal_id=item.id%}
-                            {%endfor%}
-
-
                             <!--  NAZNACHENIE RESHETOK -->
 
                             {% include 'main/components/lattice_tags.html' with list_of_grids_purpose=list_of_grids_purpose %}
@@ -714,363 +708,46 @@
                                 <h2 class="h1 mt-20  fs-3xl-20 fs-lg-20 fs-13 ls-sm text-uppercase my-20">Отзывы
                                     довольных
                                     клиентов</h2>
-                                <div id="carouselExampleControls_reviews_catalog-category" class="carousel slide"
-                                     data-bs-ride="carousel">
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active">
-
-                                            <div class="row row-cols-lg-2 row-cols-1 gy-lg-20 gy-10">
-                                                <div class="col">
-                                                    <div class="card h-100 rounded-lg-4 rounded-3">
-                                                        <div class="card-body p-lg-15 pt-10 pb-lg-28">
-                                                            <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                                                                <div class="avatar"><img class="rounded-3"
-                                                                                         src="{% static 'main/img/avatars/avatar19.webp' %}"
-                                                                                         alt="Иван Семенович Г."/>
-                                                                </div>
-                                                                <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                                                    <h6 class="fs-8 mb-2">Иван <br>Семенович Г.</h6>
-                                                                </div>
-
-                                                                <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                                                   href="#" data-bs-toggle="modal"
-                                                                   data-bs-target="#exampleModal">Смотреть фото</a>
-                                                                <!-- Modal -->
-
-                                                                <div class="modal fade" id="exampleModal" tabindex="-1"
-                                                                     aria-labelledby="exampleModalLabel"
-                                                                     aria-hidden="true">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content ">
-                                                                            <div class="modal-body p-5">
-                                                                                <button type="button"
-                                                                                        class=" position-absolute  btn_close rounded-2 "
-                                                                                        aria-label="Close"
-                                                                                        data-bs-dismiss="modal">
-                                                                                    {% include 'main/icons/btn_close.html' with classes="svg-icon"%}
-                                                                                </button>
-
-                                                                                <img class="rounded-3 object-fit-contain w-100"
-                                                                                     src="{% static 'main/img/reviews_photos/1-19/1.webp' %}"
-                                                                                     alt="Иван Семенович Г."/>
-                                                                                <a href="#">
-                                                                                    <button type="button"
-                                                                                            class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase"
-                                                                                            data-bs-dismiss="modal">
-                                                                                        Перейти в карточку товара
-                                                                                    </button>
-                                                                                </a>
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <p class="fs-lg-10 fs-8 fw-light mb-0">Заказ №36378 Решетка
-                                                                на лоджию 3м2. Ответственные люди, я бы так назвал
-                                                                процесс взаимодействия с компанией. Все по плану, без
-                                                                заминок. Главное, что результат хороший и я им доволен.
-                                                            </p>
+                                <div id="carouselExampleControlz" class="carousel slide" data-bs-ride="carousel" data-bs-interval="10000">
+                                            <div class="carousel-inner">
+                                                {% for review in list_of_reviews %}
+                                                    {% if forloop.counter == 1%}
+                                                    <div class="carousel-item active">
+                                                        <div class="row row-cols-lg-3 row-cols-1 gy-lg-20 gy-10">
+                                                            {% include 'main/components/review.html' with id=review.id author_avatar=review.author_avatar project_photo=review.project_photo author=review.author description=review.description%}
+                                                    {% elif forloop.counter == list_of_reviews|length %}
+                                                            {% include 'main/components/review.html' with id=review.id author_avatar=review.author_avatar project_photo=review.project_photo author=review.author description=review.description%}
                                                         </div>
                                                     </div>
-                                                </div>
-
-                                                <div class="col">
-                                                    <div class="card h-100 rounded-lg-4 rounded-3">
-                                                        <div class="card-body p-lg-15 pt-10 pb-lg-28">
-                                                            <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                                                                <div class="avatar"><img class="rounded-3"
-                                                                                         src="{% static 'main/img/avatars/avatar25.webp' %}"
-                                                                                         alt="Янина Ш."/></div>
-                                                                <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                                                    <h6 class="fs-8 mb-2">Янина Ш.</h6>
-                                                                </div>
-                                                                <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto z-2 position-relative"
-                                                                   href="#" data-bs-toggle="modal"
-                                                                   data-bs-target="#exampleModal2">Смотреть фото</a>
-                                                                <!-- Modal -->
-
-                                                                <div class="modal fade" id="exampleModal2" tabindex="-1"
-                                                                     aria-labelledby="exampleModalLabel"
-                                                                     aria-hidden="true">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content ">
-                                                                            <div class="modal-body p-5">
-                                                                                <button type="button"
-                                                                                        class=" position-absolute  btn_close rounded-2 "
-                                                                                        aria-label="Close"
-                                                                                        data-bs-dismiss="modal">
-                                                                                    {% include 'main/icons/btn_close.html' with classes="svg-icon"%}
-                                                                                </button>
-
-                                                                                <img class="rounded-3 object-fit-contain w-100"
-                                                                                     src="{% static 'main/img/reviews_photos/1-4/1.webp' %}"
-                                                                                     alt="Янина Ш."/>
-                                                                                <a href="#">
-                                                                                    <button type="button"
-                                                                                            class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase"
-                                                                                            data-bs-dismiss="modal">
-                                                                                        Перейти в карточку товара
-                                                                                    </button>
-                                                                                </a>
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p class="fs-lg-10 fs-8 fw-light mb-0">Всем довольна,
-                                                                    решетчатую дверь мне варили и цветочницу. Прекрасно
-                                                                    смотрятся в доме.. мастер позвонил перед выездом на
-                                                                    замер. Цена устроила, состояние спустя год очень
-                                                                    хорошее</p>
-                                                            </div>
+                                                    {% elif forloop.counter0|divisibleby:3 %}
                                                         </div>
                                                     </div>
-                                                </div>
+                                                    <div class="carousel-item">
+                                                        <div class="row row-cols-lg-3 row-cols-1 gy-lg-20 gy-10">
+                                                             {% include 'main/components/review.html' with id=review.id author_avatar=review.author_avatar project_photo=review.project_photo author=review.author description=review.description%}
+
+                                                    {%else %}
+                                                             {% include 'main/components/review.html' with id=review.id author_avatar=review.author_avatar project_photo=review.project_photo author=review.author description=review.description%}
+                                                    {%endif%}
+                                                {%endfor%}
                                             </div>
-                                        </div>
-                                        <div class="carousel-item">
-
-                                            <div class="row row-cols-lg-2 row-cols-1 gy-lg-20 gy-10">
-                                                <div class="col">
-                                                    <div class="card h-100 rounded-lg-4 rounded-3">
-                                                        <div class="card-body p-lg-15 pt-10 pb-lg-28">
-                                                            <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                                                                <div class="avatar"><img class="rounded-3"
-                                                                                         src="{% static 'main/img/avatars/avatar24.webp' %}"
-                                                                                         alt="Светлана К."/></div>
-                                                                <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                                                    <h6 class="fs-8 mb-2">Светлана К.</h6>
-                                                                </div>
-                                                                <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                                                   href="#" data-bs-toggle="modal"
-                                                                   data-bs-target="#exampleModal8">Смотреть фото</a>
-                                                                <!-- Modal -->
-
-                                                                <div class="modal fade" id="exampleModal8" tabindex="-1"
-                                                                     aria-labelledby="exampleModalLabel"
-                                                                     aria-hidden="true">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content ">
-                                                                            <div class="modal-body p-5">
-                                                                                <button type="button"
-                                                                                        class=" position-absolute  btn_close rounded-2 "
-                                                                                        aria-label="Close"
-                                                                                        data-bs-dismiss="modal">
-                                                                                    {% include 'main/icons/btn_close.html' with classes="svg-icon"%}
-                                                                                </button>
-
-                                                                                <img class="rounded-3 object-fit-contain w-100"
-                                                                                     src="{% static 'main/img/reviews_photos/1-3/1.webp' %}"
-                                                                                     alt="Светлана К."/>
-                                                                                <a href="#">
-                                                                                    <button type="button"
-                                                                                            class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase"
-                                                                                            data-bs-dismiss="modal">
-                                                                                        Перейти в карточку товара
-                                                                                    </button>
-                                                                                </a>
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p class="fs-lg-10 fs-8 fw-light mb-0">Обратились с
-                                                                    запросом решетчатой двери и решеток в магазин.
-                                                                    Искали решетки для бизнеса. поставили в срок
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col">
-                                                    <div class="card h-100 rounded-lg-4 rounded-3">
-                                                        <div class="card-body p-lg-15 pt-10 pb-lg-28">
-                                                            <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                                                                <div class="avatar"><img class="rounded-3"
-                                                                                         src="{% static 'main/img/avatars/avatar14.webp' %}"
-                                                                                         alt="Александр В."/></div>
-                                                                <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                                                    <h6 class="fs-8 mb-2">Александр В.</h6>
-                                                                </div>
-                                                                <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto z-2 position-relative"
-                                                                   href="#" data-bs-toggle="modal"
-                                                                   data-bs-target="#exampleModal4">Смотреть фото</a>
-                                                                <!-- Modal -->
-
-                                                                <div class="modal fade" id="exampleModal4" tabindex="-1"
-                                                                     aria-labelledby="exampleModalLabel"
-                                                                     aria-hidden="true">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content ">
-                                                                            <div class="modal-body p-5">
-                                                                                <button type="button"
-                                                                                        class=" position-absolute  btn_close rounded-2 "
-                                                                                        aria-label="Close"
-                                                                                        data-bs-dismiss="modal">
-                                                                                    {% include 'main/icons/btn_close.html' with classes="svg-icon"%}
-                                                                                </button>
-
-                                                                                <img class="rounded-3 object-fit-contain w-100"
-                                                                                     src="{% static 'main/img/reviews_photos/5-66/1.webp' %}"
-                                                                                     alt="Иван Б."/>
-                                                                                <a href="#">
-                                                                                    <button type="button"
-                                                                                            class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase"
-                                                                                            data-bs-dismiss="modal">
-                                                                                        Перейти в карточку товара
-                                                                                    </button>
-                                                                                </a>
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <p class="fs-lg-10 fs-8 fw-light mb-0">У меня все
-                                                                    хорошо, ребята отлично работают. Знаю их завод под
-                                                                    Клином, довольно дешево вышли металлические решетки
-                                                                    на подвал и цоколь с установкой. Благодарю!</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="carousel-item">
-
-                                            <div class="row row-cols-lg-2 row-cols-1 gy-lg-20 gy-10">
-                                                <div class="col">
-                                                    <div class="card h-100 rounded-lg-4 rounded-3">
-                                                        <div class="card-body p-lg-15 pt-10 pb-lg-28">
-                                                            <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                                                                <div class="avatar"><img class="rounded-3"
-                                                                                         src="{% static 'main/img/avatars/avatar18.webp' %}"
-                                                                                         alt="Иван Б."/></div>
-                                                                <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                                                    <h6 class="fs-8 mb-2">Иван Б.</h6>
-                                                                </div>
-
-                                                                <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-                                                                   href="#" data-bs-toggle="modal"
-                                                                   data-bs-target="#exampleModal3">Смотреть фото</a>
-                                                                <!-- Modal -->
-
-                                                                <div class="modal fade" id="exampleModal3" tabindex="-1"
-                                                                     aria-labelledby="exampleModalLabel"
-                                                                     aria-hidden="true">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content ">
-                                                                            <div class="modal-body p-5">
-                                                                                <button type="button"
-                                                                                        class=" position-absolute  btn_close rounded-2 "
-                                                                                        aria-label="Close"
-                                                                                        data-bs-dismiss="modal">
-                                                                                    {% include 'main/icons/btn_close.html' with classes="svg-icon"%}
-                                                                                </button>
-
-                                                                                <img class="rounded-3 object-fit-contain w-100"
-                                                                                     src="{% static 'main/img/reviews_photos/5-66/1.webp' %}"
-                                                                                     alt="Иван Семенович Г."/>
-                                                                                <a href="#">
-                                                                                    <button type="button"
-                                                                                            class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase"
-                                                                                            data-bs-dismiss="modal">
-                                                                                        Перейти в карточку товара
-                                                                                    </button>
-                                                                                </a>
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <p class="fs-lg-10 fs-8 fw-light mb-0">Заказал решетки
-                                                                ажурные на дачу в стиле кованых ворот. Можно было этого
-                                                                не делать, чуть скинув цену взять прямые. но мне так
-                                                                хотелось. по этому за саму работу мастеров и
-                                                                установщиков ставлю 5, а остальное уже история =В
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="card h-100 rounded-lg-4 rounded-3">
-                                                        <div class="card-body p-lg-15 pt-10 pb-lg-28">
-                                                            <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
-                                                                <div class="avatar"><img class="rounded-3"
-                                                                                         src="{% static 'main/img/avatars/avatar9.webp' %}"
-                                                                                         alt="Марина Г."/></div>
-                                                                <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
-                                                                    <h6 class="fs-8 mb-2">Марина Г.</h6>
-                                                                </div>
-
-                                                                <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto z-2 position-relative "
-                                                                   href="#" data-bs-toggle="modal"
-                                                                   data-bs-target="#exampleModal7">Смотреть фото</a>
-                                                                <!-- Modal -->
-
-                                                                <div class="modal fade" id="exampleModal7" tabindex="-1"
-                                                                     aria-labelledby="exampleModalLabel"
-                                                                     aria-hidden="true">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content ">
-                                                                            <div class="modal-body p-5">
-                                                                                <button type="button"
-                                                                                        class=" position-absolute  btn_close rounded-2 "
-                                                                                        aria-label="Close"
-                                                                                        data-bs-dismiss="modal">
-                                                                                    {% include 'main/icons/btn_close.html' with classes="svg-icon"%}
-                                                                                </button>
-
-                                                                                <img class="rounded-3 object-fit-contain w-100"
-                                                                                     src="{% static 'main/img/reviews_photos/1-1/1.webp' %}"
-                                                                                     alt="Марина Г."/>
-                                                                                <a href="#">
-                                                                                    <button type="button"
-                                                                                            class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase"
-                                                                                            data-bs-dismiss="modal">
-                                                                                        Перейти в карточку товара
-                                                                                    </button>
-                                                                                </a>
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <p class="fs-lg-10 fs-8 fw-light mb-0">Решетки с защитой от
-                                                                детей, от их выпадания мне сделали за 2 дня и привезли
-                                                                домой
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="carousel-control-prev arrow-prev" type="button"
-                                            data-bs-target="#carouselExampleControls_reviews_catalog-category"
-                                            data-bs-slide="prev">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="grey"
-                                             class="bi bi-chevron-left" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd"
-                                                  d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-                                        </svg>
-                                        <span class="visually-hidden">Previous</span>
-                                    </button>
-                                    <button class="carousel-control-next arrow-next" type="button"
-                                            data-bs-target="#carouselExampleControls_reviews_catalog-category"
-                                            data-bs-slide="next">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="grey"
+                                            <button class="carousel-control-prev arrow-prev" type="button" data-bs-target="#carouselExampleControlz" data-bs-slide="prev">
+                                              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="grey"
+                                                class="bi bi-chevron-left" viewBox="0 0 16 16">
+                                               <path fill-rule="evenodd"
+                                                     d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                                           </svg>
+                                              <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next arrow-next" type="button" data-bs-target="#carouselExampleControlz" data-bs-slide="next">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="grey"
                                              class="bi bi-chevron-right" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd"
                                                   d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                                        </svg>
-                                        <span class="visually-hidden">Next</span>
-                                    </button>
-                                </div>
+                                            </svg>
+                                              <span class="visually-hidden">Next</span>
+                                            </button>
+                                            </div>
 
 
                                 <div class="text-center mt-lg-20 mt-10"><a
@@ -1112,6 +789,8 @@
         {% include 'main/components/consultation_form.html' %}
 
         {% include 'main/components/consultation_modal.html' %}
+
+        {% include 'main/components/product_quick_view.html' %}
     </div>
 </div>
 <script>

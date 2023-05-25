@@ -23,7 +23,7 @@
                                     <div class="ratio h-100"
                                          style="--bs-aspect-ratio: 60%; min-height: 200px; max-height: 460px;">
                                         <img class="object-fit-cover rounded-lg-4 rounded-3"
-                                        src="{% static 'main/img/baner.webp' %}" alt="Делаем решетки на заказ">
+                                        src="{% static 'main/img/baner.webp' %}" alt="Делаем решетки на окна заказ">
                                         <div class="card-body  p-lg-10 px-9 py-10">
                                             <div class="w-lg-50 h-lg-auto h-100 ">
                                                 <h1 class="display-1  fs-3xl-25 fs-xl-23 fs-lg-20 fs-md-15 fs-7 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Металлические решетки <br> на окна по честным <br> ценам</h1>
@@ -107,7 +107,7 @@
                 <div class="row align-items-end mb-lg-12-5 mb-16">
                     <div class="col-lg-4">
                         <h2 class="h1 fs-3xl-22  fs-lg-20 fs-13 ls-sm text-uppercase mb-0">Выберите свой тип
-                            решеток</h2>
+                            решеток на окна</h2>
                     </div>
                     <div class="col-auto d-lg-block d-none ms-auto"><a class="fs-12 text-decoration-none text-uppercase"
                                                                        href="/металлические-решетки-на-окна">Смотреть все ↘︎</a></div>
@@ -192,7 +192,7 @@
                     </a></div>
                 </div>
                 <div class="d-lg-none d-block text-center mt-17-5"><a class="fs-10 text-decoration-none text-uppercase"
-                                                                      href="#">Смотреть все ↘︎ </a></div>
+                                                                      href="/металлические-решетки-на-окна">Смотреть все ↘︎ </a></div>
             </section>
 
 
@@ -223,8 +223,8 @@
                     {% endfor %}
 
                  <div class="text-center mt-lg-20 mt-10">
-                    <a class="view_more1 btn btn-outline-secondary btn-lg btn-wide-lg" data-redirect-url="решетки-на-окна-эконом-класс"  data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
-                                                           href="#">Показать еще </a>
+                    <span class="view_more1 btn btn-outline-secondary btn-lg btn-wide-lg" data-redirect-url="решетки-на-окна-эконом-класс"  data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
+                                                           >Показать еще </span>
                                                         </div>
                                                            
                 
@@ -232,6 +232,9 @@
 
             </section>
 
+            {% include 'main/components/product_quick_view.html' %}
+
+            {% include 'main/components/buy_view.html'%}
 
             {% include 'main/components/consultation_form.html' %}
 

@@ -1,7 +1,6 @@
 {% load static %}
 {% load main_tags %}
-{% include 'main/components/buy_view.html' with path_folder=path_folder path_file=path_file modal_id=modal_id%}
- <div class="modal modal-xl modal-custom border border-black rounded-4 fade" id="{{modal_id}}">
+ <div class="modal modal-xl modal-custom border border-black rounded-4 fade" id="quick_view">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="product modal-body p-lg-20 py-10">
@@ -11,38 +10,38 @@
                         <div class="card-body p-10 border-lg border-lg-light rounded-lg-3 shadow-lg">
                             <div class="position-relative text-center ">
                                 <div class="position-absolute top-0 start-0 z-2">
-                                    <a class="text-muted text-hover-black" href="#">{% include 'main/icons/chart.html' with classes="svg-icon"%}</a>
+                                    <span class="text-muted text-hover-black">{% include 'main/icons/chart.html' with classes="svg-icon"%}</span>
                                 </div>
                                 <div class="position-absolute top-0 end-0 z-2">
-                                    <a class="text-muted text-hover-black" href="#">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a>
+                                    <span class="text-muted text-hover-black">{% include 'main/icons/heart.html' with classes="svg-icon"%}</span>
                                 </div>
                                 <div class="">
-                                    <div id="carousel-{{modal_id}}" class="carousel slide " data-bs-interval="false" >
+                                    <div id="carousel-quick-view-grid-picture" class="carousel slide " data-bs-interval="false" >
                                         <div class="carousel-indicators">
-                                          <button type="button" data-bs-target="#carousel-{{modal_id}}" data-bs-slide-to="0" class="active bg-light " aria-current="true" aria-label="Slide 1" style="height:7px;"></button>
-                                          <button type="button" data-bs-target="#carousel-{{modal_id}}" data-bs-slide-to="1" class="bg-light" aria-label="Slide 2" style="height:7px;"></button>
+                                          <button type="button" data-bs-target="#carousel-quick-view-grid-picture" data-bs-slide-to="0" class="active bg-light " aria-current="true" aria-label="Slide 1" style="height:7px;"></button>
+                                          <button type="button" data-bs-target="#carousel-quick-view-grid-picture" data-bs-slide-to="1" class="bg-light" aria-label="Slide 2" style="height:7px;"></button>
                                          
                                         </div>
                                         <div class="carousel-inner">
                                           <div class="carousel-item active">
                                             <div class="ratio overflow-hidden" style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 350px;">
-                                                <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{path_folder}}/solid/{{path_file}}.webp" alt="Фото решетки {{path_folder}}-{{path_file}}">
+                                                <img class="object-fit-contain" id="quick-view-carousel-picture" data-original="{% static 'main/img/grids_pictures' %}" src="" alt="Решетка на окно">
                                                 </div>
                                           </div>
                                           <div class="carousel-item">
                                             <div class="ratio overflow-hidden" style="--bs-aspect-ratio: 200%; min-height: 180px; max-height: 350px;">
-                                                <img class="object-fit-contain" src="{% static 'main/img/grids_pictures' %}/{{path_folder}}/solid/{{path_file}} F.webp" alt="Фото решетки {{path_folder}}-{{path_file}}">
+                                                <img class="object-fit-contain" id="quick-view-carousel-picture-f" data-original="{% static 'main/img/grids_pictures' %}" src="" alt="Решетка на окно">
                                                 </div>
                                           </div>
                                        
                                         </div>
-                                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel-{{modal_id}}" data-bs-slide="prev">
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel-quick-view-grid-picture" data-bs-slide="prev">
                                           <span class="" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="grey" class="bi bi-chevron-left" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
                                           </svg></span>
                                           <span class="visually-hidden">Previous</span>
                                         </button>
-                                        <button class="carousel-control-next" type="button" data-bs-target="#carousel-{{modal_id}}" data-bs-slide="next">
+                                        <button class="carousel-control-next" type="button" data-bs-target="#carousel-quick-view-grid-picture" data-bs-slide="next">
                                           <span class="" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="grey" class="bi bi-chevron-right" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                                           </svg></span>
@@ -88,19 +87,19 @@
                     </div>
                     <div class="col-lg-6 mt-0 mt-lg-10">
                         <h2 class="h5 fw-medium ls-sm text-uppercase d-none d-lg-block">Решетка на окно Эскиз №
-                            {{path_folder}}-{{path_file}}</h2>
+                            <span id="product_quick_view-path_folder">0</span>-<span id="product_quick_view-path_file">0</span></h2>
                         <form>
                             <div class="row row-cols-lg-2 row-cols-1 gy-lg-10 gy-5">
                                 <div class="col">
                                     <div class="text-center border py-3 rounded-2">
                                     <p class="mb-0 fs-7 text-muted">Цена сегодня</p>
-                                    <span class="fs-7 fs-lg-9"><span id="{{path_folder}}-{{path_file}}-price">{{price}}</span> р./ м²</span>
+                                    <span class="fs-7 fs-lg-9"><span id="product_quick_view-price">0</span> р./ м²</span>
                                 </div>
                                 </div>
                                 <div class="col">
                                     <div class="text-center border py-3 rounded-2">
                                     <p class="mb-0 fs-7 text-muted">Старая цена:</p>
-                                    <span class="fs-7 fs-lg-9 text-muted text-decoration-line-through">{{saleprice}} р./ м²</span>
+                                    <span class="fs-7 fs-lg-9 text-muted text-decoration-line-through"><span id="product_quick_view-salePrice">0</span> р./ м²</span>
                                 </div>
                                 </div>
                                 <div class="col ">
@@ -131,10 +130,9 @@
                         </form>
                         <div class="mt-15-5">
                             <div class="row row-cols-lg-2 row-cols-1 align-items-center gy-lg-0 gy-15">
-                                <div class="col pt-10"><span class="fs-lg-10 fs-13 fw-semibold text-uppercase">Итого: <span class="quick-view-total">0</span>  руб</span></div>
+                                    <div class="col pt-10"><span class="fs-lg-10 fs-13 fw-semibold text-uppercase">Итого: <span id="quick-view-total">0</span>  руб</span></div>
                                 <div class="col">
-                                    <div class="btn btn-primary fs-9 rounded-2  w-100" data-bs-toggle="modal"
-                                        data-bs-target="#buy_view_{{modal_id}}">Заказать в 1 клик
+                                    <div class="btn btn-primary fs-9 rounded-2  w-100">Заказать в 1 клик
                                     </div>
                                 </div>
                             </div>

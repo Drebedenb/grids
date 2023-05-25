@@ -4,13 +4,13 @@
     <div class="card-body p-lg-15 pt-10 pb-lg-28">
       <div class="d-flex flex-wrap align-items-center gap-10 mb-lg-7 mb-10">
         <div class="avatar"><img class="rounded-3" src="{% static 'main/img/avatars/' %}{{author_avatar}}"
-                                 alt="{{author}}"/>
+                                 alt="Отзыв о сайте оконные-решётки.рф"/>
         </div>
         <div class="text-uppercase flex-grow-lg-0 flex-grow-1">
           <h6 class="fs-8 mb-2">{{author}}</h6>
         </div>
-        <a class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
-           href="#" data-bs-toggle="modal" data-bs-target="#exampleModal{{id}}">Смотреть фото</a>
+        <button class="btn btn-outline-black btn-lg btn-wide-lg w-lg-auto w-100 ms-lg-auto"
+           data-bs-toggle="modal" data-bs-target="#exampleModal{{id}}">Смотреть фото</button>
         <!-- Modal -->
         <div class="modal fade" id="exampleModal{{id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -21,7 +21,7 @@
                 </button>
                 <img class="rounded-3 object-fit-contain w-100" src="{% static 'main/img/reviews_photos/'%}{{project_photo}}"
                      alt="Иван Семенович Г." />
-                <a><button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal" id="photo-{{project_photo}}" onclick="goToProduct(this.id)"> Перейти в карточку товара</button></a>
+                <span><button type="button" class="btn btn-secondary w-100 mt-5 rounded-2 text-uppercase" data-bs-dismiss="modal" id="photo-{{project_photo}}" onclick="goToProduct(this.id)"> Перейти в карточку товара</button></span>
               </div>
             </div>
           </div>

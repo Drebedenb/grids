@@ -48,79 +48,9 @@
         <main>
             <section class="mb-20 mt-15">
                 <div class="row gy-15 gy-lg-20 row-cols-1 row-cols-lg-2">
-                    <div class="col">
-                        <div class="card">
-                            <img src="{% static 'main/img/sale_baners/sale_baner2.webp' %}" class="card-img-top" alt="sale_baner5">
-                            <div class="card-body">
-                              <h5 class="card-title fs-8 fw-medium fs-lg-10">Закажите бесплатный вызов замерщика и оплатите заказ в тот же
-                                день, чтобы получить скидку в 10%</h5>
-                              <p class="card-text text-muted fs-7 fs-lg-8">Подробнее об условиях и акциях уточняйте по телефону:<br>
-                                <a class="text-muted text-hover-light" href="tel:84953745364">+7 495 374-53-64</a></p>
-                              <a href="#" class="btn fs-7 fs-lg-8 btn-primary rounded-3 ">Замер по акции</a>
-                            </div>
-                          </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <img src="{% static 'main/img/sale_baners/sale_baner.webp' %}" class="card-img-top" alt="sale_baner5">
-                            <div class="card-body">
-                              <h5 class="card-title fs-8 fw-medium fs-lg-10">Получите скидку в 20% при 100% предоплате ( для физических лиц )</h5>
-                              <p class="card-text text-muted fs-7 fs-lg-8">Подробнее об условиях и акциях уточняйте по телефону:<br>
-                                <a class="text-muted text-hover-light" href="tel:84953745364">+7 495 374-53-64</a></p>
-                              <a href="#" class="btn fs-7 fs-lg-8 btn-primary rounded-3">Замер по акции</a>
-                            </div>
-                          </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border-top-0">
-                            <img src="{% static 'main/img/sale_baners/sale_baner3.webp' %}" class="card-img-top" alt="sale_baner3">
-                            <div class="card-body">
-                              <h5 class="card-title fs-8 fw-medium fs-lg-10">Создадим проект на основе Ваших эскизов и размеров, если Вы
-                                не найдете подходящий макет в нашем <br>каталоге</h5>
-                              <p class="card-text text-muted fs-7 fs-lg-8">Подробнее об условиях и акциях уточняйте по телефону:<br>
-                                <a class="text-muted text-hover-light" href="tel:84953745364">+7 495 374-53-64</a></p>
-                              <a href="#" class="btn fs-7 fs-lg-8 btn-primary rounded-3">Замер по акции</a>
-                            </div>
-                          </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border-top-0">
-                            <img src="{% static 'main/img/sale_baners/sale_baner4.webp' %}" class="card-img-top" alt="sale_baner5">
-                            <div class="card-body">
-                              <h5 class="card-title fs-8 fw-medium fs-lg-10">При заказе от 3-х решеток за каждую дополнительную единицу Вы
-                                получаете скидку 1%. Максимальная скидка - 10%.</h5>
-                              <p class="card-text text-muted fs-7 fs-lg-8">Подробнее об условиях и акциях уточняйте по телефону:<br>
-                                <a class="text-muted text-hover-light" href="tel:84953745364">+7 495 374-53-64</a></p>
-                              <a href="#" class="btn fs-7 fs-lg-8 btn-primary rounded-3">Замер по акции</a>
-                            </div>
-                          </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border-top-0">
-                            <img src="{% static 'main/img/sale_baners/sale_baner6.webp' %}" class="card-img-top" alt="sale_baner5">
-                            <div class="card-body">
-                              <h5 class="card-title fs-8 fw-medium fs-lg-10">Закажите бесплатные замер и консультацию. Наши сотрудники
-                                свяжутся с Вами для уточнения деталей и направят к Вам мастера
-                                для проведения технического рассчета</h5>
-                              <p class="card-text text-muted fs-7 fs-lg-8">Подробнее об условиях и акциях уточняйте по телефону:<br>
-                                <a class="text-muted text-hover-light" href="tel:84953745364">+7 495 374-53-64</a></p>
-                              <a href="#" class="btn fs-7 fs-lg-8 btn-primary rounded-3">Замер по акции</a>
-                            </div>
-                          </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border-top-0">
-                            <img src="{% static 'main/img/sale_baners/sale_baner5.webp' %}" class="card-img-top" alt="sale_baner5">
-                            <div class="card-body">
-                              <h5 class="card-title fs-8 fw-medium fs-lg-10">Заказывая у нас решетки на окна, Вы получаете максимально
-                                выгодную цену. Мы уверены в этом и готовы предоставить скидку,
-                                если Вы найдете такой же товар дешевле!</h5>
-                              <p class="card-text text-muted fs-7 fs-lg-8">Подробнее об условиях и акциях уточняйте по телефону:<br>
-                                <a class="text-muted text-hover-light" href="tel:84953745364">+7 495 374-53-64</a></p>
-                              <a href="#" class="btn fs-7 fs-lg-8 btn-primary rounded-3">Замер по акции</a>
-                            </div>
-                          </div>
-                    </div>
+                    {% for sale in list_of_sales_items %}
+                        {% include 'main/components/sales_item.html' with image_path=sale.image_path description=sale.description %}
+                    {% endfor %}
 
                 </div>
             </section>

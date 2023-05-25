@@ -346,14 +346,23 @@
                                                 <span id="price-old" class="fs-7 fs-lg-9 text-muted text-decoration-line-through">1200 р./ м²</span>
                                             </div>
                                             <div class="col-4 text-center">
-                                                <p class="mb-0 fs-7 fs-lg-7 panel_item">Рейтинг 4 из 5</p>
+                                                <p class="mb-0 fs-7 fs-lg-7 panel_item">Рейтинг  {% if product.0.stars_count > 15 %} 5 {% else %} 4 {% endif %} из 5</p>
                                                 <div class="d-flex pt-2 justify-content-center">
-                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %} 
-                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %} 
-                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %} 
-                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %} 
-                                                    {% include 'main/icons/star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %}
-                                                    <span class="fs-lg-6 fs-6">(32)</span>
+
+                                                    {% if product.0.stars_count > 15 %}
+                                                    {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %}
+                                                    {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %}
+                                                    {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %}
+                                                    {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %}
+                                                    {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %}
+                                                     {% else %}
+                                                     {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %}
+                                                     {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %}
+                                                     {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %}
+                                                     {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %}
+                                                     {% include 'main/icons/star.html' with classes='svg-icon' styles='width:13px; margin-right:2px;' %}
+                                                     {% endif %}
+                                                    <span class="fs-lg-6 fs-6">({{ product.0.stars_count }})</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -433,12 +442,11 @@
                                                   
                                                 </div>
 
-                                                <div class="col"><a class="btn btn-primary btn-xl w-100" data-bs-toggle="modal"
-                                 data-bs-target="#buy_view_{{product.0.id}}" type="button">Заказать
+                                                <div class="col"><a class="btn btn-primary btn-xl w-100" type="button" id="buy-button-on-{{product.0.path_folder}}-{{ product.0.path_file }}" onclick="buyViewHandler(this.id)">Заказать
                                                     в 1 клик</a></div>
                                             </div>
 
-                                    {% include 'main/components/buy_view.html' with path_folder=product.0.path_folder path_file=product.0.path_file modal_id=product.0.id%}
+                                    {% include 'main/components/buy_view.html'%}
 
                                  
                                         <div class="row row-cols-lg-3 row-cols-2 mt-2 gy-10">
@@ -707,10 +715,10 @@
                                             <div class="col-lg-8 border border-light rounded-2 mt-10 mt-lg-0 p-5">
                                                 <p class="mb-5  fs-lg-8 fs-xl-8 fs-xxl-9">Доставка осуществляется собственным транспортом в удобное для Вас
                                                     время. Стоимость доставки зависит от удаленности населённого пункта.
-                                                    Для точного расчета <a href="" class="text-decoration-none text-hover-danger" data-bs-toggle="modal"
-                                                    data-bs-target="#modal-measurement">оставьте заявку</a>  или <a href="tel:84953745364" class="text-decoration-none text-hover-danger">позвоните нам</a>.</p>
+                                                    Для точного расчета <span style="cursor: pointer" class="text-decoration-none text-hover-danger text-danger" data-bs-toggle="modal"
+                                                    data-bs-target="#modal-measurement">оставьте заявку</span>  или <a href="tel:84953745364" class="text-decoration-none text-hover-danger">позвоните нам</a>.</p>
                                                     
-                                                    <p class="mb-5">Представленные <a href="" class="text-decoration-none text-hover-danger">тарифы</a> действуют при заказе монтажа.
+                                                    <p class="mb-5">Представленные тарифы действуют при заказе монтажа.
                                                     Если Вы планируете устанавливать изделия самостоятельно,
                                                     то стоимость доставки может измениться. Уточняйте точную стоимость
                                                     у наших специалистов заранее по телефону <a class="text-decoration-none text-hover-secondary" href="tel:84953745364">8 (495) 374-53-64</a>.</p>
@@ -844,7 +852,7 @@
                                              class="bi bi-chevron-right" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd"
                                                   d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                                        </svg>
+                                            </svg>
                                               <span class="visually-hidden">Next</span>
                                             </button>
                                             </div>
@@ -1056,7 +1064,7 @@
                         <section>
                                 <div class="row mt-10 mt-lg-0  mb-17 pt-lg-10 pt-0 flex-nowrap">
                                     <div class="col-8 col-lg-7">
-                                        <h2 class="h1 fs-3xl-20 fs-lg-20 fs-12 ls-sm  text-uppercase mb-0">Решетки по схожим ценам</h2>
+                                        <h2 class="h1 fs-3xl-20 fs-lg-20 fs-12 ls-sm  text-uppercase mb-0">Решетки на окна по схожим ценам</h2>
                                     </div>
                                     <div class="col-4 col-lg-5">
                                         <div class="d-flex justify-content-end">
@@ -1080,7 +1088,7 @@
 
                                         <div class="swiper-slide">
 
-                                        {% include 'main/components/catalog_category_item_without_quick_view.html' with stars_count=item.stars_count PriceWinguardSketchId=item.id price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
+                                    {% include 'main/components/catalog_category_item.html' with stars_count=item.stars_count PriceWinguardSketchId=item.id name=item.width price=item.price path_folder=item.path_folder path_file=item.path_file percent=item.percent saleprice=item.saleprice%}
 
                                         </div>
 
@@ -1091,20 +1099,16 @@
                                     </div>
                                 </div>
                         </section>
-                                        {#      Modal for similar prices items       #}
-                                        {%for item in similar_grids_by_price%}
-                                        {% include 'main/components/product_quick_view.html' with price=item.price saleprice=item.saleprice percent=item.percent path_folder=item.path_folder path_file=item.path_file modal_id=item.id%}
-                                        {%endfor%}
                     </div>
                 </div>
             </section>
 
-
-
             {% include 'main/components/consultation_form.html' %} 
-            {% include 'main/components/reasons.html' %} 
             {% include 'main/components/consultation_modal.html' %}
             {% include 'main/components/measure_modal.html' %}
+            {% include 'main/components/product_quick_view.html' %}
+
+            {% include 'main/components/reasons.html' %}
 
         </main>
     </div>
@@ -1237,5 +1241,6 @@
     changeInputValueById("height", "100")
     changeInputValueById("amount", "1")
     changeForm()
+
 </script>
 {% endblock %}
