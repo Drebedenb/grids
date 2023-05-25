@@ -553,3 +553,45 @@ def sales(request):
         'meta_description': meta_description
     }
     return render(request, 'main/sales.html', context)
+
+def delivery(request):
+    meta_description = ''
+    context = {
+        'title': 'Доставка'
+    }
+    return render(request, 'main/delivery.html', context)
+
+def installing(request):
+    meta_description = ''
+    context = {
+        'title': 'Установка'
+    }
+    return render(request, 'main/installing.html', context)
+
+def paying(request):
+    meta_description = ''
+    context = {
+        'title': 'Оплата'
+    }
+    return render(request, 'main/paying.html', context)
+
+def order_scheme(request):
+    meta_description = ''
+    context = {
+        'title': 'Схема заказа'
+    }
+    return render(request, 'main/order_scheme.html', context)
+
+def guarantee(request):
+    meta_description = ''
+    context = {
+        'title': 'Гарантия'
+    }
+    return render(request, 'main/guarantee.html', context)
+
+def faq(request):
+    meta_description = ''
+    context = {
+        'title': 'Вопрос-ответ'
+    }
+    return render(request, 'main/faq.html', context)

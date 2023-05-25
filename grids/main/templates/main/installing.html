@@ -1,0 +1,140 @@
+{%extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+<div class="pt-lg-20 pt-16 pb-lg-50 pb-32">
+    <div class="container">
+        <header class="page-header mb-lg-20 mb-10 mb-lg-28">
+            <div>
+
+                <div class="row gy-lg-0 gy-12 ">
+
+                    <div class="col-lg-6">
+                        <h1 class="display-1 pt-lg-0 pt-xl-30 fs-3xl-25 fs-xl-23 fs-lg-27 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">
+                            {{title}}</h1>
+                    </div>
+                    <div class="col-lg-6">
+                        <div id="carouselExampleControllers" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="{% static 'main/img/baner_setup.webp' %}" class="d-block w-100 rounded-3"
+                                         alt="Доставка">
+                                </div>
+                              
+                            </div>
+                          <!--   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControllers" data-bs-slide="prev">
+                                <span class="me-10 carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                              </button>
+                              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControllers" data-bs-slide="next">
+                                <span class="ms-10 carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                              </button> -->
+                          </div>
+                            <div class="d-none d-lg-block">
+                    
+                                <p class="d-lg-none lead fs-lg-12 fs-9 mb-0" style="max-width: 28rem;">В нашем каталоге представлено 600+ эскизов решеток на окна. Возможно изготовление решеток по вашему эскизу.</p>
+                            </div>
+                       
+                      
+                    </div>
+                    <nav class="fs-5 fs-lg-9 mt-12 mb-lg-10 mt-lg-0">
+                        <ul class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a class="fs-6 fs-sm-8 fs-lg-9" href="{%url 'index'%}">Главная </a></li>
+                            <li class="breadcrumb-item"><a class="fs-6 fs-sm-8 fs-lg-9" href="/металлические-решетки-на-окна">Каталог</a></li>
+                            <li class="breadcrumb-item active"><a class="fs-6 fs-sm-8 fs-lg-9 text-dark">{{category.title}}</a> </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class=" mb-20">
+                <h3 class=" fs-3xl-14 fs-lg-13 fs-8 ls-sm text-uppercase mt-20 mb-10">УСТАНОВКА МЕТАЛЛИЧЕСКИХ ИЗДЕЛИЙ</h3>
+                <p class="mb-20 fs-lg-11 fs-7">Мы осуществляем установку металлических изделий по Москве и Московской области. 
+                    В отдельных случаях возможен выезд монтажной бригады за пределы МО. Обратите внимание, 
+                    что мы осуществляем установку только изготовленных нами изделий. Минимальная стоимость доставки и установки — 3500 рублей.</p>
+                    <p class="mb-20 fs-lg-11 fs-7">Услуга установки металлической решетки на окно может включать в себя:</p>
+                    <ul>
+                        <li class="py-5 fs-7 fs-sm-8 fs-lg-10">Обсуждение, согласование и обоснование цены с заказчиком</li>
+                        <li class="py-5 fs-7 fs-sm-8 fs-lg-10">При необходимости, демонтаж старой решетки на окно</li>
+                        <li class="py-5 fs-7 fs-sm-8 fs-lg-10">Подготовка окнонного проема, расширение или сужение (олпачивается отдельно)</li>
+                        <li class="py-5 fs-7 fs-sm-8 fs-lg-10">Крепление, выравнивание и фиксация оконной решетки</li>
+                        <li class="py-5 fs-7 fs-sm-8 fs-lg-10">Монтаж рамы с регулировкой угла наклона и проверкой открывания (для открывающихся решеток на окна)</li>
+                        <li class="py-5 fs-7 fs-sm-8 fs-lg-10">Заполнение пустот между профилем и стеной монтажной пеной или панелями</li>
+                        <li class="py-5 fs-7 fs-sm-8 fs-lg-10">Установка подшипников и замка (для открывающихся решеток на окна)</li>
+                        <li class="py-5 fs-7 fs-sm-8 fs-lg-10">Установка подшипников и замка (для открывающихся решеток на окна)</li>
+                    </ul>
+                    <h3 class=" fs-3xl-14 fs-lg-13 fs-8 ls-sm text-uppercase mt-20 mb-10">ПРЕИМУЩЕСТВА НАШЕЙ УСТАНОВКИ:</h3>
+                
+                        <div class="row mx-0 gx-5 gy-5">
+                            <div class="col-6 col-lg-3 ">
+                                <div class="card pt-20 pt-lg-30 pt-xl-30 pt-xxl-30 align-items-center">
+                                    {% include 'main/icons/instal_icons/instal.html' with classes="svg-icon"  styles='max-width: 70%; width:151px; ' %}
+                                    <div class="card-body px-0">
+                                      <p class="card-text fs-5 text-uppercase fs-sm-7  fs-md-10">Собственный транспорт</p>
+                                    </div>
+                                  </div>
+                        </div>
+                        <div class="col-6 col-lg-3">
+                            <div class="card pt-18 pt-lg-30 pt-xl-30 pt-xxl-30 align-items-center">
+                                {% include 'main/icons/instal_icons/workers.html' with classes="svg-icon"  styles='max-width: 70%; width:151px; ' %}
+                                <div class="card-body px-0">
+                                  <p class="card-text fs-5 text-uppercase fs-sm-7  fs-md-10">Опытные мотажники</p>
+                                </div>
+                              </div>
+                        </div>
+                        <div class="col-6 col-lg-3">
+                            <div class="card pt-20 pt-sm-20 pt-lg-40 pt-xl-40 pt-xxl-40 align-items-center">
+                                {% include 'main/icons/instal_icons/import.html' with classes="svg-icon"  styles='max-width: 70%; width:121px; ' %}
+                                <div class="card-body px-0 ">
+                                  <p class="card-text fs-5 text-uppercase fs-sm-7  fs-md-10">Бережная установка</p>
+                                </div>
+                              </div>
+                        </div>
+                        <div class="col-6 col-lg-3">
+                            <div class="card pt-10 pt-sm-20 pt-lg-30 pt-xl-30 pt-xxl-30  align-items-center">
+                                {% include 'main/icons/instal_icons/license.html' with classes="svg-icon"  styles='max-width: 63%; width:110px; ' %}
+                                <div class="card-body px-0">
+                                  <p class="card-text fs-5 text-uppercase fs-sm-7  fs-md-10">Лицензия на монтаж</p>
+                                </div>
+                              </div>
+                         </div>
+                    
+                    </div>  
+                    <p class="fs-9 fs-lg-11 py-10">Каждый монтажник, работающий у нас, имеет опыт как минимум в 200 установок. 
+                        Это гарантирует Вам надежный и аккуратный монтаж без порчи отделки. 
+                        Установка противопожарных изделий осуществляется согласно лицензии МЧС.</p>
+                        <ul>
+                            <li class="py-5 fs-7 fs-sm-8 fs-lg-10">Внутри помещения</li>
+                            <li class="py-5 fs-7 fs-sm-8 fs-lg-10">Внутри оконного блока</li>
+                            <li class="py-5 fs-7 fs-sm-8 fs-lg-10">Снаружи помещения</li>
+                            <li class="py-5 fs-7 fs-sm-8 fs-lg-10">Монтаж на петли, анкерные болты</li>
+                            <li class="py-5 fs-7 fs-sm-8 fs-lg-10">Установка на химические анкерные болты</li>
+                            <li class="py-5 fs-7 fs-sm-8 fs-lg-10">Другие способы монтажа</li>
+                        </ul>
+                        
+                        <p class="fs-9 fs-lg-11 py-10">Для более точной оценки сложности и типа установки необходим вызов замерщика. 
+                            Замер у нас бесплатный и ни к чему не обязывает.</p>
+                            <div class="row row-cols-1 gy-5 row-cols-lg-3">
+                                <div class="col"><img class="w-100 rounded-3" src="{% static 'main/img/micro_card.webp' %}" alt="micro_card"></div>
+                                <div class="col"><img  class="w-100 rounded-3" src="{% static 'main/img/micro_card2.webp' %}" alt="micro_card"></div>
+                                <div class="col"><img  class="w-100 rounded-3" src="{% static 'main/img/micro_card3.webp' %}" alt="micro_card"></div>
+                            </div>                             
+            </section>
+
+
+
+            {% include 'main/components/reasons.html' with classes='mb-20' %}
+
+            {% include 'main/components/consultation_form.html' %}
+
+
+            {% include 'main/components/consultation_modal.html' %}
+
+            {% include 'main/components/measure_modal.html' %}
+
+        </main>
+    </div>
+</div>
+{% endblock %}

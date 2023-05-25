@@ -35,11 +35,15 @@
                                     <div class="ratio h-100"
                                          style="--bs-aspect-ratio: 60%; min-height: 200px; max-height: 460px;">
                                         <img class="object-fit-cover rounded-lg-4 rounded-3"
-                                        src="{% static 'main/img/baner.webp' %}" alt="Варим решетки на заказ">
+                                        src="{% static 'main/img/baner_for_mainpage 1.webp' %}" alt="Варим решетки на заказ">
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="ratio h-100"
+                                         style="--bs-aspect-ratio: 60%; min-height: 200px; max-height: 460px;">
+                                        <img class="object-fit-cover rounded-lg-4 rounded-3"
+                                        src="{% static 'main/img/baner_for_mainpage 2.webp' %}" alt="Куём решетки на заказ">
                                         <div class="card-body  p-lg-10 px-9 py-10">
-                                            <div class="w-lg-50 h-lg-auto h-100 ">
-                                                <h1 class="display-1  fs-3xl-25 fs-xl-23 fs-lg-20 fs-md-15 fs-7 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Металлические решетки <br> на окна по честным <br> ценам</h1>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -47,11 +51,35 @@
                                     <div class="ratio h-100"
                                          style="--bs-aspect-ratio: 60%; min-height: 200px; max-height: 460px;">
                                         <img class="object-fit-cover rounded-lg-4 rounded-3"
-                                        src="{% static 'main/img/baner.webp' %}" alt="Куём решетки на заказ">
+                                        src="{% static 'main/img/baner_for_mainpage 3.webp' %}" alt="Куём решетки на заказ">
                                         <div class="card-body  p-lg-10 px-9 py-10">
-                                            <div class="w-lg-50 h-lg-auto h-100">
-                                                <h1 class="display-1  fs-3xl-25 fs-xl-23 fs-lg-20 fs-md-15 fs-7 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">Металлические решетки <br> на окна по честным <br> ценам</h1>
-                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="ratio h-100"
+                                         style="--bs-aspect-ratio: 60%; min-height: 200px; max-height: 460px;">
+                                        <img class="object-fit-cover rounded-lg-4 rounded-3"
+                                        src="{% static 'main/img/baner_for_mainpage 4.webp' %}" alt="Куём решетки на заказ">
+                                        <div class="card-body  p-lg-10 px-9 py-10">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="ratio h-100"
+                                         style="--bs-aspect-ratio: 60%; min-height: 200px; max-height: 460px;">
+                                        <img class="object-fit-cover rounded-lg-4 rounded-3"
+                                        src="{% static 'main/img/baner_for_mainpage 5.webp' %}" alt="Куём решетки на заказ">
+                                        <div class="card-body  p-lg-10 px-9 py-10">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="ratio h-100"
+                                         style="--bs-aspect-ratio: 60%; min-height: 200px; max-height: 460px;">
+                                        <img class="object-fit-cover rounded-lg-4 rounded-3"
+                                        src="{% static 'main/img/baner_for_mainpage 6.webp' %}" alt="Куём решетки на заказ">
+                                        <div class="card-body  p-lg-10 px-9 py-10">
                                         </div>
                                     </div>
                                 </div>
@@ -541,7 +569,7 @@
                 <a class="btn btn-outline-secondary btn-lg btn-wide-lg" href="{%url 'reviews'%}">Смотреть все </a>
                                                         </div>
             </section>
-            <section class="cta">
+            <section class="cta mb-20">
                 <div class="card rounded-lg-4 rounded-3">
                     <div class="card-body pt-lg-34 pt-17-5 px-lg-40 pb-lg-35 pb-20">
                         <h3 class="card-title fs-lg-20 fs-12 fw-normal ls-sm text-uppercase mb-lg-20 mb-14"
@@ -568,6 +596,23 @@
                     </div>
                 </div>
             </section>
+
+            <!--YANDEX MAP-->
+            <div class="container px-0 border rounded-3">
+                <div class="rounded-3 ms-2 ms-sm-10 mt-2 mt-sm-10 position-absolute px-4 z-2  map_baner">
+                    <h6 class="text-uppercase pt-7 fs-7 fs-lg-10">Принимаем заказы</h6>
+                    <ul>
+                        <li class="pb-2 fs-6 fs-lg-8">Из Москвы</li>
+                        <li class="py-2 fs-6 fs-lg-8">Из Московской области</li>
+                        <li class="py-2 fs-6 fs-lg-8">Из ближайших областей</li>
+                    </ul>
+                </div>
+                <div class=" px-0 border rounded-3">
+                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A1ef0868cfb5a1c134c324e43099fc17f510c0a83dd80a53b52f866d445e4b278&amp;width=100%25&amp;height=720&amp;lang=ru_RU&amp;scroll=false"  allowfullscreen="" loading="lazy"></script>
+                </div>
+            </div>
+
+           
 
             {% include 'main/components/consultation_modal.html' %}
 

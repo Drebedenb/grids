@@ -31,7 +31,36 @@
 }
 
 
+/*SCROLL ON TOP*/
+.scrollToTopBtn {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 48px;
+    width: 68px;
+  
+    /* place it at the bottom right corner */
+    position: fixed;
+    bottom: 40px;
+    right: 4%;
+    /* keep it at the top of everything else */
+    z-index: 100;
+    /* hide with opacity */
+    opacity: 0;
+    /* also add a translate effect */
+    transform: translateY(100px);
+    /* and a transition */
+    transition: all 0.5s ease;
+  }
+  
+  .showBtn {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
+
+ 
 
 
 /*BANER_ARROWS*/
@@ -58,6 +87,19 @@
         text-transform: none;
     }
 
+    .navbar .dropdown-menu_2.fade-up{ top:180%; left:40%;}
+	.navbar .nav-item:hover .dropdown-menu_2{ transition: .3s; opacity:1; visibility:visible; top:100%; transform: rotateX(0deg); left:40%;}
+    .dropdown-item_header{
+        text-transform: none;
+        font-weight: 500;
+        margin:10px 17px;
+    }
+    .dropdown-item_2{
+        text-transform: none;
+    }
+
+    
+
   
 
 /* ============ desktop view .end// ============ */
@@ -80,7 +122,7 @@
 /*LEFT SIDEBAR*/
 .left_sidebar{
     position: sticky ;
-    top: 130px;
+    top: 150px;
 }
 
 
@@ -278,6 +320,16 @@
 }
 
 
+/*DELIVERy*/
+.arrow-prev_delivery{
+    left: -130px;
+}
+
+.arrow-next_delivery{
+    right: -130px;
+}
+
+
 /*BUTTON-CLOSE*/
 .btn_close{
     background-color: rgba(0, 0, 0, 0.344);
@@ -292,6 +344,33 @@
 }
 
 
+/*MINIBANER*/
+.minibaner_item{
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.minibaner_item_3{
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+
+.minibaner_item_4{
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+
+}
+.minibaner_item_6{
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+
+.minibaner_item_color{
+   background-color: rgb(30, 120, 204);
+   /* background-color: url("/static/img/grid-line-pattern_icon.webp"); */
+}
 
 
 /*SOCIAL_Icons*/
@@ -329,6 +408,24 @@
 }
 
 
+
+/*MAP_BANER*/
+.map_baner{
+    background-color: rgba(207, 55, 113, 0.155);
+}
+
+
+/*MARKER*/
+::marker {
+    unicode-bidi: isolate;
+    font-variant-numeric: tabular-nums;
+    text-transform: none;
+    text-indent: 0px !important;
+    text-align: start !important;
+    text-align-last: start !important;
+    color: #F5320E;
+    border: 3px solid green;
+}
 
 /*SNACKBAR*/
 
@@ -391,6 +488,17 @@
 .arrow-next{
     right: -60px;
 }
+
+
+/*DELIVERy*/
+.arrow-prev_delivery{
+    left: -100px;
+}
+
+.arrow-next_delivery{
+    right: -100px;
+}
+
 
 /*STAR*/
 .star{
@@ -516,10 +624,26 @@
 }
 
 
-/*ALERT_MODAL*/
-.alert_modal{
-    display: none;
+
+/*DELIVERy*/
+.arrow-prev_delivery{
+    left: -60px;
 }
+
+.arrow-next_delivery{
+    right: -60px;
+}
+
+/*SCROLL ON TOP*/
+.scrollToTopBtn {
+    width: 68px;
+    position: fixed;
+    bottom: 80px;
+    right: 4%;
+
+  }
+
+
 
     /*FILTER*/
     
@@ -574,6 +698,18 @@
 
 
 @media (max-width: 575px) {
+
+
+    /*SCROLL ON TOP*/
+.scrollToTopBtn {
+    width: 48px;
+    position: fixed;
+    bottom: 70px;
+    right: 4%;
+
+  }
+
+
 /*TIPI RESHETOK*/
 
 .mini-img{
@@ -604,6 +740,16 @@
     right: -20px;
 }
 
+
+/*DELIVERy*/
+.arrow-prev_delivery{
+    left: -0px;
+}
+
+.arrow-next_delivery{
+    right: -0px;
+}
+
     .bi-caret-left-fill {
         margin-right: 0px;
         width: 120%;
@@ -626,6 +772,57 @@
 .card-ratio{
     max-width: 300px;
 }
+
+
+
+/*MINIBANER*/
+.minibaner_item{
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.minibaner_item_2{
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.minibaner_item_2 a{
+    text-decoration: none;
+    text-align: center;
+    color: black !important;
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px 10px;
+}
+
+.minibaner_item_6 a{
+   text-transform: uppercase;
+    text-align: center;
+    color: black !important;
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px 10px;
+}
+
+
+
+.minibaner_item_3{
+    display: none !important;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+
+}
+
+
+.minibaner_item_5{
+    display: none !important;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+
+}
+
 
 /*STAR*/
 .star{

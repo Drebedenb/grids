@@ -41,6 +41,12 @@
           </div>
         </div>
         </div> -->
+
+
+
+<!-- Button on fixed on bottom right corner of the page -->
+  <button class="scrollToTopBtn"> {% include 'main/icons/scroll_up.html' with classes='svg-icon' %}</button>
+
 <header class="position-sticky top-0 bg-black text-muted" style="z-index: 4;">
     <div class="container">    
         <div class="py-6">
@@ -65,7 +71,7 @@
                 </div>
                 <div class="col-auto ms-lg-0 ms-auto">
                     <div class="hstack d-lg-none d-flex gap-5">
-                        <a class="fs-8 text-hover-primary text-decoration-none text-white" href="mailto:info@smarmatix.ru">{% include 'main/icons/email.html' with classes='svg-icon' %}</a>
+                        <a class="fs-8 text-hover-primary text-decoration-none text-white" href="mailto:info@stalpro.com">{% include 'main/icons/email.html' with classes='svg-icon' %}</a>
                         <a
                             class="btn btn-outline-secondary d-inline-flex justify-content-center align-items-center p-0"
                             href="tel:84953745364" style="width: 1.5rem; height: 1.5rem;">
@@ -142,14 +148,23 @@
                         class="nav-link ls-sm p-0 {% if request.path == '/contacts/' %}active{% endif %}"
                         href="{%url 'contacts'%}">Контакты</a></li>
                 <li class="nav-item me-20"><a
-                        class="nav-link ls-sm p-0 {% if request.path == '/акции/' %}active{% endif %}"
-                        href="{%url 'sales'%}">Клиентам</a></li>
+                        class="nav-link ls-sm p-0 {% if request.path == '/акции/' %}active{% endif %} " data-toggle="dropdown"
+                        href="{%url 'sales'%}">Клиентам</a>
+                        <ul class="dropdown-menu dropdown-menu_2 fade-up d-flex ">
+                            <div>
+                            {% for item in list_of_dropdown_sections_for_clients %}
+                                <li><a class="dropdown-item text-muted text-hover-primary" href="{{ item.url }}">
+                                    {{ item.title }} </a></li>
+                                {% endfor %}
+                        </div>
+                        </ul>
+                    </li>
             </ul>
             <div class="hstack gap-20 ms-auto">
                 <p class="fs-7 mb-0">141640, Московская область.,<br> Клинский р-он, д. Ясенево, д. 74, стр. 7</p>
                 <div>      
                 <span class="pe-5">{% include 'main/icons/email.html' with classes='svg-icon' %}</span>
-                <a class="fs-8 text-hover-primary text-decoration-none text-white" href="mailto:info@smarmatix.ru">info@stalpro.com</a>
+                <a class="fs-8 text-hover-primary text-decoration-none text-white" href="mailto:info@stalpro.com">info@stalpro.com</a>
             </div>
             <a href="https://api.whatsapp.com/send/?phone=84953745364" class="">{% include 'main/icons/whatsapp.html' with classes='svg-icon' %}</a>
             <a class="text-hover-primary" href=" https://t.me/+74953745364">{% include 'main/icons/telegram.html' with classes='svg-icon' %}</a>
@@ -231,7 +246,7 @@
         </div>
         <div class="mt-5 text-center"><a class="fs-9 text-muted text-hover-white ls-sm text-decoration-none"
                                           href="tel:84953745364">8 (495) 374-53-64 </a>
-                                          <a class="fs-8 ps-5 text-hover-primary text-decoration-none text-white" href="mailto:info@smarmatix.ru">info@stalpro.com</a>
+                                          <a class="fs-8 ps-5 text-hover-primary text-decoration-none text-white" href="mailto:info@stalpro.com">info@stalpro.com</a>
                                         </div>
     </div>
 </div>
@@ -296,7 +311,7 @@
                     <div class="row  h-100">
                     <div class="col-6 col-sm-6 col-lg-12">
                         <p class="mb-0 fs-7 fs-lg-8">Электронная почта:</p>
-                        <a  class="fs-7 fs-lg-8 text-decoration-none" href="mailto:info@smarmatix.ru">info@stalpro.com</a>
+                        <a  class="fs-7 fs-lg-8 text-decoration-none" href="mailto:info@stalpro.com">info@stalpro.com</a>
                     </div>
                     <div class="col-6 col-sm-6 col-lg-12">
                         <p class="fs-6 fs-sm-8 mb-3">Адрес:</p>
@@ -407,7 +422,7 @@
 <script src="{% static 'main/vendors/nouislider/nouislider.min.js' %} "></script>
 <script src="{% static 'main/js/main.js' %}"></script>
 <script src="{% static 'main/js/custom.js' %}"></script>
-   <script>
+   <!-- <script>
        let alertModal = new bootstrap.Modal(document.getElementById('alert_modal'));
         setTimeout(() => alertModal.show(), 1000*60*3);
         let isWasShown = false;
@@ -439,6 +454,6 @@
         }
     }
 })();
-   </script>
+   </script> -->
 </body>
 </html>

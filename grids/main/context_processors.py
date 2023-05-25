@@ -39,6 +39,15 @@ list_of_popular_sections = [
     {'title': 'ТОП 100 сварных', 'url': '/топ-100-сварных-решеток-на-окна'},
     {'title': 'ТОП 100 кованых', 'url': '/топ-100-кованых-оконных-решеток'},
 ]
+
+list_of_dropdown_sections_for_clients = [
+    {'title': 'Доставка', 'url': '/dostavka/'},
+    {'title': 'Установка', 'url': '/ustanovka/'},
+    {'title': 'Оплата', 'url': '/oplata/'},
+    {'title': 'Схема заказа', 'url': '/skchema-zakaza/'},
+    {'title': 'Гарантия', 'url': '/garantiya/'},
+    {'title': 'Вопрос-ответ', 'url': '/vopros-otvet/'},
+]
 def grids_purpose_categories_classes_openTypes_kinds_popularSections(request):
     return {'list_of_grids_purpose': list_of_grids_purpose,
             'list_of_categories': list_of_categories,
@@ -46,4 +55,5 @@ def grids_purpose_categories_classes_openTypes_kinds_popularSections(request):
             'list_of_open_types': list_of_open_types,
             'list_of_kinds': list_of_kinds,
             'list_of_popular_sections': list_of_popular_sections,
+            'list_of_dropdown_sections_for_clients': list_of_dropdown_sections_for_clients
             }
