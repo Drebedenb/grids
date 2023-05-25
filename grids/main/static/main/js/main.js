@@ -717,12 +717,13 @@ function getWidth() {
 if (getWidth() < 768){
     const element = document.getElementById("alert_modal");
     element.remove();
-} else if(!sessionStorage.getItem("alertWasShown")) {
+} else  {
     let alertModal = new bootstrap.Modal(document.getElementById('alert_modal'));
         setTimeout(() => alertModal.show(), 1000*60*3);
        (function() {
     document.onmousemove = handleMouseMove;
     function handleMouseMove(event) {
+        if(sessionStorage.getItem("alertWasShown")) return 0;
         var eventDoc, doc, body;
 
         event = event || window.event; // IE-ism

@@ -12,13 +12,13 @@ from django.core.cache import cache
 from urllib.parse import urlencode
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
-class MockDjangoRedis:
-    def get(self, arg):
-        return None
-
-    def set(arg, bla, ble, blu):
-        return arg
-cache = MockDjangoRedis()
+# class MockDjangoRedis:
+#     def get(self, arg):
+#         return None
+#
+#     def set(arg, bla, ble, blu):
+#         return arg
+# cache = MockDjangoRedis()
 
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 img_dir = os.path.join(base_dir, 'main/static/main/img/')
@@ -138,7 +138,7 @@ list_of_sales_items = [
     {'image_path': 'main/img/sale_baners/sale_baner5.webp', 'description': 'Заказывая у нас решетки на окна, Вы получаете максимально выгодную цену. Мы уверены в этом и готовы предоставить скидку, если Вы найдете такой же товар дешевле!'},
 ]
 
-list_of_daliveries = [
+list_of_deliveries = [
     {'name': 'Балашиха ', 'price': '600'},
     {'name': 'Бронницы ', 'price': '1600'},
     {'name': 'Волоколамский район', 'price': '1100'},
@@ -641,7 +641,8 @@ def sales(request):
 def delivery(request):
     meta_description = ''
     context = {
-        'title': 'Доставка'
+        'title': 'Доставка',
+        'list_of_deliveries': list_of_deliveries
     }
     return render(request, 'main/delivery.html', context)
 
