@@ -713,7 +713,10 @@ if (getWidth() < 768){
 }
 
 //блок кода для открывания модального окна при нажатии на кнопку купить
-let buyViewModal = new bootstrap.Modal(document.getElementById('buy_view'));
+let buyViewModal = null;
+try {
+    buyViewModal = new bootstrap.Modal(document.getElementById('buy_view'));
+} catch(e) {}
     function buyViewHandler(id){
         const folderOfGrid = id.match(/\d+/gm)[0]
         const numberOfGrid = id.match(/\d+/gm)[1]
@@ -729,7 +732,10 @@ let isOpen = false;
 let isNitro = false;
 let priceForSquare = 1;
 
-let quickViewModal = new bootstrap.Modal(document.getElementById('quick_view'));
+let quickViewModal = null;
+try {
+    quickViewModal = new bootstrap.Modal(document.getElementById('quick_view'));
+} catch(e) {}
     function quickViewHandler(id){
         const pathFolder = id.match(/\d+/gm)[0]
         const pathFile = id.match(/\d+/gm)[1]

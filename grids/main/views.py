@@ -129,6 +129,15 @@ list_of_open_types_for_calculator = [
     {"name": "oo", "description": "Распашная-Распашная", "price": "2800"},
 ]
 
+list_of_sales_items = [
+    {'image_path': 'main/img/sale_baners/sale_baner2.webp', 'description': 'Закажите бесплатный вызов замерщика и оплатите заказ в тот же день, чтобы получить скидку в 10%'},
+    {'image_path': 'main/img/sale_baners/sale_baner.webp', 'description': 'Получите скидку в 20% при 100% предоплате ( для физических лиц )'},
+    {'image_path': 'main/img/sale_baners/sale_baner3.webp', 'description': 'Создадим проект на основе Ваших эскизов и размеров, если Вы не найдете подходящий макет в нашем каталоге'},
+    {'image_path': 'main/img/sale_baners/sale_baner4.webp', 'description': 'При заказе от 3-х решеток за каждую дополнительную единицу Вы получаете скидку 1%. Максимальная скидка - 10%.'},
+    {'image_path': 'main/img/sale_baners/sale_baner6.webp', 'description': 'Закажите бесплатные замер и консультацию. Наши сотрудники свяжутся с Вами для уточнения деталей и направят к Вам мастера для проведения технического рассчета'},
+    {'image_path': 'main/img/sale_baners/sale_baner5.webp', 'description': 'Заказывая у нас решетки на окна, Вы получаете максимально выгодную цену. Мы уверены в этом и готовы предоставить скидку, если Вы найдете такой же товар дешевле!'},
+]
+
 def get_text_from_text_dir(file_name):
     text_dir = os.path.join(base_dir, 'main/text/')
     return open(os.path.join(text_dir, file_name), 'r', encoding='utf-8').read()
@@ -384,14 +393,16 @@ def catalog_category(request, category_name):
         'title': category['title'],
         'meta_description': meta_description,
         'text': category['text'],
+        'list_of_reviews': list_of_reviews,
         'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling,
         'min_price': min_price, 'max_price': max_price, 'list_of_photos_done': list_of_photos_done,
+
 
         # for pagination
         'prev_url': get_paginated_url(request, products.previous_page_number()) if products.has_previous() else None,
         'next_url': get_paginated_url(request, products.next_page_number()) if products.has_next() else None,
 
-        'count': count
+        'count': count,
     }
     return render(request, 'main/catalog-category.html', context)
 
@@ -551,7 +562,8 @@ def sales(request):
                        'Скидка 10% при оплате в день приезда замерщика. Бесплатная консультация и замер.'
     context = {
         'title': 'Клиентам',
-        'meta_description': meta_description
+        'meta_description': meta_description,
+        'list_of_sales_items': list_of_sales_items
     }
     return render(request, 'main/sales.html', context)
 
