@@ -554,3 +554,11 @@ def sales(request):
         'meta_description': meta_description
     }
     return render(request, 'main/sales.html', context)
+
+def sitemap(request):
+    meta_description = 'Скидка 20% при полной предоплате металлической решетки. ' \
+                       'Скидка 10% при оплате в день приезда замерщика. Бесплатная консультация и замер.'
+    context = {
+        'title': 'Карта сайта',
+    }
+    return render(request, 'main/sitemap.html', context)
