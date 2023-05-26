@@ -1,4 +1,5 @@
 # grids
+REWRITE THIS 
 For styles was used Bootstrap
 For frontend and backend native django
 
