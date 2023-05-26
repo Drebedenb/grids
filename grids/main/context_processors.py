@@ -44,9 +44,9 @@ list_of_dropdown_sections_for_clients = [
     {'title': 'Доставка', 'url': '/dostavka/'},
     {'title': 'Установка', 'url': '/ustanovka/'},
     {'title': 'Оплата', 'url': '/oplata/'},
-    {'title': 'Схема заказа', 'url': '/skchema-zakaza/'},
+    # {'title': 'Схема заказа', 'url': '/skchema-zakaza/'},
     {'title': 'Гарантия', 'url': '/garantiya/'},
-    {'title': 'Вопрос-ответ', 'url': '/vopros-otvet/'},
+    # {'title': 'Вопрос-ответ', 'url': '/vopros-otvet/'},
 ]
 def grids_purpose_categories_classes_openTypes_kinds_popularSections(request):
     return {'list_of_grids_purpose': list_of_grids_purpose,

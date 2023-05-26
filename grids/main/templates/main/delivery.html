@@ -99,120 +99,24 @@
                 <h3 class=" fs-3xl-14 fs-lg-13 fs-8 ls-sm text-uppercase mt-20 mb-10">Стоимость доставки по Москве и области</h3>
                 <p class="fs-lg-11 fs-7">Представленные тарифы действуют при заказе монтажа. Если Вы планируете устанавливать изделия самостоятельно, то стоимость доставки может измениться. Уточняйте точную стоимость у наших специалистов заранее  <a href="tel:84953745364" class=" text-hover-danger">по телефону.</a></p>
                  <div class="row row-cols-1 row-cols-lg-3">
-                    <div class="col border  rounded-3">
-                        <div class="row  rounded-3 mx-0 my-10">
-                            <div class="col-8 rounded-start-2 py-4 bg-light ">
+                     <div class="col border  rounded-3">
+                         <div class="row  rounded-3 mx-0 my-10">
+                     {% for item in list_of_deliveries%}
+                         {% if forloop.counter|divisibleby:2 %}
+                            {% include 'main/components/delivery_components/light_row.html' with name=item.name price=item.price %}
+                         {% else %}
+                            {% include 'main/components/delivery_components/dark_row.html' with name=item.name price=item.price %}
+                         {% endif %}
 
-                                <p class="mb-0 fs-7 fs-sm-7 fs-lg-8 fw-medium text-dark">Район</p>
+                         {% if forloop.counter|divisibleby:22 and forloop.counter != list_of_deliveries|length %}
+                             </div>
                             </div>
-                            <div class="col py-4 rounded-end-2 bg-light">
-
-                                <p class="mb-0 fs-6 fs-sm-7 fs-lg-8 fw-medium text-dark">Стоимость</p>
+                            <div class="col border  rounded-3">
+                                <div class="row  rounded-3 mx-0 my-10">
+                         {% endif %}
+                     {% endfor %}
                             </div>
-
-                            <div class="col-8 border-end  py-4">
-                                <p class="mb-0 fs-7 fs-sm-7 fs-lg-8 text-muted">Бронницы</p>
-                            </div>
-                            <div class="col-4  py-4">
-
-                                <p class="mb-0 fs-7 fs-sm-7 mt-4 mt-sm-0  fs-lg-8 text-muted">1 600 р.</p>
-                            </div>
-
-                            <div class="col-8 rounded-start-2 py-4 bg-light ">
-
-                                <p class="mb-0 fs-7 fs-sm-7 fs-lg-8 fw-medium text-dark">Район</p>
-                            </div>
-                            <div class="col py-4 rounded-end-2 bg-light">
-
-                                <p class="mb-0 fs-6 fs-sm-7 fs-lg-8 fw-medium text-dark">Стоимость</p>
-                            </div>
-
-                            <div class="col-8 border-end  py-4">
-                                <p class="mb-0 fs-7 fs-sm-7 fs-lg-8 text-muted">Балашиха</p>
-                            </div>
-                            <div class="col-4  py-4">
-
-                                <p class="mb-0 fs-7 fs-sm-7 mt-4 mt-sm-0  fs-lg-8 text-muted">600 р.</p>
-                            </div>
-                      
-                        </div>
-                    </div>
-                    <div class="col border rounded-3">
-                        <div class="row  rounded-3 mx-0 my-10">
-                            <div class="col-8 rounded-start-2 py-4 bg-light ">
-
-                                <p class="mb-0 fs-7 fs-sm-7 fs-lg-8 fw-medium text-dark">Район</p>
-                            </div>
-                            <div class="col py-4 rounded-end-2 bg-light">
-
-                                <p class="mb-0 fs-6 fs-sm-7 fs-lg-8 fw-medium text-dark">Стоимость</p>
-                            </div>
-
-                            <div class="col-8 border-end  py-4">
-                                <p class="mb-0 fs-7 fs-sm-7 fs-lg-8 text-muted">Бронницы</p>
-                            </div>
-                            <div class="col-4  py-4">
-
-                                <p class="mb-0 fs-7 fs-sm-7 mt-4 mt-sm-0  fs-lg-8 text-muted">1 600 р.</p>
-                            </div>
-
-                            <div class="col-8 rounded-start-2 py-4 bg-light ">
-
-                                <p class="mb-0 fs-7 fs-sm-7 fs-lg-8 fw-medium text-dark">Район</p>
-                            </div>
-                            <div class="col py-4 rounded-end-2 bg-light">
-
-                                <p class="mb-0 fs-6 fs-sm-7 fs-lg-8 fw-medium text-dark">Стоимость</p>
-                            </div>
-
-                            <div class="col-8 border-end  py-4">
-                                <p class="mb-0 fs-7 fs-sm-7 fs-lg-8 text-muted">Балашиха</p>
-                            </div>
-                            <div class="col-4  py-4">
-
-                                <p class="mb-0 fs-7 fs-sm-7 mt-4 mt-sm-0  fs-lg-8 text-muted">600 р.</p>
-                            </div>
-                      
-                        </div>
-                    </div>
-                    <div class="col border rounded-3">
-                        <div class="row  rounded-3 mx-0 my-10">
-                            <div class="col-8 rounded-start-2 py-4 bg-light ">
-
-                                <p class="mb-0 fs-7 fs-sm-7 fs-lg-8 fw-medium text-dark">Район</p>
-                            </div>
-                            <div class="col py-4 rounded-end-2 bg-light">
-
-                                <p class="mb-0 fs-6 fs-sm-7 fs-lg-8 fw-medium text-dark">Стоимость</p>
-                            </div>
-
-                            <div class="col-8 border-end  py-4">
-                                <p class="mb-0 fs-7 fs-sm-7 fs-lg-8 text-muted">Бронницы</p>
-                            </div>
-                            <div class="col-4  py-4">
-
-                                <p class="mb-0 fs-7 fs-sm-7 mt-4 mt-sm-0  fs-lg-8 text-muted">1 600 р.</p>
-                            </div>
-
-                            <div class="col-8 rounded-start-2 py-4 bg-light ">
-
-                                <p class="mb-0 fs-7 fs-sm-7 fs-lg-8 fw-medium text-dark">Район</p>
-                            </div>
-                            <div class="col py-4 rounded-end-2 bg-light">
-
-                                <p class="mb-0 fs-6 fs-sm-7 fs-lg-8 fw-medium text-dark">Стоимость</p>
-                            </div>
-
-                            <div class="col-8 border-end  py-4">
-                                <p class="mb-0 fs-7 fs-sm-7 fs-lg-8 text-muted">Балашиха</p>
-                            </div>
-                            <div class="col-4  py-4">
-
-                                <p class="mb-0 fs-7 fs-sm-7 mt-4 mt-sm-0  fs-lg-8 text-muted">600 р.</p>
-                            </div>
-                      
-                        </div>
-                    </div>
+                     </div>
                 </div>
             </section>
 
