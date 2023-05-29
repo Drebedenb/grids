@@ -12,13 +12,13 @@ from django.core.cache import cache
 from urllib.parse import urlencode
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
-# class MockDjangoRedis:
-#     def get(self, arg):
-#         return None
-#
-#     def set(arg, bla, ble, blu):
-#         return arg
-# cache = MockDjangoRedis()
+class MockDjangoRedis:
+    def get(self, arg):
+        return None
+
+    def set(arg, bla, ble, blu):
+        return arg
+cache = MockDjangoRedis()
 
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 img_dir = os.path.join(base_dir, 'main/static/main/img/')
@@ -260,8 +260,8 @@ russian_categories = {
     "кованые-решетки-на-окна": {"title": "Кованые металлические решетки на окна", "number_of_category": [5, 7], 'text': get_text_from_text_dir('кованые-решетки-на-окна.html')},
 
     #list_of_popular_sections
-    "топ-100-кованых-оконных-решеток": {"title": "Кованые оконные решетки | топ - 100 эскизов", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
-    "топ-100-сварных-решеток-на-окна": {"title": "Сварные оконные решетки | топ - 100 эскизов", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "топ-100-кованых-оконных-решеток": {"title": "Кованые оконные решетки | топ - 100 эскизов", "number_of_category": [5,6,7,8], 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "топ-100-сварных-решеток-на-окна": {"title": "Сварные оконные решетки | топ - 100 эскизов", "number_of_category": [1,2,3,4], 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
 }
 
 # one day cache will be stored
@@ -402,7 +402,7 @@ count = {
 
 
 def index(request):
-    leaders_of_selling = get_products_by_categories([1], 0, 99999, 'id', 'asc', 16)
+    leaders_of_selling = get_products_by_categories(ALL_CATEGORIES, 0, 99999, 'popularity', 'desc', 16)
     min_price_1 = get_categories_min_price([1])
     min_price_2 = get_categories_min_price([3])
     min_price_3 = get_categories_min_price([5])
@@ -442,8 +442,16 @@ def catalog_category(request, category_name):
         min_price_for_sort = 0 if request.GET.get('minPriceByUser') is None else int(request.GET.get('minPriceByUser'))
         max_price_for_sort = 9999999 if request.GET.get('maxPriceByUser') is None else int(
             request.GET.get('maxPriceByUser'))
-    products_list = get_products_by_categories(category["number_of_category"], min_price_for_sort, max_price_for_sort,
-                                               order_type, order_scending, limit)
+
+    products_list = []
+    if "топ" in category:
+        products_list = get_products_by_categories(category["number_of_category"], min_price_for_sort,
+                                                   max_price_for_sort,
+                                                   order_type, order_scending, limit)
+    else:
+        products_list = get_products_by_categories(category["number_of_category"], min_price_for_sort,
+                                                   max_price_for_sort,
+                                                   order_type, order_scending, limit)
     min_price = get_categories_min_price(category["number_of_category"])
     max_price = get_categories_max_price(category["number_of_category"])
 
@@ -456,8 +464,8 @@ def catalog_category(request, category_name):
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
 
-    leaders_of_selling = get_products_by_categories([5], min_price_for_sort, max_price_for_sort,
-                                                    order_type, order_scending, 15)
+    leaders_of_selling = get_products_by_categories(ALL_CATEGORIES, 0, 99999, 'popularity', 'desc', 16)
+
     meta_description = 'Решетки на окна по разным ценам. Популярные эскизы со скидками. ' \
                        'Сварные, ажурные, кованые и дутые решетки по размерам клиента.'
     context = {
@@ -465,7 +473,8 @@ def catalog_category(request, category_name):
         'meta_description': meta_description,
         'text': category['text'],
         'list_of_reviews': list_of_reviews,
-        'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling,
+        'products': products, 'category': category,
+        'leaders_of_selling': leaders_of_selling,
         'min_price': min_price, 'max_price': max_price, 'list_of_photos_done': list_of_photos_done,
 
 
