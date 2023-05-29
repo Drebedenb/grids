@@ -41,6 +41,7 @@ list_of_popular_sections = [
 ]
 
 list_of_dropdown_sections_for_clients = [
+    {'title': 'Акции', 'url': '/акции/'},
     {'title': 'Доставка', 'url': '/dostavka/'},
     {'title': 'Установка', 'url': '/ustanovka/'},
     {'title': 'Оплата', 'url': '/oplata/'},
