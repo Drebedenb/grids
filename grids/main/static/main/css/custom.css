@@ -21,6 +21,11 @@
     margin-top: -10px;
 }
 
+/*GLAVNAyA*/
+.baner_item{
+    max-height: 500px;
+}
+
 /* BTN_CATALOG */
 
 .btn_catalog{
@@ -102,7 +107,9 @@
     }
 
     
-
+.area_item{
+    margin-top: -22px;
+}
   
 
 /* ============ desktop view .end// ============ */
@@ -605,6 +612,12 @@
 
 @media (max-width: 768px) {
 
+    /*GLAVNAyA*/
+.baner_item{
+    max-height: 400px !important;
+}
+
+
 /*BANER_ARROWS*/
 .baner_arrows{
     top:5% ;
@@ -706,6 +719,12 @@
 
 
 @media (max-width: 575px) {
+
+     /*GLAVNAyA*/
+.baner_item{
+    max-height: 250px !important;
+}
+
 
 
     /*SCROLL ON TOP*/
@@ -855,6 +874,12 @@
 
 
   @media (max-width: 450px) {
+
+         /*GLAVNAyA*/
+.baner_item{
+    max-height: 170px !important;
+}
+
     /* TABS */
 
 .sort {

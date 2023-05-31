@@ -12,13 +12,13 @@ from django.core.cache import cache
 from urllib.parse import urlencode
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
-# class MockDjangoRedis:
-#     def get(self, arg):
-#         return None
-#
-#     def set(arg, bla, ble, blu):
-#         return arg
-# cache = MockDjangoRedis()
+class MockDjangoRedis:
+    def get(self, arg):
+        return None
+
+    def set(arg, bla, ble, blu):
+        return arg
+cache = MockDjangoRedis()
 
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 img_dir = os.path.join(base_dir, 'main/static/main/img/')
@@ -232,22 +232,22 @@ russian_categories = {
     "решетки-для-дачи": {"title": "Металлические решетки на окна для дачи", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
 
     #list_of_categories
-    "решетки-на-окна-эконом-класс": {"title": "Металлические решетки на окна эконом класс", "number_of_category": [1], 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
-    "дутые-решетки-на-окна-эконом-класс": {"title": "Дутые эконом металлические решетки на окна", "number_of_category": [2], 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
-    "дутые-и-обычные-решетки-на-окна-эконом-класс": {"title": "Дутые и обычные эконом металлические решетки на окна", "number_of_category": [1, 2], 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "решетки-на-окна-эконом-класс": {"title": "Металлические решетки на окна эконом класс", "number_of_category": [1], 'text': get_text_from_text_dir('решетки-на-окна-эконом-класс.html')},
+    "дутые-решетки-на-окна-эконом-класс": {"title": "Дутые эконом металлические решетки на окна", "number_of_category": [2], 'text': get_text_from_text_dir('решетки-на-окна-эконом-класс.html')},
+    "дутые-и-обычные-решетки-на-окна-эконом-класс": {"title": "Дутые и обычные эконом металлические решетки на окна", "number_of_category": [1, 2], 'text': get_text_from_text_dir('решетки-на-окна-эконом-класс.html')},
     "ажурные-решетки-на-окна": {"title": "Ажурные металлические решетки на окна", "number_of_category": [3], 'text': get_text_from_text_dir('ажурные-решетки-на-окна.html')},
     "дутые-ажурные-решетки": {"title": "Дутые ажурные металлические решетки на окна", "number_of_category": [4], 'text': get_text_from_text_dir('ажурные-решетки-на-окна.html')},
     "дутые-и-обычные-ажурные-решетки": {"title": "Дутые и обычные ажурные металлические решетки на окна", "number_of_category": [3, 4], 'text': get_text_from_text_dir('ажурные-решетки-на-окна.html')},
-    "решетки-на-окна-вип-класс": {"title": "Металлические решетки на окна vip класс", "number_of_category": [5], 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
-    "дутые-решетки-вип-класса": {"title": "Дутые металлические решетки на окна vip класс", "number_of_category": [6], 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
-    "дутые-и-обычные-решетки-вип-класса": {"title": "Дутые и обычные металлические решетки на окна vip класс", "number_of_category": [5, 6], 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
-    "эксклюзивные-кованые-решетки": {"title": "Металлические решетки на окна эксклюзив", "number_of_category": [7], 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
-    "дутые-эксклюзивные-решетки": {"title": "Дутые металлические решетки на окна эксклюзив", "number_of_category": [8], 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
-    "дутые-и-обычные-эксклюзивные-решетки": {"title": "Дутые и обычные металлические решетки на окна эксклюзив", "number_of_category": [7, 8], 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "решетки-на-окна-вип-класс": {"title": "Металлические решетки на окна vip класс", "number_of_category": [5], 'text': get_text_from_text_dir('решетки-на-окна-вип-класс.html')},
+    "дутые-решетки-вип-класса": {"title": "Дутые металлические решетки на окна vip класс", "number_of_category": [6], 'text': get_text_from_text_dir('решетки-на-окна-вип-класс.html')},
+    "дутые-и-обычные-решетки-вип-класса": {"title": "Дутые и обычные металлические решетки на окна vip класс", "number_of_category": [5, 6], 'text': get_text_from_text_dir('решетки-на-окна-вип-класс.html')},
+    "эксклюзивные-кованые-решетки": {"title": "Металлические решетки на окна эксклюзив", "number_of_category": [7], 'text': get_text_from_text_dir('эксклюзивные-кованые-решетки.html')},
+    "дутые-эксклюзивные-решетки": {"title": "Дутые металлические решетки на окна эксклюзив", "number_of_category": [8], 'text': get_text_from_text_dir('эксклюзивные-кованые-решетки.html')},
+    "дутые-и-обычные-эксклюзивные-решетки": {"title": "Дутые и обычные металлические решетки на окна эксклюзив", "number_of_category": [7, 8], 'text': get_text_from_text_dir('эксклюзивные-кованые-решетки.html')},
 
     #list_of_classes
     "дутые-решетки-на-окна": {"title": "Дутые металлические решетки на окна", "number_of_category": [2, 4, 6, 8], 'text': get_text_from_text_dir('дутые-решетки-на-окна.html')},
-    "решетки-на-окна-без-дутости": {"title": "Прямые металлические решетки на окна","number_of_category": [1, 3, 5, 7], 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "решетки-на-окна-без-дутости": {"title": "Прямые металлические решетки на окна","number_of_category": [1, 3, 5, 7], 'text': get_text_from_text_dir('решетки-на-окна-без-дутости.html')},
 
 
     #list_of_open_types
@@ -260,8 +260,8 @@ russian_categories = {
     "кованые-решетки-на-окна": {"title": "Кованые металлические решетки на окна", "number_of_category": [5, 7], 'text': get_text_from_text_dir('кованые-решетки-на-окна.html')},
 
     #list_of_popular_sections
-    "топ-100-кованых-оконных-решеток": {"title": "Кованые оконные решетки | топ - 100 эскизов", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
-    "топ-100-сварных-решеток-на-окна": {"title": "Сварные оконные решетки | топ - 100 эскизов", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "топ-100-кованых-оконных-решеток": {"title": "Кованые оконные решетки | топ - 100 эскизов", "number_of_category": [5,6,7,8], 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "топ-100-сварных-решеток-на-окна": {"title": "Сварные оконные решетки | топ - 100 эскизов", "number_of_category": [1,2,3,4], 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
 }
 
 # one day cache will be stored
@@ -402,7 +402,7 @@ count = {
 
 
 def index(request):
-    leaders_of_selling = get_products_by_categories([1], 0, 99999, 'id', 'asc', 16)
+    leaders_of_selling = get_products_by_categories(ALL_CATEGORIES, 0, 99999, 'popularity', 'desc', 16)
     min_price_1 = get_categories_min_price([1])
     min_price_2 = get_categories_min_price([3])
     min_price_3 = get_categories_min_price([5])
@@ -442,8 +442,16 @@ def catalog_category(request, category_name):
         min_price_for_sort = 0 if request.GET.get('minPriceByUser') is None else int(request.GET.get('minPriceByUser'))
         max_price_for_sort = 9999999 if request.GET.get('maxPriceByUser') is None else int(
             request.GET.get('maxPriceByUser'))
-    products_list = get_products_by_categories(category["number_of_category"], min_price_for_sort, max_price_for_sort,
-                                               order_type, order_scending, limit)
+
+    products_list = []
+    if "топ" in category:
+        products_list = get_products_by_categories(category["number_of_category"], min_price_for_sort,
+                                                   max_price_for_sort,
+                                                   order_type, order_scending, limit)
+    else:
+        products_list = get_products_by_categories(category["number_of_category"], min_price_for_sort,
+                                                   max_price_for_sort,
+                                                   order_type, order_scending, limit)
     min_price = get_categories_min_price(category["number_of_category"])
     max_price = get_categories_max_price(category["number_of_category"])
 
@@ -456,8 +464,8 @@ def catalog_category(request, category_name):
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
 
-    leaders_of_selling = get_products_by_categories([5], min_price_for_sort, max_price_for_sort,
-                                                    order_type, order_scending, 15)
+    leaders_of_selling = get_products_by_categories(ALL_CATEGORIES, 0, 99999, 'popularity', 'desc', 16)
+
     meta_description = 'Решетки на окна по разным ценам. Популярные эскизы со скидками. ' \
                        'Сварные, ажурные, кованые и дутые решетки по размерам клиента.'
     context = {
@@ -465,7 +473,8 @@ def catalog_category(request, category_name):
         'meta_description': meta_description,
         'text': category['text'],
         'list_of_reviews': list_of_reviews,
-        'products': products, 'category': category, 'leaders_of_selling': leaders_of_selling,
+        'products': products, 'category': category,
+        'leaders_of_selling': leaders_of_selling,
         'min_price': min_price, 'max_price': max_price, 'list_of_photos_done': list_of_photos_done,
 
 
@@ -632,14 +641,14 @@ def sales(request):
     meta_description = 'Скидка 20% при полной предоплате металлической решетки. ' \
                        'Скидка 10% при оплате в день приезда замерщика. Бесплатная консультация и замер.'
     context = {
-        'title': 'Клиентам',
+        'title': 'Акции',
         'meta_description': meta_description,
         'list_of_sales_items': list_of_sales_items
     }
     return render(request, 'main/sales.html', context)
 
 def delivery(request):
-    meta_description = ''
+    meta_description = 'Доставка по всей Московской области. Для расчета цены на металлические решетки на окна звоните по телефону +7(495) 374 53 64'
     context = {
         'title': 'Доставка',
         'list_of_deliveries': list_of_deliveries
@@ -647,35 +656,28 @@ def delivery(request):
     return render(request, 'main/delivery.html', context)
 
 def installing(request):
-    meta_description = ''
+    meta_description = 'Установка металлических решеток на окна по всей Московкой области. Демонтаж старой решетки и монтаж новой за 3000 руб.'
     context = {
         'title': 'Установка'
     }
     return render(request, 'main/installing.html', context)
 
 def paying(request):
-    meta_description = ''
+    meta_description = 'Оплата заказа наличными, картой, онлайн банком, счетом юридического лица. Оплата решетки производится после установки.'
     context = {
         'title': 'Оплата'
     }
     return render(request, 'main/paying.html', context)
 
-def order_scheme(request):
-    meta_description = ''
-    context = {
-        'title': 'Схема заказа'
-    }
-    return render(request, 'main/order_scheme.html', context)
-
 def guarantee(request):
-    meta_description = ''
+    meta_description = 'Гарантия на решетки на окна. Гарантия на продукцию производителя сроком до нескольких лет.'
     context = {
         'title': 'Гарантия'
     }
     return render(request, 'main/guarantee.html', context)
 
 def faq(request):
-    meta_description = ''
+    meta_description = 'Частые вопросы по изготовлению и установке решеток на окна.'
     context = {
         'title': 'Вопрос-ответ'
     }
