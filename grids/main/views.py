@@ -219,17 +219,17 @@ russian_categories = {
     "металлические-решетки-на-окна": {"title": "Все металлические решетки на окна", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
 
     #list_of_grids_purpose
-    "решетки-на-балкон": {"title": "Металлические решетки на балкон", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
-    "решетки-на-приямки": {"title": "Металлические решетки на приямки", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
-    "решетки-на-лоджию": {"title": "Металлические решетки на лоджию", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "решетки-на-балкон": {"title": "Металлические решетки на балкон", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('решетки-на-балкон.html')},
+    "решетки-на-приямки": {"title": "Металлические решетки на приямки", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('решетки-на-приямки.html')},
+    "решетки-на-лоджию": {"title": "Металлические решетки на лоджию", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('решетки-на-лоджию.html')},
     "решетки-для-квартиры": {"title": "Металлические решетки на окна квартиры", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
-    "решетки-на-первый-этаж": {"title": "Металлические решетки на окна первого этажа", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
-    "решетки-для-цоколя": {"title": "Металлические решетки на цоколь или в подвал", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
-    "решетки-для-дома": {"title": "Металлические решетки на окна дома", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
-    "решетки-от-выпадения-детей": {"title": "Металлические решетки на окна от выпадения детей (кид-стоп)", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
-    "решетки-на-кондиционер": {"title": "Металлические решетки на кондиционер", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
-    "внутренние-решетки": {"title": "Внутренние металлические решетки на окна", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
-    "решетки-для-дачи": {"title": "Металлические решетки на окна для дачи", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('металлические-решетки-на-окна.html')},
+    "решетки-на-первый-этаж": {"title": "Металлические решетки на окна первого этажа", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('решетки-на-первый-этаж.html')},
+    "решетки-для-цоколя": {"title": "Металлические решетки на цоколь или в подвал", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('решетки-для-цоколя.html')},
+    "решетки-для-дома": {"title": "Металлические решетки на окна дома", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('решетки-для-дома.html')},
+    "решетки-от-выпадения-детей": {"title": "Металлические решетки на окна от выпадения детей (кид-стоп)", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('решетки-от-выпадения-детей.html')},
+    "решетки-на-кондиционер": {"title": "Металлические решетки на кондиционер", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('решетки-на-кондиционер.html')},
+    "внутренние-решетки": {"title": "Внутренние металлические решетки на окна", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('внутренние-решетки.html')},
+    "решетки-для-дачи": {"title": "Металлические решетки на окна для дачи", "number_of_category": ALL_CATEGORIES, 'text': get_text_from_text_dir('решетки-для-дачи.html')},
 
     #list_of_categories
     "решетки-на-окна-эконом-класс": {"title": "Металлические решетки на окна эконом класс", "number_of_category": [1], 'text': get_text_from_text_dir('решетки-на-окна-эконом-класс.html')},
