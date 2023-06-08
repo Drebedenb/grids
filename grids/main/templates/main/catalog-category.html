@@ -206,6 +206,17 @@
                                 </ul>
 
                             </div>
+                            <div id="dropdown-wrapper_open_type"
+                                 class="dropdown-wrapper fw-medium mb-10 rounded-3 border border-radius" tabindex="1">
+                                <h6 class="fw-medium ls-sm text-uppercase mt-8 ms-10 mb-0">Тип открывания</h6>
+
+                                <ul class="dropdown-list mb-8">
+                                    {%for item in list_of_open_types%}
+                                    <li><a class="nav-link text-hover-secondary mt-5 ms-10" href="{{item.url}}">{{item.title}}</a></li>
+                                    {%endfor%}
+                                </ul>
+
+                            </div>
                             <div id="dropdown-wrapper_naznachenie"
                                  class="dropdown-wrapper fw-medium   rounded-3 border border-radius" tabindex="1">
                                 <h6 class="fw-medium ls-sm text-uppercase mt-8 ms-10 mb-0">Назначение</h6>
@@ -488,9 +499,7 @@
                             <section class="mb-10">
                                 <div class=" mb-20 ">
                                     <div class=" fs-lg-11 fs-9 fw-light">
-                                        {% autoescape on %}
-                                            {{ text|safe }}
-                                        {% endautoescape %}
+                                        {% include text_for_category %}
                                     </div>
                                 </div>
                             </section>

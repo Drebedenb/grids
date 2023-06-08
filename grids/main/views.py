@@ -472,13 +472,14 @@ def catalog_category(request, category_name):
         products = paginator.page(paginator.num_pages)
 
     leaders_of_selling = get_products_by_categories(ALL_CATEGORIES, 0, 99999, 'popularity', 'desc', 16)
-
+    print(category)
+    text_for_category = 'main/text/' + category['text']
     meta_description = 'Решетки на окна по разным ценам. Популярные эскизы со скидками. ' \
                        'Сварные, ажурные, кованые и дутые решетки по размерам клиента.'
     context = {
         'title': category['title'],
         'meta_description': meta_description,
-        'text': category['text'],
+        'text_for_category': text_for_category,
         'list_of_reviews': list_of_reviews,
         'products': products, 'category': category,
         'leaders_of_selling': leaders_of_selling,
