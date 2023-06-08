@@ -132,6 +132,11 @@
                                 <li><a class="dropdown-item text-muted text-hover-primary" href="{{ item.url }}">
                                     {{ item.title }} </a></li>
                                 {% endfor %}
+                            <li class="dropdown-item_header">Тип открывания</li>
+                                {% for item in list_of_open_types %}
+                                <li><a class="dropdown-item text-muted text-hover-primary" href="{{ item.url }}">
+                                    {{ item.title }} </a></li>
+                                {% endfor %}
                         </div>
                             <div>
                             <li class="dropdown-item_header">Классы</li>
