@@ -56,5 +56,6 @@ def grids_purpose_categories_classes_openTypes_kinds_popularSections(request):
             'list_of_open_types': list_of_open_types,
             'list_of_kinds': list_of_kinds,
             'list_of_popular_sections': list_of_popular_sections,
-            'list_of_dropdown_sections_for_clients': list_of_dropdown_sections_for_clients
+            'list_of_dropdown_sections_for_clients': list_of_dropdown_sections_for_clients,
+            'count': 571
             }
