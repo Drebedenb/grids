@@ -18,4 +18,5 @@ urlpatterns = [
     path('skchema-zakaza/', order_scheme, name="order_scheme"),
     path('garantiya/', guarantee, name="guarantee"),
     path('vopros-otvet/', faq, name="faq"),
+    path('o-kompanii/', about, name="about"),
 ]

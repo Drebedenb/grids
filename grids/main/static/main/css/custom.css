@@ -95,8 +95,8 @@
         text-transform: none;
     }
 
-    .navbar .dropdown-menu_2.fade-up{ top:180%; left:39%;}
-	.navbar .nav-item:hover .dropdown-menu_2{ transition: .1s; opacity:1; visibility:visible; top:97%; transform: rotateX(0deg); left:39%;}
+    .navbar .dropdown-menu_2.fade-up{ top:180%; left:41%;}
+	.navbar .nav-item:hover .dropdown-menu_2{ transition: .1s; opacity:1; visibility:visible; top:97%; transform: rotateX(0deg); left:41%;}
     .dropdown-item_header{
         text-transform: none;
         font-weight: 500;
@@ -340,6 +340,28 @@
 }
 
 
+
+/*O_CONTACTS*/
+.arrow-prev_contacts{
+    left: -80px;
+}
+
+
+.arrow-next_contacts{
+    right: -80px;
+}
+
+.instal_icon{
+    width: 26% !important;
+    margin-top: 10px;
+}
+.instal_icons{
+    width: 22% !important;
+}
+
+.instal_iconz{
+    width: 19% !important;
+}
 
 
 /*BUTTON-CLOSE*/
@@ -642,6 +664,18 @@
 }
 
 
+/*O_COMPANII*/
+.instal_icon{
+    width: 40% !important;
+}
+.instal_icons{
+    width: 40% !important;
+}
+
+.instal_iconz{
+    width: 30% !important;
+}
+
 
 /*DELIVERy*/
 .arrow-prev_delivery{
@@ -729,12 +763,22 @@
 
     /*SCROLL ON TOP*/
 .scrollToTopBtn {
-    width: 48px;
+    width: 58px;
     position: fixed;
     bottom: 70px;
     right: 4%;
 
   }
+
+/*O_CONTACTS*/
+.arrow-prev_contacts{
+    left: 0px;
+}
+
+
+.arrow-next_contacts{
+    right: 0px;
+}
 
 
 /*TIPI RESHETOK*/
@@ -875,10 +919,16 @@
 
   @media (max-width: 450px) {
 
+
+
          /*GLAVNAyA*/
 .baner_item{
-    max-height: 170px !important;
+    max-height: 120px !important;
 }
+
+
+
+
 
     /* TABS */
 

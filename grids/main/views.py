@@ -689,3 +689,14 @@ def faq(request):
         'title': 'Вопрос-ответ'
     }
     return render(request, 'main/faq.html', context)
+
+def about(request):
+    meta_description = ''
+    short_list_of_reviews = list_of_reviews[:4]
+    short_list_of_reviews_collapsed = list_of_reviews_collapsed[:8]
+    context = {
+        'title': 'О компании',
+        'short_list_of_reviews': short_list_of_reviews,
+        'short_list_of_reviews_collapsed': short_list_of_reviews_collapsed
+    }
+    return render(request, 'main/about.html', context)

@@ -71,8 +71,8 @@
                     <div class="d-lg-block d-none"><a
                             class="fs-13 text-white text-hover-light ls-sm text-decoration-none" href="tel:84953745364">8
                         (495) 374-53-64</a><small class="d-block fs-7 ls-sm">
-                        <div class="indicator bg-success me-3"></div>
-                        Сейчас работаем</small></div>
+                            <span class="pe-5">{% include 'main/icons/email.html' with classes='svg-icon' %}</span>
+                            <a class="fs-8 text-hover-primary text-decoration-none text-white" href="mailto:info@stalpro.com">info@stalpro.com</a></small></div>
                 </div>
                 <div class="col-auto text-end d-lg-block d-none">
                     <div class="d-lg-block d-none"><small class="fs-7 ls-sm ms-auto">Режим работы:</small><span
@@ -147,33 +147,35 @@
                         </div>
                           </ul>
                     </li>
+                    <li class="nav-item me-20"><a
+                        class="nav-link  ls-sm p-0 {% if request.path == '/o-kompanii/' %}active{% endif %}"
+                        href="{%url 'about'%}">О компании</a></li>
                 <li class="nav-item me-20"><a
                         class="nav-link  ls-sm p-0 {% if request.path == '/отзывы-клиентов/' %}active{% endif %}"
                         href="{%url 'reviews'%}">Отзывы</a></li>
                 <li class="nav-item me-20"><a
                         class="nav-link ls-sm p-0 {% if request.path == '/наши-работы/' %}active{% endif %}"
                         href="{%url 'projects'%}">Наши работы</a></li>
+                        <li class="nav-item me-20"><a
+                            class="nav-link ls-sm p-0 {% if request.path == '/акции/' %}active{% endif %} " data-toggle="dropdown"
+                            href="{%url 'sales'%}">Клиентам</a>
+                            <ul class="dropdown-menu dropdown-menu_2 fade-up d-flex ">
+                                <div>
+                                {% for item in list_of_dropdown_sections_for_clients %}
+                                    <li><a class="dropdown-item text-muted text-hover-primary" href="{{ item.url }}">
+                                        {{ item.title }} </a></li>
+                                    {% endfor %}
+                            </div>
+                            </ul>
+                        </li>
                 <li class="nav-item me-20"><a
                         class="nav-link ls-sm p-0 {% if request.path == '/контакты/' %}active{% endif %}"
                         href="{%url 'contacts'%}">Контакты</a></li>
-                <li class="nav-item me-20"><a
-                        class="nav-link ls-sm p-0 {% if request.path == '/акции/' %}active{% endif %} " data-toggle="dropdown"
-                        href="{%url 'sales'%}">Клиентам</a>
-                        <ul class="dropdown-menu dropdown-menu_2 fade-up d-flex ">
-                            <div>
-                            {% for item in list_of_dropdown_sections_for_clients %}
-                                <li><a class="dropdown-item text-muted text-hover-primary" href="{{ item.url }}">
-                                    {{ item.title }} </a></li>
-                                {% endfor %}
-                        </div>
-                        </ul>
-                    </li>
+           
             </ul>
             <div class="hstack gap-20 ms-auto">
-                <p class="fs-7 mb-0">141640, Московская область.,<br> Клинский р-он, д. Ясенево, д. 74, стр. 7</p>
+                <p class="fs-7 mb-0">141640, Московская область.,<br> Клинский р-он, д. Ясенево, д. 74, стр. 1</p>
                 <div>      
-                <span class="pe-5">{% include 'main/icons/email.html' with classes='svg-icon' %}</span>
-                <a class="fs-8 text-hover-primary text-decoration-none text-white" href="mailto:info@stalpro.com">info@stalpro.com</a>
             </div>
             <a href="https://api.whatsapp.com/send/?phone=7 4953745364" class="">{% include 'main/icons/whatsapp.html' with classes='svg-icon' %}</a>
             <a class="text-hover-primary" href=" https://t.me/+74953745364">{% include 'main/icons/telegram.html' with classes='svg-icon' %}</a>
@@ -323,12 +325,12 @@
                     </div>
                     <div class="col-6 col-sm-6 col-lg-12">
                         <p class="fs-6 fs-sm-8 mb-3">Адрес:</p>
-                        <p class="fs-5 fs-sm-7">141640, МОСКОВСКАЯ ОБЛ., КЛИНСКИЙ Р-ОН, Д. ЯСЕНЕВО, Д. 74, СТР. 7</p>
+                        <p class="fs-5 fs-sm-7">141640, МОСКОВСКАЯ ОБЛ., КЛИНСКИЙ Р-ОН, Д. ЯСЕНЕВО, Д. 74, СТР. 1</p>
                     </div>
                     <div class="col-12 col-sm-12 d-flex justify-content-around justify-content-lg-between">
-                        {% include 'main/icons/social/VK.html' with classes="svg-icon" %}
+                        <a href="https://vk.com/reshetkinaokno">{% include 'main/icons/social/VK.html' with classes="svg-icon" %}</a>
                         {% include 'main/icons/social/YD.html' with classes="svg-icon" %}
-                        {% include 'main/icons/social/OK.html' with classes="svg-icon" %}
+                        <a href="https://ok.ru/group/70000002789703">{% include 'main/icons/social/OK.html' with classes="svg-icon" %}</a>
                     </div>
               
                     </div>

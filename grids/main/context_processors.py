@@ -45,7 +45,7 @@ list_of_dropdown_sections_for_clients = [
     {'title': 'Доставка', 'url': '/dostavka/'},
     {'title': 'Установка', 'url': '/ustanovka/'},
     {'title': 'Оплата', 'url': '/oplata/'},
-    # {'title': 'Схема заказа', 'url': '/skchema-zakaza/'},
+    {'title': 'Схема заказа', 'url': '/skchema-zakaza/'},
     {'title': 'Гарантия', 'url': '/garantiya/'},
     # {'title': 'Вопрос-ответ', 'url': '/vopros-otvet/'},
 ]

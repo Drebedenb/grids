@@ -1,0 +1,569 @@
+{%extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+<!--O COMPANII-->
+<div class="pt-lg-20 pt-16 pb-lg-50 pb-32">
+    <div class="container">
+        <header class="page-header mb-lg-20 mb-10 mb-lg-28">
+            <div>
+
+                <div class="row gy-lg-0 gy-12 ">
+
+                    <div class="col-lg-6">
+                        <h1 class="display-1 pt-lg-0 pt-xl-30 fs-3xl-25 fs-xl-23 fs-lg-27 fs-13 fw-normal ls-sm text-uppercase mb-0 pe-lg-8">
+                            {{title}}</h1>
+                    </div>
+                    <div class="col-lg-6">
+                        <div id="carouselExamplesControllers" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="{% static 'main/img/baner_o_companii.webp' %}" class="d-block w-100 rounded-3"
+                                         alt="Доставка">
+                                </div>
+                              
+                            </div>
+                          <!--   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExamplesControllers" data-bs-slide="prev">
+                                <span class="me-10 carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                              </button>
+                              <button class="carousel-control-next" type="button" data-bs-target="#carouselExamplesControllers" data-bs-slide="next">
+                                <span class="ms-10 carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                              </button> -->
+                          </div>
+                            <div class="d-none d-lg-block">
+                    
+                                <p class="d-lg-none lead fs-lg-12 fs-9 mb-0" style="max-width: 28rem;">В нашем каталоге представлено 600+ эскизов решеток на окна. Возможно изготовление решеток по вашему эскизу.</p>
+                            </div>
+                       
+                      
+                    </div>
+                    <nav class="fs-5 fs-lg-9 mt-12 mb-lg-10 mt-lg-0">
+                        <ul class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a class="fs-6 fs-sm-8 fs-lg-9" href="{%url 'index'%}">Главная </a></li>
+                            <li class="breadcrumb-item"><a class="fs-6 fs-sm-8 fs-lg-9" href="/металлические-решетки-на-окна">Каталог</a></li>
+                            <li class="breadcrumb-item active"><a class="fs-6 fs-sm-8 fs-lg-9 text-dark">{{category.title}}</a> </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section >
+              <p class="fs-7 fs-lg-10">Наша компания - "Оконные решетки", изготавливает металлические изделия по низким ценам благодаря использованию 
+                современного оборудования и отлаженных процессов. Это позволяет нам удерживать конкурентные цены в нашем регионе, 
+                что является одной из причин, почему наши клиенты рекомендуют нас своим знакомым. 
+                Кроме того, мы стремимся не только предлагать высококачественные изделия по доступным ценам, 
+                но и следить за экологической безопасностью нашего производства. Мы используем только безопасные материалы и процессы производства, 
+                чтобы минимизировать наше воздействие на окружающую среду. Мы гордимся тем, что наша компания не только успешна в бизнесе, 
+                но и отвечает высоким стандартам качества и экологической ответственности.
+                                                 
+                                    <div class="row pb-10">
+                                        <div class="col-12 col-lg-12 col-xl-12 col-xxl-6 pb-10  pb-xxl-0">
+                                            <div id="carouselExamplezControlerz" class="carousel slide" data-bs-ride="carousel" data-bs-interval="10000">
+                                                <div class="carousel-inner">
+
+                                                    <div class="carousel-item active">
+                                                        <img class="w-100 rounded-3" src="{% static 'main/img/workers/1_img.webp' %}" alt="Делаем решетки на заказ">
+                                                      </div>
+                                                      <div class="carousel-item">
+                                                        <img class="w-100 rounded-3" src="{% static 'main/img/workers/1_img.webp' %}" alt="Делаем решетки на заказ">
+                                                      </div>
+                                                    
+                                                 </div>
+                                        
+                                                <button class="carousel-control-prev  arrow-prev_contacts" type="button" data-bs-target="#carouselExamplezControlerz" data-bs-slide="prev">
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="grey"
+                                                    class="bi bi-chevron-left" viewBox="0 0 16 16">
+                                                   <path fill-rule="evenodd"
+                                                         d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                                               </svg>
+                                                  <span class="visually-hidden">Previous</span>
+                                                </button>
+                                                <button class="carousel-control-next  arrow-next_contacts" type="button" data-bs-target="#carouselExamplezControlerz" data-bs-slide="next">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="grey"
+                                                 class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                      d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                            </svg>
+                                                  <span class="visually-hidden">Next</span>
+                                                </button>
+                                                </div>
+                                        </div>
+                                        <div class="col-12 col-lg-12 col-xl-12 col-xxl-6">
+                                            <div class="row row-cols-lg-2 mx-0 gx-10 gy-12">
+                                                <div class="col-6">
+                                                    <div class="card rounded-3 align-items-center">
+                                                        {% include 'main/icons/instal_icons/import.html' with classes="svg-icon"  styles=' max-height:30%;' %}
+                                                        <div class="card-body px-0 pt-5 pb-14">
+                                                            <p class="card-text fs-5 text-uppercase fs-sm-7  fs-md-8">Собственный транспорт</p>
+                                                    
+                                                        </div>
+                                                      </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="card rounded-3 align-items-center">
+                                                        {% include 'main/icons/instal_icons/workers.html' with classes="svg-icon"  styles=' max-height:30%; ' %}
+                                                        <div class="card-body px-0 pt-0 pb-13">
+                                                          <p class="card-text fs-5 text-uppercase fs-sm-7  fs-md-8">Опытные мотажники</p>
+                                                        </div>
+                                                      </div>
+                                                </div>
+                                                <div class="col-6 ">
+                                                    <div class="card rounded-3 align-items-center">
+                                                        {% include 'main/icons/instal_icons/instal.html' with classes="svg-icon"  styles=' max-height:30%; ' %}
+                                                        <div class="card-body px-0 pt-4 pb-14">
+                                                            <p class="card-text fs-5 text-uppercase fs-sm-7  fs-md-8">Бережная установка</p>
+                                                        </div>
+                                                      </div>
+                                            </div>
+                                                <div class="col-6">
+                                                    <div class="card rounded-3  align-items-center">
+                                                        {% include 'main/icons/instal_icons/license.html' with classes="svg-icon"  styles=' max-height:30%; ' %}
+                                                        <div class="card-body px-0 pt-3 pb-14">
+                                                          <p class="card-text fs-5 text-uppercase fs-sm-7  fs-md-8">Лицензия на монтаж</p>
+                                                        </div>
+                                                      </div>
+                                                 </div>
+                                            
+                                            </div>  
+                                        </div>
+                                    </div>
+
+                                                 
+                                                  
+                                                     
+             
+            </section>
+
+
+           <section class="mb-20">
+            <div class="mb-lg-20 mb-8 mt-lg-20">
+                <div class="badge border border-secondary d-lg-inline-block d-none fs-6 text-secondary ls-sm text-uppercase mb-10 py-6" style="min-width: 12.5rem;">О компании</div>
+                <div class="row mb-16">
+                    <div class="col-lg-5">
+                        <h2 class="h1  fs-3xl-22 fs-lg-20 fs-13 ls-sm text-uppercase mb-0">Непрерывно работаем для
+                            вас с 2010 года</h2>
+                    </div>
+                </div>
+                <div class="row row-cols-lg-2 row-cols-1 fs-lg-11 fs-9 fw-light">
+                    <div class="col">
+                        <p>«Оконные решётки» изготавливает сварные и кованые решетки любой сложности уже 13 лет в
+                            Московской области. Выбирайте готовые модели из {{count.amount_of_all}} эскизов для окна, балкона,
+                            кондиционера и решетки под цветы.
+                            Заказать решетки можно для дома на первый этаж, доступны решетки гармошка, внутренние,
+                            внешние, глухие и декоративные решетки художественной ковки.
+                        </p>
+                        <p>
+                            Мы специализируемся на всех видах решеток для квартиры и дачи, изготовим и установим за
+                            12 часов.</p>
+                        <p>Цены на металлические решетки доступные, всего от ххх рублей за кв. метр с бесплатным
+                            выездом специалиста для замеров. Получите быстрый расчет изделий по телефону
+                            +7-495-374-53-64 или заполните <span class="text-danger" data-bs-toggle="modal"
+                                data-bs-target="#modal-measurement" type="button">форму заявки</span>   на сайте. </p>
+                    </div>
+                    <div class="col">
+                        <p>Изготовим решетки по вашим размерам с гарантией 5 лет:</p>
+                        <ul>
+                            <li>Металлические изделия из высокопрочной стали в виде прутков, квадратов, полос и
+                                труб.
+                            </li>
+                            <li>Надежные кованые изделия из квадрата 12x12 мм.</li>
+                            <li>Сварные решетки из прутков 10-12мм.</li>
+                            <li>Дутые, ажурные, арочные и распашные решетки проходят 3 ступени контроля качества.
+                            </li>
+                            <li>Производство решеток антикошка, от выпадения детей, в подъезд и на приямки.</li>
+                        </ul>
+                        <p>Установка сварных решеток выполняется мастерами с опытом работы от 7 лет и техническим
+                            образованием. Готовые изделия обладают прочной конструкцией, высоким качеством краски
+                            для металла и конкурентной ценой, за счет своего производства.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-20">
+                <h3 class="h4 fs-lg-16 fs-10 fw-normal ls-sm text-uppercase mb-lg-30 mb-20">Нам есть, чем гордиться!<br>В
+                    2022 году изготовлено и установлено:</h3>
+                <div class="row row-cols-xl-4 row-cols-lg-2 row-cols-1 gy-lg-20">
+                    <div class="col mb-lg-0 mb-n20">
+                        <div class="card bg-transparent rounded-circle text-center">
+                            <div class="ratio ratio-1x1">
+                                <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                                    <span class="fs-24 text-primary fw-normal ls-sm">8586</span><span
+                                        class="d-block fs-lg-11 fs-9 ls-sm mb-0 px-lg-40 px-30 mt-lg-8 mt-4">кв.м. решеток на окна</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-lg-0 mb-n20">
+                        <div class="card bg-transparent rounded-circle text-center">
+                            <div class="ratio ratio-1x1">
+                                <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                                    <span class="fs-24 text-primary fw-normal ls-sm">267</span><span
+                                        class="d-block fs-lg-11 fs-9 ls-sm mb-0 px-lg-35 px-30 mt-lg-8 mt-4">кв.м. цветочниц на окна</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-lg-0 mb-n20">
+                        <div class="card bg-transparent rounded-circle text-center">
+                            <div class="ratio ratio-1x1">
+                                <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                                    <span class="fs-24 text-primary fw-normal ls-sm">584</span><span
+                                        class="d-block fs-lg-11 fs-9 ls-sm mb-0 mt-lg-8 mt-4">тамбура закрыто сварными антивандальными конструкциями</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-transparent rounded-circle text-center">
+                            <div class="ratio ratio-1x1">
+                                <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                                    <span class="fs-24 text-primary fw-normal ls-sm">50</span><span
+                                        class="d-block fs-lg-11 fs-9 ls-sm mb-0 px-lg-35 px-25 mt-lg-8 mt-4">лет срок службы изделий   </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <section>
+                    <div class="row row-cols-xl-4 row-cols-2 g-lg-20 gy-10">
+                        <div class="col-xl-6 col-12">
+                            <div class="card h-100 border-0 text-white">
+                                <div class="d-flex gap-10 position-absolute z-2" id="team-swiper-control">
+                                    <button class="btn btn-outline-white btn-swiper-prev rounded-circle d-flex justify-content-center align-items-center p-0"
+                                            type="button" style="width: 3rem; height: 3rem;"><-
+                                    </button>
+                                    <button class="btn btn-outline-white btn-swiper-next rounded-circle d-flex justify-content-center align-items-center p-0"
+                                            type="button" style="width: 3rem; height: 3rem;">->
+                                    </button>
+                                </div>
+                                <div class="swiper  w-100 h-100" id="team-swiper"
+                                     data-control="#team-swiper-control">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <div class="ratio h-100"
+                                                 style="--bs-aspect-ratio: 60%; min-height: 200px; max-height: 460px;">
+                                                <img class="object-fit-cover rounded-lg-4 rounded-3"
+                                                     src="{% static 'main/img/workers/1_img.webp' %}" alt="Делаем решетки на заказ">
+                                                <div class="card-body d-flex flex-column justify-content-lg-end p-lg-10 px-9 py-10">
+                                                    <div class="w-lg-50 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
+                                                        <h4 class="h5 fs-lg-12 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">
+                                                            Производственный цех</h4><span
+                                                            class="d-lg-block d-none fs-lg-7 fs-4 fw-medium ls-sm text-uppercase">Мо, Клинский р-он, д. Ясенево, д. 74, стр. 7</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="ratio h-100"
+                                                 style="--bs-aspect-ratio: 60%; min-height: 200px; max-height: 460px;">
+                                                <img class="object-fit-cover rounded-lg-4 rounded-3"
+                                                     src="{% static 'main/img/workers/2_img.webp' %}" alt="Варим решетки на заказ">
+                                                <div class="card-body d-flex flex-column justify-content-lg-end p-lg-10 px-9 py-10">
+                                                    <div class="w-lg-50 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
+                                                        <h4 class="h5 fs-lg-12 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">
+                                                            Производственный цех</h4><span
+                                                            class="d-lg-block d-none fs-lg-7 fs-4 fw-medium ls-sm text-uppercase">Мо, Клинский р-он, д. Ясенево, д. 74, стр. 7</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="ratio h-100"
+                                                 style="--bs-aspect-ratio: 60%; min-height: 200px; max-height: 460px;">
+                                                <img class="object-fit-cover rounded-lg-4 rounded-3"
+                                                     src="{% static 'main/img/workers/3_img.webp' %}" alt="Куём решетки на заказ">
+                                                <div class="card-body d-flex flex-column justify-content-lg-end p-lg-10 px-9 py-10">
+                                                    <div class="w-lg-50 h-lg-auto h-100 d-flex flex-lg-column flex-column-reverse justify-content-between">
+                                                        <h4 class="h5 fs-lg-12 fs-6 fw-medium ls-sm text-uppercase mb-lg-7-5 mb-0">
+                                                            Производственный цех</h4><span
+                                                            class="d-lg-block d-none fs-lg-7 fs-4 fw-medium ls-sm text-uppercase">Мо, Клинский р-он, д. Ясенево, д. 74, стр. 7                                                    </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 border-0 text-white">
+                                <div class="ratio h-100"
+                                     style="--bs-aspect-ratio: 120%; min-height: 200px; max-height: 460px;"><img
+                                        class="object-fit-cover rounded-lg-4 rounded-3"
+                                        src="{% static 'main/img/workers/ingener_1.webp' %}"
+                                alt="Хорошая практика производства">
+                                    <div class="card-body d-flex flex-column justify-content-end p-lg-10 px-9 py-10">
+                                        <div class="w-75 h-lg-auto h-100 d-flex  flex-column justify-content-end">
+                                            <h4 class="h5 fs-lg-12 fs-6 fw-medium ls-sm text-uppercase  mb-0">
+                                                Александр с.</h4>
+                                                <span class="d-block fs-lg-7 fs-4 fw-medium ls-sm text-uppercase">мастер производственного цеха</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 border-0 text-white">
+                                <div class="ratio h-100"
+                                     style="--bs-aspect-ratio: 120%; min-height: 200px; max-height: 460px;"><img
+                                        class="object-fit-cover rounded-lg-4 rounded-3"
+                                        src="{% static 'main/img/workers/ingener_2.webp' %}"
+                                        alt="Бесплатный замер">
+
+                                        <div class="card-body d-flex flex-column justify-content-end p-lg-10 px-9 py-10">
+                                            <div class="w-75 h-lg-auto h-100 d-flex  flex-column justify-content-end">
+                                            <h4 class="h5 fs-lg-13 fs-6 fw-medium ls-sm text-uppercase mb-lg-6 mb-0">
+                                                Иван а.</h4><span
+                                                class="d-block  fs-lg-7 fs-4 fw-medium ls-sm text-uppercase">Мастер - сметчик</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 border-0 text-white">
+                                <div class="ratio h-100"
+                                     style="--bs-aspect-ratio: 120%; min-height: 200px; max-height: 460px;"><img
+                                        class="object-fit-cover rounded-lg-4 rounded-3"
+                                        src="{% static 'main/img/workers/manager_1.webp' %}"
+                                        alt="Бесплатная консультация у менеджера">
+                                        <div class="card-body d-flex flex-column justify-content-end p-lg-10 px-9 py-10">
+                                            <div class="w-75 h-lg-auto h-100 d-flex  flex-column justify-content-end">
+                                            <h4 class="h5 fs-lg-12 fs-6 fw-medium ls-sm text-uppercase mb-lg-6 mb-0">
+                                                Татьяна п.</h4><span
+                                                class="d-block fs-lg-7 fs-4 fw-medium ls-sm text-uppercase">руководитель отдела продаж + 7 (495)374-53-64 info@stalpro.com</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 border-0 text-white">
+                                <div class="ratio h-100"
+                                     style="--bs-aspect-ratio: 120%; min-height: 200px; max-height: 460px;"><img
+                                        class="object-fit-cover rounded-lg-4 rounded-3"
+                                        src="{% static 'main/img/workers/manager_2.webp' %}"
+                                        alt="Бесплатный звонок в офис">
+                                        <div class="card-body d-flex flex-column justify-content-end p-lg-10 px-9 py-10">
+                                            <div class="w-75 h-lg-auto h-100 d-flex  flex-column justify-content-end">
+                                            <h4 class="h5 fs-lg-12 fs-6 fw-medium ls-sm text-uppercase mb-lg-6 mb-0"
+                                                style="max-width: 300px;">АНАСТАСИЯ М.</h4><span
+                                                class="d-block fs-lg-7 fs-4 fw-medium ls-sm text-uppercase">мЕНЕджер по продажам <br>+ 7 (495)374-53-64 <br> info@stalpro.com</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 border-0 text-white">
+                                <div class="ratio h-100"
+                                     style="--bs-aspect-ratio: 120%; min-height: 200px; max-height: 460px;"><img
+                                        class="object-fit-cover rounded-lg-4 rounded-3"
+                                        src="{% static 'main/img/workers/manager_3.webp' %}"
+                                        alt="Бесплатная установка решетки">
+                                        <div class="card-body d-flex flex-column justify-content-end p-lg-10 px-9 py-10">
+                                            <div class="w-75 h-lg-auto h-100 d-flex  flex-column justify-content-end">
+                                            <h4 class="h5 fs-lg-12 fs-6 fw-medium ls-sm text-uppercase mb-0  mb-lg-5">
+                                                Анна и.</h4><span
+                                                class="d-block fs-lg-7 fs-4 fw-medium ls-sm text-uppercase">мЕНЕджер по продажам <br>+ 7 (495)374-53-64 <br> info@stalpro.com</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 border-0 text-white">
+                                <div class="ratio h-100"
+                                     style="--bs-aspect-ratio: 120%; min-height: 200px; max-height: 460px;"><img
+                                        class="object-fit-cover rounded-lg-4 rounded-3"
+                                        src="{% static 'main/img/workers/manager_4.webp' %}"
+                                        alt="Менеджер на трубке">
+                                        <div class="card-body d-flex flex-column justify-content-end p-lg-10 px-9 py-10">
+                                            <div class="w-75 h-lg-auto h-100 d-flex  flex-column justify-content-end">
+                                            <h4 class="h5 fs-lg-12 fs-6 fw-medium ls-sm text-uppercase mb-lg-5 mb-0">
+                                                Дарья ш.</h4><span
+                                                class="d-block fs-lg-7 fs-4 fw-medium ls-sm text-uppercase">мЕНЕджер по продажам <br>+ 7 (495)374-53-64 <br> info@stalpro.com                                                 </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        </section>
+
+        {% include 'main/components/reasons.html' with classes='mb-20 mt-20' %}
+
+            <section class=" mb-20">
+                <h2 class="h1 fs-3xl-22 fs-lg-20 fs-13 ls-sm text-uppercase mb-20">Наши клиенты</h2>
+   
+                    <div class="row row-cols-3 row-cols-lg-6 g-15">
+                       <div class="col">
+                         <img class="w-100 rounded-3" src="{% static 'main/img/clients_icons/icons_clients1.webp' %}" alt="клиенты">
+                        </div>
+                        <div class="col">
+                            <img class="w-100 rounded-3" src="{% static 'main/img/clients_icons/icons_clients2.webp' %}" alt="клиенты">
+                        </div>
+                        <div class="col">
+                            <img class="w-100 rounded-3" src="{% static 'main/img/clients_icons/icons_clients3.webp' %}" alt="клиенты">
+                        </div>
+                        <div class="col">
+                            <img class="w-100 rounded-3" src="{% static 'main/img/clients_icons/icons_clients4.webp' %}" alt="клиенты">
+                        </div>
+                        <div class="col">
+                            <img class="w-100 rounded-3" src="{% static 'main/img/clients_icons/icons_clients5.webp' %}" alt="клиенты">
+                        </div>
+                        <div class="col">
+                          <img class="w-100 rounded-3" src="{% static 'main/img/clients_icons/icons_clients6.webp' %}" alt="клиенты">
+                        </div>
+                        <div class="col">
+                            <img class="w-100 rounded-3" src="{% static 'main/img/clients_icons/icons_clients7.webp' %}" alt="клиенты">
+                           </div>
+                           <div class="col">
+                               <img class="w-100 rounded-3" src="{% static 'main/img/clients_icons/icons_clients8.webp' %}" alt="клиенты">
+                           </div>
+                           <div class="col">
+                               <img class="w-100 rounded-3" src="{% static 'main/img/clients_icons/icons_clients9.webp' %}" alt="клиенты">
+                           </div>
+                           <div class="col">
+                               <img class="w-100 rounded-3" src="{% static 'main/img/clients_icons/icons_clients10.webp' %}" alt="клиенты">
+                           </div>
+                           <div class="col">
+                               <img class="w-100 rounded-3" src="{% static 'main/img/clients_icons/icons_clients11.webp' %}" alt="клиенты">
+                           </div>
+                           <div class="col">
+                             <img class="w-100 rounded-3" src="{% static 'main/img/clients_icons/icons_clients12.webp' %}" alt="клиенты">
+                           </div>
+                           <div class="col">
+                            <img class="w-100 rounded-3" src="{% static 'main/img/clients_icons/icons_clients13.webp' %}" alt="клиенты">
+                          </div>
+                           <div class="col">
+                            <img class="w-100 rounded-3" src="{% static 'main/img/clients_icons/icons_clients14.webp' %}" alt="клиенты">
+                           </div>
+                           <div class="col">
+                               <img class="w-100 rounded-3" src="{% static 'main/img/clients_icons/icons_clients15.webp' %}" alt="клиенты">
+                           </div>
+                           <div class="col">
+                               <img class="w-100 rounded-3" src="{% static 'main/img/clients_icons/icons_clients16.webp' %}" alt="клиенты">
+                           </div>
+                           <div class="col">
+                               <img class="w-100 rounded-3" src="{% static 'main/img/clients_icons/icons_clients17.webp' %}" alt="клиенты">
+                           </div>
+                           <div class="col">
+                               <img class="w-100 rounded-3" src="{% static 'main/img/clients_icons/icons_clients18.webp' %}" alt="клиенты">
+                           </div>
+                           <div class="col">
+                             <img class="w-100 rounded-3" src="{% static 'main/img/clients_icons/icons_clients19.webp' %}" alt="клиенты">
+                           </div>
+                           <div class="col">
+                            <img class="w-100 rounded-3" src="{% static 'main/img/clients_icons/icons_clients20.webp' %}" alt="клиенты">
+                           </div>
+                           <div class="col">
+                               <img class="w-100 rounded-3" src="{% static 'main/img/clients_icons/icons_clients21.webp' %}" alt="клиенты">
+                           </div>
+                           <div class="col">
+                               <img class="w-100 rounded-3" src="{% static 'main/img/clients_icons/icons_clients22.webp' %}" alt="клиенты">
+                           </div>
+                           <div class="col">
+                               <img class="w-100 rounded-3" src="{% static 'main/img/clients_icons/icons_clients23.webp' %}" alt="клиенты">
+                           </div>
+                           <div class="col">
+                               <img class="w-100 rounded-3" src="{% static 'main/img/clients_icons/icons_clients24.webp' %}" alt="клиенты">
+                           </div>    
+                    </div>
+            </section>
+
+
+                        <!--OTZIVI-->
+
+                        <section class="mb-20">
+                            <div class="row mb-lg-22 mb-17-5">
+                                <div class="col-xl-5 col-lg-6">
+                                    <h2 class="h1  fs-3xl-22 fs-lg-20 fs-13 ls-sm text-uppercase mb-0">Отзывы довольных
+                                        клиентов</h2>
+                                </div>
+                            </div>
+                            <div class="row row-cols-lg-2 row-cols-1 gy-lg-20 gy-10">
+                                {% for review in short_list_of_reviews %}
+                                        {% include 'main/components/review.html' with id=review.id author_avatar=review.author_avatar project_photo=review.project_photo author=review.author description=review.description%}
+                                {%endfor%}
+                            </div>
+
+                            <div class="row row-cols-lg-2  mt-0 row-cols-1 gy-lg-20 gy-10 collapse" id="collapseExample_review">
+                                {% for review in short_list_of_reviews_collapsed %}
+                                        {% include 'main/components/review.html' with id=review.id author_avatar=review.author_avatar project_photo=review.project_photo author=review.author description=review.description%}
+                                {%endfor%}
+                            </div>
+                        <div class="text-center mt-lg-20 mt-10">
+                            <a class="btn btn-outline-secondary btn-lg btn-wide-lg" href="{%url 'reviews'%}">Смотреть все </a>
+                                                                    </div>
+                        </section>
+                 
+    
+    
+    
+                <section class="cta mb-20">
+                    <div class="card rounded-lg-4 rounded-3">
+                        <div class="card-body pt-lg-34 pt-17-5 px-lg-40 pb-lg-35 pb-20">
+                            <h3 class="card-title fs-lg-20 fs-12 fw-normal ls-sm text-uppercase mb-lg-20 mb-14"
+                                style="max-width: 680px;">Получите бесплатную консультацию</h3>
+                            <p class="card-text lead fs-lg-12 fs-8 mb-lg-30 mb-17-5" style="max-width: 860px;">Оставьте
+                                заявку на консультацию и получите ответы на все вопросы, а так же узнайте примерную
+                                стоимость</p>
+                            <form>
+                                <div class="row row-cols-lg-3 row-cols-1 gy-lg-20 gy-10">
+                                    <div class="col">
+                                        <input class="form-control form-control-xxl text-center w-100"
+                                               placeholder="Введите ваше имя" type="text"/>
+                                    </div>
+                                    <div class="col">
+                                        <input class="form-control form-control-xxl text-center"
+                                               placeholder="Введите номер телефона" type="text" required/>
+                                    </div>
+                                    <div class="col">
+                                        <button class="btn btn-primary btn-xxl w-100" type="submit">Получить консультацию
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+
+
+                
+           
+                
+                   <!--YANDEX MAP-->
+                   <div class="container px-0 border rounded-3  mb-20">
+                    <div class="rounded-3 ms-2 ms-sm-10 mt-2 mt-sm-10 position-absolute px-4 z-2  map_baner">
+                        <h6 class="text-uppercase pt-7 fs-7 fs-lg-10">Принимаем заказы</h6>
+                        <ul>
+                            <li class="pb-2 fs-6 fs-lg-8">Из Москвы</li>
+                            <li class="py-2 fs-6 fs-lg-8">Из Московской области</li>
+                            <li class="py-2 fs-6 fs-lg-8">Из ближайших областей</li>
+                        </ul>
+                    </div>
+                    <div class=" px-0 border rounded-3 map">
+                    <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A1ef0868cfb5a1c134c324e43099fc17f510c0a83dd80a53b52f866d445e4b278&amp;width=100%25&amp;height=auto&amp;lang=ru_RU&amp;scroll=false" allowfullscreen="" loading="lazy"></script>
+                    </div>
+                </div>
+
+
+                    <section>
+                        <h2 class="h1 fs-3xl-22 fs-lg-20 fs-13 ls-sm text-uppercase mb-20">Наши реквизиты</h2>
+                        <div class="w-100 border rounded-3" style="min-height: 300px;"></div>
+                    </section>
+
+            {% include 'main/components/consultation_modal.html' %}
+
+            {% include 'main/components/measure_modal.html' %}
+
+        </main>
+    </div>
+</div>
+
+{% endblock %}
