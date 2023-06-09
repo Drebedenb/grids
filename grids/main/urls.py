@@ -23,5 +23,4 @@ urlpatterns = [
     path('vopros-otvet/', faq, name="faq"),
     path('o-kompanii/', about, name="about"),
     path('order_scheme/', order_scheme, name="order_scheme"),
-    path('test/', TemplateView.as_view(template_name='main/about.html'), name="test"),
 ]

@@ -12,13 +12,13 @@ from django.core.cache import cache
 from urllib.parse import urlencode
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
-# class MockDjangoRedis:
-#     def get(self, arg):
-#         return None
-#
-#     def set(arg, bla, ble, blu):
-#         return arg
-# cache = MockDjangoRedis()
+class MockDjangoRedis:
+    def get(self, arg):
+        return None
+
+    def set(arg, bla, ble, blu):
+        return arg
+cache = MockDjangoRedis()
 
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 img_dir = os.path.join(base_dir, 'main/static/main/img/')
@@ -574,25 +574,23 @@ def reviews(request):
 
 def compare(request):
     str_of_cookies = request.COOKIES.get('Compare')
-    if str_of_cookies == '' or str_of_cookies == None:
-        return render(request, 'main/compare.html',
-                      {'products': []})
-    list_of_compares_cookie = str_of_cookies.split(',')
     list_of_compares = []
-    for sketch_id in list_of_compares_cookie:
-        product = {"id": sketch_id}
-        product["price"] = \
-            PriceWinguardMain.objects.filter(price_winguard_sketch_id=product["id"]).values('price_b2c')[0]['price_b2c']
-        product["percent"] = (int(product["id"]) % 3 + 1) * 10 + (int(product["id"]) % 2) * 5
-        product["saleprice"] = int(product["price"] * (1 + product["percent"] / 100))
-        path = "".join(
-            re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(price_winguard_sketch_id=product["id"]).path))
-        path_arr = path.split("/")
-        product["path_folder"] = path_arr[1]
-        product["path_file"] = path_arr[2]
-        product['additional_info'] = list(
-            PriceWinguardMain.objects.filter(price_winguard_sketch_id=product["id"]).values('price_b2c', 'name'))
-        list_of_compares.append(product)
+    if str_of_cookies != '' and str_of_cookies != None:
+        list_of_compares_cookie = str_of_cookies.split(',')
+        for sketch_id in list_of_compares_cookie:
+            product = {"id": sketch_id}
+            product["price"] = \
+                PriceWinguardMain.objects.filter(price_winguard_sketch_id=product["id"]).values('price_b2c')[0]['price_b2c']
+            product["percent"] = (int(product["id"]) % 3 + 1) * 10 + (int(product["id"]) % 2) * 5
+            product["saleprice"] = int(product["price"] * (1 + product["percent"] / 100))
+            path = "".join(
+                re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(price_winguard_sketch_id=product["id"]).path))
+            path_arr = path.split("/")
+            product["path_folder"] = path_arr[1]
+            product["path_file"] = path_arr[2]
+            product['additional_info'] = list(
+                PriceWinguardMain.objects.filter(price_winguard_sketch_id=product["id"]).values('price_b2c', 'name'))
+            list_of_compares.append(product)
     meta_description = 'Сравнить решетки по цене, материалу, покраске, типу открывания. ' \
                        'Компания предоставляет большой выбор металлических решеток на окна.'
     context = {
@@ -606,23 +604,21 @@ def compare(request):
 
 def favorite(request):
     str_of_cookies = request.COOKIES.get('Favorites')
-    if str_of_cookies == '':
-        return render(request, 'main/favorite.html',
-                      {'products': []})
-    list_of_favorites_cookie = str_of_cookies.split(',')
     list_of_favorites = []
-    for sketch_id in list_of_favorites_cookie:
-        product = {"id": sketch_id}
-        product["price"] = \
-            PriceWinguardMain.objects.filter(price_winguard_sketch_id=product["id"]).values('price_b2c')[0]['price_b2c']
-        product["percent"] = (int(product["id"]) % 3 + 1) * 10 + (int(product["id"]) % 2) * 5
-        product["saleprice"] = int(product["price"] * (1 + product["percent"] / 100))
-        path = "".join(
-            re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(price_winguard_sketch_id=product["id"]).path))
-        path_arr = path.split("/")
-        product["path_folder"] = path_arr[1]
-        product["path_file"] = path_arr[2]
-        list_of_favorites.append(product)
+    if str_of_cookies != '' and str_of_cookies != None:
+        list_of_favorites_cookie = str_of_cookies.split(',')
+        for sketch_id in list_of_favorites_cookie:
+            product = {"id": sketch_id}
+            product["price"] = \
+                PriceWinguardMain.objects.filter(price_winguard_sketch_id=product["id"]).values('price_b2c')[0]['price_b2c']
+            product["percent"] = (int(product["id"]) % 3 + 1) * 10 + (int(product["id"]) % 2) * 5
+            product["saleprice"] = int(product["price"] * (1 + product["percent"] / 100))
+            path = "".join(
+                re.findall("\/\d+\/\d+", PriceWinguardFiles.objects.get(price_winguard_sketch_id=product["id"]).path))
+            path_arr = path.split("/")
+            product["path_folder"] = path_arr[1]
+            product["path_file"] = path_arr[2]
+            list_of_favorites.append(product)
     meta_description = 'Понравившиеся металлические решетки. Выбирайте любой эскиз и добавляйте его в свой список. ' \
                        'Возможен заказ сразу нескольких видов изделий.'
     context = {
