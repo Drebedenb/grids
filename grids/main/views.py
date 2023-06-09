@@ -12,13 +12,13 @@ from django.core.cache import cache
 from urllib.parse import urlencode
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
-class MockDjangoRedis:
-    def get(self, arg):
-        return None
-
-    def set(arg, bla, ble, blu):
-        return arg
-cache = MockDjangoRedis()
+# class MockDjangoRedis:
+#     def get(self, arg):
+#         return None
+#
+#     def set(arg, bla, ble, blu):
+#         return arg
+# cache = MockDjangoRedis()
 
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 img_dir = os.path.join(base_dir, 'main/static/main/img/')
@@ -218,7 +218,7 @@ russian_categories = {
     "решетки-на-балкон": {"title": "Металлические решетки на балкон", "number_of_category": ALL_CATEGORIES, 'text': 'решетки-на-балкон.html'},
     "решетки-на-приямки": {"title": "Металлические решетки на приямки", "number_of_category": ALL_CATEGORIES, 'text': 'решетки-на-приямки.html'},
     "решетки-на-лоджию": {"title": "Металлические решетки на лоджию", "number_of_category": ALL_CATEGORIES, 'text': 'решетки-на-лоджию.html'},
-    "решетки-для-квартиры": {"title": "Металлические решетки на окна квартиры", "number_of_category": ALL_CATEGORIES, 'text': 'металлические-решетки-на-окна.html'},
+    "решетки-для-квартиры": {"title": "Металлические решетки на окна квартиры", "number_of_category": ALL_CATEGORIES, 'text': 'решетки-для-квартиры.html'},
     "решетки-на-первый-этаж": {"title": "Металлические решетки на окна первого этажа", "number_of_category": ALL_CATEGORIES, 'text': 'решетки-на-первый-этаж.html'},
     "решетки-для-цоколя": {"title": "Металлические решетки на цоколь или в подвал", "number_of_category": ALL_CATEGORIES, 'text': 'решетки-для-цоколя.html'},
     "решетки-для-дома": {"title": "Металлические решетки на окна дома", "number_of_category": ALL_CATEGORIES, 'text': 'решетки-для-дома.html'},
@@ -247,7 +247,7 @@ russian_categories = {
 
 
     #list_of_open_types
-    "арочные-решетки-на-окна": {"title": "Арочные металлические решетки на окна", "number_of_category": ALL_CATEGORIES, 'text': 'металлические-решетки-на-окна.html'},
+    "арочные-решетки-на-окна": {"title": "Арочные металлические решетки на окна", "number_of_category": ALL_CATEGORIES, 'text': 'арочные-решетки-на-окна.html'},
     "распашные-решетки-на-окна": {"title": "Распашные металлические решетки на окна", "number_of_category": ALL_CATEGORIES, 'text': 'металлические-решетки-на-окна.html'},
     "решетки-без-открывания": {"title": "Металлические решетки на окна без открывания", "number_of_category": ALL_CATEGORIES, 'text': 'металлические-решетки-на-окна.html'},
 
