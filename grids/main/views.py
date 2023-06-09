@@ -686,6 +686,13 @@ def guarantee(request):
     }
     return render(request, 'main/guarantee.html', context)
 
+def order_scheme(request):
+    meta_description = 'Схема заказа оконный решеток на окна'
+    context = {
+        'title': 'Схема заказа'
+    }
+    return render(request, 'main/order_scheme.html', context)
+
 def faq(request):
     meta_description = 'Частые вопросы по изготовлению и установке решеток на окна.'
     context = {
@@ -703,3 +710,4 @@ def about(request):
         'short_list_of_reviews_collapsed': short_list_of_reviews_collapsed
     }
     return render(request, 'main/about.html', context)
+
