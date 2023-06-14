@@ -476,7 +476,7 @@ def catalog_category(request, category_name):
     meta_description = 'Решетки на окна по разным ценам. Популярные эскизы со скидками. ' \
                        'Сварные, ажурные, кованые и дутые решетки по размерам клиента.'
     context = {
-        'title': category['title'],
+        'title': category['title'] + ' страница ' + str(page),
         'meta_description': meta_description,
         'text_for_category': text_for_category,
         'list_of_reviews': list_of_reviews,
@@ -529,7 +529,8 @@ def product(request, category, file_number):
     photos_of_projects = get_product_project_photos_eight(first_row_product.path_folder, first_row_product.path_file)
     text_for_product = product_category_texts[category]
     requests.get('http://92.63.107.238/get.php', params={'tbl': 'price_winguard_sketch', 'id':first_row_product.price_winguard_sketch_id}) #increase popularity of item by 1
-    meta_description = 'Металлическая решетка со скидкой. Фотографии работ и отзывы клиентов.' \
+    meta_description = 'Металлическая решетка ' + str(first_row_product.path_folder) + '-' + str(first_row_product.path_file) \
+                       + ' со скидкой. Фотографии работ и отзывы клиентов.' \
                        ' Покраска, покрытие, напыление по дешевой цене. Гарантия до 50 лет.'
     context = {
         'title': 'Решетка на окно ' + str(first_row_product.path_folder) + '-' + str(first_row_product.path_file),
@@ -656,53 +657,60 @@ def delivery(request):
     meta_description = 'Доставка по всей Московской области. Для расчета цены на металлические решетки на окна звоните по телефону +7(495) 374 53 64'
     context = {
         'title': 'Доставка',
-        'list_of_deliveries': list_of_deliveries
+        'list_of_deliveries': list_of_deliveries,
+        'meta_description': meta_description
     }
     return render(request, 'main/delivery.html', context)
 
 def installing(request):
     meta_description = 'Установка металлических решеток на окна по всей Московкой области. Демонтаж старой решетки и монтаж новой за 3000 руб.'
     context = {
-        'title': 'Установка'
+        'title': 'Установка',
+        'meta_description': meta_description
     }
     return render(request, 'main/installing.html', context)
 
 def paying(request):
     meta_description = 'Оплата заказа наличными, картой, онлайн банком, счетом юридического лица. Оплата решетки производится после установки.'
     context = {
-        'title': 'Оплата'
+        'title': 'Оплата',
+        'meta_description': meta_description
     }
     return render(request, 'main/paying.html', context)
 
 def guarantee(request):
     meta_description = 'Гарантия на решетки на окна. Гарантия на продукцию производителя сроком до нескольких лет.'
     context = {
-        'title': 'Гарантия'
+        'title': 'Гарантия',
+        'meta_description': meta_description
     }
     return render(request, 'main/guarantee.html', context)
 
 def order_scheme(request):
     meta_description = 'Схема заказа оконный решеток на окна'
     context = {
-        'title': 'Схема заказа'
+        'title': 'Схема заказа',
+        'meta_description': meta_description
     }
     return render(request, 'main/order_scheme.html', context)
 
 def faq(request):
     meta_description = 'Частые вопросы по изготовлению и установке решеток на окна.'
     context = {
-        'title': 'Вопрос-ответ'
+        'title': 'Вопрос-ответ',
+        'meta_description': meta_description
     }
     return render(request, 'main/faq.html', context)
 
 def about(request):
-    meta_description = ''
+    meta_description = 'Информация о компании оконные-решётки.рф'
     short_list_of_reviews = list_of_reviews[:4]
     short_list_of_reviews_collapsed = list_of_reviews_collapsed[:8]
     context = {
         'title': 'О компании',
         'short_list_of_reviews': short_list_of_reviews,
-        'short_list_of_reviews_collapsed': short_list_of_reviews_collapsed
+        'short_list_of_reviews_collapsed': short_list_of_reviews_collapsed,
+        'meta_description': meta_description
     }
     return render(request, 'main/about.html', context)
 

@@ -1,4 +1,5 @@
 {% load static %}
+{% load space_format_tags %}
 <div class="col">
     <div class="card card-hover card_hover_shadow border-0 rounded-lg-4 rounded-3 shadow">
         <div class="card-body p-5 p-sm-10">
@@ -52,8 +53,8 @@
                     <btn class="btn btn-outline-dark py-3 px-3 py-sm-5 px-sm-5  py-md-9  px-md-16  px-lg-20 py-lg-5 w-100 fs-5 fs-sm-7 fs-md-8 fs-lg-10 mt-5" id="buy-button-on-{{path_folder}}-{{ path_file }}" onclick="buyViewHandler(this.id)" type="button">Купить
                             </btn>
             </div>
-                <span class="d-block fs-6 fs-sm-7 fs-md-9 fs-lg-10 text-muted fw-medium  text-decoration-line-through old_price text-uppercase ls-sm pb-4 ">{{saleprice}} руб</span>
-                <span class="d-block fs-6 fs-sm-7 fs-md-9 fs-lg-10 text-danger fw-medium  text-uppercase ls-sm  ">{{price}} руб</span>
+                <span class="d-block fs-6 fs-sm-7 fs-md-9 fs-lg-10 text-muted fw-medium  text-decoration-line-through old_price text-uppercase ls-sm pb-4 ">{{saleprice|spaced_format}} руб</span>
+                <span class="d-block fs-6 fs-sm-7 fs-md-9 fs-lg-10 text-danger fw-medium  text-uppercase ls-sm  ">{{price|spaced_format}} руб</span>
         </div>
     </div>
 </div>
