@@ -714,41 +714,17 @@ function getWidth() {
   );
 }
 
+
+//блок кода для вызова alert с теткой
 if (getWidth() < 768){
     const element = document.getElementById("alert_modal");
     element.remove();
 } else  {
     let alertModal = new bootstrap.Modal(document.getElementById('alert_modal'));
-        setTimeout(() => alertModal.show(), 1000*60*3);
-       (function() {
-    document.onmousemove = handleMouseMove;
-    function handleMouseMove(event) {
-        if(sessionStorage.getItem("alertWasShown")) return 0;
-        var eventDoc, doc, body;
-
-        event = event || window.event; // IE-ism
-
-        // If pageX/Y aren't available and clientX/Y are,
-        // calculate pageX/Y - logic taken from jQuery.
-        // (This is to support old IE)
-        if (event.pageX == null && event.clientX != null) {
-            eventDoc = (event.target && event.target.ownerDocument) || document;
-            doc = eventDoc.documentElement;
-            body = eventDoc.body;
-
-            event.pageX = event.clientX +
-              (doc && doc.scrollLeft || body && body.scrollLeft || 0) -
-              (doc && doc.clientLeft || body && body.clientLeft || 0);
-            event.pageY = event.clientY +
-              (doc && doc.scrollTop  || body && body.scrollTop  || 0) -
-              (doc && doc.clientTop  || body && body.clientTop  || 0 );
-        }
-        if(event.clientY < 10) {
-            alertModal.show();
-            sessionStorage.setItem('alertWasShown', 'true')
-        }
+    if(!localStorage.getItem("alertWasShown")){
+        setTimeout(() => alertModal.show(), 1000*15);
+        localStorage.setItem('alertWasShown', 'true')
     }
-})();
 }
 
 //блок кода для открывания модального окна при нажатии на кнопку купить
