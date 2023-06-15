@@ -998,3 +998,27 @@ font-size: 7px !important;
     cursor: pointer;
 }
 
+.otdelka-doors-ral-item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 100px;
+    height: 60px;
+    text-align: center;
+}
+
+.otdelka-doors-ral-item-inner {
+    display: block;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    font-size: 14px;
+    line-height: 15px;
+    font-weight: 400;
+}

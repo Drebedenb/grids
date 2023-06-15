@@ -12,13 +12,13 @@ from django.core.cache import cache
 from urllib.parse import urlencode
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
-class MockDjangoRedis:
-    def get(self, arg):
-        return None
-
-    def set(arg, bla, ble, blu):
-        return arg
-cache = MockDjangoRedis()
+# class MockDjangoRedis:
+#     def get(self, arg):
+#         return None
+#
+#     def set(arg, bla, ble, blu):
+#         return arg
+# cache = MockDjangoRedis()
 
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 img_dir = os.path.join(base_dir, 'main/static/main/img/')
@@ -209,7 +209,16 @@ list_of_deliveries = [
     {'name': 'Юбилейный', 'price': '800'},
 ]
 
-list_of_cities = {
+list_of_paintings =[
+    {'title': 'Эмаль НЦ', 'price': 550, 'image_path': 'main/img/color_baners/color_baner1.webp', 'description': 'Универсальная нитроэмаль для получения качественного защищенного покрытия. Загрунтованная поверхность изделия покрывается в два слоя, что дает до двух лет защиты от ржавчины.', 'colors': '4 цвета на выбор'},
+    {'title': 'Эмаль ХВ', 'price': 650, 'image_path': 'main/img/color_baners/color_baner5.webp', 'description': 'Специализированная краска с матовым эффектом для защиты металлических изделий от возникновения ржавчины. Эмаль сочетает в себе свойства грунтовочного и финишного покрытия, что дает большую долговечность.', 'colors': '4 цвета на выбор'},
+    {'title': 'Краска Hammerite', 'price': 1400, 'image_path': 'main/img/color_baners/color_baner7.webp', 'description': 'Краска польского производства. Обладает уникальным свойством нейтрализации ржавчины. Изделия сохраняют свой изначальный вид на срок до вомьми лет. Возможно нанесение с молотковым эфектом.', 'colors': '30 цветов на выбор'},
+    {'title': 'Порошковое нап.', 'price': 1700, 'image_path': 'main/img/color_baners/color_baner2.webp', 'description': 'Крайне высокая степень защиты от ржавчины и повышение прочности по отношению к ударам. Дополнительная защита от вредных химических веществ и УФ-ихлучшения делает такой тип окраса практически "вечным".', 'colors': 'Любой из палитры RAL'},
+    {'title': 'Грунт эмаль DALI', 'price': 1900, 'image_path': 'main/img/color_baners/color_baner3.webp', 'description': 'Специальная грунт-эмаль для черного и цветного металла. Молотковая эмаль 3 в 1. Возможно нанесение прямо по ржавчине. Высыхание за 1 час. Срок службы 10 лет.Возможно нанесение с молотковым эффектом.', 'colors': 'Любой из палитры RAL'},
+    {'title': 'Эмаль WS-plast', 'price': 1900, 'image_path': 'main/img/color_baners/color_baner4.webp', 'description': 'Специальная кузнечная матовая эмаль немецкого производства высокого качества, образующая декоративный и защитный слой даже на сложных поверхностях. Срок защиты поверхности — до 10 лет.', 'colors': 'Любой из палитры RAL'},
+]
+
+ALL_CITIES = {
 'решетки-на-окна-в-твери': {'title': 'Тверь', 'address': '', 'description': ''},
 'решетки-на-окна-в-балашихе': {'title': 'Балашиха', 'address': '', 'description': ''},
 'решетки-на-окна-в-химках': {'title': 'Химки', 'address': '', 'description': ''},
@@ -800,9 +809,11 @@ def about(request):
 
 
 def color(request):
-    meta_description = ''
+    meta_description = 'Покраска решеток на окна.'
     context = {
         'title': 'Покраска',
-        'list_of_sales_items':list_of_sales_items
+        'meta_description': meta_description,
+        'list_of_sales_items': list_of_sales_items,
+        'list_of_paintings': list_of_paintings,
     }
     return render(request, 'main/color.html', context)
