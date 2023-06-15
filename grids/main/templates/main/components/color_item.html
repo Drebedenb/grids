@@ -1,0 +1,34 @@
+{% load static %}
+<div class="col">
+  <div class="card border-top-0">
+    <img src="{% static image_path%}" class="card-img-top" alt="color_baner3" title="color_baner3">
+    <div class="card-body">
+      <h5 class="card-title fs-8 fw-medium fs-lg-10 text-uppercase">{{description}}</h5>
+      <p class="card-text text-muted fs-7 fs-lg-8">Универсальная нитроэмаль для получения качественного защищенного покрытия. 
+        Загрунтованная поверхность изделия покрывается в два слоя, что дает до двух лет защиты от ржавчины.<br></p>
+        <p>Цвета: 4 цвета на выбор</p>
+        <div class="d-flex">
+        <p class="d-inline-block me-10">Долговечность:</p>
+        <span> 
+            <div class="d-flex justify-content-between mt-2 ">
+            {% if stars_count > 15 %}
+           {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:20px' %}
+           {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:20px' %}
+           {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:20px' %}
+           {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:20px' %}
+           {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:20px' %}
+            {% else %}
+            {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:20px' %}
+           {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:20px' %}
+           {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:20px' %}
+           {% include 'main/icons/filled_star.html' with classes='svg-icon' styles='width:20px' %}
+           {% include 'main/icons/star.html' with classes='svg-icon' styles='width:20px' %}
+            {% endif %}
+            </div>
+        </span>
+           <span class="fs-5 fs-sm-7 fs-md-6 fs-lg-9">{{ stars_count }}</span>
+        </div>
+        <p>Cтоимость: <span class="text-danger">550 р/м²</span></p>
+    </div>
+  </div>
+</div>

@@ -74,7 +74,7 @@ list_of_reviews = [
      'description': 'Как хочется чтобы все в жизни было так же быстро и четко. я НЕ участвовал ни в одном вопросе в моменте производства решеток на окна в дом, ни на моменте их установки. Действительно компания-молодец! Выбрал, заказал, оплатил - привезли'},
     {'id': 'review-18', 'author': 'Георгий Р.', 'author_avatar': 'avatar28.webp', 'project_photo': '1-5/1.webp',
      'description': 'Замерять приехали в удобное мне время, за это спасибо. Опытные сотрудники, сразу это заметил. Четко и быстро, я доволен.  '},
-    {'id': 'review-13', 'author': 'Андрей Алексеевич Б.', 'author_avatar': 'avatar15.webp',
+    {'id': 'review-13', 'author': 'Андрей Б.', 'author_avatar': 'avatar15.webp',
      'project_photo': '5-31/1.webp',
      'description': 'Заказывал кованые решетки себе на дачу. Очень крепкие, безопасность чувствуется сразу, а главное - красивые, соседи обзавидовались. Быстро и качественно установили, всем советую!'},
     {'id': 'review-16', 'author': 'Надежда С.', 'author_avatar': 'avatar23.webp', 'project_photo': '1-82/1.webp',
@@ -702,3 +702,12 @@ def about(request):
         'short_list_of_reviews_collapsed': short_list_of_reviews_collapsed
     }
     return render(request, 'main/about.html', context)
+
+
+def color(request):
+    meta_description = ''
+    context = {
+        'title': 'Покраска',
+        'list_of_sales_items':list_of_sales_items
+    }
+    return render(request, 'main/color.html', context)

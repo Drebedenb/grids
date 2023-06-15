@@ -4,13 +4,15 @@
         <div class="modal-content p-0">
             <div class="modal-body p-0">
                 <div class="card card_border">
-                    <img src="{% static 'main/img/allert_form.webp' %}"  class="card-img card_border" alt="allert_form">
+                    <img src="{% static 'main/img/allert_form.webp' %}"  class="card-img card_border" alt="allert_form" title="allert_form">
                     <div class="card-img-overlay card_border">
+                        <button type="button" class=" position-absolute  btn_close rounded-2" aria-label="Close" data-bs-dismiss="modal">
+                            {% include 'main/icons/btn_close.html' with classes="svg-icon"%}</button>
                         <div class="row row-cols-2 px-10 h-100">
                             <div class="col"></div>
                             <div class="col bg-white rounded-3">   
-                                <h4 class="fs-5 fs-lg-20 fs-xl-13 fw-medium mb-0 pt-3 pt-lg-10  text-primary mt-0 mt-lg-15 text-center">Внимание! Расчет по акции
-                                    + скидка до 30% !</h4>
+                                <h2 class="fs-5 fs-lg-20 fs-xl-13 fw-medium mb-0 pt-3 pt-lg-10  text-primary mt-0 mt-lg-15 text-center">Внимание! Расчет по акции
+                                    + скидка до 30% !</h2>
                                 <form class=" mt-5 mt-lg-10">
                                
                                 <div class="form-check text-center  pt-2 pb-2 ps-0 mb-0 mb-lg-10">
