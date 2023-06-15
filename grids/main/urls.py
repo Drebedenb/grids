@@ -26,5 +26,6 @@ urlpatterns = [
     path('garantiya/', guarantee, name="guarantee"),
     path('vopros-otvet/', faq, name="faq"),
     path('o-kompanii/', about, name="about"),
+    path('pokraska/', color, name="pokraska"),
     path('skchema-zakaza/', order_scheme, name="order_scheme"),
 ]

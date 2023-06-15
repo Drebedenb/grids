@@ -84,8 +84,8 @@
 	.navbar .nav-item .dropdown-menu{  display:block; opacity: 0;  visibility: hidden; transition:.6s; margin-top:0;  }
 	.navbar .nav-item:hover .nav-link{ color: #fff; }
 	.navbar .dropdown-menu.fade-down{ top:80%; transform: rotateX(-75deg); transform-origin: 0% 0%; }
-	.navbar .dropdown-menu.fade-up{ top:180%; left:6%;}
-	.navbar .nav-item:hover .dropdown-menu{ transition: .3s; opacity:1; visibility:visible; top:97%; transform: rotateX(0deg); left:6%;}
+	.navbar .dropdown-menu.fade-up{ top:180%; left:7%;}
+	.navbar .nav-item:hover .dropdown-menu{ transition: .3s; opacity:1; visibility:visible; top:97%; transform: rotateX(0deg); left:7%;}
     .dropdown-item_header{
         text-transform: none;
         font-weight: 500;
@@ -95,8 +95,8 @@
         text-transform: none;
     }
 
-    .navbar .dropdown-menu_2.fade-up{ top:180%; left:41%;}
-	.navbar .nav-item:hover .dropdown-menu_2{ transition: .1s; opacity:1; visibility:visible; top:97%; transform: rotateX(0deg); left:41%;}
+    .navbar .dropdown-menu_2.fade-up{ top:180%; left:43%;}
+	.navbar .nav-item:hover .dropdown-menu_2{ transition: .1s; opacity:1; visibility:visible; top:97%; transform: rotateX(0deg); left:43%;}
     .dropdown-item_header{
         text-transform: none;
         font-weight: 500;
@@ -183,6 +183,20 @@
     color: red;
     fill:red;
    }
+   
+
+   /*CARD*/
+
+   .image_item{
+    --bs-aspect-ratio: 100%;
+    max-height: 265px;
+  }
+
+  .text_item{
+    transition: 0s !important;
+  }
+
+
    
 
    /*FILTER*/
@@ -311,7 +325,7 @@
 
 
 .swiper_container {
-    padding: 25px;
+    padding: 18px;
 }
 
 .buy_item{
@@ -364,6 +378,11 @@
 }
 
 
+/*POKRASKA*/
+.color_item{
+    opacity: 0.8;
+}
+
 /*BUTTON-CLOSE*/
 .btn_close{
     background-color: rgba(0, 0, 0, 0.344);
@@ -377,6 +396,9 @@
     color: white;
 }
 
+.btn_custom{
+    margin-left: 10px !important;
+}
 
 /*MINIBANER*/
 .minibaner_item{
@@ -436,6 +458,10 @@
         width: 70px;
 }
 
+
+.text_characterstic{
+    margin-top: -30px ;
+}
 
 .compare_close{
     color: black;
@@ -760,6 +786,11 @@
 }
 
 
+.image_item{
+    --bs-aspect-ratio: 120%;
+  }
+
+
 
     /*SCROLL ON TOP*/
 .scrollToTopBtn {
@@ -843,6 +874,7 @@
 .card-ratio{
     max-width: 300px;
 }
+
 
 
 
