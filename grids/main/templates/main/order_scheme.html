@@ -19,29 +19,34 @@
                                     <img src="{% static 'main/img/order_baner.webp' %}" class="d-block w-100 rounded-3"
                                          alt="Доставка" title="Доставка">
                                 </div>
-                              
+
                             </div>
-                          <!--   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControllers" data-bs-slide="prev">
-                                <span class="me-10 carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                              </button>
-                              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControllers" data-bs-slide="next">
-                                <span class="ms-10 carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                              </button> -->
-                          </div>
-                            <div class="d-none d-lg-block">
-                    
-                                <p class="d-lg-none lead fs-lg-12 fs-9 mb-0" style="max-width: 28rem;">В нашем каталоге представлено 600+ эскизов решеток на окна. Возможно изготовление решеток по вашему эскизу.</p>
-                            </div>
-                       
-                      
+                            <!--   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControllers" data-bs-slide="prev">
+                                  <span class="me-10 carousel-control-prev-icon" aria-hidden="true"></span>
+                                  <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControllers" data-bs-slide="next">
+                                  <span class="ms-10 carousel-control-next-icon" aria-hidden="true"></span>
+                                  <span class="visually-hidden">Next</span>
+                                </button> -->
+                        </div>
+                        <div class="d-none d-lg-block">
+
+                            <p class="d-lg-none lead fs-lg-12 fs-9 mb-0" style="max-width: 28rem;">В нашем каталоге
+                                представлено 600+ эскизов решеток на окна. Возможно изготовление решеток по вашему
+                                эскизу.</p>
+                        </div>
+
+
                     </div>
                     <nav class="fs-5 fs-lg-9 mt-12 mb-lg-10 mt-lg-0">
                         <ul class="breadcrumb mb-0">
-                            <li class="breadcrumb-item"><a class="fs-6 fs-sm-8 fs-lg-9" href="{%url 'index'%}">Главная </a></li>
-                            <li class="breadcrumb-item"><a class="fs-6 fs-sm-8 fs-lg-9" href="/металлические-решетки-на-окна">Каталог</a></li>
-                            <li class="breadcrumb-item active"><a class="fs-6 fs-sm-8 fs-lg-9 text-dark">{{category.title}}</a> </li>
+                            <li class="breadcrumb-item"><a class="fs-6 fs-sm-8 fs-lg-9"
+                                                           href="{%url 'index'%}">Главная </a></li>
+                            <li class="breadcrumb-item"><a class="fs-6 fs-sm-8 fs-lg-9"
+                                                           href="/металлические-решетки-на-окна">Каталог</a></li>
+                            <li class="breadcrumb-item active"><a class="fs-6 fs-sm-8 fs-lg-9 text-dark">{{category.title}}</a>
+                            </li>
                         </ul>
                     </nav>
                 </div>
@@ -51,54 +56,79 @@
         <main>
             <section class="mb-20">
                 <h2 class=" fs-3xl-14 fs-lg-13 fs-8 ls-sm text-uppercase mt-20 mb-20">Схема заказа металлических решеток</h2>
+                <h3 class=" fs-3xl-14 fs-lg-13 fs-8 ls-sm text-uppercase mt-20 mb-20">Схема заказа металлических
+                    решеток</h3>
                 <div class="row mx-0 text-center gx-5 gy-10">
                     <div class="col-6 col-lg-3">
                             <img src="{% static 'main/img/order_steps/order_step1.webp' %}" 
                                          alt="Заказ" title="Заказ">
+                        <img src="{% static 'main/img/order_steps/order_step1.webp' %}"
+                             alt="Заказ">
                     </div>
                     <div class="col-6 col-lg-3">
-                        <img src="{% static 'main/img/order_steps/order_step2.webp' %}" 
-                                     alt="Заказ" title="Заказ">
+                        <img src="{% static 'main/img/order_steps/order_step4.webp' %}"
+                             alt="Заказ">
+                    </div>
+                    <div class="col-6 col-lg-3">
+                        <img src="{% static 'main/img/order_steps/order_step3.webp' %}"
+                             alt="Заказ">
+                    </div>
+                    <div class="col-6 col-lg-3">
+                        <img src="{% static 'main/img/order_steps/order_step2.webp' %}"
+                             alt="Заказ">
+                    </div>
+
+
                 </div>
-                <div class="col-6 col-lg-3">
-                    <img src="{% static 'main/img/order_steps/order_step3.webp' %}" 
-                                 alt="Заказ" title="Заказ">
-            </div>
-            <div class="col-6 col-lg-3">
-                <img src="{% static 'main/img/order_steps/order_step4.webp' %}" 
-                             alt="Заказ" title="Заказ">
-        </div>
-        </div>
             </section>
 
 
             <section class="mb-lg-20 mb-20">
                 <div class="row align-items-end mb-lg-12-5 mb-16">
-     
-                        <div class=" mb-20 ">
-                            <div class=" fs-lg-11 fs-9 fw-light">
-                                     <ol >
-                                        <li class="ms-5 pb-10">ВЫЗОВ</li>
-                                        <p class="fs-7 fs-10">Позвоните по номеру  <a class="text-danger text-hover-primary " href="tel:84953745364">+7 495 374-53-64</a> или оставьте свой номер. 
-                                            Менеджер перезвонит вам, ответит на интересующие вопросы и запишет на  <span class="text-danger text-hover-primary text-decoration-underline" data-bs-toggle="modal"
-                                            data-bs-target="#modal-measurement" style="cursor: pointer;">бесплатный замер</span>.</p>
-                                        <li class="ms-5 pb-10">БЕСПЛАТНЫЙ ЗАМЕР</li>
-                                        <p class="fs-7 fs-10">Выезд специалиста бесплатный. Вы получите квалифицированную консультацию, выберете рисунок из <a class="text-danger text-hover-primary " href="/металлические-решетки-на-окна">каталога</a> или предоставите свой вариант,
-                                             обговорите <a class="text-danger text-hover-primary " href="">покраску</a>, материалы.
-                                             Мастер снимет точные размеры и заключит договор на месте.</p>
-                                        <li class="ms-5 pb-10">ПРОИЗВОДСТВО</li>
-                                        <p class="fs-7 fs-10">После заключения договора и оплаты заказ отправится в производство. Процесс производства включает подготовку эскизов, сборку каркаса, изготовление элементов, сварку и подготовку к окрашиванию. 
-                                            Процесс покраса включает в себя очистку от элементов коррозии и прокатного масла, обезжиривание, грунтование, окрас, высыхание.</p>
-                                        <li class="ms-5 pb-10">ДОСТАВКА И МОНТАЖ</li>
-                                        <p class="fs-7 fs-10">После заключения договора и оплаты заказ отправится в производство. Процесс производства включает подготовку эскизов, сборку каркаса, изготовление элементов, сварку и подготовку к окрашиванию. 
-                                            Процесс покраса включает в себя очистку от элементов коррозии и прокатного масла, обезжиривание, грунтование, окрас, высыхание.</p>
-                                     </ol>                   
-                            </div> 
-                        </div>
-                        </div>
-                        </section>
 
-
+                    <div class=" mb-20 ">
+                        <div class=" fs-lg-11 fs-9 fw-light">
+                            <ol>
+                                <li class="ms-5 pb-10">ВЫЗОВ</li>
+                                <p class="fs-7 fs-10"><b>Для получения информации позвоните по номеру</b> <a class="text-danger text-hover-primary "
+                                                                             href="tel:84953745364">+7 495 374-53-64</a> или
+                                    оставьте заявку. Наш менеджер свяжется с вами, ответит на все вопросы и запланирует
+                                    <span
+                                            class="text-danger text-hover-primary text-decoration-underline"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#modal-measurement" style="cursor: pointer;">бесплатный замер</span></span>.
+                                </p>
+                                <li class="ms-5 pb-10">БЕСПЛАТНЫЙ ЗАМЕР</li>
+                                <p class="fs-7 fs-10"><b><span
+                                            class="text-danger text-hover-primary text-decoration-underline"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#modal-measurement" style="cursor: pointer;">Бесплатный выезд</span> нашего специалиста.</b> Квалифицированная консультация.
+                                    Выбор рисунка из каталога или свой вариант. Обсуждение покраски и материалов. Точные
+                                    размеры и договор на месте. Позвоните нам по номеру <a class="text-danger text-hover-primary "
+                                                                             href="tel:84953745364">+7 495 374-53-64</a> или оставьте
+                                    свой номер для обратного звонка и бесплатного замера.</p>
+                                <li class="ms-5 pb-10">ПРОИЗВОДСТВО</li>
+                                <p class="fs-7 fs-10"><b>После заключения договора и оплаты заказа, мы начинаем производство.</b>
+                                    Создаем эскизы, собираем каркас, изготавливаем детали, свариваем и готовим поверхность
+                                    для покраски. Затем проводим очистку от коррозии и масла, обезжиривание, наносим грунт,
+                                    красим и ждем высыхания. Если у вас есть вопросы или для оформления заказа, позвоните по
+                                    номеру <a class="text-danger text-hover-primary "
+                                                                             href="tel:84953745364">+7 495 374-53-64</a>
+                                    или оставьте контактный номер, менеджер свяжется с вами.
+                                    Всегда рады помочь и дать бесплатную консультацию</p>
+                                <li class="ms-5 pb-10">ДОСТАВКА И МОНТАЖ</li>
+                                <p class="fs-7 fs-10"><b>Бесплатно доставим и установим наши изделия на ваш объект в договоренный
+                                    день.</b> Если вы находитесь в пределах Москвы, доставка будет бесплатной. Если же вам
+                                    требуется доставка за пределы города, стоимость будет зависеть от расстояния и
+                                    будет рассчитана по тарифам. Установка будет выполнена в тот же день, чтобы вам было удобно.
+                                    Если у вас есть вопросы или вы хотите сделать заказ, просто позвоните по номеру <a class="text-danger text-hover-primary "
+                                                                             href="tel:84953745364">+7 495 374-53-64</a>
+                                    или оставьте свой контактный номер, и наш менеджер свяжется с вами. Мы всегда готовы помочь!</p>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
 
             {% include 'main/components/consultation_form.html' %}

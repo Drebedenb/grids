@@ -18,3 +18,4 @@ def get_product_by_id(sketch_id):
     product['additional_info'] = list(
         PriceWinguardMain.objects.filter(price_winguard_sketch_id=sketch_id).values('price_b2c', 'name'))
     return product
+

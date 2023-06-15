@@ -3,21 +3,40 @@
 <html lang="ru">
 <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0H04NYJ4G1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-90SBP6WMEK"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    gtag('config', 'G-0H04NYJ4G1');
+      gtag('config', 'G-90SBP6WMEK');
     </script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+       ym(93900711, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/93900711" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
 
     <title>{{title}}</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-    <meta name="yandex-verification" content="15bd4b9ce29da968" />
+    <meta name="yandex-verification" content="b341779ba365c32b" />
     <meta name="keywords" content="решетки на окно">
     <meta name="description" content="{{meta_description}}">
 
@@ -113,7 +132,7 @@
                 <li class="nav-item me-20"><a class="nav-link ls-sm p-0 {% if request.path == '/' %}active{% endif %}"
                                               href="{%url 'index'%}">Главная</a></li>
                 <li class="nav-item me-20"><a
-                        class="nav-link ls-sm p-0 {% if request.path != '/' and request.path != '/отзывы-клиентов/' and request.path != '/наши-работы/' and request.path != '/контакты/' and request.path != '/акции/'  %}active{% endif %}"
+                        class="nav-link ls-sm p-0 {% if request.path != '/' and request.path != '/отзывы-клиентов/' and request.path != '/наши-работы/' and request.path != '/контакты/' and request.path != '/акции/' and request.path != '/o-kompanii/'  %}active{% endif %}"
                         href="/металлические-решетки-на-окна" data-toggle="dropdown">Каталог</a>
                         <ul class="dropdown-menu fade-up d-flex fs-9">
                             <div>
@@ -129,6 +148,11 @@
                                 {% endfor %}
                             <li class="dropdown-item_header">ТОПы решеток</li>
                                 {% for item in list_of_popular_sections %}
+                                <li><a class="dropdown-item text-muted text-hover-primary" href="{{ item.url }}">
+                                    {{ item.title }} </a></li>
+                                {% endfor %}
+                            <li class="dropdown-item_header">Тип</li>
+                                {% for item in list_of_open_types %}
                                 <li><a class="dropdown-item text-muted text-hover-primary" href="{{ item.url }}">
                                     {{ item.title }} </a></li>
                                 {% endfor %}
@@ -204,6 +228,8 @@
             </li>
             <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0"
                                                                 href="/металлические-решетки-на-окна">Каталог</a>
+            </li>
+            <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0" href="{%url 'about'%}">О компании</a>
             </li>
             <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0" href="{%url 'reviews'%}">Отзывы</a>
             </li>
