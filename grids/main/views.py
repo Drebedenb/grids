@@ -12,13 +12,13 @@ from django.core.cache import cache
 from urllib.parse import urlencode
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
-# class MockDjangoRedis:
-#     def get(self, arg):
-#         return None
-#
-#     def set(arg, bla, ble, blu):
-#         return arg
-# cache = MockDjangoRedis()
+class MockDjangoRedis:
+    def get(self, arg):
+        return None
+
+    def set(arg, bla, ble, blu):
+        return arg
+cache = MockDjangoRedis()
 
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 img_dir = os.path.join(base_dir, 'main/static/main/img/')
@@ -367,7 +367,6 @@ product_category_texts = {
 # one day cache will be stored
 TTL_OF_CACHE_SECONDS = 60 * 60 * 24
 
-
 def get_paginated_url(request, page_number):
     params = request.GET.copy()
     params['page'] = page_number
@@ -502,6 +501,29 @@ count = {
 
 
 def index(request):
+    if request.method == 'POST':
+        # Get form data
+        name = request.POST.get('name')
+        phone = request.POST.get('phone')
+        subject = request.POST.get('subject')
+        if phone != '' and phone != None and subject != '' and subject != None:
+            print(name, phone, subject)
+            print('Send the post')
+
+            # Send data via HTTP POST request
+
+            url = 'https://svarnik.ru/bx24/'
+            data = {
+                'ikey': 'WqfnDx7soB1iVn3K1ybM',
+                'domain': request.META.get('HTTP_HOST'),
+                'roistat': 'nocookie',
+                'subject': subject,
+                'Имя': name,
+                'Телефон': phone,
+            }
+            if 'roistat_visit' in request.COOKIES:
+                data['roistat'] = request.COOKIES['roistat_visit']
+            response = requests.post(url, data=data, headers={'User-Agent': 'Reforgebot/1.0'}, verify=False)
     leaders_of_selling = get_products_by_categories(ALL_CATEGORIES, 0, 99999, 'popularity', 'desc', 16)
     min_price_1 = get_categories_min_price([1])
     min_price_2 = get_categories_min_price([3])
