@@ -209,6 +209,99 @@ list_of_deliveries = [
     {'name': 'Юбилейный', 'price': '800'},
 ]
 
+list_of_paintings =[
+    {'title': 'Эмаль НЦ', 'price': 550, 'image_path': 'main/img/color_baners/color_baner1.webp', 'description': 'Универсальная нитроэмаль для получения качественного защищенного покрытия. Загрунтованная поверхность изделия покрывается в два слоя, что дает до двух лет защиты от ржавчины.', 'colors': '4 цвета на выбор'},
+    {'title': 'Эмаль ХВ', 'price': 650, 'image_path': 'main/img/color_baners/color_baner5.webp', 'description': 'Специализированная краска с матовым эффектом для защиты металлических изделий от возникновения ржавчины. Эмаль сочетает в себе свойства грунтовочного и финишного покрытия, что дает большую долговечность.', 'colors': '4 цвета на выбор'},
+    {'title': 'Краска Hammerite', 'price': 1400, 'image_path': 'main/img/color_baners/color_baner7.webp', 'description': 'Краска польского производства. Обладает уникальным свойством нейтрализации ржавчины. Изделия сохраняют свой изначальный вид на срок до вомьми лет. Возможно нанесение с молотковым эфектом.', 'colors': '30 цветов на выбор'},
+    {'title': 'Порошковое нап.', 'price': 1700, 'image_path': 'main/img/color_baners/color_baner2.webp', 'description': 'Крайне высокая степень защиты от ржавчины и повышение прочности по отношению к ударам. Дополнительная защита от вредных химических веществ и УФ-ихлучшения делает такой тип окраса практически "вечным".', 'colors': 'Любой из палитры RAL'},
+    {'title': 'Грунт эмаль DALI', 'price': 1900, 'image_path': 'main/img/color_baners/color_baner3.webp', 'description': 'Специальная грунт-эмаль для черного и цветного металла. Молотковая эмаль 3 в 1. Возможно нанесение прямо по ржавчине. Высыхание за 1 час. Срок службы 10 лет.Возможно нанесение с молотковым эффектом.', 'colors': 'Любой из палитры RAL'},
+    {'title': 'Эмаль WS-plast', 'price': 1900, 'image_path': 'main/img/color_baners/color_baner4.webp', 'description': 'Специальная кузнечная матовая эмаль немецкого производства высокого качества, образующая декоративный и защитный слой даже на сложных поверхностях. Срок защиты поверхности — до 10 лет.', 'colors': 'Любой из палитры RAL'},
+]
+
+ALL_CITIES = {
+'решетки-на-окна-в-твери': {'title': 'Тверь', 'address': '', 'description': ''},
+'решетки-на-окна-в-балашихе': {'title': 'Балашиха', 'address': '', 'description': ''},
+'решетки-на-окна-в-химках': {'title': 'Химки', 'address': '', 'description': ''},
+'решетки-на-окна-в-мытищах': {'title': 'Мытищи', 'address': '', 'description': ''},
+'решетки-на-окна-в-люберцах': {'title': 'Люберцы', 'address': '', 'description': ''},
+'решетки-на-окна-в-подольске': {'title': 'Подольск', 'address': '', 'description': ''},
+'решетки-на-окна-в-красногорске': {'title': 'Красногорск', 'address': '', 'description': ''},
+'решетки-на-окна-в-одинцово': {'title': 'Одинцово', 'address': '', 'description': ''},
+'решетки-на-окна-в-королеве': {'title': 'Королёв', 'address': '', 'description': ''},
+'решетки-на-окна-в-пушкино': {'title': 'Пушкино', 'address': '', 'description': ''},
+'решетки-на-окна-в-орехово-зуево': {'title': 'Орехово-Зуево', 'address': '', 'description': ''},
+'решетки-на-окна-в-клину': {'title': 'Клин', 'address': '', 'description': ''},
+'решетки-на-окна-в-долгопрудном': {'title': 'Долгопрудный', 'address': '', 'description': ''},
+'решетки-на-окна-в-щелково': {'title': 'Щёлково', 'address': '', 'description': ''},
+'решетки-на-окна-в-домодедово': {'title': 'Домодедово', 'address': '', 'description': ''},
+'решетки-на-окна-в-серпухове': {'title': 'Серпухов', 'address': '', 'description': ''},
+'решетки-на-окна-в-зеленограде': {'title': 'Зеленоград', 'address': '', 'description': ''},
+'решетки-на-окна-в-коломне': {'title': 'Коломна', 'address': '', 'description': ''},
+'решетки-на-окна-в-раменском': {'title': 'Раменское', 'address': '', 'description': ''},
+'решетки-на-окна-в-сергиев-посаде': {'title': 'Сергиев-Посад', 'address': '', 'description': ''},
+'решетки-на-окна-в-реутове': {'title': 'Реутов', 'address': '', 'description': ''},
+'решетки-на-окна-в-электростали': {'title': 'Электросталь', 'address': '', 'description': ''},
+'решетки-на-окна-в-жуковском': {'title': 'Жуковский', 'address': '', 'description': ''},
+'решетки-на-окна-в-лобне': {'title': 'Лобня', 'address': '', 'description': ''},
+'решетки-на-окна-в-ивантеевке': {'title': 'Ивантеевка', 'address': '', 'description': ''},
+'решетки-на-окна-в-видном': {'title': 'Видное', 'address': '', 'description': ''},
+'решетки-на-окна-в-воскресенске': {'title': 'Воскресенск', 'address': '', 'description': ''},
+'решетки-на-окна-в-ногинске': {'title': 'Ногинск', 'address': '', 'description': ''},
+'решетки-на-окна-в-ступино': {'title': 'Ступино', 'address': '', 'description': ''},
+'решетки-на-окна-в-дзержинском': {'title': 'Дзержинский', 'address': '', 'description': ''},
+'решетки-на-окна-в-солнечногорске': {'title': 'Солнечногорск', 'address': '', 'description': ''},
+'решетки-на-окна-в-дмитрове': {'title': 'Дмитров', 'address': '', 'description': ''},
+'решетки-на-окна-в-лыткарино': {'title': 'Лыткарино', 'address': '', 'description': ''},
+'решетки-на-окна-в-дедовске': {'title': 'Дедовск', 'address': '', 'description': ''},
+'решетки-на-окна-в-хотьково': {'title': 'Хотьково', 'address': '', 'description': ''},
+'решетки-на-окна-в-железнодорожном': {'title': 'Железнодорожный', 'address': '', 'description': ''},
+'решетки-на-окна-в-дубне': {'title': 'Дубна', 'address': '', 'description': ''},
+'решетки-на-окна-в-чехове': {'title': 'Чехов', 'address': '', 'description': ''},
+'решетки-на-окна-в-фрязино': {'title': 'Фрязино', 'address': '', 'description': ''},
+'решетки-на-окна-в-лосино-петровском': {'title': 'Лосино-Петровский', 'address': '', 'description': ''},
+'решетки-на-окна-в-павловском-посаде': {'title': 'Павловский посад', 'address': '', 'description': ''} ,
+'решетки-на-окна-в-краснознаменске': {'title': 'Краснознаменск', 'address': '', 'description': ''},
+'решетки-на-окна-в-звенигороде': {'title': 'Звенигород', 'address': '', 'description': ''},
+'решетки-на-окна-в-старой-купавне': {'title': 'Старая Купавна', 'address': '', 'description': ''} ,
+'решетки-на-окна-в-электрогорске': {'title': 'Электрогорск', 'address': '', 'description': ''},
+'решетки-на-окна-в-апрелевке': {'title': 'Апрелевка', 'address': '', 'description': ''},
+'решетки-на-окна-в-троицке': {'title': 'Троицк', 'address': '', 'description': ''},
+'решетки-на-окна-в-щербинке': {'title': 'Щербинка', 'address': '', 'description': ''},
+'решетки-на-окна-в-пущино': {'title': 'Пущино', 'address': '', 'description': ''},
+'решетки-на-окна-в-можайске': {'title': 'Можайск', 'address': '', 'description': ''},
+'решетки-на-окна-в-черноголовке': {'title': 'Черноголовка', 'address': '', 'description': ''},
+'решетки-на-окна-в-голицыно': {'title': 'Голицыно', 'address': '', 'description': ''},
+'решетки-на-окна-в-кашире': {'title': 'Кашира', 'address': '', 'description': ''},
+'решетки-на-окна-в-истре': {'title': 'Истра', 'address': '', 'description': ''},
+'решетки-на-окна-в-электроуглях': {'title': 'Электроугли', 'address': '', 'description': ''},
+'решетки-на-окна-в-егорьевске': {'title': 'Егорьевск', 'address': '', 'description': ''},
+'решетки-на-окна-в-протвино': {'title': 'Протвино', 'address': '', 'description': ''},
+'решетки-на-окна-в-наро-фоминске': {'title': 'Наро-Фоминск', 'address': '', 'description': ''},
+'решетки-на-окна-в-луховицах': {'title': 'Луховицы', 'address': '', 'description': ''},
+'решетки-на-окна-в-шатуре': {'title': 'Шатура', 'address': '', 'description': ''},
+'решетки-на-окна-в-волоколамске': {'title': 'Волоколамск', 'address': '', 'description': ''},
+'решетки-на-окна-в-кубинке': {'title': 'Кубинка', 'address': '', 'description': ''},
+'решетки-на-окна-в-бронницах': {'title': 'Бронницы', 'address': '', 'description': ''},
+'решетки-на-окна-в-зарайске': {'title': 'Зарайск', 'address': '', 'description': ''},
+'решетки-на-окна-в-рузе': {'title': 'Руза', 'address': '', 'description': ''},
+'решетки-на-окна-в-красноармейске': {'title': 'Красноармейск', 'address': '', 'description': ''},
+'решетки-на-окна-в-пересвете': {'title': 'Пересвет', 'address': '', 'description': ''},
+'решетки-на-окна-в-котельниках': {'title': 'Котельники', 'address': '', 'description': ''},
+'решетки-на-окна-в-московском': {'title': 'Московский', 'address': '', 'description': ''},
+'решетки-на-окна-в-климовске': {'title': 'Климовск', 'address': '', 'description': ''},
+'решетки-на-окна-в-ликино-дулево': {'title': 'Ликино-Дулёво', 'address': '', 'description': ''},
+'решетки-на-окна-в-озерах': {'title': 'Озёры', 'address': '', 'description': ''},
+'решетки-на-окна-в-купавне': {'title': 'Купавна', 'address': '', 'description': ''},
+'решетки-на-окна-в-рошали': {'title': 'Рошаль', 'address': '', 'description': ''},
+'решетки-на-окна-в-куровском': {'title': 'Куровское', 'address': '', 'description': ''},
+'решетки-на-окна-в-талдоме': {'title': 'Талдом', 'address': '', 'description': ''},
+'решетки-на-окна-в-краснозаводске': {'title': 'Краснозаводск', 'address': '', 'description': ''},
+'решетки-на-окна-в-яхроме': {'title': 'Яхрома', 'address': '', 'description': ''},
+'решетки-на-окна-в-высоковске': {'title': 'Высоковск', 'address': '', 'description': ''},
+'решетки-на-окна-в-дрезне': {'title': 'Дрезна', 'address': '', 'description': ''},
+'решетки-на-окна-в-верее': {'title': 'Верея', 'address': '', 'description': ''},
+}
+
 ALL_CATEGORIES = [1, 2, 3, 4, 5, 6, 7, 8]
 russian_categories = {
     # all grids
@@ -273,7 +366,6 @@ product_category_texts = {
 
 # one day cache will be stored
 TTL_OF_CACHE_SECONDS = 60 * 60 * 24
-
 
 def get_paginated_url(request, page_number):
     params = request.GET.copy()
@@ -409,6 +501,29 @@ count = {
 
 
 def index(request):
+    if request.method == 'POST':
+        # Get form data
+        name = request.POST.get('name')
+        phone = request.POST.get('phone')
+        subject = request.POST.get('subject')
+        if phone != '' and phone != None and subject != '' and subject != None:
+            print(name, phone, subject)
+            print('Send the post')
+
+            # Send data via HTTP POST request
+
+            # url = 'https://svarnik.ru/bx24/'
+            # data = {
+            #     'ikey': 'WqfnDx7soB1iVn3K1ybM',
+            #     'domain': request.META.get('HTTP_HOST'),
+            #     'roistat': 'nocookie',
+            #     'subject': subject,
+            #     'name': name,
+            #     'phone': phone,
+            # }
+            # if 'roistat_visit' in request.COOKIES:
+            #     data['roistat'] = request.COOKIES['roistat_visit']
+            # response = requests.post(url, data=data, headers={'User-Agent': 'Reforgebot/1.0'}, verify=False)
     leaders_of_selling = get_products_by_categories(ALL_CATEGORIES, 0, 99999, 'popularity', 'desc', 16)
     min_price_1 = get_categories_min_price([1])
     min_price_2 = get_categories_min_price([3])
@@ -716,9 +831,11 @@ def about(request):
 
 
 def color(request):
-    meta_description = ''
+    meta_description = 'Покраска решеток на окна.'
     context = {
         'title': 'Покраска',
-        'list_of_sales_items':list_of_sales_items
+        'meta_description': meta_description,
+        'list_of_sales_items': list_of_sales_items,
+        'list_of_paintings': list_of_paintings,
     }
     return render(request, 'main/color.html', context)

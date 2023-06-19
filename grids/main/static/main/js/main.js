@@ -1,3 +1,8 @@
+//при отправке POST формы чистить кэш этой формы, чтобы не было повторный отправок формы при перезагрузке страницы
+if ( window.history.replaceState ) {
+    window.history.replaceState( null, null, window.location.href );
+}
+
 //перезагружать страницу каждый раз, когда пользователь нажимает кнопку назад в истории браузера
 window.addEventListener( "pageshow", function ( event ) {
   const historyTraversal = event.persisted ||
