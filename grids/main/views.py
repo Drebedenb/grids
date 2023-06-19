@@ -512,18 +512,18 @@ def index(request):
 
             # Send data via HTTP POST request
 
-            url = 'https://svarnik.ru/bx24/'
-            data = {
-                'ikey': 'WqfnDx7soB1iVn3K1ybM',
-                'domain': request.META.get('HTTP_HOST'),
-                'roistat': 'nocookie',
-                'subject': subject,
-                'Имя': name,
-                'Телефон': phone,
-            }
-            if 'roistat_visit' in request.COOKIES:
-                data['roistat'] = request.COOKIES['roistat_visit']
-            response = requests.post(url, data=data, headers={'User-Agent': 'Reforgebot/1.0'}, verify=False)
+            # url = 'https://svarnik.ru/bx24/'
+            # data = {
+            #     'ikey': 'WqfnDx7soB1iVn3K1ybM',
+            #     'domain': request.META.get('HTTP_HOST'),
+            #     'roistat': 'nocookie',
+            #     'subject': subject,
+            #     'name': name,
+            #     'phone': phone,
+            # }
+            # if 'roistat_visit' in request.COOKIES:
+            #     data['roistat'] = request.COOKIES['roistat_visit']
+            # response = requests.post(url, data=data, headers={'User-Agent': 'Reforgebot/1.0'}, verify=False)
     leaders_of_selling = get_products_by_categories(ALL_CATEGORIES, 0, 99999, 'popularity', 'desc', 16)
     min_price_1 = get_categories_min_price([1])
     min_price_2 = get_categories_min_price([3])
