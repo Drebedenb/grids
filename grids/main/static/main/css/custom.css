@@ -380,7 +380,7 @@
 
 /*POKRASKA*/
 .color_item{
-    opacity: 0.8;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 /*BUTTON-CLOSE*/
@@ -539,6 +539,20 @@
 
 
 /* MEDIA QUERIES */
+
+
+/*DROPDOWN*/
+@media (max-width: 1400px) {
+    /*DROPDOWN*/
+.navbar .dropdown-menu_2.fade-up{ top:180%; left:38%;}
+.navbar .nav-item:hover .dropdown-menu_2{ transition: .1s; opacity:1; visibility:visible; top:97%; transform: rotateX(0deg); left:38%;}
+.dropdown-item_header{
+    text-transform: none;
+    font-weight: 500;
+    margin:10px 17px;
+}
+}
+
 @media (max-width: 1200px) {
      /*OTZIVI*/
 .arrow-prev{
@@ -564,6 +578,16 @@
 .star{
     width: 15px !important;
   }
+
+
+/*DROPDOWN*/
+.navbar .dropdown-menu_2.fade-up{ top:180%; left:38%;}
+.navbar .nav-item:hover .dropdown-menu_2{ transition: .1s; opacity:1; visibility:visible; top:97%; transform: rotateX(0deg); left:38%;}
+.dropdown-item_header{
+    text-transform: none;
+    font-weight: 500;
+    margin:10px 17px;
+}
 
   
 /*SNACKBAR*/
@@ -931,6 +955,7 @@
 .star{
     width: 10px !important;
   }
+
 
   .old_price{
     margin-top: -10px;

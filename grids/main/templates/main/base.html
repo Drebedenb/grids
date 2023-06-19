@@ -202,7 +202,6 @@
                 <div>      
             </div>
             <a href="https://api.whatsapp.com/send/?phone=7 4953745364" class="">{% include 'main/icons/whatsapp.html' with classes='svg-icon' %}</a>
-            <a class="text-hover-primary" href=" https://t.me/+74953745364">{% include 'main/icons/telegram.html' with classes='svg-icon' %}</a>
                 <a class="position-relative text-white text-hover-secondary"  href="{%url 'compare'%}">
                 {% include 'main/icons/chart.html' with classes='svg-icon' %}
                 <span id="amountOfCompare" class="badge d-flex justify-content-center align-items-center position-absolute top-0 end-50 p-2 fs-4 text-white bg-primary rounded-pill ls-sm"
@@ -237,7 +236,28 @@
                                                                 href="{%url 'projects'%}">Наши работы</a>
             </li>
             <li class="nav-item w-lg-auto w-50 m-0"><a class="nav-link p-0" href="{%url 'contacts'%}">Контакты </a></li>
-            <li class="nav-item w-lg-auto w-50 m-0"><a class="nav-link p-0" href="{%url 'sales'%}">Клиентам </a></li>
+            <li class="nav-item w-lg-auto w-50 m-0">
+                <div class="bg-black" id="mobileAccordionExample">
+                    <div class="accordion-item">
+                      
+                        <a class="nav-link p-0 text-decoration-none" href="{%url 'sales'%}"  data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                           Клиентам 
+                        </a>
+                      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#mobileAccordionExample">
+                       
+                            <ul class="d-flex fs-9 dropdown-menu_2">
+                                <div class="text-white ">
+                                {% for item in list_of_dropdown_sections_for_clients %}
+                                    <li><a class="dropdown-item text-hover-primary pt-5" href="{{ item.url }}">
+                                        {{ item.title }} </a></li>
+                                    {% endfor %}
+                            </div>
+                            </ul>
+                    </div>
+                  </div>
+                  </div>
+            </li>
+          
         </ul>
         <div class="row row-cols-lg-3 row-cols-2 gy-lg-20 gy-10 mt-5">
             <div class="col"><a
@@ -325,25 +345,6 @@
         <div class="pt-lg-20 pt-8 pb-lg-18 pb-10">
             <div class="row gy-lg-0 gy-16">
                 <div class="col-lg-2">
-                    <p class="fs-lg-10 fs-6 fw-medium ls-sm text-uppercase mb-lg-16 mb-8">Меню</p>
-                    <ul class="nav flex-lg-column fs-lg-10 fs-8 fw-medium ls-sm text-uppercase row-gap-lg-0 row-gap-5"
-                        style="--bs-nav-link-color: var(--bs-white); --bs-nav-link-hover-color: var(--bs-primary);">
-                        <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0" href="{%url 'index'%}">Главная</a>
-                        </li>
-                        <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0"
-                                                                            href="/металлические-решетки-на-окна">Каталог</a>
-                        </li>
-                        <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0"
-                                                                            href="{%url 'reviews'%}">Отзывы</a>
-                        </li>
-                        <li class="nav-item w-lg-auto w-50 mb-lg-15 m-0"><a class="nav-link p-0"
-                                                                            href="{%url 'projects'%}">Наши работы</a>
-                        </li>
-                        <li class="nav-item w-lg-auto w-50 m-0"><a class="nav-link p-0"
-                                                                   href="{%url 'contacts'%}">Контакты</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2">
                     <div class="row  h-100">
                     <div class="col-6 col-sm-6 col-lg-12">
                         <p class="mb-0 fs-7 fs-lg-8">Электронная почта:</p>
@@ -361,7 +362,7 @@
               
                     </div>
                 </div>  
-                <div class="col-lg-8">
+                <div class="col-lg-10">
                     <p class="fs-lg-10 fs-6 fw-medium ls-sm text-uppercase mb-lg-17-5 mb-10">Каталог</p>
                     <div class="row row-cols-lg-3 row-cols-2 gy-lg-20 gy-10">
                         <div class="col"><a
