@@ -527,10 +527,7 @@ def handle_post_request(request):
                               f'Покраска: {painting}\n' \
                               f'Количество: {amount}\n' \
                               f'Ожидаемая клиентом цена: {price}\n'
-            print(number, open_type, width, height, width_of_rod, painting, amount, installing)
         if phone != '' and phone != None and subject != '' and subject != None:
-            print('Sending the post')
-            print(name, phone, subject, additional_info)
             # Send data via HTTP POST request
             url = 'https://svarnik.ru/bx24/'
             data = {
