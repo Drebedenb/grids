@@ -545,7 +545,7 @@ def handle_post_request(request):
             if 'roistat_visit' in request.COOKIES:
                 data['roistat'] = request.COOKIES['roistat_visit']
             print('sending')
-            response = requests.post(url, data=data, headers={'User-Agent': 'Reforgebot/1.0'}, verify=False)
+            response = requests.post(url, data=data, headers={'User-Agent': 'Reforgebot/1.0'}, verify=True)
             print('redirected to index.html')
             return redirect('index')
 
