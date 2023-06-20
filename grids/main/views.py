@@ -532,7 +532,7 @@ def handle_post_request(request):
             url = 'https://svarnik.ru/bx24/'
             data = {
                 'ikey': 'WqfnDx7soB1iVn3K1ybM',
-                'domain': request.META.get('HTTP_HOST'),
+                'domain': 'оконные-решетки.рф',
                 'roistat': 'nocookie',
                 'subject': subject,
                 'name': name,
