@@ -55,15 +55,17 @@
                                 </div>
 
                             <h2 class="fs-8 fw-normal mb-0 pt-10 text-uppercase text-center">Рассчитаем стоимость по телефону </h2>
-                                        <form class="mt-10">
+                                        <form class="mt-10" method="post" action="{% url 'handle_post_request' %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="subject" value="Быстрый просмотр - рассчитать стоимость по телефону">
                                             <div class="row gx-10 gy-10">
                                                 <div class="col-12 col-md-6 ">
                                                     <input class="form-control  fs-7 text-center w-100"
-                                                           placeholder="Введите имя" type="text"/>
+                                                           placeholder="Введите имя" type="text" name="name"/>
                                                 </div>
                                                 <div class="col-12 col-md-6 ">
                                                     <input class="form-control  fs-7 text-center  w-100"
-                                                           placeholder="Введите номер" type="text" required/>
+                                                           placeholder="Введите номер" type="text" name="phone" required/>
                                                 </div>
                                                 <div class="col-12 col-md-6">
                                                     <button class="btn py-8 btn-primary mt-2 fs-8 rounded-3 w-100" type="submit">Получить расчет
@@ -88,7 +90,12 @@
                     <div class="col-lg-6 mt-0 mt-lg-10">
                         <h2 class="h5 fw-medium ls-sm text-uppercase d-none d-lg-block">Решетка на окно Эскиз №
                             <span id="product_quick_view-path_folder">0</span>-<span id="product_quick_view-path_file">0</span></h2>
-                        <form>
+                        <form  method="post" action="{% url 'handle_post_request' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="subject" value="Быстрый просмотр - заказ решетки">
+                            <input type="hidden" name="number_str" value="" id="form_number_of_grid">
+                            <input type="hidden" name="price" value="" id="quick_view_total_price">
+
                             <div class="row row-cols-lg-2 row-cols-1 gy-lg-10 gy-5">
                                 <div class="col">
                                     <div class="text-center border py-3 rounded-2">
@@ -104,16 +111,16 @@
                                 </div>
                                 <div class="col ">
                                     <input class="form-control text-center form-control-lg rounded-2 quick-view-width"
-                                           placeholder="100 см." type="text" oninput="changeWidth(this.value)"/>
+                                           placeholder="100 см." type="text" name="width" oninput="changeWidth(this.value)"/>
                                 </div>
                                 <div class="col">
                                     <input   class="form-control text-center form-control-lg rounded-2 quick-view-height"
-                                           placeholder="100 см." type="text" oninput="changeHeight(this.value)"/>
+                                           placeholder="100 см." type="text" name="height" oninput="changeHeight(this.value)"/>
                                 </div>
                                 <div class="col">
                                     <div class="d-flex align-items-center text-center  mb-lg-10  border rounded-2 py-3">
                                         <div class="form-check ms-5 me-0">
-                                            <input class="form-check-input  quick-view-isopen" type="checkbox" value="" id="flexCheckDefault" oninput="changeIsOpen(this.checked)">
+                                            <input class="form-check-input  quick-view-isopen" name="open_type" type="checkbox" id="flexCheckDefault" oninput="changeIsOpen(this.checked)">
                                           </div>
                                           <span class="fs-8 pt-1   text-muted ">Открывающаяся <span class="fs-7 ps-5 text-muted"> +1500 р. за шт.</span></span>
                                     </div>
@@ -121,22 +128,33 @@
                                     <div class="col">
                                         <div class="d-flex align-items-center text-center mb-lg-10  border rounded-2 py-3">
                                             <div class="form-check ms-5 me-0">
-                                                <input class="form-check-input  quick-view-nitro" type="checkbox" value="" oninput="changeIsNitro(this.checked)">
+                                                <input class="form-check-input  quick-view-nitro" name="painting" type="checkbox" oninput="changeIsNitro(this.checked)">
                                               </div>
                                               <span class="fs-8 pt-1   text-muted ">Нитро-эмаль <span class="fs-7 ps-5 text-muted"> +550 р. за м².</span></span>
                                         </div>
                                     </div>
                             </div>
-                        </form>
-                        <div class="mt-15-5">
-                            <div class="row row-cols-lg-2 row-cols-1 align-items-center gy-lg-0 gy-15">
-                                    <div class="col pt-10"><span class="fs-lg-10 fs-13 fw-semibold text-uppercase">Итого: <span id="quick-view-total">0</span>  руб</span></div>
-                                <div class="col">
-                                    <div class="btn btn-primary fs-9 rounded-2  w-100">Заказать в 1 клик
+                            <div class="col mb-10">
+                                <div class="row mx-0 border border-light h-100 rounded-2">
+                                    <div class="col-6  align-items-center d-flex">
+                                        <span class=" ps-4 ps-lg-0 fs-7 fs-lg-9 text-secondary ">Номер телефона</span>
                                     </div>
+                                    <div class="col-6 align-items-center d-flex">
+                                        <input class="form-control my-5  form-control-sm text-muted  rounded-2"  name="phone" placeholder="+7-(XXX)-XXX-XX-XX" type="text" required>
+                                    </div>
+                                </div>
+                          </div>
+                            <div class="mt-15-5">
+                                <div class="row row-cols-lg-2 row-cols-1 align-items-center gy-lg-0 gy-15">
+                                    <div class="col pt-10"><span class="fs-lg-10 fs-13 fw-semibold text-uppercase">Итого: <span id="quick-view-total">0</span>  руб</span></div>
+                                        <div class="col">
+                                            <button type="submit" class="btn btn-primary fs-9 rounded-2  w-100">Заказать в 1 клик
+                                            </button>
                                 </div>
                             </div>
                         </div>
+                        </form>
+
                         <div class="row row-cols-lg-2 mt-10  row-cols-2 mx-0">
                                 
                                     <div class="col border  p-7">

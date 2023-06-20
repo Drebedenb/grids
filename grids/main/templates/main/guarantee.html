@@ -161,27 +161,29 @@
                             напишите нам!</h2>
                         <p class="card-text lead fs-lg-12 fs-8 mb-lg-30 mb-17-5" style="max-width: 860px;">Хотите оставить ваш отзыв анонимно?<br>
                             Отправьте письмо <a class=" text-hover-primary text-decoration-none " href="mailto:info@stalpro.com">директору</a> напрямую.</p>
-                        <form>
+                        <form  method="post" action="{% url 'handle_post_request' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="subject" value="Форма брака в разделе Гарантия">
                             <div class="row row-cols-lg-4 row-cols-1 gy-lg-20 gy-10">
                                 <div class="col">
                                     <input class="fs-8 form-control form-control-xxl text-center w-100"
-                                           placeholder="Введите ваше имя" type="text"/>
+                                           placeholder="Введите ваше имя" type="text" name="name"/>
                                 </div>
                                 <div class="col">
                                     <input class="fs-8 form-control form-control-xxl text-center"
-                                           placeholder="Введите номер телефона"  type="tel"  required/>
+                                           placeholder="Введите номер телефона"  type="tel"  required name="phone"/>
                                 </div>
-                                <div class="col">
-                                    <input class="fs-8 form-control form-control-xxl text-center"
-                                           placeholder="Укажите номер договора"  type="tel"  required/>
-                                </div>
+<!--                                <div class="col">-->
+<!--                                    <input class="fs-8 form-control form-control-xxl text-center"-->
+<!--                                           placeholder="Укажите номер договора"  type="tel"  required/>-->
+<!--                                </div>-->
                                 <div class="col order-last ">
                                     <button class="fs-8 btn btn-primary btn-xxl w-100 " type="submit">Оставить отзыв
                                     </button>
                                 </div>
 
                                 <div class="col-lg-9 mx-0 mt-10 mt-lg-20 ">
-                                    <textarea class="form-control rounded-3" id="exampleFormControlTextarea1" placeholder="Опишите в чем заключается брак" rows="3"></textarea>
+                                    <textarea class="form-control rounded-3" id="exampleFormControlTextarea1" placeholder="Напишите номер договора и опишите в чем заключается брак" rows="3" name="additional_info"></textarea>
                                   </div>
                             </div>
                            

@@ -13,15 +13,16 @@
                             <div class="col bg-white rounded-3">   
                                 <h2 class="fs-5 fs-lg-20 fs-xl-13 fw-medium mb-0 pt-3 pt-lg-10  text-primary mt-0 mt-lg-15 text-center">Внимание! Расчет по акции
                                     + скидка до 30% !</h2>
-                                <form class=" mt-5 mt-lg-10">
-                               
+                               <form method="post" action="{% url 'handle_post_request' %}" class=" mt-5 mt-lg-10">
+                                {% csrf_token %}
+                                <input type="hidden" name="subject" value="Всплывающее окно о скидке">
                                 <div class="form-check text-center  pt-2 pb-2 ps-0 mb-0 mb-lg-10">
                                     <label class="form-check-label fs-5 fs-lg-15 fs-xl-8 text-muted" >Успейте закрепить скидку за номером!</label>
                                 </div>
                      
                                   
                                         <input class="form-control fs-5 fs-lg-10 py-3  py-sm-5 py-lg-15 py-xl-10 py-xxl-7  text-center  mb-2 mb-lg-10"
-                                               placeholder="Укажите ваш телефон" type="text" required/>
+                                               placeholder="Укажите ваш телефон" type="text" name="phone" required/>
                                  
                                   
                                         <button class="btn  btn-primary fs-5 fs-lg-10 py-3  py-sm-5 py-lg-15 py-xl-10 py-xxl-7   mt-2   rounded-2 w-100 mb-2 mb-lg-10" type="submit" >Получить расчет

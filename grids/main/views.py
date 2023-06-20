@@ -2,7 +2,7 @@ import re
 import os
 import requests
 
-
+from django.shortcuts import redirect
 from django.db.models import Min, Max, F
 from django.db.models.functions import Round
 from django.http import HttpResponseNotFound
@@ -12,13 +12,13 @@ from django.core.cache import cache
 from urllib.parse import urlencode
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
-class MockDjangoRedis:
-    def get(self, arg):
-        return None
-
-    def set(arg, bla, ble, blu):
-        return arg
-cache = MockDjangoRedis()
+# class MockDjangoRedis:
+#     def get(self, arg):
+#         return None
+#
+#     def set(arg, bla, ble, blu):
+#         return arg
+# cache = MockDjangoRedis()
 
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 img_dir = os.path.join(base_dir, 'main/static/main/img/')
@@ -499,31 +499,56 @@ count = {
                      count_products_by_category(7) + count_products_by_category(8)
 }
 
+def get_POST_parameter(name_of_parameter, request):
+    name_getter = request.POST.get(name_of_parameter)
+    return name_getter if name_getter else ''
+
+def handle_post_request(request):
+    if request.method == 'POST':
+        subject = request.POST.get('subject')
+        phone = request.POST.get('phone')
+        name = get_POST_parameter('name', request)
+        additional_info = get_POST_parameter('additional_info', request)
+        if 'заказ решетки' in subject:
+            number = get_POST_parameter('number_str', request)
+            open_type = 'Открывающаяся' if 'on' in get_POST_parameter('open_type', request) else get_POST_parameter('open_type', request)
+            width = get_POST_parameter('width', request)
+            height = get_POST_parameter('height', request)
+            width_of_rod = get_POST_parameter('width_of_rod', request)
+            painting = 'Нитро-эмаль' if 'on' in get_POST_parameter('painting', request) else get_POST_parameter('painting', request)
+            amount = get_POST_parameter('amount', request)
+            installing = get_POST_parameter('installing', request)
+            price = get_POST_parameter('price', request)
+            additional_info = f'Решетка на заказ: {number} \n' \
+                              f'Длина решетки в см: {width}\n' \
+                              f'Высота решетки в см: {height}\n' \
+                              f'Ширина прутка: {width_of_rod}\n' \
+                              f'Тип открывания: {open_type}\n' \
+                              f'Покраска: {painting}\n' \
+                              f'Количество: {amount}\n' \
+                              f'Ожидаемая клиентом цена: {price}\n'
+            print(number, open_type, width, height, width_of_rod, painting, amount, installing)
+        if phone != '' and phone != None and subject != '' and subject != None:
+            print('Sending the post')
+            print(name, phone, subject, additional_info)
+            # Send data via HTTP POST request
+            url = 'https://svarnik.ru/bx24/'
+            data = {
+                'ikey': 'WqfnDx7soB1iVn3K1ybM',
+                'domain': request.META.get('HTTP_HOST'),
+                'roistat': 'nocookie',
+                'subject': subject,
+                'name': name,
+                'phone': phone,
+                'additional_info': additional_info,
+            }
+            if 'roistat_visit' in request.COOKIES:
+                data['roistat'] = request.COOKIES['roistat_visit']
+            response = requests.post(url, data=data, headers={'User-Agent': 'Reforgebot/1.0'}, verify=False)
+            return redirect('index')
+
 
 def index(request):
-    if request.method == 'POST':
-        # Get form data
-        name = request.POST.get('name')
-        phone = request.POST.get('phone')
-        subject = request.POST.get('subject')
-        if phone != '' and phone != None and subject != '' and subject != None:
-            print(name, phone, subject)
-            print('Send the post')
-
-            # Send data via HTTP POST request
-
-            # url = 'https://svarnik.ru/bx24/'
-            # data = {
-            #     'ikey': 'WqfnDx7soB1iVn3K1ybM',
-            #     'domain': request.META.get('HTTP_HOST'),
-            #     'roistat': 'nocookie',
-            #     'subject': subject,
-            #     'name': name,
-            #     'phone': phone,
-            # }
-            # if 'roistat_visit' in request.COOKIES:
-            #     data['roistat'] = request.COOKIES['roistat_visit']
-            # response = requests.post(url, data=data, headers={'User-Agent': 'Reforgebot/1.0'}, verify=False)
     leaders_of_selling = get_products_by_categories(ALL_CATEGORIES, 0, 99999, 'popularity', 'desc', 16)
     min_price_1 = get_categories_min_price([1])
     min_price_2 = get_categories_min_price([3])

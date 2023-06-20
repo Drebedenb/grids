@@ -221,7 +221,7 @@
                                                 {% endif %}
                                             </div>
                                             <div class="position-absolute top-0 end-0 z-2">
-                                                <span id="form-percent" class="fs-8 ms-2 py-0 bg-danger text-white px-2 rounded-2">{{product.0.percent}}%</span>
+                                                <span id="form-percent" class="fs-8 ms-2 py-0 bg-danger text-white px-2 rounded-2">-{{product.0.percent}}%</span>
                                                 <a class="text-muted text-hover-black">{% include 'main/icons/heart.html' with classes="svg-icon"%}</a>
                                             </div>
                                     {% endwith %}
@@ -267,7 +267,7 @@
                                             <div class="row row-cols-2 row-cols-lg-1 mt-1 gy-20 ">
                                                 {% for item in list_of_open_types_for_calculator %}
                                                 <div class="mt-10">
-                                                    <input class="btn-check open-type-price" id="product-type-{{item.name}}" name="product-type" value="Без открывания" type="radio" onclick="changeForm()">
+                                                    <input class="btn-check open-type-price" id="product-type-{{item.name}}" name="open_type" value="{{item.description}}" type="radio" onclick="changeForm()">
                                                     <label class="btn btn-outline-black  d-lg-flex  w-100 h-100 rounded-2 py-5 px-0" for="product-type-{{item.name}}">
                                                             <div class="col-12 col-lg-4">
                                                               <img
@@ -360,13 +360,18 @@
                                             </div>
                                         </div>
 
-                                        <form class=" mb-10">
+                                        <form class=" mb-10"  method="post" action="{% url 'handle_post_request' %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="subject" value="Страница решетки - заказ решетки">
+                                            <input type="hidden" name="number_str" value="{{product.0.path_folder}}-{{product.0.path_file}}">
+                                            <input type="hidden" name="price" id="price_for_post_request" value="">
+                                            <input type="hidden" name="open_type" id="open_type_for_post_request" value="">
 
                                             <div class="row row-cols-lg-2 row-cols-1 gy-lg-10 gy-5">
 
 
                                                 <div class="col">
-                                                    <select class="form-select form-select-lg text-muted rounded-2" id="width_of_rod" onchange="changeForm()">
+                                                    <select class="form-select form-select-lg text-muted rounded-2" name="width_of_rod" id="width_of_rod" onchange="changeForm()">
                                                         <option>Выберите ширину прутка</option>
                                                         {% for item in product %}
                                                             <option id="{{item.name}}" class="width-option">{{ item.name }} - {{ item.price_b2c }} руб.</option>
@@ -374,7 +379,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="col">
-                                                    <select class="form-select text-muted form-select-lg rounded-2" id="painting" onchange="changeForm()">
+                                                    <select class="form-select text-muted form-select-lg rounded-2" name="painting" id="painting" onchange="changeForm()">
                                                         <option selected>Без покраски</option>
                                                         <option>покраска (эмаль НЦ) - 550 руб</option>
                                                         <option>покраска (эмаль ХВ) - 650 руб</option>
@@ -390,7 +395,7 @@
                                                             <span class="ps-4 ps-lg-0 fs-7 fs-lg-9  text-secondary">ширина, см</span>
                                                         </div>
                                                         <div class="col-6 align-items-center d-flex">
-                                                            <input  class="form-control my-5 form-control-sm text-muted  rounded-2" id="width" oninput="changeForm()" placeholder="100 см." type="text"">
+                                                            <input  class="form-control my-5 form-control-sm text-muted  rounded-2"  name="width" id="width" oninput="changeForm()" placeholder="100 см." type="text"">
                                                         </div>                                                     
                                                     </div>
                                                
@@ -401,7 +406,7 @@
                                                             <span class="ps-4 ps-lg-0 fs-7 fs-lg-9 text-secondary">высота, см</span>
                                                         </div>
                                                         <div class="col-6 align-items-center d-flex">
-                                                            <input  class="form-control my-5  form-control-sm text-muted  rounded-2" id="height" oninput="changeForm()" placeholder="100 см." type="text"">
+                                                            <input  class="form-control my-5  form-control-sm text-muted  rounded-2" name="height" id="height" oninput="changeForm()" placeholder="100 см." type="text"">
                                                         </div>                                                     
                                                     </div>
                                                
@@ -412,32 +417,46 @@
                                                             <span class=" ps-4 ps-lg-0 fs-7 fs-lg-9 text-secondary ">количество</span>
                                                         </div>
                                                         <div class="col-6 align-items-center d-flex">
-                                                            <input class="form-control my-5  form-control-sm text-muted  rounded-2" id="amount" oninput="changeForm()" placeholder="1" type="text">
+                                                            <input class="form-control my-5  form-control-sm text-muted  rounded-2" name="amount" id="amount" oninput="changeForm()" placeholder="1" type="text">
                                                         </div>                                                     
                                                     </div>
                                                
                                                 </div>
                                                 <div class="col">
-                                                    <select class="form-select  text-muted form-select-lg rounded-2" id="installing" onchange="changeForm()">
+                                                    <select class="form-select  text-muted form-select-lg rounded-2" name="installing" id="installing" onchange="changeForm()">
                                                         <option selected>без установки</option>
                                                         <option>установка - 500 руб</option>
                                                     </select>
                                                 </div>
                                                 
                                             </div>
-                                        </form>
-                                       
-                                            <div class="row row-cols-lg-2 row-cols-1 align-items-center  gy-lg-0 gy-15">
+                                            <div class="col mt-10">
+                                                <div class="row mx-0 border border-light h-100 rounded-2">
+                                                    <div class="col-6  align-items-center d-flex">
+                                                        <span class=" ps-4 ps-lg-0 fs-7 fs-lg-9 text-secondary ">Ваш номер телефона</span>
+                                                    </div>
+                                                    <div class="col-6 align-items-center d-flex">
+                                                        <input class="form-control my-5  form-control-sm text-muted  rounded-2" name="phone"  placeholder="+7-(XXX)-XXX-XX-XX" type="text" required>
+                                                    </div>
+                                                </div>
+                                          </div>
+                                            <div class="row row-cols-lg-2 row-cols-1 align-items-center  gy-lg-0 gy-15 mt-10">
                                                 <div class="col">
-                                               
+
                                                     <span class="fs-lg-14 fs-15  fw-semibold text-uppercase">итого: </span>
                                                     <span id="total" class="fs-lg-14 fs-15 fw-semibold text-uppercase">0</span>
-                                                  
+
                                                 </div>
 
-                                                <div class="col"><a class="btn btn-primary btn-xl w-100" type="button" id="buy-button-on-{{product.0.path_folder}}-{{ product.0.path_file }}" onclick="buyViewHandler(this.id)">Заказать
-                                                    в 1 клик</a></div>
+<!--                                                <div class="col"><a class="btn btn-primary btn-xl w-100" type="button" id="buy-button-on-{{product.0.path_folder}}-{{ product.0.path_file }}" onclick="buyViewHandler(this.id)">Заказать-->
+<!--                                                    в 1 клик</a></div>-->
+
+                                                <div class="col"><button type="submit" class="btn btn-primary btn-xl w-100" type="button">Заказать
+                                                    в 1 клик</button></div>
                                             </div>
+                                        </form>
+                                       
+
 
                                     {% include 'main/components/buy_view.html'%}
 
@@ -492,8 +511,8 @@
                                         <div class="tab-pane fade show active" id="product-characteristics-tab-pane" role="tabpanel" tabindex="0">
                                             <div class="fs-7 fs-sm-8 fs-md-10 ">
                                                 {% include text_for_product %}
-                                                <p>Если Вам нужна надежная и стильная решетка на окно недорого, Вы можете оставить <span class="text-danger" data-bs-toggle="modal"                                     data-bs-target="#modal-consultation" type="button">заявку</span>, и наш менеджер перезвонит Вам для консультации и записи на <span class="text-danger" data-bs-toggle="modal"
-                                                    data-bs-target="#modal-measurement" type="button">бесплатный замер</span>. Мы предлагаем выгодные цены и гарантируем качество наших изделий. Защитите свой дом с помощью кованых решеток на окна и наслаждайтесь безопасностью и комфортом!</p>                
+                                                <p>Если вам нужна надежная и стильная решетка на окно недорого, вы можете оставить <span class="text-danger" data-bs-toggle="modal"                                     data-bs-target="#modal-consultation" type="button">заявку</span>, и наш менеджер перезвонит вам для консультации и записи на <span class="text-danger" data-bs-toggle="modal"
+                                                    data-bs-target="#modal-measurement" type="button">бесплатный замер</span>. Мы предлагаем выгодные цены и гарантируем качество наших изделий. Защитите свой дом с помощью решеток на окна и наслаждайтесь безопасностью и комфортом!</p>
                                                 </div>
                                             <div class="row">
                                                 <div class="col-12 col-lg-6">
@@ -1187,6 +1206,7 @@
         let optionsOfOpenTypes = document.getElementsByClassName("open-type-price")
         for (let i = 0; i < optionsOfOpenTypes.length; i++) {
             if (optionsOfOpenTypes[i].checked) {
+                changeInvisibleOpenTypeInput(optionsOfOpenTypes[i].value)
                 let type = optionsOfOpenTypes[i].id.split("-")[2]
                 if (type == "arch") {
                     return total * 1.3
@@ -1227,6 +1247,7 @@
         changeArchPercentToPrice(total * 0.3)
         total = Math.round(getFinalPriceWithOpenType(total))
         document.getElementById("total").textContent = total + " руб.";
+        document.getElementById("price_for_post_request").value = total; //for POST requests
     }
     const optionsOfWidth = document.getElementsByClassName("width-option")
     const firstValueInOptions = optionsOfWidth[0].id
@@ -1236,6 +1257,11 @@
     changeInputValueById("height", "100")
     changeInputValueById("amount", "1")
     changeForm()
+
+    //for POST requests
+    function changeInvisibleOpenTypeInput(value) {
+        document.getElementById("open_type_for_post_request").value = value
+    }
 
 </script>
 {% endblock %}

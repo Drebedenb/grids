@@ -742,6 +742,7 @@ try {
         const numberOfGrid = id.match(/\d+/gm)[1]
         document.getElementById('buy_view_path_folder').textContent = folderOfGrid;
         document.getElementById('buy_view_path_file').textContent = numberOfGrid;
+        document.getElementById('buy_view_number_of_grid').value = folderOfGrid + '-' + numberOfGrid; // for POST requests
         buyViewModal.show();
     }
 
@@ -762,6 +763,7 @@ try {
         const price = id.match(/\d+/gm)[2]
         const salePrice = id.match(/\d+/gm)[3]
         changePriceForSquare(price)
+        changeInputByID('form_number_of_grid', `${pathFolder}-${pathFile}`) //изменить невидимый инпут для отправки POST запроса
         changeQuickViewWindow(pathFolder, pathFile, price, salePrice)
         changePictures(pathFolder, pathFile)
         quickViewModal.show(price, salePrice);
@@ -775,6 +777,9 @@ try {
     }
     function changeSpanTextById(spanId, value) {
         document.getElementById(spanId).textContent = value
+    }
+    function changeInputByID(id, value) { //нужен здесь для отправки POST запроса
+        document.getElementById(id).value = value
     }
     function changeWidth(value) {
         width = value;
@@ -820,4 +825,5 @@ try {
             total += 550
         }
         changeSpanTextById('quick-view-total', Math.round(total))
+        changeInputByID('quick_view_total_price', Math.round(total)) //изменить невидимый инпут для отправки POST запроса
     }
