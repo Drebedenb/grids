@@ -12,13 +12,13 @@ from django.core.cache import cache
 from urllib.parse import urlencode
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
-# class MockDjangoRedis:
-#     def get(self, arg):
-#         return None
-#
-#     def set(arg, bla, ble, blu):
-#         return arg
-# cache = MockDjangoRedis()
+class MockDjangoRedis:
+    def get(self, arg):
+        return None
+
+    def set(arg, bla, ble, blu):
+        return arg
+cache = MockDjangoRedis()
 
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 img_dir = os.path.join(base_dir, 'main/static/main/img/')
@@ -535,17 +535,15 @@ def handle_post_request(request):
             url = 'https://svarnik.ru/bx24/'
             data = {
                 'ikey': 'WqfnDx7soB1iVn3K1ybM',
-                'domain': 'оконные-решетки.рф',
+                'domain': 'оконные-решётки.рф',
                 'roistat': 'nocookie',
                 'subject': subject,
                 'name': name,
                 'phone': phone,
                 'additional_info': additional_info,
             }
-            if 'roistat_visit' in request.COOKIES:
-                data['roistat'] = request.COOKIES['roistat_visit']
             print('sending')
-            response = requests.post(url, data=data, headers={'User-Agent': 'Reforgebot/1.0'}, verify=True)
+            response = requests.post(url, data=data, headers={'User-Agent': 'Reforgebot/1.0'})
             print('redirected to index.html')
             return redirect('index')
 
