@@ -506,20 +506,6 @@ def get_POST_parameter(name_of_parameter, request):
 
 def handle_post_request(request):
     if request.method == 'POST':
-
-        print('POST request')
-        url = 'https://dummyjson.com/users/add'
-        headers = {'Content-Type': 'application/json'}
-        data = {
-            'firstName': 'Muhammad',
-            'lastName': 'Ovi',
-            'age': 250,
-            # other user data
-        }
-        response = requests.post(url, headers=headers, data=json.dumps(data))
-        print(response.json())
-
-        print('new post request')
         subject = request.POST.get('subject')
         phone = request.POST.get('phone')
         name = get_POST_parameter('name', request)
@@ -545,6 +531,7 @@ def handle_post_request(request):
         if phone != '' and phone != None and subject != '' and subject != None:
             # Send data via HTTP POST request
             url = 'https://svarnik.ru/bx24/'
+            headers = {'User-Agent': 'Reforgebot/1.0'}
             data = {
                 'ikey': 'WqfnDx7soB1iVn3K1ybM',
                 'domain': 'оконные-решётки.рф',
@@ -554,7 +541,12 @@ def handle_post_request(request):
                 'phone': phone,
                 'additional_info': additional_info,
             }
-            # response = requests.post(url, data=data, headers={'User-Agent': 'Reforgebot/1.0'})
+            try:
+                response = requests.post(url, headers=headers, data=data)
+                print(response)
+            except Exception as e:
+                print(e)
+                pass
             return redirect('index')
 
 
