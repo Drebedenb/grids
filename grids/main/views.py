@@ -543,9 +543,7 @@ def handle_post_request(request):
             }
             try:
                 response = requests.post(url, headers=headers, data=data)
-                print(response)
             except Exception as e:
-                print(e)
                 pass
             return redirect('index')
 
