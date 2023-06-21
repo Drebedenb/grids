@@ -360,7 +360,7 @@
                                             </div>
                                         </div>
 
-                                        <form class=" mb-10"  method="post" action="{% url 'handle_post_request' %}">
+                                        <form class=" mb-10"  method="post" >
                                             {% csrf_token %}
                                             <input type="hidden" name="subject" value="Страница решетки - заказ решетки">
                                             <input type="hidden" name="number_str" value="{{product.0.path_folder}}-{{product.0.path_file}}">
