@@ -1,6 +1,7 @@
 import re
 import os
 import requests
+import json
 
 from django.shortcuts import redirect
 from django.db.models import Min, Max, F
@@ -505,6 +506,20 @@ def get_POST_parameter(name_of_parameter, request):
 
 def handle_post_request(request):
     if request.method == 'POST':
+
+        print('POST request')
+        url = 'https://dummyjson.com/users/add'
+        headers = {'Content-Type': 'application/json'}
+        data = {
+            'firstName': 'Muhammad',
+            'lastName': 'Ovi',
+            'age': 250,
+            # other user data
+        }
+        response = requests.post(url, headers=headers, data=json.dumps(data))
+        print(response.json())
+
+        print('new post request')
         subject = request.POST.get('subject')
         phone = request.POST.get('phone')
         name = get_POST_parameter('name', request)
@@ -539,7 +554,7 @@ def handle_post_request(request):
                 'phone': phone,
                 'additional_info': additional_info,
             }
-            response = requests.post(url, data=data, headers={'User-Agent': 'Reforgebot/1.0'})
+            # response = requests.post(url, data=data, headers={'User-Agent': 'Reforgebot/1.0'})
             return redirect('index')
 
 
@@ -570,7 +585,6 @@ def index(request):
     }
     return render(request, 'main/index.html', context)
 
-# test
 def catalog_category(request, category_name):
     if category_name not in russian_categories:
         return HttpResponseNotFound("Page NOT found")
