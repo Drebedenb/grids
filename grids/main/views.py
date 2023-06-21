@@ -568,7 +568,7 @@ def index(request):
     }
     return render(request, 'main/index.html', context)
 
-
+# test
 def catalog_category(request, category_name):
     if category_name not in russian_categories:
         return HttpResponseNotFound("Page NOT found")
