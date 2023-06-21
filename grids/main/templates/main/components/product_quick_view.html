@@ -55,7 +55,7 @@
                                 </div>
 
                             <h2 class="fs-8 fw-normal mb-0 pt-10 text-uppercase text-center">Рассчитаем стоимость по телефону </h2>
-                                        <form class="mt-10" method="post" action="{% url 'handle_post_request' %}">
+                                        <form class="mt-10" method="post" >
                                             {% csrf_token %}
                                             <input type="hidden" name="subject" value="Быстрый просмотр - рассчитать стоимость по телефону">
                                             <div class="row gx-10 gy-10">
@@ -90,7 +90,7 @@
                     <div class="col-lg-6 mt-0 mt-lg-10">
                         <h2 class="h5 fw-medium ls-sm text-uppercase d-none d-lg-block">Решетка на окно Эскиз №
                             <span id="product_quick_view-path_folder">0</span>-<span id="product_quick_view-path_file">0</span></h2>
-                        <form  method="post" action="{% url 'handle_post_request' %}">
+                        <form  method="post" >
                             {% csrf_token %}
                             <input type="hidden" name="subject" value="Быстрый просмотр - заказ решетки">
                             <input type="hidden" name="number_str" value="" id="form_number_of_grid">

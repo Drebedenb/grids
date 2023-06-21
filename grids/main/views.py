@@ -544,6 +544,8 @@ def handle_post_request(request):
 
 
 def index(request):
+    if request.method == 'POST':
+        handle_post_request(request)
     leaders_of_selling = get_products_by_categories(ALL_CATEGORIES, 0, 99999, 'popularity', 'desc', 16)
     min_price_1 = get_categories_min_price([1])
     min_price_2 = get_categories_min_price([3])

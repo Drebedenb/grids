@@ -99,7 +99,7 @@
                     <div class="col-lg-3">
                         <div class="left_sidebar">
                             <h2 class="h2 fw-medium ls-sm text-uppercase mb-lg-5 mb-3 fs-7 fs-lg-10 text-center">Обратная связь</h2>
-                                <form class="mt-10" method="post" action="{% url 'handle_post_request' %}">
+                                <form class="mt-10" method="post" >
                                     {% csrf_token %}
                                     <input type="hidden" name="subject" value="Форма обратной связи в разделе 'Контакты' ">
                                           

@@ -14,7 +14,7 @@
                 <p class="card-text lead fs-lg-12 fs-8 mb-lg-30 mb-17-5" style="max-width: 860px;">
                     Специалист приедет в удобное для вас время, проконсультирует, поможет с подбором
                     решеток, замерит и рассчитает стоимость</p>
-                <form method="post" action="{% url 'handle_post_request' %}">
+                <form method="post">
                      {% csrf_token %}
                     <input type="hidden" name="subject" value="Форма замера сверху сайта">
                     <div class="row row-cols-lg-3 row-cols-1 gy-lg-20 gx-10 gy-10">
