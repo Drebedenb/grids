@@ -535,7 +535,7 @@ def handle_post_request(request):
         headers = {'User-Agent': 'Reforgebot/1.0'}
         data = {
             'ikey': 'WqfnDx7soB1iVn3K1ybM',
-            'domain': '',
+            'domain': 'оконные-решётки.рф',
             'roistat': 'nocookie',
             'subject': subject,
             'name': name,
