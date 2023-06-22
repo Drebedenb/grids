@@ -847,6 +847,11 @@
 }
 
 
+.thanks_item{
+    text-align: center !important;
+}
+
+
  /*    .btn_catalog{
         display: block;
         width: 100%;

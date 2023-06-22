@@ -418,7 +418,7 @@
                                 <!--                       <div class="text-center mt-lg-20 mt-10"><a class="btn view_more btn-outline-light btn-lg btn-wide-lg" href="#">Показать еще  </a></div>-->
                                 <nav class="mt-lg-20 mt-20">
                                     {% if products.has_other_pages %}
-                                    <ol class="pagination justify-content-center overflow-x-auto mb-0">
+                                    <ol class="pagination justify-content-lg-center fs-6 overflow-x-auto mb-0 ">
                                         {% if products.has_previous %}
                                         <li class="page-item previous"><a class="page-link"
                                                 href="{{ prev_url }}">Назад</a>
@@ -498,7 +498,7 @@
                             <!--  NEPRERIVNO RABOTAEM C 2010 -->
                             <section class="mb-10">
                                 <div class=" mb-20 ">
-                                    <div class=" fs-lg-11 fs-9 fw-light">
+                                    <div class=" fs-lg-11 fs-8 fw-light">
                                         {% include text_for_category %}
                                     </div>
                                 </div>
@@ -676,33 +676,33 @@
                                     <div class="row g-10">
                                         <div class="col-6">
                                             <div class="card">
-                                                <img src="{% static 'main/img/painting/card_color1.webp' %}" class="card-img-top" alt="Любой цвет решетки" title="Любой цвет решетки">
-                                                <div class="card-body py-6 px-0">
-                                                    <p class="fs-6 fs-lg-8 card-text text-center text-muted">Нитроэмаль</p>
+                                                <a href="{%url 'pokraska'%}"><img src="{% static 'main/img/painting/card_color1.webp' %}" class="card-img-top" alt="Любой цвет решетки" title="Любой цвет решетки"></a>
+                                                <div class="card-body py-6 px-0 text-center">
+                                                    <a href="{%url 'pokraska'%}" class="fs-7 fs-lg-8 card-text  text-muted text-decoration-none">Нитроэмаль</a>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="card">
-                                                <img src="{% static 'main/img/painting/card_color2.webp' %}" class="card-img-top" alt="Решётки любого цвета" title="Решётки любого цвета">
-                                                <div class="card-body py-6 px-0">
-                                                    <p class="fs-6 fs-lg-8 card-text text-center text-muted">Патина</p>
+                                                <a href="{%url 'pokraska'%}"><img src="{% static 'main/img/painting/card_color2.webp' %}" class="card-img-top" alt="Решётки любого цвета" title="Решётки любого цвета"></a>
+                                                <div class="card-body py-6 px-0 text-center">
+                                                    <a href="{%url 'pokraska'%}" class="fs-7 fs-lg-8 card-text text-decoration-none  text-muted">Патина</a>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="card">
-                                                <img src="{% static 'main/img/painting/card_color3.webp' %}" class="card-img-top" alt="Клиент выбирает цвет решетки" title="Клиент выбирает цвет решетки">
-                                                <div class="card-body py-6 px-0">
-                                                    <p class="fs-6 fs-lg-8 card-text text-center text-muted">Краска Hammerite</p>
+                                                <a href="{%url 'pokraska'%}"><img src="{% static 'main/img/painting/card_color3.webp' %}" class="card-img-top" alt="Клиент выбирает цвет решетки" title="Клиент выбирает цвет решетки"></a>
+                                                <div class="card-body py-6 px-0 text-center">
+                                                    <a href="{%url 'pokraska'%}" class="fs-7 fs-lg-8 card-text text-decoration-none  text-muted">Краска Hammerite</a>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="card">
-                                                <img src="{% static 'main/img/painting/card_color4.webp' %}" class="card-img-top" alt="Красивый цвет решетки">
-                                                <div class="card-body py-6 px-0">
-                                                    <p class="fs-6 fs-lg-8 card-text text-center text-muted">Порошковое напыление</p>
+                                                <a href="{%url 'pokraska'%}"> <img src="{% static 'main/img/painting/card_color4.webp' %}" class="card-img-top" alt="Красивый цвет решетки" title="Красивый цвет решетки"></a>
+                                                <div class="card-body py-6 px-0 text-center">
+                                                     <a href="{%url 'pokraska'%}" class="fs-7 fs-lg-8 card-text text-decoration-none  text-muted">Порошковое напыление</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -715,8 +715,8 @@
                            </section>
 
                            <section>
-                            <h4>Заказать установку решеток </h4>
-                            <p>В компании «Оконные решётки» можно купить
+                            <h4>Заказать установку решеток </h2>
+                            <p class="fs-lg-11 fw-light fs-8">В компании «Оконные решётки» можно купить
                                 типовую решетку, выбрав размер, профиль. Для определения совместимости ограждения с проемом стоит вызвать
                                 мастера для проведения замеров и осмотра откосов. Для установки может потребоваться демонтаж облицовки,
                                 сборка нестандартной конструкции, поиск усиленного крепежа.</p>
