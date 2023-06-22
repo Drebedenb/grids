@@ -11,6 +11,7 @@ urlpatterns = [
         "robots.txt",
         TemplateView.as_view(template_name="main/robots.txt", content_type="text/plain"),
     ),
+    # path('handle-post-request/', handle_post_request, name='handle_post_request'),
     path('<str:category_name>', catalog_category, name='catalog'),
     path('контакты/', contacts, name='contacts'),
     path('решетка-на-окно/<int:category>-<int:file_number>', product, name='product'),
@@ -28,4 +29,5 @@ urlpatterns = [
     path('o-kompanii/', about, name="about"),
     path('pokraska/', color, name="pokraska"),
     path('skchema-zakaza/', order_scheme, name="order_scheme"),
+    path('thanks/', thanks, name="thanks"),
 ]

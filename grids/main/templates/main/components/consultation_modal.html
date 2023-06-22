@@ -14,7 +14,7 @@
                 <p class="card-text lead fs-lg-12 fs-8 mb-lg-30 mb-17-5" style="max-width: 860px;">Оставьте
                     заявку на бесплатную консультацию специалиста. Подберем несколько вариантов решеток,
                     рассчитаем примерную стоимость</p>
-                <form method="post">
+                <form method="post" >
                     {% csrf_token %}
                     <input type="hidden" name="subject" value="Форма консультации сверху сайта">
                     <div class="row row-cols-lg-3 row-cols-1 gx-10  gy-lg-20 gy-10">
@@ -33,7 +33,7 @@
                         </div>
                         <div class="col-lg-12 order-lg-4 order-3">
                             <div class="form-check fs-lg-8 fs-7 mb-0">
-                                <input class="form-check-input" id="consultation-personal" name="personal"
+                                <input class="form-check-input" id="consultation-personal"
                                        autocomplete="off" type="checkbox" checked="checked" required/>
                                 <label class="form-check-label" for="consultation-personal">Даю согласие на
                                     обработку персональных данных</label>

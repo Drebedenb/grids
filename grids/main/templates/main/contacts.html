@@ -99,21 +99,23 @@
                     <div class="col-lg-3">
                         <div class="left_sidebar">
                             <h2 class="h2 fw-medium ls-sm text-uppercase mb-lg-5 mb-3 fs-7 fs-lg-10 text-center">Обратная связь</h2>
-                            <form class="mt-10">
+                                <form class="mt-10" method="post" >
+                                    {% csrf_token %}
+                                    <input type="hidden" name="subject" value="Форма обратной связи в разделе 'Контакты' ">
                                           
                                         <input class="form-control fs-8 fw-medium text-muted ls-sm py-lg-8  text-center w-100 mb-10 rounded-3"
-                                               placeholder="Введите ваше имя" type="text"/>
+                                               placeholder="Введите ваше имя" name="name" type="text"/>
                                  
                                   
                                         <input class="form-control fs-8 fw-medium text-muted ls-sm py-lg-8  text-center w-100 mb-10 rounded-3"
-                                               placeholder="Укажите ваш телефон *" type="text" required/>
+                                               placeholder="Укажите ваш телефон *" name="phone" type="text" required/>
 
-                                               <input class="form-control fs-8 fw-medium text-muted ls-sm py-lg-8  text-center w-100 mb-10 rounded-3"
-                                               placeholder="Укажите ваш e-mail" type="text"/>
+<!--                                               <input class="form-control fs-8 fw-medium text-muted ls-sm py-lg-8  text-center w-100 mb-10 rounded-3"-->
+<!--                                               placeholder="Укажите ваш e-mail" type="text"/>-->
                                  
                                   
                                         <input class="form-control fs-8 fw-medium text-muted ls-sm py-lg-20  text-center w-100 mb-10 rounded-3"
-                                               placeholder="ваше сообщение" type="text"/>
+                                               placeholder="ваше сообщение" type="text" name="additional_info"/>
                                  
                                   
                                         <button class="btn py-8 btn-primary py-lg-10 mt-2 fs-10 fs-lg-10 rounded-3 w-100 mb-10" type="submit" >Отправить сообщение

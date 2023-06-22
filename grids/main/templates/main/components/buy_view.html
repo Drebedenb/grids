@@ -7,16 +7,20 @@
                 <button type="button" class="btn-close button-close float-end btn-close-white" aria-label="Close" data-bs-dismiss="modal"></button>
                             <h2 class="fs-10 fs-lg-14 fs-lg-10 fw-normal mb-0 pt-10 text-uppercase text-center">Заказать решетку <span class="text-primary"><span id="buy_view_path_folder">0</span>-<span id="buy_view_path_file">0</span></span></h2>
                                         <form class="mt-10">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="subject" value="Форма быстрой покупки - заказ решетки">
+                                            <input type="hidden" name="number_str" value="" id="buy_view_number_of_grid">
+
                                             <div class="form-check text-center fs-6 pt-2 pb-2 ps-0 mb-10">
                                                 <label class="form-check-label fs-lg-8 text-muted" >Укажите ваши контактные данные и наши сотрудники свяжутся с вами</label>
                                             </div>
                                                       
                                                     <input class="form-control py-lg-10 fs-10 text-center w-100 mb-10 rounded-3"
-                                                           placeholder="Введите ваше имя" type="text"/>
+                                                           placeholder="Введите ваше имя" type="text" name="name"/>
                                              
                                               
                                                     <input class="form-control py-lg-10 fs-10 text-center  w-100 mb-10 rounded-3"
-                                                           placeholder="Укажите ваш телефон *" type="text" required/>
+                                                           placeholder="Укажите ваш телефон *" type="text" name="phone" required/>
 
                                               
                                                     <button class="btn py-8 btn-primary py-lg-10 mt-2 fs-10 fs-lg-12 rounded-3 w-100 mb-10" type="submit" >Заказать
