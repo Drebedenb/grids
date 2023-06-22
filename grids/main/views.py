@@ -12,13 +12,13 @@ from django.core.cache import cache
 from urllib.parse import urlencode
 from .models import PriceWinguardMain, PriceWinguardFiles, PriceWinguardSketch
 
-# class MockDjangoRedis:
-#     def get(self, arg):
-#         return None
-#
-#     def set(arg, bla, ble, blu):
-#         return arg
-# cache = MockDjangoRedis()
+class MockDjangoRedis:
+    def get(self, arg):
+        return None
+
+    def set(arg, bla, ble, blu):
+        return arg
+cache = MockDjangoRedis()
 
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 img_dir = os.path.join(base_dir, 'main/static/main/img/')
@@ -535,7 +535,7 @@ def handle_post_request(request):
         headers = {'User-Agent': 'Reforgebot/1.0'}
         data = {
             'ikey': 'WqfnDx7soB1iVn3K1ybM',
-            'domain': 'оконные-решётки.рф',
+            'domain': '',
             'roistat': 'nocookie',
             'subject': subject,
             'name': name,
@@ -543,11 +543,11 @@ def handle_post_request(request):
             'additional_info': additional_info,
         }
         print(data)
-        # try:
-        #     response = requests.post(url, headers=headers, data=data)
-        # except Exception as e:
-        #     pass
-        # return redirect('index')
+        try:
+            response = requests.post(url, headers=headers, data=data)
+        except Exception as e:
+            pass
+        return redirect('index')
 
 
 def index(request):
