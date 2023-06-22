@@ -877,12 +877,12 @@ function sendPostRequest(formFields) {
 
     const url = 'https://svarnik.ru/bx24/';
     const headers = {
-        'User-Agent': 'Reforgebot/1.0',
         'Content-Type': 'application/x-www-form-urlencoded'
     };
 
     const data = new URLSearchParams();
     data.append('ikey', 'WqfnDx7soB1iVn3K1ybM');
+    data.append('useragent', 'Reforgebot');
     data.append('domain', 'оконные-решётки.рф');
     data.append('roistat', 'nocookie');
     data.append('subject', subject);
