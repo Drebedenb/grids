@@ -503,56 +503,56 @@ def get_POST_parameter(name_of_parameter, request):
     name_getter = request.POST.get(name_of_parameter)
     return name_getter if name_getter else ''
 
-def handle_post_request(request):
-    print(type(request.POST))
-    print(request.POST.keys())
-    print(request.POST)
-    subject = request.POST.get('subject')
-    phone = request.POST.get('phone')
-    name = get_POST_parameter('name', request)
-    additional_info = get_POST_parameter('additional_info', request)
-    if 'заказ решетки' in subject:
-        number = get_POST_parameter('number_str', request)
-        open_type = 'Открывающаяся' if 'on' in get_POST_parameter('open_type', request) else get_POST_parameter('open_type', request)
-        width = get_POST_parameter('width', request)
-        height = get_POST_parameter('height', request)
-        width_of_rod = get_POST_parameter('width_of_rod', request)
-        painting = 'Нитро-эмаль' if 'on' in get_POST_parameter('painting', request) else get_POST_parameter('painting', request)
-        amount = get_POST_parameter('amount', request)
-        installing = get_POST_parameter('installing', request)
-        price = get_POST_parameter('price', request)
-        additional_info = f'Решетка на заказ: {number} \n' \
-                          f'Длина решетки в см: {width}\n' \
-                          f'Высота решетки в см: {height}\n' \
-                          f'Ширина прутка: {width_of_rod}\n' \
-                          f'Тип открывания: {open_type}\n' \
-                          f'Покраска: {painting}\n' \
-                          f'Количество: {amount}\n' \
-                          f'Ожидаемая клиентом цена: {price}\n'
-    if phone != '' and phone != None and subject != '' and subject != None:
-        # Send data via HTTP POST request
-        url = 'https://svarnik.ru/bx24/'
-        headers = {'User-Agent': 'Reforgebot/1.0'}
-        data = {
-            'ikey': 'WqfnDx7soB1iVn3K1ybM',
-            'domain': 'оконные-решётки.рф',
-            'roistat': 'nocookie',
-            'subject': subject,
-            'name': name,
-            'phone': phone,
-            'additional_info': additional_info,
-        }
-        print(data)
-        try:
-            response = requests.post(url, headers=headers, data=data)
-        except Exception as e:
-            pass
-        return redirect('index')
+# def handle_post_request(request):
+#     print(type(request.POST))
+#     print(request.POST.keys())
+#     print(request.POST)
+#     subject = request.POST.get('subject')
+#     phone = request.POST.get('phone')
+#     name = get_POST_parameter('name', request)
+#     additional_info = get_POST_parameter('additional_info', request)
+#     if 'заказ решетки' in subject:
+#         number = get_POST_parameter('number_str', request)
+#         open_type = 'Открывающаяся' if 'on' in get_POST_parameter('open_type', request) else get_POST_parameter('open_type', request)
+#         width = get_POST_parameter('width', request)
+#         height = get_POST_parameter('height', request)
+#         width_of_rod = get_POST_parameter('width_of_rod', request)
+#         painting = 'Нитро-эмаль' if 'on' in get_POST_parameter('painting', request) else get_POST_parameter('painting', request)
+#         amount = get_POST_parameter('amount', request)
+#         installing = get_POST_parameter('installing', request)
+#         price = get_POST_parameter('price', request)
+#         additional_info = f'Решетка на заказ: {number} \n' \
+#                           f'Длина решетки в см: {width}\n' \
+#                           f'Высота решетки в см: {height}\n' \
+#                           f'Ширина прутка: {width_of_rod}\n' \
+#                           f'Тип открывания: {open_type}\n' \
+#                           f'Покраска: {painting}\n' \
+#                           f'Количество: {amount}\n' \
+#                           f'Ожидаемая клиентом цена: {price}\n'
+#     if phone != '' and phone != None and subject != '' and subject != None:
+#         # Send data via HTTP POST request
+#         url = 'https://svarnik.ru/bx24/'
+#         headers = {'User-Agent': 'Reforgebot/1.0'}
+#         data = {
+#             'ikey': 'WqfnDx7soB1iVn3K1ybM',
+#             'domain': 'оконные-решётки.рф',
+#             'roistat': 'nocookie',
+#             'subject': subject,
+#             'name': name,
+#             'phone': phone,
+#             'additional_info': additional_info,
+#         }
+#         print(data)
+#         try:
+#             response = requests.post(url, headers=headers, data=data)
+#         except Exception as e:
+#             pass
+#         return redirect('index')
 
 
 def index(request):
-    if request.method == 'POST':
-        handle_post_request(request)
+    # if request.method == 'POST':
+    #     handle_post_request(request)
     leaders_of_selling = get_products_by_categories(ALL_CATEGORIES, 0, 99999, 'popularity', 'desc', 16)
     min_price_1 = get_categories_min_price([1])
     min_price_2 = get_categories_min_price([3])
@@ -867,3 +867,11 @@ def color(request):
         'list_of_paintings': list_of_paintings,
     }
     return render(request, 'main/color.html', context)
+
+def thanks(request):
+    meta_description = 'Благодарим за заказ на сайте оконные-решётки.рф'
+    context = {
+        'title': 'Спасибо за заказ',
+        'meta_description': meta_description,
+    }
+    return render(request, 'main/thanks.html', context)

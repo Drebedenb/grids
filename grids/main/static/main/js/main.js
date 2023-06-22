@@ -827,3 +827,89 @@ try {
         changeSpanTextById('quick-view-total', Math.round(total))
         changeInputByID('quick_view_total_price', Math.round(total)) //изменить невидимый инпут для отправки POST запроса
     }
+
+    //код для отправки POST запросов
+// Get all the form elements on the page
+const forms = document.querySelectorAll('form');
+
+// Loop through each form
+forms.forEach(form => {
+  // Add event listener for form submission
+  form.addEventListener('submit', e => {
+    e.preventDefault(); // Prevent the default form submission
+
+    // Create an object to store the form data
+    const formData = {};
+
+    // Loop through all the form inputs and collect their values
+    form.querySelectorAll('input').forEach(input => {
+      formData[input.name] = input.value;
+    });
+
+    // Perform the POST request with the collected form data
+    sendPostRequest(formData);
+  });
+});
+
+// Function to send the POST request
+function sendPostRequest(formFields) {
+    console.log(formFields);
+    let additional_info = ''
+    if (formFields.number_str) {
+        additional_info = `
+            Решетка на заказ: ${formFields.number_str} \n
+            Длина решетки в см: ${formFields.length} \n
+            Высота решетки в см: ${formFields.height} \n    
+            Тип открывания: ${formFields.open_type} \n    
+            Покраска: ${formFields.painting} \n    
+            Количество: ${formFields.amount} \n    
+            Ожидаемая цена: ${formFields.price} \n    
+            Телефон: ${formFields.phone} \n    
+        `
+    }
+    const phone = formFields.phone
+    const name = formFields.name
+    const subject = formFields.subject
+    console.log(additional_info)
+    console.log(phone)
+    console.log(name)
+    console.log(subject)
+
+    const url = 'https://svarnik.ru/bx24/';
+    const headers = {
+        'User-Agent': 'Reforgebot/1.0',
+        'Content-Type': 'application/x-www-form-urlencoded'
+    };
+
+    const data = new URLSearchParams();
+    data.append('ikey', 'someSecretKey');
+    data.append('domain', 'оконные-решётки.рф');
+    data.append('roistat', 'nocookie');
+    data.append('subject', subject);
+    data.append('name', name);
+    data.append('phone', phone);
+    data.append('additional_info', additional_info);
+
+    console.log(data)
+
+    fetch(url, {
+        method: 'POST',
+        headers: headers,
+        body: data,
+        mode: 'cors',
+        cache: 'no-cache',
+    })
+        .then(response => {
+            if (response.ok) {
+                console.log('POST request sent successfully');
+                window.location.replace("https://xn----itbbmgdragb0az1ftb9f.xn--p1ai/thanks/");
+            } else {
+                console.error('Error sending POST request');
+                // window.location.replace("https://xn----itbbmgdragb0az1ftb9f.xn--p1ai/thanks/");
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error)
+            // window.location.replace("https://xn----itbbmgdragb0az1ftb9f.xn--p1ai/thanks/");
+        });
+}
