@@ -902,7 +902,7 @@ function sendPostRequest(formFields) {
         .then(response => {
             if (response.ok) {
                 console.log('POST request sent successfully');
-                window.location.replace("https://xn----itbbmgdragb0az1ftb9f.xn--p1ai/thanks/");
+                // window.location.replace("https://xn----itbbmgdragb0az1ftb9f.xn--p1ai/thanks/");
             } else {
                 console.error('Error sending POST request');
                 // window.location.replace("https://xn----itbbmgdragb0az1ftb9f.xn--p1ai/thanks/");
