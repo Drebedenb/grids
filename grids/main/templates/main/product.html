@@ -37,20 +37,23 @@
                         <btn class="btn btn-outline-black btn-xxl w-100" data-bs-toggle="modal" data-bs-target="#modal-measurement" type="button">Вызвать на замер </btn>
                     </div>
                 </div>
-                <nav class="d-lg-block  fs-7 fs-lg-9 mt-12">
-                    <ul class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a class="fs-6 fs-sm-8 fs-lg-9" href="{%url 'index'%}">Главная </a></li>
-                        <li class="breadcrumb-item"><a class="fs-6 fs-sm-8 fs-lg-9" href="/решетки-на-окна-эконом-класс">Каталог</a></li>
-                        <li class="breadcrumb-item active"><a class="fs-6 fs-sm-8 fs-lg-9 text-dark">Решетка {{product.0.path_folder}}-{{product.0.path_file}}</a> </li>
-                    </ul>
-                </nav>
-
+       
             </div>
+            </header> 
+        -->
             <div class="d-lg-none d-block">
                 <h2 class="fs-10 fs-lg-10 ls-sm text-uppercase mb-0">Решетка на окно Эскиз №
                     {{product.0.path_folder}}-{{product.0.path_file}}</h2>
+                    <nav class="d-lg-block  fs-7 fs-lg-9 mt-12 mb-12">
+                        <ul class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a class="fs-6 fs-sm-8 fs-lg-9" href="{%url 'index'%}">Главная </a></li>
+                            <li class="breadcrumb-item"><a class="fs-6 fs-sm-8 fs-lg-9" href="/решетки-на-окна-эконом-класс">Каталог</a></li>
+                            <li class="breadcrumb-item active"><a class="fs-6 fs-sm-8 fs-lg-9 text-dark">Решетка {{product.0.path_folder}}-{{product.0.path_file}}</a> </li>
+                        </ul>
+                    </nav>
+    
             </div>
-        </header> -->
+        
         <main>
             <section class="mb-lg-50 mb-30 ">
                 <div class="row row-cols-4 d-lg-flex d-none gy-10 mb-10">
@@ -509,7 +512,7 @@
                                 </ul>
                                 <div class="tab-content pt-lg-15 pt-10" id="myTabContent">      
                                         <div class="tab-pane fade show active" id="product-characteristics-tab-pane" role="tabpanel" tabindex="0">
-                                            <div class="fs-7 fs-sm-8 fs-md-10 ">
+                                            <div class="fs-8 fs-sm-8 fs-md-10 fw-light">
                                                 {% include text_for_product %}
                                                 <p>Если вам нужна надежная и стильная решетка на окно недорого, вы можете оставить <span class="text-danger" data-bs-toggle="modal"                                     data-bs-target="#modal-consultation" type="button">заявку</span>, и наш менеджер перезвонит вам для консультации и записи на <span class="text-danger" data-bs-toggle="modal"
                                                     data-bs-target="#modal-measurement" type="button">бесплатный замер</span>. Мы предлагаем выгодные цены и гарантируем качество наших изделий. Защитите свой дом с помощью решеток на окна и наслаждайтесь безопасностью и комфортом!</p>
@@ -728,12 +731,12 @@
                                                   </div>
                                             </div>
                                             <div class="col-lg-8 border border-light rounded-2 mt-10 mt-lg-0 p-5">
-                                                <p class="mb-5  fs-lg-8 fs-xl-8 fs-xxl-9">Доставка осуществляется собственным транспортом в удобное для вас
+                                                <p class="mb-5 fs-8 fs-sm-8  fw-light   fs-lg-8 fs-xl-8 fs-xxl-9">Доставка осуществляется собственным транспортом в удобное для вас
                                                     время. Стоимость доставки зависит от удаленности населённого пункта.
                                                     Для точного расчета <span style="cursor: pointer" class="text-decoration-none text-hover-danger text-danger" data-bs-toggle="modal"
                                                     data-bs-target="#modal-measurement">оставьте заявку</span>  или <a href="tel:84953745364" class="text-decoration-none text-hover-danger">позвоните нам</a>.</p>
                                                     
-                                                    <p class="mb-5">Представленные тарифы действуют при заказе монтажа.
+                                                    <p class="mb-5 fs-8 fs-sm-8 fs-xl-8 fs-xxl-9 fw-light">Представленные тарифы действуют при заказе монтажа.
                                                     Если Вы планируете устанавливать изделия самостоятельно,
                                                     то стоимость доставки может измениться. Уточняйте точную стоимость
                                                     у наших специалистов заранее по телефону <a class="text-decoration-none text-hover-secondary" href="tel:84953745364">8 (495) 374-53-64</a>.</p>
@@ -953,11 +956,11 @@
                                             <img class="w-100" src="{% static 'main/img/garanty_image.webp' %}" alt="Решётка с гарантией" title="Решётка с гарантией">
                                         </div>
                                     </div>
-                                    <p class="py-5 mb-0 fs-lg-10">Гарантия включает в себя:</p>
+                                    <p class="py-5 mb-0 fs-lg-10 fs-8 fw-light">Гарантия включает в себя:</p>
                                     <ul>
-                                        <li class="text-muted fs-8 fs-lg-8">бесплатный ремонт;</li>
-                                        <li class="text-muted fs-8 fs-lg-8">замену или восстановление металлической решетки, пришедшей в негодность по вине Производителя;</li>
-                                        <li class="text-muted fs-8 fs-lg-8">если поломка произошла по вине Покупателя, изготовитель может произвести ремонт за счет него.</li>
+                                        <li class="text-muted fs-8 fw-light fs-lg-8">бесплатный ремонт;</li>
+                                        <li class="text-muted fs-8 fw-light fs-lg-8">замену или восстановление металлической решетки, пришедшей в негодность по вине Производителя;</li>
+                                        <li class="text-muted fs-8 fw-light fs-lg-8">если поломка произошла по вине Покупателя, изготовитель может произвести ремонт за счет него.</li>
                                     </ul>
                                           </div>
                                       <div class="tab-pane fade" id="product-painting-tab-pane" role="tabpanel" tabindex="0">
@@ -966,33 +969,33 @@
                                             <div class="row g-10">
                                                 <div class="col-6">
                                                     <div class="card">
-                                                        <img src="{% static 'main/img/painting/card_color1.webp' %}" class="card-img-top" alt="Любой цвет решетки" title="Любой цвет решетки">
-                                                        <div class="card-body py-6 px-0">
-                                                            <p class="fs-7 fs-lg-8 card-text text-center text-muted">Нитроэмаль</p>
+                                                        <a href="{%url 'pokraska'%}"><img src="{% static 'main/img/painting/card_color1.webp' %}" class="card-img-top" alt="Любой цвет решетки" title="Любой цвет решетки"></a>
+                                                        <div class="card-body py-6 px-0 text-center">
+                                                            <a href="{%url 'pokraska'%}" class="fs-7 fs-lg-8 card-text  text-muted text-decoration-none">Нитроэмаль</a>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="card">
-                                                        <img src="{% static 'main/img/painting/card_color2.webp' %}" class="card-img-top" alt="Решётки любого цвета" title="Решётки любого цвета">
-                                                        <div class="card-body py-6 px-0">
-                                                            <p class="fs-7 fs-lg-8 card-text text-center text-muted">Патина</p>
+                                                        <a href="{%url 'pokraska'%}"><img src="{% static 'main/img/painting/card_color2.webp' %}" class="card-img-top" alt="Решётки любого цвета" title="Решётки любого цвета"></a>
+                                                        <div class="card-body py-6 px-0 text-center">
+                                                            <a href="{%url 'pokraska'%}" class="fs-7 fs-lg-8 card-text text-decoration-none  text-muted">Патина</a>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="card">
-                                                        <img src="{% static 'main/img/painting/card_color3.webp' %}" class="card-img-top" alt="Клиент выбирает цвет решетки" title="Клиент выбирает цвет решетки">
-                                                        <div class="card-body py-6 px-0">
-                                                            <p class="fs-7 fs-lg-8 card-text text-center text-muted">Краска Hammerite</p>
+                                                        <a href="{%url 'pokraska'%}"><img src="{% static 'main/img/painting/card_color3.webp' %}" class="card-img-top" alt="Клиент выбирает цвет решетки" title="Клиент выбирает цвет решетки"></a>
+                                                        <div class="card-body py-6 px-0 text-center">
+                                                            <a href="{%url 'pokraska'%}" class="fs-7 fs-lg-8 card-text text-decoration-none  text-muted">Краска Hammerite</a>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="card">
-                                                        <img src="{% static 'main/img/painting/card_color4.webp' %}" class="card-img-top" alt="Красивый цвет решетки" title="Красивый цвет решетки">
-                                                        <div class="card-body py-6 px-0">
-                                                            <p class="fs-7 fs-lg-8 card-text text-center text-muted">Порошковое напыление</p>
+                                                        <a href="{%url 'pokraska'%}"> <img src="{% static 'main/img/painting/card_color4.webp' %}" class="card-img-top" alt="Красивый цвет решетки" title="Красивый цвет решетки"></a>
+                                                        <div class="card-body py-6 px-0 text-center">
+                                                             <a href="{%url 'pokraska'%}" class="fs-7 fs-lg-8 card-text text-decoration-none  text-muted">Порошковое напыление</a>
                                                         </div>
                                                     </div>
                                                 </div>
