@@ -593,7 +593,6 @@ def catalog_category(request, category_name):
         max_price_for_sort = 9999999 if request.GET.get('maxPriceByUser') is None else int(
             request.GET.get('maxPriceByUser'))
 
-    products_list = []
     if "топ" in category:
         products_list = get_products_by_categories(category["number_of_category"], min_price_for_sort,
                                                    max_price_for_sort,
@@ -618,8 +617,15 @@ def catalog_category(request, category_name):
     text_for_category = 'main/text/' + category['text']
     meta_description = 'Решетки на окна по разным ценам. Популярные эскизы со скидками. ' \
                        'Сварные, ажурные, кованые и дутые решетки по размерам клиента.'
+    if page != 1:
+        meta_description = ''
+
+    canonical_href = ''
+    if len(request.GET) != 0:
+        canonical_href ='https://xn----itbbmgdragb0az1ftb9f.xn--p1ai/' + category_name
+
     context = {
-        'title': category['title'] + ' страница ' + str(page),
+        'title': category['title'],
         'meta_description': meta_description,
         'text_for_category': text_for_category,
         'list_of_reviews': list_of_reviews,
@@ -631,6 +637,9 @@ def catalog_category(request, category_name):
         # for pagination
         'prev_url': get_paginated_url(request, products.previous_page_number()) if products.has_previous() else None,
         'next_url': get_paginated_url(request, products.next_page_number()) if products.has_next() else None,
+
+        #for making canonical link
+        'canonical_href': canonical_href,
 
         'count': count,
     }

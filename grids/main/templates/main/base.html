@@ -51,6 +51,9 @@
     <meta name="keywords" content="решетки на окно">
     <meta name="description" content="{{meta_description}}">
 
+    {% if canonical_href%}
+    <link rel="canonical" href="{{canonical_href}}">
+    {% endif %}
     <meta property="og:locale" content="ru_RU" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="{{title}}" />

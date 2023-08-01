@@ -1,3 +1,8 @@
 User-agent: *
-Disallow: 
+Disallow: /?gclid=
+Disallow: /?utm_source=
+Disallow: /?yclid=
+Disallow: /*_openstat*
+Disallow: /*?order=
+
 Sitemap: https://xn----itbbmgdragb0az1ftb9f.xn--p1ai/sitemap.xml

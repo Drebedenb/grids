@@ -852,8 +852,7 @@ forms.forEach(form => {
 });
 
 // Function to send the POST request
-function sendPostRequest(formFields) {
-    console.log(formFields);
+async function sendPostRequest(formFields) {
     let additional_info = ''
     if (formFields.number_str) {
         additional_info = `
@@ -870,10 +869,6 @@ function sendPostRequest(formFields) {
     const phone = formFields.phone
     const name = formFields.name
     const subject = formFields.subject
-    console.log(additional_info)
-    console.log(phone)
-    console.log(name)
-    console.log(subject)
 
     const url = 'https://svarnik.ru/bx24/';
     const headers = {
@@ -890,26 +885,36 @@ function sendPostRequest(formFields) {
     data.append('phone', phone);
     data.append('additional_info', additional_info);
 
-    console.log(data)
 
-    fetch(url, {
-        method: 'POST',
-        headers: headers,
-        body: data,
-        mode: 'cors',
-        cache: 'no-cache',
-    })
-        .then(response => {
-            if (response.ok) {
-                console.log('POST request sent successfully');
-                // window.location.replace("https://xn----itbbmgdragb0az1ftb9f.xn--p1ai/thanks/");
-            } else {
-                console.error('Error sending POST request');
-                // window.location.replace("https://xn----itbbmgdragb0az1ftb9f.xn--p1ai/thanks/");
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error)
-            // window.location.replace("https://xn----itbbmgdragb0az1ftb9f.xn--p1ai/thanks/");
-        });
+    // await fetch(url, {
+    //     method: 'POST',
+    //     headers: headers,
+    //     body: data,
+    //     mode: 'cors',
+    //     cache: 'no-cache',
+    // })
+    //     .then(response => {
+    //         if (response.ok) {
+    //             console.log('POST request sent successfully');
+    //         } else {
+    //             console.error('Error sending POST request');
+    //             // window.location.replace("https://xn----itbbmgdragb0az1ftb9f.xn--p1ai/thanks/");
+    //         }
+    //     })
+    //     .catch(error => {
+    //         console.error('Error:', error)
+    //         // window.location.replace("https://xn----itbbmgdragb0az1ftb9f.xn--p1ai/thanks/");
+    //     });
+    let promise = new Promise((resolve, reject) => {
+
+  setTimeout(() => {
+    // переведёт промис в состояние fulfilled с результатом "result"
+    resolve("result");
+  }, 2000);
+
+});
+    promise.then((result) => {window.location.replace("https://xn----itbbmgdragb0az1ftb9f.xn--p1ai/thanks/");})
+
+
+
 }
