@@ -2,6 +2,34 @@
 {% load static %} 
 {% block content %}
 <div class="pt-lg-20 pt-16 pb-lg-50 pb-32">
+<!--    for Google Search SEO-->
+    <div typeof="schema:Product">
+        <div rel="schema:review">
+          <div typeof="schema:Review">
+            <div rel="schema:reviewRating">
+              <div typeof="schema:Rating">
+                <div property="schema:ratingValue" content="5"></div>
+                <div property="schema:bestRating" content="5"></div>
+              </div>
+            </div>
+            <div rel="schema:author">
+              <div typeof="schema:Person">
+                <div property="schema:name" content="Сварник"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div property="schema:name" content="Решетка на окно"></div>
+        <div property="schema:description" content="Металлическая решетка на окно. Бесплатный выезд и замер."></div>
+        <div rel="schema:aggregateRating">
+          <div typeof="schema:AggregateRating">
+            <div property="schema:reviewCount" content="89"></div>
+            <div property="schema:ratingValue" content="4.4"></div>
+          </div>
+        </div>
+      </div>
+<!--    end Google Search SEO-->
+
     <div class="container">
      <!--    <header class="page-header mb-lg-20 mb-17-5">
             <div class="d-lg-block mb-10">

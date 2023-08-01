@@ -1,0 +1,26 @@
+{%extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+<div class="pt-lg-15 pt-16 pb-lg-20 pb-32">
+    <div class="container">
+        <header class="page-header mb-lg-20 mb-28">
+            <div>
+
+                <div class="row gy-lg-0  gy-12">
+
+                    <div class="col-lg-6">
+
+                        <h1 class="display-1 fs-3xl-25 fs-xl-23 fs-lg-27 fs-13 fw-normal ls-sm text-uppercase mb-20 pe-lg-8">
+                            Данной страницы не существует! Перейдите на <a href="{%url 'index'%}">главную</a>
+                        </h1>
+                    </div>
+        </header>
+        </div>
+        </div>
+
+        {% include 'main/components/measure_modal.html' %}
+
+
+    {% include 'main/components/consultation_modal.html' %}
+
+{% endblock %}

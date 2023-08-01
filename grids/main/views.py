@@ -579,7 +579,7 @@ def index(request):
 
 def catalog_category(request, category_name):
     if category_name not in russian_categories:
-        return HttpResponseNotFound("Page NOT found")
+        return page_not_found(request, category_name)
     category = russian_categories[category_name]
     min_price_for_sort = 0
     max_price_for_sort = 9999999
@@ -774,7 +774,13 @@ def favorite(request):
 
 
 def page_not_found(request, exception):
-    return HttpResponseNotFound("Page NOT found")
+    meta_description = 'Ошибка 404. Страница не найдена. Перейдите на главную страницу'
+    context = {
+        'title': '404',
+        'meta_description': meta_description,
+        'count': count
+    }
+    return render(request, 'main/page_404.html', context)
 
 
 def privacy(request):

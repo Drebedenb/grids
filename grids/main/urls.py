@@ -31,3 +31,5 @@ urlpatterns = [
     path('skchema-zakaza/', order_scheme, name="order_scheme"),
     path('thanks/', thanks, name="thanks"),
 ]
+
+handler404 = page_not_found
