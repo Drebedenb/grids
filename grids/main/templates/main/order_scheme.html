@@ -40,14 +40,21 @@
 
                     </div>
                     <nav class="fs-5 fs-lg-9 mt-12 mb-lg-10 mt-lg-0">
-                        <ul class="breadcrumb mb-0">
-                            <li class="breadcrumb-item"><a class="fs-6 fs-sm-8 fs-lg-9"
-                                                           href="{%url 'index'%}">Главная </a></li>
-                            <li class="breadcrumb-item"><a class="fs-6 fs-sm-8 fs-lg-9"
-                                                           href="/металлические-решетки-на-окна">Каталог</a></li>
-                            <li class="breadcrumb-item active"><a class="fs-6 fs-sm-8 fs-lg-9 text-dark">{{category.title}}</a>
-                            </li>
-                        </ul>
+
+                        <ol vocab="https://schema.org/" typeof="BreadcrumbList" class="breadcrumb mb-0">
+                      <li property="itemListElement" typeof="ListItem" class="breadcrumb-item">
+                        <a property="item" typeof="WebPage" href="{%url 'index'%}" class="fs-6 fs-sm-8 fs-lg-9"><span property="name">Главная</span></a>
+                        <meta property="position" content="1">
+                      </li>
+                      <li property="itemListElement" typeof="ListItem" class="breadcrumb-item">
+                        <a property="item" typeof="WebPage" href="/металлические-решетки-на-окна" class="fs-6 fs-sm-8 fs-lg-9"><span property="name">Каталог</span></a>
+                        <meta property="position" content="2">
+                      </li>
+                      <li property="itemListElement" typeof="ListItem" class="breadcrumb-item active">
+                        <span property="name" class="fs-6 fs-sm-8 fs-lg-9 text-dark">Схема заказа</span>
+                        <meta property="position" content="3">
+                      </li>
+                    </ol>
                     </nav>
                 </div>
             </div>

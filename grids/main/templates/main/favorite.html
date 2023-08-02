@@ -14,10 +14,16 @@
                     </div>
               
                     <nav class="d-lg-block d-none fs-9 mt-lg-0 mt-12">
-                        <ul class="breadcrumb mb-0">
-                            <li class="breadcrumb-item"><a href="{%url 'index'%}">Главная </a></li>
-                            <li class="breadcrumb-item active">Избранное </li>
-                        </ul>
+                        <ol vocab="https://schema.org/" typeof="BreadcrumbList" class="breadcrumb mb-0">
+                      <li property="itemListElement" typeof="ListItem" class="breadcrumb-item">
+                        <a property="item" typeof="WebPage" href="{%url 'index'%}" class="fs-6 fs-sm-8 fs-lg-9"><span property="name">Главная</span></a>
+                        <meta property="position" content="1">
+                      </li>
+                      <li property="itemListElement" typeof="ListItem" class="breadcrumb-item active">
+                        <span property="name" class="fs-6 fs-sm-8 fs-lg-9 text-dark">{{title}}</span>
+                        <meta property="position" content="3">
+                      </li>
+                    </ol>
                     </nav>
 
                     <div class="row row-cols-lg-4 row-cols-2 gy-20 mt-0 mt-lg-20">
