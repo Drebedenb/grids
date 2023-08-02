@@ -94,9 +94,19 @@
         <div class="py-6">
             <div class="row align-items-center">
                 <div class="col-auto">
-                    <div class="d-flex"><a class="navbar-brand"  href="{%url 'index'%}"><img class="img-fluid"
+                    <div class="d-flex">
+
+
+                        {% if request.path != '/' %}
+                        <a class="navbar-brand" href="{%url 'index'%}">
+                            {% endif %}
+                            <img class="img-fluid"
                                                                                             src="{% static 'main/img/logo_light.svg' %}"
-                                                                                            alt="Оконные решетки на окна" title="Оконные решетки на окна"></a><small
+                                                                                            alt="Оконные решетки на окна" title="Оконные решетки">
+                        {% if request.path != '/' %}
+                        </a>
+                        {% endif %}
+                        <small
                             class="d-lg-flex d-none align-items-center fs-7 border-start border-white ms-10 ps-10">Производство
                         металлических <br>решеток в Московской области </small></div>
                 </div>
@@ -334,9 +344,18 @@
         <div class="py-11 pt-lg-30 pb-lg-20">
             <div class="row justify-content-between align-items-center">
                 <div class="col-auto">
-                    <div class="d-flex"><a class="navbar-brand" href="{%url 'index'%}"><img class="img-fluid"
+                    <div class="d-flex">
+                        {% if request.path != '/' %}
+                        <a class="navbar-brand" href="{%url 'index'%}">
+                            {%endif %}
+                            <img class="img-fluid"
                                                                                             src="{% static 'main/img/logo_light.svg' %}"
-                                                                                            alt="Оконные решетки" title="Оконные решетки"></a><small
+                                                                                            alt="Оконные решетки" title="Оконные решетки">
+                        {% if request.path != '/' %}
+                        </a>
+                        {%endif %}
+
+                        <small
                             class="d-flex align-items-center fs-lg-7 fs-5 border-start border-lg-white border-dark ms-lg-10 ms-8 ps-lg-10 ps-8">Производство
                         металлических <br>решеток в Московской области </small></div>
                 </div>

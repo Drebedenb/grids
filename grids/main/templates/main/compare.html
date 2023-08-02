@@ -13,11 +13,21 @@
                             {{category.title}} Сравнения товаров</h1>
                     </div>
 
+
+
+
                     <nav class="d-lg-block d-none fs-9 mt-lg-0 mt-12">
-                        <ul class="breadcrumb mb-0">
-                            <li class="breadcrumb-item"><a href="{%url 'index'%}">Главная </a></li>
-                            <li class="breadcrumb-item active">Сравнения товаров</li>
-                        </ul>
+                    <ol vocab="https://schema.org/" typeof="BreadcrumbList" class="breadcrumb mb-0">
+                      <li property="itemListElement" typeof="ListItem" class="breadcrumb-item">
+                        <a property="item" typeof="WebPage" href="{%url 'index'%}"><span property="name">Главная</span></a>
+                        <meta property="position" content="1">
+                      </li>
+                      <li property="itemListElement" typeof="ListItem" class="breadcrumb-item active">
+                        <span property="name">Сравнения товаров</span>
+                        <meta property="position" content="2">
+                      </li>
+                    </ol>
+
                     </nav>
 
                 </div>

@@ -719,7 +719,6 @@ function getWidth() {
   );
 }
 
-
 //блок кода для вызова alert с теткой
 if (getWidth() < 768){
     const element = document.getElementById("alert_modal");
@@ -828,6 +827,31 @@ try {
         changeInputByID('quick_view_total_price', Math.round(total)) //изменить невидимый инпут для отправки POST запроса
     }
 
+//код для вставки только цифр в номере телефона
+const phoneNumberInput = document.querySelectorAll('input[name="phone"]')
+for (let i = 0; i < phoneNumberInput.length; i++) {
+    phoneNumberInput[i].addEventListener("input", () => {
+  let phoneNumber = phoneNumberInput[i].value
+  if (!phoneNumber.at(-1).match(/\d/) || phoneNumber.length > 17) {
+      phoneNumberInput[i].value = phoneNumber.slice(0,phoneNumber.length - 1)
+  } else {
+      if ( phoneNumber.length === 1) {
+          phoneNumber = phoneNumber + ' ('
+      }
+      if ( phoneNumber.length === 6) {
+          phoneNumber = phoneNumber + ') '
+      }
+      if ( phoneNumber.length === 11) {
+          phoneNumber = phoneNumber + '-'
+      }
+      if ( phoneNumber.length === 14) {
+          phoneNumber = phoneNumber + '-'
+      }
+      phoneNumberInput[i].value = phoneNumber;
+  }
+});
+}
+
     //код для отправки POST запросов
 // Get all the form elements on the page
 const forms = document.querySelectorAll('form');
@@ -914,7 +938,11 @@ async function sendPostRequest(formFields) {
 
 });
     promise.then((result) => {window.location.replace("https://xn----itbbmgdragb0az1ftb9f.xn--p1ai/thanks/");})
+}
 
 
-
+//блок кода для того, чтобы убрать page1 из get параметров при пагинации и переходе на страницу 1 в каталоге
+if (getSearchParams().page == 1){
+    const url = getCurrentURL().replace(/\?page=1/, '')
+    window.location = url
 }
