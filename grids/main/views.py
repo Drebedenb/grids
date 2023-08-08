@@ -503,52 +503,6 @@ def get_POST_parameter(name_of_parameter, request):
     name_getter = request.POST.get(name_of_parameter)
     return name_getter if name_getter else ''
 
-# def handle_post_request(request):
-#     print(type(request.POST))
-#     print(request.POST.keys())
-#     print(request.POST)
-#     subject = request.POST.get('subject')
-#     phone = request.POST.get('phone')
-#     name = get_POST_parameter('name', request)
-#     additional_info = get_POST_parameter('additional_info', request)
-#     if 'заказ решетки' in subject:
-#         number = get_POST_parameter('number_str', request)
-#         open_type = 'Открывающаяся' if 'on' in get_POST_parameter('open_type', request) else get_POST_parameter('open_type', request)
-#         width = get_POST_parameter('width', request)
-#         height = get_POST_parameter('height', request)
-#         width_of_rod = get_POST_parameter('width_of_rod', request)
-#         painting = 'Нитро-эмаль' if 'on' in get_POST_parameter('painting', request) else get_POST_parameter('painting', request)
-#         amount = get_POST_parameter('amount', request)
-#         installing = get_POST_parameter('installing', request)
-#         price = get_POST_parameter('price', request)
-#         additional_info = f'Решетка на заказ: {number} \n' \
-#                           f'Длина решетки в см: {width}\n' \
-#                           f'Высота решетки в см: {height}\n' \
-#                           f'Ширина прутка: {width_of_rod}\n' \
-#                           f'Тип открывания: {open_type}\n' \
-#                           f'Покраска: {painting}\n' \
-#                           f'Количество: {amount}\n' \
-#                           f'Ожидаемая клиентом цена: {price}\n'
-#     if phone != '' and phone != None and subject != '' and subject != None:
-#         # Send data via HTTP POST request
-#         url = 'https://svarnik.ru/bx24/'
-#         headers = {'User-Agent': 'Reforgebot/1.0'}
-#         data = {
-#             'ikey': 'WqfnDx7soB1iVn3K1ybM',
-#             'domain': 'оконные-решётки.рф',
-#             'roistat': 'nocookie',
-#             'subject': subject,
-#             'name': name,
-#             'phone': phone,
-#             'additional_info': additional_info,
-#         }
-#         print(data)
-#         try:
-#             response = requests.post(url, headers=headers, data=data)
-#         except Exception as e:
-#             pass
-#         return redirect('index')
-
 
 def index(request):
     # if request.method == 'POST':
@@ -581,17 +535,18 @@ def catalog_category(request, category_name):
     if category_name not in russian_categories:
         return page_not_found(request, category_name)
     category = russian_categories[category_name]
+
     min_price_for_sort = 0
     max_price_for_sort = 9999999
     order_type = 'id'
     order_scending = 'asc'
     limit = 9999
+
     if request.method == 'GET':
-        order_type = 'id' if request.GET.get('order') is None else request.GET.get('order')
-        order_scending = 'asc' if request.GET.get('orderScending') is None else request.GET.get('orderScending')
-        min_price_for_sort = 0 if request.GET.get('minPriceByUser') is None else int(request.GET.get('minPriceByUser'))
-        max_price_for_sort = 9999999 if request.GET.get('maxPriceByUser') is None else int(
-            request.GET.get('maxPriceByUser'))
+        order_type = request.GET.get('order') or 'id'
+        order_scending = request.GET.get('orderScending') or 'asc'
+        min_price_for_sort = int(request.GET.get('minPriceByUser') or 0)
+        max_price_for_sort = int(request.GET.get('maxPriceByUser') or 9999999)
 
     if "топ" in category:
         products_list = get_products_by_categories(category["number_of_category"], min_price_for_sort,
