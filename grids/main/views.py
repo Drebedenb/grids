@@ -609,7 +609,7 @@ def catalog_category(request, category_name):
 
 def contacts(request):
     meta_description = 'Металлические решетки по хорошей цене. Собственное производство в Клинском районе. ' \
-                       'Бесплатная консультация по телефону: +7-495-374-53-64'
+                       'Бесплатная консультация по телефону: +7 (495) 255-38-81'
     context = {
         'title': 'Контакты',
         'meta_description': meta_description,
